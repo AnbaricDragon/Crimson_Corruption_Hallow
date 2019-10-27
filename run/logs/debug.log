@@ -1,0 +1,118 @@
+[27Oct2019 12:14:13.669] [main/INFO] [cpw.mods.modlauncher.Launcher/MODLAUNCHER]: ModLauncher running: args [--gameDir, ., --launchTarget, fmluserdevclient, --fml.mcpVersion, 20190829.143755, --fml.mcVersion, 1.14.4, --fml.forgeGroup, net.minecraftforge, --fml.forgeVersion, 28.1.69, --version, MOD_DEV, --assetIndex, 1.14, --assetsDir, C:\Users\Anbaric\.gradle\caches\forge_gradle\assets, --username, Dev, --accessToken, ????????, --userProperties, {}]
+[27Oct2019 12:14:13.674] [main/INFO] [cpw.mods.modlauncher.Launcher/MODLAUNCHER]: ModLauncher 4.1.0+62+5bfa59b starting: java version 1.8.0_121 by Oracle Corporation
+[27Oct2019 12:14:13.691] [main/DEBUG] [cpw.mods.modlauncher.LaunchServiceHandler/MODLAUNCHER]: Found launch services [minecraft,fmldevdata,fmldevclient,fmldevserver,fmluserdevserver,testharness,fmluserdevdata,fmlclient,fmluserdevclient,fmlserver]
+[27Oct2019 12:14:13.704] [main/DEBUG] [cpw.mods.modlauncher.NameMappingServiceHandler/MODLAUNCHER]: Found naming services : [srgtomcp]
+[27Oct2019 12:14:13.715] [main/DEBUG] [cpw.mods.modlauncher.LaunchPluginHandler/MODLAUNCHER]: Found launch plugins: [eventbus,object_holder_definalize,runtime_enum_extender,accesstransformer,capability_inject_definalize,runtimedistcleaner]
+[27Oct2019 12:14:13.727] [main/DEBUG] [cpw.mods.modlauncher.TransformationServicesHandler/MODLAUNCHER]: Discovering transformation services
+[27Oct2019 12:14:13.733] [main/DEBUG] [cpw.mods.modlauncher.TransformationServicesHandler/MODLAUNCHER]: Found additional transformation services from discovery services: []
+[27Oct2019 12:14:13.767] [main/DEBUG] [cpw.mods.modlauncher.TransformationServicesHandler/MODLAUNCHER]: Found transformer services : [fml]
+[27Oct2019 12:14:13.767] [main/DEBUG] [cpw.mods.modlauncher.TransformationServicesHandler/MODLAUNCHER]: Transformation services loading
+[27Oct2019 12:14:13.768] [main/DEBUG] [cpw.mods.modlauncher.TransformationServiceDecorator/MODLAUNCHER]: Loading service fml
+[27Oct2019 12:14:13.768] [main/DEBUG] [net.minecraftforge.fml.loading.FMLServiceProvider/]: Injecting tracing printstreams for STDOUT/STDERR.
+[27Oct2019 12:14:13.771] [main/DEBUG] [net.minecraftforge.fml.loading.LauncherVersion/CORE]: Found FMLLauncher version 28.1
+[27Oct2019 12:14:13.771] [main/DEBUG] [net.minecraftforge.fml.loading.FMLLoader/CORE]: FML 28.1 loading
+[27Oct2019 12:14:13.772] [main/DEBUG] [net.minecraftforge.fml.loading.FMLLoader/CORE]: FML found ModLauncher version : 4.1.0+62+5bfa59b
+[27Oct2019 12:14:13.772] [main/DEBUG] [net.minecraftforge.fml.loading.FMLLoader/CORE]: Initializing modjar URL handler
+[27Oct2019 12:14:13.773] [main/DEBUG] [net.minecraftforge.fml.loading.FMLLoader/CORE]: FML found AccessTransformer version : 1.0.0+45+b99295a
+[27Oct2019 12:14:13.773] [main/DEBUG] [net.minecraftforge.fml.loading.FMLLoader/CORE]: FML found EventBus version : 1.0.0+54+3f83a9e
+[27Oct2019 12:14:13.774] [main/DEBUG] [net.minecraftforge.fml.loading.FMLLoader/CORE]: Found Runtime Dist Cleaner
+[27Oct2019 12:14:13.777] [main/DEBUG] [net.minecraftforge.fml.loading.FMLLoader/CORE]: FML found CoreMod version : 1.0.0+4+e6fed88
+[27Oct2019 12:14:13.778] [main/DEBUG] [net.minecraftforge.fml.loading.FMLLoader/CORE]: Found ForgeSPI package implementation version 1.4.0+5+4682005
+[27Oct2019 12:14:13.778] [main/DEBUG] [net.minecraftforge.fml.loading.FMLLoader/CORE]: Found ForgeSPI package specification 3
+[27Oct2019 12:14:14.082] [main/INFO] [net.minecraftforge.fml.loading.FixSSL/CORE]: Added Lets Encrypt root certificates as additional trust
+[27Oct2019 12:14:14.083] [main/DEBUG] [cpw.mods.modlauncher.TransformationServiceDecorator/MODLAUNCHER]: Loaded service fml
+[27Oct2019 12:14:14.085] [main/DEBUG] [cpw.mods.modlauncher.TransformationServicesHandler/MODLAUNCHER]: Configuring option handling for services
+[27Oct2019 12:14:14.094] [main/DEBUG] [cpw.mods.modlauncher.TransformationServicesHandler/MODLAUNCHER]: Transformation services initializing
+[27Oct2019 12:14:14.095] [main/DEBUG] [cpw.mods.modlauncher.TransformationServiceDecorator/MODLAUNCHER]: Initializing transformation service fml
+[27Oct2019 12:14:14.095] [main/DEBUG] [net.minecraftforge.fml.loading.FMLServiceProvider/CORE]: Setting up basic FML game directories
+[27Oct2019 12:14:14.096] [main/DEBUG] [net.minecraftforge.fml.loading.FileUtils/CORE]: Found existing GAMEDIR directory : D:\Downloads\Coding\Repositories\Terra_Reforged\run
+[27Oct2019 12:14:14.097] [main/DEBUG] [net.minecraftforge.fml.loading.FMLPaths/CORE]: Path GAMEDIR is D:\Downloads\Coding\Repositories\Terra_Reforged\run
+[27Oct2019 12:14:14.097] [main/DEBUG] [net.minecraftforge.fml.loading.FileUtils/CORE]: Found existing MODSDIR directory : D:\Downloads\Coding\Repositories\Terra_Reforged\run\mods
+[27Oct2019 12:14:14.097] [main/DEBUG] [net.minecraftforge.fml.loading.FMLPaths/CORE]: Path MODSDIR is D:\Downloads\Coding\Repositories\Terra_Reforged\run\mods
+[27Oct2019 12:14:14.097] [main/DEBUG] [net.minecraftforge.fml.loading.FileUtils/CORE]: Found existing CONFIGDIR directory : D:\Downloads\Coding\Repositories\Terra_Reforged\run\config
+[27Oct2019 12:14:14.098] [main/DEBUG] [net.minecraftforge.fml.loading.FMLPaths/CORE]: Path CONFIGDIR is D:\Downloads\Coding\Repositories\Terra_Reforged\run\config
+[27Oct2019 12:14:14.098] [main/DEBUG] [net.minecraftforge.fml.loading.FMLPaths/CORE]: Path FMLCONFIG is D:\Downloads\Coding\Repositories\Terra_Reforged\run\config\fml.toml
+[27Oct2019 12:14:14.098] [main/DEBUG] [net.minecraftforge.fml.loading.FMLServiceProvider/CORE]: Loading configuration
+[27Oct2019 12:14:14.139] [main/DEBUG] [net.minecraftforge.fml.loading.FileUtils/CORE]: Found existing default config directory directory : D:\Downloads\Coding\Repositories\Terra_Reforged\run\defaultconfigs
+[27Oct2019 12:14:14.140] [main/DEBUG] [net.minecraftforge.fml.loading.FMLServiceProvider/CORE]: Preparing launch handler
+[27Oct2019 12:14:14.140] [main/DEBUG] [net.minecraftforge.fml.loading.FMLLoader/CORE]: Using fmluserdevclient as launch service
+[27Oct2019 12:14:14.150] [main/DEBUG] [net.minecraftforge.fml.loading.FMLLoader/CORE]: Received command line version data  : MC Version: '1.14.4' MCP Version: '20190829.143755' Forge Version: '28.1.69' Forge group: 'net.minecraftforge'
+[27Oct2019 12:14:14.152] [main/DEBUG] [net.minecraftforge.fml.loading.LibraryFinder/CORE]: Found JAR forge at path C:\Users\Anbaric\.gradle\caches\forge_gradle\minecraft_user_repo\net\minecraftforge\forge\1.14.4-28.1.69_mapped_snapshot_20191027-1.14.3\forge-1.14.4-28.1.69_mapped_snapshot_20191027-1.14.3-recomp.jar
+[27Oct2019 12:14:14.152] [main/DEBUG] [net.minecraftforge.fml.loading.LibraryFinder/CORE]: Found JAR mcdata at path C:\Users\Anbaric\.gradle\caches\forge_gradle\minecraft_repo\versions\1.14.4\client-extra.jar
+[27Oct2019 12:14:14.153] [main/DEBUG] [net.minecraftforge.userdev.FMLUserdevLaunchProvider/CORE]: Injecting maven path C:\Users\Anbaric\.gradle\caches\forge_gradle\minecraft_user_repo
+[27Oct2019 12:14:14.153] [main/DEBUG] [net.minecraftforge.fml.loading.FMLCommonLaunchHandler/CORE]: Got mod coordinates examplemod%%D:\Downloads\Coding\Repositories\Terra_Reforged\build\resources\main;examplemod%%D:\Downloads\Coding\Repositories\Terra_Reforged\build\classes\java\main from env
+[27Oct2019 12:14:14.156] [main/DEBUG] [net.minecraftforge.fml.loading.FMLCommonLaunchHandler/CORE]: Found supplied mod coordinates [{examplemod=[D:\Downloads\Coding\Repositories\Terra_Reforged\build\resources\main, D:\Downloads\Coding\Repositories\Terra_Reforged\build\classes\java\main]}]
+[27Oct2019 12:14:14.161] [main/DEBUG] [net.minecraftforge.fml.loading.LanguageLoadingProvider/CORE]: Found 2 language providers
+[27Oct2019 12:14:14.162] [main/DEBUG] [net.minecraftforge.fml.loading.LanguageLoadingProvider/CORE]: Found language provider javafml, version 28.1
+[27Oct2019 12:14:14.165] [main/DEBUG] [net.minecraftforge.fml.loading.LanguageLoadingProvider/CORE]: Found language provider minecraft, version 1
+[27Oct2019 12:14:14.165] [main/DEBUG] [net.minecraftforge.fml.loading.LanguageLoadingProvider/CORE]: Skipping adding forge jar - javafml is already present
+[27Oct2019 12:14:14.167] [main/DEBUG] [cpw.mods.modlauncher.TransformationServiceDecorator/MODLAUNCHER]: Initialized transformation service fml
+[27Oct2019 12:14:14.168] [main/DEBUG] [cpw.mods.modlauncher.NameMappingServiceHandler/MODLAUNCHER]: Current naming domain is 'mcp'
+[27Oct2019 12:14:14.169] [main/DEBUG] [cpw.mods.modlauncher.NameMappingServiceHandler/MODLAUNCHER]: Identified name mapping providers {srg=srgtomcp:1234}
+[27Oct2019 12:14:14.169] [main/DEBUG] [cpw.mods.modlauncher.TransformationServicesHandler/MODLAUNCHER]: Transformation services begin scanning
+[27Oct2019 12:14:14.170] [main/DEBUG] [cpw.mods.modlauncher.TransformationServiceDecorator/MODLAUNCHER]: Beginning scan trigger - transformation service fml
+[27Oct2019 12:14:14.170] [main/DEBUG] [net.minecraftforge.fml.loading.FMLServiceProvider/CORE]: Initiating mod scan
+[27Oct2019 12:14:14.170] [main/DEBUG] [net.minecraftforge.fml.loading.FMLLoader/SCAN]: Scanning for Mod Locators
+[27Oct2019 12:14:14.202] [main/DEBUG] [net.minecraftforge.fml.loading.LibraryFinder/CORE]: Found JAR classpath_mod at path D:\Downloads\Coding\Repositories\Terra_Reforged\build\resources\main
+[27Oct2019 12:14:14.202] [main/DEBUG] [net.minecraftforge.fml.loading.LibraryFinder/CORE]: Found JAR classpath_mod at path C:\Users\Anbaric\.gradle\caches\forge_gradle\minecraft_user_repo\net\minecraftforge\forge\1.14.4-28.1.69_mapped_snapshot_20191027-1.14.3\forge-1.14.4-28.1.69_mapped_snapshot_20191027-1.14.3-recomp.jar
+[27Oct2019 12:14:14.203] [main/DEBUG] [net.minecraftforge.userdev.ClasspathLocator/CORE]: Found classpath mod: C:\Users\Anbaric\.gradle\caches\forge_gradle\minecraft_user_repo\net\minecraftforge\forge\1.14.4-28.1.69_mapped_snapshot_20191027-1.14.3\forge-1.14.4-28.1.69_mapped_snapshot_20191027-1.14.3-recomp.jar
+[27Oct2019 12:14:14.207] [main/DEBUG] [net.minecraftforge.fml.loading.moddiscovery.ModListHandler/CORE]: Found mod coordinates from lists: []
+[27Oct2019 12:14:14.240] [main/DEBUG] [net.minecraftforge.fml.loading.moddiscovery.ModDiscoverer/CORE]: Found Mod Locators : (userdev classpath:null),(mods folder:null),(maven libs:null),(exploded directory:null),(minecraft:null)
+[27Oct2019 12:14:14.242] [main/DEBUG] [net.minecraftforge.fml.loading.moddiscovery.ModDiscoverer/SCAN]: Scanning for mods and other resources to load. We know 5 ways to find mods
+[27Oct2019 12:14:14.247] [main/DEBUG] [net.minecraftforge.fml.loading.moddiscovery.ModDiscoverer/SCAN]: Trying locator net.minecraftforge.userdev.ClasspathLocator@7c37508a
+[27Oct2019 12:14:14.252] [main/DEBUG] [net.minecraftforge.fml.loading.moddiscovery.ModFile/SCAN]: Mod file C:\Users\Anbaric\.gradle\caches\forge_gradle\minecraft_user_repo\net\minecraftforge\forge\1.14.4-28.1.69_mapped_snapshot_20191027-1.14.3\forge-1.14.4-28.1.69_mapped_snapshot_20191027-1.14.3-recomp.jar has a manifest
+[27Oct2019 12:14:14.265] [main/DEBUG] [net.minecraftforge.fml.loading.moddiscovery.ModDiscoverer/SCAN]: Found mod file forge-1.14.4-28.1.69_mapped_snapshot_20191027-1.14.3-recomp.jar of type MOD with locator net.minecraftforge.userdev.ClasspathLocator@7c37508a
+[27Oct2019 12:14:14.266] [main/DEBUG] [net.minecraftforge.fml.loading.moddiscovery.ModDiscoverer/SCAN]: Trying locator {ModJarsFolder locator at D:\Downloads\Coding\Repositories\Terra_Reforged\run\mods}
+[27Oct2019 12:14:14.266] [main/DEBUG] [net.minecraftforge.fml.loading.moddiscovery.ModsFolderLocator/SCAN]: Scanning mods dir D:\Downloads\Coding\Repositories\Terra_Reforged\run\mods for mods
+[27Oct2019 12:14:14.272] [main/DEBUG] [net.minecraftforge.fml.loading.moddiscovery.ModDiscoverer/SCAN]: Trying locator {Maven Directory locator for mods []}
+[27Oct2019 12:14:14.273] [main/DEBUG] [net.minecraftforge.fml.loading.moddiscovery.ModDiscoverer/SCAN]: Trying locator {ExplodedDir locator}
+[27Oct2019 12:14:14.273] [main/DEBUG] [net.minecraftforge.fml.loading.moddiscovery.ExplodedDirectoryLocator/LOADING]: Found exploded directory mod manifest at D:\Downloads\Coding\Repositories\Terra_Reforged\build\resources\main\META-INF\mods.toml
+[27Oct2019 12:14:14.273] [main/DEBUG] [net.minecraftforge.fml.loading.moddiscovery.ModFile/SCAN]: Mod file D:\Downloads\Coding\Repositories\Terra_Reforged\build\resources\main is missing a manifest
+[27Oct2019 12:14:14.273] [main/DEBUG] [net.minecraftforge.fml.loading.moddiscovery.ModDiscoverer/SCAN]: Found mod file main of type MOD with locator {ExplodedDir locator}
+[27Oct2019 12:14:14.274] [main/DEBUG] [net.minecraftforge.fml.loading.moddiscovery.ModDiscoverer/SCAN]: Trying locator net.minecraftforge.fml.loading.moddiscovery.ModDiscoverer$MinecraftLocator@28dcca0c
+[27Oct2019 12:14:14.274] [main/DEBUG] [net.minecraftforge.fml.loading.moddiscovery.ModFile/SCAN]: Mod file C:\Users\Anbaric\.gradle\caches\forge_gradle\minecraft_repo\versions\1.14.4\client-extra.jar is missing a manifest
+[27Oct2019 12:14:14.274] [main/DEBUG] [net.minecraftforge.fml.loading.moddiscovery.ModDiscoverer/SCAN]: Found mod file client-extra.jar of type MOD with locator net.minecraftforge.fml.loading.moddiscovery.ModDiscoverer$MinecraftLocator@28dcca0c
+[27Oct2019 12:14:14.277] [main/DEBUG] [net.minecraftforge.fml.loading.moddiscovery.ModFileParser/LOADING]: Parsing mod file candidate C:\Users\Anbaric\.gradle\caches\forge_gradle\minecraft_user_repo\net\minecraftforge\forge\1.14.4-28.1.69_mapped_snapshot_20191027-1.14.3\forge-1.14.4-28.1.69_mapped_snapshot_20191027-1.14.3-recomp.jar
+[27Oct2019 12:14:14.317] [main/DEBUG] [net.minecraftforge.fml.loading.moddiscovery.ModFile/LOADING]: Loading mod file C:\Users\Anbaric\.gradle\caches\forge_gradle\minecraft_user_repo\net\minecraftforge\forge\1.14.4-28.1.69_mapped_snapshot_20191027-1.14.3\forge-1.14.4-28.1.69_mapped_snapshot_20191027-1.14.3-recomp.jar with language javafml
+[27Oct2019 12:14:14.363] [main/DEBUG] [net.minecraftforge.fml.loading.moddiscovery.ModFileParser/LOADING]: Found coremod fieldtomethodtransformers with Javascript path META-INF/fieldtomethodtransformers.js
+[27Oct2019 12:14:14.364] [main/DEBUG] [net.minecraftforge.fml.loading.moddiscovery.ModFile/LOADING]: Found coremod META-INF/fieldtomethodtransformers.js
+[27Oct2019 12:14:14.364] [main/DEBUG] [net.minecraftforge.fml.loading.moddiscovery.ModFileParser/LOADING]: Parsing mod file candidate D:\Downloads\Coding\Repositories\Terra_Reforged\build\resources\main
+[27Oct2019 12:14:14.368] [main/INFO] [STDERR/]: [java.lang.ThreadGroup:uncaughtException:1052]: java.lang.RuntimeException: java.net.MalformedURLException: no protocol: Currently_None
+[27Oct2019 12:14:14.369] [main/INFO] [STDERR/]: [java.lang.ThreadGroup:uncaughtException:1052]: 	at net.minecraftforge.fml.loading.StringUtils.toURL(StringUtils.java:51)
+[27Oct2019 12:14:14.369] [main/INFO] [STDERR/]: [java.lang.ThreadGroup:uncaughtException:1052]: 	at java.util.Optional.map(Optional.java:215)
+[27Oct2019 12:14:14.369] [main/INFO] [STDERR/]: [java.lang.ThreadGroup:uncaughtException:1052]: 	at net.minecraftforge.fml.loading.moddiscovery.ModInfo.<init>(ModInfo.java:85)
+[27Oct2019 12:14:14.370] [main/INFO] [STDERR/]: [java.lang.ThreadGroup:uncaughtException:1052]: 	at net.minecraftforge.fml.loading.moddiscovery.ModFileInfo.lambda$new$2(ModFileInfo.java:65)
+[27Oct2019 12:14:14.370] [main/INFO] [STDERR/]: [java.lang.ThreadGroup:uncaughtException:1052]: 	at java.util.stream.ReferencePipeline$3$1.accept(ReferencePipeline.java:193)
+[27Oct2019 12:14:14.370] [main/INFO] [STDERR/]: [java.lang.ThreadGroup:uncaughtException:1052]: 	at java.util.ArrayList$ArrayListSpliterator.forEachRemaining(ArrayList.java:1374)
+[27Oct2019 12:14:14.371] [main/INFO] [STDERR/]: [java.lang.ThreadGroup:uncaughtException:1052]: 	at java.util.stream.AbstractPipeline.copyInto(AbstractPipeline.java:481)
+[27Oct2019 12:14:14.371] [main/INFO] [STDERR/]: [java.lang.ThreadGroup:uncaughtException:1052]: 	at java.util.stream.AbstractPipeline.wrapAndCopyInto(AbstractPipeline.java:471)
+[27Oct2019 12:14:14.371] [main/INFO] [STDERR/]: [java.lang.ThreadGroup:uncaughtException:1052]: 	at java.util.stream.ReduceOps$ReduceOp.evaluateSequential(ReduceOps.java:708)
+[27Oct2019 12:14:14.372] [main/INFO] [STDERR/]: [java.lang.ThreadGroup:uncaughtException:1052]: 	at java.util.stream.AbstractPipeline.evaluate(AbstractPipeline.java:234)
+[27Oct2019 12:14:14.372] [main/INFO] [STDERR/]: [java.lang.ThreadGroup:uncaughtException:1052]: 	at java.util.stream.ReferencePipeline.collect(ReferencePipeline.java:499)
+[27Oct2019 12:14:14.373] [main/INFO] [STDERR/]: [java.lang.ThreadGroup:uncaughtException:1052]: 	at net.minecraftforge.fml.loading.moddiscovery.ModFileInfo.<init>(ModFileInfo.java:65)
+[27Oct2019 12:14:14.373] [main/INFO] [STDERR/]: [java.lang.ThreadGroup:uncaughtException:1052]: 	at net.minecraftforge.fml.loading.moddiscovery.ModFileParser.loadModFile(ModFileParser.java:59)
+[27Oct2019 12:14:14.373] [main/INFO] [STDERR/]: [java.lang.ThreadGroup:uncaughtException:1052]: 	at net.minecraftforge.fml.loading.moddiscovery.ModFileParser.readModList(ModFileParser.java:51)
+[27Oct2019 12:14:14.374] [main/INFO] [STDERR/]: [java.lang.ThreadGroup:uncaughtException:1052]: 	at net.minecraftforge.fml.loading.moddiscovery.ModFile.identifyMods(ModFile.java:132)
+[27Oct2019 12:14:14.374] [main/INFO] [STDERR/]: [java.lang.ThreadGroup:uncaughtException:1052]: 	at net.minecraftforge.fml.loading.moddiscovery.ModDiscoverer.discoverMods(ModDiscoverer.java:115)
+[27Oct2019 12:14:14.375] [main/INFO] [STDERR/]: [java.lang.ThreadGroup:uncaughtException:1052]: 	at net.minecraftforge.fml.loading.FMLLoader.beginModScan(FMLLoader.java:207)
+[27Oct2019 12:14:14.375] [main/INFO] [STDERR/]: [java.lang.ThreadGroup:uncaughtException:1052]: 	at net.minecraftforge.fml.loading.FMLServiceProvider.runScan(FMLServiceProvider.java:105)
+[27Oct2019 12:14:14.375] [main/INFO] [STDERR/]: [java.lang.ThreadGroup:uncaughtException:1052]: 	at cpw.mods.modlauncher.TransformationServiceDecorator.runScan(TransformationServiceDecorator.java:111)
+[27Oct2019 12:14:14.375] [main/INFO] [STDERR/]: [java.lang.ThreadGroup:uncaughtException:1052]: 	at cpw.mods.modlauncher.TransformationServicesHandler.lambda$runScanningTransformationServices$8(TransformationServicesHandler.java:115)
+[27Oct2019 12:14:14.376] [main/INFO] [STDERR/]: [java.lang.ThreadGroup:uncaughtException:1052]: 	at java.util.stream.ReferencePipeline$7$1.accept(ReferencePipeline.java:267)
+[27Oct2019 12:14:14.376] [main/INFO] [STDERR/]: [java.lang.ThreadGroup:uncaughtException:1052]: 	at java.util.HashMap$ValueSpliterator.forEachRemaining(HashMap.java:1620)
+[27Oct2019 12:14:14.376] [main/INFO] [STDERR/]: [java.lang.ThreadGroup:uncaughtException:1052]: 	at java.util.stream.AbstractPipeline.copyInto(AbstractPipeline.java:481)
+[27Oct2019 12:14:14.376] [main/INFO] [STDERR/]: [java.lang.ThreadGroup:uncaughtException:1052]: 	at java.util.stream.AbstractPipeline.wrapAndCopyInto(AbstractPipeline.java:471)
+[27Oct2019 12:14:14.377] [main/INFO] [STDERR/]: [java.lang.ThreadGroup:uncaughtException:1052]: 	at java.util.stream.ReduceOps$ReduceOp.evaluateSequential(ReduceOps.java:708)
+[27Oct2019 12:14:14.377] [main/INFO] [STDERR/]: [java.lang.ThreadGroup:uncaughtException:1052]: 	at java.util.stream.AbstractPipeline.evaluate(AbstractPipeline.java:234)
+[27Oct2019 12:14:14.377] [main/INFO] [STDERR/]: [java.lang.ThreadGroup:uncaughtException:1052]: 	at java.util.stream.ReferencePipeline.collect(ReferencePipeline.java:499)
+[27Oct2019 12:14:14.377] [main/INFO] [STDERR/]: [java.lang.ThreadGroup:uncaughtException:1052]: 	at cpw.mods.modlauncher.TransformationServicesHandler.runScanningTransformationServices(TransformationServicesHandler.java:116)
+[27Oct2019 12:14:14.377] [main/INFO] [STDERR/]: [java.lang.ThreadGroup:uncaughtException:1052]: 	at cpw.mods.modlauncher.TransformationServicesHandler.initializeTransformationServices(TransformationServicesHandler.java:63)
+[27Oct2019 12:14:14.378] [main/INFO] [STDERR/]: [java.lang.ThreadGroup:uncaughtException:1052]: 	at cpw.mods.modlauncher.Launcher.run(Launcher.java:75)
+[27Oct2019 12:14:14.378] [main/INFO] [STDERR/]: [java.lang.ThreadGroup:uncaughtException:1052]: 	at cpw.mods.modlauncher.Launcher.main(Launcher.java:65)
+[27Oct2019 12:14:14.378] [main/INFO] [STDERR/]: [java.lang.ThreadGroup:uncaughtException:1052]: 	at net.minecraftforge.userdev.LaunchTesting.main(LaunchTesting.java:101)
+[27Oct2019 12:14:14.378] [main/INFO] [STDERR/]: [java.lang.ThreadGroup:uncaughtException:1061]: Caused by: java.net.MalformedURLException: no protocol: Currently_None
+[27Oct2019 12:14:14.379] [main/INFO] [STDERR/]: [java.lang.ThreadGroup:uncaughtException:1061]: 	at java.net.URL.<init>(URL.java:593)
+[27Oct2019 12:14:14.379] [main/INFO] [STDERR/]: [java.lang.ThreadGroup:uncaughtException:1061]: 	at java.net.URL.<init>(URL.java:490)
+[27Oct2019 12:14:14.379] [main/INFO] [STDERR/]: [java.lang.ThreadGroup:uncaughtException:1061]: 	at java.net.URL.<init>(URL.java:439)
+[27Oct2019 12:14:14.379] [main/INFO] [STDERR/]: [java.lang.ThreadGroup:uncaughtException:1061]: 	at net.minecraftforge.fml.loading.StringUtils.toURL(StringUtils.java:47)
+[27Oct2019 12:14:14.379] [main/INFO] [STDERR/]: [java.lang.ThreadGroup:uncaughtException:1061]: 	... 31 more

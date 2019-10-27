@@ -22,13 +22,15 @@ updateJSONURL="Currently_None" #optional
 # A URL for the "homepage" for this mod, displayed in the mod UI
 displayURL="Currently_None" #optional
 # A file name (in the root of the mod JAR) containing a logo for display
-logoFile="Currently_None" #optional
+logoFile="terra_reforged.png" #optional
 # A text field displayed in the mod UI
 credits="Redigit, Mojang, and Aetherial Labs" #optional
 # A text field displayed in the mod UI
 authors="Anbaric" #optional
 # The description text for the mod (multi line!) (#mandatory)
-description='''Attempting to blend the depth of gameplay from Terraria with the depth dimension of Minecraft'''
+description='''
+Attempting to blend the depth of gameplay from Terraria with the depth dimension of Minecraft
+'''
 # A dependency - use the . to indicate dependency for a specific modid. Dependencies are optional.
 [[dependencies.examplemod]] #optional
     # the modid of the dependency

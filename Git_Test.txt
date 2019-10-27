@@ -1,3 +1,0 @@
-Testing Git-Commit 1
-
-Testing Git-Commit 2

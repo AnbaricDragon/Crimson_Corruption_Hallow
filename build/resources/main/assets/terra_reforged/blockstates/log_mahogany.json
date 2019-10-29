@@ -1,0 +1,7 @@
+{
+    "variants": {
+        "variant=x": { "model": "tere:log_mahogany", "x": 90, "y": 90 },
+				"variant=y": { "model": "tere:log_mahogany" },
+				"variant=z": { "model": "tere:log_mahogany", "x": 90 }
+    }
+}

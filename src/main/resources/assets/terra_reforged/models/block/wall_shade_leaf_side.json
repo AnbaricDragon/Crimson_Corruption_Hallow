@@ -1,0 +1,6 @@
+{
+    "parent": "tere:block/wall_side",
+    "textures": {
+        "wall": "tere:blocks/leaf_shade"
+    }
+}

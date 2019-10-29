@@ -1,0 +1,8 @@
+{
+    "parent": "block/cube_bottom_top",
+    "textures": {
+        "top": "tere:blocks/grass_crimson_top",
+				"bottom": "blocks/dirt",
+				"side": "tere:blocks/grass_crimson_side"				
+    }
+}

@@ -1,0 +1,7 @@
+{
+    "parent": "tere:block/cube_double_all",
+    "textures": {
+        "all": "tere:blocks/mushroom_cap",
+				"glow": "tere:blocks/mushroom_cap_glow"
+    }
+}

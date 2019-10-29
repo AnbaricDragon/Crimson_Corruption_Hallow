@@ -1,0 +1,6 @@
+{
+    "parent": "tere:block/wall_side_up",
+    "textures": {
+        "wall": "tere:blocks/sandstone_ebon_side_default"
+    }
+}

@@ -1,0 +1,7 @@
+{
+    "parent": "block/cube_top",
+    "textures": {
+        "side": "tere:blocks/plank_palm",
+				"top": "tere:blocks/plank_palm_top"
+    }
+}

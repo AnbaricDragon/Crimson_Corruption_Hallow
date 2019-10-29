@@ -1,0 +1,6 @@
+{
+    "parent": "tere:block/plant_thorn_side",
+    "textures": {
+        "all": "tere:blocks/plant_thorn_jungle"
+    }
+}

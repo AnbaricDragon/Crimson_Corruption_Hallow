@@ -1,0 +1,8 @@
+{
+    "variants": {
+        "quarter=noea": { "model": "terra_reforged:plant_bulb_0", "y": 270},
+				"quarter=soea": { "model": "terra_reforged:plant_bulb_1" },
+				"quarter=sowe": { "model": "terra_reforged:plant_bulb_2", "y": 90},
+				"quarter=nowe": { "model": "terra_reforged:plant_bulb_3", "y": 180}
+    }
+}

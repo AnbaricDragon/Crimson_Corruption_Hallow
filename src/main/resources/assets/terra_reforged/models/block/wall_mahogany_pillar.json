@@ -1,0 +1,6 @@
+{
+    "parent": "tere:block/wall_pillar",
+    "textures": {
+        "wall": "tere:blocks/log_mahogany"
+    }
+}

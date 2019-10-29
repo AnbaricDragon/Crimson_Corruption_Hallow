@@ -2,32 +2,52 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="d28390d0-4f2f-4387-99f1-c8e7e29a3ee9" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/codeStyles/codeStyleConfig.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/4.9/fileContent/annotation-processors.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/4.9/fileContent/annotation-processors.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/4.9/fileContent/fileContent.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/4.9/fileContent/fileContent.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/4.9/fileHashes/fileHashes.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/4.9/fileHashes/fileHashes.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/4.9/fileHashes/fileHashes.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/4.9/fileHashes/fileHashes.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/4.9/fileHashes/resourceHashesCache.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/4.9/fileHashes/resourceHashesCache.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/4.9/taskHistory/taskHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/4.9/taskHistory/taskHistory.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/4.9/taskHistory/taskHistory.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/4.9/taskHistory/taskHistory.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/anbaric/Terra_Reforged/Terra_Reforged$RegistryEvents.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/com/anbaric/Terra_Reforged/Terra_Reforged$RegistryEvents.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/anbaric/Terra_Reforged/Terra_Reforged.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/com/anbaric/Terra_Reforged/Terra_Reforged.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/example/examplemod/ExampleMod$RegistryEvents.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/example/examplemod/ExampleMod.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/resources/main/META-INF/mods.toml" beforeDir="false" afterPath="$PROJECT_DIR$/build/resources/main/META-INF/mods.toml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/resources/main/pack.mcmeta" beforeDir="false" afterPath="$PROJECT_DIR$/build/resources/main/pack.mcmeta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/run/config/forge-client.toml" beforeDir="false" afterPath="$PROJECT_DIR$/run/config/forge-client.toml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/anbaric/Terra_Reforged/Terra_Reforged$RegistryEvents.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/anbaric/Terra_Reforged/Terra_Reforged.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/anbaric/Terra_Reforged/blocks/BlockBasic.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/anbaric/Terra_Reforged/blocks/TerraBlocks.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/com/anbaric/Terra_Reforged/blocks/TerraBlocks.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/anbaric/Terra_Reforged/util/Reference.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/com/anbaric/Terra_Reforged/util/Reference.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/anbaric/Terra_Reforged/util/init/BlockInit.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/anbaric/Terra_Reforged/util/proxy/ClientProxy.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/anbaric/Terra_Reforged/util/proxy/IProxy.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/anbaric/Terra_Reforged/util/proxy/ServerProxy.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/run/logs/2019-10-27-1.log.gz" beforeDir="false" afterPath="$PROJECT_DIR$/run/logs/2019-10-27-1.log.gz" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/run/logs/2019-10-27-2.log.gz" beforeDir="false" afterPath="$PROJECT_DIR$/run/logs/2019-10-27-2.log.gz" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/run/logs/2019-10-27-3.log.gz" beforeDir="false" afterPath="$PROJECT_DIR$/run/logs/2019-10-27-3.log.gz" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/run/logs/2019-10-27-4.log.gz" beforeDir="false" afterPath="$PROJECT_DIR$/run/logs/2019-10-27-4.log.gz" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/run/logs/2019-10-27-5.log.gz" beforeDir="false" afterPath="$PROJECT_DIR$/run/logs/2019-10-27-5.log.gz" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/run/logs/2019-10-27-6.log.gz" beforeDir="false" afterPath="$PROJECT_DIR$/run/logs/2019-10-27-6.log.gz" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/run/logs/debug-1.log.gz" beforeDir="false" afterPath="$PROJECT_DIR$/run/logs/debug-1.log.gz" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/run/logs/debug-2.log.gz" beforeDir="false" afterPath="$PROJECT_DIR$/run/logs/debug-2.log.gz" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/run/logs/debug-3.log.gz" beforeDir="false" afterPath="$PROJECT_DIR$/run/logs/debug-3.log.gz" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/run/logs/debug-4.log.gz" beforeDir="false" afterPath="$PROJECT_DIR$/run/logs/debug-4.log.gz" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/run/logs/debug-5.log.gz" beforeDir="false" afterPath="$PROJECT_DIR$/run/logs/debug-5.log.gz" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/run/logs/debug.log" beforeDir="false" afterPath="$PROJECT_DIR$/run/logs/debug.log" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/run/logs/latest.log" beforeDir="false" afterPath="$PROJECT_DIR$/run/logs/latest.log" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/run/options.txt" beforeDir="false" afterPath="$PROJECT_DIR$/run/options.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/anbaric/Terra_Reforged/Terra_Reforged.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/anbaric/Terra_Reforged/Terra_Reforged.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/META-INF/mods.toml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/META-INF/mods.toml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/run/saves/New World/data/raids.dat" beforeDir="false" afterPath="$PROJECT_DIR$/run/saves/New World/data/raids.dat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/run/saves/New World/level.dat" beforeDir="false" afterPath="$PROJECT_DIR$/run/saves/New World/level.dat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/run/saves/New World/level.dat_old" beforeDir="false" afterPath="$PROJECT_DIR$/run/saves/New World/level.dat_old" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/run/saves/New World/playerdata/380df991-f603-344c-a090-369bad2a924a.dat" beforeDir="false" afterPath="$PROJECT_DIR$/run/saves/New World/playerdata/380df991-f603-344c-a090-369bad2a924a.dat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/run/saves/New World/region/r.-1.-1.mca" beforeDir="false" afterPath="$PROJECT_DIR$/run/saves/New World/region/r.-1.-1.mca" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/run/saves/New World/region/r.-1.0.mca" beforeDir="false" afterPath="$PROJECT_DIR$/run/saves/New World/region/r.-1.0.mca" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/run/saves/New World/region/r.0.-1.mca" beforeDir="false" afterPath="$PROJECT_DIR$/run/saves/New World/region/r.0.-1.mca" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/run/saves/New World/region/r.0.0.mca" beforeDir="false" afterPath="$PROJECT_DIR$/run/saves/New World/region/r.0.0.mca" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/run/saves/New World/region/r.0.1.mca" beforeDir="false" afterPath="$PROJECT_DIR$/run/saves/New World/region/r.0.1.mca" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/run/saves/New World/serverconfig/forge-server.toml" beforeDir="false" afterPath="$PROJECT_DIR$/run/saves/New World/serverconfig/forge-server.toml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/run/saves/New World/session.lock" beforeDir="false" afterPath="$PROJECT_DIR$/run/saves/New World/session.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/run/saves/New World/stats/380df991-f603-344c-a090-369bad2a924a.json" beforeDir="false" afterPath="$PROJECT_DIR$/run/saves/New World/stats/380df991-f603-344c-a090-369bad2a924a.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/run/usercache.json" beforeDir="false" afterPath="$PROJECT_DIR$/run/usercache.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/anbaric/terra_reforged/TerraEventSubscriber.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/anbaric/terra_reforged/blocks/BlockBasic.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/anbaric/terra_reforged/blocks/TerraBlocks.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/anbaric/terra_reforged/blocks/TerraBlocks.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/anbaric/terra_reforged/util/init/TerraItemGroups.java" beforeDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -4544,8 +4564,14 @@
   <component name="PropertiesComponent">
     <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../../Configs/Git/bin/git.exe" />
-    <property name="settings.editor.selected.configurable" value="editor.preferences.completion" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../Terra_Reforged - Copy/build.gradle" />
+    <property name="settings.editor.selected.configurable" value="reference.settingsdialog.IDE.editor.colors.Java" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="com.anbaric.terra_reforged.items" />
+      <recent name="com.anbaric.terra_reforged.blocks" />
+    </key>
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">

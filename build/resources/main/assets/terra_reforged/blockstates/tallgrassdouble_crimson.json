@@ -1,0 +1,6 @@
+{
+    "variants": {
+				"half=upper": { "model": "tere:tallgrassdouble_crimson_top" },
+				"half=lower": { "model": "tere:tallgrassdouble_crimson_bottom" }				
+		}
+}

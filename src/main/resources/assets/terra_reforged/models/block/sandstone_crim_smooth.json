@@ -1,0 +1,8 @@
+{
+    "parent": "block/cube_bottom_top",
+    "textures": {
+        "top": "tere:blocks/sandstone_crim_top",
+				"side": "tere:blocks/sandstone_crim_side_smooth",
+				"bottom": "tere:blocks/sandstone_crim_bottom"
+    }
+}

@@ -1,0 +1,9 @@
+{
+    "variants": 
+		{
+        "variant=pure": { "model": "tere:ore_amethyst_pure" },
+				"variant=corrupt": { "model": "tere:ore_amethyst_corrupt" },
+				"variant=crimson": { "model": "tere:ore_amethyst_crimson" },
+				"variant=hallowed": { "model": "tere:ore_amethyst_hallowed" }
+    }
+}

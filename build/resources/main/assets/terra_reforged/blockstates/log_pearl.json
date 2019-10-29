@@ -1,0 +1,7 @@
+{
+    "variants": {
+        "variant=y": { "model": "tere:log_pearl" },
+        "variant=z": { "model": "tere:log_pearl", "x": 90 },
+        "variant=x": { "model": "tere:log_pearl", "x": 90, "y": 90 }
+    }
+}

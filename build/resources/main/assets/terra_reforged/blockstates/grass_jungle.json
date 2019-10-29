@@ -1,0 +1,8 @@
+{
+    "variants": {
+        "normal": { "model": "tere:grass_jungle" },
+				"normal": { "model": "tere:grass_jungle", "y": 90 },
+				"normal": { "model": "tere:grass_jungle", "y": 180 },
+				"normal": { "model": "tere:grass_jungle", "y": 270 }
+    }
+}

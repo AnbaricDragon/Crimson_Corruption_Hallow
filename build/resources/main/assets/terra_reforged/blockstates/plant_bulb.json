@@ -1,0 +1,8 @@
+{
+    "variants": {
+        "quarter=noea": { "model": "tere:plant_bulb_0", "y": 270},
+				"quarter=soea": { "model": "tere:plant_bulb_1" },
+				"quarter=sowe": { "model": "tere:plant_bulb_2", "y": 90},
+				"quarter=nowe": { "model": "tere:plant_bulb_3", "y": 180}
+    }
+}

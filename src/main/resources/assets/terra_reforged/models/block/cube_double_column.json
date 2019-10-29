@@ -1,0 +1,19 @@
+{
+    "parent": "tere:block/cube_double",
+    "ambientocclusion": false,
+    "textures": {
+        "particle": "#side",
+        "down": "#down",
+        "up": "#up",
+        "north": "#side",
+        "east": "#side",
+        "south": "#side",
+        "west": "#side",
+        "glow_down": "#glow_down",
+        "glow_up": "#glow_up",
+        "glow_north": "#glow_side",
+        "glow_east": "#glow_side",
+        "glow_south": "#glow_side",
+        "glow_west": "#glow_side"
+    }
+}

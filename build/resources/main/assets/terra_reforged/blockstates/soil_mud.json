@@ -1,0 +1,6 @@
+{
+    "variants": {
+        "normal": { "model": "tere:soil_mud" },
+				"normal": { "model": "tere:soil_mud", "y": 90 }
+    }
+}

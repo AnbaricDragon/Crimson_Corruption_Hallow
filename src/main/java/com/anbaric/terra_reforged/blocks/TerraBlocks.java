@@ -1,9 +1,8 @@
 package com.anbaric.terra_reforged.blocks;
 
-import net.minecraftforge.registries.ObjectHolder;
+import net.minecraft.block.Block;
 
 public class TerraBlocks
 {
-    @ObjectHolder("terra_reforged:soil_mud")
-    public static BlockBasic SOILMUD;
+    public static Block SOIL_MUD;
 }

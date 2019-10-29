@@ -1,0 +1,9 @@
+{
+    "variants": 
+		{
+        "variant=pure": { "model": "terra_reforged:ore_tungsten_pure" },
+				"variant=corrupt": { "model": "terra_reforged:ore_tungsten_corrupt" },
+				"variant=crimson": { "model": "terra_reforged:ore_tungsten_crimson" },
+				"variant=hallowed": { "model": "terra_reforged:ore_tungsten_hallowed" }
+    }
+}

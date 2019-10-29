@@ -1,0 +1,7 @@
+{
+    "variants": {
+        "variant=y": { "model": "terra_reforged:log_shade" },
+        "variant=z": { "model": "terra_reforged:log_shade", "x": 90 },
+        "variant=x": { "model": "terra_reforged:log_shade", "x": 90, "y": 90 }
+    }
+}

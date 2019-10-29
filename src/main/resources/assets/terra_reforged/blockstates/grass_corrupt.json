@@ -1,0 +1,10 @@
+{
+    "variants": {
+        "normal": [
+						{ "model": "terra_reforged:grass_corrupt" },
+						{ "model": "terra_reforged:grass_corrupt", "y": 90 },
+						{ "model": "terra_reforged:grass_corrupt", "y": 180 },
+						{ "model": "terra_reforged:grass_corrupt", "y": 270 }
+				]
+    }
+}

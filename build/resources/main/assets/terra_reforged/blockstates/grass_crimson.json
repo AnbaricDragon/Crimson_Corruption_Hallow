@@ -1,0 +1,10 @@
+{
+    "variants": {
+        "normal": [
+						{ "model": "tere:grass_crimson" },
+						{ "model": "tere:grass_crimson", "y": 90 },
+						{ "model": "tere:grass_crimson", "y": 180 },
+						{ "model": "tere:grass_crimson", "y": 270 }
+				]
+    }
+}

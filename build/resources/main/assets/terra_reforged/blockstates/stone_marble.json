@@ -1,0 +1,11 @@
+{
+    "variants": {
+        "normal": [
+						{ "model": "tere:stone_marble_0" },
+						{ "model": "tere:stone_marble_1" },
+						
+						{ "model": "tere:stone_marble_0", "y": 180 },
+						{ "model": "tere:stone_marble_1", "y": 180 }
+				]
+    }
+}

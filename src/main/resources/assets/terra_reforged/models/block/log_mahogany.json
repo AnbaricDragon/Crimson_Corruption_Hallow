@@ -1,0 +1,8 @@
+{
+    "parent": "block/cube_column",
+    "textures": {
+				"particles": "tere:blocks/log_mahogany",
+        "end": "tere:blocks/log_mahogany_top",
+        "side": "tere:blocks/log_mahogany"
+    }
+}

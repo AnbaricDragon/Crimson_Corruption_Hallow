@@ -1,0 +1,9 @@
+{
+    "variants": 
+		{
+        "variant=pure": { "model": "terra_reforged:ore_mythril_pure" },
+				"variant=corrupt": { "model": "terra_reforged:ore_mythril_corrupt" },
+				"variant=crimson": { "model": "terra_reforged:ore_mythril_crimson" },
+				"variant=hallowed": { "model": "terra_reforged:ore_mythril_hallowed" }
+    }
+}

@@ -1,0 +1,10 @@
+{
+    "variants": {
+        "normal": [
+						{ "model": "tere:brick_tin_0", "weight": 3 },
+						{ "model": "tere:brick_tin_1", "weight": 5 },
+						{ "model": "tere:brick_tin_2", "weight": 3 },
+						{ "model": "tere:brick_tin_3", "weight": 3 }
+				]
+    }
+}

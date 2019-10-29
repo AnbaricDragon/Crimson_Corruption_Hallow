@@ -1,0 +1,37 @@
+{
+    "multipart": [
+				{   "when": { "up": "none"},
+            "apply": { "model": "tere:wall_cobblestone_crim_post" }
+        },
+				{   "when": { "up": "pillar"},
+            "apply": { "model": "tere:wall_cobblestone_crim_pillar" }
+        },
+				{   "when": { "up": "up"},
+            "apply": { "model": "tere:wall_cobblestone_crim_post_up" }
+        },
+				{   "when": { "north": "side"},
+            "apply": { "model": "tere:wall_cobblestone_crim_side", "uvlock": true }
+        },
+				{   "when": { "east": "side"},
+            "apply": { "model": "tere:wall_cobblestone_crim_side", "y": 90, "uvlock": true }
+        },
+				{   "when": { "south": "side"},
+            "apply": { "model": "tere:wall_cobblestone_crim_side", "y": 180, "uvlock": true }
+        },
+				{   "when": { "west": "side"},
+            "apply": { "model": "tere:wall_cobblestone_crim_side", "y": 270, "uvlock": true }
+        },
+				{   "when": { "north": "up"},
+            "apply": { "model": "tere:wall_cobblestone_crim_side_up" }
+        },
+				{   "when": { "east": "up"},
+            "apply": { "model": "tere:wall_cobblestone_crim_side_up", "y": 90 }
+        },
+				{   "when": { "south": "up"},
+            "apply": { "model": "tere:wall_cobblestone_crim_side_up", "y": 180 }
+        },
+				{   "when": { "west": "up"},
+            "apply": { "model": "tere:wall_cobblestone_crim_side_up", "y": 270 }
+        }
+    ]
+}

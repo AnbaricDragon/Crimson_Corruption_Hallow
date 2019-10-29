@@ -1,0 +1,5 @@
+{
+    "multipart": [
+        { "apply": { "model": "terra_reforged:cactus_ebon" }}
+    ]
+}

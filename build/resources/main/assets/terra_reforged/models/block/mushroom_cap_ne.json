@@ -1,0 +1,19 @@
+{
+    "parent": "tere:block/cube_double",
+    "textures": {
+        "particle": "tere:blocks/mushroom_cap_inside",
+        "down": "tere:blocks/mushroom_cap_inside",
+        "up": "tere:blocks/mushroom_cap",
+        "north": "tere:blocks/mushroom_cap",
+        "east": "tere:blocks/mushroom_cap",
+        "south": "tere:blocks/mushroom_cap_inside",
+        "west": "tere:blocks/mushroom_cap_inside",
+				
+				"glow_down": "tere:blocks/mushroom_cap_inside",
+        "glow_up": "tere:blocks/mushroom_cap_glow",
+        "glow_north": "tere:blocks/mushroom_cap_glow",
+        "glow_east": "tere:blocks/mushroom_cap_glow",
+        "glow_south": "tere:blocks/mushroom_cap_inside",
+        "glow_west": "tere:blocks/mushroom_cap_inside"
+    }
+}

@@ -1,0 +1,8 @@
+{
+    "parent": "block/cube_bottom_top",
+    "textures": {
+        "side": "tere:blocks/stone_moss_red_side",
+				"top": "tere:blocks/stone_moss_red_top",
+				"bottom": "blocks/stone"
+    }
+}

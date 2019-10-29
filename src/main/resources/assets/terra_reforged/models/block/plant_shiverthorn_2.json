@@ -1,0 +1,6 @@
+{
+    "parent": "block/cross",
+    "textures": {
+        "cross": "tere:blocks/plant_shiverthorn_2"
+    }
+}

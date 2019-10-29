@@ -1,0 +1,10 @@
+{
+	"parent": "tere:block/cube_double_column",
+	"textures": {
+		"side": "tere:blocks/grass_mushroom_side",
+
+		"glow_side": "tere:blocks/grass_mushroom_side_glow",
+		"glow_up": "tere:blocks/grass_mushroom_top_glow",
+		"glow_down": "tere:blocks/soil_mud"
+	}
+}

@@ -1,0 +1,14 @@
+{
+    "ctm":{
+        "ctm_version": 1,
+        "type":"CTM",
+        "layer":"CUTOUT",
+        "textures": [
+            "tere:blocks/brick_meteorite_glow_ctm"
+        ],
+				"extra": {
+            "light": 15,
+						"connect_inside": true
+        }				
+    }
+}

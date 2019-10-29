@@ -1,0 +1,8 @@
+{
+    "variants": 
+		{
+        "variant=corrupt": { "model": "terra_reforged:ore_coal_corrupt" },
+				"variant=crimson": { "model": "terra_reforged:ore_coal_crimson" },
+				"variant=hallowed": { "model": "terra_reforged:ore_coal_hallowed" }
+    }
+}

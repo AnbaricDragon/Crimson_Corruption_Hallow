@@ -1,0 +1,8 @@
+{
+    "parent": "tere:block/stair_inner",
+    "textures": {
+        "bottom": "tere:blocks/plank_mahogany",
+        "top": "tere:blocks/plank_mahogany",
+        "side": "tere:blocks/plank_mahogany"
+    }
+}

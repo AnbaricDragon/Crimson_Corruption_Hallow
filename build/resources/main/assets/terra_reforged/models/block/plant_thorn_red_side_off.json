@@ -1,0 +1,6 @@
+{
+    "parent": "tere:block/plant_thorn_side_off",
+    "textures": {
+        "all": "tere:blocks/plant_thorn_red_thorns"
+    }
+}

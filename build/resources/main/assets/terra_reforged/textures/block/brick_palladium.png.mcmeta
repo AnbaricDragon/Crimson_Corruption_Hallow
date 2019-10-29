@@ -1,0 +1,10 @@
+{
+    "ctm":{
+        "ctm_version": 1,
+        "type":"PILLAR",
+        "layer":"SOLID",
+        "textures": [
+            "tere:blocks/brick_palladium_ctmv"
+        ]
+    }
+}

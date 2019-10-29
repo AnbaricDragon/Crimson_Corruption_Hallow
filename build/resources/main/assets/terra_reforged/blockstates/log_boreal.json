@@ -1,0 +1,8 @@
+{
+    "variants": {
+				"variant=none": { "model": "tere:log_boreal_solid" },
+        "variant=y": { "model": "tere:log_boreal" },
+        "variant=z": { "model": "tere:log_boreal", "x": 90 },
+        "variant=x": { "model": "tere:log_boreal", "x": 90, "y": 90 }
+    }
+}

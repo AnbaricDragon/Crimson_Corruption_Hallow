@@ -1,0 +1,6 @@
+{
+    "variants": {
+        "normal": { "model": "tere:stone_crim_smooth" },
+				"normal": { "model": "tere:stone_crim_smooth", "y": 90 }
+    }
+}

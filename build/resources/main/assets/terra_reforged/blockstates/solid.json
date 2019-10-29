@@ -1,0 +1,12 @@
+{
+    "variants": 
+		{
+        "variant=ash": { "model": "tere:log_ash_solid" },
+				"variant=boreal": { "model": "tere:log_boreal_solid" },
+				"variant=palm": { "model": "tere:log_palm_solid" },
+				"variant=mahogany": { "model": "tere:log_mahogany_solid" },
+				"variant=ebon": { "model": "tere:log_ebon_solid" },
+				"variant=shade": { "model": "tere:log_shade_solid" },
+				"variant=pearl": { "model": "tere:log_pearl_solid" }
+    }
+}

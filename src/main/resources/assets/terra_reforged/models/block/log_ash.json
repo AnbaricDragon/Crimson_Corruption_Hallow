@@ -1,0 +1,8 @@
+{
+	"parent": "block/cube_bottom_top",
+	"textures": {
+		"top": "tere:blocks/log_ash_top",
+		"bottom": "tere:blocks/log_ash_top",
+		"side": "tere:blocks/log_ash"
+	}
+}

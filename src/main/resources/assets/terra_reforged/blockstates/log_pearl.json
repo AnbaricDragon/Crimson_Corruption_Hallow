@@ -1,0 +1,7 @@
+{
+    "variants": {
+        "variant=y": { "model": "terra_reforged:log_pearl" },
+        "variant=z": { "model": "terra_reforged:log_pearl", "x": 90 },
+        "variant=x": { "model": "terra_reforged:log_pearl", "x": 90, "y": 90 }
+    }
+}

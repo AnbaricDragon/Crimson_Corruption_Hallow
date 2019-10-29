@@ -1,0 +1,13 @@
+{
+    "parent": "tere:block/cube_double_column",
+    "textures":
+		{
+        "side": "tere:blocks/stone_moss_fire_side",
+				"up": "tere:blocks/stone_moss_fire_top",
+				"down": "blocks/stone",
+				
+				"glow_side": "tere:blocks/stone_moss_fire_side_glow",
+				"glow_up": "tere:blocks/stone_moss_fire_top",
+				"glow_down": "blocks/stone"
+    }
+}

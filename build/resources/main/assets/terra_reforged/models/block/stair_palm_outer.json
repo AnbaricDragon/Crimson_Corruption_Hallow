@@ -1,0 +1,8 @@
+{
+    "parent": "tere:block/stair_outer",
+    "textures": {
+        "bottom": "tere:blocks/plank_palm",
+        "top": "tere:blocks/plank_palm_top",
+        "side": "tere:blocks/plank_palm_b"
+    }
+}

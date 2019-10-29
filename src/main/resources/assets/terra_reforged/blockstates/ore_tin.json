@@ -1,0 +1,9 @@
+{
+    "variants": 
+		{
+        "variant=pure": { "model": "terra_reforged:ore_tin_pure" },
+				"variant=corrupt": { "model": "terra_reforged:ore_tin_corrupt" },
+				"variant=crimson": { "model": "terra_reforged:ore_tin_crimson" },
+				"variant=hallowed": { "model": "terra_reforged:ore_tin_hallowed" }
+    }
+}

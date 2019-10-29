@@ -1,0 +1,6 @@
+{
+    "variants": {
+				"half=upper": { "model": "terra_reforged:tallgrassdouble_hallowed_top" },
+				"half=lower": { "model": "terra_reforged:tallgrassdouble_hallowed_bottom" }				
+		}
+}

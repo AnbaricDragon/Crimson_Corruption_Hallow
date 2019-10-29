@@ -1,0 +1,7 @@
+{
+    "variants": {
+        "normal": [
+						{ "model": "tere:plant_moss_red" }
+				]
+    }
+}

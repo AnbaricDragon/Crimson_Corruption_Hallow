@@ -1,0 +1,6 @@
+{
+    "variants": {
+        "normal": { "model": "terra_reforged:soil_mud" },
+				"normal": { "model": "terra_reforged:soil_mud", "y": 90 }
+    }
+}

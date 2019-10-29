@@ -1,0 +1,6 @@
+{
+    "parent": "block/cross",
+    "textures": {
+        "cross": "tere:blocks/plant_moonglow_1_1"
+    }
+}

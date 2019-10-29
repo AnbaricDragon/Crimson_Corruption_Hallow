@@ -1,0 +1,6 @@
+{
+    "variants": {
+        "normal": { "model": "terra_reforged:stone_pearl_smooth" },
+				"normal": { "model": "terra_reforged:stone_pearl_smooth", "y": 90 }
+    }
+}

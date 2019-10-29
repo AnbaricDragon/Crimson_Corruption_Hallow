@@ -1,0 +1,9 @@
+{
+    "variants": 
+		{
+        "variant=pure": { "model": "tere:ore_copper_pure" },
+				"variant=corrupt": { "model": "tere:ore_copper_corrupt" },
+				"variant=crimson": { "model": "tere:ore_copper_crimson" },
+				"variant=hallowed": { "model": "tere:ore_copper_hallowed" }
+    }
+}

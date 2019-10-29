@@ -1,0 +1,41 @@
+{
+    "multipart": [
+        { "apply": { "model": "terra_reforged:plant_thorn_purple_core" }},				
+				{   "when": { "north": "true" },
+            "apply": { "model": "terra_reforged:plant_thorn_purple_side", "uvlock": true }
+        },
+				{   "when": { "north": "false" },
+            "apply": { "model": "terra_reforged:plant_thorn_purple_side_off", "uvlock": true }
+        },
+				{   "when": { "south": "true" },
+            "apply": { "model": "terra_reforged:plant_thorn_purple_side", "y": 180, "uvlock": true }
+        },
+				{   "when": { "south": "false" },
+            "apply": { "model": "terra_reforged:plant_thorn_purple_side_off", "y": 180, "uvlock": true }
+        },
+				{   "when": { "east": "true" },
+            "apply": { "model": "terra_reforged:plant_thorn_purple_side", "y": 90, "uvlock": true }
+        },
+				{   "when": { "east": "false" },
+            "apply": { "model": "terra_reforged:plant_thorn_purple_side_off", "y": 90, "uvlock": true }
+        },
+				{   "when": { "west": "true" },
+            "apply": { "model": "terra_reforged:plant_thorn_purple_side", "y": 270, "uvlock": true }
+        },
+				{   "when": { "west": "false" },
+            "apply": { "model": "terra_reforged:plant_thorn_purple_side_off", "y": 270, "uvlock": true }
+        },
+				{   "when": { "top": "true" },
+            "apply": { "model": "terra_reforged:plant_thorn_purple_side", "x": 270, "uvlock": true }
+        },
+				{   "when": { "top": "false" },
+            "apply": { "model": "terra_reforged:plant_thorn_purple_side_off", "x": 270, "uvlock": true }
+        },
+				{   "when": { "bottom": "true" },
+            "apply": { "model": "terra_reforged:plant_thorn_purple_side", "x": 90, "uvlock": true }
+        },
+				{   "when": { "bottom": "false" },
+            "apply": { "model": "terra_reforged:plant_thorn_purple_side_off", "x": 90, "uvlock": true }
+        }
+    ]
+}

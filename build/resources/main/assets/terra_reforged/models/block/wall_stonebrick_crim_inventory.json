@@ -1,0 +1,6 @@
+{
+    "parent": "tere:block/wall_inventory",
+    "textures": {
+        "wall": "tere:blocks/stone_crim_brick"
+    }
+}

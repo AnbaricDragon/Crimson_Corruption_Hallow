@@ -1,0 +1,9 @@
+{
+    "variants": 
+		{
+        "variant=pure": { "model": "terra_reforged:ore_palladium_pure" },
+				"variant=corrupt": { "model": "terra_reforged:ore_palladium_corrupt" },
+				"variant=crimson": { "model": "terra_reforged:ore_palladium_crimson" },
+				"variant=hallowed": { "model": "terra_reforged:ore_palladium_hallowed" }
+    }
+}

@@ -1,0 +1,29 @@
+{
+    "variants": {
+        "normal": [
+						{ "model": "terra_reforged:stone_fossil_0", "weight": 18 },
+						{ "model": "terra_reforged:stone_fossil_1", "weight": 12 },
+						{ "model": "terra_reforged:stone_fossil_2", "weight": 8 },
+						{ "model": "terra_reforged:stone_fossil_3", "weight": 4 },
+						{ "model": "terra_reforged:stone_fossil_4", "weight": 2 },
+						
+						{ "model": "terra_reforged:stone_fossil_0", "weight": 18, "y": 180 },
+						{ "model": "terra_reforged:stone_fossil_1", "weight": 12, "y": 180 },
+						{ "model": "terra_reforged:stone_fossil_2", "weight": 8, "y": 180 },
+						{ "model": "terra_reforged:stone_fossil_3", "weight": 4, "y": 180 },
+						{ "model": "terra_reforged:stone_fossil_4", "weight": 2, "y": 180 },
+						
+						{ "model": "terra_reforged:stone_fossil_0", "weight": 18, "y": 90 },
+						{ "model": "terra_reforged:stone_fossil_1", "weight": 12, "y": 90 },
+						{ "model": "terra_reforged:stone_fossil_2", "weight": 8, "y": 90 },
+						{ "model": "terra_reforged:stone_fossil_3", "weight": 4, "y": 90 },
+						{ "model": "terra_reforged:stone_fossil_4", "weight": 2, "y": 90 },
+						
+						{ "model": "terra_reforged:stone_fossil_0", "weight": 18, "y": 270 },
+						{ "model": "terra_reforged:stone_fossil_1", "weight": 12, "y": 270 },
+						{ "model": "terra_reforged:stone_fossil_2", "weight": 8, "y": 270 },
+						{ "model": "terra_reforged:stone_fossil_3", "weight": 4, "y": 270 },
+						{ "model": "terra_reforged:stone_fossil_4", "weight": 2, "y": 270 }
+				]
+    }
+}

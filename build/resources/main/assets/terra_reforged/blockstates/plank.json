@@ -1,0 +1,14 @@
+{
+    "variants": 
+		{
+        "variant=ash": { "model": "tere:plank_ash" },
+				"variant=boreal": { "model": "tere:plank_boreal" },
+				"variant=palm": { "model": "tere:plank_palm" },
+				"variant=mahogany": { "model": "tere:plank_mahogany" },
+				"variant=ebon": { "model": "tere:plank_ebon" },
+				"variant=shade": { "model": "tere:plank_shade" },
+				"variant=pearl": { "model": "tere:plank_pearl" },
+				"variant=dynasty": { "model": "tere:plank_dynasty" },
+				"variant=spooky": { "model": "tere:plank_spooky" }
+    }
+}

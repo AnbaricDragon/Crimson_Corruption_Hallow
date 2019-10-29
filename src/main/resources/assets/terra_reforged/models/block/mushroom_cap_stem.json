@@ -1,0 +1,12 @@
+{
+    "parent": "block/cube",
+    "textures": {
+        "particle": "tere:blocks/mushroom_cap_inside",
+        "down": "tere:blocks/mushroom_cap_inside",
+        "up": "tere:blocks/mushroom_cap_inside",
+        "north": "tere:blocks/log_mushroom",
+        "east": "tere:blocks/log_mushroom",
+        "south": "tere:blocks/log_mushroom",
+        "west": "tere:blocks/log_mushroom"
+    }
+}

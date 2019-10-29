@@ -1,0 +1,10 @@
+{
+    "ctm":{
+        "ctm_version": 1,
+        "layer":"CUTOUT",
+        "textures": [],
+				"extra": {
+            "light": 10
+        }				
+    }
+}

@@ -1,0 +1,9 @@
+{
+    "variants": 
+		{
+        "variant=pure": { "model": "tere:ore_adamantite_pure" },
+				"variant=corrupt": { "model": "tere:ore_adamantite_corrupt" },
+				"variant=crimson": { "model": "tere:ore_adamantite_crimson" },
+				"variant=hallowed": { "model": "tere:ore_adamantite_hallowed" }
+    }
+}

@@ -1,0 +1,13 @@
+{
+    "multipart": [
+				{   "when": { "stage": "0" },
+            "apply": { "model": "tere:plant_deathweed_0" }
+        },
+				{   "when": { "stage": "1" },
+            "apply": { "model": "tere:plant_deathweed_1" }
+        },
+				{   "when": { "stage": "2" },
+            "apply": { "model": "tere:plant_deathweed_2" }
+        }
+    ]
+}

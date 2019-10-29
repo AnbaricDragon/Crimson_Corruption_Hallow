@@ -1,0 +1,7 @@
+{
+    "parent": "block/leaves",
+    "textures": {
+				"particles": "tere:blocks/leaf_pearl_yellow",
+        "all": "tere:blocks/leaf_pearl_yellow"
+    }
+}

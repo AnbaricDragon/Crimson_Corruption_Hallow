@@ -1,0 +1,10 @@
+{
+    "variants": {
+        "normal": [
+						{ "model": "tere:grass_hallowed" },
+						{ "model": "tere:grass_hallowed", "y": 90 },
+						{ "model": "tere:grass_hallowed", "y": 180 },
+						{ "model": "tere:grass_hallowed", "y": 270 }
+				]
+    }
+}

@@ -1,0 +1,6 @@
+{
+    "variants": {
+				"half=upper": { "model": "tere:plant_dye_orange_top" },
+				"half=lower": { "model": "tere:plant_dye_orange_bottom" }				
+		}
+}

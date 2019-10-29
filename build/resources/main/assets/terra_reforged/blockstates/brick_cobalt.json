@@ -1,5 +1,5 @@
 {
     "variants": {
-        "normal": { "model": "tere:brick_cobalt" }
+        "": { "model": "terra_reforged:block/brick_cobalt" }
     }
 }

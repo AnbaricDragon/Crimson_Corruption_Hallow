@@ -1,5 +1,5 @@
 {
     "variants": {
-        "normal": { "model": "tere:stone_crim_brick" }
+        "": { "model": "terra_reforged:block/stone_crim_brick" }
     }
 }

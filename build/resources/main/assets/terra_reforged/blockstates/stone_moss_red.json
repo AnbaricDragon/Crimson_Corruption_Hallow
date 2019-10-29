@@ -1,5 +1,5 @@
 {
     "variants": {
-        "normal": { "model": "tere:stone_moss_red" }
+        "": { "model": "terra_reforged:block/stone_moss_red" }
     }
 }

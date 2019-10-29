@@ -1,6 +1,6 @@
 {
     "parent": "block/cube_all",
     "textures": {
-        "all": "tere:blocks/stone_granite_0"
+        "all": "terra_reforged:blocks/stone_granite_0"
     }
 }

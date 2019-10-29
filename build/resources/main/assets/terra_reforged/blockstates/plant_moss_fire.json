@@ -1,5 +1,5 @@
 {
     "variants": {
-        "normal": { "model": "tere:plant_moss_fire" }
+        "": { "model": "terra_reforged:block/plant_moss_fire" }
     }
 }

@@ -1,8 +1,8 @@
 {
     "variants": 
 		{
-        "variant=corrupt": { "model": "terra_reforged:ore_diamond_corrupt" },
-				"variant=crimson": { "model": "terra_reforged:ore_diamond_crimson" },
-				"variant=hallowed": { "model": "terra_reforged:ore_diamond_hallowed" }
+        "variant=corrupt": { "model": "terra_reforged:block/ore_diamond_corrupt" },
+				"variant=crimson": { "model": "terra_reforged:block/ore_diamond_crimson" },
+				"variant=hallowed": { "model": "terra_reforged:block/ore_diamond_hallowed" }
     }
 }

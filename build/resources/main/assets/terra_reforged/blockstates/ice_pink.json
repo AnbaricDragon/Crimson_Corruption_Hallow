@@ -1,5 +1,5 @@
 {
     "variants": {
-        "normal": { "model": "tere:ice_pink" }
+        "": { "model": "terra_reforged:block/ice_pink" }
     }
 }

@@ -1,6 +1,6 @@
 {
-    "parent": "tere:block/plant_thorn_side",
+    "parent": "terra_reforged:block/plant_thorn_side",
     "textures": {
-        "all": "tere:blocks/plant_thorn_jungle"
+        "all": "terra_reforged:blocks/plant_thorn_jungle"
     }
 }

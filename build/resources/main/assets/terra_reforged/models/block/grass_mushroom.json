@@ -1,10 +1,10 @@
 {
-	"parent": "tere:block/cube_double_column",
+	"parent": "terra_reforged:block/cube_double_column",
 	"textures": {
-		"side": "tere:blocks/grass_mushroom_side",
+		"side": "terra_reforged:blocks/grass_mushroom_side",
 
-		"glow_side": "tere:blocks/grass_mushroom_side_glow",
-		"glow_up": "tere:blocks/grass_mushroom_top_glow",
-		"glow_down": "tere:blocks/soil_mud"
+		"glow_side": "terra_reforged:blocks/grass_mushroom_side_glow",
+		"glow_up": "terra_reforged:blocks/grass_mushroom_top_glow",
+		"glow_down": "terra_reforged:blocks/soil_mud"
 	}
 }

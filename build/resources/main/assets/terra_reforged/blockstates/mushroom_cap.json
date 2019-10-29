@@ -1,17 +1,17 @@
 {
     "variants": {
-        "variant=north_west": { "model": "tere:mushroom_cap_nw" },
-        "variant=north": { "model": "tere:mushroom_cap_n" },
-        "variant=north_east": { "model": "tere:mushroom_cap_ne" },
-        "variant=west": { "model": "tere:mushroom_cap_w" },
-        "variant=center": { "model": "tere:mushroom_cap_c" },
-        "variant=east": { "model": "tere:mushroom_cap_e" },
-        "variant=south_west": { "model": "tere:mushroom_cap_sw" },
-        "variant=south": { "model": "tere:mushroom_cap_s" },
-        "variant=south_east": { "model": "tere:mushroom_cap_se" },
-        "variant=stem": { "model": "tere:mushroom_cap_stem" },
-        "variant=all_stem": { "model": "tere:mushroom_cap_stem_all" },
-        "variant=all_outside": { "model": "tere:mushroom_cap_all" },
-        "variant=all_inside": { "model": "tere:mushroom_cap_inside_all" }
+        "variant=north_west": { "model": "terra_reforged:block/mushroom_cap_nw" },
+        "variant=north": { "model": "terra_reforged:block/mushroom_cap_n" },
+        "variant=north_east": { "model": "terra_reforged:block/mushroom_cap_ne" },
+        "variant=west": { "model": "terra_reforged:block/mushroom_cap_w" },
+        "variant=center": { "model": "terra_reforged:block/mushroom_cap_c" },
+        "variant=east": { "model": "terra_reforged:block/mushroom_cap_e" },
+        "variant=south_west": { "model": "terra_reforged:block/mushroom_cap_sw" },
+        "variant=south": { "model": "terra_reforged:block/mushroom_cap_s" },
+        "variant=south_east": { "model": "terra_reforged:block/mushroom_cap_se" },
+        "variant=stem": { "model": "terra_reforged:block/mushroom_cap_stem" },
+        "variant=all_stem": { "model": "terra_reforged:block/mushroom_cap_stem_all" },
+        "variant=all_outside": { "model": "terra_reforged:block/mushroom_cap_all" },
+        "variant=all_inside": { "model": "terra_reforged:block/mushroom_cap_inside_all" }
     }
 }

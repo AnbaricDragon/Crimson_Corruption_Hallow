@@ -1,7 +1,7 @@
 {
     "parent": "item/generated",
     "textures": {
-        "layer0": "tere:items/ingot_spectre"
+        "layer0": "terra_reforged:items/ingot_spectre"
     }
 }
 

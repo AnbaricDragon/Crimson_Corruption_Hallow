@@ -1,37 +1,37 @@
 {
     "multipart": [
 				{   "when": { "up": "none"},
-            "apply": { "model": "terra_reforged:wall_birch_post" }
+            "apply": { "model": "terra_reforged:block/wall_birch_post" }
         },
 				{   "when": { "up": "pillar"},
-            "apply": { "model": "terra_reforged:wall_birch_pillar" }
+            "apply": { "model": "terra_reforged:block/wall_birch_pillar" }
         },
 				{   "when": { "up": "up"},
-            "apply": { "model": "terra_reforged:wall_birch_post_up" }
+            "apply": { "model": "terra_reforged:block/wall_birch_post_up" }
         },
 				{   "when": { "north": "side"},
-            "apply": { "model": "terra_reforged:wall_birch_side", "uvlock": true }
+            "apply": { "model": "terra_reforged:block/wall_birch_side", "uvlock": true }
         },
 				{   "when": { "east": "side"},
-            "apply": { "model": "terra_reforged:wall_birch_side", "y": 90, "uvlock": true }
+            "apply": { "model": "terra_reforged:block/wall_birch_side", "y": 90, "uvlock": true }
         },
 				{   "when": { "south": "side"},
-            "apply": { "model": "terra_reforged:wall_birch_side", "y": 180, "uvlock": true }
+            "apply": { "model": "terra_reforged:block/wall_birch_side", "y": 180, "uvlock": true }
         },
 				{   "when": { "west": "side"},
-            "apply": { "model": "terra_reforged:wall_birch_side", "y": 270, "uvlock": true }
+            "apply": { "model": "terra_reforged:block/wall_birch_side", "y": 270, "uvlock": true }
         },
 				{   "when": { "north": "up"},
-            "apply": { "model": "terra_reforged:wall_birch_side_up" }
+            "apply": { "model": "terra_reforged:block/wall_birch_side_up" }
         },
 				{   "when": { "east": "up"},
-            "apply": { "model": "terra_reforged:wall_birch_side_up", "y": 90 }
+            "apply": { "model": "terra_reforged:block/wall_birch_side_up", "y": 90 }
         },
 				{   "when": { "south": "up"},
-            "apply": { "model": "terra_reforged:wall_birch_side_up", "y": 180 }
+            "apply": { "model": "terra_reforged:block/wall_birch_side_up", "y": 180 }
         },
 				{   "when": { "west": "up"},
-            "apply": { "model": "terra_reforged:wall_birch_side_up", "y": 270 }
+            "apply": { "model": "terra_reforged:block/wall_birch_side_up", "y": 270 }
         }
     ]
 }

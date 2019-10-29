@@ -1,5 +1,5 @@
 {
     "variants": {
-        "normal": { "model": "tere:trap_ball" }
+        "": { "model": "terra_reforged:block/trap_ball" }
     }
 }

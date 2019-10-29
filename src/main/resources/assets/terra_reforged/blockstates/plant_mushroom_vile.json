@@ -1,5 +1,5 @@
 {
     "variants": {
-        "normal": { "model": "terra_reforged:plant_mushroom_vile" }
+        "": { "model": "terra_reforged:block/plant_mushroom_vile" }
     }
 }

@@ -1,6 +1,6 @@
 {
     "parent": "block/crop",
     "textures": {
-        "crop": "tere:blocks/plant_moss_yellow"
+        "crop": "terra_reforged:blocks/plant_moss_yellow"
     }
 }

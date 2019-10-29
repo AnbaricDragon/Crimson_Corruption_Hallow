@@ -1,6 +1,6 @@
 {
     "variants": {
-        "half=upper": { "model": "terra_reforged:plant_bloodroot_0" },
-				"half=lower": { "model": "terra_reforged:plant_bloodroot_1" }
+        "half=upper": { "model": "terra_reforged:block/plant_bloodroot_0" },
+				"half=lower": { "model": "terra_reforged:block/plant_bloodroot_1" }
     }
 }

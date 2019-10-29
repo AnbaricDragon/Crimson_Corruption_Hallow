@@ -1,9 +1,9 @@
 {
     "variants": 
 		{
-        "variant=pure": { "model": "terra_reforged:ore_topaz_pure" },
-				"variant=corrupt": { "model": "terra_reforged:ore_topaz_corrupt" },
-				"variant=crimson": { "model": "terra_reforged:ore_topaz_crimson" },
-				"variant=hallowed": { "model": "terra_reforged:ore_topaz_hallowed" }
+        "variant=pure": { "model": "terra_reforged:block/ore_topaz_pure" },
+				"variant=corrupt": { "model": "terra_reforged:block/ore_topaz_corrupt" },
+				"variant=crimson": { "model": "terra_reforged:block/ore_topaz_crimson" },
+				"variant=hallowed": { "model": "terra_reforged:block/ore_topaz_hallowed" }
     }
 }

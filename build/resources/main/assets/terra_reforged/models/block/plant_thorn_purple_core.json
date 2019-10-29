@@ -1,6 +1,6 @@
 {
-    "parent": "tere:block/plant_thorn_core",
+    "parent": "terra_reforged:block/plant_thorn_core",
     "textures": {
-        "all": "tere:blocks/plant_thorn_purple"
+        "all": "terra_reforged:blocks/plant_thorn_purple"
     }
 }

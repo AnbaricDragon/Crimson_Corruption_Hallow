@@ -1,5 +1,5 @@
 {
     "variants": {
-        "normal": { "model": "tere:sand_hard" }
+        "": { "model": "terra_reforged:block/sand_hard" }
     }
 }

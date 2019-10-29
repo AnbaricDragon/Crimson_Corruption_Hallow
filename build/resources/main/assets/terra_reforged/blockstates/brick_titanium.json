@@ -1,5 +1,5 @@
 {
     "variants": {
-        "normal": { "model": "tere:brick_titanium" }
+        "": { "model": "terra_reforged:block/brick_titanium" }
     }
 }

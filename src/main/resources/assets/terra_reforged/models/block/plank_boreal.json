@@ -1,6 +1,6 @@
 {
     "parent": "block/cube_all",
     "textures": {
-        "all": "tere:blocks/plank_boreal"
+        "all": "terra_reforged:blocks/plank_boreal"
     }
 }

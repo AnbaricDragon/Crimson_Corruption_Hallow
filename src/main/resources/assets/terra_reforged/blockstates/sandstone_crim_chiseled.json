@@ -1,5 +1,5 @@
 {
     "variants": {
-        "normal": { "model": "terra_reforged:sandstone_crim_chiseled" }
+        "": { "model": "terra_reforged:block/sandstone_crim_chiseled" }
     }
 }

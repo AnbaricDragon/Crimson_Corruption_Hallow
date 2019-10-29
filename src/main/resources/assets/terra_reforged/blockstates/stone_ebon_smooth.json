@@ -1,6 +1,6 @@
 {
     "variants": {
-        "normal": { "model": "terra_reforged:stone_ebon_smooth" },
-				"normal": { "model": "terra_reforged:stone_ebon_smooth", "y": 90 }
+        "": { "model": "terra_reforged:block/stone_ebon_smooth" },
+				"": { "model": "terra_reforged:block/stone_ebon_smooth", "y": 90 }
     }
 }

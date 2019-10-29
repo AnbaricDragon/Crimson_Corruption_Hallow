@@ -1,6 +1,6 @@
 {
     "parent": "block/cross",
     "textures": {
-        "cross": "tere:blocks/plant_dye_cyan_bottom"
+        "cross": "terra_reforged:blocks/plant_dye_cyan_bottom"
     }
 }

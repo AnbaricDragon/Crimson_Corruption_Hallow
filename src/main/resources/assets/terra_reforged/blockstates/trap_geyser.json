@@ -1,5 +1,5 @@
 {
     "variants": {
-        "normal": { "model": "terra_reforged:trap_geyser" }
+        "": { "model": "terra_reforged:block/trap_geyser" }
     }
 }

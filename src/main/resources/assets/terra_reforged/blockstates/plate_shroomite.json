@@ -1,5 +1,5 @@
 {
     "variants": {
-        "normal": { "model": "terra_reforged:plate_shroomite" }
+        "": { "model": "terra_reforged:block/plate_shroomite" }
     }
 }

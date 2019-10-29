@@ -1,10 +1,10 @@
 {
     "variants": {
-        "normal": [
-						{ "model": "tere:grass_hallowed" },
-						{ "model": "tere:grass_hallowed", "y": 90 },
-						{ "model": "tere:grass_hallowed", "y": 180 },
-						{ "model": "tere:grass_hallowed", "y": 270 }
+        "": [
+						{ "model": "terra_reforged:block/grass_hallowed" },
+						{ "model": "terra_reforged:block/grass_hallowed", "y": 90 },
+						{ "model": "terra_reforged:block/grass_hallowed", "y": 180 },
+						{ "model": "terra_reforged:block/grass_hallowed", "y": 270 }
 				]
     }
 }

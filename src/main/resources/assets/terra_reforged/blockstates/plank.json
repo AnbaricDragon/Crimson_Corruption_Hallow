@@ -1,14 +1,14 @@
 {
     "variants": 
 		{
-        "variant=ash": { "model": "terra_reforged:plank_ash" },
-				"variant=boreal": { "model": "terra_reforged:plank_boreal" },
-				"variant=palm": { "model": "terra_reforged:plank_palm" },
-				"variant=mahogany": { "model": "terra_reforged:plank_mahogany" },
-				"variant=ebon": { "model": "terra_reforged:plank_ebon" },
-				"variant=shade": { "model": "terra_reforged:plank_shade" },
-				"variant=pearl": { "model": "terra_reforged:plank_pearl" },
-				"variant=dynasty": { "model": "terra_reforged:plank_dynasty" },
-				"variant=spooky": { "model": "terra_reforged:plank_spooky" }
+        "variant=ash": { "model": "terra_reforged:block/plank_ash" },
+				"variant=boreal": { "model": "terra_reforged:block/plank_boreal" },
+				"variant=palm": { "model": "terra_reforged:block/plank_palm" },
+				"variant=mahogany": { "model": "terra_reforged:block/plank_mahogany" },
+				"variant=ebon": { "model": "terra_reforged:block/plank_ebon" },
+				"variant=shade": { "model": "terra_reforged:block/plank_shade" },
+				"variant=pearl": { "model": "terra_reforged:block/plank_pearl" },
+				"variant=dynasty": { "model": "terra_reforged:block/plank_dynasty" },
+				"variant=spooky": { "model": "terra_reforged:block/plank_spooky" }
     }
 }

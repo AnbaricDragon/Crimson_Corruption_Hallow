@@ -1,5 +1,5 @@
 {
-    "parent": "tere:block/wall_side_up",
+    "parent": "terra_reforged:block/wall_side_up",
     "textures": {
         "wall": "blocks/log_jungle"
     }

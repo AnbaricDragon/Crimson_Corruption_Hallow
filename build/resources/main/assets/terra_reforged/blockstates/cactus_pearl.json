@@ -1,5 +1,5 @@
 {
     "multipart": [
-        { "apply": { "model": "tere:cactus_pearl" }}
+        { "apply": { "model": "terra_reforged:block/cactus_pearl" }}
     ]
 }

@@ -1,5 +1,5 @@
 {
-    "parent": "tere:block/wall_inventory",
+    "parent": "terra_reforged:block/wall_inventory",
     "textures": {
         "wall": "blocks/log_birch"
     }

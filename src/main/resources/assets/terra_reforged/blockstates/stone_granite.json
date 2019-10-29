@@ -1,13 +1,13 @@
 {
     "variants": {
-        "normal": [
-						{ "model": "terra_reforged:stone_granite_0" },
-						{ "model": "terra_reforged:stone_granite_1" },
-						{ "model": "terra_reforged:stone_granite_2" },
+        "": [
+						{ "model": "terra_reforged:block/stone_granite_0" },
+						{ "model": "terra_reforged:block/stone_granite_1" },
+						{ "model": "terra_reforged:block/stone_granite_2" },
 						
-						{ "model": "terra_reforged:stone_granite_0", "y": 180},
-						{ "model": "terra_reforged:stone_granite_1", "y": 180},
-						{ "model": "terra_reforged:stone_granite_2", "y": 180}					
+						{ "model": "terra_reforged:block/stone_granite_0", "y": 180},
+						{ "model": "terra_reforged:block/stone_granite_1", "y": 180},
+						{ "model": "terra_reforged:block/stone_granite_2", "y": 180}					
 				]
     }
 }

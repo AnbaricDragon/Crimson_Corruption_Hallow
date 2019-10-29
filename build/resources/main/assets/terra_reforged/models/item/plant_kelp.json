@@ -1,6 +1,6 @@
 {
     "parent": "item/generated",
     "textures": {
-        "layer0": "tere:tere:blocks/plant_kelp"
+        "layer0": "terra_reforged:terra_reforged:blocks/plant_kelp"
     }
 }

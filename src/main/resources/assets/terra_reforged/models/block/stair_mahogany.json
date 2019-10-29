@@ -1,8 +1,8 @@
 {
-    "parent": "tere:block/stair",
+    "parent": "terra_reforged:block/stair",
     "textures": {
-        "bottom": "tere:blocks/plank_mahogany",
-        "top": "tere:blocks/plank_mahogany",
-        "side": "tere:blocks/plank_mahogany"
+        "bottom": "terra_reforged:blocks/plank_mahogany",
+        "top": "terra_reforged:blocks/plank_mahogany",
+        "side": "terra_reforged:blocks/plank_mahogany"
     }
 }

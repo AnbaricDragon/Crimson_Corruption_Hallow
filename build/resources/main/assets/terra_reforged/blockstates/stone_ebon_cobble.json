@@ -1,5 +1,5 @@
 {
     "variants": {
-        "normal": { "model": "tere:stone_ebon_cobble" }
+        "": { "model": "terra_reforged:block/stone_ebon_cobble" }
     }
 }

@@ -1,5 +1,5 @@
 {
     "variants": {
-        "normal": { "model": "terra_reforged:ore_chlorophyte" }
+        "": { "model": "terra_reforged:block/ore_chlorophyte" }
     }
 }

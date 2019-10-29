@@ -1,5 +1,5 @@
 {
     "variants": {
-        "normal": { "model": "tere:snow_hallowed" }
+        "": { "model": "terra_reforged:block/snow_hallowed" }
     }
 }

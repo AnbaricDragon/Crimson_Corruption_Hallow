@@ -1,6 +1,6 @@
 {
-    "parent": "tere:block/wall_post",
+    "parent": "terra_reforged:block/wall_post",
     "textures": {
-        "wall": "tere:blocks/leaf_pearl_pink"
+        "wall": "terra_reforged:blocks/leaf_pearl_pink"
     }
 }

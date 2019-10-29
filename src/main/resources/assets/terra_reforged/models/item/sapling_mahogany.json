@@ -1,6 +1,6 @@
 {
     "parent": "item/generated",
     "textures": {
-        "layer0": "tere:blocks/sapling_mahogany"
+        "layer0": "terra_reforged:blocks/sapling_mahogany"
     }
 }

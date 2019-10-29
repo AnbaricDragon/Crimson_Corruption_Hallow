@@ -1,5 +1,5 @@
 {
     "variants": {
-        "normal": { "model": "tere:ore_meteorite" }
+        "": { "model": "terra_reforged:block/ore_meteorite" }
     }
 }

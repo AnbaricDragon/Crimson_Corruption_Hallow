@@ -1,6 +1,6 @@
 {
     "parent": "block/cross",
     "textures": {
-        "cross": "tere:blocks/tallgrass_crimson"
+        "cross": "terra_reforged:blocks/tallgrass_crimson"
     }
 }

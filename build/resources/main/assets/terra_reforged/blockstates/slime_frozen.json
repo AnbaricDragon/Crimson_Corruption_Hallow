@@ -1,5 +1,5 @@
 {
     "variants": {
-        "normal": { "model": "tere:slime_frozen" }
+        "": { "model": "terra_reforged:block/slime_frozen" }
     }
 }

@@ -1,7 +1,7 @@
 {
     "parent": "block/leaves",
     "textures": {
-				"particles": "tere:blocks/leaf_pearl_red",
-        "all": "tere:blocks/leaf_pearl_red"
+				"particles": "terra_reforged:blocks/leaf_pearl_red",
+        "all": "terra_reforged:blocks/leaf_pearl_red"
     }
 }

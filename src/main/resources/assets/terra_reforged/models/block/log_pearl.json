@@ -1,7 +1,7 @@
 {
     "parent": "block/cube_column",
     "textures": {
-        "end": "tere:blocks/log_pearl_top",
-				"side": "tere:blocks/log_pearl"
+        "end": "terra_reforged:blocks/log_pearl_top",
+				"side": "terra_reforged:blocks/log_pearl"
     }
 }

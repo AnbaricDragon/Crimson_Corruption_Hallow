@@ -1,5 +1,5 @@
 {
     "variants": {
-        "normal": { "model": "tere:misc_rope_web" }
+        "": { "model": "terra_reforged:block/misc_rope_web" }
     }
 }

@@ -1,6 +1,6 @@
 {
     "parent": "block/cross",
     "textures": {
-        "cross": "tere:blocks/plant_moss_red"
+        "cross": "terra_reforged:blocks/plant_moss_red"
     }
 }

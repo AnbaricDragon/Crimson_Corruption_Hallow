@@ -1,8 +1,8 @@
 {
     "parent": "block/block",
     "textures": {
-        "particle": "tere:blocks/slime_bouncy",
-        "texture": "tere:blocks/slime_bouncy"
+        "particle": "terra_reforged:blocks/slime_bouncy",
+        "texture": "terra_reforged:blocks/slime_bouncy"
     },
     "elements": [
         {   "from": [ 3, 3, 3 ],

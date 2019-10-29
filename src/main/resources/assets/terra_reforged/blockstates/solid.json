@@ -1,12 +1,12 @@
 {
     "variants": 
 		{
-        "variant=ash": { "model": "terra_reforged:log_ash_solid" },
-				"variant=boreal": { "model": "terra_reforged:log_boreal_solid" },
-				"variant=palm": { "model": "terra_reforged:log_palm_solid" },
-				"variant=mahogany": { "model": "terra_reforged:log_mahogany_solid" },
-				"variant=ebon": { "model": "terra_reforged:log_ebon_solid" },
-				"variant=shade": { "model": "terra_reforged:log_shade_solid" },
-				"variant=pearl": { "model": "terra_reforged:log_pearl_solid" }
+        "variant=ash": { "model": "terra_reforged:block/log_ash_solid" },
+				"variant=boreal": { "model": "terra_reforged:block/log_boreal_solid" },
+				"variant=palm": { "model": "terra_reforged:block/log_palm_solid" },
+				"variant=mahogany": { "model": "terra_reforged:block/log_mahogany_solid" },
+				"variant=ebon": { "model": "terra_reforged:block/log_ebon_solid" },
+				"variant=shade": { "model": "terra_reforged:block/log_shade_solid" },
+				"variant=pearl": { "model": "terra_reforged:block/log_pearl_solid" }
     }
 }

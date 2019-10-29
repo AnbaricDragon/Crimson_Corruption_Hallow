@@ -1,9 +1,9 @@
 {
     "variants": 
 		{
-        "variant=pure": { "model": "tere:ore_demonite_pure" },
-				"variant=corrupt": { "model": "tere:ore_demonite_corrupt" },
-				"variant=crimson": { "model": "tere:ore_demonite_crimson" },
-				"variant=hallowed": { "model": "tere:ore_demonite_hallowed" }
+        "variant=pure": { "model": "terra_reforged:block/ore_demonite_pure" },
+				"variant=corrupt": { "model": "terra_reforged:block/ore_demonite_corrupt" },
+				"variant=crimson": { "model": "terra_reforged:block/ore_demonite_crimson" },
+				"variant=hallowed": { "model": "terra_reforged:block/ore_demonite_hallowed" }
     }
 }

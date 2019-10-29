@@ -1,8 +1,8 @@
 {
-    "parent": "tere:block/stair",
+    "parent": "terra_reforged:block/stair",
     "textures": {
-        "bottom": "tere:blocks/plank_boreal",
-        "top": "tere:blocks/plank_boreal",
-        "side": "tere:blocks/plank_boreal"
+        "bottom": "terra_reforged:blocks/plank_boreal",
+        "top": "terra_reforged:blocks/plank_boreal",
+        "side": "terra_reforged:blocks/plank_boreal"
     }
 }

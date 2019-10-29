@@ -1,5 +1,5 @@
 {
     "variants": {
-        "normal": { "model": "terra_reforged:grass_mushroom" }
+        "": { "model": "terra_reforged:block/grass_mushroom" }
     }
 }

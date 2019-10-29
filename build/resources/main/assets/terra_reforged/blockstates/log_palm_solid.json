@@ -1,5 +1,5 @@
 {
     "variants": {
-        "normal": { "model": "tere:log_palm_solid" }
+        "": { "model": "terra_reforged:block/log_palm_solid" }
     }
 }

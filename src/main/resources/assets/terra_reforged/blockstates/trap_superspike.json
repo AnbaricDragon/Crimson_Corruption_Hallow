@@ -1,5 +1,5 @@
 {
     "variants": {
-        "normal": { "model": "terra_reforged:trap_superspike" }
+        "": { "model": "terra_reforged:block/trap_superspike" }
     }
 }

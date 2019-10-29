@@ -1,10 +1,10 @@
 {   "parent": "block/block",
     "ambientocclusion": false,
     "textures": {
-        "particle": "tere:blocks/cactus_crim_side",
-        "bottom": "tere:blocks/cactus_crim_bottom",
-        "top": "tere:blocks/cactus_crim_top",
-        "side": "tere:blocks/cactus_crim_side"
+        "particle": "terra_reforged:blocks/cactus_crim_side",
+        "bottom": "terra_reforged:blocks/cactus_crim_bottom",
+        "top": "terra_reforged:blocks/cactus_crim_top",
+        "side": "terra_reforged:blocks/cactus_crim_side"
     },
     "elements": [
         {   "from": [ 0, 0, 0 ],

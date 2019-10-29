@@ -1,6 +1,6 @@
 {
     "parent": "item/generated",
     "textures": {
-        "layer0": "tere:blocks/plant_thorn_jungle"
+        "layer0": "terra_reforged:blocks/plant_thorn_jungle"
     }
 }

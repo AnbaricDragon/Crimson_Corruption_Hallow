@@ -1,5 +1,5 @@
 {
-    "parent": "tere:block/block",
+    "parent": "terra_reforged:block/block",
     "ambientocclusion": false,
     "elements": [
         {   "from": [ 0, 0, 0 ],

@@ -1,8 +1,8 @@
 {
     "variants": {
-        "normal": { "model": "tere:grass_jungle" },
-				"normal": { "model": "tere:grass_jungle", "y": 90 },
-				"normal": { "model": "tere:grass_jungle", "y": 180 },
-				"normal": { "model": "tere:grass_jungle", "y": 270 }
+        "": { "model": "terra_reforged:block/grass_jungle" },
+				"": { "model": "terra_reforged:block/grass_jungle", "y": 90 },
+				"": { "model": "terra_reforged:block/grass_jungle", "y": 180 },
+				"": { "model": "terra_reforged:block/grass_jungle", "y": 270 }
     }
 }

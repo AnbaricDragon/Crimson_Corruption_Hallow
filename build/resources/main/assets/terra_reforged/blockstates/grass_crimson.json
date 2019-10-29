@@ -1,10 +1,10 @@
 {
     "variants": {
-        "normal": [
-						{ "model": "tere:grass_crimson" },
-						{ "model": "tere:grass_crimson", "y": 90 },
-						{ "model": "tere:grass_crimson", "y": 180 },
-						{ "model": "tere:grass_crimson", "y": 270 }
+        "": [
+						{ "model": "terra_reforged:block/grass_crimson" },
+						{ "model": "terra_reforged:block/grass_crimson", "y": 90 },
+						{ "model": "terra_reforged:block/grass_crimson", "y": 180 },
+						{ "model": "terra_reforged:block/grass_crimson", "y": 270 }
 				]
     }
 }

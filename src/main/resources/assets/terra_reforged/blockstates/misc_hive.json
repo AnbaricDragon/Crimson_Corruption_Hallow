@@ -1,5 +1,5 @@
 {
     "variants": {
-        "normal": { "model": "terra_reforged:misc_hive" }
+        "": { "model": "terra_reforged:block/misc_hive" }
     }
 }

@@ -1,5 +1,5 @@
 {
     "variants": {
-        "normal": { "model": "tere:plank_palm" }
+        "": { "model": "terra_reforged:block/plank_palm" }
     }
 }

@@ -1,6 +1,6 @@
 {
-    "parent": "tere:block/wall_side",
+    "parent": "terra_reforged:block/wall_side",
     "textures": {
-        "wall": "tere:blocks/stone_pearl_brick"
+        "wall": "terra_reforged:blocks/stone_pearl_brick"
     }
 }

@@ -1,6 +1,6 @@
 {
-    "parent": "tere:block/wall_post_up",
+    "parent": "terra_reforged:block/wall_post_up",
     "textures": {
-        "wall": "tere:blocks/leaf_shade"
+        "wall": "terra_reforged:blocks/leaf_shade"
     }
 }

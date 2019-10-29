@@ -1,5 +1,5 @@
 {
-    "parent": "tere:block/wall_side",
+    "parent": "terra_reforged:block/wall_side",
     "textures": {
         "wall": "blocks/log_big_oak"
     }

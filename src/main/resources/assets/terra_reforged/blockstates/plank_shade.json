@@ -1,5 +1,5 @@
 {
     "variants": {
-        "normal": { "model": "terra_reforged:plank_shade" }
+        "": { "model": "terra_reforged:block/plank_shade" }
     }
 }

@@ -1,5 +1,5 @@
 {
     "variants": {
-        "normal": { "model": "tere:misc_rope_vine" }
+        "": { "model": "terra_reforged:block/misc_rope_vine" }
     }
 }

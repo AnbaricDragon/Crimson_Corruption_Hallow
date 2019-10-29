@@ -1,5 +1,5 @@
 {
     "variants": {
-        "normal": { "model": "tere:ore_hellstone" }
+        "": { "model": "terra_reforged:block/ore_hellstone" }
     }
 }

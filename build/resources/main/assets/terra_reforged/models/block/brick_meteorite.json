@@ -1,7 +1,7 @@
 {
-    "parent": "tere:block/cube_double_all",
+    "parent": "terra_reforged:block/cube_double_all",
     "textures": {
-        "all": "tere:blocks/brick_meteorite",
-				"glow": "tere:blocks/brick_meteorite_glow"
+        "all": "terra_reforged:blocks/brick_meteorite",
+				"glow": "terra_reforged:blocks/brick_meteorite_glow"
     }
 }

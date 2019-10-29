@@ -1,5 +1,5 @@
 {
     "variants": {
-        "normal": { "model": "tere:slime_alt" }
+        "": { "model": "terra_reforged:block/slime_alt" }
     }
 }

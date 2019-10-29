@@ -56,9 +56,9 @@ public final class TerraEventSubscriber
                 continue;
             }
             // Make the properties, and make it so that the item will be on our ItemGroup (CreativeTab)
-            final Item.Properties properties = new Item.Properties().group(TerraItemGroups.TERRA_BLOCKS_TAB);
+            final Item.Properties TerraBlocksTab = new Item.Properties().group(TerraItemGroups.TERRA_BLOCKS_TAB);
             // Create the new BlockItem with the block and it's properties
-            final BlockItem blockItem = new BlockItem(block, properties);
+            final BlockItem blockItem = new BlockItem(block, TerraBlocksTab);
             // Setup the new BlockItem with the block's registry name and register it
             registry.register(setup(blockItem, blockRegistryName));
         }

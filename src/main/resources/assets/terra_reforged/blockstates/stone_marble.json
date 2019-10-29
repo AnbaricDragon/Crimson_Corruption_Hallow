@@ -1,11 +1,11 @@
 {
     "variants": {
-        "normal": [
-						{ "model": "terra_reforged:stone_marble_0" },
-						{ "model": "terra_reforged:stone_marble_1" },
+        "": [
+						{ "model": "terra_reforged:block/stone_marble_0" },
+						{ "model": "terra_reforged:block/stone_marble_1" },
 						
-						{ "model": "terra_reforged:stone_marble_0", "y": 180 },
-						{ "model": "terra_reforged:stone_marble_1", "y": 180 }
+						{ "model": "terra_reforged:block/stone_marble_0", "y": 180 },
+						{ "model": "terra_reforged:block/stone_marble_1", "y": 180 }
 				]
     }
 }

@@ -1,6 +1,6 @@
 {
     "parent": "item/generated",
     "textures": {
-        "layer0": "tere:items/ingot_mythril"
+        "layer0": "terra_reforged:items/ingot_mythril"
     }
 }

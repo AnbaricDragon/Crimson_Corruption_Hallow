@@ -1,9 +1,9 @@
 {
     "variants": 
 		{
-        "variant=pure": { "model": "terra_reforged:ore_silver_pure" },
-				"variant=corrupt": { "model": "terra_reforged:ore_silver_corrupt" },
-				"variant=crimson": { "model": "terra_reforged:ore_silver_crimson" },
-				"variant=hallowed": { "model": "terra_reforged:ore_silver_hallowed" }
+        "variant=pure": { "model": "terra_reforged:block/ore_silver_pure" },
+				"variant=corrupt": { "model": "terra_reforged:block/ore_silver_corrupt" },
+				"variant=crimson": { "model": "terra_reforged:block/ore_silver_crimson" },
+				"variant=hallowed": { "model": "terra_reforged:block/ore_silver_hallowed" }
     }
 }

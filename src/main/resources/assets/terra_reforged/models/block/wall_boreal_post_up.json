@@ -1,6 +1,6 @@
 {
-    "parent": "tere:block/wall_post_up",
+    "parent": "terra_reforged:block/wall_post_up",
     "textures": {
-        "wall": "tere:blocks/log_boreal"
+        "wall": "terra_reforged:blocks/log_boreal"
     }
 }

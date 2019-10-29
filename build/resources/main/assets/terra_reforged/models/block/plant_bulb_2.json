@@ -1,9 +1,9 @@
 {
 	"textures": {
-		"0": "tere:blocks/plant_bulb_leaf",
-		"1": "tere:blocks/plant_bulb_side",
-		"2": "tere:blocks/plant_bulb_top",
-		"particle": "tere:blocks/plant_bulb_side"
+		"0": "terra_reforged:blocks/plant_bulb_leaf",
+		"1": "terra_reforged:blocks/plant_bulb_side",
+		"2": "terra_reforged:blocks/plant_bulb_top",
+		"particle": "terra_reforged:blocks/plant_bulb_side"
 	},
 	"elements": [
 		{

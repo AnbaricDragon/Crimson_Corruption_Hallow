@@ -1,5 +1,5 @@
 {
     "variants": {
-        "normal": { "model": "tere:plant_kelp" }
+        "": { "model": "terra_reforged:block/plant_kelp" }
     }
 }

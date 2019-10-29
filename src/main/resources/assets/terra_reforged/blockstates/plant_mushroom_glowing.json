@@ -1,7 +1,7 @@
 {
     "variants": 
 		{
-        "stage=0": { "model": "terra_reforged:plant_mushroom_glowing" },
-				"stage=1": { "model": "terra_reforged:plant_mushroom_glowing" }
+        "stage=0": { "model": "terra_reforged:block/plant_mushroom_glowing" },
+				"stage=1": { "model": "terra_reforged:block/plant_mushroom_glowing" }
     }
 }

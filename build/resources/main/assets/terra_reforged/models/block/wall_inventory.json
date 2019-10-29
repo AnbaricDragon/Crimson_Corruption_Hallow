@@ -1,5 +1,5 @@
 {
-    "parent": "tere:block/block",
+    "parent": "terra_reforged:block/block",
 		"textures": {
         "particle": "#wall"
     },

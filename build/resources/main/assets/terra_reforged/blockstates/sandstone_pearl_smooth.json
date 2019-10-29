@@ -1,5 +1,5 @@
 {
     "variants": {
-        "normal": { "model": "tere:sandstone_pearl_smooth" }
+        "": { "model": "terra_reforged:block/sandstone_pearl_smooth" }
     }
 }

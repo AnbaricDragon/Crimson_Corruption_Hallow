@@ -1,6 +1,6 @@
 {
     "variants": {
-        "normal": { "model": "tere:stone_crim_smooth" },
-				"normal": { "model": "tere:stone_crim_smooth", "y": 90 }
+        "": { "model": "terra_reforged:block/stone_crim_smooth" },
+				"": { "model": "terra_reforged:block/stone_crim_smooth", "y": 90 }
     }
 }

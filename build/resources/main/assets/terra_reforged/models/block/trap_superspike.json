@@ -1,6 +1,6 @@
 {
     "parent": "block/cube_all",
     "textures": {
-        "all": "tere:blocks/trap_superspike"
+        "all": "terra_reforged:blocks/trap_superspike"
     }
 }

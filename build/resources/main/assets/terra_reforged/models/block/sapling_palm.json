@@ -1,6 +1,6 @@
 {
     "parent": "block/cross",
     "textures": {
-        "cross": "tere:blocks/sapling_palm"
+        "cross": "terra_reforged:blocks/sapling_palm"
     }
 }

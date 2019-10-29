@@ -1,5 +1,5 @@
 {
     "variants": {
-        "normal": { "model": "terra_reforged:misc_cog" }
+        "": { "model": "terra_reforged:block/misc_cog" }
     }
 }

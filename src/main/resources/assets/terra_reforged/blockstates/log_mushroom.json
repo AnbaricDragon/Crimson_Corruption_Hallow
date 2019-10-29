@@ -1,7 +1,7 @@
 {
     "variants": {
-        "variant=y": { "model": "terra_reforged:log_mushroom" },
-        "variant=z": { "model": "terra_reforged:log_mushroom", "x": 90 },
-        "variant=x": { "model": "terra_reforged:log_mushroom", "x": 90, "y": 90 }
+        "variant=y": { "model": "terra_reforged:block/log_mushroom" },
+        "variant=z": { "model": "terra_reforged:block/log_mushroom", "x": 90 },
+        "variant=x": { "model": "terra_reforged:block/log_mushroom", "x": 90, "y": 90 }
     }
 }

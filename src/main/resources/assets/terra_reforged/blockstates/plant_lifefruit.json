@@ -1,9 +1,9 @@
 {
     "variants": {
-        "normal": [
-						{ "model": "terra_reforged:plant_lifefruit_0" },
-						{ "model": "terra_reforged:plant_lifefruit_1" },
-						{ "model": "terra_reforged:plant_lifefruit_2" }
+        "": [
+						{ "model": "terra_reforged:block/plant_lifefruit_0" },
+						{ "model": "terra_reforged:block/plant_lifefruit_1" },
+						{ "model": "terra_reforged:block/plant_lifefruit_2" }
 				]
     }
 }

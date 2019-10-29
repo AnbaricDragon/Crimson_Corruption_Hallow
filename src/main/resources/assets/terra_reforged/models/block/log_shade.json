@@ -1,7 +1,7 @@
 {
     "parent": "block/cube_column",
     "textures": {
-        "end": "tere:blocks/log_shade_top",
-				"side": "tere:blocks/log_shade"
+        "end": "terra_reforged:blocks/log_shade_top",
+				"side": "terra_reforged:blocks/log_shade"
     }
 }

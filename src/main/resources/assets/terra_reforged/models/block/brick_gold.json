@@ -1,6 +1,6 @@
 {
     "parent": "block/leaves",
     "textures": {
-        "all": "tere:blocks/brick_gold"
+        "all": "terra_reforged:blocks/brick_gold"
     }
 }

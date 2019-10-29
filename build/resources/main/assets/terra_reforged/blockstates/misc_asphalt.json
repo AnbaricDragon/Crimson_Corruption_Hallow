@@ -1,5 +1,5 @@
 {
     "variants": {
-        "normal": { "model": "tere:misc_asphalt" }
+        "": { "model": "terra_reforged:block/misc_asphalt" }
     }
 }

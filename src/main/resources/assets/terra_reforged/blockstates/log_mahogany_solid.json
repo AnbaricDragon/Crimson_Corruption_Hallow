@@ -1,5 +1,5 @@
 {
     "variants": {
-        "normal": { "model": "terra_reforged:log_mahogany_solid" }
+        "": { "model": "terra_reforged:block/log_mahogany_solid" }
     }
 }

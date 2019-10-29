@@ -1,5 +1,5 @@
 {
     "variants": {
-        "normal": { "model": "terra_reforged:stone_crim_mossy" }
+        "": { "model": "terra_reforged:block/stone_crim_mossy" }
     }
 }

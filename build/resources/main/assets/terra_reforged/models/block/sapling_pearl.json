@@ -1,6 +1,6 @@
 {
     "parent": "block/cross",
     "textures": {
-        "cross": "tere:blocks/sapling_pearl"
+        "cross": "terra_reforged:blocks/sapling_pearl"
     }
 }

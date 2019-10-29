@@ -1,5 +1,5 @@
 {
     "variants": {
-        "normal": { "model": "terra_reforged:misc_candy_red" }
+        "": { "model": "terra_reforged:block/misc_candy_red" }
     }
 }

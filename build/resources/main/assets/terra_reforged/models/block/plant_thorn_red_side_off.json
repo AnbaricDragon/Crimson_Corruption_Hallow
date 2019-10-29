@@ -1,6 +1,6 @@
 {
-    "parent": "tere:block/plant_thorn_side_off",
+    "parent": "terra_reforged:block/plant_thorn_side_off",
     "textures": {
-        "all": "tere:blocks/plant_thorn_red_thorns"
+        "all": "terra_reforged:blocks/plant_thorn_red_thorns"
     }
 }

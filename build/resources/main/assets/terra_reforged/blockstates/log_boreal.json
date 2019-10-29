@@ -1,8 +1,8 @@
 {
     "variants": {
-				"variant=none": { "model": "tere:log_boreal_solid" },
-        "variant=y": { "model": "tere:log_boreal" },
-        "variant=z": { "model": "tere:log_boreal", "x": 90 },
-        "variant=x": { "model": "tere:log_boreal", "x": 90, "y": 90 }
+				"variant=none": { "model": "terra_reforged:block/log_boreal_solid" },
+        "variant=y": { "model": "terra_reforged:block/log_boreal" },
+        "variant=z": { "model": "terra_reforged:block/log_boreal", "x": 90 },
+        "variant=x": { "model": "terra_reforged:block/log_boreal", "x": 90, "y": 90 }
     }
 }

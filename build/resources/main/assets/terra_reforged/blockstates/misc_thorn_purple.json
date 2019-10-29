@@ -1,5 +1,5 @@
 {
     "variants": {
-        "normal": { "model": "tere:misc_thorn_purple" }
+        "": { "model": "terra_reforged:block/misc_thorn_purple" }
     }
 }

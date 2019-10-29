@@ -1,12 +1,12 @@
 {
     "parent": "block/cube",
     "textures": {
-        "particle": "tere:blocks/mushroom_cap_inside",
-        "down": "tere:blocks/log_mushroom",
-        "up": "tere:blocks/log_mushroom",
-        "north": "tere:blocks/log_mushroom",
-        "east": "tere:blocks/log_mushroom",
-        "south": "tere:blocks/log_mushroom",
-        "west": "tere:blocks/log_mushroom"
+        "particle": "terra_reforged:blocks/mushroom_cap_inside",
+        "down": "terra_reforged:blocks/log_mushroom",
+        "up": "terra_reforged:blocks/log_mushroom",
+        "north": "terra_reforged:blocks/log_mushroom",
+        "east": "terra_reforged:blocks/log_mushroom",
+        "south": "terra_reforged:blocks/log_mushroom",
+        "west": "terra_reforged:blocks/log_mushroom"
     }
 }

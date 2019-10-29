@@ -1,17 +1,17 @@
-[28Oct2019 21:31:54.105] [main/INFO] [cpw.mods.modlauncher.Launcher/MODLAUNCHER]: ModLauncher running: args [--gameDir, ., --launchTarget, fmluserdevclient, --fml.mcpVersion, 20190829.143755, --fml.mcVersion, 1.14.4, --fml.forgeGroup, net.minecraftforge, --fml.forgeVersion, 28.1.69, --version, MOD_DEV, --assetIndex, 1.14, --assetsDir, C:\Users\Anbaric\.gradle\caches\forge_gradle\assets, --username, Dev, --accessToken, ????????, --userProperties, {}]
-[28Oct2019 21:31:54.109] [main/INFO] [cpw.mods.modlauncher.Launcher/MODLAUNCHER]: ModLauncher 4.1.0+62+5bfa59b starting: java version 1.8.0_121 by Oracle Corporation
-[28Oct2019 21:31:54.492] [main/INFO] [net.minecraftforge.fml.loading.FixSSL/CORE]: Added Lets Encrypt root certificates as additional trust
-[28Oct2019 21:31:55.670] [main/INFO] [cpw.mods.modlauncher.LaunchServiceHandler/MODLAUNCHER]: Launching target 'fmluserdevclient' with arguments [--version, MOD_DEV, --gameDir, ., --assetsDir, C:\Users\Anbaric\.gradle\caches\forge_gradle\assets, --assetIndex, 1.14, --username, Dev, --accessToken, ????????, --userProperties, {}]
-[28Oct2019 21:31:58.783] [Client thread/INFO] [net.minecraft.client.Minecraft/]: Setting user: Dev
-[28Oct2019 21:32:12.955] [Client thread/WARN] [net.minecraft.client.GameSettings/]: Skipping bad option: lastServer:
-[28Oct2019 21:32:12.996] [Client thread/INFO] [net.minecraft.client.Minecraft/]: LWJGL Version: 3.2.2 build 10
-[28Oct2019 21:32:14.325] [modloading-worker-1/INFO] [net.minecraftforge.common.ForgeMod/FORGEMOD]: Forge mod loading, version 28.1.69, for MC 1.14.4 with MCP 20190829.143755
-[28Oct2019 21:32:14.325] [modloading-worker-1/INFO] [net.minecraftforge.common.MinecraftForge/FORGE]: MinecraftForge v28.1.69 Initialized
-[28Oct2019 21:32:17.984] [Client thread/INFO] [com.mojang.text2speech.NarratorWindows/]: Narrator library for x64 successfully loaded
-[28Oct2019 21:32:18.408] [Forge Version Check/INFO] [net.minecraftforge.fml.VersionChecker/]: [forge] Starting version check at https://files.minecraftforge.net/maven/net/minecraftforge/forge/promotions_slim.json
-[28Oct2019 21:32:20.190] [Forge Version Check/INFO] [net.minecraftforge.fml.VersionChecker/]: [forge] Found status: OUTDATED Current: 28.1.69 Target: 28.1.74
-[28Oct2019 21:32:20.190] [Forge Version Check/INFO] [net.minecraftforge.fml.VersionChecker/]: [terra_reforged] Starting version check at http://myurl.com/
-[28Oct2019 21:32:20.417] [Forge Version Check/WARN] [net.minecraftforge.fml.VersionChecker/]: Failed to process update information
+[28Oct2019 22:19:42.083] [main/INFO] [cpw.mods.modlauncher.Launcher/MODLAUNCHER]: ModLauncher running: args [--gameDir, ., --launchTarget, fmluserdevclient, --fml.mcpVersion, 20190829.143755, --fml.mcVersion, 1.14.4, --fml.forgeGroup, net.minecraftforge, --fml.forgeVersion, 28.1.69, --version, MOD_DEV, --assetIndex, 1.14, --assetsDir, C:\Users\Anbaric\.gradle\caches\forge_gradle\assets, --username, Dev, --accessToken, ????????, --userProperties, {}]
+[28Oct2019 22:19:42.087] [main/INFO] [cpw.mods.modlauncher.Launcher/MODLAUNCHER]: ModLauncher 4.1.0+62+5bfa59b starting: java version 1.8.0_121 by Oracle Corporation
+[28Oct2019 22:19:42.435] [main/INFO] [net.minecraftforge.fml.loading.FixSSL/CORE]: Added Lets Encrypt root certificates as additional trust
+[28Oct2019 22:19:43.436] [main/INFO] [cpw.mods.modlauncher.LaunchServiceHandler/MODLAUNCHER]: Launching target 'fmluserdevclient' with arguments [--version, MOD_DEV, --gameDir, ., --assetsDir, C:\Users\Anbaric\.gradle\caches\forge_gradle\assets, --assetIndex, 1.14, --username, Dev, --accessToken, ????????, --userProperties, {}]
+[28Oct2019 22:19:45.831] [Client thread/INFO] [net.minecraft.client.Minecraft/]: Setting user: Dev
+[28Oct2019 22:19:58.769] [Client thread/WARN] [net.minecraft.client.GameSettings/]: Skipping bad option: lastServer:
+[28Oct2019 22:19:58.803] [Client thread/INFO] [net.minecraft.client.Minecraft/]: LWJGL Version: 3.2.2 build 10
+[28Oct2019 22:20:00.008] [modloading-worker-1/INFO] [net.minecraftforge.common.ForgeMod/FORGEMOD]: Forge mod loading, version 28.1.69, for MC 1.14.4 with MCP 20190829.143755
+[28Oct2019 22:20:00.008] [modloading-worker-1/INFO] [net.minecraftforge.common.MinecraftForge/FORGE]: MinecraftForge v28.1.69 Initialized
+[28Oct2019 22:20:03.500] [Client thread/INFO] [com.mojang.text2speech.NarratorWindows/]: Narrator library for x64 successfully loaded
+[28Oct2019 22:20:03.796] [Forge Version Check/INFO] [net.minecraftforge.fml.VersionChecker/]: [forge] Starting version check at https://files.minecraftforge.net/maven/net/minecraftforge/forge/promotions_slim.json
+[28Oct2019 22:20:05.515] [Forge Version Check/INFO] [net.minecraftforge.fml.VersionChecker/]: [forge] Found status: OUTDATED Current: 28.1.69 Target: 28.1.74
+[28Oct2019 22:20:05.515] [Forge Version Check/INFO] [net.minecraftforge.fml.VersionChecker/]: [terra_reforged] Starting version check at http://myurl.com/
+[28Oct2019 22:20:05.639] [Forge Version Check/WARN] [net.minecraftforge.fml.VersionChecker/]: Failed to process update information
 com.google.gson.JsonSyntaxException: java.lang.IllegalStateException: Expected BEGIN_OBJECT but was STRING at line 1 column 1 path $
 	at com.google.gson.Gson.fromJson(Gson.java:899) ~[gson-2.8.0.jar:?]
 	at com.google.gson.Gson.fromJson(Gson.java:852) ~[gson-2.8.0.jar:?]
@@ -26,50 +26,46 @@ Caused by: java.lang.IllegalStateException: Expected BEGIN_OBJECT but was STRING
 	at com.google.gson.internal.bind.MapTypeAdapterFactory$Adapter.read(MapTypeAdapterFactory.java:145) ~[gson-2.8.0.jar:?]
 	at com.google.gson.Gson.fromJson(Gson.java:887) ~[gson-2.8.0.jar:?]
 	... 6 more
-[28Oct2019 21:32:22.040] [Server-Worker-8/WARN] [net.minecraft.client.renderer.model.ModelBakery/]: Exception loading blockstate definition: 'terra_reforged:blockstates/soil_mud.json' in resourcepack: 'Mod Resources' for variant: 'normal': Unknown blockstate property: 'normal'
-[28Oct2019 21:32:22.041] [Server-Worker-8/WARN] [net.minecraft.client.renderer.model.ModelBakery/]: Exception loading blockstate definition: 'terra_reforged:blockstates/soil_mud.json' missing model for variant: 'terra_reforged:soil_mud#'
-[28Oct2019 21:32:22.578] [Server-Worker-8/WARN] [net.minecraft.client.renderer.model.ModelBakery/]: Unable to load model: 'tere:block/soil_mud' referenced from: terra_reforged:soil_mud#inventory: java.io.FileNotFoundException: tere:models/block/soil_mud.json
-[28Oct2019 21:32:22.961] [Server-Worker-3/ERROR] [net.minecraft.client.renderer.texture.AtlasTexture/]: Using missing texture, unable to load tere:textures/items/ingot_chlorophyte.png : java.io.FileNotFoundException: tere:textures/items/ingot_chlorophyte.png
-[28Oct2019 21:32:23.877] [Client thread/WARN] [net.minecraft.client.GameSettings/]: Skipping bad option: lastServer:
-[28Oct2019 21:32:23.964] [Client thread/INFO] [net.minecraft.client.audio.SoundSystem/]: OpenAL initialized.
-[28Oct2019 21:32:23.965] [Client thread/INFO] [net.minecraft.client.audio.SoundEngine/SOUNDS]: Sound engine started
-[28Oct2019 21:32:24.154] [Client thread/INFO] [net.minecraft.client.renderer.texture.AtlasTexture/]: Created: 512x512 textures-atlas
-[28Oct2019 21:32:24.936] [Client thread/INFO] [net.minecraft.client.renderer.texture.AtlasTexture/]: Created: 256x256 textures/particle-atlas
-[28Oct2019 21:32:24.937] [Client thread/INFO] [net.minecraft.client.renderer.texture.AtlasTexture/]: Created: 256x256 textures/painting-atlas
-[28Oct2019 21:32:24.937] [Client thread/INFO] [net.minecraft.client.renderer.texture.AtlasTexture/]: Created: 128x128 textures/mob_effect-atlas
-[28Oct2019 21:32:25.481] [Realms Notification Availability checker #1/INFO] [com.mojang.realmsclient.client.RealmsClient/]: Could not authorize you against Realms server: Invalid session id
-[28Oct2019 21:32:35.234] [Client thread/WARN] [net.minecraft.command.Commands/]: Ambiguity between arguments [teleport, destination] and [teleport, targets] with inputs: [Player, 0123, @e, dd12be42-52a9-4a91-a8a1-11c01849e498]
-[28Oct2019 21:32:35.234] [Client thread/WARN] [net.minecraft.command.Commands/]: Ambiguity between arguments [teleport, location] and [teleport, destination] with inputs: [0.1 -0.5 .9, 0 0 0]
-[28Oct2019 21:32:35.235] [Client thread/WARN] [net.minecraft.command.Commands/]: Ambiguity between arguments [teleport, location] and [teleport, targets] with inputs: [0.1 -0.5 .9, 0 0 0]
-[28Oct2019 21:32:35.236] [Client thread/WARN] [net.minecraft.command.Commands/]: Ambiguity between arguments [teleport, targets] and [teleport, destination] with inputs: [Player, 0123, dd12be42-52a9-4a91-a8a1-11c01849e498]
-[28Oct2019 21:32:35.237] [Client thread/WARN] [net.minecraft.command.Commands/]: Ambiguity between arguments [teleport, targets, location] and [teleport, targets, destination] with inputs: [0.1 -0.5 .9, 0 0 0]
-[28Oct2019 21:32:35.381] [Server thread/INFO] [net.minecraft.server.integrated.IntegratedServer/]: Starting integrated minecraft server version 1.14.4
-[28Oct2019 21:32:35.381] [Server thread/INFO] [net.minecraft.server.integrated.IntegratedServer/]: Generating keypair
-[28Oct2019 21:32:35.837] [Server thread/INFO] [net.minecraftforge.registries.GameData/REGISTRIES]: Injecting existing registry data into this SERVER instance
-[28Oct2019 21:32:36.183] [Server thread/INFO] [net.minecraft.resources.SimpleReloadableResourceManager/]: Reloading ResourceManager: Default, forge-1.14.4-28.1.69_mapped_snapshot_20191027-1.14.3-recomp.jar, main
-[28Oct2019 21:32:36.872] [Server thread/INFO] [net.minecraft.item.crafting.RecipeManager/]: Loaded 6 recipes
-[28Oct2019 21:32:38.136] [Server thread/INFO] [net.minecraft.advancements.AdvancementList/]: Loaded 811 advancements
-[28Oct2019 21:32:38.563] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: Preparing start region for dimension minecraft:overworld
-[28Oct2019 21:32:39.645] [Client thread/INFO] [net.minecraft.world.chunk.listener.LoggingChunkStatusListener/]: Preparing spawn area: 0%
-[28Oct2019 21:32:39.645] [Client thread/INFO] [net.minecraft.world.chunk.listener.LoggingChunkStatusListener/]: Preparing spawn area: 0%
-[28Oct2019 21:32:39.645] [Client thread/INFO] [net.minecraft.world.chunk.listener.LoggingChunkStatusListener/]: Preparing spawn area: 0%
-[28Oct2019 21:32:41.843] [Client thread/INFO] [net.minecraft.world.chunk.listener.LoggingChunkStatusListener/]: Preparing spawn area: 83%
-[28Oct2019 21:32:41.843] [Client thread/INFO] [net.minecraft.world.chunk.listener.LoggingChunkStatusListener/]: Preparing spawn area: 83%
-[28Oct2019 21:32:41.843] [Client thread/INFO] [net.minecraft.world.chunk.listener.LoggingChunkStatusListener/]: Preparing spawn area: 83%
-[28Oct2019 21:32:41.843] [Client thread/INFO] [net.minecraft.world.chunk.listener.LoggingChunkStatusListener/]: Preparing spawn area: 83%
-[28Oct2019 21:32:42.125] [Client thread/INFO] [net.minecraft.world.chunk.listener.LoggingChunkStatusListener/]: Preparing spawn area: 99%
-[28Oct2019 21:32:42.459] [Client thread/INFO] [net.minecraft.world.chunk.listener.LoggingChunkStatusListener/]: Time elapsed: 3865 ms
-[28Oct2019 21:32:43.184] [Server thread/INFO] [net.minecraft.world.server.ChunkManager/]: ThreadedAnvilChunkStorage (DIM1): All chunks are saved
-[28Oct2019 21:32:43.185] [Server thread/INFO] [net.minecraft.world.server.ChunkManager/]: ThreadedAnvilChunkStorage (DIM-1): All chunks are saved
-[28Oct2019 21:32:45.197] [Netty Local Client IO #0/INFO] [net.minecraftforge.fml.network.NetworkHooks/]: Connected to a modded server.
-[28Oct2019 21:32:45.389] [Server thread/INFO] [net.minecraft.server.management.PlayerList/]: Dev[local:E:76326060] logged in with entity id 320 at (-6.3109285576923275, 64.0, 180.48369401332738)
-[28Oct2019 21:32:45.415] [Client thread/ERROR] [net.minecraftforge.fml.network.simple.IndexedMessageCodec/SIMPLENET]: Received empty payload
-[28Oct2019 21:32:45.423] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: Dev joined the game
-[28Oct2019 21:32:45.669] [Server thread/ERROR] [net.minecraftforge.fml.network.simple.IndexedMessageCodec/SIMPLENET]: Received empty payload
-[28Oct2019 21:32:45.669] [Server thread/INFO] [net.minecraft.server.integrated.IntegratedServer/]: Saving and pausing game...
-[28Oct2019 21:32:45.676] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: Saving chunks for level 'New World'/minecraft:overworld
-[28Oct2019 21:32:45.897] [Client thread/INFO] [net.minecraft.advancements.AdvancementList/]: Loaded 7 advancements
-[28Oct2019 21:32:46.864] [pool-3-thread-1/WARN] [com.mojang.authlib.yggdrasil.YggdrasilMinecraftSessionService/]: Couldn't look up profile properties for com.mojang.authlib.GameProfile@792f1aa0[id=380df991-f603-344c-a090-369bad2a924a,name=Dev,properties={},legacy=false]
+[28Oct2019 22:20:08.705] [Client thread/WARN] [net.minecraft.client.GameSettings/]: Skipping bad option: lastServer:
+[28Oct2019 22:20:08.812] [Client thread/INFO] [net.minecraft.client.audio.SoundSystem/]: OpenAL initialized.
+[28Oct2019 22:20:08.813] [Client thread/INFO] [net.minecraft.client.audio.SoundEngine/SOUNDS]: Sound engine started
+[28Oct2019 22:20:08.990] [Client thread/INFO] [net.minecraft.client.renderer.texture.AtlasTexture/]: Created: 512x512 textures-atlas
+[28Oct2019 22:20:09.672] [Client thread/INFO] [net.minecraft.client.renderer.texture.AtlasTexture/]: Created: 256x256 textures/particle-atlas
+[28Oct2019 22:20:09.674] [Client thread/INFO] [net.minecraft.client.renderer.texture.AtlasTexture/]: Created: 256x256 textures/painting-atlas
+[28Oct2019 22:20:09.674] [Client thread/INFO] [net.minecraft.client.renderer.texture.AtlasTexture/]: Created: 128x128 textures/mob_effect-atlas
+[28Oct2019 22:20:10.177] [Realms Notification Availability checker #1/INFO] [com.mojang.realmsclient.client.RealmsClient/]: Could not authorize you against Realms server: Invalid session id
+[28Oct2019 22:20:14.843] [Client thread/WARN] [net.minecraft.command.Commands/]: Ambiguity between arguments [teleport, destination] and [teleport, targets] with inputs: [Player, 0123, @e, dd12be42-52a9-4a91-a8a1-11c01849e498]
+[28Oct2019 22:20:14.843] [Client thread/WARN] [net.minecraft.command.Commands/]: Ambiguity between arguments [teleport, location] and [teleport, destination] with inputs: [0.1 -0.5 .9, 0 0 0]
+[28Oct2019 22:20:14.844] [Client thread/WARN] [net.minecraft.command.Commands/]: Ambiguity between arguments [teleport, location] and [teleport, targets] with inputs: [0.1 -0.5 .9, 0 0 0]
+[28Oct2019 22:20:14.845] [Client thread/WARN] [net.minecraft.command.Commands/]: Ambiguity between arguments [teleport, targets] and [teleport, destination] with inputs: [Player, 0123, dd12be42-52a9-4a91-a8a1-11c01849e498]
+[28Oct2019 22:20:14.846] [Client thread/WARN] [net.minecraft.command.Commands/]: Ambiguity between arguments [teleport, targets, location] and [teleport, targets, destination] with inputs: [0.1 -0.5 .9, 0 0 0]
+[28Oct2019 22:20:14.983] [Server thread/INFO] [net.minecraft.server.integrated.IntegratedServer/]: Starting integrated minecraft server version 1.14.4
+[28Oct2019 22:20:14.983] [Server thread/INFO] [net.minecraft.server.integrated.IntegratedServer/]: Generating keypair
+[28Oct2019 22:20:15.146] [Server thread/INFO] [net.minecraftforge.registries.GameData/REGISTRIES]: Injecting existing registry data into this SERVER instance
+[28Oct2019 22:20:15.727] [Server thread/INFO] [net.minecraft.resources.SimpleReloadableResourceManager/]: Reloading ResourceManager: Default, forge-1.14.4-28.1.69_mapped_snapshot_20191027-1.14.3-recomp.jar, main
+[28Oct2019 22:20:16.387] [Server thread/INFO] [net.minecraft.item.crafting.RecipeManager/]: Loaded 6 recipes
+[28Oct2019 22:20:17.573] [Server thread/INFO] [net.minecraft.advancements.AdvancementList/]: Loaded 811 advancements
+[28Oct2019 22:20:17.974] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: Preparing start region for dimension minecraft:overworld
+[28Oct2019 22:20:19.130] [Client thread/INFO] [net.minecraft.world.chunk.listener.LoggingChunkStatusListener/]: Preparing spawn area: 0%
+[28Oct2019 22:20:19.130] [Client thread/INFO] [net.minecraft.world.chunk.listener.LoggingChunkStatusListener/]: Preparing spawn area: 0%
+[28Oct2019 22:20:19.130] [Client thread/INFO] [net.minecraft.world.chunk.listener.LoggingChunkStatusListener/]: Preparing spawn area: 0%
+[28Oct2019 22:20:19.487] [Client thread/INFO] [net.minecraft.world.chunk.listener.LoggingChunkStatusListener/]: Preparing spawn area: 71%
+[28Oct2019 22:20:21.323] [Client thread/INFO] [net.minecraft.world.chunk.listener.LoggingChunkStatusListener/]: Preparing spawn area: 83%
+[28Oct2019 22:20:21.324] [Client thread/INFO] [net.minecraft.world.chunk.listener.LoggingChunkStatusListener/]: Preparing spawn area: 83%
+[28Oct2019 22:20:21.324] [Client thread/INFO] [net.minecraft.world.chunk.listener.LoggingChunkStatusListener/]: Preparing spawn area: 83%
+[28Oct2019 22:20:21.504] [Client thread/INFO] [net.minecraft.world.chunk.listener.LoggingChunkStatusListener/]: Preparing spawn area: 99%
+[28Oct2019 22:20:21.903] [Client thread/INFO] [net.minecraft.world.chunk.listener.LoggingChunkStatusListener/]: Time elapsed: 3917 ms
+[28Oct2019 22:20:22.567] [Server thread/INFO] [net.minecraft.world.server.ChunkManager/]: ThreadedAnvilChunkStorage (DIM-1): All chunks are saved
+[28Oct2019 22:20:22.568] [Server thread/INFO] [net.minecraft.world.server.ChunkManager/]: ThreadedAnvilChunkStorage (DIM1): All chunks are saved
+[28Oct2019 22:20:24.408] [Netty Local Client IO #0/INFO] [net.minecraftforge.fml.network.NetworkHooks/]: Connected to a modded server.
+[28Oct2019 22:20:24.599] [Server thread/INFO] [net.minecraft.server.management.PlayerList/]: Dev[local:E:946a7cb5] logged in with entity id 330 at (-6.038356881684175, 64.0, 179.8320070825093)
+[28Oct2019 22:20:24.627] [Client thread/ERROR] [net.minecraftforge.fml.network.simple.IndexedMessageCodec/SIMPLENET]: Received empty payload
+[28Oct2019 22:20:24.632] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: Dev joined the game
+[28Oct2019 22:20:24.872] [Server thread/ERROR] [net.minecraftforge.fml.network.simple.IndexedMessageCodec/SIMPLENET]: Received empty payload
+[28Oct2019 22:20:24.872] [Server thread/INFO] [net.minecraft.server.integrated.IntegratedServer/]: Saving and pausing game...
+[28Oct2019 22:20:24.879] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: Saving chunks for level 'New World'/minecraft:overworld
+[28Oct2019 22:20:25.071] [Client thread/INFO] [net.minecraft.advancements.AdvancementList/]: Loaded 7 advancements
+[28Oct2019 22:20:25.865] [pool-3-thread-1/WARN] [com.mojang.authlib.yggdrasil.YggdrasilMinecraftSessionService/]: Couldn't look up profile properties for com.mojang.authlib.GameProfile@26fd1a31[id=380df991-f603-344c-a090-369bad2a924a,name=Dev,properties={},legacy=false]
 com.mojang.authlib.exceptions.AuthenticationException: The client has sent too many requests within a certain amount of time
 	at com.mojang.authlib.yggdrasil.YggdrasilAuthenticationService.makeRequest(YggdrasilAuthenticationService.java:79) ~[authlib-1.5.25.jar:?]
 	at com.mojang.authlib.yggdrasil.YggdrasilMinecraftSessionService.fillGameProfile(YggdrasilMinecraftSessionService.java:180) ~[authlib-1.5.25.jar:?]
@@ -91,53 +87,15 @@ com.mojang.authlib.exceptions.AuthenticationException: The client has sent too m
 	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1142) [?:1.8.0_121]
 	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:617) [?:1.8.0_121]
 	at java.lang.Thread.run(Thread.java:745) [?:1.8.0_121]
-[28Oct2019 21:32:57.943] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: [Dev: Set the weather to clear]
-[28Oct2019 21:32:57.966] [Client thread/INFO] [net.minecraft.client.gui.NewChatGui/]: [CHAT] Set the weather to clear
-[28Oct2019 21:38:42.088] [Client thread/INFO] [net.minecraft.client.gui.NewChatGui/]: [CHAT] [Debug]: Reloaded resource packs
-[28Oct2019 21:38:42.091] [Client thread/INFO] [net.minecraft.resources.SimpleReloadableResourceManager/]: Reloading ResourceManager: Mod Resources, Default
-[28Oct2019 21:38:42.207] [Server thread/INFO] [net.minecraft.server.integrated.IntegratedServer/]: Saving and pausing game...
-[28Oct2019 21:38:42.219] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: Saving chunks for level 'New World'/minecraft:overworld
-[28Oct2019 21:38:43.695] [Server-Worker-24/WARN] [net.minecraft.client.renderer.model.ModelBakery/]: Exception loading blockstate definition: 'terra_reforged:blockstates/soil_mud.json' in resourcepack: 'Mod Resources' for variant: 'normal': Unknown blockstate property: 'normal'
-[28Oct2019 21:38:43.695] [Server-Worker-24/WARN] [net.minecraft.client.renderer.model.ModelBakery/]: Exception loading blockstate definition: 'terra_reforged:blockstates/soil_mud.json' missing model for variant: 'terra_reforged:soil_mud#'
-[28Oct2019 21:38:44.149] [Server-Worker-24/WARN] [net.minecraft.client.renderer.model.ModelBakery/]: Unable to load model: 'tere:block/soil_mud' referenced from: terra_reforged:soil_mud#inventory: java.io.FileNotFoundException: tere:models/block/soil_mud.json
-[28Oct2019 21:38:44.347] [Server-Worker-21/ERROR] [net.minecraft.client.renderer.texture.AtlasTexture/]: Using missing texture, unable to load tere:textures/items/ingot_chlorophyte.png : java.io.FileNotFoundException: tere:textures/items/ingot_chlorophyte.png
-[28Oct2019 21:38:44.754] [Client thread/WARN] [net.minecraft.client.GameSettings/]: Skipping bad option: lastServer:
-[28Oct2019 21:38:44.843] [Client thread/INFO] [net.minecraft.client.audio.SoundSystem/]: OpenAL initialized.
-[28Oct2019 21:38:44.843] [Client thread/INFO] [net.minecraft.client.audio.SoundEngine/SOUNDS]: Sound engine started
-[28Oct2019 21:38:45.048] [Client thread/INFO] [net.minecraft.client.renderer.texture.AtlasTexture/]: Created: 512x512 textures-atlas
-[28Oct2019 21:38:45.340] [Client thread/INFO] [net.minecraft.client.renderer.texture.AtlasTexture/]: Created: 256x256 textures/particle-atlas
-[28Oct2019 21:38:45.341] [Client thread/INFO] [net.minecraft.client.renderer.texture.AtlasTexture/]: Created: 256x256 textures/painting-atlas
-[28Oct2019 21:38:45.341] [Client thread/INFO] [net.minecraft.client.renderer.texture.AtlasTexture/]: Created: 128x128 textures/mob_effect-atlas
-[28Oct2019 21:38:59.954] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: [Dev: Set the weather to clear]
-[28Oct2019 21:38:59.987] [Client thread/INFO] [net.minecraft.client.gui.NewChatGui/]: [CHAT] Set the weather to clear
-[28Oct2019 21:39:03.404] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: [Dev: Set the time to 1000]
-[28Oct2019 21:39:03.421] [Client thread/INFO] [net.minecraft.client.gui.NewChatGui/]: [CHAT] Set the time to 1000
-[28Oct2019 21:44:31.318] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: [Dev: Set the weather to clear]
-[28Oct2019 21:44:31.335] [Client thread/INFO] [net.minecraft.client.gui.NewChatGui/]: [CHAT] Set the weather to clear
-[28Oct2019 21:49:44.646] [Client thread/INFO] [net.minecraft.client.gui.NewChatGui/]: [CHAT] [Debug]: Reloaded resource packs
-[28Oct2019 21:49:44.649] [Client thread/INFO] [net.minecraft.resources.SimpleReloadableResourceManager/]: Reloading ResourceManager: Mod Resources, Default
-[28Oct2019 21:49:44.681] [Server thread/INFO] [net.minecraft.server.integrated.IntegratedServer/]: Saving and pausing game...
-[28Oct2019 21:49:44.684] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: Saving chunks for level 'New World'/minecraft:overworld
-[28Oct2019 21:49:46.248] [Server-Worker-42/WARN] [net.minecraft.client.renderer.model.ModelBakery/]: Exception loading blockstate definition: 'terra_reforged:blockstates/soil_mud.json' in resourcepack: 'Mod Resources' for variant: 'normal': Unknown blockstate property: 'normal'
-[28Oct2019 21:49:46.249] [Server-Worker-42/WARN] [net.minecraft.client.renderer.model.ModelBakery/]: Exception loading blockstate definition: 'terra_reforged:blockstates/soil_mud.json' missing model for variant: 'terra_reforged:soil_mud#'
-[28Oct2019 21:49:46.726] [Server-Worker-42/WARN] [net.minecraft.client.renderer.model.ModelBakery/]: Unable to load model: 'tere:block/soil_mud' referenced from: terra_reforged:soil_mud#inventory: java.io.FileNotFoundException: tere:models/block/soil_mud.json
-[28Oct2019 21:49:46.943] [Server-Worker-43/ERROR] [net.minecraft.client.renderer.texture.AtlasTexture/]: Using missing texture, unable to load tere:textures/items/ingot_chlorophyte.png : java.io.FileNotFoundException: tere:textures/items/ingot_chlorophyte.png
-[28Oct2019 21:49:47.330] [Client thread/WARN] [net.minecraft.client.GameSettings/]: Skipping bad option: lastServer:
-[28Oct2019 21:49:47.412] [Client thread/INFO] [net.minecraft.client.audio.SoundSystem/]: OpenAL initialized.
-[28Oct2019 21:49:47.412] [Client thread/INFO] [net.minecraft.client.audio.SoundEngine/SOUNDS]: Sound engine started
-[28Oct2019 21:49:47.606] [Client thread/INFO] [net.minecraft.client.renderer.texture.AtlasTexture/]: Created: 512x512 textures-atlas
-[28Oct2019 21:49:47.923] [Client thread/INFO] [net.minecraft.client.renderer.texture.AtlasTexture/]: Created: 256x256 textures/particle-atlas
-[28Oct2019 21:49:47.924] [Client thread/INFO] [net.minecraft.client.renderer.texture.AtlasTexture/]: Created: 256x256 textures/painting-atlas
-[28Oct2019 21:49:47.924] [Client thread/INFO] [net.minecraft.client.renderer.texture.AtlasTexture/]: Created: 128x128 textures/mob_effect-atlas
-[28Oct2019 21:49:53.880] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: [Dev: Set the time to 1000]
-[28Oct2019 21:49:53.896] [Client thread/INFO] [net.minecraft.client.gui.NewChatGui/]: [CHAT] Set the time to 1000
-[28Oct2019 21:50:01.079] [Client thread/INFO] [net.minecraft.client.Minecraft/]: Stopping!
-[28Oct2019 21:50:01.094] [Server thread/INFO] [net.minecraft.network.play.ServerPlayNetHandler/]: Dev lost connection: Disconnected
-[28Oct2019 21:50:01.094] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: Dev left the game
-[28Oct2019 21:50:01.098] [Server thread/INFO] [net.minecraft.network.play.ServerPlayNetHandler/]: Stopping singleplayer server as player logged out
-[28Oct2019 21:50:01.149] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: Stopping server
-[28Oct2019 21:50:01.149] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: Saving players
-[28Oct2019 21:50:01.149] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: Saving worlds
-[28Oct2019 21:50:01.149] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: Saving chunks for level 'New World'/minecraft:overworld
-[28Oct2019 21:50:01.340] [Server thread/INFO] [net.minecraft.world.server.ChunkManager/]: ThreadedAnvilChunkStorage (New World): All chunks are saved
-[28Oct2019 21:50:01.349] [Server thread/INFO] [net.minecraft.world.server.ChunkManager/]: ThreadedAnvilChunkStorage (New World): All chunks are saved
+[28Oct2019 22:24:35.487] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: [Dev: Set the time to 1000]
+[28Oct2019 22:24:35.508] [Client thread/INFO] [net.minecraft.client.gui.NewChatGui/]: [CHAT] Set the time to 1000
+[28Oct2019 22:24:40.218] [Client thread/INFO] [net.minecraft.client.Minecraft/]: Stopping!
+[28Oct2019 22:24:40.247] [Server thread/INFO] [net.minecraft.network.play.ServerPlayNetHandler/]: Dev lost connection: Disconnected
+[28Oct2019 22:24:40.248] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: Dev left the game
+[28Oct2019 22:24:40.252] [Server thread/INFO] [net.minecraft.network.play.ServerPlayNetHandler/]: Stopping singleplayer server as player logged out
+[28Oct2019 22:24:40.293] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: Stopping server
+[28Oct2019 22:24:40.293] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: Saving players
+[28Oct2019 22:24:40.293] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: Saving worlds
+[28Oct2019 22:24:40.294] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: Saving chunks for level 'New World'/minecraft:overworld
+[28Oct2019 22:24:40.982] [Server thread/INFO] [net.minecraft.world.server.ChunkManager/]: ThreadedAnvilChunkStorage (New World): All chunks are saved
+[28Oct2019 22:24:40.995] [Server thread/INFO] [net.minecraft.world.server.ChunkManager/]: ThreadedAnvilChunkStorage (New World): All chunks are saved

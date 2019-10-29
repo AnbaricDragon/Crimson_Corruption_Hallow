@@ -1,8 +1,8 @@
 {
     "variants": {
-        "check_decay=true,decayable=true": { "model": "terra_reforged:leaf_pearl_yellow" },
-				"check_decay=false,decayable=true": { "model": "terra_reforged:leaf_pearl_yellow" },
-				"check_decay=true,decayable=false": { "model": "terra_reforged:leaf_pearl_yellow" },
-				"check_decay=false,decayable=false": { "model": "terra_reforged:leaf_pearl_yellow" }
+        "check_decay=true,decayable=true": { "model": "terra_reforged:block/leaf_pearl_yellow" },
+				"check_decay=false,decayable=true": { "model": "terra_reforged:block/leaf_pearl_yellow" },
+				"check_decay=true,decayable=false": { "model": "terra_reforged:block/leaf_pearl_yellow" },
+				"check_decay=false,decayable=false": { "model": "terra_reforged:block/leaf_pearl_yellow" }
     }
 }

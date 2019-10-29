@@ -1,5 +1,5 @@
 {
     "variants": {
-        "normal": { "model": "terra_reforged:plank_boreal" }
+        "": { "model": "terra_reforged:block/plank_boreal" }
     }
 }

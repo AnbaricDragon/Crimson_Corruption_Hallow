@@ -1,6 +1,6 @@
 {
-    "parent": "tere:block/wall_side",
+    "parent": "terra_reforged:block/wall_side",
     "textures": {
-        "wall": "tere:blocks/sandstone_pearl_side_default"
+        "wall": "terra_reforged:blocks/sandstone_pearl_side_default"
     }
 }

@@ -1,6 +1,6 @@
 {
-    "parent": "tere:block/wall_pillar",
+    "parent": "terra_reforged:block/wall_pillar",
     "textures": {
-        "wall": "tere:blocks/stone_crim_cobble"
+        "wall": "terra_reforged:blocks/stone_crim_cobble"
     }
 }

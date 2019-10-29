@@ -1,8 +1,8 @@
 {
     "parent": "block/cube_bottom_top",
     "textures": {
-        "side": "tere:blocks/stone_moss_blue_side",
-				"top": "tere:blocks/stone_moss_blue_top",
+        "side": "terra_reforged:blocks/stone_moss_blue_side",
+				"top": "terra_reforged:blocks/stone_moss_blue_top",
 				"bottom": "blocks/stone"
     }
 }

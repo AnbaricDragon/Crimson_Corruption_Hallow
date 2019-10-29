@@ -1,6 +1,6 @@
 {
     "parent": "block/cube_all",
     "textures": {
-        "all": "tere:blocks/stone_pearl_cracked"
+        "all": "terra_reforged:blocks/stone_pearl_cracked"
     }
 }

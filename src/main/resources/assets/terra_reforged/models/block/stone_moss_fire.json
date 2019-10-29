@@ -1,13 +1,13 @@
 {
-    "parent": "tere:block/cube_double_column",
+    "parent": "terra_reforged:block/cube_double_column",
     "textures":
 		{
-        "side": "tere:blocks/stone_moss_fire_side",
-				"up": "tere:blocks/stone_moss_fire_top",
+        "side": "terra_reforged:blocks/stone_moss_fire_side",
+				"up": "terra_reforged:blocks/stone_moss_fire_top",
 				"down": "blocks/stone",
 				
-				"glow_side": "tere:blocks/stone_moss_fire_side_glow",
-				"glow_up": "tere:blocks/stone_moss_fire_top",
+				"glow_side": "terra_reforged:blocks/stone_moss_fire_side_glow",
+				"glow_up": "terra_reforged:blocks/stone_moss_fire_top",
 				"glow_down": "blocks/stone"
     }
 }

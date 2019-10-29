@@ -1,6 +1,6 @@
 {
     "parent": "block/leaves",
     "textures": {
-        "all": "tere:blocks/brick_tin_4"
+        "all": "terra_reforged:blocks/brick_tin_4"
     }
 }

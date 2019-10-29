@@ -1,7 +1,7 @@
 {
     "variants": {
-        "variant=x": { "model": "terra_reforged:log_mahogany", "x": 90, "y": 90 },
-				"variant=y": { "model": "terra_reforged:log_mahogany" },
-				"variant=z": { "model": "terra_reforged:log_mahogany", "x": 90 }
+        "variant=x": { "model": "terra_reforged:block/log_mahogany", "x": 90, "y": 90 },
+				"variant=y": { "model": "terra_reforged:block/log_mahogany" },
+				"variant=z": { "model": "terra_reforged:block/log_mahogany", "x": 90 }
     }
 }

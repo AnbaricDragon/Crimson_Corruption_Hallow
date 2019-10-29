@@ -1,7 +1,7 @@
 {
     "variants": {
-        "normal": [
-						{ "model": "tere:plant_moss_red" }
+        "": [
+						{ "model": "terra_reforged:block/plant_moss_red" }
 				]
     }
 }

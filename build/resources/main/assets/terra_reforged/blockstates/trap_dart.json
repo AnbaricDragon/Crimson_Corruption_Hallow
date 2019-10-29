@@ -1,5 +1,5 @@
 {
     "variants": {
-        "normal": { "model": "tere:trap_dart" }
+        "": { "model": "terra_reforged:block/trap_dart" }
     }
 }

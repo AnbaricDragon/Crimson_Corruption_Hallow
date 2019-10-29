@@ -1,5 +1,5 @@
 {
     "variants": {
-        "normal": { "model": "tere:misc_honey" }
+        "": { "model": "terra_reforged:block/misc_honey" }
     }
 }

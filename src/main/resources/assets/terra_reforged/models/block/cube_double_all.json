@@ -1,5 +1,5 @@
 {
-    "parent": "tere:block/cube_double",
+    "parent": "terra_reforged:block/cube_double",
     "ambientocclusion": false,
     "textures": {
         "particle": "#all",

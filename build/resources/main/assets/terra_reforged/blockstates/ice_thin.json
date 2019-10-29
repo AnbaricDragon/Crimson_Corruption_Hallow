@@ -1,5 +1,5 @@
 {
     "variants": {
-        "normal": { "model": "tere:ice_thin" }
+        "": { "model": "terra_reforged:block/ice_thin" }
     }
 }

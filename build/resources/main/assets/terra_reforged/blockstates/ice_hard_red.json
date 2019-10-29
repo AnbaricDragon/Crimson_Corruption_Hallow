@@ -1,5 +1,5 @@
 {
     "variants": {
-        "normal": { "model": "tere:ice_hard_red" }
+        "": { "model": "terra_reforged:block/ice_hard_red" }
     }
 }

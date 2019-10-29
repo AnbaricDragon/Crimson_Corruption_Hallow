@@ -1,6 +1,6 @@
 {
     "parent": "block/cube_all",
     "textures": {
-        "all": "tere:blocks/soil_mud"
+        "all": "terra_reforged:blocks/soil_mud"
     }
 }

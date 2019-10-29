@@ -1,5 +1,5 @@
 {
     "variants": {
-        "normal": { "model": "tere:brick_stucco_red" }
+        "": { "model": "terra_reforged:block/brick_stucco_red" }
     }
 }

@@ -1,19 +1,19 @@
 {
-    "parent": "tere:block/cube_double",
+    "parent": "terra_reforged:block/cube_double",
     "textures": {
-        "particle": "tere:blocks/mushroom_cap_inside",
-        "down": "tere:blocks/mushroom_cap_inside",
-        "up": "tere:blocks/mushroom_cap",
-        "north": "tere:blocks/mushroom_cap",
-        "east": "tere:blocks/mushroom_cap_inside",
-        "south": "tere:blocks/mushroom_cap_inside",
-        "west": "tere:blocks/mushroom_cap_inside",
+        "particle": "terra_reforged:blocks/mushroom_cap_inside",
+        "down": "terra_reforged:blocks/mushroom_cap_inside",
+        "up": "terra_reforged:blocks/mushroom_cap",
+        "north": "terra_reforged:blocks/mushroom_cap",
+        "east": "terra_reforged:blocks/mushroom_cap_inside",
+        "south": "terra_reforged:blocks/mushroom_cap_inside",
+        "west": "terra_reforged:blocks/mushroom_cap_inside",
 				
-				"glow_down": "tere:blocks/mushroom_cap_inside",
-        "glow_up": "tere:blocks/mushroom_cap_glow",
-        "glow_north": "tere:blocks/mushroom_cap_glow",
-        "glow_east": "tere:blocks/mushroom_cap_inside",
-        "glow_south": "tere:blocks/mushroom_cap_inside",
-        "glow_west": "tere:blocks/mushroom_cap_inside"
+				"glow_down": "terra_reforged:blocks/mushroom_cap_inside",
+        "glow_up": "terra_reforged:blocks/mushroom_cap_glow",
+        "glow_north": "terra_reforged:blocks/mushroom_cap_glow",
+        "glow_east": "terra_reforged:blocks/mushroom_cap_inside",
+        "glow_south": "terra_reforged:blocks/mushroom_cap_inside",
+        "glow_west": "terra_reforged:blocks/mushroom_cap_inside"
     }
 }

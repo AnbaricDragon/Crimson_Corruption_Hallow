@@ -1,5 +1,5 @@
 {
     "variants": {
-        "normal": { "model": "tere:log_boreal_solid" }
+        "": { "model": "terra_reforged:block/log_boreal_solid" }
     }
 }

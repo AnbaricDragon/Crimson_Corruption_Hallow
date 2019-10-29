@@ -1,5 +1,5 @@
 {
     "variants": {
-        "normal": { "model": "terra_reforged:stone_pearl_brick" }
+        "": { "model": "terra_reforged:block/stone_pearl_brick" }
     }
 }

@@ -1,6 +1,6 @@
 {
     "parent": "block/cross",
     "textures": {
-        "cross": "tere:blocks/sapling_boreal"
+        "cross": "terra_reforged:blocks/sapling_boreal"
     }
 }

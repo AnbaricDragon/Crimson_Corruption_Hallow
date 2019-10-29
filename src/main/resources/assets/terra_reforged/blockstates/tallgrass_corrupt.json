@@ -1,5 +1,5 @@
 {
     "variants": {
-        "normal": { "model": "terra_reforged:tallgrass_corrupt" }
+        "": { "model": "terra_reforged:block/tallgrass_corrupt" }
     }
 }

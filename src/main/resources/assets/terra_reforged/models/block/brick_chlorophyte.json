@@ -1,6 +1,6 @@
 {
-    "parent": "tere:block/cube_all",
+    "parent": "terra_reforged:block/cube_all",
     "textures": {
-        "all": "tere:blocks/brick_chlorophyte"
+        "all": "terra_reforged:blocks/brick_chlorophyte"
     }
 }

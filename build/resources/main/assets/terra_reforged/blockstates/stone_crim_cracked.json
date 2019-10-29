@@ -1,5 +1,5 @@
 {
     "variants": {
-        "normal": { "model": "tere:stone_crim_cracked" }
+        "": { "model": "terra_reforged:block/stone_crim_cracked" }
     }
 }

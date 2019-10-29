@@ -1,5 +1,5 @@
 {
     "variants": {
-        "normal": { "model": "tere:plate_copper" }
+        "": { "model": "terra_reforged:block/plate_copper" }
     }
 }

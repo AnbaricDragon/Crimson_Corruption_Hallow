@@ -1,9 +1,9 @@
 {
     "variants": 
 		{
-        "variant=pure": { "model": "tere:ore_mythril_pure" },
-				"variant=corrupt": { "model": "tere:ore_mythril_corrupt" },
-				"variant=crimson": { "model": "tere:ore_mythril_crimson" },
-				"variant=hallowed": { "model": "tere:ore_mythril_hallowed" }
+        "variant=pure": { "model": "terra_reforged:block/ore_mythril_pure" },
+				"variant=corrupt": { "model": "terra_reforged:block/ore_mythril_corrupt" },
+				"variant=crimson": { "model": "terra_reforged:block/ore_mythril_crimson" },
+				"variant=hallowed": { "model": "terra_reforged:block/ore_mythril_hallowed" }
     }
 }

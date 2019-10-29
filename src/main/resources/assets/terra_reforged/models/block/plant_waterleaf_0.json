@@ -1,6 +1,6 @@
 {
     "parent": "block/cross",
     "textures": {
-        "cross": "tere:blocks/plant_waterleaf_0"
+        "cross": "terra_reforged:blocks/plant_waterleaf_0"
     }
 }

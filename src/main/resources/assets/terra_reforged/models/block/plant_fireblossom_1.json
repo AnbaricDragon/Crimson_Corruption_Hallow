@@ -1,6 +1,6 @@
 {
     "parent": "block/cross",
     "textures": {
-        "cross": "tere:blocks/plant_fireblossom_1"
+        "cross": "terra_reforged:blocks/plant_fireblossom_1"
     }
 }

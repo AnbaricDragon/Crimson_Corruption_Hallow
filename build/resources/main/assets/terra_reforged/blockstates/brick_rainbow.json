@@ -1,5 +1,5 @@
 {
     "variants": {
-        "normal": { "model": "tere:brick_rainbow" }
+        "": { "model": "terra_reforged:block/brick_rainbow" }
     }
 }

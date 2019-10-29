@@ -1,8 +1,8 @@
 {
     "variants": 
 		{
-        "variant=corrupt": { "model": "tere:ore_gold_corrupt" },
-				"variant=crimson": { "model": "tere:ore_gold_crimson" },
-				"variant=hallowed": { "model": "tere:ore_gold_hallowed" }
+        "variant=corrupt": { "model": "terra_reforged:block/ore_gold_corrupt" },
+				"variant=crimson": { "model": "terra_reforged:block/ore_gold_crimson" },
+				"variant=hallowed": { "model": "terra_reforged:block/ore_gold_hallowed" }
     }
 }

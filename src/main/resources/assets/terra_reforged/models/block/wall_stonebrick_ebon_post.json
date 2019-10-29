@@ -1,6 +1,6 @@
 {
-    "parent": "tere:block/wall_post",
+    "parent": "terra_reforged:block/wall_post",
     "textures": {
-        "wall": "tere:blocks/stone_ebon_brick"
+        "wall": "terra_reforged:blocks/stone_ebon_brick"
     }
 }

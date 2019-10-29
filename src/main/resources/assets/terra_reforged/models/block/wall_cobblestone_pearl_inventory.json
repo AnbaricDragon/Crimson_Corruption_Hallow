@@ -1,6 +1,6 @@
 {
-    "parent": "tere:block/wall_inventory",
+    "parent": "terra_reforged:block/wall_inventory",
     "textures": {
-        "wall": "tere:blocks/stone_pearl_cobble"
+        "wall": "terra_reforged:blocks/stone_pearl_cobble"
     }
 }

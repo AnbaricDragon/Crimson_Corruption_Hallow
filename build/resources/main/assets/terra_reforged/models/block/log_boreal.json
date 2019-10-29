@@ -1,7 +1,7 @@
 {
     "parent": "block/cube_column",
     "textures": {
-        "end": "tere:blocks/log_boreal_top",
-				"side": "tere:blocks/log_boreal"
+        "end": "terra_reforged:blocks/log_boreal_top",
+				"side": "terra_reforged:blocks/log_boreal"
     }
 }

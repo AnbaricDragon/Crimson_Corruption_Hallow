@@ -1,9 +1,9 @@
 {
     "variants": 
 		{
-        "variant=pure": { "model": "terra_reforged:ore_orichalcum_pure" },
-				"variant=corrupt": { "model": "terra_reforged:ore_orichalcum_corrupt" },
-				"variant=crimson": { "model": "terra_reforged:ore_orichalcum_crimson" },
-				"variant=hallowed": { "model": "terra_reforged:ore_orichalcum_hallowed" }
+        "variant=pure": { "model": "terra_reforged:block/ore_orichalcum_pure" },
+				"variant=corrupt": { "model": "terra_reforged:block/ore_orichalcum_corrupt" },
+				"variant=crimson": { "model": "terra_reforged:block/ore_orichalcum_crimson" },
+				"variant=hallowed": { "model": "terra_reforged:block/ore_orichalcum_hallowed" }
     }
 }

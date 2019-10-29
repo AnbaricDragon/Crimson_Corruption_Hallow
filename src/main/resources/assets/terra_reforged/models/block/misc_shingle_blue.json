@@ -1,6 +1,6 @@
 {
     "parent": "block/cube_all",
     "textures": {
-        "all": "tere:blocks/misc_shingle_blue"
+        "all": "terra_reforged:blocks/misc_shingle_blue"
     }
 }

@@ -1,6 +1,6 @@
 {
     "parent": "block/cube_all",
     "textures": {
-        "all": "tere:blocks/ore_ruby_corrupt"
+        "all": "terra_reforged:blocks/ore_ruby_corrupt"
     }
 }

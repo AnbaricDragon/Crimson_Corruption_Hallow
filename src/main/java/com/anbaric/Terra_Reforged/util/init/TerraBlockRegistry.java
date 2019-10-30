@@ -1,4 +1,4 @@
-package com.anbaric.terra_reforged;
+package com.anbaric.terra_reforged.util.init;
 
 import com.anbaric.terra_reforged.util.Reference;
 import com.anbaric.terra_reforged.util.TerraItemGroups;
@@ -19,7 +19,7 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 @EventBusSubscriber(modid = Reference.MODID, bus = EventBusSubscriber.Bus.MOD)
-public final class TerraEventSubscriber
+public final class TerraBlockRegistry
 {
     private static final Logger LOGGER = LogManager.getLogger(Reference.MODID + " Mod Event Subscriber");
 
@@ -29,7 +29,8 @@ public final class TerraEventSubscriber
         event.getRegistry().registerAll
         (
             //Soils
-            setup(new Block(Block.Properties.create(Material.EARTH).hardnessAndResistance(0.5F, 3.0F).sound(SoundType.GROUND)), "soil_mud")
+            setup(new Block(Block.Properties.create(Material.EARTH).hardnessAndResistance(0.5F, 3.0F).sound(SoundType.GROUND)), "soil_mud"),
+            setup(new Block(Block.Properties.create(Material.EARTH).hardnessAndResistance(0.5F, 3.0F).sound(SoundType.GROUND)), "soil_ash")
         );
     }
 
@@ -37,11 +38,6 @@ public final class TerraEventSubscriber
     public static void onRegisterItems(final RegistryEvent.Register<Item> event)
     {
         final IForgeRegistry<Item> registry = event.getRegistry();
-
-        registry.registerAll
-        (
-            setup(new Item(new Item.Properties().group(TerraItemGroups.TERRA_MATERIALS_TAB)), "ingot_chlorophyte")
-        );
 
         // We need to go over the entire registry so that we include any potential Registry Overrides
         for (final Block block : ForgeRegistries.BLOCKS.getValues())

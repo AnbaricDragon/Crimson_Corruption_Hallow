@@ -10,8 +10,8 @@ import net.minecraft.item.Items;
 import javax.annotation.Nonnull;
 import java.util.function.Supplier;
 
-public final class TerraItemGroups {
-
+public final class TerraItemGroups
+{
     public static final ItemGroup TERRA_BLOCKS_TAB = new TerraItemGroup("terra_blocks_tab", () -> new ItemStack(TerraBlocks.SOIL_MUD));
     public static final ItemGroup TERRA_DECORATIONS_TAB = new TerraItemGroup("terra_decorations_tab", () -> new ItemStack(Blocks.ACACIA_LEAVES));
     public static final ItemGroup TERRA_MATERIALS_TAB = new TerraItemGroup("terra_materials_tab", () -> new ItemStack(TerraItems.INGOT_CHLOROPHYTE));

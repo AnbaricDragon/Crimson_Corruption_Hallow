@@ -16,10 +16,6 @@ public class TerraReforged
 
     //Plant Types
     public static PlantType BOREAL = PlantType.create("Boreal");
-    public static PlantType JUNGLE = PlantType.create("Jungle");
-    public static PlantType CORRUPT = PlantType.create("Corrupt");
-    public static PlantType CRIMSON = PlantType.create("Crimson");
-    public static PlantType HALLOWED = PlantType.create("Hallowed");
     public static PlantType MUSHROOM = PlantType.create("Mushroom");
 
     public static boolean debugSpreading = true;

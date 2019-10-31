@@ -23,19 +23,17 @@ import java.util.Random;
 public class TerraBlockBiomeGrass extends Block implements IGrowable
 {
     private EnumBiomeType biome;
-    private PlantType plantType;
 
     public TerraBlockBiomeGrass(Properties properties, EnumBiomeType biome)
     {
         super(properties);
         this.biome = biome;
-        this.plantType = biome.getPlantType(biome);
     }
 
     @Override
     public boolean canSustainPlant(BlockState state, IBlockReader world, BlockPos pos, Direction facing, IPlantable plantable)
     {
-        return plantable.getPlantType(world, pos) == this.plantType || plantable.getPlantType(world, pos) == PlantType.Plains;
+        return plantable.getPlantType(world, pos) == PlantType.Plains;
     }
 
     private static boolean canSpread(BlockState state, IWorldReader world, BlockPos pos)

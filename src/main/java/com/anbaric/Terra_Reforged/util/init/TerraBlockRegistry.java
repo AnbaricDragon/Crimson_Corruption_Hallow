@@ -2,11 +2,13 @@ package com.anbaric.terra_reforged.util.init;
 
 import com.anbaric.terra_reforged.blocks.TerraBlockBiomeGrass;
 import com.anbaric.terra_reforged.blocks.TerraBlockMudGrass;
+import com.anbaric.terra_reforged.blocks.TerraBlockSand;
 import com.anbaric.terra_reforged.util.Reference;
 import com.anbaric.terra_reforged.util.TerraItemGroups;
 import com.anbaric.terra_reforged.util.handlers.EnumHandler.EnumBiomeType;
 import com.google.common.base.Preconditions;
 import net.minecraft.block.Block;
+import net.minecraft.block.SandBlock;
 import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;
 import net.minecraft.item.BlockItem;
@@ -38,8 +40,13 @@ public final class TerraBlockRegistry
                 setup(new TerraBlockBiomeGrass(Block.Properties.create(Material.ORGANIC).hardnessAndResistance(0.5F, 3.0F).sound(SoundType.WET_GRASS).tickRandomly(), EnumBiomeType.CRIMSON), "grass_crimson"),
                 setup(new TerraBlockBiomeGrass(Block.Properties.create(Material.ORGANIC).hardnessAndResistance(0.5F, 3.0F).sound(SoundType.PLANT).tickRandomly(), EnumBiomeType.HALLOWED), "grass_hallowed"),
                 setup(new TerraBlockMudGrass(Block.Properties.create(Material.ORGANIC).hardnessAndResistance(0.5F, 3.0F).sound(SoundType.PLANT).tickRandomly()), "grass_jungle"),
-                setup(new TerraBlockMudGrass(Block.Properties.create(Material.ORGANIC).hardnessAndResistance(0.5F, 3.0F).sound(SoundType.PLANT).tickRandomly()), "grass_mushroom")//                setup(new Block(Block.Properties.create(Material.EARTH).hardnessAndResistance(0.5F, 3.0F).sound(SoundType.GROUND)), "soil_ash"),
-//                setup(new Block(Block.Properties.create(Material.EARTH).hardnessAndResistance(0.5F, 3.0F).sound(SoundType.GROUND)), "soil_mud"),
+                setup(new TerraBlockMudGrass(Block.Properties.create(Material.ORGANIC).hardnessAndResistance(0.5F, 3.0F).sound(SoundType.PLANT).tickRandomly()), "grass_mushroom"),
+                setup(new TerraBlockSand(Block.Properties.create(Material.SAND).hardnessAndResistance(0.5F).sound(SoundType.SAND).tickRandomly(), EnumBiomeType.CORRUPT), "sand_ebon"),
+                setup(new TerraBlockSand(Block.Properties.create(Material.SAND).hardnessAndResistance(0.5F).sound(SoundType.SAND).tickRandomly(), EnumBiomeType.CRIMSON), "sand_crim"),
+                setup(new TerraBlockSand(Block.Properties.create(Material.SAND).hardnessAndResistance(0.5F).sound(SoundType.SAND).tickRandomly(), EnumBiomeType.HALLOWED), "sand_pearl"),
+                setup(new SandBlock(25, Block.Properties.create(Material.SAND).hardnessAndResistance(0.5F).sound(SoundType.SAND)), "sand_silt"),
+                setup(new SandBlock(25, Block.Properties.create(Material.SAND).hardnessAndResistance(0.5F).sound(SoundType.SAND)), "sand_slush"),
+                setup(new SandBlock(25, Block.Properties.create(Material.SAND).hardnessAndResistance(1.0F).sound(SoundType.SAND)), "sand_hard")
 //                setup(new Block(Block.Properties.create(Material.EARTH).hardnessAndResistance(0.5F, 3.0F).sound(SoundType.GROUND)), "soil_ash"),
 //                setup(new Block(Block.Properties.create(Material.EARTH).hardnessAndResistance(0.5F, 3.0F).sound(SoundType.GROUND)), "soil_mud"),
 //                setup(new Block(Block.Properties.create(Material.EARTH).hardnessAndResistance(0.5F, 3.0F).sound(SoundType.GROUND)), "soil_ash"),

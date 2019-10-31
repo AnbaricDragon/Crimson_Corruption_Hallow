@@ -1,44 +1,33 @@
 package com.anbaric.terra_reforged.util.handlers;
 
-import com.anbaric.terra_reforged.TerraReforged;
 import com.anbaric.terra_reforged.blocks.TerraBlocks;
 import net.minecraft.block.Block;
 import net.minecraft.block.Blocks;
-import net.minecraftforge.common.PlantType;
 
 public class EnumHandler
 {
     public enum EnumBiomeType
     {
-        PURE("pure", PlantType.Plains),
-        CORRUPT("corrupt", TerraReforged.CORRUPT),
-        CRIMSON("crimson", TerraReforged.CRIMSON),
-        HALLOWED("hallowed", TerraReforged.HALLOWED);
+        PURE("pure"),
+        CORRUPT("corrupt"),
+        CRIMSON("crimson"),
+        HALLOWED("hallowed");
 
         private final String biome;
-        private final PlantType plantType;
 
-        private EnumBiomeType(String biome, PlantType plantType)
+        private EnumBiomeType(String biome)
         {
             this.biome = biome;
-            this.plantType = plantType;
         }
-
-        public PlantType getPlantType(EnumBiomeType biome)
-        {
-            return biome.plantType;
-        }
-
-
     }
 
     public static enum EnumBiomeBlockType
     {
         DIRT(Blocks.DIRT, TerraBlocks.GRASS_CORRUPT, TerraBlocks.GRASS_CRIMSON, TerraBlocks.GRASS_HALLOWED),
-        GRASS_BLOCK(Blocks.GRASS_BLOCK, TerraBlocks.GRASS_CORRUPT, TerraBlocks.GRASS_CRIMSON, TerraBlocks.GRASS_HALLOWED),
+        GRASS(Blocks.GRASS_BLOCK, TerraBlocks.GRASS_CORRUPT, TerraBlocks.GRASS_CRIMSON, TerraBlocks.GRASS_HALLOWED),
         GRASSJUNGLE(TerraBlocks.GRASS_JUNGLE, TerraBlocks.SOIL_MUD, TerraBlocks.SOIL_MUD, TerraBlocks.GRASS_JUNGLE),
-        MUD(TerraBlocks.SOIL_MUD, Blocks.DIRT, Blocks.DIRT, TerraBlocks.SOIL_MUD);
-//        SAND(Blocks.SAND, TerraBlocks.SAND_EBON, TerraBlocks.SAND_CRIM, TerraBlocks.SAND_PEARL),
+        MUD(TerraBlocks.SOIL_MUD, Blocks.DIRT, Blocks.DIRT, TerraBlocks.SOIL_MUD),
+        SAND(Blocks.SAND, TerraBlocks.SAND_EBON, TerraBlocks.SAND_CRIM, TerraBlocks.SAND_PEARL);
 //        HARDSAND(TerraBlocks.SAND_HARD, TerraBlocks.SAND_HARDEBON, TerraBlocks.SAND_HARDCRIM, TerraBlocks.SAND_HARDPEARL),
 //        SANDSTONE(Blocks.SANDSTONE, TerraBlocks.STONE_EBONSAND, TerraBlocks.STONE_CRIMSAND, TerraBlocks.STONE_PEARLSAND),
 //        SMOOTHSANDSTONE(Blocks.CUT_SANDSTONE, TerraBlocks.STONE_EBONSANDSMOOTH, TerraBlocks.STONE_CRIMSANDSMOOTH, TerraBlocks.STONE_PEARLSANDSMOOTH),

@@ -1,89 +1,97 @@
 package com.anbaric.terra_reforged.blocks;
 
-import com.anbaric.terra_reforged.TerraReforged;
-import net.minecraft.block.*;
-import net.minecraft.tags.FluidTags;
+import com.anbaric.terra_reforged.util.handlers.EnumHandler.EnumBiomeBlockType;
+import com.anbaric.terra_reforged.util.handlers.EnumHandler.EnumBiomeType;
+import net.minecraft.block.Block;
+import net.minecraft.block.BlockState;
+import net.minecraft.block.FallingBlock;
+import net.minecraft.block.IGrowable;
+import net.minecraft.entity.item.FallingBlockEntity;
 import net.minecraft.util.Direction;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.IBlockReader;
-import net.minecraft.world.IWorldReader;
 import net.minecraft.world.World;
 import net.minecraft.world.gen.feature.ConfiguredFeature;
 import net.minecraft.world.gen.feature.DecoratedFeatureConfig;
 import net.minecraft.world.gen.feature.FlowersFeature;
-import net.minecraft.world.lighting.LightEngine;
-import net.minecraftforge.common.IPlantable;
 import net.minecraftforge.common.PlantType;
 
 import java.util.List;
 import java.util.Random;
 
-public class TerraBlockMudGrass extends Block implements IGrowable
+public class TerraBlockSand extends FallingBlock implements IGrowable
 {
-    public TerraBlockMudGrass(Properties properties)
+    private EnumBiomeType biome;
+
+    public TerraBlockSand(Block.Properties properties, EnumBiomeType biome)
     {
         super(properties);
+        this.biome = biome;
     }
 
     @Override
-    public boolean canSustainPlant(BlockState state, IBlockReader world, BlockPos pos, Direction facing, IPlantable plantable)
+    public boolean canSustainPlant(BlockState state, IBlockReader world, BlockPos pos, Direction facing, net.minecraftforge.common.IPlantable plantable)
     {
-        PlantType type = plantable.getPlantType(world, pos);
-        return type == PlantType.Plains;
-    }
-
-    private static boolean canSpread(BlockState state, IWorldReader world, BlockPos pos)
-    {
-        BlockPos topPos = pos.up();
-        BlockState topState = world.getBlockState(topPos);
-        if (topState.getBlock() == Blocks.SNOW && topState.get(SnowBlock.LAYERS) == 1)
-        {
-            return true;
-        }
-        else
-        {
-            int i = LightEngine.func_215613_a(world, state, pos, topState, topPos, Direction.UP, topState.getOpacity(world, topPos));
-            return i < world.getMaxLightLevel() && TerraReforged.debugSpreading;
-        }
-    }
-
-    private static boolean noWater(BlockState state, IWorldReader world, BlockPos pos) {
-        BlockPos blockpos = pos.up();
-        return canSpread(state, world, pos) && !world.getFluidState(blockpos).isTagged(FluidTags.WATER);
+        return plantable.getPlantType(world, pos) == PlantType.Desert;
     }
 
     public void tick(BlockState state, World worldIn, BlockPos pos, Random random)
     {
         if (!worldIn.isRemote)
         {
+            this.checkFallable(worldIn, pos);
             if (!worldIn.isAreaLoaded(pos, 3))
             {
                 return; // Forge: prevent loading unloaded chunks when checking neighbor's light and spreading
             }
-            if (!canSpread(state, worldIn, pos))
-            {
-                worldIn.setBlockState(pos, TerraBlocks.SOIL_MUD.getDefaultState());
-            }
-            else
-            {
-                if (worldIn.getLight(pos.up()) >= 9)
-                {
-                    for (int i = 0; i < 4; ++i)
-                    {
-                        BlockPos targetPos = pos.add(random.nextInt(3) - 1, random.nextInt(3) - 1, random.nextInt(3) - 1);
-                        BlockState targetState = worldIn.getBlockState(targetPos);
-                        Block targetBlock = worldIn.getBlockState(targetPos).getBlock();
 
-                        if (targetBlock == TerraBlocks.SOIL_MUD)
-                        {
-                            if (noWater(targetState, worldIn, targetPos) && canSpread(targetState, worldIn, targetPos) && !worldIn.getBlockState(targetPos.up()).isOpaqueCube(worldIn, targetPos))
-                            {
-                                worldIn.setBlockState(targetPos, this.getDefaultState());
-                            }
-                        }
-                    }
+            for (int i = 0; i < 4; ++i)
+            {
+                BlockPos targetPos = pos.add(random.nextInt(3) - 1, random.nextInt(3) - 1, random.nextInt(3) - 1);
+                Block targetBlock = worldIn.getBlockState(targetPos).getBlock();
+
+                if (checkTransformable(targetBlock) && i == 0)
+                {
+                    worldIn.setBlockState(targetPos, transformedState(biome, targetBlock).getDefaultState());
                 }
             }
+        }
+    }
+
+    public Block transformedState(EnumBiomeType type, Block target)
+    {
+        Block result = target;
+        for (EnumBiomeBlockType block : EnumBiomeBlockType.values())
+        {
+            if (block.pure == target)
+            {
+                result = block.getBiomeBlock(type);
+            }
+        }
+        return result;
+    }
+
+    public boolean checkTransformable(Block target)
+    {
+        boolean check = false;
+        for (EnumBiomeBlockType block : EnumBiomeBlockType.values())
+        {
+            if (block.pure == target)
+            {
+                check = true;
+            }
+        }
+        return check;
+    }
+
+    private void checkFallable(World worldIn, BlockPos pos) {
+        if (worldIn.isAirBlock(pos.down()) || canFallThrough(worldIn.getBlockState(pos.down())) && pos.getY() >= 0) {
+            if (!worldIn.isRemote) {
+                FallingBlockEntity fallingblockentity = new FallingBlockEntity(worldIn, (double)pos.getX() + 0.5D, (double)pos.getY(), (double)pos.getZ() + 0.5D, worldIn.getBlockState(pos));
+                this.onStartFalling(fallingblockentity);
+                worldIn.addEntity(fallingblockentity);
+            }
+
         }
     }
 

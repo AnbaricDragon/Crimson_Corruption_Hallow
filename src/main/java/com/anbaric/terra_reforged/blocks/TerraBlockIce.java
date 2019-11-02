@@ -5,39 +5,39 @@ import com.anbaric.terra_reforged.util.handlers.EnumHandler.EnumBiomeBlockType;
 import com.anbaric.terra_reforged.util.handlers.EnumHandler.EnumBiomeType;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
-import net.minecraft.block.FallingBlock;
-import net.minecraft.entity.item.FallingBlockEntity;
+import net.minecraft.util.BlockRenderLayer;
 import net.minecraft.util.Direction;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.IBlockReader;
 import net.minecraft.world.World;
-import net.minecraftforge.common.PlantType;
 
 import java.util.Random;
 
-public class TerraBlockSand extends FallingBlock
+public class TerraBlockIce extends Block
 {
     private EnumBiomeType biome;
 
-    public TerraBlockSand(Block.Properties properties, EnumBiomeType biome)
+    public TerraBlockIce(Properties properties, EnumBiomeType biome)
     {
         super(properties);
         this.biome = biome;
     }
 
+    public BlockRenderLayer getRenderLayer() {
+        return BlockRenderLayer.TRANSLUCENT;
+    }
+
     @Override
     public boolean canSustainPlant(BlockState state, IBlockReader world, BlockPos pos, Direction facing, net.minecraftforge.common.IPlantable plantable)
     {
-        PlantType targetPlant = plantable.getPlantType(world, pos);
-        return targetPlant == PlantType.Desert || targetPlant == PlantType.Beach;
+       return plantable.getPlantType(world, pos) == TerraReforged.BOREAL;
     }
 
     public void tick(BlockState state, World worldIn, BlockPos pos, Random random)
     {
         if (!worldIn.isRemote)
         {
-            this.checkFallable(worldIn, pos);
-            if (!worldIn.isAreaLoaded(pos, 3))
+             if (!worldIn.isAreaLoaded(pos, 3))
             {
                 return; // Forge: prevent loading unloaded chunks when checking neighbor's light and spreading
             }
@@ -82,17 +82,6 @@ public class TerraBlockSand extends FallingBlock
             }
         }
         return check;
-    }
-
-    private void checkFallable(World worldIn, BlockPos pos) {
-        if (worldIn.isAirBlock(pos.down()) || canFallThrough(worldIn.getBlockState(pos.down())) && pos.getY() >= 0) {
-            if (!worldIn.isRemote) {
-                FallingBlockEntity fallingblockentity = new FallingBlockEntity(worldIn, (double)pos.getX() + 0.5D, (double)pos.getY(), (double)pos.getZ() + 0.5D, worldIn.getBlockState(pos));
-                this.onStartFalling(fallingblockentity);
-                worldIn.addEntity(fallingblockentity);
-            }
-
-        }
     }
 }
 

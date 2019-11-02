@@ -47,7 +47,7 @@ public class TerraBlockBiomeGrass extends Block implements IGrowable
         else
         {
             int i = LightEngine.func_215613_a(world, state, pos, topState, topPos, Direction.UP, topState.getOpacity(world, topPos));
-            return i < world.getMaxLightLevel() && TerraReforged.debugSpreading;
+            return i < world.getMaxLightLevel();
         }
     }
 
@@ -78,18 +78,21 @@ public class TerraBlockBiomeGrass extends Block implements IGrowable
                         BlockState targetState = worldIn.getBlockState(targetPos);
                         Block targetBlock = worldIn.getBlockState(targetPos).getBlock();
 
-                        if (checkTransformable(targetBlock) && i == 0)
+                        if (targetBlock == Blocks.DIRT)
                         {
-                            if (targetBlock == Blocks.DIRT || targetBlock == Blocks.GRASS_BLOCK)
+                            if (noWater(targetState, worldIn, targetPos) && canSpread(targetState, worldIn, targetPos) && !worldIn.getBlockState(targetPos.up()).isOpaqueCube(worldIn, targetPos))
                             {
-                                if (noWater(targetState, worldIn, targetPos) && canSpread(targetState, worldIn, targetPos) && !worldIn.getBlockState(targetPos.up()).isOpaqueCube(worldIn, targetPos))
+                                worldIn.setBlockState(targetPos, this.getDefaultState());
+                            }
+                        }
+                        else
+                        {
+                            if (checkTransformable(targetBlock))
+                            {
+                                if (TerraReforged.debugSpreading)
                                 {
                                     worldIn.setBlockState(targetPos, transformedState(biome, targetBlock).getDefaultState());
                                 }
-                            }
-                            else
-                            {
-                                worldIn.setBlockState(targetPos, transformedState(biome, targetBlock).getDefaultState());
                             }
                         }
                     }

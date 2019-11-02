@@ -23,24 +23,23 @@ public class EnumHandler
 
     public static enum EnumBiomeBlockType
     {
-        DIRT(Blocks.DIRT, TerraBlocks.GRASS_CORRUPT, TerraBlocks.GRASS_CRIMSON, TerraBlocks.GRASS_HALLOWED),
         GRASS(Blocks.GRASS_BLOCK, TerraBlocks.GRASS_CORRUPT, TerraBlocks.GRASS_CRIMSON, TerraBlocks.GRASS_HALLOWED),
         GRASSJUNGLE(TerraBlocks.GRASS_JUNGLE, TerraBlocks.SOIL_MUD, TerraBlocks.SOIL_MUD, TerraBlocks.GRASS_JUNGLE),
         MUD(TerraBlocks.SOIL_MUD, Blocks.DIRT, Blocks.DIRT, TerraBlocks.SOIL_MUD),
-        SAND(Blocks.SAND, TerraBlocks.SAND_EBON, TerraBlocks.SAND_CRIM, TerraBlocks.SAND_PEARL);
-//        HARDSAND(TerraBlocks.SAND_HARD, TerraBlocks.SAND_HARDEBON, TerraBlocks.SAND_HARDCRIM, TerraBlocks.SAND_HARDPEARL),
+        SAND(Blocks.SAND, TerraBlocks.SAND_EBON, TerraBlocks.SAND_CRIM, TerraBlocks.SAND_PEARL),
+        HARDSAND(TerraBlocks.SAND_HARD, TerraBlocks.SAND_HARDEBON, TerraBlocks.SAND_HARDCRIM, TerraBlocks.SAND_HARDPEARL),
 //        SANDSTONE(Blocks.SANDSTONE, TerraBlocks.STONE_EBONSAND, TerraBlocks.STONE_CRIMSAND, TerraBlocks.STONE_PEARLSAND),
 //        SMOOTHSANDSTONE(Blocks.CUT_SANDSTONE, TerraBlocks.STONE_EBONSANDSMOOTH, TerraBlocks.STONE_CRIMSANDSMOOTH, TerraBlocks.STONE_PEARLSANDSMOOTH),
 //        CHISELEDSANDSTONE(Blocks.CHISELED_SANDSTONE, TerraBlocks.STONE_EBONSANDCHISELED, TerraBlocks.STONE_CRIMSANDCHISELED, TerraBlocks.STONE_PEARLSANDCHISELED),
-//        SNOW(Blocks.SNOW, TerraBlocks.SNOW_CORRUPT, TerraBlocks.SNOW_CRIMSON, TerraBlocks.SNOW_HALLOWED),
-//        ICE(Blocks.ICE, TerraBlocks.ICE_PURPLE, TerraBlocks.ICE_RED, TerraBlocks.ICE_PINK),
-//        HARDICE(Blocks.PACKED_ICE, TerraBlocks.ICE_HARD_PURPLE, TerraBlocks.ICE_HARD_RED, TerraBlocks.ICE_HARD_PINK),
-//        STONE(Blocks.STONE, TerraBlocks.STONE_EBON, TerraBlocks.STONE_CRIM, TerraBlocks.STONE_PEARL),
-//        COBBLE(Blocks.COBBLESTONE, TerraBlocks.STONE_EBONCOBBLE, TerraBlocks.STONE_CRIMCOBBLE, TerraBlocks.STONE_PEARLCOBBLE),
-//        STONEBRICK(Blocks.STONE_BRICKS, TerraBlocks.STONE_EBONBRICK, TerraBlocks.STONE_CRIMBRICK, TerraBlocks.STONE_PEARLBRICK),
-//        CRACKEDSTONEBRICK(Blocks.CRACKED_STONE_BRICKS, TerraBlocks.STONE_EBONCRACKED, TerraBlocks.STONE_CRIMCRACKED, TerraBlocks.STONE_PEARLCRACKED),
-//        CHISELEDSTONEBRICK(Blocks.CHISELED_STONE_BRICKS, TerraBlocks.STONE_EBONCHISELED, TerraBlocks.STONE_CRIMCHISELED, TerraBlocks.STONE_PEARLCHISELED),
-//        MOSSYSTONEBRICK(Blocks.MOSSY_STONE_BRICKS, TerraBlocks.STONE_EBONMOSSY, TerraBlocks.STONE_CRIMMOSSY, TerraBlocks.STONE_PEARLMOSSY),
+        SNOW(Blocks.SNOW_BLOCK, TerraBlocks.SNOW_CORRUPT, TerraBlocks.SNOW_CRIMSON, TerraBlocks.SNOW_HALLOWED),
+        ICE(Blocks.ICE, TerraBlocks.ICE_PURPLE, TerraBlocks.ICE_RED, TerraBlocks.ICE_PINK),
+        HARDICE(Blocks.PACKED_ICE, TerraBlocks.ICE_HARD_PURPLE, TerraBlocks.ICE_HARD_RED, TerraBlocks.ICE_HARD_PINK),
+        STONE(Blocks.STONE, TerraBlocks.STONE_EBON_SMOOTH, TerraBlocks.STONE_CRIM_SMOOTH, TerraBlocks.STONE_PEARL_SMOOTH),
+        COBBLE(Blocks.COBBLESTONE, TerraBlocks.STONE_EBON_COBBLE, TerraBlocks.STONE_CRIM_COBBLE, TerraBlocks.STONE_PEARL_COBBLE),
+        STONEBRICK(Blocks.STONE_BRICKS, TerraBlocks.STONE_EBON_BRICK, TerraBlocks.STONE_CRIM_BRICK, TerraBlocks.STONE_PEARL_BRICK),
+        CRACKEDSTONEBRICK(Blocks.CRACKED_STONE_BRICKS, TerraBlocks.STONE_EBON_CRACKED, TerraBlocks.STONE_CRIM_CRACKED, TerraBlocks.STONE_PEARL_CRACKED),
+        CHISELEDSTONEBRICK(Blocks.CHISELED_STONE_BRICKS, TerraBlocks.STONE_EBON_CHISELED, TerraBlocks.STONE_CRIM_CHISELED, TerraBlocks.STONE_PEARL_CHISELED),
+        MOSSYSTONEBRICK(Blocks.MOSSY_STONE_BRICKS, TerraBlocks.STONE_EBON_MOSSY, TerraBlocks.STONE_CRIM_MOSSY, TerraBlocks.STONE_PEARL_MOSSY);
 //        //        ,
 //        ORECOPPER(TerraBlocks.ORE_COPPER, TerraBlocks.ORE_COPPER.withProperty(TerraBlockOres.VARIANT, EnumBiomeType.CORRUPT), TerraBlocks.ORE_COPPER.withProperty(TerraBlockOres.VARIANT, EnumBiomeType.CRIMSON), TerraBlocks.ORE_COPPER.withProperty(TerraBlockOres.VARIANT, EnumBiomeType.HALLOWED)),
 //        ORETIN(TerraBlocks.ORE_TIN, TerraBlocks.ORE_TIN.withProperty(TerraBlockOres.VARIANT, EnumBiomeType.CORRUPT), TerraBlocks.ORE_TIN.withProperty(TerraBlockOres.VARIANT, EnumBiomeType.CRIMSON), TerraBlocks.ORE_TIN.withProperty(TerraBlockOres.VARIANT, EnumBiomeType.HALLOWED)),
@@ -85,7 +84,7 @@ public class EnumHandler
 
         public Block getBiomeBlock(EnumBiomeType biome)
         {
-            switch(biome.biome)
+            switch (biome.biome)
             {
                 case "corrupt":
                     return this.corrupt;
@@ -96,6 +95,45 @@ public class EnumHandler
                 default:
                     return this.pure;
             }
+        }
+    }
+
+    public static enum EnumBlockTier
+    {
+        WOOD(0, "wood"),
+        IRON(1, "iron"),
+        GOLD(2, "gold"),
+        CORRUPT(3, "corrupt"),
+        MOLTEN(4, "molten"),
+        COBALT(5, "cobalt"),
+        MYTHRIL(6, "mythril"),
+        CHLOROPHYTE(7, "chlorophyte"),
+        LUMINITE(8, "luminite");
+
+        private final int tier;
+        private final int hardness;
+        private final String name;
+
+        private EnumBlockTier(int tier, String name)
+        {
+            this.tier = tier;
+            this.name = name;
+            this.hardness = tier * tier;
+        }
+
+        public int getHardness()
+        {
+            return this.hardness;
+        }
+
+        public int getLevel()
+        {
+            return this.tier;
+        }
+
+        public int getBlastResist()
+        {
+            return this.hardness * 3;
         }
     }
 }

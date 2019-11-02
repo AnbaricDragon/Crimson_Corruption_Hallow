@@ -1,6 +1,5 @@
 package com.anbaric.terra_reforged.blocks;
 
-import com.anbaric.terra_reforged.TerraReforged;
 import net.minecraft.block.*;
 import net.minecraft.tags.FluidTags;
 import net.minecraft.util.Direction;
@@ -43,7 +42,7 @@ public class TerraBlockMudGrass extends Block implements IGrowable
         else
         {
             int i = LightEngine.func_215613_a(world, state, pos, topState, topPos, Direction.UP, topState.getOpacity(world, topPos));
-            return i < world.getMaxLightLevel() && TerraReforged.debugSpreading;
+            return i < world.getMaxLightLevel();
         }
     }
 

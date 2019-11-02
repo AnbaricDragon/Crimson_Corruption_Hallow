@@ -2,7 +2,7 @@
     "parent": "block/cube_bottom_top",
     "textures": {
         "top": "terra_reforged:blocks/grass_crimson_top",
-				"bottom": "blocks/dirt",
+				"bottom": "minecraft:block/dirt",
 				"side": "terra_reforged:blocks/grass_crimson_side"				
     }
 }

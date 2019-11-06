@@ -1,5 +1,10 @@
 {
     "variants": {
-        "": { "model": "terra_reforged:block/sand_crim" }
+        "": [
+            { "model": "terra_reforged:block/sand_crim" },
+            { "model": "terra_reforged:block/sand_crim", "y": 90 },
+            { "model": "terra_reforged:block/sand_crim", "y": 180 },
+            { "model": "terra_reforged:block/sand_crim", "y": 270 }
+				]
     }
 }

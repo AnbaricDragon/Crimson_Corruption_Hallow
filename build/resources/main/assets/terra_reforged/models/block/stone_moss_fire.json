@@ -4,10 +4,11 @@
 		{
         "side": "terra_reforged:blocks/stone_moss_fire_side",
 				"up": "terra_reforged:blocks/stone_moss_fire_top",
-				"down": "blocks/stone",
+				"down": "minecraft:block/stone",
 				
 				"glow_side": "terra_reforged:blocks/stone_moss_fire_side_glow",
 				"glow_up": "terra_reforged:blocks/stone_moss_fire_top",
-				"glow_down": "blocks/stone"
+				"glow_down": "minecraft:block/stone"
     }
+
 }

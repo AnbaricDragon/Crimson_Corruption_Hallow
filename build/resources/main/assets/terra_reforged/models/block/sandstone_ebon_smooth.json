@@ -1,8 +1,6 @@
 {
-    "parent": "block/cube_bottom_top",
+    "parent": "block/cube_all",
     "textures": {
-        "top": "terra_reforged:blocks/sandstone_ebon_top",
-				"side": "terra_reforged:blocks/sandstone_ebon_side_smooth",
-				"bottom": "terra_reforged:blocks/sandstone_ebon_bottom"
+        "all": "terra_reforged:blocks/sandstone_ebon_top"
     }
 }

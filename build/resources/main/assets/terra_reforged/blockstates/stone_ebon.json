@@ -1,0 +1,6 @@
+{
+    "variants": {
+        "": { "model": "terra_reforged:block/stone_ebon" },
+				"": { "model": "terra_reforged:block/stone_ebon", "y": 90 }
+    }
+}

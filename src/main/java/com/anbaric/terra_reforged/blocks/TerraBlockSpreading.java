@@ -49,7 +49,7 @@ public class TerraBlockSpreading extends Block
                     BlockPos targetPos = pos.add(random.nextInt(3) - 1, random.nextInt(3) - 1, random.nextInt(3) - 1);
                     Block targetBlock = worldIn.getBlockState(targetPos).getBlock();
 
-                    if (checkTransformable(targetBlock) && i == 0)
+                    if (checkTransformable(targetBlock))
                     {
                         worldIn.setBlockState(targetPos, transformedState(biome, targetBlock).getDefaultState());
                     }

@@ -7,6 +7,7 @@ import com.anbaric.terra_reforged.util.TerraItemGroups;
 import com.anbaric.terra_reforged.util.handlers.EnumHandler.EnumBiomeType;
 import com.google.common.base.Preconditions;
 import net.minecraft.block.Block;
+import net.minecraft.block.Blocks;
 import net.minecraft.block.SandBlock;
 import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;
@@ -55,30 +56,61 @@ public final class TerraBlockRegistry
                 setup(new TerraBlockSpreading(Block.Properties.create(Material.SNOW_BLOCK).hardnessAndResistance(0.2F).sound(SoundType.SNOW).tickRandomly(), EnumBiomeType.HALLOWED, TerraReforged.BOREAL), "snow_hallowed"),
 
             //Stones
-                setup(new TerraBlockSpreading(Block.Properties.create(Material.ROCK).hardnessAndResistance(2.0F, 6.0F).harvestLevel(3).sound(SoundType.STONE).tickRandomly(), EnumBiomeType.CORRUPT, PlantType.Cave), "stone_ebon_smooth"),
-                setup(new TerraBlockSpreading(Block.Properties.create(Material.ROCK).hardnessAndResistance(2.0F, 6.0F).harvestLevel(3).sound(SoundType.STONE).tickRandomly(), EnumBiomeType.CORRUPT, PlantType.Cave), "stone_ebon_cobble"),
-                setup(new TerraBlockSpreading(Block.Properties.create(Material.ROCK).hardnessAndResistance(2.0F, 6.0F).harvestLevel(3).sound(SoundType.STONE).tickRandomly(), EnumBiomeType.CORRUPT, PlantType.Cave), "stone_ebon_brick"),
-                setup(new TerraBlockSpreading(Block.Properties.create(Material.ROCK).hardnessAndResistance(2.0F, 6.0F).harvestLevel(3).sound(SoundType.STONE).tickRandomly(), EnumBiomeType.CORRUPT, PlantType.Cave), "stone_ebon_cracked"),
-                setup(new TerraBlockSpreading(Block.Properties.create(Material.ROCK).hardnessAndResistance(2.0F, 6.0F).harvestLevel(3).sound(SoundType.STONE).tickRandomly(), EnumBiomeType.CORRUPT, PlantType.Cave), "stone_ebon_chiseled"),
-                setup(new TerraBlockSpreading(Block.Properties.create(Material.ROCK).hardnessAndResistance(2.0F, 6.0F).harvestLevel(3).sound(SoundType.STONE).tickRandomly(), EnumBiomeType.CORRUPT, PlantType.Cave), "stone_ebon_mossy"),
-                setup(new TerraBlockSpreading(Block.Properties.create(Material.ROCK).hardnessAndResistance(2.0F, 6.0F).harvestLevel(3).sound(SoundType.STONE).tickRandomly(), EnumBiomeType.CRIMSON, PlantType.Cave), "stone_crim_smooth"),
-                setup(new TerraBlockSpreading(Block.Properties.create(Material.ROCK).hardnessAndResistance(2.0F, 6.0F).harvestLevel(3).sound(SoundType.STONE).tickRandomly(), EnumBiomeType.CRIMSON, PlantType.Cave), "stone_crim_cobble"),
-                setup(new TerraBlockSpreading(Block.Properties.create(Material.ROCK).hardnessAndResistance(2.0F, 6.0F).harvestLevel(3).sound(SoundType.STONE).tickRandomly(), EnumBiomeType.CRIMSON, PlantType.Cave), "stone_crim_brick"),
-                setup(new TerraBlockSpreading(Block.Properties.create(Material.ROCK).hardnessAndResistance(2.0F, 6.0F).harvestLevel(3).sound(SoundType.STONE).tickRandomly(), EnumBiomeType.CRIMSON, PlantType.Cave), "stone_crim_cracked"),
-                setup(new TerraBlockSpreading(Block.Properties.create(Material.ROCK).hardnessAndResistance(2.0F, 6.0F).harvestLevel(3).sound(SoundType.STONE).tickRandomly(), EnumBiomeType.CRIMSON, PlantType.Cave), "stone_crim_chiseled"),
-                setup(new TerraBlockSpreading(Block.Properties.create(Material.ROCK).hardnessAndResistance(2.0F, 6.0F).harvestLevel(3).sound(SoundType.STONE).tickRandomly(), EnumBiomeType.CRIMSON, PlantType.Cave), "stone_crim_mossy"),
-                setup(new TerraBlockSpreading(Block.Properties.create(Material.ROCK).hardnessAndResistance(2.0F, 6.0F).harvestLevel(3).sound(SoundType.STONE).tickRandomly(), EnumBiomeType.HALLOWED, PlantType.Cave), "stone_pearl_smooth"),
-                setup(new TerraBlockSpreading(Block.Properties.create(Material.ROCK).hardnessAndResistance(2.0F, 6.0F).harvestLevel(3).sound(SoundType.STONE).tickRandomly(), EnumBiomeType.HALLOWED, PlantType.Cave), "stone_pearl_cobble"),
-                setup(new TerraBlockSpreading(Block.Properties.create(Material.ROCK).hardnessAndResistance(2.0F, 6.0F).harvestLevel(3).sound(SoundType.STONE).tickRandomly(), EnumBiomeType.HALLOWED, PlantType.Cave), "stone_pearl_brick"),
-                setup(new TerraBlockSpreading(Block.Properties.create(Material.ROCK).hardnessAndResistance(2.0F, 6.0F).harvestLevel(3).sound(SoundType.STONE).tickRandomly(), EnumBiomeType.HALLOWED, PlantType.Cave), "stone_pearl_cracked"),
-                setup(new TerraBlockSpreading(Block.Properties.create(Material.ROCK).hardnessAndResistance(2.0F, 6.0F).harvestLevel(3).sound(SoundType.STONE).tickRandomly(), EnumBiomeType.HALLOWED, PlantType.Cave), "stone_pearl_chiseled"),
-                setup(new TerraBlockSpreading(Block.Properties.create(Material.ROCK).hardnessAndResistance(2.0F, 6.0F).harvestLevel(3).sound(SoundType.STONE).tickRandomly(), EnumBiomeType.HALLOWED, PlantType.Cave), "stone_pearl_mossy"),
+                setup(new TerraBlockSpreading(Block.Properties.create(Material.ROCK).hardnessAndResistance(2.0F, 6.0F).harvestLevel(3).sound(SoundType.STONE).tickRandomly(), EnumBiomeType.CORRUPT, PlantType.Cave), "stone_ebon"),
+                setup(new TerraBlockSpreading(Block.Properties.create(Material.ROCK).hardnessAndResistance(2.0F, 6.0F).harvestLevel(3).sound(SoundType.STONE).tickRandomly(), EnumBiomeType.CORRUPT, PlantType.Cave), "cobblestone_ebon"),
+                setup(new TerraBlockSpreading(Block.Properties.create(Material.ROCK).hardnessAndResistance(2.0F, 6.0F).harvestLevel(3).sound(SoundType.STONE).tickRandomly(), EnumBiomeType.CORRUPT, PlantType.Cave), "cobblestone_ebon_mossy"),
+                setup(new TerraBlockSpreading(Block.Properties.create(Material.ROCK).hardnessAndResistance(2.0F, 6.0F).harvestLevel(3).sound(SoundType.STONE).tickRandomly(), EnumBiomeType.CORRUPT, PlantType.Cave), "stonebrick_ebon"),
+                setup(new TerraBlockSpreading(Block.Properties.create(Material.ROCK).hardnessAndResistance(2.0F, 6.0F).harvestLevel(3).sound(SoundType.STONE).tickRandomly(), EnumBiomeType.CORRUPT, PlantType.Cave), "stonebrick_ebon_cracked"),
+                setup(new TerraBlockSpreading(Block.Properties.create(Material.ROCK).hardnessAndResistance(2.0F, 6.0F).harvestLevel(3).sound(SoundType.STONE).tickRandomly(), EnumBiomeType.CORRUPT, PlantType.Cave), "stonebrick_ebon_chiseled"),
+                setup(new TerraBlockSpreading(Block.Properties.create(Material.ROCK).hardnessAndResistance(2.0F, 6.0F).harvestLevel(3).sound(SoundType.STONE).tickRandomly(), EnumBiomeType.CORRUPT, PlantType.Cave), "stonebrick_ebon_mossy"),
+                setup(new TerraBlockSpreading(Block.Properties.create(Material.ROCK).hardnessAndResistance(2.0F, 6.0F).harvestLevel(3).sound(SoundType.STONE).tickRandomly(), EnumBiomeType.CRIMSON, PlantType.Cave), "stone_crim"),
+                setup(new TerraBlockSpreading(Block.Properties.create(Material.ROCK).hardnessAndResistance(2.0F, 6.0F).harvestLevel(3).sound(SoundType.STONE).tickRandomly(), EnumBiomeType.CRIMSON, PlantType.Cave), "cobblestone_crim"),
+                setup(new TerraBlockSpreading(Block.Properties.create(Material.ROCK).hardnessAndResistance(2.0F, 6.0F).harvestLevel(3).sound(SoundType.STONE).tickRandomly(), EnumBiomeType.CRIMSON, PlantType.Cave), "cobblestone_crim_mossy"),
+                setup(new TerraBlockSpreading(Block.Properties.create(Material.ROCK).hardnessAndResistance(2.0F, 6.0F).harvestLevel(3).sound(SoundType.STONE).tickRandomly(), EnumBiomeType.CRIMSON, PlantType.Cave), "stonebrick_crim"),
+                setup(new TerraBlockSpreading(Block.Properties.create(Material.ROCK).hardnessAndResistance(2.0F, 6.0F).harvestLevel(3).sound(SoundType.STONE).tickRandomly(), EnumBiomeType.CRIMSON, PlantType.Cave), "stonebrick_crim_cracked"),
+                setup(new TerraBlockSpreading(Block.Properties.create(Material.ROCK).hardnessAndResistance(2.0F, 6.0F).harvestLevel(3).sound(SoundType.STONE).tickRandomly(), EnumBiomeType.CRIMSON, PlantType.Cave), "stonebrick_crim_chiseled"),
+                setup(new TerraBlockSpreading(Block.Properties.create(Material.ROCK).hardnessAndResistance(2.0F, 6.0F).harvestLevel(3).sound(SoundType.STONE).tickRandomly(), EnumBiomeType.CRIMSON, PlantType.Cave), "stonebrick_crim_mossy"),
+                setup(new TerraBlockSpreading(Block.Properties.create(Material.ROCK).hardnessAndResistance(2.0F, 6.0F).harvestLevel(3).sound(SoundType.STONE).tickRandomly(), EnumBiomeType.HALLOWED, PlantType.Cave), "stone_pearl"),
+                setup(new TerraBlockSpreading(Block.Properties.create(Material.ROCK).hardnessAndResistance(2.0F, 6.0F).harvestLevel(3).sound(SoundType.STONE).tickRandomly(), EnumBiomeType.HALLOWED, PlantType.Cave), "cobblestone_pearl"),
+                setup(new TerraBlockSpreading(Block.Properties.create(Material.ROCK).hardnessAndResistance(2.0F, 6.0F).harvestLevel(3).sound(SoundType.STONE).tickRandomly(), EnumBiomeType.HALLOWED, PlantType.Cave), "cobblestone_pearl_mossy"),
+                setup(new TerraBlockSpreading(Block.Properties.create(Material.ROCK).hardnessAndResistance(2.0F, 6.0F).harvestLevel(3).sound(SoundType.STONE).tickRandomly(), EnumBiomeType.HALLOWED, PlantType.Cave), "stonebrick_pearl"),
+                setup(new TerraBlockSpreading(Block.Properties.create(Material.ROCK).hardnessAndResistance(2.0F, 6.0F).harvestLevel(3).sound(SoundType.STONE).tickRandomly(), EnumBiomeType.HALLOWED, PlantType.Cave), "stonebrick_pearl_cracked"),
+                setup(new TerraBlockSpreading(Block.Properties.create(Material.ROCK).hardnessAndResistance(2.0F, 6.0F).harvestLevel(3).sound(SoundType.STONE).tickRandomly(), EnumBiomeType.HALLOWED, PlantType.Cave), "stonebrick_pearl_chiseled"),
+                setup(new TerraBlockSpreading(Block.Properties.create(Material.ROCK).hardnessAndResistance(2.0F, 6.0F).harvestLevel(3).sound(SoundType.STONE).tickRandomly(), EnumBiomeType.HALLOWED, PlantType.Cave), "stonebrick_pearl_mossy"),
+                setup(new Block(Block.Properties.create(Material.ROCK).hardnessAndResistance(1.5F, 6.0F).sound(SoundType.STONE)), "stone_granite"),
+                setup(new Block(Block.Properties.create(Material.ROCK).hardnessAndResistance(1.5F, 6.0F).sound(SoundType.STONE)), "stone_marble"),
+                setup(new Block(Block.Properties.create(Material.ROCK).hardnessAndResistance(1.5F, 6.0F).sound(SoundType.STONE)), "stone_fossil"),
+
+            //Ice
                 setup(new TerraBlockIce(Block.Properties.create(Material.ICE).slipperiness(0.98F).tickRandomly().hardnessAndResistance(0.5F).sound(SoundType.GLASS), EnumBiomeType.CORRUPT), "ice_purple"),
                 setup(new TerraBlockSpreading(Block.Properties.create(Material.ICE).slipperiness(0.98F).tickRandomly().hardnessAndResistance(0.5F).sound(SoundType.GLASS), EnumBiomeType.CORRUPT, TerraReforged.BOREAL), "ice_hard_purple"),
                 setup(new TerraBlockIce(Block.Properties.create(Material.ICE).slipperiness(0.98F).tickRandomly().hardnessAndResistance(0.5F).sound(SoundType.GLASS), EnumBiomeType.CRIMSON), "ice_red"),
                 setup(new TerraBlockSpreading(Block.Properties.create(Material.ICE).slipperiness(0.98F).tickRandomly().hardnessAndResistance(0.5F).sound(SoundType.GLASS), EnumBiomeType.CRIMSON, TerraReforged.BOREAL), "ice_hard_red"),
                 setup(new TerraBlockIce(Block.Properties.create(Material.ICE).slipperiness(0.98F).tickRandomly().hardnessAndResistance(0.5F).sound(SoundType.GLASS), EnumBiomeType.HALLOWED), "ice_pink"),
-                setup(new TerraBlockSpreading(Block.Properties.create(Material.ICE).slipperiness(0.98F).tickRandomly().hardnessAndResistance(0.5F).sound(SoundType.GLASS), EnumBiomeType.HALLOWED, TerraReforged.BOREAL), "ice_hard_pink")
+                setup(new TerraBlockSpreading(Block.Properties.create(Material.ICE).slipperiness(0.98F).tickRandomly().hardnessAndResistance(0.5F).sound(SoundType.GLASS), EnumBiomeType.HALLOWED, TerraReforged.BOREAL), "ice_hard_pink"),
+
+            //Sandstones
+                setup(new TerraBlockSpreading(Block.Properties.create(Material.ROCK).hardnessAndResistance(2.0F, 6.0F).harvestLevel(3).sound(SoundType.STONE).tickRandomly(), EnumBiomeType.CORRUPT, PlantType.Cave), "sandstone_ebon"),
+                setup(new TerraBlockSpreading(Block.Properties.create(Material.ROCK).hardnessAndResistance(2.0F, 6.0F).harvestLevel(3).sound(SoundType.STONE).tickRandomly(), EnumBiomeType.CORRUPT, PlantType.Cave), "sandstone_ebon_chiseled"),
+                setup(new TerraBlockSpreading(Block.Properties.create(Material.ROCK).hardnessAndResistance(2.0F, 6.0F).harvestLevel(3).sound(SoundType.STONE).tickRandomly(), EnumBiomeType.CORRUPT, PlantType.Cave), "sandstone_ebon_smooth"),
+                setup(new TerraBlockSpreading(Block.Properties.create(Material.ROCK).hardnessAndResistance(2.0F, 6.0F).harvestLevel(3).sound(SoundType.STONE).tickRandomly(), EnumBiomeType.CORRUPT, PlantType.Cave), "sandstone_ebon_cut"),
+                setup(new TerraBlockSpreading(Block.Properties.create(Material.ROCK).hardnessAndResistance(2.0F, 6.0F).harvestLevel(3).sound(SoundType.STONE).tickRandomly(), EnumBiomeType.CRIMSON, PlantType.Cave), "sandstone_crim"),
+                setup(new TerraBlockSpreading(Block.Properties.create(Material.ROCK).hardnessAndResistance(2.0F, 6.0F).harvestLevel(3).sound(SoundType.STONE).tickRandomly(), EnumBiomeType.CRIMSON, PlantType.Cave), "sandstone_crim_chiseled"),
+                setup(new TerraBlockSpreading(Block.Properties.create(Material.ROCK).hardnessAndResistance(2.0F, 6.0F).harvestLevel(3).sound(SoundType.STONE).tickRandomly(), EnumBiomeType.CRIMSON, PlantType.Cave), "sandstone_crim_smooth"),
+                setup(new TerraBlockSpreading(Block.Properties.create(Material.ROCK).hardnessAndResistance(2.0F, 6.0F).harvestLevel(3).sound(SoundType.STONE).tickRandomly(), EnumBiomeType.CRIMSON, PlantType.Cave), "sandstone_crim_cut"),
+                setup(new TerraBlockSpreading(Block.Properties.create(Material.ROCK).hardnessAndResistance(2.0F, 6.0F).harvestLevel(3).sound(SoundType.STONE).tickRandomly(), EnumBiomeType.HALLOWED, PlantType.Cave), "sandstone_pearl"),
+                setup(new TerraBlockSpreading(Block.Properties.create(Material.ROCK).hardnessAndResistance(2.0F, 6.0F).harvestLevel(3).sound(SoundType.STONE).tickRandomly(), EnumBiomeType.HALLOWED, PlantType.Cave), "sandstone_pearl_chiseled"),
+                setup(new TerraBlockSpreading(Block.Properties.create(Material.ROCK).hardnessAndResistance(2.0F, 6.0F).harvestLevel(3).sound(SoundType.STONE).tickRandomly(), EnumBiomeType.HALLOWED, PlantType.Cave), "sandstone_pearl_smooth"),
+                setup(new TerraBlockSpreading(Block.Properties.create(Material.ROCK).hardnessAndResistance(2.0F, 6.0F).harvestLevel(3).sound(SoundType.STONE).tickRandomly(), EnumBiomeType.HALLOWED, PlantType.Cave), "sandstone_pearl_cut"),
+
+            //Moss Blocks
+                setup(new TerraBlockMoss(Block.Properties.create(Material.EARTH).hardnessAndResistance(0.6F).sound(SoundType.PLANT).tickRandomly(), Blocks.FERN), "stone_moss_red"),
+                setup(new TerraBlockMoss(Block.Properties.create(Material.EARTH).hardnessAndResistance(0.6F).sound(SoundType.PLANT).tickRandomly(), Blocks.FERN), "stone_moss_fire"),
+                setup(new TerraBlockMoss(Block.Properties.create(Material.EARTH).hardnessAndResistance(0.6F).sound(SoundType.PLANT).tickRandomly(), Blocks.FERN), "stone_moss_yellow"),
+                setup(new TerraBlockMoss(Block.Properties.create(Material.EARTH).hardnessAndResistance(0.6F).sound(SoundType.PLANT).tickRandomly(), Blocks.FERN), "stone_moss_green"),
+                setup(new TerraBlockMoss(Block.Properties.create(Material.EARTH).hardnessAndResistance(0.6F).sound(SoundType.PLANT).tickRandomly(), Blocks.FERN), "stone_moss_blue"),
+                setup(new TerraBlockMoss(Block.Properties.create(Material.EARTH).hardnessAndResistance(0.6F).sound(SoundType.PLANT).tickRandomly(), Blocks.FERN), "stone_moss_purple")
+
         );
     }
 

@@ -1,5 +1,10 @@
 {
     "variants": {
-        "": { "model": "terra_reforged:block/sand_ebon" }
+        "": [
+            { "model": "terra_reforged:block/sand_ebon" },
+            { "model": "terra_reforged:block/sand_ebon", "y": 90 },
+            { "model": "terra_reforged:block/sand_ebon", "y": 180 },
+            { "model": "terra_reforged:block/sand_ebon", "y": 270 }
+				]
     }
 }

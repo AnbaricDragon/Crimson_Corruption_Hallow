@@ -1,6 +1,0 @@
-{
-    "parent": "block/cube_all",
-    "textures": {
-        "all": "terra_reforged:blocks/stone_ebon_smooth"
-    }
-}

@@ -3,6 +3,6 @@
     "textures": {
         "side": "terra_reforged:blocks/stone_moss_yellow_side",
 				"top": "terra_reforged:blocks/stone_moss_yellow_top",
-				"bottom": "blocks/stone"
+				"bottom": "minecraft:block/stone"
     }
 }

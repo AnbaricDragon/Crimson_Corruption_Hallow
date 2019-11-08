@@ -1,10 +1,11 @@
 {
     "variants": {
-        "": [
-						{ "model": "terra_reforged:block/grass_hallowed" },
-						{ "model": "terra_reforged:block/grass_hallowed", "y": 90 },
-						{ "model": "terra_reforged:block/grass_hallowed", "y": 180 },
-						{ "model": "terra_reforged:block/grass_hallowed", "y": 270 }
-				]
+        "snowy=false": [
+            { "model": "terra_reforged:block/grass_hallowed" },
+            { "model": "terra_reforged:block/grass_hallowed", "y": 90 },
+            { "model": "terra_reforged:block/grass_hallowed", "y": 180 },
+            { "model": "terra_reforged:block/grass_hallowed", "y": 270 }
+        ],
+        "snowy=true":  { "model": "terra_reforged:block/grass_hallowed_snowy" }
     }
 }

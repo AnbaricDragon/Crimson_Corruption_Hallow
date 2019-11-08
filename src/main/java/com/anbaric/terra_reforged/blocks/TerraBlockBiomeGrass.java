@@ -4,10 +4,13 @@ import com.anbaric.terra_reforged.TerraReforged;
 import com.anbaric.terra_reforged.util.handlers.EnumHandler.EnumBiomeBlockType;
 import com.anbaric.terra_reforged.util.handlers.EnumHandler.EnumBiomeType;
 import net.minecraft.block.*;
+import net.minecraft.item.BlockItemUseContext;
 import net.minecraft.tags.FluidTags;
+import net.minecraft.util.BlockRenderLayer;
 import net.minecraft.util.Direction;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.IBlockReader;
+import net.minecraft.world.IWorld;
 import net.minecraft.world.IWorldReader;
 import net.minecraft.world.World;
 import net.minecraft.world.gen.feature.ConfiguredFeature;
@@ -20,7 +23,7 @@ import net.minecraftforge.common.PlantType;
 import java.util.List;
 import java.util.Random;
 
-public class TerraBlockBiomeGrass extends Block implements IGrowable
+public class TerraBlockBiomeGrass extends SnowyDirtBlock implements IGrowable
 {
     private EnumBiomeType biome;
 
@@ -44,6 +47,10 @@ public class TerraBlockBiomeGrass extends Block implements IGrowable
         {
             return true;
         }
+        if (topState.getBlock() instanceof TerraBlockSnowLayer && topState.get(TerraBlockSnowLayer.LAYERS) < 8)
+        {
+            return true;
+        }
         else
         {
             int i = LightEngine.func_215613_a(world, state, pos, topState, topPos, Direction.UP, topState.getOpacity(world, topPos));
@@ -51,7 +58,8 @@ public class TerraBlockBiomeGrass extends Block implements IGrowable
         }
     }
 
-    private static boolean noWater(BlockState state, IWorldReader world, BlockPos pos) {
+    private static boolean noWater(BlockState state, IWorldReader world, BlockPos pos)
+    {
         BlockPos blockpos = pos.up();
         return canSpread(state, world, pos) && !world.getFluidState(blockpos).isTagged(FluidTags.WATER);
     }
@@ -99,6 +107,29 @@ public class TerraBlockBiomeGrass extends Block implements IGrowable
                 }
             }
         }
+    }
+
+    @Override
+    public BlockState updatePostPlacement(BlockState stateIn, Direction facing, BlockState facingState, IWorld worldIn, BlockPos currentPos, BlockPos facingPos) {
+    if (facing != Direction.UP) {
+        return super.updatePostPlacement(stateIn, facing, facingState, worldIn, currentPos, facingPos);
+    } else {
+        Block block = facingState.getBlock();
+        return stateIn.with(SNOWY, Boolean.valueOf(block == Blocks.SNOW_BLOCK || block == Blocks.SNOW || block == TerraBlocks.SNOW_CORRUPT_LAYER || block == TerraBlocks.SNOW_CRIMSON_LAYER || block == TerraBlocks.SNOW_HALLOWED_LAYER));
+    }
+}
+
+    public BlockState getStateForPlacement(BlockItemUseContext context) {
+        Block block = context.getWorld().getBlockState(context.getPos().up()).getBlock();
+        return this.getDefaultState().with(SNOWY, Boolean.valueOf(block == Blocks.SNOW_BLOCK || block == Blocks.SNOW || block == TerraBlocks.SNOW_CORRUPT_LAYER || block == TerraBlocks.SNOW_CRIMSON_LAYER || block == TerraBlocks.SNOW_HALLOWED_LAYER));
+    }
+
+    public boolean isSolid(BlockState state) {
+        return true;
+    }
+
+    public BlockRenderLayer getRenderLayer() {
+        return BlockRenderLayer.CUTOUT_MIPPED;
     }
 
     public Block transformedState(EnumBiomeType type, Block target)

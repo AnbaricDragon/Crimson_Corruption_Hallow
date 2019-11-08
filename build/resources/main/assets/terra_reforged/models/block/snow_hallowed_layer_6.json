@@ -1,0 +1,6 @@
+{   
+		"parent": "terra_reforged:block/snow_layer_6",
+    "textures": {
+        "all": "terra_reforged:blocks/snow_hallowed"
+    }
+}

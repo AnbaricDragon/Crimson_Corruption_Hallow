@@ -13,6 +13,9 @@ public class TerraBlocks
     public static final Block SNOW_CORRUPT = null;
     public static final Block SNOW_CRIMSON = null;
     public static final Block SNOW_HALLOWED = null;
+    public static final Block SNOW_CORRUPT_LAYER = null;
+    public static final Block SNOW_CRIMSON_LAYER = null;
+    public static final Block SNOW_HALLOWED_LAYER = null;
     public static final Block GRASS_JUNGLE = null;
     public static final Block GRASS_MUSHROOM = null;
     public static final Block GRASS_CORRUPT = null;

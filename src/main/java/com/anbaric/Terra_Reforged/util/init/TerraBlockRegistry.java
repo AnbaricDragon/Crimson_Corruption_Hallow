@@ -6,11 +6,9 @@ import com.anbaric.terra_reforged.util.Reference;
 import com.anbaric.terra_reforged.util.TerraItemGroups;
 import com.anbaric.terra_reforged.util.handlers.EnumHandler.EnumBiomeType;
 import com.google.common.base.Preconditions;
-import net.minecraft.block.Block;
-import net.minecraft.block.Blocks;
-import net.minecraft.block.SandBlock;
-import net.minecraft.block.SoundType;
+import net.minecraft.block.*;
 import net.minecraft.block.material.Material;
+import net.minecraft.block.material.MaterialColor;
 import net.minecraft.item.BlockItem;
 import net.minecraft.item.Item;
 import net.minecraft.util.ResourceLocation;
@@ -54,7 +52,9 @@ public final class TerraBlockRegistry
                 setup(new TerraBlockSpreading(Block.Properties.create(Material.SNOW_BLOCK).hardnessAndResistance(0.2F).sound(SoundType.SNOW).tickRandomly(), EnumBiomeType.CORRUPT, TerraReforged.BOREAL), "snow_corrupt"),
                 setup(new TerraBlockSpreading(Block.Properties.create(Material.SNOW_BLOCK).hardnessAndResistance(0.2F).sound(SoundType.SNOW).tickRandomly(), EnumBiomeType.CRIMSON, TerraReforged.BOREAL), "snow_crimson"),
                 setup(new TerraBlockSpreading(Block.Properties.create(Material.SNOW_BLOCK).hardnessAndResistance(0.2F).sound(SoundType.SNOW).tickRandomly(), EnumBiomeType.HALLOWED, TerraReforged.BOREAL), "snow_hallowed"),
-
+                setup(new TerraBlockSnowLayer(Block.Properties.create(Material.SNOW).tickRandomly().hardnessAndResistance(0.1F).sound(SoundType.SNOW)), "snow_corrupt_layer"),
+                setup(new TerraBlockSnowLayer(Block.Properties.create(Material.SNOW).tickRandomly().hardnessAndResistance(0.1F).sound(SoundType.SNOW)), "snow_crimson_layer"),
+                setup(new TerraBlockSnowLayer(Block.Properties.create(Material.SNOW).tickRandomly().hardnessAndResistance(0.1F).sound(SoundType.SNOW)), "snow_hallowed_layer"),
             //Stones
                 setup(new TerraBlockSpreading(Block.Properties.create(Material.ROCK).hardnessAndResistance(2.0F, 6.0F).harvestLevel(3).sound(SoundType.STONE).tickRandomly(), EnumBiomeType.CORRUPT, PlantType.Cave), "stone_ebon"),
                 setup(new TerraBlockSpreading(Block.Properties.create(Material.ROCK).hardnessAndResistance(2.0F, 6.0F).harvestLevel(3).sound(SoundType.STONE).tickRandomly(), EnumBiomeType.CORRUPT, PlantType.Cave), "cobblestone_ebon"),
@@ -109,7 +109,15 @@ public final class TerraBlockRegistry
                 setup(new TerraBlockMoss(Block.Properties.create(Material.EARTH).hardnessAndResistance(0.6F).sound(SoundType.PLANT).tickRandomly(), Blocks.FERN), "stone_moss_yellow"),
                 setup(new TerraBlockMoss(Block.Properties.create(Material.EARTH).hardnessAndResistance(0.6F).sound(SoundType.PLANT).tickRandomly(), Blocks.FERN), "stone_moss_green"),
                 setup(new TerraBlockMoss(Block.Properties.create(Material.EARTH).hardnessAndResistance(0.6F).sound(SoundType.PLANT).tickRandomly(), Blocks.FERN), "stone_moss_blue"),
-                setup(new TerraBlockMoss(Block.Properties.create(Material.EARTH).hardnessAndResistance(0.6F).sound(SoundType.PLANT).tickRandomly(), Blocks.FERN), "stone_moss_purple")
+                setup(new TerraBlockMoss(Block.Properties.create(Material.EARTH).hardnessAndResistance(0.6F).sound(SoundType.PLANT).tickRandomly(), Blocks.FERN), "stone_moss_purple"),
+
+            //Woods
+                setup(new LogBlock(MaterialColor.PURPLE_TERRACOTTA, Block.Properties.create(Material.WOOD).hardnessAndResistance(2.0F).sound(SoundType.WOOD)), "log_ebon"),
+                setup(new LogBlock(MaterialColor.RED_TERRACOTTA, Block.Properties.create(Material.WOOD).hardnessAndResistance(2.0F).sound(SoundType.WOOD)), "log_shade"),
+                setup(new LogBlock(MaterialColor.PINK_TERRACOTTA, Block.Properties.create(Material.WOOD).hardnessAndResistance(2.0F).sound(SoundType.WOOD)), "log_pearl"),
+                setup(new LogBlock(MaterialColor.BROWN_TERRACOTTA, Block.Properties.create(Material.WOOD).hardnessAndResistance(2.0F).sound(SoundType.WOOD)), "log_boreal"),
+                setup(new LogBlock(MaterialColor.YELLOW_TERRACOTTA, Block.Properties.create(Material.WOOD).hardnessAndResistance(2.0F).sound(SoundType.WOOD)), "log_palm"),
+                setup(new LogBlock(MaterialColor.NETHERRACK, Block.Properties.create(Material.WOOD).hardnessAndResistance(2.0F).sound(SoundType.WOOD)), "log_mahogany")
 
         );
     }

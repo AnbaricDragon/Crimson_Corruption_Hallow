@@ -2,3 +2,10 @@
 run/
 gradle/
 idea/
+.gradle/4.9/fileContent/fileContent.lock
+.gradle/4.9/fileHashes/fileHashes.bin
+.gradle/4.9/fileHashes/fileHashes.lock
+.gradle/4.9/taskHistory/taskHistory.bin
+.gradle/4.9/taskHistory/taskHistory.lock
+.gradle/buildOutputCleanup/buildOutputCleanup.lock
+.idea/workspace.xml

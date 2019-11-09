@@ -1,5 +1,7 @@
 {
     "variants": {
-        "": { "model": "terra_reforged:block/log_pearl_solid" }
+        "axis=y": { "model": "terra_reforged:block/log_pearl_solid" },
+        "axis=z": { "model": "terra_reforged:block/log_pearl_solid", "x": 90 },
+        "axis=x": { "model": "terra_reforged:block/log_pearl_solid", "x": 90, "y": 90 }
     }
 }

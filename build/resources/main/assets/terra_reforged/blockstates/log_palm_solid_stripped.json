@@ -1,0 +1,7 @@
+{
+    "variants": {
+        "axis=y": { "model": "terra_reforged:block/log_palm_solid_stripped" },
+        "axis=z": { "model": "terra_reforged:block/log_palm_solid_stripped", "x": 90 },
+        "axis=x": { "model": "terra_reforged:block/log_palm_solid_stripped", "x": 90, "y": 90 }
+    }
+}

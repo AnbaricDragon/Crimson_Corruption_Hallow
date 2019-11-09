@@ -1,17 +1,40 @@
 {
-    "variants": {
-        "variant=north_west": { "model": "terra_reforged:block/mushroom_cap_nw" },
-        "variant=north": { "model": "terra_reforged:block/mushroom_cap_n" },
-        "variant=north_east": { "model": "terra_reforged:block/mushroom_cap_ne" },
-        "variant=west": { "model": "terra_reforged:block/mushroom_cap_w" },
-        "variant=center": { "model": "terra_reforged:block/mushroom_cap_c" },
-        "variant=east": { "model": "terra_reforged:block/mushroom_cap_e" },
-        "variant=south_west": { "model": "terra_reforged:block/mushroom_cap_sw" },
-        "variant=south": { "model": "terra_reforged:block/mushroom_cap_s" },
-        "variant=south_east": { "model": "terra_reforged:block/mushroom_cap_se" },
-        "variant=stem": { "model": "terra_reforged:block/mushroom_cap_stem" },
-        "variant=all_stem": { "model": "terra_reforged:block/mushroom_cap_stem_all" },
-        "variant=all_outside": { "model": "terra_reforged:block/mushroom_cap_all" },
-        "variant=all_inside": { "model": "terra_reforged:block/mushroom_cap_inside_all" }
-    }
+    "multipart": [
+        {   "when": { "north": true },
+            "apply": { "model": "terra_reforged:block/mushroom_cap" }
+        },
+        {   "when": { "east": true },
+            "apply": { "model": "terra_reforged:block/mushroom_cap", "y": 90, "uvlock": true }
+        },
+        {   "when": { "south": true },
+            "apply": { "model": "terra_reforged:block/mushroom_cap", "y": 180, "uvlock": true }
+        },
+        {   "when": { "west": true },
+            "apply": { "model": "terra_reforged:block/mushroom_cap", "y": 270, "uvlock": true }
+        },
+        {   "when": { "up": true },
+            "apply": { "model": "terra_reforged:block/mushroom_cap", "x": 270, "uvlock": true }
+        },
+        {   "when": { "down": true },
+            "apply": { "model": "terra_reforged:block/mushroom_cap", "x": 90, "uvlock": true }
+        },
+        {   "when": { "north": false },
+            "apply": { "model": "terra_reforged:block/mushroom_cap_inside" }
+        },
+        {   "when": { "east": false },
+            "apply": { "model": "terra_reforged:block/mushroom_cap_inside", "y": 90, "uvlock": false }
+        },
+        {   "when": { "south": false },
+            "apply": { "model": "terra_reforged:block/mushroom_cap_inside", "y": 180, "uvlock": false }
+        },
+        {   "when": { "west": false },
+            "apply": { "model": "terra_reforged:block/mushroom_cap_inside", "y": 270, "uvlock": false }
+        },
+        {   "when": { "up": false },
+            "apply": { "model": "terra_reforged:block/mushroom_cap_inside", "x": 270, "uvlock": false }
+        },
+        {   "when": { "down": false },
+            "apply": { "model": "terra_reforged:block/mushroom_cap_inside", "x": 90, "uvlock": false }
+        }
+    ]
 }

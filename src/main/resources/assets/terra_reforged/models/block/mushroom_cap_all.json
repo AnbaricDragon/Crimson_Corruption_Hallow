@@ -1,7 +1,0 @@
-{
-    "parent": "terra_reforged:block/cube_double_all",
-    "textures": {
-        "all": "terra_reforged:blocks/mushroom_cap",
-				"glow": "terra_reforged:blocks/mushroom_cap_glow"
-    }
-}

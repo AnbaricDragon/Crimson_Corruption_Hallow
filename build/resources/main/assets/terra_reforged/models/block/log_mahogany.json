@@ -1,8 +1,7 @@
 {
     "parent": "block/cube_column",
     "textures": {
-				"particles": "terra_reforged:blocks/log_mahogany",
         "end": "terra_reforged:blocks/log_mahogany_top",
-        "side": "terra_reforged:blocks/log_mahogany"
+				"side": "terra_reforged:blocks/log_mahogany"
     }
 }

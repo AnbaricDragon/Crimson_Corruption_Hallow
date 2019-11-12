@@ -2,6 +2,7 @@ package com.anbaric.terra_reforged.util.init;
 
 import com.anbaric.terra_reforged.TerraReforged;
 import com.anbaric.terra_reforged.blocks.*;
+import com.anbaric.terra_reforged.structures.trees.*;
 import com.anbaric.terra_reforged.util.Reference;
 import com.anbaric.terra_reforged.util.TerraItemGroups;
 import com.anbaric.terra_reforged.util.handlers.EnumHandler.EnumBiomeType;
@@ -88,6 +89,7 @@ public final class TerraBlockRegistry
                 setup(new TerraBlockSpreading(Block.Properties.create(Material.ICE).slipperiness(0.98F).tickRandomly().hardnessAndResistance(0.5F).sound(SoundType.GLASS), EnumBiomeType.CRIMSON, TerraReforged.BOREAL), "ice_hard_red"),
                 setup(new TerraBlockIce(Block.Properties.create(Material.ICE).slipperiness(0.98F).tickRandomly().hardnessAndResistance(0.5F).sound(SoundType.GLASS), EnumBiomeType.HALLOWED), "ice_pink"),
                 setup(new TerraBlockSpreading(Block.Properties.create(Material.ICE).slipperiness(0.98F).tickRandomly().hardnessAndResistance(0.5F).sound(SoundType.GLASS), EnumBiomeType.HALLOWED, TerraReforged.BOREAL), "ice_hard_pink"),
+                setup(new TerraBlockThinIce(Block.Properties.create(Material.ICE).slipperiness(0.98F).tickRandomly().hardnessAndResistance(0.25F).sound(SoundType.GLASS)), "ice_thin"),
 
             //Sandstones
                 setup(new TerraBlockSpreading(Block.Properties.create(Material.ROCK).hardnessAndResistance(2.0F, 6.0F).harvestLevel(3).sound(SoundType.STONE).tickRandomly(), EnumBiomeType.CORRUPT, PlantType.Cave), "sandstone_ebon"),
@@ -147,8 +149,29 @@ public final class TerraBlockRegistry
                 setup(new Block(Block.Properties.create(Material.WOOD).hardnessAndResistance(2.0F, 3.0F).sound(SoundType.WOOD)), "plank_spooky"),
 
             //Foliage
-                setup(new HugeMushroomBlock(Block.Properties.create(Material.WOOD, MaterialColor.BLUE).hardnessAndResistance(0.2F).sound(SoundType.WOOD)), "mushroom_cap")
-
+                setup(new TerraBlockSapling(new TreeBoreal(), Block.Properties.create(Material.PLANTS).doesNotBlockMovement().tickRandomly().hardnessAndResistance(0.0F).sound(SoundType.PLANT)), "sapling_boreal"),
+                setup(new TerraBlockSapling(new TreePalm(), Block.Properties.create(Material.PLANTS).doesNotBlockMovement().tickRandomly().hardnessAndResistance(0.0F).sound(SoundType.PLANT)), "sapling_palm"),
+                setup(new TerraBlockSapling(new TreeMahogany(), Block.Properties.create(Material.PLANTS).doesNotBlockMovement().tickRandomly().hardnessAndResistance(0.0F).sound(SoundType.PLANT)), "sapling_mahogany"),
+                setup(new TerraBlockSapling(new TreeEbon(), Block.Properties.create(Material.PLANTS).doesNotBlockMovement().tickRandomly().hardnessAndResistance(0.0F).sound(SoundType.PLANT)), "sapling_ebon"),
+                setup(new TerraBlockSapling(new TreeShade(), Block.Properties.create(Material.PLANTS).doesNotBlockMovement().tickRandomly().hardnessAndResistance(0.0F).sound(SoundType.PLANT)), "sapling_shade"),
+                setup(new TerraBlockSapling(new TreePearl(), Block.Properties.create(Material.PLANTS).doesNotBlockMovement().tickRandomly().hardnessAndResistance(0.0F).sound(SoundType.PLANT)), "sapling_pearl"),
+                setup(new HugeMushroomBlock(Block.Properties.create(Material.WOOD, MaterialColor.BLUE).hardnessAndResistance(0.2F).sound(SoundType.WOOD)), "mushroom_cap"),
+                setup(new LeavesBlock(Block.Properties.create(Material.LEAVES).hardnessAndResistance(0.2F).tickRandomly().sound(SoundType.PLANT)), "leaf_ebon"),
+                setup(new LeavesBlock(Block.Properties.create(Material.LEAVES).hardnessAndResistance(0.2F).tickRandomly().sound(SoundType.PLANT)), "leaf_shade"),
+                setup(new LeavesBlock(Block.Properties.create(Material.LEAVES).hardnessAndResistance(0.2F).tickRandomly().sound(SoundType.PLANT)), "leaf_mahogany"),
+                setup(new LeavesBlock(Block.Properties.create(Material.LEAVES).hardnessAndResistance(0.2F).tickRandomly().sound(SoundType.PLANT)), "leaf_boreal"),
+                setup(new LeavesBlock(Block.Properties.create(Material.LEAVES).hardnessAndResistance(0.2F).tickRandomly().sound(SoundType.PLANT)), "leaf_palm"),
+                setup(new LeavesBlock(Block.Properties.create(Material.LEAVES).hardnessAndResistance(0.2F).tickRandomly().sound(SoundType.PLANT)), "leaf_pearl_red"),
+                setup(new LeavesBlock(Block.Properties.create(Material.LEAVES).hardnessAndResistance(0.2F).tickRandomly().sound(SoundType.PLANT)), "leaf_pearl_yellow"),
+                setup(new LeavesBlock(Block.Properties.create(Material.LEAVES).hardnessAndResistance(0.2F).tickRandomly().sound(SoundType.PLANT)), "leaf_pearl_pink"),
+                setup(new LeavesBlock(Block.Properties.create(Material.LEAVES).hardnessAndResistance(0.2F).tickRandomly().sound(SoundType.PLANT)), "leaf_pearl_magenta"),
+                setup(new LeavesBlock(Block.Properties.create(Material.LEAVES).hardnessAndResistance(0.2F).tickRandomly().sound(SoundType.PLANT)), "leaf_pearl_cyan"),
+                setup(new LeavesBlock(Block.Properties.create(Material.LEAVES).hardnessAndResistance(0.2F).tickRandomly().sound(SoundType.PLANT)), "leaf_pearl_blue"),
+                setup(new LeavesBlock(Block.Properties.create(Material.LEAVES).hardnessAndResistance(0.2F).tickRandomly().sound(SoundType.PLANT)), "leaf_pearl_green"),
+                setup(new LeavesBlock(Block.Properties.create(Material.LEAVES).hardnessAndResistance(0.2F).tickRandomly().sound(SoundType.PLANT)), "leaf_pearl_purple"),
+                setup(new TerraBlockCactus(Block.Properties.create(Material.CACTUS).tickRandomly().hardnessAndResistance(0.4F).sound(SoundType.CLOTH)), "cactus_ebon"),
+                setup(new TerraBlockCactus(Block.Properties.create(Material.CACTUS).tickRandomly().hardnessAndResistance(0.4F).sound(SoundType.CLOTH)), "cactus_crim"),
+                setup(new TerraBlockCactus(Block.Properties.create(Material.CACTUS).tickRandomly().hardnessAndResistance(0.4F).sound(SoundType.CLOTH)), "cactus_pearl")
         );
     }
 
@@ -171,8 +194,15 @@ public final class TerraBlockRegistry
             }
             // Make the properties, and make it so that the item will be on our ItemGroup (CreativeTab)
             final Item.Properties TerraBlocksTab = new Item.Properties().group(TerraItemGroups.TERRA_BLOCKS_TAB);
+            final Item.Properties TerraDecorationsTab = new Item.Properties().group(TerraItemGroups.TERRA_DECORATIONS_TAB);
             // Create the new BlockItem with the block and it's properties
-            final BlockItem blockItem = new BlockItem(block, TerraBlocksTab);
+            final BlockItem blockItem = new BlockItem(block,
+                    block instanceof TerraBlockSnowLayer ||
+                    block instanceof TerraBlockSapling ||
+                    block instanceof HugeMushroomBlock ||
+                    block instanceof LeavesBlock ||
+                    block instanceof TerraBlockCactus
+                        ? TerraDecorationsTab : TerraBlocksTab);
             // Setup the new BlockItem with the block's registry name and register it
             registry.register(setup(blockItem, blockRegistryName));
         }

@@ -1,0 +1,13 @@
+{
+  "replace": false,
+  "values": [
+    "terra_reforged:plank_boreal",
+		"terra_reforged:plank_palm",
+		"terra_reforged:plank_mahogany",
+		"terra_reforged:plank_ebon",
+		"terra_reforged:plank_shade",
+		"terra_reforged:plank_pearl",
+		"terra_reforged:plank_spooky",
+		"terra_reforged:plank_dynasty"		
+  ]
+}

@@ -1,5 +1,5 @@
 {
     "variants": {
-        "": { "model": "terra_reforged:block/stone_crim_chiseled" }
+        "": { "model": "terra_reforged:block/stonebrick_crim_chiseled" }
     }
 }

@@ -42,7 +42,8 @@ public class EnumHandler
         STONEBRICK(Blocks.STONE_BRICKS, TerraBlocks.STONEBRICK_EBON, TerraBlocks.STONEBRICK_CRIM, TerraBlocks.STONEBRICK_PEARL),
         CRACKEDSTONEBRICK(Blocks.CRACKED_STONE_BRICKS, TerraBlocks.STONEBRICK_EBON_CRACKED, TerraBlocks.STONEBRICK_CRIM_CRACKED, TerraBlocks.STONEBRICK_PEARL_CRACKED),
         CHISELEDSTONEBRICK(Blocks.CHISELED_STONE_BRICKS, TerraBlocks.STONEBRICK_EBON_CHISELED, TerraBlocks.STONEBRICK_CRIM_CHISELED, TerraBlocks.STONEBRICK_PEARL_CHISELED),
-        MOSSYSTONEBRICK(Blocks.MOSSY_STONE_BRICKS, TerraBlocks.STONEBRICK_EBON_MOSSY, TerraBlocks.STONEBRICK_CRIM_MOSSY, TerraBlocks.STONEBRICK_PEARL_MOSSY);
+        MOSSYSTONEBRICK(Blocks.MOSSY_STONE_BRICKS, TerraBlocks.STONEBRICK_EBON_MOSSY, TerraBlocks.STONEBRICK_CRIM_MOSSY, TerraBlocks.STONEBRICK_PEARL_MOSSY),
+        CACTUS(Blocks.CACTUS, TerraBlocks.CACTUS_EBON, TerraBlocks.CACTUS_CRIM, TerraBlocks.CACTUS_PEARL);
 //        //        ,
 //        ORECOPPER(TerraBlocks.ORE_COPPER, TerraBlocks.ORE_COPPER.withProperty(TerraBlockOres.VARIANT, EnumBiomeType.CORRUPT), TerraBlocks.ORE_COPPER.withProperty(TerraBlockOres.VARIANT, EnumBiomeType.CRIMSON), TerraBlocks.ORE_COPPER.withProperty(TerraBlockOres.VARIANT, EnumBiomeType.HALLOWED)),
 //        ORETIN(TerraBlocks.ORE_TIN, TerraBlocks.ORE_TIN.withProperty(TerraBlockOres.VARIANT, EnumBiomeType.CORRUPT), TerraBlocks.ORE_TIN.withProperty(TerraBlockOres.VARIANT, EnumBiomeType.CRIMSON), TerraBlocks.ORE_TIN.withProperty(TerraBlockOres.VARIANT, EnumBiomeType.HALLOWED)),

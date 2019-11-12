@@ -1,5 +1,5 @@
 {
-    "parent": "block/leaves",
+    "parent": "terra_reforged:block/leaves",
     "textures": {
         "all": "terra_reforged:blocks/leaf_ebon"
     }

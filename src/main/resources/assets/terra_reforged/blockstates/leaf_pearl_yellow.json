@@ -1,8 +1,18 @@
 {
     "variants": {
-        "check_decay=true,decayable=true": { "model": "terra_reforged:block/leaf_pearl_yellow" },
-				"check_decay=false,decayable=true": { "model": "terra_reforged:block/leaf_pearl_yellow" },
-				"check_decay=true,decayable=false": { "model": "terra_reforged:block/leaf_pearl_yellow" },
-				"check_decay=false,decayable=false": { "model": "terra_reforged:block/leaf_pearl_yellow" }
+        "persistent=true,distance=1": { "model": "terra_reforged:block/leaf_pearl_yellow" },
+				"persistent=true,distance=2": { "model": "terra_reforged:block/leaf_pearl_yellow" },
+				"persistent=true,distance=3": { "model": "terra_reforged:block/leaf_pearl_yellow" },
+				"persistent=true,distance=4": { "model": "terra_reforged:block/leaf_pearl_yellow" },
+				"persistent=true,distance=5": { "model": "terra_reforged:block/leaf_pearl_yellow" },
+				"persistent=true,distance=6": { "model": "terra_reforged:block/leaf_pearl_yellow" },
+				"persistent=true,distance=7": { "model": "terra_reforged:block/leaf_pearl_yellow" },
+				"persistent=false,distance=1": { "model": "terra_reforged:block/leaf_pearl_yellow" },
+				"persistent=false,distance=2": { "model": "terra_reforged:block/leaf_pearl_yellow" },
+				"persistent=false,distance=3": { "model": "terra_reforged:block/leaf_pearl_yellow" },
+				"persistent=false,distance=4": { "model": "terra_reforged:block/leaf_pearl_yellow" },
+				"persistent=false,distance=5": { "model": "terra_reforged:block/leaf_pearl_yellow" },
+				"persistent=false,distance=6": { "model": "terra_reforged:block/leaf_pearl_yellow" },
+				"persistent=false,distance=7": { "model": "terra_reforged:block/leaf_pearl_yellow" }
     }
 }

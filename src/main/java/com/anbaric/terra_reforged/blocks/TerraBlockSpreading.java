@@ -20,7 +20,7 @@ public class TerraBlockSpreading extends Block
     private EnumBiomeType biome;
     private PlantType plantType;
 
-    public TerraBlockSpreading(Properties properties, EnumBiomeType biome, PlantType plantType)
+    public TerraBlockSpreading(Properties properties, EnumBiomeType biome, @Nullable PlantType plantType)
     {
         super(properties);
         this.biome = biome;

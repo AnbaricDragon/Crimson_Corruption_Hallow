@@ -8,7 +8,6 @@ import net.minecraft.block.BlockState;
 import net.minecraft.util.BlockRenderLayer;
 import net.minecraft.util.Direction;
 import net.minecraft.util.math.BlockPos;
-import net.minecraft.world.IBlockReader;
 import net.minecraft.world.World;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
@@ -25,19 +24,14 @@ public class TerraBlockIce extends Block
         this.biome = biome;
     }
 
-    public BlockRenderLayer getRenderLayer() {
+    public BlockRenderLayer getRenderLayer()
+    {
         return BlockRenderLayer.TRANSLUCENT;
     }
 
     @OnlyIn(Dist.CLIENT)
     public boolean isSideInvisible(BlockState state, BlockState adjacentBlockState, Direction side) {
         return adjacentBlockState.getBlock() == this ? true : super.isSideInvisible(state, adjacentBlockState, side);
-    }
-
-    @Override
-    public boolean canSustainPlant(BlockState state, IBlockReader world, BlockPos pos, Direction facing, net.minecraftforge.common.IPlantable plantable)
-    {
-       return plantable.getPlantType(world, pos) == TerraReforged.BOREAL;
     }
 
     public void tick(BlockState state, World worldIn, BlockPos pos, Random random)

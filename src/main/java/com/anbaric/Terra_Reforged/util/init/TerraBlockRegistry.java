@@ -1,7 +1,7 @@
 package com.anbaric.terra_reforged.util.init;
 
-import com.anbaric.terra_reforged.TerraReforged;
 import com.anbaric.terra_reforged.blocks.*;
+import com.anbaric.terra_reforged.blocks.potionplants.*;
 import com.anbaric.terra_reforged.structures.trees.*;
 import com.anbaric.terra_reforged.util.Reference;
 import com.anbaric.terra_reforged.util.TerraItemGroups;
@@ -50,9 +50,9 @@ public final class TerraBlockRegistry
                 setup(new SandBlock(25, Block.Properties.create(Material.SAND).hardnessAndResistance(0.5F).sound(SoundType.SAND)), "sand_silt"),
                 setup(new SandBlock(25, Block.Properties.create(Material.SAND).hardnessAndResistance(0.5F).sound(SoundType.SAND)), "sand_slush"),
                 setup(new SandBlock(25, Block.Properties.create(Material.SAND).hardnessAndResistance(1.0F).sound(SoundType.SAND)), "sand_hard"),
-                setup(new TerraBlockSpreading(Block.Properties.create(Material.SNOW_BLOCK).hardnessAndResistance(0.2F).sound(SoundType.SNOW).tickRandomly(), EnumBiomeType.CORRUPT, TerraReforged.BOREAL), "snow_corrupt"),
-                setup(new TerraBlockSpreading(Block.Properties.create(Material.SNOW_BLOCK).hardnessAndResistance(0.2F).sound(SoundType.SNOW).tickRandomly(), EnumBiomeType.CRIMSON, TerraReforged.BOREAL), "snow_crimson"),
-                setup(new TerraBlockSpreading(Block.Properties.create(Material.SNOW_BLOCK).hardnessAndResistance(0.2F).sound(SoundType.SNOW).tickRandomly(), EnumBiomeType.HALLOWED, TerraReforged.BOREAL), "snow_hallowed"),
+                setup(new TerraBlockSpreading(Block.Properties.create(Material.SNOW_BLOCK).hardnessAndResistance(0.2F).sound(SoundType.SNOW).tickRandomly(), EnumBiomeType.CORRUPT, null), "snow_corrupt"),
+                setup(new TerraBlockSpreading(Block.Properties.create(Material.SNOW_BLOCK).hardnessAndResistance(0.2F).sound(SoundType.SNOW).tickRandomly(), EnumBiomeType.CRIMSON, null), "snow_crimson"),
+                setup(new TerraBlockSpreading(Block.Properties.create(Material.SNOW_BLOCK).hardnessAndResistance(0.2F).sound(SoundType.SNOW).tickRandomly(), EnumBiomeType.HALLOWED, null), "snow_hallowed"),
                 setup(new TerraBlockSnowLayer(Block.Properties.create(Material.SNOW).tickRandomly().hardnessAndResistance(0.1F).sound(SoundType.SNOW)), "snow_corrupt_layer"),
                 setup(new TerraBlockSnowLayer(Block.Properties.create(Material.SNOW).tickRandomly().hardnessAndResistance(0.1F).sound(SoundType.SNOW)), "snow_crimson_layer"),
                 setup(new TerraBlockSnowLayer(Block.Properties.create(Material.SNOW).tickRandomly().hardnessAndResistance(0.1F).sound(SoundType.SNOW)), "snow_hallowed_layer"),
@@ -84,11 +84,11 @@ public final class TerraBlockRegistry
 
             //Ice
                 setup(new TerraBlockIce(Block.Properties.create(Material.ICE).slipperiness(0.98F).tickRandomly().hardnessAndResistance(0.5F).sound(SoundType.GLASS), EnumBiomeType.CORRUPT), "ice_purple"),
-                setup(new TerraBlockSpreading(Block.Properties.create(Material.ICE).slipperiness(0.98F).tickRandomly().hardnessAndResistance(0.5F).sound(SoundType.GLASS), EnumBiomeType.CORRUPT, TerraReforged.BOREAL), "ice_hard_purple"),
+                setup(new TerraBlockSpreading(Block.Properties.create(Material.ICE).slipperiness(0.98F).tickRandomly().hardnessAndResistance(0.5F).sound(SoundType.GLASS), EnumBiomeType.CORRUPT, null), "ice_hard_purple"),
                 setup(new TerraBlockIce(Block.Properties.create(Material.ICE).slipperiness(0.98F).tickRandomly().hardnessAndResistance(0.5F).sound(SoundType.GLASS), EnumBiomeType.CRIMSON), "ice_red"),
-                setup(new TerraBlockSpreading(Block.Properties.create(Material.ICE).slipperiness(0.98F).tickRandomly().hardnessAndResistance(0.5F).sound(SoundType.GLASS), EnumBiomeType.CRIMSON, TerraReforged.BOREAL), "ice_hard_red"),
+                setup(new TerraBlockSpreading(Block.Properties.create(Material.ICE).slipperiness(0.98F).tickRandomly().hardnessAndResistance(0.5F).sound(SoundType.GLASS), EnumBiomeType.CRIMSON, null), "ice_hard_red"),
                 setup(new TerraBlockIce(Block.Properties.create(Material.ICE).slipperiness(0.98F).tickRandomly().hardnessAndResistance(0.5F).sound(SoundType.GLASS), EnumBiomeType.HALLOWED), "ice_pink"),
-                setup(new TerraBlockSpreading(Block.Properties.create(Material.ICE).slipperiness(0.98F).tickRandomly().hardnessAndResistance(0.5F).sound(SoundType.GLASS), EnumBiomeType.HALLOWED, TerraReforged.BOREAL), "ice_hard_pink"),
+                setup(new TerraBlockSpreading(Block.Properties.create(Material.ICE).slipperiness(0.98F).tickRandomly().hardnessAndResistance(0.5F).sound(SoundType.GLASS), EnumBiomeType.HALLOWED, null), "ice_hard_pink"),
                 setup(new TerraBlockThinIce(Block.Properties.create(Material.ICE).slipperiness(0.98F).tickRandomly().hardnessAndResistance(0.25F).sound(SoundType.GLASS)), "ice_thin"),
 
             //Sandstones
@@ -171,7 +171,14 @@ public final class TerraBlockRegistry
                 setup(new LeavesBlock(Block.Properties.create(Material.LEAVES).hardnessAndResistance(0.2F).tickRandomly().sound(SoundType.PLANT)), "leaf_pearl_purple"),
                 setup(new TerraBlockCactus(Block.Properties.create(Material.CACTUS).tickRandomly().hardnessAndResistance(0.4F).sound(SoundType.CLOTH)), "cactus_ebon"),
                 setup(new TerraBlockCactus(Block.Properties.create(Material.CACTUS).tickRandomly().hardnessAndResistance(0.4F).sound(SoundType.CLOTH)), "cactus_crim"),
-                setup(new TerraBlockCactus(Block.Properties.create(Material.CACTUS).tickRandomly().hardnessAndResistance(0.4F).sound(SoundType.CLOTH)), "cactus_pearl")
+                setup(new TerraBlockCactus(Block.Properties.create(Material.CACTUS).tickRandomly().hardnessAndResistance(0.4F).sound(SoundType.CLOTH)), "cactus_pearl"),
+                setup(new TerraBlockBlinkroot(Block.Properties.create(Material.PLANTS).doesNotBlockMovement().tickRandomly().hardnessAndResistance(0.0F).sound(SoundType.CROP)), "plant_blinkroot"),
+                setup(new TerraBlockDaybloom(Block.Properties.create(Material.PLANTS).doesNotBlockMovement().tickRandomly().hardnessAndResistance(0.0F).sound(SoundType.CROP)), "plant_daybloom"),
+                setup(new TerraBlockDeathweed(Block.Properties.create(Material.PLANTS).doesNotBlockMovement().tickRandomly().hardnessAndResistance(0.0F).sound(SoundType.CROP)), "plant_deathweed"),
+                setup(new TerraBlockFireblossom(Block.Properties.create(Material.PLANTS).doesNotBlockMovement().tickRandomly().hardnessAndResistance(0.0F).sound(SoundType.CROP)), "plant_fireblossom"),
+                setup(new TerraBlockMoonglow(Block.Properties.create(Material.PLANTS).doesNotBlockMovement().tickRandomly().hardnessAndResistance(0.0F).sound(SoundType.CROP)), "plant_moonglow"),
+                setup(new TerraBlockShiverthorn(Block.Properties.create(Material.PLANTS).doesNotBlockMovement().tickRandomly().hardnessAndResistance(0.0F).sound(SoundType.CROP)), "plant_shiverthorn"),
+                setup(new TerraBlockWaterleaf(Block.Properties.create(Material.PLANTS).doesNotBlockMovement().tickRandomly().hardnessAndResistance(0.0F).sound(SoundType.CROP)), "plant_waterleaf")
         );
     }
 

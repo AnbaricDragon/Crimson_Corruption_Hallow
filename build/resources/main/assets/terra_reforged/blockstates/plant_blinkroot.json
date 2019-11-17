@@ -1,12 +1,12 @@
 {
     "multipart": [
-				{   "when": { "stage": "0" },
+				{   "when": { "age": "0" },
             "apply": { "model": "terra_reforged:block/plant_blinkroot_0" }
         },
-				{   "when": { "stage": "1" },
+				{   "when": { "age": "1" },
             "apply": { "model": "terra_reforged:block/plant_blinkroot_1" }
         },
-				{   "when": { "stage": "2" },
+				{   "when": { "age": "2" },
             "apply": { "model": "terra_reforged:block/plant_blinkroot_2" }
         }
     ]

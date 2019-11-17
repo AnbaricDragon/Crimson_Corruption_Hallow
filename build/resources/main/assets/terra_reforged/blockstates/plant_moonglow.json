@@ -1,18 +1,18 @@
 {
     "multipart": [
-				{   "when": { "stage": "0" },
+				{   "when": { "age": "0" },
             "apply": [
 								{ "model": "terra_reforged:block/plant_moonglow_0_0" },
 								{ "model": "terra_reforged:block/plant_moonglow_0_1" }
 						]
         },
-				{   "when": { "stage": "1" },
+				{   "when": { "age": "1" },
             "apply": [
 								{ "model": "terra_reforged:block/plant_moonglow_1_0" },
 								{ "model": "terra_reforged:block/plant_moonglow_1_1" }
 						]
         },
-				{   "when": { "stage": "2" },
+				{   "when": { "age": "2" },
             "apply": [
 								{ "model": "terra_reforged:block/plant_moonglow_2_0" },
 								{ "model": "terra_reforged:block/plant_moonglow_2_1" }

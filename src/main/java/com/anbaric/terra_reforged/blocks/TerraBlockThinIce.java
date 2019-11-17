@@ -5,8 +5,7 @@ import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.PlayerEntity;
-import net.minecraft.util.BlockRenderLayer;
-import net.minecraft.util.Direction;
+import net.minecraft.util.*;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.world.World;
@@ -25,19 +24,13 @@ public class TerraBlockThinIce extends Block
         return BlockRenderLayer.TRANSLUCENT;
     }
 
-    public boolean destroyNotIce(World worldIn, BlockPos pos)
+    public void destroyNotIce(World worldIn, BlockPos pos)
     {
-        BlockState blockstate = worldIn.getBlockState(pos);
-        Block block = blockstate.getBlock();
-
-        if (block != TerraBlocks.ICE_THIN)
+        int i;
+        for (i = 0; worldIn.getBlockState(pos.down(i)).getBlock() == TerraBlocks.ICE_THIN; i++)
         {
-            return false;
-        }
-        else
-        {
-            worldIn.playEvent(2001, pos, Block.getStateId(blockstate));
-            return worldIn.setBlockState(pos, Blocks.AIR.getDefaultState(), 3);
+            worldIn.playSound(null, pos.down(i), SoundEvents.BLOCK_GLASS_BREAK, SoundCategory.BLOCKS, 1.0F, 1.0F);
+            worldIn.setBlockState(pos.down(i), Blocks.AIR.getDefaultState());
         }
     }
 
@@ -52,9 +45,9 @@ public class TerraBlockThinIce extends Block
 
         if (entityIn instanceof PlayerEntity)
         {
-            if (fallDistance >= 0.6)
+            if (fallDistance >= 0.25)
             {
-                worldIn.destroyBlock(pos, false);
+                destroyNotIce(worldIn, pos);
 
                 if (dotZ <= 0.300)
                 {

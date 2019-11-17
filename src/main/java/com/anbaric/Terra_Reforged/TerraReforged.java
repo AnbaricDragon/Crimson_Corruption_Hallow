@@ -8,16 +8,13 @@ import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-// The value here should match an entry in the META-INF/mods.toml file
 @Mod(Reference.MODID)
 public class TerraReforged
 {
     private static final Logger LOGGER = LogManager.getLogger();
 
     //Plant Types
-    public static PlantType BOREAL = PlantType.create("Boreal");
     public static PlantType MOSS = PlantType.create("Moss");
-    public static PlantType MUSHROOM = PlantType.create("Mushroom");
 
     public static boolean debugSpreading = true;
 

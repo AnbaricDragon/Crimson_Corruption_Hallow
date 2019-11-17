@@ -34,4 +34,12 @@ public class TerraItems
 
     //Misc
     public static final Item FRUIT_LIFEFRUIT = null;
+    public static final Item SEED_BLINKROOT = null;
+    public static final Item SEED_DAYBLOOM = null;
+    public static final Item SEED_DEATHWEED = null;
+    public static final Item SEED_FIREBLOSSOM = null;
+    public static final Item SEED_MOONGLOW = null;
+    public static final Item SEED_SHIVERTHORN = null;
+    public static final Item SEED_WATERLEAF = null;
+
 }

@@ -41,7 +41,7 @@ public class TerraBlockBiomeGrass extends SnowyDirtBlock implements IGrowable
 
     private static boolean canSpread(BlockState state, IWorldReader world, BlockPos pos)
     {
-        BlockPos topPos = pos.up();
+        BlockPos   topPos   = pos.up();
         BlockState topState = world.getBlockState(topPos);
         if (topState.getBlock() == Blocks.SNOW && topState.get(SnowBlock.LAYERS) == 1)
         {
@@ -82,9 +82,9 @@ public class TerraBlockBiomeGrass extends SnowyDirtBlock implements IGrowable
                 {
                     for (int i = 0; i < 4; ++i)
                     {
-                        BlockPos targetPos = pos.add(random.nextInt(3) - 1, random.nextInt(3) - 1, random.nextInt(3) - 1);
+                        BlockPos   targetPos   = pos.add(random.nextInt(3) - 1, random.nextInt(3) - 1, random.nextInt(3) - 1);
                         BlockState targetState = worldIn.getBlockState(targetPos);
-                        Block targetBlock = worldIn.getBlockState(targetPos).getBlock();
+                        Block      targetBlock = worldIn.getBlockState(targetPos).getBlock();
 
                         if (targetBlock == Blocks.DIRT)
                         {
@@ -93,14 +93,20 @@ public class TerraBlockBiomeGrass extends SnowyDirtBlock implements IGrowable
                                 worldIn.setBlockState(targetPos, this.getDefaultState());
                             }
                         }
-                        else
+                        if (targetBlock == Blocks.TALL_GRASS)
                         {
-                            if (checkTransformable(targetBlock))
+                            TerraBlockDoubleGrass doublePlant = (TerraBlockDoubleGrass) (this == TerraBlocks.GRASS_CORRUPT ? TerraBlocks.TALLGRASSDOUBLE_CORRUPT : this == TerraBlocks.GRASS_CRIMSON ? TerraBlocks.TALLGRASSDOUBLE_CRIMSON : TerraBlocks.TALLGRASSDOUBLE_HALLOWED);
+                            if (doublePlant.getDefaultState().isValidPosition(worldIn, targetPos))
                             {
-                                if (TerraReforged.debugSpreading)
-                                {
-                                    worldIn.setBlockState(targetPos, transformedState(biome, targetBlock).getDefaultState());
-                                }
+                                System.out.println("Attempting to spread to" + targetBlock);
+                                doublePlant.placeAt(worldIn, targetPos, 2);
+                            }
+                        }
+                        if (checkTransformable(targetBlock))
+                        {
+                            if (TerraReforged.debugSpreading)
+                            {
+                                worldIn.setBlockState(targetPos, transformedState(biome, targetBlock).getDefaultState());
                             }
                         }
                     }
@@ -110,25 +116,32 @@ public class TerraBlockBiomeGrass extends SnowyDirtBlock implements IGrowable
     }
 
     @Override
-    public BlockState updatePostPlacement(BlockState stateIn, Direction facing, BlockState facingState, IWorld worldIn, BlockPos currentPos, BlockPos facingPos) {
-    if (facing != Direction.UP) {
-        return super.updatePostPlacement(stateIn, facing, facingState, worldIn, currentPos, facingPos);
-    } else {
-        Block block = facingState.getBlock();
-        return stateIn.with(SNOWY, Boolean.valueOf(block == Blocks.SNOW_BLOCK || block == Blocks.SNOW || block == TerraBlocks.SNOW_CORRUPT_LAYER || block == TerraBlocks.SNOW_CRIMSON_LAYER || block == TerraBlocks.SNOW_HALLOWED_LAYER));
+    public BlockState updatePostPlacement(BlockState stateIn, Direction facing, BlockState facingState, IWorld worldIn, BlockPos currentPos, BlockPos facingPos)
+    {
+        if (facing != Direction.UP)
+        {
+            return super.updatePostPlacement(stateIn, facing, facingState, worldIn, currentPos, facingPos);
+        }
+        else
+        {
+            Block block = facingState.getBlock();
+            return stateIn.with(SNOWY, Boolean.valueOf(block == Blocks.SNOW_BLOCK || block == Blocks.SNOW || block == TerraBlocks.SNOW_CORRUPT_LAYER || block == TerraBlocks.SNOW_CRIMSON_LAYER || block == TerraBlocks.SNOW_HALLOWED_LAYER));
+        }
     }
-}
 
-    public BlockState getStateForPlacement(BlockItemUseContext context) {
+    public BlockState getStateForPlacement(BlockItemUseContext context)
+    {
         Block block = context.getWorld().getBlockState(context.getPos().up()).getBlock();
         return this.getDefaultState().with(SNOWY, Boolean.valueOf(block == Blocks.SNOW_BLOCK || block == Blocks.SNOW || block == TerraBlocks.SNOW_CORRUPT_LAYER || block == TerraBlocks.SNOW_CRIMSON_LAYER || block == TerraBlocks.SNOW_HALLOWED_LAYER));
     }
 
-    public boolean isSolid(BlockState state) {
+    public boolean isSolid(BlockState state)
+    {
         return true;
     }
 
-    public BlockRenderLayer getRenderLayer() {
+    public BlockRenderLayer getRenderLayer()
+    {
         return BlockRenderLayer.CUTOUT_MIPPED;
     }
 
@@ -165,18 +178,18 @@ public class TerraBlockBiomeGrass extends SnowyDirtBlock implements IGrowable
 
     public boolean canUseBonemeal(World worldIn, Random rand, BlockPos pos, BlockState state)
     {
-        return true;
+        return false;
     }
 
     public void grow(World worldIn, Random rand, BlockPos pos, BlockState state)
     {
-        BlockPos topPos = pos.up();
+        BlockPos   topPos     = pos.up();
         BlockState grassState = TerraBlocks.GRASS_CORRUPT.getDefaultState();
 
         for (int i = 0; i < 128; ++i)
         {
             BlockPos targetPos = topPos;
-            int j = 0;
+            int      j         = 0;
 
             while (true)
             {

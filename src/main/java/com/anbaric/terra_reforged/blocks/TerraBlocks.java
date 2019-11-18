@@ -170,9 +170,9 @@ public class TerraBlocks
     public static final Block TALLGRASS_CORRUPT = null;
     public static final Block TALLGRASS_CRIMSON = null;
     public static final Block TALLGRASS_HALLOWED = null;
-    public static final Block DOUBLEGRASS_CORRUPT = null;
-    public static final Block DOUBLEGRASS_CRIMSON = null;
-    public static final Block DOUBLEGRASS_HALLOWED = null;
+    public static final Block TALLGRASSDOUBLE_CORRUPT = null;
+    public static final Block TALLGRASSDOUBLE_CRIMSON = null;
+    public static final Block TALLGRASSDOUBLE_HALLOWED = null;
 
     //Structure
     public static final Block WALL_OAK = null;

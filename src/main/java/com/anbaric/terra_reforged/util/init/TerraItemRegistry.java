@@ -53,14 +53,14 @@ public final class TerraItemRegistry
             setup(new Item(new Item.Properties().group(materials)), "ingot_luminite"),
 
             //Misc
-                setup(new Item(new Item.Properties().group(tools)), "fruit_lifefruit"),
-                setup(new Item(new Item.Properties().group(decorations)), "seed_blinkroot"),
-                setup(new Item(new Item.Properties().group(decorations)), "seed_daybloom"),
-                setup(new Item(new Item.Properties().group(decorations)), "seed_deathweed"),
-                setup(new Item(new Item.Properties().group(decorations)), "seed_fireblossom"),
-                setup(new Item(new Item.Properties().group(decorations)), "seed_moonglow"),
-                setup(new Item(new Item.Properties().group(decorations)), "seed_shiverthorn"),
-                setup(new Item(new Item.Properties().group(decorations)), "seed_waterleaf")
+            setup(new Item(new Item.Properties().group(tools)), "fruit_lifefruit"),
+            setup(new Item(new Item.Properties().group(decorations)), "seed_blinkroot"),
+            setup(new Item(new Item.Properties().group(decorations)), "seed_daybloom"),
+            setup(new Item(new Item.Properties().group(decorations)), "seed_deathweed"),
+            setup(new Item(new Item.Properties().group(decorations)), "seed_fireblossom"),
+            setup(new Item(new Item.Properties().group(decorations)), "seed_moonglow"),
+            setup(new Item(new Item.Properties().group(decorations)), "seed_shiverthorn"),
+            setup(new Item(new Item.Properties().group(decorations)), "seed_waterleaf")
         );
         LOGGER.debug("Registered Items");
     }

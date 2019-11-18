@@ -21,7 +21,7 @@ public class EnumHandler
         }
     }
 
-    public static enum EnumBiomeBlockType
+    public enum EnumBiomeBlockType
     {
         GRASS(Blocks.GRASS_BLOCK, TerraBlocks.GRASS_CORRUPT, TerraBlocks.GRASS_CRIMSON, TerraBlocks.GRASS_HALLOWED),
         GRASSJUNGLE(TerraBlocks.GRASS_JUNGLE, TerraBlocks.SOIL_MUD, TerraBlocks.SOIL_MUD, TerraBlocks.GRASS_JUNGLE),
@@ -43,7 +43,7 @@ public class EnumHandler
         CRACKEDSTONEBRICK(Blocks.CRACKED_STONE_BRICKS, TerraBlocks.STONEBRICK_EBON_CRACKED, TerraBlocks.STONEBRICK_CRIM_CRACKED, TerraBlocks.STONEBRICK_PEARL_CRACKED),
         CHISELEDSTONEBRICK(Blocks.CHISELED_STONE_BRICKS, TerraBlocks.STONEBRICK_EBON_CHISELED, TerraBlocks.STONEBRICK_CRIM_CHISELED, TerraBlocks.STONEBRICK_PEARL_CHISELED),
         MOSSYSTONEBRICK(Blocks.MOSSY_STONE_BRICKS, TerraBlocks.STONEBRICK_EBON_MOSSY, TerraBlocks.STONEBRICK_CRIM_MOSSY, TerraBlocks.STONEBRICK_PEARL_MOSSY),
-        CACTUS(Blocks.CACTUS, TerraBlocks.CACTUS_EBON, TerraBlocks.CACTUS_CRIM, TerraBlocks.CACTUS_PEARL);
+        CACTUS(Blocks.CACTUS, TerraBlocks.CACTUS_EBON, TerraBlocks.CACTUS_CRIM, TerraBlocks.CACTUS_PEARL),
 //        //        ,
 //        ORECOPPER(TerraBlocks.ORE_COPPER, TerraBlocks.ORE_COPPER.withProperty(TerraBlockOres.VARIANT, EnumBiomeType.CORRUPT), TerraBlocks.ORE_COPPER.withProperty(TerraBlockOres.VARIANT, EnumBiomeType.CRIMSON), TerraBlocks.ORE_COPPER.withProperty(TerraBlockOres.VARIANT, EnumBiomeType.HALLOWED)),
 //        ORETIN(TerraBlocks.ORE_TIN, TerraBlocks.ORE_TIN.withProperty(TerraBlockOres.VARIANT, EnumBiomeType.CORRUPT), TerraBlocks.ORE_TIN.withProperty(TerraBlockOres.VARIANT, EnumBiomeType.CRIMSON), TerraBlocks.ORE_TIN.withProperty(TerraBlockOres.VARIANT, EnumBiomeType.HALLOWED)),
@@ -72,8 +72,7 @@ public class EnumHandler
 //        OREDIAMOND(Blocks.DIAMOND_ORE, TerraBlocks.ORE_DIAMOND.withProperty(TerraBlockDOres.D_VARIANT, EnumDOreType.CORRUPT), TerraBlocks.ORE_DIAMOND.withProperty(TerraBlockDOres.D_VARIANT, EnumDOreType.CRIMSON), TerraBlocks.ORE_DIAMOND.withProperty(TerraBlockDOres.D_VARIANT, EnumDOreType.HALLOWED)),
 //        SAPLING_A(Blocks.SAPLING.withProperty(BlockSapling.TYPE, BlockPlanks.EnumType.OAK).withProperty(BlockSapling.STAGE, 0), TerraBlocks.SAPLING_EBON, TerraBlocks.SAPLING_SHADE, TerraBlocks.SAPLING_PEARL),
 //        SAPLING_B(Blocks.SAPLING.withProperty(BlockSapling.TYPE, BlockPlanks.EnumType.OAK).withProperty(BlockSapling.STAGE, 1), TerraBlocks.SAPLING_EBON, TerraBlocks.SAPLING_SHADE, TerraBlocks.SAPLING_PEARL),
-//        TALLGRASS(Blocks.TALLGRASS.withProperty(BlockTallGrass.TYPE, BlockTallGrass.EnumType.GRASS), TerraBlocks.TALLGRASS_CORRUPT, TerraBlocks.TALLGRASS_CRIMSON, TerraBlocks.TALLGRASS_HALLOWED),
-//        TALLGRASS_TOP(Blocks.DOUBLE_PLANT.withProperty(net.minecraft.block.BlockDoublePlant.VARIANT, net.minecraft.block.BlockDoublePlant.EnumPlantType.GRASS).withProperty(net.minecraft.block.BlockDoublePlant.HALF, net.minecraft.block.BlockDoublePlant.EnumBlockHalf.UPPER), TerraBlocks.DOUBLEGRASS_CORRUPT.withProperty(TerraBlockDoublePlant.HALF, EnumHandler.EnumBlockHalf.UPPER), TerraBlocks.DOUBLEGRASS_CRIMSON.withProperty(TerraBlockDoublePlant.HALF, EnumHandler.EnumBlockHalf.UPPER), TerraBlocks.DOUBLEGRASS_HALLOWED.withProperty(TerraBlockDoublePlant.HALF, EnumHandler.EnumBlockHalf.UPPER)),
+        TALLGRASS(Blocks.GRASS, TerraBlocks.TALLGRASS_CORRUPT, TerraBlocks.TALLGRASS_CRIMSON, TerraBlocks.TALLGRASS_HALLOWED);
 //        TALLGRASS_BOT(Blocks.DOUBLE_PLANT.withProperty(net.minecraft.block.BlockDoublePlant.VARIANT, net.minecraft.block.BlockDoublePlant.EnumPlantType.GRASS).withProperty(net.minecraft.block.BlockDoublePlant.HALF, net.minecraft.block.BlockDoublePlant.EnumBlockHalf.LOWER), TerraBlocks.DOUBLEGRASS_CORRUPT.withProperty(TerraBlockDoublePlant.HALF, EnumHandler.EnumBlockHalf.LOWER), TerraBlocks.DOUBLEGRASS_CRIMSON.withProperty(TerraBlockDoublePlant.HALF, EnumHandler.EnumBlockHalf.LOWER), TerraBlocks.DOUBLEGRASS_HALLOWED.withProperty(TerraBlockDoublePlant.HALF, EnumHandler.EnumBlockHalf.LOWER), TALLGRASS_TOP);
 
         public Block pure, corrupt, crimson, hallowed;

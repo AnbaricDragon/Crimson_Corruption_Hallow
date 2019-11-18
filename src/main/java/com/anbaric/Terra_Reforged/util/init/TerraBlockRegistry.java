@@ -178,7 +178,14 @@ public final class TerraBlockRegistry
                 setup(new TerraBlockFireblossom(Block.Properties.create(Material.PLANTS).doesNotBlockMovement().tickRandomly().hardnessAndResistance(0.0F).sound(SoundType.CROP)), "plant_fireblossom"),
                 setup(new TerraBlockMoonglow(Block.Properties.create(Material.PLANTS).doesNotBlockMovement().tickRandomly().hardnessAndResistance(0.0F).sound(SoundType.CROP)), "plant_moonglow"),
                 setup(new TerraBlockShiverthorn(Block.Properties.create(Material.PLANTS).doesNotBlockMovement().tickRandomly().hardnessAndResistance(0.0F).sound(SoundType.CROP)), "plant_shiverthorn"),
-                setup(new TerraBlockWaterleaf(Block.Properties.create(Material.PLANTS).doesNotBlockMovement().tickRandomly().hardnessAndResistance(0.0F).sound(SoundType.CROP)), "plant_waterleaf")
+                setup(new TerraBlockWaterleaf(Block.Properties.create(Material.PLANTS).doesNotBlockMovement().tickRandomly().hardnessAndResistance(0.0F).sound(SoundType.CROP)), "plant_waterleaf"),
+                setup(new TerraBlockTallGrass(Block.Properties.create(Material.TALL_PLANTS).doesNotBlockMovement().hardnessAndResistance(0.0F).sound(SoundType.PLANT)), "tallgrass_corrupt"),
+                setup(new TerraBlockTallGrass(Block.Properties.create(Material.TALL_PLANTS).doesNotBlockMovement().hardnessAndResistance(0.0F).sound(SoundType.PLANT)), "tallgrass_crimson"),
+                setup(new TerraBlockTallGrass(Block.Properties.create(Material.TALL_PLANTS).doesNotBlockMovement().hardnessAndResistance(0.0F).sound(SoundType.PLANT)), "tallgrass_hallowed"),
+                setup(new TerraBlockDoubleGrass(Block.Properties.create(Material.TALL_PLANTS).doesNotBlockMovement().hardnessAndResistance(0.0F).sound(SoundType.PLANT)), "tallgrassdouble_corrupt"),
+                setup(new TerraBlockDoubleGrass(Block.Properties.create(Material.TALL_PLANTS).doesNotBlockMovement().hardnessAndResistance(0.0F).sound(SoundType.PLANT)), "tallgrassdouble_crimson"),
+                setup(new TerraBlockDoubleGrass(Block.Properties.create(Material.TALL_PLANTS).doesNotBlockMovement().hardnessAndResistance(0.0F).sound(SoundType.PLANT)), "tallgrassdouble_hallowed")
+
         );
     }
 
@@ -208,8 +215,11 @@ public final class TerraBlockRegistry
                     block instanceof TerraBlockSapling ||
                     block instanceof HugeMushroomBlock ||
                     block instanceof LeavesBlock ||
-                    block instanceof TerraBlockCactus
-                        ? TerraDecorationsTab : TerraBlocksTab);
+                    block instanceof TerraBlockCactus ||
+                    block instanceof TerraBlockTallGrass ||
+                    block instanceof TerraBlockPotionPlant||
+                    block instanceof TerraBlockDoubleGrass
+                            ? TerraDecorationsTab : TerraBlocksTab);
             // Setup the new BlockItem with the block's registry name and register it
             registry.register(setup(blockItem, blockRegistryName));
         }

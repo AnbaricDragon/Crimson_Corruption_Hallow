@@ -9,40 +9,17 @@
       <change beforePath="$PROJECT_DIR$/.gradle/4.9/taskHistory/taskHistory.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/4.9/taskHistory/taskHistory.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/anbaric/Terra_Reforged/TerraReforged.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/com/anbaric/Terra_Reforged/TerraReforged.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/anbaric/Terra_Reforged/blocks/TerraBlockIce.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/com/anbaric/Terra_Reforged/blocks/TerraBlockIce.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/anbaric/Terra_Reforged/blocks/TerraBlockMoss.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/com/anbaric/Terra_Reforged/blocks/TerraBlockMoss.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/anbaric/Terra_Reforged/blocks/TerraBlockSapling.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/com/anbaric/Terra_Reforged/blocks/TerraBlockSapling.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/anbaric/Terra_Reforged/blocks/TerraBlockSpreading.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/com/anbaric/Terra_Reforged/blocks/TerraBlockSpreading.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/anbaric/Terra_Reforged/blocks/TerraBlockThinIce.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/com/anbaric/Terra_Reforged/blocks/TerraBlockThinIce.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/anbaric/Terra_Reforged/items/TerraItems.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/com/anbaric/Terra_Reforged/items/TerraItems.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/anbaric/Terra_Reforged/blocks/TerraBlockBiomeGrass.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/com/anbaric/Terra_Reforged/blocks/TerraBlockBiomeGrass.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/anbaric/Terra_Reforged/blocks/TerraBlocks.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/com/anbaric/Terra_Reforged/blocks/TerraBlocks.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/anbaric/Terra_Reforged/blocks/potionplants/TerraBlockShiverthorn.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/com/anbaric/Terra_Reforged/blocks/potionplants/TerraBlockShiverthorn.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/anbaric/Terra_Reforged/util/handlers/EnumHandler$EnumBiomeBlockType.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/com/anbaric/Terra_Reforged/util/handlers/EnumHandler$EnumBiomeBlockType.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/anbaric/Terra_Reforged/util/handlers/EnumHandler$EnumBlockTier.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/com/anbaric/Terra_Reforged/util/handlers/EnumHandler$EnumBlockTier.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/anbaric/Terra_Reforged/util/init/TerraBlockRegistry.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/com/anbaric/Terra_Reforged/util/init/TerraBlockRegistry.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/anbaric/Terra_Reforged/util/init/TerraItemRegistry.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/com/anbaric/Terra_Reforged/util/init/TerraItemRegistry.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/resources/main/assets/terra_reforged/blockstates/plant_blinkroot.json" beforeDir="false" afterPath="$PROJECT_DIR$/build/resources/main/assets/terra_reforged/blockstates/plant_blinkroot.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/resources/main/assets/terra_reforged/blockstates/plant_daybloom.json" beforeDir="false" afterPath="$PROJECT_DIR$/build/resources/main/assets/terra_reforged/blockstates/plant_daybloom.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/resources/main/assets/terra_reforged/blockstates/plant_deathweed.json" beforeDir="false" afterPath="$PROJECT_DIR$/build/resources/main/assets/terra_reforged/blockstates/plant_deathweed.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/resources/main/assets/terra_reforged/blockstates/plant_fireblossom.json" beforeDir="false" afterPath="$PROJECT_DIR$/build/resources/main/assets/terra_reforged/blockstates/plant_fireblossom.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/resources/main/assets/terra_reforged/blockstates/plant_moonglow.json" beforeDir="false" afterPath="$PROJECT_DIR$/build/resources/main/assets/terra_reforged/blockstates/plant_moonglow.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/resources/main/assets/terra_reforged/blockstates/plant_shiverthorn.json" beforeDir="false" afterPath="$PROJECT_DIR$/build/resources/main/assets/terra_reforged/blockstates/plant_shiverthorn.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/resources/main/assets/terra_reforged/blockstates/plant_waterleaf.json" beforeDir="false" afterPath="$PROJECT_DIR$/build/resources/main/assets/terra_reforged/blockstates/plant_waterleaf.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/resources/main/assets/terra_reforged/textures/blocks/cactus_crim_side.png" beforeDir="false" afterPath="$PROJECT_DIR$/build/resources/main/assets/terra_reforged/textures/blocks/cactus_crim_side.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/anbaric/Terra_Reforged/TerraReforged.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/anbaric/Terra_Reforged/TerraReforged.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/anbaric/Terra_Reforged/util/init/TerraBlockRegistry.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/anbaric/Terra_Reforged/util/init/TerraBlockRegistry.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/anbaric/terra_reforged/blocks/TerraBlockIce.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/anbaric/terra_reforged/blocks/TerraBlockIce.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/anbaric/terra_reforged/blocks/TerraBlockMoss.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/anbaric/terra_reforged/blocks/TerraBlockMoss.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/anbaric/terra_reforged/blocks/TerraBlockSapling.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/anbaric/terra_reforged/blocks/TerraBlockSapling.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/anbaric/terra_reforged/blocks/TerraBlockSpreading.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/anbaric/terra_reforged/blocks/TerraBlockSpreading.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/anbaric/terra_reforged/blocks/TerraBlockThinIce.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/anbaric/terra_reforged/blocks/TerraBlockThinIce.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/anbaric/terra_reforged/items/TerraItems.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/anbaric/terra_reforged/items/TerraItems.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/anbaric/terra_reforged/blocks/TerraBlockBiomeGrass.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/anbaric/terra_reforged/blocks/TerraBlockBiomeGrass.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/anbaric/terra_reforged/blocks/TerraBlocks.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/anbaric/terra_reforged/blocks/TerraBlocks.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/anbaric/terra_reforged/util/handlers/EnumHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/anbaric/terra_reforged/util/handlers/EnumHandler.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/anbaric/terra_reforged/util/init/TerraItemRegistry.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/anbaric/terra_reforged/util/init/TerraItemRegistry.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/assets/terra_reforged/blockstates/plant_blinkroot.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/assets/terra_reforged/blockstates/plant_blinkroot.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/assets/terra_reforged/blockstates/plant_daybloom.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/assets/terra_reforged/blockstates/plant_daybloom.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/assets/terra_reforged/blockstates/plant_deathweed.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/assets/terra_reforged/blockstates/plant_deathweed.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/assets/terra_reforged/blockstates/plant_fireblossom.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/assets/terra_reforged/blockstates/plant_fireblossom.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/assets/terra_reforged/blockstates/plant_moonglow.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/assets/terra_reforged/blockstates/plant_moonglow.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/assets/terra_reforged/blockstates/plant_shiverthorn.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/assets/terra_reforged/blockstates/plant_shiverthorn.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/assets/terra_reforged/blockstates/plant_waterleaf.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/assets/terra_reforged/blockstates/plant_waterleaf.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/assets/terra_reforged/textures/blocks/cactus_crim_side.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/assets/terra_reforged/textures/blocks/cactus_crim_side.png" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -9737,6 +9714,7 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="Interface" />
+        <option value="Enum" />
         <option value="Class" />
       </list>
     </option>
@@ -9758,9 +9736,9 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="com.anbaric.terra_reforged.structures.trees" />
       <recent name="com.anbaric.terra_reforged.blocks.potionplants" />
       <recent name="com.anbaric.terra_reforged.blocks" />
-      <recent name="com.anbaric.terra_reforged.structures.trees" />
       <recent name="com.anbaric.terra_reforged.util.init" />
       <recent name="com.anbaric.terra_reforged.items" />
     </key>

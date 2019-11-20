@@ -4,6 +4,7 @@ import com.anbaric.terra_reforged.TerraReforged;
 import com.anbaric.terra_reforged.util.handlers.EnumHandler.EnumBiomeBlockType;
 import com.anbaric.terra_reforged.util.handlers.EnumHandler.EnumBiomeType;
 import net.minecraft.block.*;
+import net.minecraft.fluid.IFluidState;
 import net.minecraft.item.BlockItemUseContext;
 import net.minecraft.tags.FluidTags;
 import net.minecraft.util.BlockRenderLayer;
@@ -36,7 +37,21 @@ public class TerraBlockBiomeGrass extends SnowyDirtBlock implements IGrowable
     @Override
     public boolean canSustainPlant(BlockState state, IBlockReader world, BlockPos pos, Direction facing, IPlantable plantable)
     {
-        return plantable.getPlantType(world, pos) == PlantType.Plains;
+        Boolean reed = false;
+        Block plant = plantable.getPlant(world, pos.up()).getBlock();
+        if (plant == Blocks.SUGAR_CANE || plant instanceof TerraBlockReeds)
+        {
+            for (Direction direction : Direction.Plane.HORIZONTAL)
+            {
+                BlockState  blockstate  = world.getBlockState(pos.offset(direction));
+                IFluidState ifluidstate = world.getFluidState(pos.offset(direction));
+                if (ifluidstate.isTagged(FluidTags.WATER) || blockstate.getBlock() == Blocks.FROSTED_ICE)
+                {
+                    reed = true;
+                }
+            }
+        }
+        return plantable.getPlantType(world, pos) == PlantType.Plains || reed;
     }
 
     private static boolean canSpread(BlockState state, IWorldReader world, BlockPos pos)

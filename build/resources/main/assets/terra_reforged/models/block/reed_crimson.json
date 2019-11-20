@@ -1,0 +1,6 @@
+{
+    "parent": "block/cross",
+    "textures": {
+        "cross": "terra_reforged:blocks/reed_crimson"
+    }
+}

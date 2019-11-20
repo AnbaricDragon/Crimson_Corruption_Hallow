@@ -5,8 +5,11 @@ import com.anbaric.terra_reforged.util.handlers.EnumHandler.EnumBiomeBlockType;
 import com.anbaric.terra_reforged.util.handlers.EnumHandler.EnumBiomeType;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
+import net.minecraft.block.Blocks;
 import net.minecraft.block.FallingBlock;
 import net.minecraft.entity.item.FallingBlockEntity;
+import net.minecraft.fluid.IFluidState;
+import net.minecraft.tags.FluidTags;
 import net.minecraft.util.Direction;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.IBlockReader;
@@ -28,8 +31,21 @@ public class TerraBlockSand extends FallingBlock
     @Override
     public boolean canSustainPlant(BlockState state, IBlockReader world, BlockPos pos, Direction facing, net.minecraftforge.common.IPlantable plantable)
     {
-        PlantType targetPlant = plantable.getPlantType(world, pos);
-        return targetPlant == PlantType.Desert || targetPlant == PlantType.Beach;
+        Boolean reed = false;
+        Block plant = plantable.getPlant(world, pos.up()).getBlock();
+        if (plant == Blocks.SUGAR_CANE || plant instanceof TerraBlockReeds)
+        {
+            for (Direction direction : Direction.Plane.HORIZONTAL)
+            {
+                BlockState  blockstate  = world.getBlockState(pos.offset(direction));
+                IFluidState ifluidstate = world.getFluidState(pos.offset(direction));
+                if (ifluidstate.isTagged(FluidTags.WATER) || blockstate.getBlock() == Blocks.FROSTED_ICE)
+                {
+                    reed = true;
+                }
+            }
+        }
+        return plantable.getPlantType(world, pos) == PlantType.Desert || plantable.getPlantType(world, pos) == PlantType.Desert || reed;
     }
 
     public void tick(BlockState state, World worldIn, BlockPos pos, Random random)

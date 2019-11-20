@@ -72,7 +72,8 @@ public class EnumHandler
 //        OREDIAMOND(Blocks.DIAMOND_ORE, TerraBlocks.ORE_DIAMOND.withProperty(TerraBlockDOres.D_VARIANT, EnumDOreType.CORRUPT), TerraBlocks.ORE_DIAMOND.withProperty(TerraBlockDOres.D_VARIANT, EnumDOreType.CRIMSON), TerraBlocks.ORE_DIAMOND.withProperty(TerraBlockDOres.D_VARIANT, EnumDOreType.HALLOWED)),
 //        SAPLING_A(Blocks.SAPLING.withProperty(BlockSapling.TYPE, BlockPlanks.EnumType.OAK).withProperty(BlockSapling.STAGE, 0), TerraBlocks.SAPLING_EBON, TerraBlocks.SAPLING_SHADE, TerraBlocks.SAPLING_PEARL),
 //        SAPLING_B(Blocks.SAPLING.withProperty(BlockSapling.TYPE, BlockPlanks.EnumType.OAK).withProperty(BlockSapling.STAGE, 1), TerraBlocks.SAPLING_EBON, TerraBlocks.SAPLING_SHADE, TerraBlocks.SAPLING_PEARL),
-        TALLGRASS(Blocks.GRASS, TerraBlocks.TALLGRASS_CORRUPT, TerraBlocks.TALLGRASS_CRIMSON, TerraBlocks.TALLGRASS_HALLOWED);
+        TALLGRASS(Blocks.GRASS, TerraBlocks.TALLGRASS_CORRUPT, TerraBlocks.TALLGRASS_CRIMSON, TerraBlocks.TALLGRASS_HALLOWED),
+        REEDS(Blocks.SUGAR_CANE, TerraBlocks.REED_CORRUPT, TerraBlocks.REED_CRIMSON, TerraBlocks.REED_HALLOWED);
 //        TALLGRASS_BOT(Blocks.DOUBLE_PLANT.withProperty(net.minecraft.block.BlockDoublePlant.VARIANT, net.minecraft.block.BlockDoublePlant.EnumPlantType.GRASS).withProperty(net.minecraft.block.BlockDoublePlant.HALF, net.minecraft.block.BlockDoublePlant.EnumBlockHalf.LOWER), TerraBlocks.DOUBLEGRASS_CORRUPT.withProperty(TerraBlockDoublePlant.HALF, EnumHandler.EnumBlockHalf.LOWER), TerraBlocks.DOUBLEGRASS_CRIMSON.withProperty(TerraBlockDoublePlant.HALF, EnumHandler.EnumBlockHalf.LOWER), TerraBlocks.DOUBLEGRASS_HALLOWED.withProperty(TerraBlockDoublePlant.HALF, EnumHandler.EnumBlockHalf.LOWER), TALLGRASS_TOP);
 
         public Block pure, corrupt, crimson, hallowed;

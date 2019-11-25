@@ -1,6 +1,7 @@
 package com.anbaric.terra_reforged;
 
 import com.anbaric.terra_reforged.util.Reference;
+import net.minecraft.util.DamageSource;
 import net.minecraftforge.common.PlantType;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
@@ -13,8 +14,9 @@ public class TerraReforged
 {
     private static final Logger LOGGER = LogManager.getLogger();
 
-    //Plant Types
+    //New Types
     public static PlantType MOSS = PlantType.create("Moss");
+    public static DamageSource THORNS = new DamageSource("thorns").setDamageBypassesArmor();
 
     public static boolean debugSpreading = true;
 

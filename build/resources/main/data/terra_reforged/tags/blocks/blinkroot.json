@@ -22,8 +22,8 @@
 		"terra_reforged:ice_red",
 		"terra_reforged:ice_pink",
 		"minecraft:packed_ice",
-		"terra_reforged:ice_hardpurple",
-		"terra_reforged:ice_hardred",
-		"terra_reforged:ice_hardpink"
+		"terra_reforged:ice_hard_purple",
+		"terra_reforged:ice_hard_red",
+		"terra_reforged:ice_hard_pink"
   ]
 }

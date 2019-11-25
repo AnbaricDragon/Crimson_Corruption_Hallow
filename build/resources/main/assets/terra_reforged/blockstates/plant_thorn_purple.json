@@ -25,16 +25,16 @@
 				{   "when": { "west": "false" },
             "apply": { "model": "terra_reforged:block/plant_thorn_purple_side_off", "y": 270, "uvlock": true }
         },
-				{   "when": { "top": "true" },
+				{   "when": { "up": "true" },
             "apply": { "model": "terra_reforged:block/plant_thorn_purple_side", "x": 270, "uvlock": true }
         },
-				{   "when": { "top": "false" },
+				{   "when": { "up": "false" },
             "apply": { "model": "terra_reforged:block/plant_thorn_purple_side_off", "x": 270, "uvlock": true }
         },
-				{   "when": { "bottom": "true" },
+				{   "when": { "down": "true" },
             "apply": { "model": "terra_reforged:block/plant_thorn_purple_side", "x": 90, "uvlock": true }
         },
-				{   "when": { "bottom": "false" },
+				{   "when": { "down": "false" },
             "apply": { "model": "terra_reforged:block/plant_thorn_purple_side_off", "x": 90, "uvlock": true }
         }
     ]

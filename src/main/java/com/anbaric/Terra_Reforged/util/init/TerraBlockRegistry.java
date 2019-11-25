@@ -187,8 +187,10 @@ public final class TerraBlockRegistry
                 setup(new TerraBlockDoubleGrass(Block.Properties.create(Material.TALL_PLANTS).doesNotBlockMovement().hardnessAndResistance(0.0F).sound(SoundType.PLANT)), "tallgrassdouble_hallowed"),
                 setup(new TerraBlockReeds(Block.Properties.create(Material.PLANTS).doesNotBlockMovement().tickRandomly().hardnessAndResistance(0.0F).sound(SoundType.PLANT)), "reed_corrupt"),
                 setup(new TerraBlockReeds(Block.Properties.create(Material.PLANTS).doesNotBlockMovement().tickRandomly().hardnessAndResistance(0.0F).sound(SoundType.PLANT)), "reed_crimson"),
-                setup(new TerraBlockReeds(Block.Properties.create(Material.PLANTS).doesNotBlockMovement().tickRandomly().hardnessAndResistance(0.0F).sound(SoundType.PLANT)), "reed_hallowed")
-
+                setup(new TerraBlockReeds(Block.Properties.create(Material.PLANTS).doesNotBlockMovement().tickRandomly().hardnessAndResistance(0.0F).sound(SoundType.PLANT)), "reed_hallowed"),
+                setup(new TerraBlockThornBush(Block.Properties.create(Material.PLANTS).doesNotBlockMovement().tickRandomly().hardnessAndResistance(0.3F).sound(SoundType.PLANT)), "plant_thorn_purple"),
+                setup(new TerraBlockThornBush(Block.Properties.create(Material.PLANTS).doesNotBlockMovement().tickRandomly().hardnessAndResistance(0.3F).sound(SoundType.PLANT)), "plant_thorn_red"),
+                setup(new TerraBlockThornBush(Block.Properties.create(Material.PLANTS).doesNotBlockMovement().tickRandomly().hardnessAndResistance(0.3F).sound(SoundType.PLANT)), "plant_thorn_jungle")
         );
     }
 
@@ -220,8 +222,10 @@ public final class TerraBlockRegistry
                     block instanceof LeavesBlock ||
                     block instanceof TerraBlockCactus ||
                     block instanceof TerraBlockTallGrass ||
-                    block instanceof TerraBlockPotionPlant||
-                    block instanceof TerraBlockDoubleGrass
+                    block instanceof TerraBlockPotionPlant ||
+                    block instanceof TerraBlockDoubleGrass ||
+                    block instanceof TerraBlockReeds ||
+                    block instanceof TerraBlockThornBush
                             ? TerraDecorationsTab : TerraBlocksTab);
             // Setup the new BlockItem with the block's registry name and register it
             registry.register(setup(blockItem, blockRegistryName));

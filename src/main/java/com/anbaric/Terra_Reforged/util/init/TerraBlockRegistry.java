@@ -190,7 +190,11 @@ public final class TerraBlockRegistry
                 setup(new TerraBlockReeds(Block.Properties.create(Material.PLANTS).doesNotBlockMovement().tickRandomly().hardnessAndResistance(0.0F).sound(SoundType.PLANT)), "reed_hallowed"),
                 setup(new TerraBlockThornBush(Block.Properties.create(Material.PLANTS).doesNotBlockMovement().tickRandomly().hardnessAndResistance(0.3F).sound(SoundType.PLANT)), "plant_thorn_purple"),
                 setup(new TerraBlockThornBush(Block.Properties.create(Material.PLANTS).doesNotBlockMovement().tickRandomly().hardnessAndResistance(0.3F).sound(SoundType.PLANT)), "plant_thorn_red"),
-                setup(new TerraBlockThornBush(Block.Properties.create(Material.PLANTS).doesNotBlockMovement().tickRandomly().hardnessAndResistance(0.3F).sound(SoundType.PLANT)), "plant_thorn_jungle")
+                setup(new TerraBlockThornBush(Block.Properties.create(Material.PLANTS).doesNotBlockMovement().tickRandomly().hardnessAndResistance(0.3F).sound(SoundType.PLANT)), "plant_thorn_jungle"),
+                setup(new TerraBlockDoubleGrass(Block.Properties.create(Material.TALL_PLANTS).doesNotBlockMovement().hardnessAndResistance(0.0F).sound(SoundType.PLANT)), "plant_dye_purple"),
+                setup(new TerraBlockDoubleGrass(Block.Properties.create(Material.TALL_PLANTS).doesNotBlockMovement().hardnessAndResistance(0.0F).sound(SoundType.PLANT)), "plant_dye_red"),
+                setup(new TerraBlockDoubleGrass(Block.Properties.create(Material.TALL_PLANTS).doesNotBlockMovement().hardnessAndResistance(0.0F).sound(SoundType.PLANT)), "plant_dye_cyan"),
+                setup(new TerraBlockDoubleGrass(Block.Properties.create(Material.TALL_PLANTS).doesNotBlockMovement().hardnessAndResistance(0.0F).sound(SoundType.PLANT)), "plant_dye_orange")
         );
     }
 

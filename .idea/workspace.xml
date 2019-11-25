@@ -8,15 +8,7 @@
       <change beforePath="$PROJECT_DIR$/.gradle/4.9/taskHistory/taskHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/4.9/taskHistory/taskHistory.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/4.9/taskHistory/taskHistory.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/4.9/taskHistory/taskHistory.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/anbaric/Terra_Reforged/TerraReforged.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/com/anbaric/Terra_Reforged/TerraReforged.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/anbaric/Terra_Reforged/util/init/TerraBlockRegistry.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/com/anbaric/Terra_Reforged/util/init/TerraBlockRegistry.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/resources/main/data/terra_reforged/tags/blocks/blinkroot.json" beforeDir="false" afterPath="$PROJECT_DIR$/build/resources/main/data/terra_reforged/tags/blocks/blinkroot.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/anbaric/Terra_Reforged/util/init/TerraBlockRegistry.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/anbaric/Terra_Reforged/util/init/TerraBlockRegistry.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/assets/terra_reforged/blockstates/plant_thorn_jungle.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/assets/terra_reforged/blockstates/plant_thorn_jungle.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/assets/terra_reforged/blockstates/plant_thorn_purple.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/assets/terra_reforged/blockstates/plant_thorn_purple.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/assets/terra_reforged/blockstates/plant_thorn_red.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/assets/terra_reforged/blockstates/plant_thorn_red.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/data/terra_reforged/tags/blocks/blinkroot.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/data/terra_reforged/tags/blocks/blinkroot.json" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />

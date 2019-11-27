@@ -1,8 +1,17 @@
 {
-    "variants": 
-		{
-        "variant=corrupt": { "model": "terra_reforged:block/ore_emerald_corrupt" },
-				"variant=crimson": { "model": "terra_reforged:block/ore_emerald_crimson" },
-				"variant=hallowed": { "model": "terra_reforged:block/ore_emerald_hallowed" }
-    }
+    "multipart": [
+        { "apply": { "model": "terra_reforged:block/ore_emerald" }},				
+				{   "when": { "biome": "pure" },
+            "apply": { "model": "terra_reforged:block/ore_gem_pure" }
+        },
+				{   "when": { "biome": "corrupt" },
+            "apply": { "model": "terra_reforged:block/ore_gem_corrupt" }
+        },
+				{   "when": { "biome": "crimson" },
+            "apply": { "model": "terra_reforged:block/ore_gem_crimson" }
+        },
+				{   "when": { "biome": "hallowed" },
+            "apply": { "model": "terra_reforged:block/ore_gem_hallowed" }
+        }
+    ]
 }

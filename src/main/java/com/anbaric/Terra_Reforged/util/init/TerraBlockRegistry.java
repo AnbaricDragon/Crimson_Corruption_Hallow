@@ -194,7 +194,37 @@ public final class TerraBlockRegistry
                 setup(new TerraBlockDoubleGrass(Block.Properties.create(Material.TALL_PLANTS).doesNotBlockMovement().hardnessAndResistance(0.0F).sound(SoundType.PLANT)), "plant_dye_purple"),
                 setup(new TerraBlockDoubleGrass(Block.Properties.create(Material.TALL_PLANTS).doesNotBlockMovement().hardnessAndResistance(0.0F).sound(SoundType.PLANT)), "plant_dye_red"),
                 setup(new TerraBlockDoubleGrass(Block.Properties.create(Material.TALL_PLANTS).doesNotBlockMovement().hardnessAndResistance(0.0F).sound(SoundType.PLANT)), "plant_dye_cyan"),
-                setup(new TerraBlockDoubleGrass(Block.Properties.create(Material.TALL_PLANTS).doesNotBlockMovement().hardnessAndResistance(0.0F).sound(SoundType.PLANT)), "plant_dye_orange")
+                setup(new TerraBlockDoubleGrass(Block.Properties.create(Material.TALL_PLANTS).doesNotBlockMovement().hardnessAndResistance(0.0F).sound(SoundType.PLANT)), "plant_dye_orange"),
+
+                //Ores
+                setup(new TerraBlockOre(Block.Properties.create(Material.ROCK).hardnessAndResistance(3.0F, 3.0F)), "ore_tin"),
+                setup(new TerraBlockOre(Block.Properties.create(Material.ROCK).hardnessAndResistance(3.0F, 3.0F)), "ore_copper"),
+                setup(new TerraBlockOre(Block.Properties.create(Material.ROCK).hardnessAndResistance(3.0F, 3.0F)), "ore_iron"),
+                setup(new TerraBlockOre(Block.Properties.create(Material.ROCK).hardnessAndResistance(3.0F, 3.0F)), "ore_lead"),
+                setup(new TerraBlockOre(Block.Properties.create(Material.ROCK).hardnessAndResistance(3.0F, 3.0F)), "ore_silver"),
+                setup(new TerraBlockOre(Block.Properties.create(Material.ROCK).hardnessAndResistance(3.0F, 3.0F)), "ore_tungsten"),
+                setup(new TerraBlockOre(Block.Properties.create(Material.ROCK).hardnessAndResistance(3.0F, 3.0F)), "ore_gold"),
+                setup(new TerraBlockOre(Block.Properties.create(Material.ROCK).hardnessAndResistance(3.0F, 3.0F)), "ore_platinum"),
+                setup(new TerraBlockOre(Block.Properties.create(Material.ROCK).hardnessAndResistance(3.0F, 3.0F)), "ore_meteorite"),
+                setup(new TerraBlockOre(Block.Properties.create(Material.ROCK).hardnessAndResistance(3.0F, 3.0F)), "ore_demonite"),
+                setup(new TerraBlockOre(Block.Properties.create(Material.ROCK).hardnessAndResistance(3.0F, 3.0F)), "ore_crimtane"),
+                setup(new TerraBlockOre(Block.Properties.create(Material.EARTH).hardnessAndResistance(3.0F, 3.0F)), "ore_hellstone"),
+                setup(new TerraBlockOre(Block.Properties.create(Material.ROCK).hardnessAndResistance(3.0F, 3.0F)), "ore_cobalt"),
+                setup(new TerraBlockOre(Block.Properties.create(Material.ROCK).hardnessAndResistance(3.0F, 3.0F)), "ore_palladium"),
+                setup(new TerraBlockOre(Block.Properties.create(Material.ROCK).hardnessAndResistance(3.0F, 3.0F)), "ore_mythril"),
+                setup(new TerraBlockOre(Block.Properties.create(Material.ROCK).hardnessAndResistance(3.0F, 3.0F)), "ore_orichalcum"),
+                setup(new TerraBlockOre(Block.Properties.create(Material.ROCK).hardnessAndResistance(3.0F, 3.0F)), "ore_adamantite"),
+                setup(new TerraBlockOre(Block.Properties.create(Material.ROCK).hardnessAndResistance(3.0F, 3.0F)), "ore_titanium"),
+                setup(new TerraBlockOre(Block.Properties.create(Material.EARTH).hardnessAndResistance(3.0F, 3.0F)), "ore_chlorophyte"),
+                setup(new TerraBlockOre(Block.Properties.create(Material.ROCK).hardnessAndResistance(3.0F, 3.0F)), "ore_coal"),
+                setup(new TerraBlockOre(Block.Properties.create(Material.ROCK).hardnessAndResistance(3.0F, 3.0F)), "ore_lapis"),
+                setup(new TerraBlockOre(Block.Properties.create(Material.ROCK).hardnessAndResistance(3.0F, 3.0F)), "ore_redstone"),
+                setup(new TerraBlockOre(Block.Properties.create(Material.ROCK).hardnessAndResistance(3.0F, 3.0F)), "ore_amethyst"),
+                setup(new TerraBlockOre(Block.Properties.create(Material.ROCK).hardnessAndResistance(3.0F, 3.0F)), "ore_topaz"),
+                setup(new TerraBlockOre(Block.Properties.create(Material.ROCK).hardnessAndResistance(3.0F, 3.0F)), "ore_sapphire"),
+                setup(new TerraBlockOre(Block.Properties.create(Material.ROCK).hardnessAndResistance(3.0F, 3.0F)), "ore_ruby"),
+                setup(new TerraBlockOre(Block.Properties.create(Material.ROCK).hardnessAndResistance(3.0F, 3.0F)), "ore_emerald"),
+                setup(new TerraBlockOre(Block.Properties.create(Material.ROCK).hardnessAndResistance(3.0F, 3.0F)), "ore_diamond")
         );
     }
 

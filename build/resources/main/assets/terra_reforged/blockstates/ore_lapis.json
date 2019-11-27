@@ -1,8 +1,17 @@
 {
-    "variants": 
-		{
-        "variant=corrupt": { "model": "terra_reforged:block/ore_lapis_corrupt" },
-				"variant=crimson": { "model": "terra_reforged:block/ore_lapis_crimson" },
-				"variant=hallowed": { "model": "terra_reforged:block/ore_lapis_hallowed" }
-    }
+    "multipart": [
+        { "apply": { "model": "terra_reforged:block/ore_lapis" }},				
+				{   "when": { "biome": "pure" },
+            "apply": { "model": "terra_reforged:block/ore_chunk_pure" }
+        },
+				{   "when": { "biome": "corrupt" },
+            "apply": { "model": "terra_reforged:block/ore_chunk_corrupt" }
+        },
+				{   "when": { "biome": "crimson" },
+            "apply": { "model": "terra_reforged:block/ore_chunk_crimson" }
+        },
+				{   "when": { "biome": "hallowed" },
+            "apply": { "model": "terra_reforged:block/ore_chunk_hallowed" }
+        }
+    ]
 }

@@ -9,8 +9,8 @@ import net.minecraft.util.Direction;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.IBlockReader;
 import net.minecraft.world.World;
-import net.minecraftforge.common.PlantType;
 import net.minecraftforge.common.IPlantable;
+import net.minecraftforge.common.PlantType;
 
 import javax.annotation.Nullable;
 import java.util.Random;
@@ -49,6 +49,10 @@ public class TerraBlockSpreading extends Block
                     BlockPos targetPos = pos.add(random.nextInt(3) - 1, random.nextInt(3) - 1, random.nextInt(3) - 1);
                     Block targetBlock = worldIn.getBlockState(targetPos).getBlock();
 
+                    if (targetBlock instanceof TerraBlockOre)
+                    {
+                        worldIn.setBlockState(targetPos, targetBlock.getDefaultState().with(TerraBlockOre.BIOME, this.biome.getOreBiome()));
+                    }
                     if (checkTransformable(targetBlock))
                     {
                         worldIn.setBlockState(targetPos, transformedState(biome, targetBlock).getDefaultState());

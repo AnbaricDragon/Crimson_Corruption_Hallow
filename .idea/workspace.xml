@@ -8,7 +8,524 @@
       <change beforePath="$PROJECT_DIR$/.gradle/4.9/taskHistory/taskHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/4.9/taskHistory/taskHistory.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/4.9/taskHistory/taskHistory.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/4.9/taskHistory/taskHistory.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/anbaric/Terra_Reforged/blocks/TerraBlockSpreading.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/com/anbaric/Terra_Reforged/blocks/TerraBlockSpreading.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/anbaric/Terra_Reforged/util/handlers/EnumHandler$EnumBiomeBlockType.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/com/anbaric/Terra_Reforged/util/handlers/EnumHandler$EnumBiomeBlockType.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/anbaric/Terra_Reforged/util/handlers/EnumHandler$EnumBiomeType.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/com/anbaric/Terra_Reforged/util/handlers/EnumHandler$EnumBiomeType.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/anbaric/Terra_Reforged/util/handlers/EnumHandler$EnumBlockTier.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/com/anbaric/Terra_Reforged/util/handlers/EnumHandler$EnumBlockTier.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/anbaric/Terra_Reforged/util/handlers/EnumHandler.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/com/anbaric/Terra_Reforged/util/handlers/EnumHandler.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/anbaric/Terra_Reforged/util/init/TerraBlockRegistry.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/com/anbaric/Terra_Reforged/util/init/TerraBlockRegistry.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/assets/terra_reforged/blockstates/ore_adamantite.json" beforeDir="false" afterPath="$PROJECT_DIR$/build/resources/main/assets/terra_reforged/blockstates/ore_adamantite.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/assets/terra_reforged/blockstates/ore_amethyst.json" beforeDir="false" afterPath="$PROJECT_DIR$/build/resources/main/assets/terra_reforged/blockstates/ore_amethyst.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/assets/terra_reforged/blockstates/ore_coal.json" beforeDir="false" afterPath="$PROJECT_DIR$/build/resources/main/assets/terra_reforged/blockstates/ore_coal.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/assets/terra_reforged/blockstates/ore_cobalt.json" beforeDir="false" afterPath="$PROJECT_DIR$/build/resources/main/assets/terra_reforged/blockstates/ore_cobalt.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/assets/terra_reforged/blockstates/ore_copper.json" beforeDir="false" afterPath="$PROJECT_DIR$/build/resources/main/assets/terra_reforged/blockstates/ore_copper.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/assets/terra_reforged/blockstates/ore_crimtane.json" beforeDir="false" afterPath="$PROJECT_DIR$/build/resources/main/assets/terra_reforged/blockstates/ore_crimtane.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/assets/terra_reforged/blockstates/ore_demonite.json" beforeDir="false" afterPath="$PROJECT_DIR$/build/resources/main/assets/terra_reforged/blockstates/ore_demonite.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/assets/terra_reforged/blockstates/ore_diamond.json" beforeDir="false" afterPath="$PROJECT_DIR$/build/resources/main/assets/terra_reforged/blockstates/ore_diamond.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/assets/terra_reforged/blockstates/ore_emerald.json" beforeDir="false" afterPath="$PROJECT_DIR$/build/resources/main/assets/terra_reforged/blockstates/ore_emerald.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/assets/terra_reforged/blockstates/ore_gold.json" beforeDir="false" afterPath="$PROJECT_DIR$/build/resources/main/assets/terra_reforged/blockstates/ore_gold.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/assets/terra_reforged/blockstates/ore_iron.json" beforeDir="false" afterPath="$PROJECT_DIR$/build/resources/main/assets/terra_reforged/blockstates/ore_iron.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/assets/terra_reforged/blockstates/ore_lapis.json" beforeDir="false" afterPath="$PROJECT_DIR$/build/resources/main/assets/terra_reforged/blockstates/ore_lapis.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/assets/terra_reforged/blockstates/ore_lead.json" beforeDir="false" afterPath="$PROJECT_DIR$/build/resources/main/assets/terra_reforged/blockstates/ore_lead.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/assets/terra_reforged/blockstates/ore_mythril.json" beforeDir="false" afterPath="$PROJECT_DIR$/build/resources/main/assets/terra_reforged/blockstates/ore_mythril.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/assets/terra_reforged/blockstates/ore_orichalcum.json" beforeDir="false" afterPath="$PROJECT_DIR$/build/resources/main/assets/terra_reforged/blockstates/ore_orichalcum.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/assets/terra_reforged/blockstates/ore_palladium.json" beforeDir="false" afterPath="$PROJECT_DIR$/build/resources/main/assets/terra_reforged/blockstates/ore_palladium.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/assets/terra_reforged/blockstates/ore_platinum.json" beforeDir="false" afterPath="$PROJECT_DIR$/build/resources/main/assets/terra_reforged/blockstates/ore_platinum.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/assets/terra_reforged/blockstates/ore_redstone.json" beforeDir="false" afterPath="$PROJECT_DIR$/build/resources/main/assets/terra_reforged/blockstates/ore_redstone.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/assets/terra_reforged/blockstates/ore_ruby.json" beforeDir="false" afterPath="$PROJECT_DIR$/build/resources/main/assets/terra_reforged/blockstates/ore_ruby.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/assets/terra_reforged/blockstates/ore_sapphire.json" beforeDir="false" afterPath="$PROJECT_DIR$/build/resources/main/assets/terra_reforged/blockstates/ore_sapphire.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/assets/terra_reforged/blockstates/ore_silver.json" beforeDir="false" afterPath="$PROJECT_DIR$/build/resources/main/assets/terra_reforged/blockstates/ore_silver.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/assets/terra_reforged/blockstates/ore_tin.json" beforeDir="false" afterPath="$PROJECT_DIR$/build/resources/main/assets/terra_reforged/blockstates/ore_tin.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/assets/terra_reforged/blockstates/ore_titanium.json" beforeDir="false" afterPath="$PROJECT_DIR$/build/resources/main/assets/terra_reforged/blockstates/ore_titanium.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/assets/terra_reforged/blockstates/ore_topaz.json" beforeDir="false" afterPath="$PROJECT_DIR$/build/resources/main/assets/terra_reforged/blockstates/ore_topaz.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/assets/terra_reforged/blockstates/ore_tungsten.json" beforeDir="false" afterPath="$PROJECT_DIR$/build/resources/main/assets/terra_reforged/blockstates/ore_tungsten.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/assets/terra_reforged/models/block/ore_adamantite_corrupt.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/assets/terra_reforged/models/block/ore_adamantite_crimson.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/assets/terra_reforged/models/block/ore_adamantite_hallowed.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/assets/terra_reforged/models/block/ore_adamantite_pure.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/assets/terra_reforged/models/block/ore_amethyst_corrupt.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/assets/terra_reforged/models/block/ore_amethyst_crimson.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/assets/terra_reforged/models/block/ore_amethyst_hallowed.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/assets/terra_reforged/models/block/ore_amethyst_pure.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/assets/terra_reforged/models/block/ore_coal_corrupt.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/assets/terra_reforged/models/block/ore_coal_crimson.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/assets/terra_reforged/models/block/ore_coal_hallowed.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/assets/terra_reforged/models/block/ore_cobalt_corrupt.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/assets/terra_reforged/models/block/ore_cobalt_crimson.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/assets/terra_reforged/models/block/ore_cobalt_hallowed.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/assets/terra_reforged/models/block/ore_cobalt_pure.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/assets/terra_reforged/models/block/ore_copper_corrupt.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/assets/terra_reforged/models/block/ore_copper_crimson.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/assets/terra_reforged/models/block/ore_copper_hallowed.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/assets/terra_reforged/models/block/ore_copper_pure.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/assets/terra_reforged/models/block/ore_crimtane_corrupt.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/assets/terra_reforged/models/block/ore_crimtane_crimson.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/assets/terra_reforged/models/block/ore_crimtane_hallowed.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/assets/terra_reforged/models/block/ore_crimtane_pure.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/assets/terra_reforged/models/block/ore_demonite_corrupt.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/assets/terra_reforged/models/block/ore_demonite_crimson.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/assets/terra_reforged/models/block/ore_demonite_hallowed.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/assets/terra_reforged/models/block/ore_demonite_pure.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/assets/terra_reforged/models/block/ore_diamond_corrupt.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/assets/terra_reforged/models/block/ore_diamond_crimson.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/assets/terra_reforged/models/block/ore_diamond_hallowed.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/assets/terra_reforged/models/block/ore_emerald_corrupt.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/assets/terra_reforged/models/block/ore_emerald_crimson.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/assets/terra_reforged/models/block/ore_emerald_hallowed.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/assets/terra_reforged/models/block/ore_gold_corrupt.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/assets/terra_reforged/models/block/ore_gold_crimson.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/assets/terra_reforged/models/block/ore_gold_hallowed.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/assets/terra_reforged/models/block/ore_iron_corrupt.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/assets/terra_reforged/models/block/ore_iron_crimson.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/assets/terra_reforged/models/block/ore_iron_hallowed.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/assets/terra_reforged/models/block/ore_lapis_corrupt.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/assets/terra_reforged/models/block/ore_lapis_crimson.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/assets/terra_reforged/models/block/ore_lapis_hallowed.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/assets/terra_reforged/models/block/ore_lead_corrupt.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/assets/terra_reforged/models/block/ore_lead_crimson.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/assets/terra_reforged/models/block/ore_lead_hallowed.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/assets/terra_reforged/models/block/ore_lead_pure.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/assets/terra_reforged/models/block/ore_mythril_corrupt.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/assets/terra_reforged/models/block/ore_mythril_crimson.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/assets/terra_reforged/models/block/ore_mythril_hallowed.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/assets/terra_reforged/models/block/ore_mythril_pure.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/assets/terra_reforged/models/block/ore_orichalcum_corrupt.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/assets/terra_reforged/models/block/ore_orichalcum_crimson.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/assets/terra_reforged/models/block/ore_orichalcum_hallowed.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/assets/terra_reforged/models/block/ore_orichalcum_pure.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/assets/terra_reforged/models/block/ore_palladium_corrupt.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/assets/terra_reforged/models/block/ore_palladium_crimson.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/assets/terra_reforged/models/block/ore_palladium_hallowed.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/assets/terra_reforged/models/block/ore_palladium_pure.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/assets/terra_reforged/models/block/ore_platinum_corrupt.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/assets/terra_reforged/models/block/ore_platinum_crimson.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/assets/terra_reforged/models/block/ore_platinum_hallowed.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/assets/terra_reforged/models/block/ore_platinum_pure.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/assets/terra_reforged/models/block/ore_redstone_corrupt.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/assets/terra_reforged/models/block/ore_redstone_crimson.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/assets/terra_reforged/models/block/ore_redstone_hallowed.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/assets/terra_reforged/models/block/ore_ruby_corrupt.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/assets/terra_reforged/models/block/ore_ruby_crimson.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/assets/terra_reforged/models/block/ore_ruby_hallowed.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/assets/terra_reforged/models/block/ore_ruby_pure.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/assets/terra_reforged/models/block/ore_sapphire_corrupt.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/assets/terra_reforged/models/block/ore_sapphire_crimson.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/assets/terra_reforged/models/block/ore_sapphire_hallowed.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/assets/terra_reforged/models/block/ore_sapphire_pure.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/assets/terra_reforged/models/block/ore_silver_corrupt.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/assets/terra_reforged/models/block/ore_silver_crimson.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/assets/terra_reforged/models/block/ore_silver_hallowed.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/assets/terra_reforged/models/block/ore_silver_pure.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/assets/terra_reforged/models/block/ore_tin_corrupt.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/assets/terra_reforged/models/block/ore_tin_crimson.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/assets/terra_reforged/models/block/ore_tin_hallowed.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/assets/terra_reforged/models/block/ore_tin_pure.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/assets/terra_reforged/models/block/ore_titanium_corrupt.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/assets/terra_reforged/models/block/ore_titanium_crimson.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/assets/terra_reforged/models/block/ore_titanium_hallowed.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/assets/terra_reforged/models/block/ore_titanium_pure.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/assets/terra_reforged/models/block/ore_topaz_corrupt.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/assets/terra_reforged/models/block/ore_topaz_crimson.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/assets/terra_reforged/models/block/ore_topaz_hallowed.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/assets/terra_reforged/models/block/ore_topaz_pure.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/assets/terra_reforged/models/block/ore_tungsten_corrupt.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/assets/terra_reforged/models/block/ore_tungsten_crimson.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/assets/terra_reforged/models/block/ore_tungsten_hallowed.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/assets/terra_reforged/models/block/ore_tungsten_pure.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/assets/terra_reforged/models/item/ore_adamantite.json" beforeDir="false" afterPath="$PROJECT_DIR$/build/resources/main/assets/terra_reforged/models/item/ore_adamantite.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/assets/terra_reforged/models/item/ore_amethyst.json" beforeDir="false" afterPath="$PROJECT_DIR$/build/resources/main/assets/terra_reforged/models/item/ore_amethyst.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/assets/terra_reforged/models/item/ore_cobalt.json" beforeDir="false" afterPath="$PROJECT_DIR$/build/resources/main/assets/terra_reforged/models/item/ore_cobalt.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/assets/terra_reforged/models/item/ore_copper.json" beforeDir="false" afterPath="$PROJECT_DIR$/build/resources/main/assets/terra_reforged/models/item/ore_copper.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/assets/terra_reforged/models/item/ore_crimtane.json" beforeDir="false" afterPath="$PROJECT_DIR$/build/resources/main/assets/terra_reforged/models/item/ore_crimtane.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/assets/terra_reforged/models/item/ore_demonite.json" beforeDir="false" afterPath="$PROJECT_DIR$/build/resources/main/assets/terra_reforged/models/item/ore_demonite.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/assets/terra_reforged/models/item/ore_lead.json" beforeDir="false" afterPath="$PROJECT_DIR$/build/resources/main/assets/terra_reforged/models/item/ore_lead.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/assets/terra_reforged/models/item/ore_mythril.json" beforeDir="false" afterPath="$PROJECT_DIR$/build/resources/main/assets/terra_reforged/models/item/ore_mythril.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/assets/terra_reforged/models/item/ore_orichalcum.json" beforeDir="false" afterPath="$PROJECT_DIR$/build/resources/main/assets/terra_reforged/models/item/ore_orichalcum.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/assets/terra_reforged/models/item/ore_palladium.json" beforeDir="false" afterPath="$PROJECT_DIR$/build/resources/main/assets/terra_reforged/models/item/ore_palladium.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/assets/terra_reforged/models/item/ore_platinum.json" beforeDir="false" afterPath="$PROJECT_DIR$/build/resources/main/assets/terra_reforged/models/item/ore_platinum.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/assets/terra_reforged/models/item/ore_ruby.json" beforeDir="false" afterPath="$PROJECT_DIR$/build/resources/main/assets/terra_reforged/models/item/ore_ruby.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/assets/terra_reforged/models/item/ore_sapphire.json" beforeDir="false" afterPath="$PROJECT_DIR$/build/resources/main/assets/terra_reforged/models/item/ore_sapphire.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/assets/terra_reforged/models/item/ore_silver.json" beforeDir="false" afterPath="$PROJECT_DIR$/build/resources/main/assets/terra_reforged/models/item/ore_silver.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/assets/terra_reforged/models/item/ore_tin.json" beforeDir="false" afterPath="$PROJECT_DIR$/build/resources/main/assets/terra_reforged/models/item/ore_tin.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/assets/terra_reforged/models/item/ore_titanium.json" beforeDir="false" afterPath="$PROJECT_DIR$/build/resources/main/assets/terra_reforged/models/item/ore_titanium.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/assets/terra_reforged/models/item/ore_topaz.json" beforeDir="false" afterPath="$PROJECT_DIR$/build/resources/main/assets/terra_reforged/models/item/ore_topaz.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/assets/terra_reforged/models/item/ore_tungsten.json" beforeDir="false" afterPath="$PROJECT_DIR$/build/resources/main/assets/terra_reforged/models/item/ore_tungsten.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/assets/terra_reforged/textures/blocks/cobblestone_crim.png" beforeDir="false" afterPath="$PROJECT_DIR$/build/resources/main/assets/terra_reforged/textures/blocks/cobblestone_crim.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/assets/terra_reforged/textures/blocks/cobblestone_crim_mossy.png" beforeDir="false" afterPath="$PROJECT_DIR$/build/resources/main/assets/terra_reforged/textures/blocks/cobblestone_crim_mossy.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/assets/terra_reforged/textures/blocks/cobblestone_ebon.png" beforeDir="false" afterPath="$PROJECT_DIR$/build/resources/main/assets/terra_reforged/textures/blocks/cobblestone_ebon.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/assets/terra_reforged/textures/blocks/cobblestone_ebon_mossy.png" beforeDir="false" afterPath="$PROJECT_DIR$/build/resources/main/assets/terra_reforged/textures/blocks/cobblestone_ebon_mossy.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/assets/terra_reforged/textures/blocks/cobblestone_pearl.png" beforeDir="false" afterPath="$PROJECT_DIR$/build/resources/main/assets/terra_reforged/textures/blocks/cobblestone_pearl.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/assets/terra_reforged/textures/blocks/cobblestone_pearl_mossy.png" beforeDir="false" afterPath="$PROJECT_DIR$/build/resources/main/assets/terra_reforged/textures/blocks/cobblestone_pearl_mossy.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/assets/terra_reforged/textures/blocks/ore_adamantite_corrupt.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/assets/terra_reforged/textures/blocks/ore_adamantite_crimson.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/assets/terra_reforged/textures/blocks/ore_adamantite_hallowed.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/assets/terra_reforged/textures/blocks/ore_adamantite_pure.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/assets/terra_reforged/textures/blocks/ore_amethyst_corrupt.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/assets/terra_reforged/textures/blocks/ore_amethyst_crimson.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/assets/terra_reforged/textures/blocks/ore_amethyst_hallowed.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/assets/terra_reforged/textures/blocks/ore_amethyst_pure.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/assets/terra_reforged/textures/blocks/ore_coal_corrupt.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/assets/terra_reforged/textures/blocks/ore_coal_crimson.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/assets/terra_reforged/textures/blocks/ore_coal_hallowed.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/assets/terra_reforged/textures/blocks/ore_cobalt_corrupt.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/assets/terra_reforged/textures/blocks/ore_cobalt_crimson.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/assets/terra_reforged/textures/blocks/ore_cobalt_hallowed.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/assets/terra_reforged/textures/blocks/ore_cobalt_pure.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/assets/terra_reforged/textures/blocks/ore_copper_corrupt.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/assets/terra_reforged/textures/blocks/ore_copper_crimson.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/assets/terra_reforged/textures/blocks/ore_copper_hallowed.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/assets/terra_reforged/textures/blocks/ore_copper_pure.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/assets/terra_reforged/textures/blocks/ore_crimtane_corrupt.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/assets/terra_reforged/textures/blocks/ore_crimtane_crimson.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/assets/terra_reforged/textures/blocks/ore_crimtane_hallowed.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/assets/terra_reforged/textures/blocks/ore_crimtane_pure.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/assets/terra_reforged/textures/blocks/ore_demonite_corrupt.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/assets/terra_reforged/textures/blocks/ore_demonite_crimson.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/assets/terra_reforged/textures/blocks/ore_demonite_hallowed.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/assets/terra_reforged/textures/blocks/ore_demonite_pure.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/assets/terra_reforged/textures/blocks/ore_diamond_corrupt.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/assets/terra_reforged/textures/blocks/ore_diamond_crimson.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/assets/terra_reforged/textures/blocks/ore_diamond_hallowed.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/assets/terra_reforged/textures/blocks/ore_diamond_pure.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/assets/terra_reforged/textures/blocks/ore_emerald_corrupt.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/assets/terra_reforged/textures/blocks/ore_emerald_crimson.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/assets/terra_reforged/textures/blocks/ore_emerald_hallowed.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/assets/terra_reforged/textures/blocks/ore_emerald_pure.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/assets/terra_reforged/textures/blocks/ore_gold_corrupt.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/assets/terra_reforged/textures/blocks/ore_gold_crimson.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/assets/terra_reforged/textures/blocks/ore_gold_hallowed.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/assets/terra_reforged/textures/blocks/ore_gold_pure.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/assets/terra_reforged/textures/blocks/ore_iron_corrupt.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/assets/terra_reforged/textures/blocks/ore_iron_crimson.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/assets/terra_reforged/textures/blocks/ore_iron_hallowed.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/assets/terra_reforged/textures/blocks/ore_iron_pure.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/assets/terra_reforged/textures/blocks/ore_lapis_corrupt.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/assets/terra_reforged/textures/blocks/ore_lapis_crimson.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/assets/terra_reforged/textures/blocks/ore_lapis_hallowed.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/assets/terra_reforged/textures/blocks/ore_lead_corrupt.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/assets/terra_reforged/textures/blocks/ore_lead_crimson.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/assets/terra_reforged/textures/blocks/ore_lead_hallowed.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/assets/terra_reforged/textures/blocks/ore_lead_pure.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/assets/terra_reforged/textures/blocks/ore_mythril_corrupt.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/assets/terra_reforged/textures/blocks/ore_mythril_crimson.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/assets/terra_reforged/textures/blocks/ore_mythril_hallowed.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/assets/terra_reforged/textures/blocks/ore_mythril_pure.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/assets/terra_reforged/textures/blocks/ore_orichalcum_corrupt.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/assets/terra_reforged/textures/blocks/ore_orichalcum_crimson.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/assets/terra_reforged/textures/blocks/ore_orichalcum_hallowed.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/assets/terra_reforged/textures/blocks/ore_orichalcum_pure.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/assets/terra_reforged/textures/blocks/ore_palladium_corrupt.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/assets/terra_reforged/textures/blocks/ore_palladium_crimson.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/assets/terra_reforged/textures/blocks/ore_palladium_hallowed.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/assets/terra_reforged/textures/blocks/ore_palladium_pure.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/assets/terra_reforged/textures/blocks/ore_platinum_corrupt.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/assets/terra_reforged/textures/blocks/ore_platinum_crimson.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/assets/terra_reforged/textures/blocks/ore_platinum_hallowed.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/assets/terra_reforged/textures/blocks/ore_platinum_pure.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/assets/terra_reforged/textures/blocks/ore_redstone_corrupt.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/assets/terra_reforged/textures/blocks/ore_redstone_crimson.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/assets/terra_reforged/textures/blocks/ore_redstone_hallowed.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/assets/terra_reforged/textures/blocks/ore_ruby_corrupt.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/assets/terra_reforged/textures/blocks/ore_ruby_crimson.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/assets/terra_reforged/textures/blocks/ore_ruby_hallowed.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/assets/terra_reforged/textures/blocks/ore_ruby_pure.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/assets/terra_reforged/textures/blocks/ore_sapphire_corrupt.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/assets/terra_reforged/textures/blocks/ore_sapphire_crimson.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/assets/terra_reforged/textures/blocks/ore_sapphire_hallowed.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/assets/terra_reforged/textures/blocks/ore_sapphire_pure.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/assets/terra_reforged/textures/blocks/ore_silver_corrupt.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/assets/terra_reforged/textures/blocks/ore_silver_crimson.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/assets/terra_reforged/textures/blocks/ore_silver_hallowed.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/assets/terra_reforged/textures/blocks/ore_silver_pure.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/assets/terra_reforged/textures/blocks/ore_tin_corrupt.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/assets/terra_reforged/textures/blocks/ore_tin_crimson.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/assets/terra_reforged/textures/blocks/ore_tin_hallowed.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/assets/terra_reforged/textures/blocks/ore_tin_pure.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/assets/terra_reforged/textures/blocks/ore_titanium_corrupt.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/assets/terra_reforged/textures/blocks/ore_titanium_crimson.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/assets/terra_reforged/textures/blocks/ore_titanium_hallowed.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/assets/terra_reforged/textures/blocks/ore_titanium_pure.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/assets/terra_reforged/textures/blocks/ore_topaz_corrupt.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/assets/terra_reforged/textures/blocks/ore_topaz_crimson.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/assets/terra_reforged/textures/blocks/ore_topaz_hallowed.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/assets/terra_reforged/textures/blocks/ore_topaz_pure.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/assets/terra_reforged/textures/blocks/ore_tungsten_corrupt.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/assets/terra_reforged/textures/blocks/ore_tungsten_crimson.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/assets/terra_reforged/textures/blocks/ore_tungsten_hallowed.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/assets/terra_reforged/textures/blocks/ore_tungsten_pure.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/assets/terra_reforged/textures/blocks/stone_crim.png" beforeDir="false" afterPath="$PROJECT_DIR$/build/resources/main/assets/terra_reforged/textures/blocks/stone_crim.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/assets/terra_reforged/textures/blocks/stone_ebon.png" beforeDir="false" afterPath="$PROJECT_DIR$/build/resources/main/assets/terra_reforged/textures/blocks/stone_ebon.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/assets/terra_reforged/textures/blocks/stone_pearl.png" beforeDir="false" afterPath="$PROJECT_DIR$/build/resources/main/assets/terra_reforged/textures/blocks/stone_pearl.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/assets/terra_reforged/textures/blocks/stonebrick_crim.png" beforeDir="false" afterPath="$PROJECT_DIR$/build/resources/main/assets/terra_reforged/textures/blocks/stonebrick_crim.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/assets/terra_reforged/textures/blocks/stonebrick_crim_chiseled.png" beforeDir="false" afterPath="$PROJECT_DIR$/build/resources/main/assets/terra_reforged/textures/blocks/stonebrick_crim_chiseled.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/assets/terra_reforged/textures/blocks/stonebrick_crim_cracked.png" beforeDir="false" afterPath="$PROJECT_DIR$/build/resources/main/assets/terra_reforged/textures/blocks/stonebrick_crim_cracked.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/assets/terra_reforged/textures/blocks/stonebrick_crim_mossy.png" beforeDir="false" afterPath="$PROJECT_DIR$/build/resources/main/assets/terra_reforged/textures/blocks/stonebrick_crim_mossy.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/assets/terra_reforged/textures/blocks/stonebrick_ebon.png" beforeDir="false" afterPath="$PROJECT_DIR$/build/resources/main/assets/terra_reforged/textures/blocks/stonebrick_ebon.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/assets/terra_reforged/textures/blocks/stonebrick_ebon_chiseled.png" beforeDir="false" afterPath="$PROJECT_DIR$/build/resources/main/assets/terra_reforged/textures/blocks/stonebrick_ebon_chiseled.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/assets/terra_reforged/textures/blocks/stonebrick_ebon_cracked.png" beforeDir="false" afterPath="$PROJECT_DIR$/build/resources/main/assets/terra_reforged/textures/blocks/stonebrick_ebon_cracked.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/assets/terra_reforged/textures/blocks/stonebrick_ebon_mossy.png" beforeDir="false" afterPath="$PROJECT_DIR$/build/resources/main/assets/terra_reforged/textures/blocks/stonebrick_ebon_mossy.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/assets/terra_reforged/textures/blocks/stonebrick_pearl.png" beforeDir="false" afterPath="$PROJECT_DIR$/build/resources/main/assets/terra_reforged/textures/blocks/stonebrick_pearl.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/assets/terra_reforged/textures/blocks/stonebrick_pearl_chiseled.png" beforeDir="false" afterPath="$PROJECT_DIR$/build/resources/main/assets/terra_reforged/textures/blocks/stonebrick_pearl_chiseled.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/assets/terra_reforged/textures/blocks/stonebrick_pearl_cracked.png" beforeDir="false" afterPath="$PROJECT_DIR$/build/resources/main/assets/terra_reforged/textures/blocks/stonebrick_pearl_cracked.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/assets/terra_reforged/textures/blocks/stonebrick_pearl_mossy.png" beforeDir="false" afterPath="$PROJECT_DIR$/build/resources/main/assets/terra_reforged/textures/blocks/stonebrick_pearl_mossy.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/anbaric/Terra_Reforged/util/init/TerraBlockRegistry.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/anbaric/Terra_Reforged/util/init/TerraBlockRegistry.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/anbaric/terra_reforged/blocks/TerraBlockSpreading.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/anbaric/terra_reforged/blocks/TerraBlockSpreading.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/anbaric/terra_reforged/util/handlers/EnumHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/anbaric/terra_reforged/util/handlers/EnumHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/assets/terra_reforged/blockstates/ore_adamantite.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/assets/terra_reforged/blockstates/ore_adamantite.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/assets/terra_reforged/blockstates/ore_amethyst.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/assets/terra_reforged/blockstates/ore_amethyst.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/assets/terra_reforged/blockstates/ore_coal.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/assets/terra_reforged/blockstates/ore_coal.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/assets/terra_reforged/blockstates/ore_cobalt.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/assets/terra_reforged/blockstates/ore_cobalt.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/assets/terra_reforged/blockstates/ore_copper.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/assets/terra_reforged/blockstates/ore_copper.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/assets/terra_reforged/blockstates/ore_crimtane.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/assets/terra_reforged/blockstates/ore_crimtane.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/assets/terra_reforged/blockstates/ore_demonite.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/assets/terra_reforged/blockstates/ore_demonite.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/assets/terra_reforged/blockstates/ore_diamond.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/assets/terra_reforged/blockstates/ore_diamond.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/assets/terra_reforged/blockstates/ore_emerald.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/assets/terra_reforged/blockstates/ore_emerald.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/assets/terra_reforged/blockstates/ore_gold.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/assets/terra_reforged/blockstates/ore_gold.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/assets/terra_reforged/blockstates/ore_iron.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/assets/terra_reforged/blockstates/ore_iron.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/assets/terra_reforged/blockstates/ore_lapis.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/assets/terra_reforged/blockstates/ore_lapis.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/assets/terra_reforged/blockstates/ore_lead.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/assets/terra_reforged/blockstates/ore_lead.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/assets/terra_reforged/blockstates/ore_mythril.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/assets/terra_reforged/blockstates/ore_mythril.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/assets/terra_reforged/blockstates/ore_orichalcum.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/assets/terra_reforged/blockstates/ore_orichalcum.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/assets/terra_reforged/blockstates/ore_palladium.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/assets/terra_reforged/blockstates/ore_palladium.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/assets/terra_reforged/blockstates/ore_platinum.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/assets/terra_reforged/blockstates/ore_platinum.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/assets/terra_reforged/blockstates/ore_redstone.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/assets/terra_reforged/blockstates/ore_redstone.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/assets/terra_reforged/blockstates/ore_ruby.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/assets/terra_reforged/blockstates/ore_ruby.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/assets/terra_reforged/blockstates/ore_sapphire.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/assets/terra_reforged/blockstates/ore_sapphire.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/assets/terra_reforged/blockstates/ore_silver.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/assets/terra_reforged/blockstates/ore_silver.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/assets/terra_reforged/blockstates/ore_tin.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/assets/terra_reforged/blockstates/ore_tin.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/assets/terra_reforged/blockstates/ore_titanium.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/assets/terra_reforged/blockstates/ore_titanium.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/assets/terra_reforged/blockstates/ore_topaz.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/assets/terra_reforged/blockstates/ore_topaz.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/assets/terra_reforged/blockstates/ore_tungsten.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/assets/terra_reforged/blockstates/ore_tungsten.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/assets/terra_reforged/models/block/ore_adamantite_corrupt.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/assets/terra_reforged/models/block/ore_adamantite_crimson.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/assets/terra_reforged/models/block/ore_adamantite_hallowed.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/assets/terra_reforged/models/block/ore_adamantite_pure.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/assets/terra_reforged/models/block/ore_amethyst_corrupt.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/assets/terra_reforged/models/block/ore_amethyst_crimson.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/assets/terra_reforged/models/block/ore_amethyst_hallowed.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/assets/terra_reforged/models/block/ore_amethyst_pure.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/assets/terra_reforged/models/block/ore_coal_corrupt.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/assets/terra_reforged/models/block/ore_coal_crimson.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/assets/terra_reforged/models/block/ore_coal_hallowed.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/assets/terra_reforged/models/block/ore_cobalt_corrupt.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/assets/terra_reforged/models/block/ore_cobalt_crimson.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/assets/terra_reforged/models/block/ore_cobalt_hallowed.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/assets/terra_reforged/models/block/ore_cobalt_pure.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/assets/terra_reforged/models/block/ore_copper_corrupt.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/assets/terra_reforged/models/block/ore_copper_crimson.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/assets/terra_reforged/models/block/ore_copper_hallowed.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/assets/terra_reforged/models/block/ore_copper_pure.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/assets/terra_reforged/models/block/ore_crimtane_corrupt.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/assets/terra_reforged/models/block/ore_crimtane_crimson.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/assets/terra_reforged/models/block/ore_crimtane_hallowed.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/assets/terra_reforged/models/block/ore_crimtane_pure.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/assets/terra_reforged/models/block/ore_demonite_corrupt.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/assets/terra_reforged/models/block/ore_demonite_crimson.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/assets/terra_reforged/models/block/ore_demonite_hallowed.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/assets/terra_reforged/models/block/ore_demonite_pure.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/assets/terra_reforged/models/block/ore_diamond_corrupt.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/assets/terra_reforged/models/block/ore_diamond_crimson.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/assets/terra_reforged/models/block/ore_diamond_hallowed.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/assets/terra_reforged/models/block/ore_emerald_corrupt.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/assets/terra_reforged/models/block/ore_emerald_crimson.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/assets/terra_reforged/models/block/ore_emerald_hallowed.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/assets/terra_reforged/models/block/ore_gold_corrupt.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/assets/terra_reforged/models/block/ore_gold_crimson.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/assets/terra_reforged/models/block/ore_gold_hallowed.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/assets/terra_reforged/models/block/ore_iron_corrupt.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/assets/terra_reforged/models/block/ore_iron_crimson.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/assets/terra_reforged/models/block/ore_iron_hallowed.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/assets/terra_reforged/models/block/ore_lapis_corrupt.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/assets/terra_reforged/models/block/ore_lapis_crimson.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/assets/terra_reforged/models/block/ore_lapis_hallowed.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/assets/terra_reforged/models/block/ore_lead_corrupt.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/assets/terra_reforged/models/block/ore_lead_crimson.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/assets/terra_reforged/models/block/ore_lead_hallowed.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/assets/terra_reforged/models/block/ore_lead_pure.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/assets/terra_reforged/models/block/ore_mythril_corrupt.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/assets/terra_reforged/models/block/ore_mythril_crimson.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/assets/terra_reforged/models/block/ore_mythril_hallowed.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/assets/terra_reforged/models/block/ore_mythril_pure.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/assets/terra_reforged/models/block/ore_orichalcum_corrupt.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/assets/terra_reforged/models/block/ore_orichalcum_crimson.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/assets/terra_reforged/models/block/ore_orichalcum_hallowed.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/assets/terra_reforged/models/block/ore_orichalcum_pure.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/assets/terra_reforged/models/block/ore_palladium_corrupt.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/assets/terra_reforged/models/block/ore_palladium_crimson.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/assets/terra_reforged/models/block/ore_palladium_hallowed.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/assets/terra_reforged/models/block/ore_palladium_pure.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/assets/terra_reforged/models/block/ore_platinum_corrupt.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/assets/terra_reforged/models/block/ore_platinum_crimson.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/assets/terra_reforged/models/block/ore_platinum_hallowed.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/assets/terra_reforged/models/block/ore_platinum_pure.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/assets/terra_reforged/models/block/ore_redstone_corrupt.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/assets/terra_reforged/models/block/ore_redstone_crimson.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/assets/terra_reforged/models/block/ore_redstone_hallowed.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/assets/terra_reforged/models/block/ore_ruby_corrupt.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/assets/terra_reforged/models/block/ore_ruby_crimson.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/assets/terra_reforged/models/block/ore_ruby_hallowed.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/assets/terra_reforged/models/block/ore_ruby_pure.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/assets/terra_reforged/models/block/ore_sapphire_corrupt.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/assets/terra_reforged/models/block/ore_sapphire_crimson.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/assets/terra_reforged/models/block/ore_sapphire_hallowed.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/assets/terra_reforged/models/block/ore_sapphire_pure.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/assets/terra_reforged/models/block/ore_silver_corrupt.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/assets/terra_reforged/models/block/ore_silver_crimson.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/assets/terra_reforged/models/block/ore_silver_hallowed.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/assets/terra_reforged/models/block/ore_silver_pure.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/assets/terra_reforged/models/block/ore_tin_corrupt.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/assets/terra_reforged/models/block/ore_tin_crimson.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/assets/terra_reforged/models/block/ore_tin_hallowed.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/assets/terra_reforged/models/block/ore_tin_pure.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/assets/terra_reforged/models/block/ore_titanium_corrupt.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/assets/terra_reforged/models/block/ore_titanium_crimson.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/assets/terra_reforged/models/block/ore_titanium_hallowed.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/assets/terra_reforged/models/block/ore_titanium_pure.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/assets/terra_reforged/models/block/ore_topaz_corrupt.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/assets/terra_reforged/models/block/ore_topaz_crimson.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/assets/terra_reforged/models/block/ore_topaz_hallowed.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/assets/terra_reforged/models/block/ore_topaz_pure.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/assets/terra_reforged/models/block/ore_tungsten_corrupt.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/assets/terra_reforged/models/block/ore_tungsten_crimson.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/assets/terra_reforged/models/block/ore_tungsten_hallowed.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/assets/terra_reforged/models/block/ore_tungsten_pure.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/assets/terra_reforged/models/item/ore_adamantite.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/assets/terra_reforged/models/item/ore_adamantite.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/assets/terra_reforged/models/item/ore_amethyst.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/assets/terra_reforged/models/item/ore_amethyst.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/assets/terra_reforged/models/item/ore_cobalt.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/assets/terra_reforged/models/item/ore_cobalt.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/assets/terra_reforged/models/item/ore_copper.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/assets/terra_reforged/models/item/ore_copper.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/assets/terra_reforged/models/item/ore_crimtane.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/assets/terra_reforged/models/item/ore_crimtane.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/assets/terra_reforged/models/item/ore_demonite.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/assets/terra_reforged/models/item/ore_demonite.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/assets/terra_reforged/models/item/ore_lead.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/assets/terra_reforged/models/item/ore_lead.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/assets/terra_reforged/models/item/ore_mythril.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/assets/terra_reforged/models/item/ore_mythril.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/assets/terra_reforged/models/item/ore_orichalcum.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/assets/terra_reforged/models/item/ore_orichalcum.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/assets/terra_reforged/models/item/ore_palladium.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/assets/terra_reforged/models/item/ore_palladium.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/assets/terra_reforged/models/item/ore_platinum.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/assets/terra_reforged/models/item/ore_platinum.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/assets/terra_reforged/models/item/ore_ruby.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/assets/terra_reforged/models/item/ore_ruby.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/assets/terra_reforged/models/item/ore_sapphire.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/assets/terra_reforged/models/item/ore_sapphire.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/assets/terra_reforged/models/item/ore_silver.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/assets/terra_reforged/models/item/ore_silver.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/assets/terra_reforged/models/item/ore_tin.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/assets/terra_reforged/models/item/ore_tin.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/assets/terra_reforged/models/item/ore_titanium.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/assets/terra_reforged/models/item/ore_titanium.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/assets/terra_reforged/models/item/ore_topaz.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/assets/terra_reforged/models/item/ore_topaz.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/assets/terra_reforged/models/item/ore_tungsten.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/assets/terra_reforged/models/item/ore_tungsten.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/assets/terra_reforged/textures/blocks/cobblestone_crim.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/assets/terra_reforged/textures/blocks/cobblestone_crim.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/assets/terra_reforged/textures/blocks/cobblestone_crim_mossy.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/assets/terra_reforged/textures/blocks/cobblestone_crim_mossy.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/assets/terra_reforged/textures/blocks/cobblestone_ebon.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/assets/terra_reforged/textures/blocks/cobblestone_ebon.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/assets/terra_reforged/textures/blocks/cobblestone_ebon_mossy.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/assets/terra_reforged/textures/blocks/cobblestone_ebon_mossy.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/assets/terra_reforged/textures/blocks/cobblestone_pearl.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/assets/terra_reforged/textures/blocks/cobblestone_pearl.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/assets/terra_reforged/textures/blocks/cobblestone_pearl_mossy.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/assets/terra_reforged/textures/blocks/cobblestone_pearl_mossy.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/assets/terra_reforged/textures/blocks/ore_adamantite_corrupt.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/assets/terra_reforged/textures/blocks/ore_adamantite_crimson.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/assets/terra_reforged/textures/blocks/ore_adamantite_hallowed.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/assets/terra_reforged/textures/blocks/ore_adamantite_pure.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/assets/terra_reforged/textures/blocks/ore_amethyst_corrupt.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/assets/terra_reforged/textures/blocks/ore_amethyst_crimson.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/assets/terra_reforged/textures/blocks/ore_amethyst_hallowed.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/assets/terra_reforged/textures/blocks/ore_amethyst_pure.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/assets/terra_reforged/textures/blocks/ore_coal_corrupt.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/assets/terra_reforged/textures/blocks/ore_coal_crimson.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/assets/terra_reforged/textures/blocks/ore_coal_hallowed.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/assets/terra_reforged/textures/blocks/ore_cobalt_corrupt.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/assets/terra_reforged/textures/blocks/ore_cobalt_crimson.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/assets/terra_reforged/textures/blocks/ore_cobalt_hallowed.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/assets/terra_reforged/textures/blocks/ore_cobalt_pure.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/assets/terra_reforged/textures/blocks/ore_copper_corrupt.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/assets/terra_reforged/textures/blocks/ore_copper_crimson.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/assets/terra_reforged/textures/blocks/ore_copper_hallowed.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/assets/terra_reforged/textures/blocks/ore_copper_pure.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/assets/terra_reforged/textures/blocks/ore_crimtane_corrupt.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/assets/terra_reforged/textures/blocks/ore_crimtane_crimson.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/assets/terra_reforged/textures/blocks/ore_crimtane_hallowed.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/assets/terra_reforged/textures/blocks/ore_crimtane_pure.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/assets/terra_reforged/textures/blocks/ore_demonite_corrupt.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/assets/terra_reforged/textures/blocks/ore_demonite_crimson.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/assets/terra_reforged/textures/blocks/ore_demonite_hallowed.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/assets/terra_reforged/textures/blocks/ore_demonite_pure.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/assets/terra_reforged/textures/blocks/ore_diamond_corrupt.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/assets/terra_reforged/textures/blocks/ore_diamond_crimson.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/assets/terra_reforged/textures/blocks/ore_diamond_hallowed.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/assets/terra_reforged/textures/blocks/ore_diamond_pure.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/assets/terra_reforged/textures/blocks/ore_emerald_corrupt.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/assets/terra_reforged/textures/blocks/ore_emerald_crimson.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/assets/terra_reforged/textures/blocks/ore_emerald_hallowed.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/assets/terra_reforged/textures/blocks/ore_emerald_pure.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/assets/terra_reforged/textures/blocks/ore_gold_corrupt.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/assets/terra_reforged/textures/blocks/ore_gold_crimson.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/assets/terra_reforged/textures/blocks/ore_gold_hallowed.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/assets/terra_reforged/textures/blocks/ore_gold_pure.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/assets/terra_reforged/textures/blocks/ore_iron_corrupt.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/assets/terra_reforged/textures/blocks/ore_iron_crimson.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/assets/terra_reforged/textures/blocks/ore_iron_hallowed.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/assets/terra_reforged/textures/blocks/ore_iron_pure.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/assets/terra_reforged/textures/blocks/ore_lapis_corrupt.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/assets/terra_reforged/textures/blocks/ore_lapis_crimson.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/assets/terra_reforged/textures/blocks/ore_lapis_hallowed.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/assets/terra_reforged/textures/blocks/ore_lead_corrupt.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/assets/terra_reforged/textures/blocks/ore_lead_crimson.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/assets/terra_reforged/textures/blocks/ore_lead_hallowed.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/assets/terra_reforged/textures/blocks/ore_lead_pure.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/assets/terra_reforged/textures/blocks/ore_mythril_corrupt.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/assets/terra_reforged/textures/blocks/ore_mythril_crimson.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/assets/terra_reforged/textures/blocks/ore_mythril_hallowed.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/assets/terra_reforged/textures/blocks/ore_mythril_pure.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/assets/terra_reforged/textures/blocks/ore_orichalcum_corrupt.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/assets/terra_reforged/textures/blocks/ore_orichalcum_crimson.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/assets/terra_reforged/textures/blocks/ore_orichalcum_hallowed.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/assets/terra_reforged/textures/blocks/ore_orichalcum_pure.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/assets/terra_reforged/textures/blocks/ore_palladium_corrupt.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/assets/terra_reforged/textures/blocks/ore_palladium_crimson.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/assets/terra_reforged/textures/blocks/ore_palladium_hallowed.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/assets/terra_reforged/textures/blocks/ore_palladium_pure.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/assets/terra_reforged/textures/blocks/ore_platinum_corrupt.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/assets/terra_reforged/textures/blocks/ore_platinum_crimson.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/assets/terra_reforged/textures/blocks/ore_platinum_hallowed.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/assets/terra_reforged/textures/blocks/ore_platinum_pure.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/assets/terra_reforged/textures/blocks/ore_redstone_corrupt.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/assets/terra_reforged/textures/blocks/ore_redstone_crimson.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/assets/terra_reforged/textures/blocks/ore_redstone_hallowed.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/assets/terra_reforged/textures/blocks/ore_ruby_corrupt.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/assets/terra_reforged/textures/blocks/ore_ruby_crimson.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/assets/terra_reforged/textures/blocks/ore_ruby_hallowed.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/assets/terra_reforged/textures/blocks/ore_ruby_pure.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/assets/terra_reforged/textures/blocks/ore_sapphire_corrupt.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/assets/terra_reforged/textures/blocks/ore_sapphire_crimson.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/assets/terra_reforged/textures/blocks/ore_sapphire_hallowed.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/assets/terra_reforged/textures/blocks/ore_sapphire_pure.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/assets/terra_reforged/textures/blocks/ore_silver_corrupt.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/assets/terra_reforged/textures/blocks/ore_silver_crimson.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/assets/terra_reforged/textures/blocks/ore_silver_hallowed.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/assets/terra_reforged/textures/blocks/ore_silver_pure.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/assets/terra_reforged/textures/blocks/ore_tin_corrupt.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/assets/terra_reforged/textures/blocks/ore_tin_crimson.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/assets/terra_reforged/textures/blocks/ore_tin_hallowed.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/assets/terra_reforged/textures/blocks/ore_tin_pure.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/assets/terra_reforged/textures/blocks/ore_titanium_corrupt.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/assets/terra_reforged/textures/blocks/ore_titanium_crimson.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/assets/terra_reforged/textures/blocks/ore_titanium_hallowed.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/assets/terra_reforged/textures/blocks/ore_titanium_pure.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/assets/terra_reforged/textures/blocks/ore_topaz_corrupt.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/assets/terra_reforged/textures/blocks/ore_topaz_crimson.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/assets/terra_reforged/textures/blocks/ore_topaz_hallowed.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/assets/terra_reforged/textures/blocks/ore_topaz_pure.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/assets/terra_reforged/textures/blocks/ore_tungsten_corrupt.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/assets/terra_reforged/textures/blocks/ore_tungsten_crimson.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/assets/terra_reforged/textures/blocks/ore_tungsten_hallowed.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/assets/terra_reforged/textures/blocks/ore_tungsten_pure.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/assets/terra_reforged/textures/blocks/stone_crim.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/assets/terra_reforged/textures/blocks/stone_crim.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/assets/terra_reforged/textures/blocks/stone_ebon.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/assets/terra_reforged/textures/blocks/stone_ebon.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/assets/terra_reforged/textures/blocks/stone_pearl.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/assets/terra_reforged/textures/blocks/stone_pearl.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/assets/terra_reforged/textures/blocks/stonebrick_crim.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/assets/terra_reforged/textures/blocks/stonebrick_crim.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/assets/terra_reforged/textures/blocks/stonebrick_crim_chiseled.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/assets/terra_reforged/textures/blocks/stonebrick_crim_chiseled.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/assets/terra_reforged/textures/blocks/stonebrick_crim_cracked.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/assets/terra_reforged/textures/blocks/stonebrick_crim_cracked.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/assets/terra_reforged/textures/blocks/stonebrick_crim_mossy.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/assets/terra_reforged/textures/blocks/stonebrick_crim_mossy.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/assets/terra_reforged/textures/blocks/stonebrick_ebon.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/assets/terra_reforged/textures/blocks/stonebrick_ebon.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/assets/terra_reforged/textures/blocks/stonebrick_ebon_chiseled.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/assets/terra_reforged/textures/blocks/stonebrick_ebon_chiseled.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/assets/terra_reforged/textures/blocks/stonebrick_ebon_cracked.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/assets/terra_reforged/textures/blocks/stonebrick_ebon_cracked.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/assets/terra_reforged/textures/blocks/stonebrick_ebon_mossy.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/assets/terra_reforged/textures/blocks/stonebrick_ebon_mossy.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/assets/terra_reforged/textures/blocks/stonebrick_pearl.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/assets/terra_reforged/textures/blocks/stonebrick_pearl.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/assets/terra_reforged/textures/blocks/stonebrick_pearl_chiseled.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/assets/terra_reforged/textures/blocks/stonebrick_pearl_chiseled.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/assets/terra_reforged/textures/blocks/stonebrick_pearl_cracked.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/assets/terra_reforged/textures/blocks/stonebrick_pearl_cracked.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/assets/terra_reforged/textures/blocks/stonebrick_pearl_mossy.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/assets/terra_reforged/textures/blocks/stonebrick_pearl_mossy.png" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />

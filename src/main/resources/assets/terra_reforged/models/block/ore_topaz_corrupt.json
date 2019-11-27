@@ -1,6 +1,0 @@
-{
-    "parent": "block/cube_all",
-    "textures": {
-        "all": "terra_reforged:blocks/ore_topaz_corrupt"
-    }
-}

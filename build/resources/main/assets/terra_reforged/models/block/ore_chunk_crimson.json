@@ -1,0 +1,6 @@
+{
+    "parent": "block/cube_all",
+    "textures": {
+        "all": "terra_reforged:blocks/ore_chunk_crimson"
+    }
+}

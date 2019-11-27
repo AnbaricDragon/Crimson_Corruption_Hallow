@@ -1,5 +1,7 @@
 package com.anbaric.terra_reforged.util.handlers;
 
+import com.anbaric.terra_reforged.blocks.TerraBlockOre;
+import com.anbaric.terra_reforged.blocks.TerraBlockOre.OreBiomes;
 import com.anbaric.terra_reforged.blocks.TerraBlocks;
 import net.minecraft.block.Block;
 import net.minecraft.block.Blocks;
@@ -8,16 +10,23 @@ public class EnumHandler
 {
     public enum EnumBiomeType
     {
-        PURE("pure"),
-        CORRUPT("corrupt"),
-        CRIMSON("crimson"),
-        HALLOWED("hallowed");
+        PURE("pure", OreBiomes.PURE),
+        CORRUPT("corrupt", OreBiomes.CORRUPT),
+        CRIMSON("crimson", OreBiomes.CRIMSON),
+        HALLOWED("hallowed", OreBiomes.HALLOWED);
 
         private final String biome;
+        private final TerraBlockOre.OreBiomes oreBiome;
 
-        private EnumBiomeType(String biome)
+        private EnumBiomeType(String biome, TerraBlockOre.OreBiomes oreBiome)
         {
             this.biome = biome;
+            this.oreBiome = oreBiome;
+        }
+
+        public OreBiomes getOreBiome()
+        {
+            return oreBiome;
         }
     }
 
@@ -44,8 +53,7 @@ public class EnumHandler
         CHISELEDSTONEBRICK(Blocks.CHISELED_STONE_BRICKS, TerraBlocks.STONEBRICK_EBON_CHISELED, TerraBlocks.STONEBRICK_CRIM_CHISELED, TerraBlocks.STONEBRICK_PEARL_CHISELED),
         MOSSYSTONEBRICK(Blocks.MOSSY_STONE_BRICKS, TerraBlocks.STONEBRICK_EBON_MOSSY, TerraBlocks.STONEBRICK_CRIM_MOSSY, TerraBlocks.STONEBRICK_PEARL_MOSSY),
         CACTUS(Blocks.CACTUS, TerraBlocks.CACTUS_EBON, TerraBlocks.CACTUS_CRIM, TerraBlocks.CACTUS_PEARL),
-//        //        ,
-//        ORECOPPER(TerraBlocks.ORE_COPPER, TerraBlocks.ORE_COPPER.withProperty(TerraBlockOres.VARIANT, EnumBiomeType.CORRUPT), TerraBlocks.ORE_COPPER.withProperty(TerraBlockOres.VARIANT, EnumBiomeType.CRIMSON), TerraBlocks.ORE_COPPER.withProperty(TerraBlockOres.VARIANT, EnumBiomeType.HALLOWED)),
+//        ORECOPPER(TerraBlocks.ORE_COPPER, TerraBlocks.ORE_COPPER.with(TerraBlockOres.VARIANT, EnumBiomeType.CORRUPT), TerraBlocks.ORE_COPPER.withProperty(TerraBlockOres.VARIANT, EnumBiomeType.CRIMSON), TerraBlocks.ORE_COPPER.withProperty(TerraBlockOres.VARIANT, EnumBiomeType.HALLOWED)),
 //        ORETIN(TerraBlocks.ORE_TIN, TerraBlocks.ORE_TIN.withProperty(TerraBlockOres.VARIANT, EnumBiomeType.CORRUPT), TerraBlocks.ORE_TIN.withProperty(TerraBlockOres.VARIANT, EnumBiomeType.CRIMSON), TerraBlocks.ORE_TIN.withProperty(TerraBlockOres.VARIANT, EnumBiomeType.HALLOWED)),
 //        ORELEAD(TerraBlocks.ORE_LEAD, TerraBlocks.ORE_LEAD.withProperty(TerraBlockOres.VARIANT, EnumBiomeType.CORRUPT), TerraBlocks.ORE_LEAD.withProperty(TerraBlockOres.VARIANT, EnumBiomeType.CRIMSON), TerraBlocks.ORE_LEAD.withProperty(TerraBlockOres.VARIANT, EnumBiomeType.HALLOWED)),
 //        OREIRON(Blocks.IRON_ORE, TerraBlocks.ORE_IRON.withProperty(TerraBlockDOres.D_VARIANT, EnumDOreType.CORRUPT), TerraBlocks.ORE_IRON.withProperty(TerraBlockDOres.D_VARIANT, EnumDOreType.CRIMSON), TerraBlocks.ORE_IRON.withProperty(TerraBlockDOres.D_VARIANT, EnumDOreType.HALLOWED)),
@@ -78,7 +86,7 @@ public class EnumHandler
 
         public Block pure, corrupt, crimson, hallowed;
 
-        private EnumBiomeBlockType(Block pure, Block corrupt, Block crimson, Block hallowed)
+        EnumBiomeBlockType(Block pure, Block corrupt, Block crimson, Block hallowed)
         {
             this.pure = pure;
             this.corrupt = corrupt;

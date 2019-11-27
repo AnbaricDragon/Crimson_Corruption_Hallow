@@ -1,9 +1,17 @@
 {
-    "variants": 
-		{
-        "variant=pure": { "model": "terra_reforged:block/ore_ruby_pure" },
-				"variant=corrupt": { "model": "terra_reforged:block/ore_ruby_corrupt" },
-				"variant=crimson": { "model": "terra_reforged:block/ore_ruby_crimson" },
-				"variant=hallowed": { "model": "terra_reforged:block/ore_ruby_hallowed" }
-    }
+    "multipart": [
+        { "apply": { "model": "terra_reforged:block/ore_ruby" }},				
+				{   "when": { "biome": "pure" },
+            "apply": { "model": "terra_reforged:block/ore_metal_pure" }
+        },
+				{   "when": { "biome": "corrupt" },
+            "apply": { "model": "terra_reforged:block/ore_metal_corrupt" }
+        },
+				{   "when": { "biome": "crimson" },
+            "apply": { "model": "terra_reforged:block/ore_metal_crimson" }
+        },
+				{   "when": { "biome": "hallowed" },
+            "apply": { "model": "terra_reforged:block/ore_metal_hallowed" }
+        }
+    ]
 }

@@ -1,6 +1,6 @@
 {
     "parent": "terra_reforged:block/wall_side_up",
     "textures": {
-        "wall": "blocks/log_birch"
+        "wall": "minecraft:block/birch_log"
     }
 }

@@ -25,13 +25,13 @@
             "apply": { "model": "terra_reforged:block/wall_sandstone_crim_side_up" }
         },
 				{   "when": { "east": "up"},
-            "apply": { "model": "terra_reforged:block/wall_sandstone_crim_side_up", "y": 90 }
+            "apply": { "model": "terra_reforged:block/wall_sandstone_crim_side_up", "y": 90, "uvlock": true }
         },
 				{   "when": { "south": "up"},
-            "apply": { "model": "terra_reforged:block/wall_sandstone_crim_side_up", "y": 180 }
+            "apply": { "model": "terra_reforged:block/wall_sandstone_crim_side_up", "y": 180, "uvlock": true }
         },
 				{   "when": { "west": "up"},
-            "apply": { "model": "terra_reforged:block/wall_sandstone_crim_side_up", "y": 270 }
+            "apply": { "model": "terra_reforged:block/wall_sandstone_crim_side_up", "y": 270, "uvlock": true }
         }
     ]
 }

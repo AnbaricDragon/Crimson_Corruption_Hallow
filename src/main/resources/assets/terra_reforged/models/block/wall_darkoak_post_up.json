@@ -1,6 +1,6 @@
 {
     "parent": "terra_reforged:block/wall_post_up",
     "textures": {
-        "wall": "blocks/log_big_oak"
+        "wall": "minecraft:block/dark_oak_log"
     }
 }

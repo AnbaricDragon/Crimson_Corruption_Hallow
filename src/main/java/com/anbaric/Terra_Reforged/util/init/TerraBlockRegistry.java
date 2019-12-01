@@ -208,14 +208,14 @@ public final class TerraBlockRegistry
                 setup(new TerraBlockOre(Block.Properties.create(Material.ROCK).hardnessAndResistance(3.0F, 3.0F)), "ore_meteorite"),
                 setup(new TerraBlockOre(Block.Properties.create(Material.ROCK).hardnessAndResistance(3.0F, 3.0F)), "ore_demonite"),
                 setup(new TerraBlockOre(Block.Properties.create(Material.ROCK).hardnessAndResistance(3.0F, 3.0F)), "ore_crimtane"),
-                setup(new TerraBlockOre(Block.Properties.create(Material.EARTH).hardnessAndResistance(3.0F, 3.0F)), "ore_hellstone"),
+                setup(new TerraBlockOre(Block.Properties.create(Material.EARTH).hardnessAndResistance(3.0F, 3.0F).sound(SoundType.GROUND)), "ore_hellstone"),
                 setup(new TerraBlockOre(Block.Properties.create(Material.ROCK).hardnessAndResistance(3.0F, 3.0F)), "ore_cobalt"),
                 setup(new TerraBlockOre(Block.Properties.create(Material.ROCK).hardnessAndResistance(3.0F, 3.0F)), "ore_palladium"),
                 setup(new TerraBlockOre(Block.Properties.create(Material.ROCK).hardnessAndResistance(3.0F, 3.0F)), "ore_mythril"),
                 setup(new TerraBlockOre(Block.Properties.create(Material.ROCK).hardnessAndResistance(3.0F, 3.0F)), "ore_orichalcum"),
                 setup(new TerraBlockOre(Block.Properties.create(Material.ROCK).hardnessAndResistance(3.0F, 3.0F)), "ore_adamantite"),
                 setup(new TerraBlockOre(Block.Properties.create(Material.ROCK).hardnessAndResistance(3.0F, 3.0F)), "ore_titanium"),
-                setup(new TerraBlockOre(Block.Properties.create(Material.EARTH).hardnessAndResistance(3.0F, 3.0F)), "ore_chlorophyte"),
+                setup(new TerraBlockOre(Block.Properties.create(Material.EARTH).hardnessAndResistance(3.0F, 3.0F).sound(SoundType.GROUND)), "ore_chlorophyte"),
                 setup(new TerraBlockOre(Block.Properties.create(Material.ROCK).hardnessAndResistance(3.0F, 3.0F)), "ore_coal"),
                 setup(new TerraBlockOre(Block.Properties.create(Material.ROCK).hardnessAndResistance(3.0F, 3.0F)), "ore_lapis"),
                 setup(new TerraBlockOre(Block.Properties.create(Material.ROCK).hardnessAndResistance(3.0F, 3.0F)), "ore_redstone"),
@@ -224,7 +224,28 @@ public final class TerraBlockRegistry
                 setup(new TerraBlockOre(Block.Properties.create(Material.ROCK).hardnessAndResistance(3.0F, 3.0F)), "ore_sapphire"),
                 setup(new TerraBlockOre(Block.Properties.create(Material.ROCK).hardnessAndResistance(3.0F, 3.0F)), "ore_ruby"),
                 setup(new TerraBlockOre(Block.Properties.create(Material.ROCK).hardnessAndResistance(3.0F, 3.0F)), "ore_emerald"),
-                setup(new TerraBlockOre(Block.Properties.create(Material.ROCK).hardnessAndResistance(3.0F, 3.0F)), "ore_diamond")
+                setup(new TerraBlockOre(Block.Properties.create(Material.ROCK).hardnessAndResistance(3.0F, 3.0F)), "ore_diamond"),
+
+                //Structures
+                setup(new TerraBlockWall(Block.Properties.create(Material.ROCK).hardnessAndResistance(1.5F, 6.0F)), "wall_oak"),
+                setup(new TerraBlockWall(Block.Properties.create(Material.ROCK).hardnessAndResistance(1.5F, 6.0F)), "wall_spruce"),
+                setup(new TerraBlockWall(Block.Properties.create(Material.ROCK).hardnessAndResistance(1.5F, 6.0F)), "wall_birch"),
+                setup(new TerraBlockWall(Block.Properties.create(Material.ROCK).hardnessAndResistance(1.5F, 6.0F)), "wall_jungle"),
+                setup(new TerraBlockWall(Block.Properties.create(Material.ROCK).hardnessAndResistance(1.5F, 6.0F)), "wall_darkoak"),
+                setup(new TerraBlockWall(Block.Properties.create(Material.ROCK).hardnessAndResistance(1.5F, 6.0F)), "wall_acacia"),
+                setup(new TerraBlockWall(Block.Properties.create(Material.ROCK).hardnessAndResistance(1.5F, 6.0F)), "wall_boreal"),
+                setup(new TerraBlockWall(Block.Properties.create(Material.ROCK).hardnessAndResistance(1.5F, 6.0F)), "wall_palm"),
+                setup(new TerraBlockWall(Block.Properties.create(Material.ROCK).hardnessAndResistance(1.5F, 6.0F)), "wall_mahogany"),
+                setup(new TerraBlockWall(Block.Properties.create(Material.ROCK).hardnessAndResistance(1.5F, 6.0F)), "wall_ebon"),
+                setup(new TerraBlockWall(Block.Properties.create(Material.ROCK).hardnessAndResistance(1.5F, 6.0F)), "wall_shade"),
+                setup(new TerraBlockWall(Block.Properties.create(Material.ROCK).hardnessAndResistance(1.5F, 6.0F)), "wall_pearl"),
+                setup(new TerraBlockWall(Block.Properties.create(Material.ROCK).hardnessAndResistance(1.5F, 6.0F)), "wall_boreal_leaf"),
+                setup(new TerraBlockWall(Block.Properties.create(Material.ROCK).hardnessAndResistance(1.5F, 6.0F)), "wall_palm_leaf"),
+                setup(new TerraBlockWall(Block.Properties.create(Material.ROCK).hardnessAndResistance(1.5F, 6.0F)), "wall_mahogany_leaf"),
+                setup(new TerraBlockWall(Block.Properties.create(Material.ROCK).hardnessAndResistance(1.5F, 6.0F)), "wall_ebon_leaf"),
+                setup(new TerraBlockWall(Block.Properties.create(Material.ROCK).hardnessAndResistance(1.5F, 6.0F)), "wall_shade_leaf"),
+                setup(new TerraBlockWall(Block.Properties.create(Material.ROCK).hardnessAndResistance(1.5F, 6.0F)), "wall_pearl_leaf"),
+                setup(new TerraBlockWall(Block.Properties.create(Material.ROCK).hardnessAndResistance(1.5F, 6.0F)), "wall_stonebrick")
         );
     }
 

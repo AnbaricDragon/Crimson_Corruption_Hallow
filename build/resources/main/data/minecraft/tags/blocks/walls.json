@@ -1,0 +1,24 @@
+{
+  "replace": false,
+  "values": [
+    "terra_reforged:wall_oak",
+    "terra_reforged:wall_spruce",
+    "terra_reforged:wall_birch",
+    "terra_reforged:wall_jungle",
+    "terra_reforged:wall_darkoak",
+    "terra_reforged:wall_acacia",
+    "terra_reforged:wall_boreal",
+    "terra_reforged:wall_palm",
+    "terra_reforged:wall_mahogany",
+    "terra_reforged:wall_ebon",
+    "terra_reforged:wall_shade",
+    "terra_reforged:wall_pearl",
+    "terra_reforged:wall_boreal_leaf",
+    "terra_reforged:wall_palm_leaf",
+    "terra_reforged:wall_mahogany_leaf",
+    "terra_reforged:wall_ebon_leaf",
+    "terra_reforged:wall_shade_leaf",
+    "terra_reforged:wall_pearl_leaf",
+    "terra_reforged:wall_stonebrick"
+  ]
+}

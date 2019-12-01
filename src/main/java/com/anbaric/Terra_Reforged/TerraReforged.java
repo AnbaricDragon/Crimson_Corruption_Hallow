@@ -1,6 +1,7 @@
 package com.anbaric.terra_reforged;
 
 import com.anbaric.terra_reforged.util.Reference;
+import com.anbaric.terra_reforged.util.TerraCompat;
 import net.minecraft.util.DamageSource;
 import net.minecraftforge.common.PlantType;
 import net.minecraftforge.fml.common.Mod;
@@ -23,11 +24,11 @@ public class TerraReforged
     public TerraReforged()
     {
         // Register the setup method for modloading
-        FMLJavaModLoadingContext.get().getModEventBus().addListener(this::setup);
+        FMLJavaModLoadingContext.get().getModEventBus().addListener(this::commonSetup);
     }
 
-    private void setup(final FMLCommonSetupEvent event)
+    private void commonSetup(final FMLCommonSetupEvent event)
     {
-
+        TerraCompat.setup();
     }
 }

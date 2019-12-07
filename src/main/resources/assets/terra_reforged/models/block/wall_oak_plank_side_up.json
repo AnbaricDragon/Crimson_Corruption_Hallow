@@ -1,0 +1,6 @@
+{
+    "parent": "terra_reforged:block/wall_side_up",
+    "textures": {
+        "wall": "minecraft:block/oak_planks"
+    }
+}

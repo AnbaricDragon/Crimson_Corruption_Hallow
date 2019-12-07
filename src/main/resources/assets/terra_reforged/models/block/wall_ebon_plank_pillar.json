@@ -1,0 +1,6 @@
+{
+    "parent": "terra_reforged:block/wall_pillar",
+    "textures": {
+        "wall": "terra_reforged:blocks/plank_ebon"
+    }
+}

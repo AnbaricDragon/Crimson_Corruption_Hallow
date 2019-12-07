@@ -1,9 +1,0 @@
-{
-  "replace": false,
-  "values": [
-    "terra_reforged:log_pearl",
-		"terra_reforged:log_pearl_solid",
-		"terra_reforged:log_pearl_stripped",
-		"terra_reforged:log_pearl_solid_stripped"
-  ]
-}

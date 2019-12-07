@@ -1,6 +1,6 @@
 {
     "parent": "terra_reforged:block/wall_inventory",
     "textures": {
-        "wall": "terra_reforged:blocks/stone_crim_brick"
+        "wall": "terra_reforged:blocks/stonebrick_crim"
     }
 }

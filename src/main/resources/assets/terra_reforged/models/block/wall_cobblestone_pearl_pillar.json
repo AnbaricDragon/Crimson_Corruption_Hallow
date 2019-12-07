@@ -1,6 +1,6 @@
 {
     "parent": "terra_reforged:block/wall_pillar",
     "textures": {
-        "wall": "terra_reforged:blocks/stone_pearl_cobble"
+        "wall": "terra_reforged:blocks/cobblestone_pearl"
     }
 }

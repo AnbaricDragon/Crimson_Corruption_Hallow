@@ -1,6 +1,6 @@
 {
     "parent": "terra_reforged:block/wall_post_up",
     "textures": {
-        "wall": "terra_reforged:blocks/stone_pearl_brick"
+        "wall": "terra_reforged:blocks/stonebrick_pearl"
     }
 }

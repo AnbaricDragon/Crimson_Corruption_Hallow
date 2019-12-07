@@ -1,0 +1,6 @@
+{
+    "parent": "terra_reforged:block/wall_side",
+    "textures": {
+        "wall": "minecraft:block/birch_planks"
+    }
+}

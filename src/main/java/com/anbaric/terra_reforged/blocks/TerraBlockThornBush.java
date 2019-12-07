@@ -56,18 +56,6 @@ public class TerraBlockThornBush extends Block
         this.setDefaultState(this.stateContainer.getBaseState().with(UP, false).with(DOWN, false).with(NORTH, false).with(EAST, false).with(SOUTH, false).with(WEST, false).with(GROWTH, 0));
     }
 
-    @Override
-    public boolean isFlammable(BlockState state, IBlockReader world, BlockPos pos, Direction face)
-    {
-        return true;
-    }
-
-    @Override
-    public int getFlammability(BlockState state, IBlockReader world, BlockPos pos, Direction face)
-    {
-        return 100;
-    }
-
     protected VoxelShape[] makeShapes()
     {
         VoxelShape base = Block.makeCuboidShape(3.0D, 3.0D, 3.0D, 13.0D, 13.0D, 13.0D);

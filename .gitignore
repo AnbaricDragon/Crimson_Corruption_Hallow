@@ -1,11 +1,25 @@
+# eclipse
+bin
+*.launch
+.settings
+.metadata
+.classpath
+.project
 
-run/
-gradle/
-idea/
-.gradle/4.9/fileContent/fileContent.lock
-.gradle/4.9/fileHashes/fileHashes.bin
-.gradle/4.9/fileHashes/fileHashes.lock
-.gradle/4.9/taskHistory/taskHistory.bin
-.gradle/4.9/taskHistory/taskHistory.lock
-.gradle/buildOutputCleanup/buildOutputCleanup.lock
-.idea/workspace.xml
+# idea
+out
+*.ipr
+*.iws
+*.iml
+.idea
+
+# gradle
+build
+.gradle
+
+# other
+eclipse
+run
+
+# Files from Forge MDK
+forge*changelog.txt

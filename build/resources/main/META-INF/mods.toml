@@ -28,9 +28,9 @@ Attempting to blend the depth of gameplay from Terraria with the depth dimension
     ordering="NONE"
     side="BOTH"
 
-#[[dependencies.terra_reforged]]
-#    modId="ctm"
-#    mandatory=false
-#    versionRange="[1.14.4]"
-#    ordering="BEFORE"
-#    side="CLIENT"
+[[dependencies.terra_reforged]]
+    modId="ctm"
+    mandatory=false
+    versionRange="[1.14.4]"
+    ordering="BEFORE"
+    side="CLIENT"

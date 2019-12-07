@@ -1,6 +1,0 @@
-{
-    "parent": "terra_reforged:block/wall_side_up",
-    "textures": {
-        "wall": "blocks/sandstone_normal"
-    }
-}

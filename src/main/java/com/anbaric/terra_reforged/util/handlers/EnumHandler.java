@@ -18,7 +18,7 @@ public class EnumHandler
         private final String biome;
         private final TerraBlockOre.OreBiomes oreBiome;
 
-        private EnumBiomeType(String biome, TerraBlockOre.OreBiomes oreBiome)
+        EnumBiomeType(String biome, TerraBlockOre.OreBiomes oreBiome)
         {
             this.biome = biome;
             this.oreBiome = oreBiome;

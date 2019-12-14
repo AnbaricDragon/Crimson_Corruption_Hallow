@@ -178,7 +178,7 @@ public class TerraBlocks
     public static final Block REED_HALLOWED = null;
 
 
-    //Structure
+    //Structure Misc
     public static final Block WALL_OAK = null;
     public static final Block WALL_SPRUCE = null;
     public static final Block WALL_BIRCH = null;
@@ -234,6 +234,28 @@ public class TerraBlocks
     public static final Block STAIR_SHADE = null;
     public static final Block STAIR_PEARL = null;
 
+    //Structure Dungeon
+    public static final Block DUNGEON_BLUE_FLOOR_BRICK = null;
+    public static final Block DUNGEON_BLUE_FLOOR_TILE = null;
+    public static final Block DUNGEON_BLUE_FLOOR_SLAB = null;
+    public static final Block DUNGEON_BLUE_WALL_BASE = null;
+    public static final Block DUNGEON_BLUE_WALL_TOP = null;
+    public static final Block DUNGEON_BLUE_WALL_MID = null;
+    public static final Block DUNGEON_BLUE_WALL_BOT = null;
+    public static final Block DUNGEON_BLUE_PILLAR = null;
+    public static final Block DUNGEON_BLUE_BRICK = null;
+    public static final Block DUNGEON_BLUE_SLAB = null;
+    public static final Block WALL_DUNGEON_BLUE_BRICKS = null;
+    public static final Block WALL_DUNGEON_BLUE_BRICK = null;
+    public static final Block WALL_DUNGEON_BLUE_TILE = null;
+    public static final Block WALL_DUNGEON_BLUE_SLAB = null;
+    public static final Block WALL_DUNGEON_BLUE_WALL = null;
+    public static final Block STAIR_DUNGEON_BLUE_BRICKS = null;
+    public static final Block STAIR_DUNGEON_BLUE_BRICK = null;
+    public static final Block STAIR_DUNGEON_BLUE_TILE = null;
+    public static final Block STAIR_DUNGEON_BLUE_SLAB = null;
+    public static final Block STAIR_DUNGEON_BLUE_TRIM = null;
+
     //Bricks
     public static final Block BRICK_SNOW = null;
     public static final Block BRICK_ICE = null;
@@ -261,9 +283,6 @@ public class TerraBlocks
     public static final Block BRICK_CHLOROPHYTE = null;
     public static final Block BRICK_LUMINITE = null;
     public static final Block BRICK_RAINBOW = null;
-    public static final Block BRICK_DUNGEON_BLUE = null;
-    public static final Block BRICK_DUNGEON_RED = null;
-    public static final Block BRICK_DUNGEON_GREEN = null;
     public static final Block BRICK_LIHZAHRD = null;
     public static final Block BRICK_SUNPLATE = null;
     public static final Block BRICK_STUCCO = null;

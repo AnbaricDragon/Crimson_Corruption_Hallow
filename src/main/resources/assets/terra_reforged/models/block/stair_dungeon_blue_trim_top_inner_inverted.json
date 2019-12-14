@@ -1,0 +1,8 @@
+{
+    "parent": "terra_reforged:block/stair_inner_inverted",
+    "textures": {
+        "bottom": "terra_reforged:blocks/dungeon_blue_wall_mid",
+        "top": "terra_reforged:blocks/dungeon_blue_floor_brick",
+        "side": "terra_reforged:blocks/dungeon_blue_wall_top"
+    }
+}

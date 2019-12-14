@@ -31,6 +31,8 @@ public final class TerraBlockRegistry
     @SubscribeEvent
     public static void onRegisterBlocks(final RegistryEvent.Register<Block> event)
     {
+        Block nightmareTier = new Block(Block.Properties.create(Material.ROCK).harvestLevel(4).hardnessAndResistance(9.0F));
+
         event.getRegistry().registerAll
         (
             //Soils
@@ -226,7 +228,7 @@ public final class TerraBlockRegistry
             setup(new TerraBlockOre(Block.Properties.create(Material.ROCK).hardnessAndResistance(3.0F, 3.0F)), "ore_emerald"),
             setup(new TerraBlockOre(Block.Properties.create(Material.ROCK).hardnessAndResistance(3.0F, 3.0F)), "ore_diamond"),
 
-            //Structures
+            //Misc Structures
             setup(new TerraBlockWall(Block.Properties.create(Material.WOOD).sound(SoundType.WOOD).hardnessAndResistance(1.5F, 6.0F)), "wall_oak"),
             setup(new TerraBlockWall(Block.Properties.create(Material.WOOD).sound(SoundType.WOOD).hardnessAndResistance(1.5F, 6.0F)), "wall_spruce"),
             setup(new TerraBlockWall(Block.Properties.create(Material.WOOD).sound(SoundType.WOOD).hardnessAndResistance(1.5F, 6.0F)), "wall_birch"),
@@ -259,16 +261,43 @@ public final class TerraBlockRegistry
             setup(new TerraBlockWall(Block.Properties.create(Material.WOOD).sound(SoundType.WOOD).hardnessAndResistance(1.5F, 6.0F)), "wall_pearl_plank"),
             setup(new TerraBlockWall(Block.Properties.create(Material.WOOD).sound(SoundType.WOOD).hardnessAndResistance(1.5F, 6.0F)), "wall_dynasty_plank"),
             setup(new TerraBlockWall(Block.Properties.create(Material.WOOD).sound(SoundType.WOOD).hardnessAndResistance(1.5F, 6.0F)), "wall_spooky_plank"),
-            setup(new TerraBlockWall(Block.Properties.create(Material.ROCK).hardnessAndResistance(2.0F, 6.0F)), "wall_stonebrick_ebon"),
-            setup(new TerraBlockWall(Block.Properties.create(Material.ROCK).hardnessAndResistance(2.0F, 6.0F)), "wall_stonebrick_crim"),
-            setup(new TerraBlockWall(Block.Properties.create(Material.ROCK).hardnessAndResistance(2.0F, 6.0F)), "wall_stonebrick_pearl"),
-            setup(new TerraBlockWall(Block.Properties.create(Material.ROCK).hardnessAndResistance(2.0F, 6.0F)), "wall_cobblestone_ebon"),
-            setup(new TerraBlockWall(Block.Properties.create(Material.ROCK).hardnessAndResistance(2.0F, 6.0F)), "wall_cobblestone_crim"),
-            setup(new TerraBlockWall(Block.Properties.create(Material.ROCK).hardnessAndResistance(2.0F, 6.0F)), "wall_cobblestone_pearl"),
-            setup(new TerraBlockWall(Block.Properties.create(Material.ROCK).hardnessAndResistance(2.0F, 6.0F)), "wall_sandstone_ebon"),
-            setup(new TerraBlockWall(Block.Properties.create(Material.ROCK).hardnessAndResistance(2.0F, 6.0F)), "wall_sandstone_crim"),
-            setup(new TerraBlockWall(Block.Properties.create(Material.ROCK).hardnessAndResistance(2.0F, 6.0F)), "wall_sandstone_pearl")
+            setup(new TerraBlockWall(Block.Properties.create(Material.ROCK).sound(SoundType.STONE).hardnessAndResistance(2.0F, 6.0F)), "wall_stonebrick_ebon"),
+            setup(new TerraBlockWall(Block.Properties.create(Material.ROCK).sound(SoundType.STONE).hardnessAndResistance(2.0F, 6.0F)), "wall_stonebrick_crim"),
+            setup(new TerraBlockWall(Block.Properties.create(Material.ROCK).sound(SoundType.STONE).hardnessAndResistance(2.0F, 6.0F)), "wall_stonebrick_pearl"),
+            setup(new TerraBlockWall(Block.Properties.create(Material.ROCK).sound(SoundType.STONE).hardnessAndResistance(2.0F, 6.0F)), "wall_cobblestone_ebon"),
+            setup(new TerraBlockWall(Block.Properties.create(Material.ROCK).sound(SoundType.STONE).hardnessAndResistance(2.0F, 6.0F)), "wall_cobblestone_crim"),
+            setup(new TerraBlockWall(Block.Properties.create(Material.ROCK).sound(SoundType.STONE).hardnessAndResistance(2.0F, 6.0F)), "wall_cobblestone_pearl"),
+            setup(new TerraBlockWall(Block.Properties.create(Material.ROCK).sound(SoundType.STONE).hardnessAndResistance(2.0F, 6.0F)), "wall_sandstone_ebon"),
+            setup(new TerraBlockWall(Block.Properties.create(Material.ROCK).sound(SoundType.STONE).hardnessAndResistance(2.0F, 6.0F)), "wall_sandstone_crim"),
+            setup(new TerraBlockWall(Block.Properties.create(Material.ROCK).sound(SoundType.STONE).hardnessAndResistance(2.0F, 6.0F)), "wall_sandstone_pearl"),
 
+            //Dungeon Structures
+            setup(new Block(Block.Properties.create(Material.ROCK).harvestLevel(4).hardnessAndResistance(9.0F, 9.0F).sound(SoundType.STONE)), "dungeon_blue_floor_brick"),
+            setup(new Block(Block.Properties.create(Material.ROCK).harvestLevel(4).hardnessAndResistance(9.0F, 9.0F).sound(SoundType.STONE)), "dungeon_blue_floor_tile"),
+            setup(new Block(Block.Properties.create(Material.ROCK).harvestLevel(4).hardnessAndResistance(9.0F, 9.0F).sound(SoundType.STONE)), "dungeon_blue_floor_slab"),
+            setup(new Block(Block.Properties.create(Material.ROCK).harvestLevel(4).hardnessAndResistance(9.0F, 9.0F).sound(SoundType.STONE)), "dungeon_blue_wall_base"),
+            setup(new Block(Block.Properties.create(Material.ROCK).harvestLevel(4).hardnessAndResistance(9.0F, 9.0F).sound(SoundType.STONE)), "dungeon_blue_wall_top"),
+            setup(new Block(Block.Properties.create(Material.ROCK).harvestLevel(4).hardnessAndResistance(9.0F, 9.0F).sound(SoundType.STONE)), "dungeon_blue_wall_mid"),
+            setup(new Block(Block.Properties.create(Material.ROCK).harvestLevel(4).hardnessAndResistance(9.0F, 9.0F).sound(SoundType.STONE)), "dungeon_blue_wall_bot"),
+            setup(new Block(Block.Properties.create(Material.ROCK).harvestLevel(4).hardnessAndResistance(9.0F, 9.0F).sound(SoundType.STONE)), "dungeon_blue_pillar"),
+            setup(new Block(Block.Properties.create(Material.ROCK).harvestLevel(4).hardnessAndResistance(9.0F, 9.0F).sound(SoundType.STONE)), "dungeon_blue_brick"),
+            setup(new Block(Block.Properties.create(Material.ROCK).harvestLevel(4).hardnessAndResistance(9.0F, 9.0F).sound(SoundType.STONE)), "dungeon_blue_slab"),
+            setup(new TerraBlockWall(Block.Properties.create(Material.ROCK).sound(SoundType.STONE).hardnessAndResistance(9.0F, 9.0F)), "wall_dungeon_blue_bricks"),
+            setup(new TerraBlockWall(Block.Properties.create(Material.ROCK).sound(SoundType.STONE).hardnessAndResistance(9.0F, 9.0F)), "wall_dungeon_blue_brick"),
+            setup(new TerraBlockWall(Block.Properties.create(Material.ROCK).sound(SoundType.STONE).hardnessAndResistance(9.0F, 9.0F)), "wall_dungeon_blue_tile"),
+            setup(new TerraBlockWall(Block.Properties.create(Material.ROCK).sound(SoundType.STONE).hardnessAndResistance(9.0F, 9.0F)), "wall_dungeon_blue_slab"),
+            setup(new TerraBlockWall(Block.Properties.create(Material.ROCK).sound(SoundType.STONE).hardnessAndResistance(9.0F, 9.0F)), "wall_dungeon_blue_trim"),
+            setup(new StairsBlock(nightmareTier.getDefaultState(), Block.Properties.from(nightmareTier)), "stair_dungeon_blue_bricks"),
+            setup(new StairsBlock(nightmareTier.getDefaultState(), Block.Properties.from(nightmareTier)), "stair_dungeon_blue_brick"),
+            setup(new StairsBlock(nightmareTier.getDefaultState(), Block.Properties.from(nightmareTier)), "stair_dungeon_blue_tile"),
+            setup(new StairsBlock(nightmareTier.getDefaultState(), Block.Properties.from(nightmareTier)), "stair_dungeon_blue_slab"),
+            setup(new StairsBlock(nightmareTier.getDefaultState(), Block.Properties.from(nightmareTier)), "stair_dungeon_blue_trim_bot"),
+            setup(new StairsBlock(nightmareTier.getDefaultState(), Block.Properties.from(nightmareTier)), "stair_dungeon_blue_trim_mid"),
+            setup(new StairsBlock(nightmareTier.getDefaultState(), Block.Properties.from(nightmareTier)), "stair_dungeon_blue_trim_top"),
+            setup(new SlabBlock(Block.Properties.create(Material.ROCK, MaterialColor.BLUE).hardnessAndResistance(9.0F, 9.0F)), "slab_dungeon_blue"),
+            setup(new SlabBlock(Block.Properties.create(Material.ROCK, MaterialColor.BLUE).hardnessAndResistance(9.0F, 9.0F)), "slab_dungeon_blue_bricks"),
+            setup(new SlabBlock(Block.Properties.create(Material.ROCK, MaterialColor.BLUE).hardnessAndResistance(9.0F, 9.0F)), "slab_dungeon_blue_brick"),
+            setup(new SlabBlock(Block.Properties.create(Material.ROCK, MaterialColor.BLUE).hardnessAndResistance(9.0F, 9.0F)), "slab_dungeon_blue_tile")
         );
     }
 

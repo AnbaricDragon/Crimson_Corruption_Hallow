@@ -41,6 +41,11 @@
     "terra_reforged:wall_cobblestone_pearl",
     "terra_reforged:wall_sandstone_ebon",
     "terra_reforged:wall_sandstone_crim",
-    "terra_reforged:wall_sandstone_pearl"
+    "terra_reforged:wall_sandstone_pearl",
+    "terra_reforged:wall_dungeon_blue_bricks",
+    "terra_reforged:wall_dungeon_blue_brick",
+    "terra_reforged:wall_dungeon_blue_slab",
+    "terra_reforged:wall_dungeon_blue_tile",
+    "terra_reforged:wall_dungeon_blue_trim"
   ]
 }

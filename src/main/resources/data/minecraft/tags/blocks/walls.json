@@ -46,6 +46,13 @@
     "terra_reforged:wall_dungeon_blue_brick",
     "terra_reforged:wall_dungeon_blue_slab",
     "terra_reforged:wall_dungeon_blue_tile",
-    "terra_reforged:wall_dungeon_blue_trim"
+    "terra_reforged:wall_dungeon_blue_trim",
+    "terra_reforged:dungeon_green_floor_brick",
+    "terra_reforged:dungeon_green_floor_tile",
+    "terra_reforged:dungeon_green_floor_slab",
+    "terra_reforged:dungeon_green_wall_base",
+    "terra_reforged:dungeon_green_wall_top",
+    "terra_reforged:dungeon_green_wall_mid",
+    "terra_reforged:dungeon_green_wall_bot"
   ]
 }

@@ -1,0 +1,7 @@
+{
+    "variants": {
+        "type=bottom":  { "model": "terra_reforged:block/slab_dungeon_green_brick" },
+        "type=top":  { "model": "terra_reforged:block/slab_dungeon_green_brick_top" },
+        "type=double":  { "model": "terra_reforged:block/dungeon_green_floor_brick" }
+    }
+}

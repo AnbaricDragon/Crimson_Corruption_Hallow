@@ -256,6 +256,27 @@ public class TerraBlocks
     public static final Block STAIR_DUNGEON_BLUE_SLAB = null;
     public static final Block STAIR_DUNGEON_BLUE_TRIM = null;
 
+    public static final Block DUNGEON_GREEN_FLOOR_BRICK = null;
+    public static final Block DUNGEON_GREEN_FLOOR_TILE = null;
+    public static final Block DUNGEON_GREEN_FLOOR_SLAB = null;
+    public static final Block DUNGEON_GREEN_WALL_BASE = null;
+    public static final Block DUNGEON_GREEN_WALL_TOP = null;
+    public static final Block DUNGEON_GREEN_WALL_MID = null;
+    public static final Block DUNGEON_GREEN_WALL_BOT = null;
+    public static final Block DUNGEON_GREEN_PILLAR = null;
+    public static final Block DUNGEON_GREEN_BRICK = null;
+    public static final Block DUNGEON_GREEN_SLAB = null;
+    public static final Block WALL_DUNGEON_GREEN_BRICKS = null;
+    public static final Block WALL_DUNGEON_GREEN_BRICK = null;
+    public static final Block WALL_DUNGEON_GREEN_TILE = null;
+    public static final Block WALL_DUNGEON_GREEN_SLAB = null;
+    public static final Block WALL_DUNGEON_GREEN_WALL = null;
+    public static final Block STAIR_DUNGEON_GREEN_BRICKS = null;
+    public static final Block STAIR_DUNGEON_GREEN_BRICK = null;
+    public static final Block STAIR_DUNGEON_GREEN_TILE = null;
+    public static final Block STAIR_DUNGEON_GREEN_SLAB = null;
+    public static final Block STAIR_DUNGEON_GREEN_TRIM = null;
+
     //Bricks
     public static final Block BRICK_SNOW = null;
     public static final Block BRICK_ICE = null;

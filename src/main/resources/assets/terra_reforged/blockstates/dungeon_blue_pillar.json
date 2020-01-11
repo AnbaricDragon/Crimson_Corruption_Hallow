@@ -1,5 +1,7 @@
 {
     "variants": {
-        "": { "model": "terra_reforged:block/dungeon_blue_pillar" }
+        "axis=y": { "model": "terra_reforged:block/dungeon_blue_pillar" },
+        "axis=z": { "model": "terra_reforged:block/dungeon_blue_pillar", "x": 90 },
+        "axis=x": { "model": "terra_reforged:block/dungeon_blue_pillar", "x": 90, "y": 90 }
     }
 }

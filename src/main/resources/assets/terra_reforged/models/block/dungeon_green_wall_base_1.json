@@ -1,0 +1,8 @@
+{
+    "parent": "block/cube_bottom_top",
+    "textures": {
+        "side": "terra_reforged:blocks/dungeon_green_wall_base_1",
+				"bottom": "terra_reforged:blocks/dungeon_green_floor_brick",
+				"top": "terra_reforged:blocks/dungeon_green_floor_brick"
+    }
+}

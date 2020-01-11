@@ -1,0 +1,10 @@
+{
+    "variants": {
+        "": [
+						{ "model": "terra_reforged:block/dungeon_red_floor_tile_0" },
+						{ "model": "terra_reforged:block/dungeon_red_floor_tile_1" },
+						{ "model": "terra_reforged:block/dungeon_red_floor_tile_2" },
+						{ "model": "terra_reforged:block/dungeon_red_floor_tile_3" }
+				]
+    }
+}

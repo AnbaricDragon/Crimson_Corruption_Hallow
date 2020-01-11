@@ -1,0 +1,8 @@
+{
+    "variants": {
+        "": [
+						{ "model": "terra_reforged:block/dungeon_red_wall_base_0" },
+						{ "model": "terra_reforged:block/dungeon_red_wall_base_1" }
+				]
+    }
+}

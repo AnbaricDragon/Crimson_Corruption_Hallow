@@ -4,16 +4,16 @@
     <option name="MAIN_CLASS_NAME" value="net.minecraftforge.userdev.LaunchTesting"/>
     <option name="VM_PARAMETERS" value="-Dforge.logging.console.level=debug -Dforge.logging.markers=SCAN,REGISTRIES,REGISTRYDUMP"/>
     <option name="PROGRAM_PARAMETERS" value=""/>
-    <option name="WORKING_DIRECTORY" value="D:\Downloads\Coding\Repositories\Terra_Reforged\run"/>
-    <module name="Terra_Reforged_main"/>
+    <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$\run"/>
+    <module name="Terra_Reforged.main"/>
     <envs>
-      <env name="MOD_CLASSES" value="terra_reforged%%D:\Downloads\Coding\Repositories\Terra_Reforged\build\resources\main;terra_reforged%%D:\Downloads\Coding\Repositories\Terra_Reforged\build\classes\java\main"/>
-      <env name="MCP_MAPPINGS" value="snapshot_20191209-1.14.3"/>
-      <env name="MCP_VERSION" value="20190829.143755"/>
-      <env name="FORGE_VERSION" value="28.1.69"/>
+      <env name="MOD_CLASSES" value="examplemod%%$PROJECT_DIR$\build\resources\main;examplemod%%$PROJECT_DIR$\build\classes\java\main"/>
+      <env name="MCP_MAPPINGS" value="snapshot_20200310-1.15.1"/>
+      <env name="MCP_VERSION" value="20200122.131323"/>
+      <env name="FORGE_VERSION" value="31.1.18"/>
       <env name="FORGE_GROUP" value="net.minecraftforge"/>
       <env name="target" value="fmluserdevserver"/>
-      <env name="MC_VERSION" value="1.14.4"/>
+      <env name="MC_VERSION" value="1.15.2"/>
     </envs>
     <method v="2">
       <option enabled="true" name="Make"/>

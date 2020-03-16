@@ -1,6 +1,5 @@
 package com.anbaric.terra_reforged.blocks.potionplants;
 
-import com.anbaric.terra_reforged.blocks.TerraBlocks;
 import com.anbaric.terra_reforged.items.TerraItems;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;

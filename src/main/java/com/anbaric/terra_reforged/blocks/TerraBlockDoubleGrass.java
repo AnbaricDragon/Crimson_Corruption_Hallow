@@ -1,5 +1,6 @@
 package com.anbaric.terra_reforged.blocks;
 
+import com.anbaric.terra_reforged.util.init.TerraBlockRegistry;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
@@ -35,12 +36,6 @@ public class TerraBlockDoubleGrass extends BushBlock
         this.setDefaultState(this.stateContainer.getBaseState().with(HALF, DoubleBlockHalf.LOWER));
     }
 
-    /**
-     * Update the provided state given the provided neighbor facing and neighbor state, returning a new state.
-     * For example, fences make their connections to the passed in state if possible, and wet concrete powder immediately
-     * returns its solidified counterpart.
-     * Note that this method should ideally consider only the specific face passed in.
-     */
     public BlockState updatePostPlacement(BlockState stateIn, Direction facing, BlockState facingState, IWorld worldIn, BlockPos currentPos, BlockPos facingPos)
     {
         DoubleBlockHalf doubleblockhalf = stateIn.get(HALF);
@@ -65,7 +60,7 @@ public class TerraBlockDoubleGrass extends BushBlock
     public boolean isValidGround(BlockState state, IBlockReader worldIn, BlockPos pos)
     {
         Block block = state.getBlock();
-        return block == Blocks.GRASS_BLOCK || block == Blocks.DIRT || block == Blocks.FARMLAND || block == TerraBlocks.GRASS_CRIMSON || block == TerraBlocks.GRASS_CORRUPT || block == TerraBlocks.GRASS_HALLOWED || block == TerraBlocks.GRASS_JUNGLE || block == TerraBlocks.GRASS_MUSHROOM;
+        return block == Blocks.GRASS_BLOCK || block == Blocks.DIRT || block == Blocks.FARMLAND || block == TerraBlockRegistry.GRASS_CRIMSON.get() || block == TerraBlockRegistry.GRASS_CORRUPT.get() || block == TerraBlockRegistry.GRASS_HALLOWED.get() || block == TerraBlockRegistry.GRASS_JUNGLE.get() || block == TerraBlockRegistry.GRASS_MUSHROOM.get();
     }
 
     public void onBlockPlacedBy(World worldIn, BlockPos pos, BlockState state, LivingEntity placer, ItemStack stack)
@@ -135,17 +130,11 @@ public class TerraBlockDoubleGrass extends BushBlock
         builder.add(HALF);
     }
 
-    /**
-     * Get the OffsetType for this Block. Determines if the model is rendered slightly offset.
-     */
     public Block.OffsetType getOffsetType()
     {
         return Block.OffsetType.XZ;
     }
 
-    /**
-     * Return a random long to be passed to {@link IBakedModel#getQuads}, used for random model rotations
-     */
     @OnlyIn(Dist.CLIENT)
     public long getPositionRandom(BlockState state, BlockPos pos)
     {

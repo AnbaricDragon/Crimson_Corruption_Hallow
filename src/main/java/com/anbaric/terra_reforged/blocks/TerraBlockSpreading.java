@@ -3,6 +3,7 @@ package com.anbaric.terra_reforged.blocks;
 import com.anbaric.terra_reforged.TerraReforged;
 import com.anbaric.terra_reforged.util.handlers.EnumHandler.EnumBiomeBlockType;
 import com.anbaric.terra_reforged.util.handlers.EnumHandler.EnumBiomeType;
+import com.anbaric.terra_reforged.util.init.TerraBlockRegistry;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
@@ -54,13 +55,13 @@ public class TerraBlockSpreading extends Block
                     {
                         worldIn.setBlockState(targetPos, targetBlock.getDefaultState().with(TerraBlockOre.BIOME, this.biome.getOreBiome()));
                     }
-                    if (targetBlock == Blocks.IRON_ORE) { worldIn.setBlockState(targetPos, TerraBlocks.ORE_IRON.getDefaultState().with(TerraBlockOre.BIOME, this.biome.getOreBiome())); }
-                    if (targetBlock == Blocks.GOLD_ORE) { worldIn.setBlockState(targetPos, TerraBlocks.ORE_GOLD.getDefaultState().with(TerraBlockOre.BIOME, this.biome.getOreBiome())); }
-                    if (targetBlock == Blocks.COAL_ORE) { worldIn.setBlockState(targetPos, TerraBlocks.ORE_COAL.getDefaultState().with(TerraBlockOre.BIOME, this.biome.getOreBiome())); }
-                    if (targetBlock == Blocks.LAPIS_ORE) { worldIn.setBlockState(targetPos, TerraBlocks.ORE_LAPIS.getDefaultState().with(TerraBlockOre.BIOME, this.biome.getOreBiome())); }
-                    if (targetBlock == Blocks.REDSTONE_ORE) { worldIn.setBlockState(targetPos, TerraBlocks.ORE_REDSTONE.getDefaultState().with(TerraBlockOre.BIOME, this.biome.getOreBiome())); }
-                    if (targetBlock == Blocks.DIAMOND_ORE) { worldIn.setBlockState(targetPos, TerraBlocks.ORE_DIAMOND.getDefaultState().with(TerraBlockOre.BIOME, this.biome.getOreBiome())); }
-                    if (targetBlock == Blocks.EMERALD_ORE) { worldIn.setBlockState(targetPos, TerraBlocks.ORE_EMERALD.getDefaultState().with(TerraBlockOre.BIOME, this.biome.getOreBiome())); }
+//                    if (targetBlock == Blocks.IRON_ORE) { worldIn.setBlockState(targetPos, TerraBlockRegistry.ORE_IRON.get().getDefaultState().with(TerraBlockOre.BIOME, this.biome.getOreBiome())); }
+//                    if (targetBlock == Blocks.GOLD_ORE) { worldIn.setBlockState(targetPos, TerraBlockRegistry.ORE_GOLD.get().getDefaultState().with(TerraBlockOre.BIOME, this.biome.getOreBiome())); }
+//                    if (targetBlock == Blocks.COAL_ORE) { worldIn.setBlockState(targetPos, TerraBlockRegistry.ORE_COAL.get().getDefaultState().with(TerraBlockOre.BIOME, this.biome.getOreBiome())); }
+//                    if (targetBlock == Blocks.LAPIS_ORE) { worldIn.setBlockState(targetPos, TerraBlockRegistry.ORE_LAPIS.get().getDefaultState().with(TerraBlockOre.BIOME, this.biome.getOreBiome())); }
+//                    if (targetBlock == Blocks.REDSTONE_ORE) { worldIn.setBlockState(targetPos, TerraBlockRegistry.ORE_REDSTONE.get().getDefaultState().with(TerraBlockOre.BIOME, this.biome.getOreBiome())); }
+//                    if (targetBlock == Blocks.DIAMOND_ORE) { worldIn.setBlockState(targetPos, TerraBlockRegistry.ORE_DIAMOND.get().getDefaultState().with(TerraBlockOre.BIOME, this.biome.getOreBiome())); }
+//                    if (targetBlock == Blocks.EMERALD_ORE) { worldIn.setBlockState(targetPos, TerraBlockRegistry.ORE_EMERALD.get().getDefaultState().with(TerraBlockOre.BIOME, this.biome.getOreBiome())); }
                     if (checkTransformable(targetBlock))
                     {
                         worldIn.setBlockState(targetPos, transformedState(biome, targetBlock).getDefaultState());

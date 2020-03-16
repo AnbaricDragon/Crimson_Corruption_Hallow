@@ -3,11 +3,11 @@ package com.anbaric.terra_reforged.blocks;
 import com.anbaric.terra_reforged.TerraReforged;
 import com.anbaric.terra_reforged.util.handlers.EnumHandler.EnumBiomeBlockType;
 import com.anbaric.terra_reforged.util.handlers.EnumHandler.EnumBiomeType;
+import com.anbaric.terra_reforged.util.init.TerraBlockRegistry;
 import net.minecraft.block.*;
 import net.minecraft.fluid.IFluidState;
 import net.minecraft.item.BlockItemUseContext;
 import net.minecraft.tags.FluidTags;
-import net.minecraft.util.BlockRenderLayer;
 import net.minecraft.util.Direction;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.IBlockReader;
@@ -18,6 +18,7 @@ import net.minecraft.world.gen.feature.ConfiguredFeature;
 import net.minecraft.world.gen.feature.DecoratedFeatureConfig;
 import net.minecraft.world.gen.feature.FlowersFeature;
 import net.minecraft.world.lighting.LightEngine;
+import net.minecraft.world.server.ServerWorld;
 import net.minecraftforge.common.IPlantable;
 import net.minecraftforge.common.PlantType;
 
@@ -37,8 +38,8 @@ public class TerraBlockBiomeGrass extends SnowyDirtBlock implements IGrowable
     @Override
     public boolean canSustainPlant(BlockState state, IBlockReader world, BlockPos pos, Direction facing, IPlantable plantable)
     {
-        Boolean reed = false;
-        Block plant = plantable.getPlant(world, pos.up()).getBlock();
+        Boolean reed  = false;
+        Block   plant = plantable.getPlant(world, pos.up()).getBlock();
         if (plant == Blocks.SUGAR_CANE || plant instanceof TerraBlockReeds)
         {
             for (Direction direction : Direction.Plane.HORIZONTAL)
@@ -108,15 +109,15 @@ public class TerraBlockBiomeGrass extends SnowyDirtBlock implements IGrowable
                                 worldIn.setBlockState(targetPos, this.getDefaultState());
                             }
                         }
-                        if (targetBlock == Blocks.TALL_GRASS)
-                        {
-                            TerraBlockDoubleGrass doublePlant = (TerraBlockDoubleGrass) (this == TerraBlocks.GRASS_CORRUPT ? TerraBlocks.TALLGRASSDOUBLE_CORRUPT : this == TerraBlocks.GRASS_CRIMSON ? TerraBlocks.TALLGRASSDOUBLE_CRIMSON : TerraBlocks.TALLGRASSDOUBLE_HALLOWED);
-                            if (doublePlant.getDefaultState().isValidPosition(worldIn, targetPos))
-                            {
-                                System.out.println("Attempting to spread to" + targetBlock);
-                                doublePlant.placeAt(worldIn, targetPos, 2);
-                            }
-                        }
+//                        if (targetBlock == Blocks.TALL_GRASS)
+//                        {
+//                            TerraBlockDoubleGrass doublePlant = (TerraBlockDoubleGrass) (this == TerraBlockRegistry.GRASS_CORRUPT.get() ? TerraBlocks.TALLGRASSDOUBLE_CORRUPT : this == TerraBlocks.GRASS_CRIMSON ? TerraBlocks.TALLGRASSDOUBLE_CRIMSON : TerraBlocks.TALLGRASSDOUBLE_HALLOWED);
+//                            if (doublePlant.getDefaultState().isValidPosition(worldIn, targetPos))
+//                            {
+//                                System.out.println("Attempting to spread to" + targetBlock);
+//                                doublePlant.placeAt(worldIn, targetPos, 2);
+//                            }
+//                        }
                         if (checkTransformable(targetBlock))
                         {
                             if (TerraReforged.debugSpreading)
@@ -140,24 +141,14 @@ public class TerraBlockBiomeGrass extends SnowyDirtBlock implements IGrowable
         else
         {
             Block block = facingState.getBlock();
-            return stateIn.with(SNOWY, Boolean.valueOf(block == Blocks.SNOW_BLOCK || block == Blocks.SNOW || block == TerraBlocks.SNOW_CORRUPT_LAYER || block == TerraBlocks.SNOW_CRIMSON_LAYER || block == TerraBlocks.SNOW_HALLOWED_LAYER));
+            return stateIn.with(SNOWY, Boolean.valueOf(block == Blocks.SNOW_BLOCK || block == Blocks.SNOW/* || block == TerraBlockRegistry.SNOW_CORRUPT_LAYER.get() || block == TerraBlockRegistry.SNOW_CRIMSON_LAYER.get() || block == TerraBlockRegistry.SNOW_HALLOWED_LAYER.get()*/));
         }
     }
 
     public BlockState getStateForPlacement(BlockItemUseContext context)
     {
         Block block = context.getWorld().getBlockState(context.getPos().up()).getBlock();
-        return this.getDefaultState().with(SNOWY, Boolean.valueOf(block == Blocks.SNOW_BLOCK || block == Blocks.SNOW || block == TerraBlocks.SNOW_CORRUPT_LAYER || block == TerraBlocks.SNOW_CRIMSON_LAYER || block == TerraBlocks.SNOW_HALLOWED_LAYER));
-    }
-
-    public boolean isSolid(BlockState state)
-    {
-        return true;
-    }
-
-    public BlockRenderLayer getRenderLayer()
-    {
-        return BlockRenderLayer.CUTOUT_MIPPED;
+        return this.getDefaultState().with(SNOWY, Boolean.valueOf(block == Blocks.SNOW_BLOCK || block == Blocks.SNOW/* || block == TerraBlockRegistry.SNOW_CORRUPT_LAYER.get() || block == TerraBlockRegistry.SNOW_CRIMSON_LAYER.get() || block == TerraBlockRegistry.SNOW_HALLOWED_LAYER.get()*/));
     }
 
     public Block transformedState(EnumBiomeType type, Block target)
@@ -196,60 +187,55 @@ public class TerraBlockBiomeGrass extends SnowyDirtBlock implements IGrowable
         return false;
     }
 
-    public void grow(World worldIn, Random rand, BlockPos pos, BlockState state)
+    @Override
+    public void grow(ServerWorld p_225535_1_, Random p_225535_2_, BlockPos p_225535_3_, BlockState p_225535_4_)
     {
-        BlockPos   topPos     = pos.up();
-        BlockState grassState = TerraBlocks.GRASS_CORRUPT.getDefaultState();
+        BlockPos   blockpos   = p_225535_3_.up();
+        BlockState blockstate = this.getDefaultState();
 
+        label48:
         for (int i = 0; i < 128; ++i)
         {
-            BlockPos targetPos = topPos;
-            int      j         = 0;
+            BlockPos blockpos1 = blockpos;
 
-            while (true)
+            for (int j = 0; j < i / 16; ++j)
             {
-                if (j >= i / 16)
+                blockpos1 = blockpos1.add(p_225535_2_.nextInt(3) - 1, (p_225535_2_.nextInt(3) - 1) * p_225535_2_.nextInt(3) / 2, p_225535_2_.nextInt(3) - 1);
+                if (p_225535_1_.getBlockState(blockpos1.down()).getBlock() != this || p_225535_1_.getBlockState(blockpos1).isCollisionShapeOpaque(p_225535_1_, blockpos1))
                 {
-                    BlockState targetState = worldIn.getBlockState(targetPos);
-                    if (targetState.getBlock() == grassState.getBlock() && rand.nextInt(10) == 0)
+                    continue label48;
+                }
+            }
+
+            BlockState blockstate2 = p_225535_1_.getBlockState(blockpos1);
+            if (blockstate2.getBlock() == blockstate.getBlock() && p_225535_2_.nextInt(10) == 0)
+            {
+                ((IGrowable) blockstate.getBlock()).grow(p_225535_1_, p_225535_2_, blockpos1, blockstate2);
+            }
+
+            if (blockstate2.isAir())
+            {
+                BlockState blockstate1;
+                if (p_225535_2_.nextInt(8) == 0)
+                {
+                    List<ConfiguredFeature<?, ?>> list = p_225535_1_.getBiome(blockpos1).getFlowers();
+                    if (list.isEmpty())
                     {
-                        ((IGrowable) grassState.getBlock()).grow(worldIn, rand, targetPos, targetState);
+                        continue;
                     }
 
-                    if (!targetState.isAir())
-                    {
-                        break;
-                    }
-
-                    BlockState flowerState;
-                    if (rand.nextInt(8) == 0)
-                    {
-                        List<ConfiguredFeature<?>> list = worldIn.getBiome(targetPos).getFlowers();
-                        if (list.isEmpty())
-                        {
-                            break;
-                        }
-
-                        flowerState = ((FlowersFeature) ((DecoratedFeatureConfig) (list.get(0)).config).feature.feature).getRandomFlower(rand, targetPos);
-                    }
-                    else
-                    {
-                        flowerState = grassState;
-                    }
-
-                    if (flowerState.isValidPosition(worldIn, targetPos))
-                    {
-                        worldIn.setBlockState(targetPos, flowerState, 3);
-                    }
-                    break;
+                    ConfiguredFeature<?, ?> configuredfeature = ((DecoratedFeatureConfig) ((ConfiguredFeature) list.get(0)).config).feature;
+                    blockstate1 = ((FlowersFeature) configuredfeature.feature).getFlowerToPlace(p_225535_2_, blockpos1, configuredfeature.config);
+                }
+                else
+                {
+                    blockstate1 = blockstate;
                 }
 
-                targetPos = targetPos.add(rand.nextInt(3) - 1, (rand.nextInt(3) - 1) * rand.nextInt(3) / 2, rand.nextInt(3) - 1);
-                if (worldIn.getBlockState(targetPos.down()).getBlock() != this || worldIn.getBlockState(targetPos).func_224756_o(worldIn, targetPos))
+                if (blockstate1.isValidPosition(p_225535_1_, blockpos1))
                 {
-                    break;
+                    p_225535_1_.setBlockState(blockpos1, blockstate1, 3);
                 }
-                ++j;
             }
         }
     }

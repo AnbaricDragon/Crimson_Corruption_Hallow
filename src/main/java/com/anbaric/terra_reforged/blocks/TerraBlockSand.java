@@ -31,8 +31,8 @@ public class TerraBlockSand extends FallingBlock
     @Override
     public boolean canSustainPlant(BlockState state, IBlockReader world, BlockPos pos, Direction facing, net.minecraftforge.common.IPlantable plantable)
     {
-        Boolean reed = false;
-        Block plant = plantable.getPlant(world, pos.up()).getBlock();
+        Boolean reed  = false;
+        Block   plant = plantable.getPlant(world, pos.up()).getBlock();
         if (plant == Blocks.SUGAR_CANE || plant instanceof TerraBlockReeds)
         {
             for (Direction direction : Direction.Plane.HORIZONTAL)
@@ -100,14 +100,16 @@ public class TerraBlockSand extends FallingBlock
         return check;
     }
 
-    private void checkFallable(World worldIn, BlockPos pos) {
-        if (worldIn.isAirBlock(pos.down()) || canFallThrough(worldIn.getBlockState(pos.down())) && pos.getY() >= 0) {
-            if (!worldIn.isRemote) {
-                FallingBlockEntity fallingblockentity = new FallingBlockEntity(worldIn, (double)pos.getX() + 0.5D, (double)pos.getY(), (double)pos.getZ() + 0.5D, worldIn.getBlockState(pos));
+    private void checkFallable(World worldIn, BlockPos pos)
+    {
+        if (worldIn.isAirBlock(pos.down()) || canFallThrough(worldIn.getBlockState(pos.down())) && pos.getY() >= 0)
+        {
+            if (!worldIn.isRemote)
+            {
+                FallingBlockEntity fallingblockentity = new FallingBlockEntity(worldIn, (double) pos.getX() + 0.5D, (double) pos.getY(), (double) pos.getZ() + 0.5D, worldIn.getBlockState(pos));
                 this.onStartFalling(fallingblockentity);
                 worldIn.addEntity(fallingblockentity);
             }
-
         }
     }
 }

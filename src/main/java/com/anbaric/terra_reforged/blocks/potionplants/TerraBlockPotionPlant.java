@@ -1,6 +1,7 @@
 package com.anbaric.terra_reforged.blocks.potionplants;
 
 import com.anbaric.terra_reforged.blocks.TerraBlocks;
+import com.anbaric.terra_reforged.util.init.TerraBlockRegistry;
 import net.minecraft.block.*;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.monster.RavagerEntity;
@@ -30,13 +31,13 @@ public class TerraBlockPotionPlant extends BushBlock implements IGrowable
 
     public Block[][] BLOCKS = new Block[][]
     {
-        {Blocks.DIRT, Blocks.GRASS_BLOCK, TerraBlocks.GRASS_CORRUPT, TerraBlocks.GRASS_CRIMSON, TerraBlocks.GRASS_HALLOWED, Blocks.STONE, TerraBlocks.STONE_EBON, TerraBlocks.STONE_CRIM, TerraBlocks.STONE_PEARL},
-        {Blocks.GRASS_BLOCK, TerraBlocks.GRASS_HALLOWED},
-        {TerraBlocks.GRASS_CORRUPT, TerraBlocks.GRASS_CRIMSON, TerraBlocks.STONE_EBON, TerraBlocks.STONE_CRIM},
-        {TerraBlocks.SOIL_ASH},
-        {TerraBlocks.SOIL_MUD, TerraBlocks.GRASS_JUNGLE, TerraBlocks.GRASS_MUSHROOM},
-        {Blocks.SNOW, TerraBlocks.SNOW_CORRUPT, TerraBlocks.SNOW_CRIMSON, TerraBlocks.SNOW_HALLOWED, Blocks.ICE, TerraBlocks.ICE_PURPLE, TerraBlocks.ICE_RED, TerraBlocks.ICE_PINK, Blocks.PACKED_ICE, TerraBlocks.ICE_HARD_PURPLE, TerraBlocks.ICE_HARD_RED, TerraBlocks.ICE_HARD_PINK},
-        {Blocks.SAND, TerraBlocks.SAND_HARD, TerraBlocks.SAND_PEARL, TerraBlocks.SAND_HARDPEARL}
+        {Blocks.DIRT, Blocks.GRASS_BLOCK, TerraBlockRegistry.GRASS_CORRUPT.get(), TerraBlockRegistry.GRASS_CRIMSON.get(), TerraBlockRegistry.GRASS_HALLOWED.get(), Blocks.STONE, TerraBlockRegistry.STONE_EBON.get(), TerraBlockRegistry.STONE_CRIM.get(), TerraBlockRegistry.STONE_PEARL.get()},
+        {Blocks.GRASS_BLOCK, TerraBlockRegistry.GRASS_HALLOWED.get()},
+        {TerraBlockRegistry.GRASS_CORRUPT.get(), TerraBlockRegistry.GRASS_CRIMSON.get(), TerraBlockRegistry.STONE_EBON.get(), TerraBlockRegistry.STONE_CRIM.get()},
+        {TerraBlockRegistry.SOIL_ASH.get()},
+        {TerraBlockRegistry.SOIL_MUD.get(), TerraBlockRegistry.GRASS_JUNGLE.get(), TerraBlockRegistry.GRASS_MUSHROOM.get()},
+        {Blocks.SNOW, TerraBlockRegistry.SNOW_CORRUPT, TerraBlockRegistry.SNOW_CRIMSON, TerraBlockRegistry.SNOW_HALLOWED, Blocks.ICE, TerraBlockRegistry.ICE_PURPLE.get(), TerraBlockRegistry.ICE_RED.get(), TerraBlockRegistry.ICE_PINK.get(), Blocks.PACKED_ICE, TerraBlockRegistry.ICE_HARD_PURPLE.get(), TerraBlockRegistry.ICE_HARD_RED.get(), TerraBlockRegistry.ICE_HARD_PINK.get()},
+        {Blocks.SAND, TerraBlockRegistry.SAND_HARD.get(), TerraBlockRegistry.SAND_PEARL.get(), TerraBlockRegistry.SAND_HARDPEARL.get()}
     };
 
     public int blocksIndex;

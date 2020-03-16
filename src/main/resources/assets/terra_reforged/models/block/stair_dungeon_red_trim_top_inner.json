@@ -1,0 +1,43 @@
+{
+	"textures": {
+		"particle": "terra_reforged:blocks/dungeon_red_wall_mid",
+		"3": "terra_reforged:blocks/dungeon_red_floor_brick",
+		"bot": "terra_reforged:blocks/dungeon_red_wall_mid",
+		"5": "terra_reforged:blocks/dungeon_red_wall_top"
+	},
+	"elements": [
+		{
+			"from": [0, 0, 0],
+			"to": [16, 8, 16],
+			"faces": {
+				"north": {"uv": [0, 8, 16, 16], "texture": "#5", "cullface": "north"},
+				"east": {"uv": [0, 8, 16, 16], "texture": "#5", "cullface": "east"},
+				"south": {"uv": [0, 8, 16, 16], "texture": "#5", "cullface": "south"},
+				"west": {"uv": [0, 8, 16, 16], "texture": "#5", "cullface": "west"},
+				"up": {"uv": [0, 0, 16, 16], "texture": "#bot"},
+				"down": {"uv": [0, 0, 16, 16], "texture": "#bot", "cullface": "down"}
+			}
+		},
+		{
+			"from": [8, 8, 0],
+			"to": [16, 16, 16],
+			"faces": {
+				"north": {"uv": [0, 0, 8, 8], "texture": "#5", "cullface": "north"},
+				"east": {"uv": [0, 0, 16, 8], "texture": "#5", "cullface": "east"},
+				"south": {"uv": [8, 0, 16, 8], "texture": "#5", "cullface": "south"},
+				"west": {"uv": [0, 0, 16, 8], "texture": "#5"},
+				"up": {"uv": [8, 0, 16, 16], "texture": "#3", "cullface": "up"}
+			}
+		},
+		{
+			"from": [0, 8, 8],
+			"to": [8, 16, 16],
+			"faces": {
+				"north": {"uv": [8, 0, 16, 8], "texture": "#5"},
+				"south": {"uv": [0, 0, 8, 8], "texture": "#5", "cullface": "south"},
+				"west": {"uv": [8, 0, 16, 8], "texture": "#5", "cullface": "west"},
+				"up": {"uv": [0, 8, 8, 16], "texture": "#3", "cullface": "up"}
+			}
+		}
+	]
+}

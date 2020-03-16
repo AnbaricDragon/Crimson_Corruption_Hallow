@@ -1,5 +1,6 @@
 package com.anbaric.terra_reforged.blocks;
 
+import com.anbaric.terra_reforged.util.init.TerraBlockRegistry;
 import net.minecraft.block.*;
 import net.minecraft.tags.FluidTags;
 import net.minecraft.util.Direction;
@@ -11,6 +12,7 @@ import net.minecraft.world.gen.feature.ConfiguredFeature;
 import net.minecraft.world.gen.feature.DecoratedFeatureConfig;
 import net.minecraft.world.gen.feature.FlowersFeature;
 import net.minecraft.world.lighting.LightEngine;
+import net.minecraft.world.server.ServerWorld;
 import net.minecraftforge.common.IPlantable;
 import net.minecraftforge.common.PlantType;
 
@@ -61,7 +63,7 @@ public class TerraBlockMudGrass extends Block implements IGrowable
             }
             if (!canSpread(state, worldIn, pos))
             {
-                worldIn.setBlockState(pos, TerraBlocks.SOIL_MUD.getDefaultState());
+                worldIn.setBlockState(pos, TerraBlockRegistry.SOIL_MUD.get().getDefaultState());
             }
             else
             {
@@ -73,7 +75,7 @@ public class TerraBlockMudGrass extends Block implements IGrowable
                         BlockState targetState = worldIn.getBlockState(targetPos);
                         Block targetBlock = worldIn.getBlockState(targetPos).getBlock();
 
-                        if (targetBlock == TerraBlocks.SOIL_MUD)
+                        if (targetBlock == TerraBlockRegistry.SOIL_MUD.get())
                         {
                             if (noWater(targetState, worldIn, targetPos) && canSpread(targetState, worldIn, targetPos) && !worldIn.getBlockState(targetPos.up()).isOpaqueCube(worldIn, targetPos))
                             {
@@ -96,62 +98,58 @@ public class TerraBlockMudGrass extends Block implements IGrowable
         return true;
     }
 
-    public void grow(World worldIn, Random rand, BlockPos pos, BlockState state)
+    @Override
+    public void grow(ServerWorld p_225535_1_, Random p_225535_2_, BlockPos p_225535_3_, BlockState p_225535_4_)
     {
-        BlockPos topPos = pos.up();
-        BlockState grassState = TerraBlocks.GRASS_CORRUPT.getDefaultState();
+        BlockPos   blockpos   = p_225535_3_.up();
+        BlockState blockstate = this.getDefaultState();
 
+        label48:
         for (int i = 0; i < 128; ++i)
         {
-            BlockPos targetPos = topPos;
-            int j = 0;
+            BlockPos blockpos1 = blockpos;
 
-            while (true)
+            for (int j = 0; j < i / 16; ++j)
             {
-                if (j >= i / 16)
+                blockpos1 = blockpos1.add(p_225535_2_.nextInt(3) - 1, (p_225535_2_.nextInt(3) - 1) * p_225535_2_.nextInt(3) / 2, p_225535_2_.nextInt(3) - 1);
+                if (p_225535_1_.getBlockState(blockpos1.down()).getBlock() != this || p_225535_1_.getBlockState(blockpos1).isCollisionShapeOpaque(p_225535_1_, blockpos1))
                 {
-                    BlockState targetState = worldIn.getBlockState(targetPos);
-                    if (targetState.getBlock() == grassState.getBlock() && rand.nextInt(10) == 0)
+                    continue label48;
+                }
+            }
+
+            BlockState blockstate2 = p_225535_1_.getBlockState(blockpos1);
+            if (blockstate2.getBlock() == blockstate.getBlock() && p_225535_2_.nextInt(10) == 0)
+            {
+                ((IGrowable) blockstate.getBlock()).grow(p_225535_1_, p_225535_2_, blockpos1, blockstate2);
+            }
+
+            if (blockstate2.isAir())
+            {
+                BlockState blockstate1;
+                if (p_225535_2_.nextInt(8) == 0)
+                {
+                    List<ConfiguredFeature<?, ?>> list = p_225535_1_.getBiome(blockpos1).getFlowers();
+                    if (list.isEmpty())
                     {
-                        ((IGrowable) grassState.getBlock()).grow(worldIn, rand, targetPos, targetState);
+                        continue;
                     }
 
-                    if (!targetState.isAir())
-                    {
-                        break;
-                    }
-
-                    BlockState flowerState;
-                    if (rand.nextInt(8) == 0)
-                    {
-                        List<ConfiguredFeature<?>> list = worldIn.getBiome(targetPos).getFlowers();
-                        if (list.isEmpty())
-                        {
-                            break;
-                        }
-
-                        flowerState = ((FlowersFeature) ((DecoratedFeatureConfig) (list.get(0)).config).feature.feature).getRandomFlower(rand, targetPos);
-                    }
-                    else
-                    {
-                        flowerState = grassState;
-                    }
-
-                    if (flowerState.isValidPosition(worldIn, targetPos))
-                    {
-                        worldIn.setBlockState(targetPos, flowerState, 3);
-                    }
-                    break;
+                    ConfiguredFeature<?, ?> configuredfeature = ((DecoratedFeatureConfig) ((ConfiguredFeature) list.get(0)).config).feature;
+                    blockstate1 = ((FlowersFeature) configuredfeature.feature).getFlowerToPlace(p_225535_2_, blockpos1, configuredfeature.config);
+                }
+                else
+                {
+                    blockstate1 = blockstate;
                 }
 
-                targetPos = targetPos.add(rand.nextInt(3) - 1, (rand.nextInt(3) - 1) * rand.nextInt(3) / 2, rand.nextInt(3) - 1);
-                if (worldIn.getBlockState(targetPos.down()).getBlock() != this || worldIn.getBlockState(targetPos).func_224756_o(worldIn, targetPos))
+                if (blockstate1.isValidPosition(p_225535_1_, blockpos1))
                 {
-                    break;
+                    p_225535_1_.setBlockState(blockpos1, blockstate1, 3);
                 }
-                ++j;
             }
         }
+
     }
 }
 

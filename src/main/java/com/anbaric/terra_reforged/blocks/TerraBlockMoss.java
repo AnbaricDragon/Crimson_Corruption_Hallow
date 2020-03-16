@@ -26,7 +26,8 @@ public class TerraBlockMoss extends Block
     @Override
     public boolean canSustainPlant(BlockState state, IBlockReader world, BlockPos pos, Direction facing, IPlantable plantable)
     {
-        return plantable.getPlantType(world, pos) == TerraReforged.MOSS;
+//        return plantable.getPlantType(world, pos) == TerraReforged.MOSS;
+        return true;
     }
 
     public boolean canSpread(World worldIn, BlockPos pos)

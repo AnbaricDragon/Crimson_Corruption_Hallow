@@ -1,8 +1,7 @@
 package com.anbaric.terra_reforged.util.init;
 
+import com.anbaric.terra_reforged.TerraReforged;
 import com.anbaric.terra_reforged.blocks.*;
-import com.anbaric.terra_reforged.blocks.potionplants.*;
-import com.anbaric.terra_reforged.structures.trees.*;
 import com.anbaric.terra_reforged.util.Reference;
 import com.anbaric.terra_reforged.util.TerraItemGroups;
 import com.anbaric.terra_reforged.util.handlers.EnumHandler.EnumBiomeType;
@@ -16,364 +15,415 @@ import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.common.PlantType;
 import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
+import net.minecraftforge.fml.RegistryObject;
 import net.minecraftforge.fml.common.Mod.EventBusSubscriber;
+import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.IForgeRegistry;
 import net.minecraftforge.registries.IForgeRegistryEntry;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-@EventBusSubscriber(modid = Reference.MODID, bus = EventBusSubscriber.Bus.MOD)
 public final class TerraBlockRegistry
 {
-    private static final Logger LOGGER = LogManager.getLogger(Reference.MODID + " Mod Event Subscriber");
+    public static final DeferredRegister<Block> BLOCKS = new DeferredRegister<>(ForgeRegistries.BLOCKS, Reference.MODID);
 
-    @SubscribeEvent
-    public static void onRegisterBlocks(final RegistryEvent.Register<Block> event)
-    {
-        Block nightmareTier = new Block(Block.Properties.create(Material.ROCK).harvestLevel(4).hardnessAndResistance(9.0F));
+    //Soils
+    public static final RegistryObject<Block> SOIL_MUD = BLOCKS.register("soil_mud", () -> new Block(Block.Properties.create(Material.EARTH).sound(SoundType.GROUND).hardnessAndResistance(0.5F, 3.0F)));
+    public static final RegistryObject<Block> SOIL_ASH = BLOCKS.register("soil_ash", () -> new Block(Block.Properties.create(Material.EARTH).sound(SoundType.GROUND).hardnessAndResistance(0.5F, 3.0F)));
+    public static final RegistryObject<Block> SNOW_CORRUPT = BLOCKS.register("snow_corrupt", () -> new TerraBlockSpreading(Block.Properties.create(Material.SNOW_BLOCK).sound(SoundType.SNOW).hardnessAndResistance(0.5F, 3.0F), EnumBiomeType.CORRUPT, TerraReforged.BOREAL));
+    public static final RegistryObject<Block> SNOW_CRIMSON = BLOCKS.register("snow_crimson", () -> new TerraBlockSpreading(Block.Properties.create(Material.SNOW_BLOCK).sound(SoundType.SNOW).hardnessAndResistance(0.5F, 3.0F), EnumBiomeType.CRIMSON, TerraReforged.BOREAL));
+    public static final RegistryObject<Block> SNOW_HALLOWED = BLOCKS.register("snow_hallowed", () -> new TerraBlockSpreading(Block.Properties.create(Material.SNOW_BLOCK).sound(SoundType.SNOW).hardnessAndResistance(0.5F, 3.0F), EnumBiomeType.HALLOWED, TerraReforged.BOREAL));
+    public static final RegistryObject<Block> SNOW_CORRUPT_LAYER = BLOCKS.register("snow_corrupt_layer", () -> new TerraBlockSnowLayer(Block.Properties.create(Material.SNOW).sound(SoundType.SNOW).hardnessAndResistance(0.1F)));
+    public static final RegistryObject<Block> SNOW_CRIMSON_LAYER = BLOCKS.register("snow_crimson_layer", () -> new TerraBlockSnowLayer(Block.Properties.create(Material.SNOW).sound(SoundType.SNOW).hardnessAndResistance(0.1F)));
+    public static final RegistryObject<Block> SNOW_HALLOWED_LAYER = BLOCKS.register("snow_hallowed_layer", () -> new TerraBlockSnowLayer(Block.Properties.create(Material.SNOW).sound(SoundType.SNOW).hardnessAndResistance(0.1F)));
+    public static final RegistryObject<Block> GRASS_JUNGLE = BLOCKS.register("grass_jungle", () -> new TerraBlockMudGrass(Block.Properties.create(Material.ORGANIC).sound(SoundType.PLANT).hardnessAndResistance(0.5F, 3.0F)));
+    public static final RegistryObject<Block> GRASS_MUSHROOM = BLOCKS.register("grass_mushroom", () -> new TerraBlockMudGrass(Block.Properties.create(Material.ORGANIC).sound(SoundType.PLANT).hardnessAndResistance(0.5F, 3.0F)));
+    public static final RegistryObject<Block> GRASS_CORRUPT = BLOCKS.register("grass_corrupt", () -> new TerraBlockBiomeGrass(Block.Properties.create(Material.ORGANIC).sound(SoundType.WET_GRASS).hardnessAndResistance(0.5F, 3.0F), EnumBiomeType.CORRUPT));
+    public static final RegistryObject<Block> GRASS_CRIMSON = BLOCKS.register("grass_crimson", () -> new TerraBlockBiomeGrass(Block.Properties.create(Material.ORGANIC).sound(SoundType.WET_GRASS).hardnessAndResistance(0.5F, 3.0F), EnumBiomeType.CRIMSON));
+    public static final RegistryObject<Block> GRASS_HALLOWED = BLOCKS.register("grass_hallowed", () -> new TerraBlockBiomeGrass(Block.Properties.create(Material.ORGANIC).sound(SoundType.PLANT).hardnessAndResistance(0.5F, 3.0F), EnumBiomeType.HALLOWED));
+    public static final RegistryObject<Block> SAND_EBON = BLOCKS.register("sand_ebon", () -> new TerraBlockSand(Block.Properties.create(Material.SAND).sound(SoundType.SAND).hardnessAndResistance(0.5F), EnumBiomeType.CORRUPT));
+    public static final RegistryObject<Block> SAND_CRIM = BLOCKS.register("sand_crim", () -> new TerraBlockSand(Block.Properties.create(Material.SAND).sound(SoundType.SAND).hardnessAndResistance(0.5F), EnumBiomeType.CRIMSON));
+    public static final RegistryObject<Block> SAND_PEARL = BLOCKS.register("sand_pearl", () -> new TerraBlockSand(Block.Properties.create(Material.SAND).sound(SoundType.SAND).hardnessAndResistance(0.5F), EnumBiomeType.HALLOWED));
+    public static final RegistryObject<Block> SAND_SILT = BLOCKS.register("sand_silt", () -> new SandBlock(25, Block.Properties.create(Material.SAND).sound(SoundType.SAND).hardnessAndResistance(0.5F)));
+    public static final RegistryObject<Block> SAND_SLUSH = BLOCKS.register("sand_slush", () -> new SandBlock(25, Block.Properties.create(Material.SAND).sound(SoundType.SAND).hardnessAndResistance(0.5F)));
+    public static final RegistryObject<Block> SAND_HARD = BLOCKS.register("sand_hard", () -> new SandBlock(25, Block.Properties.create(Material.SAND).sound(SoundType.SAND).hardnessAndResistance(1.0F)));
+    public static final RegistryObject<Block> SAND_HARDEBON = BLOCKS.register("sand_hardebon", () -> new TerraBlockSand(Block.Properties.create(Material.SAND).sound(SoundType.SAND).hardnessAndResistance(1.0F), EnumBiomeType.CORRUPT));
+    public static final RegistryObject<Block> SAND_HARDCRIM = BLOCKS.register("sand_hardcrim", () -> new TerraBlockSand(Block.Properties.create(Material.SAND).sound(SoundType.SAND).hardnessAndResistance(1.0F), EnumBiomeType.CRIMSON));
+    public static final RegistryObject<Block> SAND_HARDPEARL = BLOCKS.register("sand_hardpearl", () -> new TerraBlockSand(Block.Properties.create(Material.SAND).sound(SoundType.SAND).hardnessAndResistance(1.0F), EnumBiomeType.HALLOWED));
 
-        event.getRegistry().registerAll
-        (
-            //Soils
-            setup(new Block(Block.Properties.create(Material.EARTH).hardnessAndResistance(0.5F, 3.0F).sound(SoundType.GROUND)), "soil_mud"),
-            setup(new Block(Block.Properties.create(Material.EARTH).hardnessAndResistance(0.5F, 3.0F).sound(SoundType.GROUND)), "soil_ash"),
-            setup(new TerraBlockBiomeGrass(Block.Properties.create(Material.ORGANIC).hardnessAndResistance(0.5F, 3.0F).sound(SoundType.WET_GRASS).tickRandomly(), EnumBiomeType.CORRUPT), "grass_corrupt"),
-            setup(new TerraBlockBiomeGrass(Block.Properties.create(Material.ORGANIC).hardnessAndResistance(0.5F, 3.0F).sound(SoundType.WET_GRASS).tickRandomly(), EnumBiomeType.CRIMSON), "grass_crimson"),
-            setup(new TerraBlockBiomeGrass(Block.Properties.create(Material.ORGANIC).hardnessAndResistance(0.5F, 3.0F).sound(SoundType.PLANT).tickRandomly(), EnumBiomeType.HALLOWED), "grass_hallowed"),
-            setup(new TerraBlockMudGrass(Block.Properties.create(Material.ORGANIC).hardnessAndResistance(0.5F, 3.0F).sound(SoundType.PLANT).tickRandomly()), "grass_jungle"),
-            setup(new TerraBlockMudGrass(Block.Properties.create(Material.ORGANIC).hardnessAndResistance(0.5F, 3.0F).sound(SoundType.PLANT).tickRandomly()), "grass_mushroom"),
-            setup(new TerraBlockSand(Block.Properties.create(Material.SAND).hardnessAndResistance(0.5F).sound(SoundType.SAND).tickRandomly(), EnumBiomeType.CORRUPT), "sand_ebon"),
-            setup(new TerraBlockSand(Block.Properties.create(Material.SAND).hardnessAndResistance(1.0F).sound(SoundType.SAND).tickRandomly(), EnumBiomeType.CORRUPT), "sand_hardebon"),
-            setup(new TerraBlockSand(Block.Properties.create(Material.SAND).hardnessAndResistance(0.5F).sound(SoundType.SAND).tickRandomly(), EnumBiomeType.CRIMSON), "sand_crim"),
-            setup(new TerraBlockSand(Block.Properties.create(Material.SAND).hardnessAndResistance(1.0F).sound(SoundType.SAND).tickRandomly(), EnumBiomeType.CRIMSON), "sand_hardcrim"),
-            setup(new TerraBlockSand(Block.Properties.create(Material.SAND).hardnessAndResistance(0.5F).sound(SoundType.SAND).tickRandomly(), EnumBiomeType.HALLOWED), "sand_pearl"),
-            setup(new TerraBlockSand(Block.Properties.create(Material.SAND).hardnessAndResistance(1.0F).sound(SoundType.SAND).tickRandomly(), EnumBiomeType.HALLOWED), "sand_hardpearl"),
-            setup(new SandBlock(25, Block.Properties.create(Material.SAND).hardnessAndResistance(0.5F).sound(SoundType.SAND)), "sand_silt"),
-            setup(new SandBlock(25, Block.Properties.create(Material.SAND).hardnessAndResistance(0.5F).sound(SoundType.SAND)), "sand_slush"),
-            setup(new SandBlock(25, Block.Properties.create(Material.SAND).hardnessAndResistance(1.0F).sound(SoundType.SAND)), "sand_hard"),
-            setup(new TerraBlockSpreading(Block.Properties.create(Material.SNOW_BLOCK).hardnessAndResistance(0.2F).sound(SoundType.SNOW).tickRandomly(), EnumBiomeType.CORRUPT, null), "snow_corrupt"),
-            setup(new TerraBlockSpreading(Block.Properties.create(Material.SNOW_BLOCK).hardnessAndResistance(0.2F).sound(SoundType.SNOW).tickRandomly(), EnumBiomeType.CRIMSON, null), "snow_crimson"),
-            setup(new TerraBlockSpreading(Block.Properties.create(Material.SNOW_BLOCK).hardnessAndResistance(0.2F).sound(SoundType.SNOW).tickRandomly(), EnumBiomeType.HALLOWED, null), "snow_hallowed"),
-            setup(new TerraBlockSnowLayer(Block.Properties.create(Material.SNOW).tickRandomly().hardnessAndResistance(0.1F).sound(SoundType.SNOW)), "snow_corrupt_layer"),
-            setup(new TerraBlockSnowLayer(Block.Properties.create(Material.SNOW).tickRandomly().hardnessAndResistance(0.1F).sound(SoundType.SNOW)), "snow_crimson_layer"),
-            setup(new TerraBlockSnowLayer(Block.Properties.create(Material.SNOW).tickRandomly().hardnessAndResistance(0.1F).sound(SoundType.SNOW)), "snow_hallowed_layer"),
-            //Stones
-            setup(new TerraBlockSpreading(Block.Properties.create(Material.ROCK).hardnessAndResistance(2.0F, 6.0F).harvestLevel(3).sound(SoundType.STONE).tickRandomly(), EnumBiomeType.CORRUPT, PlantType.Cave), "stone_ebon"),
-            setup(new TerraBlockSpreading(Block.Properties.create(Material.ROCK).hardnessAndResistance(2.0F, 6.0F).harvestLevel(3).sound(SoundType.STONE).tickRandomly(), EnumBiomeType.CORRUPT, PlantType.Cave), "cobblestone_ebon"),
-            setup(new TerraBlockSpreading(Block.Properties.create(Material.ROCK).hardnessAndResistance(2.0F, 6.0F).harvestLevel(3).sound(SoundType.STONE).tickRandomly(), EnumBiomeType.CORRUPT, PlantType.Cave), "cobblestone_ebon_mossy"),
-            setup(new TerraBlockSpreading(Block.Properties.create(Material.ROCK).hardnessAndResistance(2.0F, 6.0F).harvestLevel(3).sound(SoundType.STONE).tickRandomly(), EnumBiomeType.CORRUPT, PlantType.Cave), "stonebrick_ebon"),
-            setup(new TerraBlockSpreading(Block.Properties.create(Material.ROCK).hardnessAndResistance(2.0F, 6.0F).harvestLevel(3).sound(SoundType.STONE).tickRandomly(), EnumBiomeType.CORRUPT, PlantType.Cave), "stonebrick_ebon_cracked"),
-            setup(new TerraBlockSpreading(Block.Properties.create(Material.ROCK).hardnessAndResistance(2.0F, 6.0F).harvestLevel(3).sound(SoundType.STONE).tickRandomly(), EnumBiomeType.CORRUPT, PlantType.Cave), "stonebrick_ebon_chiseled"),
-            setup(new TerraBlockSpreading(Block.Properties.create(Material.ROCK).hardnessAndResistance(2.0F, 6.0F).harvestLevel(3).sound(SoundType.STONE).tickRandomly(), EnumBiomeType.CORRUPT, PlantType.Cave), "stonebrick_ebon_mossy"),
-            setup(new TerraBlockSpreading(Block.Properties.create(Material.ROCK).hardnessAndResistance(2.0F, 6.0F).harvestLevel(3).sound(SoundType.STONE).tickRandomly(), EnumBiomeType.CRIMSON, PlantType.Cave), "stone_crim"),
-            setup(new TerraBlockSpreading(Block.Properties.create(Material.ROCK).hardnessAndResistance(2.0F, 6.0F).harvestLevel(3).sound(SoundType.STONE).tickRandomly(), EnumBiomeType.CRIMSON, PlantType.Cave), "cobblestone_crim"),
-            setup(new TerraBlockSpreading(Block.Properties.create(Material.ROCK).hardnessAndResistance(2.0F, 6.0F).harvestLevel(3).sound(SoundType.STONE).tickRandomly(), EnumBiomeType.CRIMSON, PlantType.Cave), "cobblestone_crim_mossy"),
-            setup(new TerraBlockSpreading(Block.Properties.create(Material.ROCK).hardnessAndResistance(2.0F, 6.0F).harvestLevel(3).sound(SoundType.STONE).tickRandomly(), EnumBiomeType.CRIMSON, PlantType.Cave), "stonebrick_crim"),
-            setup(new TerraBlockSpreading(Block.Properties.create(Material.ROCK).hardnessAndResistance(2.0F, 6.0F).harvestLevel(3).sound(SoundType.STONE).tickRandomly(), EnumBiomeType.CRIMSON, PlantType.Cave), "stonebrick_crim_cracked"),
-            setup(new TerraBlockSpreading(Block.Properties.create(Material.ROCK).hardnessAndResistance(2.0F, 6.0F).harvestLevel(3).sound(SoundType.STONE).tickRandomly(), EnumBiomeType.CRIMSON, PlantType.Cave), "stonebrick_crim_chiseled"),
-            setup(new TerraBlockSpreading(Block.Properties.create(Material.ROCK).hardnessAndResistance(2.0F, 6.0F).harvestLevel(3).sound(SoundType.STONE).tickRandomly(), EnumBiomeType.CRIMSON, PlantType.Cave), "stonebrick_crim_mossy"),
-            setup(new TerraBlockSpreading(Block.Properties.create(Material.ROCK).hardnessAndResistance(2.0F, 6.0F).harvestLevel(3).sound(SoundType.STONE).tickRandomly(), EnumBiomeType.HALLOWED, PlantType.Cave), "stone_pearl"),
-            setup(new TerraBlockSpreading(Block.Properties.create(Material.ROCK).hardnessAndResistance(2.0F, 6.0F).harvestLevel(3).sound(SoundType.STONE).tickRandomly(), EnumBiomeType.HALLOWED, PlantType.Cave), "cobblestone_pearl"),
-            setup(new TerraBlockSpreading(Block.Properties.create(Material.ROCK).hardnessAndResistance(2.0F, 6.0F).harvestLevel(3).sound(SoundType.STONE).tickRandomly(), EnumBiomeType.HALLOWED, PlantType.Cave), "cobblestone_pearl_mossy"),
-            setup(new TerraBlockSpreading(Block.Properties.create(Material.ROCK).hardnessAndResistance(2.0F, 6.0F).harvestLevel(3).sound(SoundType.STONE).tickRandomly(), EnumBiomeType.HALLOWED, PlantType.Cave), "stonebrick_pearl"),
-            setup(new TerraBlockSpreading(Block.Properties.create(Material.ROCK).hardnessAndResistance(2.0F, 6.0F).harvestLevel(3).sound(SoundType.STONE).tickRandomly(), EnumBiomeType.HALLOWED, PlantType.Cave), "stonebrick_pearl_cracked"),
-            setup(new TerraBlockSpreading(Block.Properties.create(Material.ROCK).hardnessAndResistance(2.0F, 6.0F).harvestLevel(3).sound(SoundType.STONE).tickRandomly(), EnumBiomeType.HALLOWED, PlantType.Cave), "stonebrick_pearl_chiseled"),
-            setup(new TerraBlockSpreading(Block.Properties.create(Material.ROCK).hardnessAndResistance(2.0F, 6.0F).harvestLevel(3).sound(SoundType.STONE).tickRandomly(), EnumBiomeType.HALLOWED, PlantType.Cave), "stonebrick_pearl_mossy"),
-            setup(new Block(Block.Properties.create(Material.ROCK).hardnessAndResistance(1.5F, 6.0F).sound(SoundType.STONE)), "stone_granite"),
-            setup(new Block(Block.Properties.create(Material.ROCK).hardnessAndResistance(1.5F, 6.0F).sound(SoundType.STONE)), "stone_marble"),
-            setup(new Block(Block.Properties.create(Material.ROCK).hardnessAndResistance(1.5F, 6.0F).sound(SoundType.STONE)), "stone_fossil"),
+    //Stones
+    public static final RegistryObject<Block> SANDSTONE_EBON = BLOCKS.register("sandstone_ebon", () -> new TerraBlockSpreading(Block.Properties.create(Material.ROCK).sound(SoundType.STONE).tickRandomly().hardnessAndResistance(0.8F), EnumBiomeType.CORRUPT, PlantType.Cave));
+    public static final RegistryObject<Block> SANDSTONE_EBON_CHISELED = BLOCKS.register("sandstone_ebon_chiseled", () -> new TerraBlockSpreading(Block.Properties.create(Material.ROCK).sound(SoundType.STONE).hardnessAndResistance(0.8F), EnumBiomeType.CORRUPT, PlantType.Cave));
+    public static final RegistryObject<Block> SANDSTONE_EBON_SMOOTH = BLOCKS.register("sandstone_ebon_smooth", () -> new TerraBlockSpreading(Block.Properties.create(Material.ROCK).sound(SoundType.STONE).hardnessAndResistance(0.8F), EnumBiomeType.CORRUPT, PlantType.Cave));
+    public static final RegistryObject<Block> SANDSTONE_EBON_CUT = BLOCKS.register("sandstone_ebon_cut", () -> new TerraBlockSpreading(Block.Properties.create(Material.ROCK).sound(SoundType.STONE).hardnessAndResistance(0.8F), EnumBiomeType.CORRUPT, PlantType.Cave));
+    public static final RegistryObject<Block> SANDSTONE_CRIM = BLOCKS.register("sandstone_crim", () -> new TerraBlockSpreading(Block.Properties.create(Material.ROCK).sound(SoundType.STONE).hardnessAndResistance(0.8F), EnumBiomeType.CORRUPT, PlantType.Cave));
+    public static final RegistryObject<Block> SANDSTONE_CRIM_CHISELED = BLOCKS.register("sandstone_crim_chiseled", () -> new TerraBlockSpreading(Block.Properties.create(Material.ROCK).sound(SoundType.STONE).hardnessAndResistance(0.8F), EnumBiomeType.CORRUPT, PlantType.Cave));
+    public static final RegistryObject<Block> SANDSTONE_CRIM_SMOOTH = BLOCKS.register("sandstone_crim_smooth", () -> new TerraBlockSpreading(Block.Properties.create(Material.ROCK).sound(SoundType.STONE).hardnessAndResistance(0.8F), EnumBiomeType.CORRUPT, PlantType.Cave));
+    public static final RegistryObject<Block> SANDSTONE_CRIM_CUT = BLOCKS.register("sandstone_crim_cut", () -> new TerraBlockSpreading(Block.Properties.create(Material.ROCK).sound(SoundType.STONE).hardnessAndResistance(0.8F), EnumBiomeType.CORRUPT, PlantType.Cave));
+    public static final RegistryObject<Block> SANDSTONE_PEARL = BLOCKS.register("sandstone_pearl", () -> new TerraBlockSpreading(Block.Properties.create(Material.ROCK).sound(SoundType.STONE).hardnessAndResistance(0.8F), EnumBiomeType.CORRUPT, PlantType.Cave));
+    public static final RegistryObject<Block> SANDSTONE_PEARL_CHISELED = BLOCKS.register("sandstone_pearl_chiseled", () -> new TerraBlockSpreading(Block.Properties.create(Material.ROCK).sound(SoundType.STONE).hardnessAndResistance(0.8F), EnumBiomeType.CORRUPT, PlantType.Cave));
+    public static final RegistryObject<Block> SANDSTONE_PEARL_SMOOTH = BLOCKS.register("sandstone_pearl_smooth", () -> new TerraBlockSpreading(Block.Properties.create(Material.ROCK).sound(SoundType.STONE).hardnessAndResistance(0.8F), EnumBiomeType.CORRUPT, PlantType.Cave));
+    public static final RegistryObject<Block> SANDSTONE_PEARL_CUT = BLOCKS.register("sandstone_pearl_cut", () -> new TerraBlockSpreading(Block.Properties.create(Material.ROCK).sound(SoundType.STONE).hardnessAndResistance(0.8F), EnumBiomeType.CORRUPT, PlantType.Cave));
+    public static final RegistryObject<Block> STONE_EBON = BLOCKS.register("stone_ebon", () -> new TerraBlockSpreading(Block.Properties.create(Material.ROCK).sound(SoundType.STONE).hardnessAndResistance(0.8F), EnumBiomeType.CORRUPT, PlantType.Cave));
+    public static final RegistryObject<Block> COBBLESTONE_EBON = BLOCKS.register("cobblestone_ebon", () -> new TerraBlockSpreading(Block.Properties.create(Material.ROCK).sound(SoundType.STONE).hardnessAndResistance(0.8F), EnumBiomeType.CORRUPT, PlantType.Cave));
+    public static final RegistryObject<Block> COBBLESTONE_EBON_MOSSY = BLOCKS.register("cobblestone_ebon_mossy", () -> new TerraBlockSpreading(Block.Properties.create(Material.ROCK).sound(SoundType.STONE).hardnessAndResistance(0.8F), EnumBiomeType.CORRUPT, PlantType.Cave));
+    public static final RegistryObject<Block> STONEBRICK_EBON = BLOCKS.register("stonebrick_ebon", () -> new TerraBlockSpreading(Block.Properties.create(Material.ROCK).sound(SoundType.STONE).hardnessAndResistance(0.8F), EnumBiomeType.CORRUPT, PlantType.Cave));
+    public static final RegistryObject<Block> STONEBRICK_EBON_CRACKED = BLOCKS.register("stonebrick_ebon_cracked", () -> new TerraBlockSpreading(Block.Properties.create(Material.ROCK).sound(SoundType.STONE).hardnessAndResistance(0.8F), EnumBiomeType.CORRUPT, PlantType.Cave));
+    public static final RegistryObject<Block> STONEBRICK_EBON_CHISELED = BLOCKS.register("stonebrick_ebon_chiseled", () -> new TerraBlockSpreading(Block.Properties.create(Material.ROCK).sound(SoundType.STONE).hardnessAndResistance(0.8F), EnumBiomeType.CORRUPT, PlantType.Cave));
+    public static final RegistryObject<Block> STONEBRICK_EBON_MOSSY = BLOCKS.register("stonebrick_ebon_mossy", () -> new TerraBlockSpreading(Block.Properties.create(Material.ROCK).sound(SoundType.STONE).hardnessAndResistance(0.8F), EnumBiomeType.CORRUPT, PlantType.Cave));
+    public static final RegistryObject<Block> STONE_CRIM = BLOCKS.register("stone_crim", () -> new TerraBlockSpreading(Block.Properties.create(Material.ROCK).sound(SoundType.STONE).hardnessAndResistance(0.8F), EnumBiomeType.CORRUPT, PlantType.Cave));
+    public static final RegistryObject<Block> COBBLESTONE_CRIM = BLOCKS.register("cobblestone_crim", () -> new TerraBlockSpreading(Block.Properties.create(Material.ROCK).sound(SoundType.STONE).hardnessAndResistance(0.8F), EnumBiomeType.CORRUPT, PlantType.Cave));
+    public static final RegistryObject<Block> COBBLESTONE_CRIM_MOSSY = BLOCKS.register("cobblestone_crim_mossy", () -> new TerraBlockSpreading(Block.Properties.create(Material.ROCK).sound(SoundType.STONE).hardnessAndResistance(0.8F), EnumBiomeType.CORRUPT, PlantType.Cave));
+    public static final RegistryObject<Block> STONEBRICK_CRIM = BLOCKS.register("stonebrick_crim", () -> new TerraBlockSpreading(Block.Properties.create(Material.ROCK).sound(SoundType.STONE).hardnessAndResistance(0.8F), EnumBiomeType.CORRUPT, PlantType.Cave));
+    public static final RegistryObject<Block> STONEBRICK_CRIM_CRACKED = BLOCKS.register("stonebrick_crim_cracked", () -> new TerraBlockSpreading(Block.Properties.create(Material.ROCK).sound(SoundType.STONE).hardnessAndResistance(0.8F), EnumBiomeType.CORRUPT, PlantType.Cave));
+    public static final RegistryObject<Block> STONEBRICK_CRIM_CHISELED = BLOCKS.register("stonebrick_crim_chiseled", () -> new TerraBlockSpreading(Block.Properties.create(Material.ROCK).sound(SoundType.STONE).hardnessAndResistance(0.8F), EnumBiomeType.CORRUPT, PlantType.Cave));
+    public static final RegistryObject<Block> STONEBRICK_CRIM_MOSSY = BLOCKS.register("stonebrick_crim_mossy", () -> new TerraBlockSpreading(Block.Properties.create(Material.ROCK).sound(SoundType.STONE).hardnessAndResistance(0.8F), EnumBiomeType.CORRUPT, PlantType.Cave));
+    public static final RegistryObject<Block> STONE_PEARL = BLOCKS.register("stone_pearl", () -> new TerraBlockSpreading(Block.Properties.create(Material.ROCK).sound(SoundType.STONE).hardnessAndResistance(0.8F), EnumBiomeType.CORRUPT, PlantType.Cave));
+    public static final RegistryObject<Block> COBBLESTONE_PEARL = BLOCKS.register("cobblestone_pearl", () -> new TerraBlockSpreading(Block.Properties.create(Material.ROCK).sound(SoundType.STONE).hardnessAndResistance(0.8F), EnumBiomeType.CORRUPT, PlantType.Cave));
+    public static final RegistryObject<Block> COBBLESTONE_PEARL_MOSSY = BLOCKS.register("cobblestone_pearl_mossy", () -> new TerraBlockSpreading(Block.Properties.create(Material.ROCK).sound(SoundType.STONE).hardnessAndResistance(0.8F), EnumBiomeType.CORRUPT, PlantType.Cave));
+    public static final RegistryObject<Block> STONEBRICK_PEARL = BLOCKS.register("stonebrick_pearl", () -> new TerraBlockSpreading(Block.Properties.create(Material.ROCK).sound(SoundType.STONE).hardnessAndResistance(0.8F), EnumBiomeType.CORRUPT, PlantType.Cave));
+    public static final RegistryObject<Block> STONEBRICK_PEARL_CRACKED = BLOCKS.register("stonebrick_pearl_cracked", () -> new TerraBlockSpreading(Block.Properties.create(Material.ROCK).sound(SoundType.STONE).hardnessAndResistance(0.8F), EnumBiomeType.CORRUPT, PlantType.Cave));
+    public static final RegistryObject<Block> STONEBRICK_PEARL_CHISELED = BLOCKS.register("stonebrick_pearl_chiseled", () -> new TerraBlockSpreading(Block.Properties.create(Material.ROCK).sound(SoundType.STONE).hardnessAndResistance(0.8F), EnumBiomeType.CORRUPT, PlantType.Cave));
+    public static final RegistryObject<Block> STONEBRICK_PEARL_MOSSY = BLOCKS.register("stonebrick_pearl_mossy", () -> new TerraBlockSpreading(Block.Properties.create(Material.ROCK).sound(SoundType.STONE).hardnessAndResistance(0.8F), EnumBiomeType.CORRUPT, PlantType.Cave));
+    public static final RegistryObject<Block> STONE_MOSS_RED = BLOCKS.register("stone_moss_red", () -> new TerraBlockMoss(Block.Properties.create(Material.ROCK).sound(SoundType.STONE), Blocks.FERN));
+    public static final RegistryObject<Block> STONE_MOSS_YELLOW = BLOCKS.register("stone_moss_yellow", () -> new TerraBlockMoss(Block.Properties.create(Material.ROCK).sound(SoundType.STONE), Blocks.FERN));
+    public static final RegistryObject<Block> STONE_MOSS_GREEN = BLOCKS.register("stone_moss_green", () -> new TerraBlockMoss(Block.Properties.create(Material.ROCK).sound(SoundType.STONE), Blocks.FERN));
+    public static final RegistryObject<Block> STONE_MOSS_BLUE = BLOCKS.register("stone_moss_blue", () -> new TerraBlockMoss(Block.Properties.create(Material.ROCK).sound(SoundType.STONE), Blocks.FERN));
+    public static final RegistryObject<Block> STONE_MOSS_PURPLE = BLOCKS.register("stone_moss_purple", () -> new TerraBlockMoss(Block.Properties.create(Material.ROCK).sound(SoundType.STONE), Blocks.FERN));
+    public static final RegistryObject<Block> STONE_MOSS_FIRE = BLOCKS.register("stone_moss_fire", () -> new TerraBlockMoss(Block.Properties.create(Material.ROCK).sound(SoundType.STONE), Blocks.FERN));
+    public static final RegistryObject<Block> STONE_GRANITE = BLOCKS.register("stone_granite", () -> new Block(Block.Properties.create(Material.ROCK).sound(SoundType.STONE).hardnessAndResistance(1.5F, 6.0F)));
+    public static final RegistryObject<Block> STONE_MARBLE = BLOCKS.register("stone_marble", () -> new Block(Block.Properties.create(Material.ROCK).sound(SoundType.STONE).hardnessAndResistance(1.5F, 6.0F)));
+    public static final RegistryObject<Block> STONE_FOSSIL = BLOCKS.register("stone_fossil", () -> new Block(Block.Properties.create(Material.ROCK).sound(SoundType.STONE).hardnessAndResistance(1.5F, 6.0F)));
+    /*public static final RegistryObject<Block> ICE_PURPLE = null;
+    public static final RegistryObject<Block> ICE_HARD_PURPLE = null;
+    public static final RegistryObject<Block> ICE_RED = null;
+    public static final RegistryObject<Block> ICE_HARD_RED = null;
+    public static final RegistryObject<Block> ICE_PINK = null;
+    public static final RegistryObject<Block> ICE_HARD_PINK = null;
+    public static final RegistryObject<Block> ICE_THIN = null;
 
-            //Ice
-            setup(new TerraBlockIce(Block.Properties.create(Material.ICE).slipperiness(0.98F).tickRandomly().hardnessAndResistance(0.5F).sound(SoundType.GLASS), EnumBiomeType.CORRUPT), "ice_purple"),
-            setup(new TerraBlockSpreading(Block.Properties.create(Material.ICE).slipperiness(0.98F).tickRandomly().hardnessAndResistance(0.5F).sound(SoundType.GLASS), EnumBiomeType.CORRUPT, null), "ice_hard_purple"),
-            setup(new TerraBlockIce(Block.Properties.create(Material.ICE).slipperiness(0.98F).tickRandomly().hardnessAndResistance(0.5F).sound(SoundType.GLASS), EnumBiomeType.CRIMSON), "ice_red"),
-            setup(new TerraBlockSpreading(Block.Properties.create(Material.ICE).slipperiness(0.98F).tickRandomly().hardnessAndResistance(0.5F).sound(SoundType.GLASS), EnumBiomeType.CRIMSON, null), "ice_hard_red"),
-            setup(new TerraBlockIce(Block.Properties.create(Material.ICE).slipperiness(0.98F).tickRandomly().hardnessAndResistance(0.5F).sound(SoundType.GLASS), EnumBiomeType.HALLOWED), "ice_pink"),
-            setup(new TerraBlockSpreading(Block.Properties.create(Material.ICE).slipperiness(0.98F).tickRandomly().hardnessAndResistance(0.5F).sound(SoundType.GLASS), EnumBiomeType.HALLOWED, null), "ice_hard_pink"),
-            setup(new TerraBlockThinIce(Block.Properties.create(Material.ICE).slipperiness(0.98F).tickRandomly().hardnessAndResistance(0.25F).sound(SoundType.GLASS)), "ice_thin"),
+    //Woods
+    public static final RegistryObject<Block> LOG_BOREAL = null;
+    public static final RegistryObject<Block> LOG_PALM = null;
+    public static final RegistryObject<Block> LOG_MAHOGANY = null;
+    public static final RegistryObject<Block> LOG_EBON = null;
+    public static final RegistryObject<Block> LOG_SHADE = null;
+    public static final RegistryObject<Block> LOG_PEARL = null;
+    public static final RegistryObject<Block> LOG_BOREAL_SOLID = null;
+    public static final RegistryObject<Block> LOG_PALM_SOLID = null;
+    public static final RegistryObject<Block> LOG_MAHOGANY_SOLID = null;
+    public static final RegistryObject<Block> LOG_EBON_SOLID = null;
+    public static final RegistryObject<Block> LOG_SHADE_SOLID = null;
+    public static final RegistryObject<Block> LOG_PEARL_SOLID = null;
+    public static final RegistryObject<Block> LOG_BOREAL_STRIPPED = null;
+    public static final RegistryObject<Block> LOG_PALM_STRIPPED = null;
+    public static final RegistryObject<Block> LOG_MAHOGANY_STRIPPED = null;
+    public static final RegistryObject<Block> LOG_EBON_STRIPPED = null;
+    public static final RegistryObject<Block> LOG_SHADE_STRIPPED = null;
+    public static final RegistryObject<Block> LOG_PEARL_STRIPPED = null;
+    public static final RegistryObject<Block> LOG_BOREAL_SOLID_STRIPPED = null;
+    public static final RegistryObject<Block> LOG_PALM_SOLID_STRIPPED = null;
+    public static final RegistryObject<Block> LOG_MAHOGANY_SOLID_STRIPPED = null;
+    public static final RegistryObject<Block> LOG_EBON_SOLID_STRIPPED = null;
+    public static final RegistryObject<Block> LOG_SHADE_SOLID_STRIPPED = null;
+    public static final RegistryObject<Block> LOG_PEARL_SOLID_STRIPPED = null;
+    public static final RegistryObject<Block> LOG_MUSHROOM = null;
+    public static final RegistryObject<Block> MUSHROOM_CAP = null;
+    public static final RegistryObject<Block> PLANK_BOREAL = null;
+    public static final RegistryObject<Block> PLANK_PALM = null;
+    public static final RegistryObject<Block> PLANK_MAHOGANY = null;
+    public static final RegistryObject<Block> PLANK_EBON = null;
+    public static final RegistryObject<Block> PLANK_SHADE = null;
+    public static final RegistryObject<Block> PLANK_PEARL = null;
+    public static final RegistryObject<Block> PLANK_SPOOKY = null;
+    public static final RegistryObject<Block> PLANK_DYNASTY = null;
 
-            //Sandstones
-            setup(new TerraBlockSpreading(Block.Properties.create(Material.ROCK).hardnessAndResistance(2.0F, 6.0F).harvestLevel(3).sound(SoundType.STONE).tickRandomly(), EnumBiomeType.CORRUPT, PlantType.Cave), "sandstone_ebon"),
-            setup(new TerraBlockSpreading(Block.Properties.create(Material.ROCK).hardnessAndResistance(2.0F, 6.0F).harvestLevel(3).sound(SoundType.STONE).tickRandomly(), EnumBiomeType.CORRUPT, PlantType.Cave), "sandstone_ebon_chiseled"),
-            setup(new TerraBlockSpreading(Block.Properties.create(Material.ROCK).hardnessAndResistance(2.0F, 6.0F).harvestLevel(3).sound(SoundType.STONE).tickRandomly(), EnumBiomeType.CORRUPT, PlantType.Cave), "sandstone_ebon_smooth"),
-            setup(new TerraBlockSpreading(Block.Properties.create(Material.ROCK).hardnessAndResistance(2.0F, 6.0F).harvestLevel(3).sound(SoundType.STONE).tickRandomly(), EnumBiomeType.CORRUPT, PlantType.Cave), "sandstone_ebon_cut"),
-            setup(new TerraBlockSpreading(Block.Properties.create(Material.ROCK).hardnessAndResistance(2.0F, 6.0F).harvestLevel(3).sound(SoundType.STONE).tickRandomly(), EnumBiomeType.CRIMSON, PlantType.Cave), "sandstone_crim"),
-            setup(new TerraBlockSpreading(Block.Properties.create(Material.ROCK).hardnessAndResistance(2.0F, 6.0F).harvestLevel(3).sound(SoundType.STONE).tickRandomly(), EnumBiomeType.CRIMSON, PlantType.Cave), "sandstone_crim_chiseled"),
-            setup(new TerraBlockSpreading(Block.Properties.create(Material.ROCK).hardnessAndResistance(2.0F, 6.0F).harvestLevel(3).sound(SoundType.STONE).tickRandomly(), EnumBiomeType.CRIMSON, PlantType.Cave), "sandstone_crim_smooth"),
-            setup(new TerraBlockSpreading(Block.Properties.create(Material.ROCK).hardnessAndResistance(2.0F, 6.0F).harvestLevel(3).sound(SoundType.STONE).tickRandomly(), EnumBiomeType.CRIMSON, PlantType.Cave), "sandstone_crim_cut"),
-            setup(new TerraBlockSpreading(Block.Properties.create(Material.ROCK).hardnessAndResistance(2.0F, 6.0F).harvestLevel(3).sound(SoundType.STONE).tickRandomly(), EnumBiomeType.HALLOWED, PlantType.Cave), "sandstone_pearl"),
-            setup(new TerraBlockSpreading(Block.Properties.create(Material.ROCK).hardnessAndResistance(2.0F, 6.0F).harvestLevel(3).sound(SoundType.STONE).tickRandomly(), EnumBiomeType.HALLOWED, PlantType.Cave), "sandstone_pearl_chiseled"),
-            setup(new TerraBlockSpreading(Block.Properties.create(Material.ROCK).hardnessAndResistance(2.0F, 6.0F).harvestLevel(3).sound(SoundType.STONE).tickRandomly(), EnumBiomeType.HALLOWED, PlantType.Cave), "sandstone_pearl_smooth"),
-            setup(new TerraBlockSpreading(Block.Properties.create(Material.ROCK).hardnessAndResistance(2.0F, 6.0F).harvestLevel(3).sound(SoundType.STONE).tickRandomly(), EnumBiomeType.HALLOWED, PlantType.Cave), "sandstone_pearl_cut"),
+    //Foliage
+    public static final RegistryObject<Block> PLANT_MOSS_RED = null;
+    public static final RegistryObject<Block> PLANT_MOSS_YELLOW = null;
+    public static final RegistryObject<Block> PLANT_MOSS_GREEN = null;
+    public static final RegistryObject<Block> PLANT_MOSS_BLUE = null;
+    public static final RegistryObject<Block> PLANT_MOSS_PURPLE = null;
+    public static final RegistryObject<Block> PLANT_MOSS_FIRE = null;
+    public static final RegistryObject<Block> PLANT_BLINKROOT = null;
+    public static final RegistryObject<Block> PLANT_DAYBLOOM = null;
+    public static final RegistryObject<Block> PLANT_DEATHWEED = null;
+    public static final RegistryObject<Block> PLANT_FIREBLOSSOM = null;
+    public static final RegistryObject<Block> PLANT_MOONGLOW = null;
+    public static final RegistryObject<Block> PLANT_SHIVERTHORN = null;
+    public static final RegistryObject<Block> PLANT_WATERLEAF = null;
+    public static final RegistryObject<Block> PLANT_MUSHROOM_GLOWING = null;
+    public static final RegistryObject<Block> PLANT_MUSHROOM_VILE = null;
+    public static final RegistryObject<Block> PLANT_MUSHROOM_VICIOUS = null;
+    public static final RegistryObject<Block> PLANT_THORN_PURPLE = null;
+    public static final RegistryObject<Block> PLANT_THORN_RED = null;
+    public static final RegistryObject<Block> PLANT_THORN_JUNGLE = null;
+    public static final RegistryObject<Block> PLANT_LIFEFRUIT = null;
+    public static final RegistryObject<Block> PLANT_BLOODROOT = null;
+    public static final RegistryObject<Block> PLANT_DYE_PURPLE = null;
+    public static final RegistryObject<Block> PLANT_DYE_ORANGE = null;
+    public static final RegistryObject<Block> PLANT_DYE_CYAN = null;
+    public static final RegistryObject<Block> PLANT_DYE_RED = null;
+    public static final RegistryObject<Block> PLANT_BULB = null;
+    public static final RegistryObject<Block> LEAF_BOREAL = null;
+    public static final RegistryObject<Block> LEAF_PALM = null;
+    public static final RegistryObject<Block> LEAF_MAHOGANY = null;
+    public static final RegistryObject<Block> LEAF_EBON = null;
+    public static final RegistryObject<Block> LEAF_SHADE = null;
+    public static final RegistryObject<Block> LEAF_PEARL_RED = null;
+    public static final RegistryObject<Block> LEAF_PEARL_YELLOW = null;
+    public static final RegistryObject<Block> LEAF_PEARL_PINK = null;
+    public static final RegistryObject<Block> LEAF_PEARL_MAGENTA = null;
+    public static final RegistryObject<Block> LEAF_PEARL_CYAN = null;
+    public static final RegistryObject<Block> LEAF_PEARL_BLUE = null;
+    public static final RegistryObject<Block> LEAF_PEARL_GREEN = null;
+    public static final RegistryObject<Block> LEAF_PEARL_PURPLE = null;
+    public static final RegistryObject<Block> SAPLING_BOREAL = null;
+    public static final RegistryObject<Block> SAPLING_PALM = null;
+    public static final RegistryObject<Block> SAPLING_MAHOGANY = null;
+    public static final RegistryObject<Block> SAPLING_EBON = null;
+    public static final RegistryObject<Block> SAPLING_SHADE = null;
+    public static final RegistryObject<Block> SAPLING_PEARL = null;
+    public static final RegistryObject<Block> CACTUS_EBON = null;
+    public static final RegistryObject<Block> CACTUS_CRIM = null;
+    public static final RegistryObject<Block> CACTUS_PEARL = null;
+    public static final RegistryObject<Block> TALLGRASS_CORRUPT = null;
+    public static final RegistryObject<Block> TALLGRASS_CRIMSON = null;
+    public static final RegistryObject<Block> TALLGRASS_HALLOWED = null;
+    public static final RegistryObject<Block> TALLGRASSDOUBLE_CORRUPT = null;
+    public static final RegistryObject<Block> TALLGRASSDOUBLE_CRIMSON = null;
+    public static final RegistryObject<Block> TALLGRASSDOUBLE_HALLOWED = null;
+    public static final RegistryObject<Block> REED_CORRUPT = null;
+    public static final RegistryObject<Block> REED_CRIMSON = null;
+    public static final RegistryObject<Block> REED_HALLOWED = null;
 
-            //Moss Blocks
-            setup(new TerraBlockMoss(Block.Properties.create(Material.EARTH).hardnessAndResistance(0.6F).sound(SoundType.PLANT).tickRandomly(), Blocks.FERN), "stone_moss_red"),
-            setup(new TerraBlockMoss(Block.Properties.create(Material.EARTH).hardnessAndResistance(0.6F).sound(SoundType.PLANT).tickRandomly(), Blocks.FERN), "stone_moss_fire"),
-            setup(new TerraBlockMoss(Block.Properties.create(Material.EARTH).hardnessAndResistance(0.6F).sound(SoundType.PLANT).tickRandomly(), Blocks.FERN), "stone_moss_yellow"),
-            setup(new TerraBlockMoss(Block.Properties.create(Material.EARTH).hardnessAndResistance(0.6F).sound(SoundType.PLANT).tickRandomly(), Blocks.FERN), "stone_moss_green"),
-            setup(new TerraBlockMoss(Block.Properties.create(Material.EARTH).hardnessAndResistance(0.6F).sound(SoundType.PLANT).tickRandomly(), Blocks.FERN), "stone_moss_blue"),
-            setup(new TerraBlockMoss(Block.Properties.create(Material.EARTH).hardnessAndResistance(0.6F).sound(SoundType.PLANT).tickRandomly(), Blocks.FERN), "stone_moss_purple"),
 
-            //Woods
-            setup(new LogBlock(MaterialColor.PURPLE_TERRACOTTA, Block.Properties.create(Material.WOOD).hardnessAndResistance(2.0F).sound(SoundType.WOOD)), "log_ebon"),
-            setup(new LogBlock(MaterialColor.PURPLE_TERRACOTTA, Block.Properties.create(Material.WOOD).hardnessAndResistance(2.0F).sound(SoundType.WOOD)), "log_ebon_stripped"),
-            setup(new LogBlock(MaterialColor.PURPLE_TERRACOTTA, Block.Properties.create(Material.WOOD).hardnessAndResistance(2.0F).sound(SoundType.WOOD)), "log_ebon_solid"),
-            setup(new LogBlock(MaterialColor.PURPLE_TERRACOTTA, Block.Properties.create(Material.WOOD).hardnessAndResistance(2.0F).sound(SoundType.WOOD)), "log_ebon_solid_stripped"),
-            setup(new Block(Block.Properties.create(Material.WOOD).hardnessAndResistance(2.0F, 3.0F).sound(SoundType.WOOD)), "plank_ebon"),
-            setup(new LogBlock(MaterialColor.RED_TERRACOTTA, Block.Properties.create(Material.WOOD).hardnessAndResistance(2.0F).sound(SoundType.WOOD)), "log_shade"),
-            setup(new LogBlock(MaterialColor.RED_TERRACOTTA, Block.Properties.create(Material.WOOD).hardnessAndResistance(2.0F).sound(SoundType.WOOD)), "log_shade_stripped"),
-            setup(new LogBlock(MaterialColor.RED_TERRACOTTA, Block.Properties.create(Material.WOOD).hardnessAndResistance(2.0F).sound(SoundType.WOOD)), "log_shade_solid"),
-            setup(new LogBlock(MaterialColor.RED_TERRACOTTA, Block.Properties.create(Material.WOOD).hardnessAndResistance(2.0F).sound(SoundType.WOOD)), "log_shade_solid_stripped"),
-            setup(new Block(Block.Properties.create(Material.WOOD).hardnessAndResistance(2.0F, 3.0F).sound(SoundType.WOOD)), "plank_shade"),
-            setup(new LogBlock(MaterialColor.PINK_TERRACOTTA, Block.Properties.create(Material.WOOD).hardnessAndResistance(2.0F).sound(SoundType.WOOD)), "log_pearl"),
-            setup(new LogBlock(MaterialColor.PINK_TERRACOTTA, Block.Properties.create(Material.WOOD).hardnessAndResistance(2.0F).sound(SoundType.WOOD)), "log_pearl_stripped"),
-            setup(new LogBlock(MaterialColor.PINK_TERRACOTTA, Block.Properties.create(Material.WOOD).hardnessAndResistance(2.0F).sound(SoundType.WOOD)), "log_pearl_solid"),
-            setup(new LogBlock(MaterialColor.PINK_TERRACOTTA, Block.Properties.create(Material.WOOD).hardnessAndResistance(2.0F).sound(SoundType.WOOD)), "log_pearl_solid_stripped"),
-            setup(new Block(Block.Properties.create(Material.WOOD).hardnessAndResistance(2.0F, 3.0F).sound(SoundType.WOOD)), "plank_pearl"),
-            setup(new LogBlock(MaterialColor.BROWN_TERRACOTTA, Block.Properties.create(Material.WOOD).hardnessAndResistance(2.0F).sound(SoundType.WOOD)), "log_boreal"),
-            setup(new LogBlock(MaterialColor.BROWN_TERRACOTTA, Block.Properties.create(Material.WOOD).hardnessAndResistance(2.0F).sound(SoundType.WOOD)), "log_boreal_stripped"),
-            setup(new LogBlock(MaterialColor.BROWN_TERRACOTTA, Block.Properties.create(Material.WOOD).hardnessAndResistance(2.0F).sound(SoundType.WOOD)), "log_boreal_solid"),
-            setup(new LogBlock(MaterialColor.BROWN_TERRACOTTA, Block.Properties.create(Material.WOOD).hardnessAndResistance(2.0F).sound(SoundType.WOOD)), "log_boreal_solid_stripped"),
-            setup(new Block(Block.Properties.create(Material.WOOD).hardnessAndResistance(2.0F, 3.0F).sound(SoundType.WOOD)), "plank_boreal"),
-            setup(new LogBlock(MaterialColor.YELLOW_TERRACOTTA, Block.Properties.create(Material.WOOD).hardnessAndResistance(2.0F).sound(SoundType.WOOD)), "log_palm"),
-            setup(new LogBlock(MaterialColor.YELLOW_TERRACOTTA, Block.Properties.create(Material.WOOD).hardnessAndResistance(2.0F).sound(SoundType.WOOD)), "log_palm_stripped"),
-            setup(new LogBlock(MaterialColor.YELLOW_TERRACOTTA, Block.Properties.create(Material.WOOD).hardnessAndResistance(2.0F).sound(SoundType.WOOD)), "log_palm_solid"),
-            setup(new LogBlock(MaterialColor.YELLOW_TERRACOTTA, Block.Properties.create(Material.WOOD).hardnessAndResistance(2.0F).sound(SoundType.WOOD)), "log_palm_solid_stripped"),
-            setup(new Block(Block.Properties.create(Material.WOOD).hardnessAndResistance(2.0F, 3.0F).sound(SoundType.WOOD)), "plank_palm"),
-            setup(new LogBlock(MaterialColor.NETHERRACK, Block.Properties.create(Material.WOOD).hardnessAndResistance(2.0F).sound(SoundType.WOOD)), "log_mahogany"),
-            setup(new LogBlock(MaterialColor.NETHERRACK, Block.Properties.create(Material.WOOD).hardnessAndResistance(2.0F).sound(SoundType.WOOD)), "log_mahogany_stripped"),
-            setup(new LogBlock(MaterialColor.NETHERRACK, Block.Properties.create(Material.WOOD).hardnessAndResistance(2.0F).sound(SoundType.WOOD)), "log_mahogany_solid"),
-            setup(new LogBlock(MaterialColor.NETHERRACK, Block.Properties.create(Material.WOOD).hardnessAndResistance(2.0F).sound(SoundType.WOOD)), "log_mahogany_solid_stripped"),
-            setup(new Block(Block.Properties.create(Material.WOOD).hardnessAndResistance(2.0F, 3.0F).sound(SoundType.WOOD)), "plank_mahogany"),
-            setup(new LogBlock(MaterialColor.CYAN_TERRACOTTA, Block.Properties.create(Material.WOOD).hardnessAndResistance(2.0F).sound(SoundType.WOOD)), "log_mushroom"),
-            setup(new Block(Block.Properties.create(Material.WOOD).hardnessAndResistance(2.0F, 3.0F).sound(SoundType.WOOD)), "plank_dynasty"),
-            setup(new Block(Block.Properties.create(Material.WOOD).hardnessAndResistance(2.0F, 3.0F).sound(SoundType.WOOD)), "plank_spooky"),
+    //Structure Misc
+    public static final RegistryObject<Block> WALL_OAK = null;
+    public static final RegistryObject<Block> WALL_SPRUCE = null;
+    public static final RegistryObject<Block> WALL_BIRCH = null;
+    public static final RegistryObject<Block> WALL_JUNGLE = null;
+    public static final RegistryObject<Block> WALL_ACACIA = null;
+    public static final RegistryObject<Block> WALL_DARKOAK = null;
+    public static final RegistryObject<Block> WALL_OAK_LEAF = null;
+    public static final RegistryObject<Block> WALL_SPRUCE_LEAF = null;
+    public static final RegistryObject<Block> WALL_BIRCH_LEAF = null;
+    public static final RegistryObject<Block> WALL_JUNGLE_LEAF = null;
+    public static final RegistryObject<Block> WALL_ACACIA_LEAF = null;
+    public static final RegistryObject<Block> WALL_DARKOAK_LEAF = null;
+    public static final RegistryObject<Block> WALL_BOREAL = null;
+    public static final RegistryObject<Block> WALL_PALM = null;
+    public static final RegistryObject<Block> WALL_MAHOGANY = null;
+    public static final RegistryObject<Block> WALL_EBON = null;
+    public static final RegistryObject<Block> WALL_SHADE = null;
+    public static final RegistryObject<Block> WALL_PEARL = null;
+    public static final RegistryObject<Block> WALL_BOREAL_LEAF = null;
+    public static final RegistryObject<Block> WALL_PALM_LEAF = null;
+    public static final RegistryObject<Block> WALL_MAHOGANY_LEAF = null;
+    public static final RegistryObject<Block> WALL_EBON_LEAF = null;
+    public static final RegistryObject<Block> WALL_SHADE_LEAF = null;
+    public static final RegistryObject<Block> WALL_PEARL_LEAF = null;
+    public static final RegistryObject<Block> WALL_OAK_PLANK = null;
+    public static final RegistryObject<Block> WALL_SPRUCE_PLANK = null;
+    public static final RegistryObject<Block> WALL_BIRCH_PLANK = null;
+    public static final RegistryObject<Block> WALL_JUNGLE_PLANK = null;
+    public static final RegistryObject<Block> WALL_ACACIA_PLANK = null;
+    public static final RegistryObject<Block> WALL_DARKOAK_PLANK = null;
+    public static final RegistryObject<Block> WALL_BOREAL_PLANK = null;
+    public static final RegistryObject<Block> WALL_PALM_PLANK = null;
+    public static final RegistryObject<Block> WALL_MAHOGANY_PLANK = null;
+    public static final RegistryObject<Block> WALL_EBON_PLANK = null;
+    public static final RegistryObject<Block> WALL_SHADE_PLANK = null;
+    public static final RegistryObject<Block> WALL_PEARL_PLANK = null;
+    public static final RegistryObject<Block> WALL_DYNASTY_PLANK = null;
+    public static final RegistryObject<Block> WALL_SPOOKY_PLANK = null;
+    public static final RegistryObject<Block> WALL_STONEBRICK_EBON = null;
+    public static final RegistryObject<Block> WALL_STONEBRICK_CRIM = null;
+    public static final RegistryObject<Block> WALL_STONEBRICK_PEARL = null;
+    public static final RegistryObject<Block> WALL_COBBLESTONE_EBON = null;
+    public static final RegistryObject<Block> WALL_COBBLESTONE_CRIM = null;
+    public static final RegistryObject<Block> WALL_COBBLESTONE_PEARL = null;
+    public static final RegistryObject<Block> WALL_SANDSTONE_EBON = null;
+    public static final RegistryObject<Block> WALL_SANDSTONE_CRIM = null;
+    public static final RegistryObject<Block> WALL_SANDSTONE_PEARL = null;
 
-            //Foliage
-            setup(new TerraBlockSapling(new TreeBoreal(), Block.Properties.create(Material.PLANTS).doesNotBlockMovement().tickRandomly().hardnessAndResistance(0.0F).sound(SoundType.PLANT)), "sapling_boreal"),
-            setup(new TerraBlockSapling(new TreePalm(), Block.Properties.create(Material.PLANTS).doesNotBlockMovement().tickRandomly().hardnessAndResistance(0.0F).sound(SoundType.PLANT)), "sapling_palm"),
-            setup(new TerraBlockSapling(new TreeMahogany(), Block.Properties.create(Material.PLANTS).doesNotBlockMovement().tickRandomly().hardnessAndResistance(0.0F).sound(SoundType.PLANT)), "sapling_mahogany"),
-            setup(new TerraBlockSapling(new TreeEbon(), Block.Properties.create(Material.PLANTS).doesNotBlockMovement().tickRandomly().hardnessAndResistance(0.0F).sound(SoundType.PLANT)), "sapling_ebon"),
-            setup(new TerraBlockSapling(new TreeShade(), Block.Properties.create(Material.PLANTS).doesNotBlockMovement().tickRandomly().hardnessAndResistance(0.0F).sound(SoundType.PLANT)), "sapling_shade"),
-            setup(new TerraBlockSapling(new TreePearl(), Block.Properties.create(Material.PLANTS).doesNotBlockMovement().tickRandomly().hardnessAndResistance(0.0F).sound(SoundType.PLANT)), "sapling_pearl"),
-            setup(new HugeMushroomBlock(Block.Properties.create(Material.WOOD, MaterialColor.BLUE).hardnessAndResistance(0.2F).sound(SoundType.WOOD)), "mushroom_cap"),
-            setup(new LeavesBlock(Block.Properties.create(Material.LEAVES).hardnessAndResistance(0.2F).tickRandomly().sound(SoundType.PLANT)), "leaf_ebon"),
-            setup(new LeavesBlock(Block.Properties.create(Material.LEAVES).hardnessAndResistance(0.2F).tickRandomly().sound(SoundType.PLANT)), "leaf_shade"),
-            setup(new LeavesBlock(Block.Properties.create(Material.LEAVES).hardnessAndResistance(0.2F).tickRandomly().sound(SoundType.PLANT)), "leaf_mahogany"),
-            setup(new LeavesBlock(Block.Properties.create(Material.LEAVES).hardnessAndResistance(0.2F).tickRandomly().sound(SoundType.PLANT)), "leaf_boreal"),
-            setup(new LeavesBlock(Block.Properties.create(Material.LEAVES).hardnessAndResistance(0.2F).tickRandomly().sound(SoundType.PLANT)), "leaf_palm"),
-            setup(new LeavesBlock(Block.Properties.create(Material.LEAVES).hardnessAndResistance(0.2F).tickRandomly().sound(SoundType.PLANT)), "leaf_pearl_red"),
-            setup(new LeavesBlock(Block.Properties.create(Material.LEAVES).hardnessAndResistance(0.2F).tickRandomly().sound(SoundType.PLANT)), "leaf_pearl_yellow"),
-            setup(new LeavesBlock(Block.Properties.create(Material.LEAVES).hardnessAndResistance(0.2F).tickRandomly().sound(SoundType.PLANT)), "leaf_pearl_pink"),
-            setup(new LeavesBlock(Block.Properties.create(Material.LEAVES).hardnessAndResistance(0.2F).tickRandomly().sound(SoundType.PLANT)), "leaf_pearl_magenta"),
-            setup(new LeavesBlock(Block.Properties.create(Material.LEAVES).hardnessAndResistance(0.2F).tickRandomly().sound(SoundType.PLANT)), "leaf_pearl_cyan"),
-            setup(new LeavesBlock(Block.Properties.create(Material.LEAVES).hardnessAndResistance(0.2F).tickRandomly().sound(SoundType.PLANT)), "leaf_pearl_blue"),
-            setup(new LeavesBlock(Block.Properties.create(Material.LEAVES).hardnessAndResistance(0.2F).tickRandomly().sound(SoundType.PLANT)), "leaf_pearl_green"),
-            setup(new LeavesBlock(Block.Properties.create(Material.LEAVES).hardnessAndResistance(0.2F).tickRandomly().sound(SoundType.PLANT)), "leaf_pearl_purple"),
-            setup(new TerraBlockCactus(Block.Properties.create(Material.CACTUS).tickRandomly().hardnessAndResistance(0.4F).sound(SoundType.CLOTH)), "cactus_ebon"),
-            setup(new TerraBlockCactus(Block.Properties.create(Material.CACTUS).tickRandomly().hardnessAndResistance(0.4F).sound(SoundType.CLOTH)), "cactus_crim"),
-            setup(new TerraBlockCactus(Block.Properties.create(Material.CACTUS).tickRandomly().hardnessAndResistance(0.4F).sound(SoundType.CLOTH)), "cactus_pearl"),
-            setup(new TerraBlockBlinkroot(Block.Properties.create(Material.PLANTS).doesNotBlockMovement().tickRandomly().hardnessAndResistance(0.0F).sound(SoundType.CROP)), "plant_blinkroot"),
-            setup(new TerraBlockDaybloom(Block.Properties.create(Material.PLANTS).doesNotBlockMovement().tickRandomly().hardnessAndResistance(0.0F).sound(SoundType.CROP)), "plant_daybloom"),
-            setup(new TerraBlockDeathweed(Block.Properties.create(Material.PLANTS).doesNotBlockMovement().tickRandomly().hardnessAndResistance(0.0F).sound(SoundType.CROP)), "plant_deathweed"),
-            setup(new TerraBlockFireblossom(Block.Properties.create(Material.PLANTS).doesNotBlockMovement().tickRandomly().hardnessAndResistance(0.0F).sound(SoundType.CROP)), "plant_fireblossom"),
-            setup(new TerraBlockMoonglow(Block.Properties.create(Material.PLANTS).doesNotBlockMovement().tickRandomly().hardnessAndResistance(0.0F).sound(SoundType.CROP)), "plant_moonglow"),
-            setup(new TerraBlockShiverthorn(Block.Properties.create(Material.PLANTS).doesNotBlockMovement().tickRandomly().hardnessAndResistance(0.0F).sound(SoundType.CROP)), "plant_shiverthorn"),
-            setup(new TerraBlockWaterleaf(Block.Properties.create(Material.PLANTS).doesNotBlockMovement().tickRandomly().hardnessAndResistance(0.0F).sound(SoundType.CROP)), "plant_waterleaf"),
-            setup(new TerraBlockTallGrass(Block.Properties.create(Material.TALL_PLANTS).doesNotBlockMovement().hardnessAndResistance(0.0F).sound(SoundType.PLANT)), "tallgrass_corrupt"),
-            setup(new TerraBlockTallGrass(Block.Properties.create(Material.TALL_PLANTS).doesNotBlockMovement().hardnessAndResistance(0.0F).sound(SoundType.PLANT)), "tallgrass_crimson"),
-            setup(new TerraBlockTallGrass(Block.Properties.create(Material.TALL_PLANTS).doesNotBlockMovement().hardnessAndResistance(0.0F).sound(SoundType.PLANT)), "tallgrass_hallowed"),
-            setup(new TerraBlockDoubleGrass(Block.Properties.create(Material.TALL_PLANTS).doesNotBlockMovement().hardnessAndResistance(0.0F).sound(SoundType.PLANT)), "tallgrassdouble_corrupt"),
-            setup(new TerraBlockDoubleGrass(Block.Properties.create(Material.TALL_PLANTS).doesNotBlockMovement().hardnessAndResistance(0.0F).sound(SoundType.PLANT)), "tallgrassdouble_crimson"),
-            setup(new TerraBlockDoubleGrass(Block.Properties.create(Material.TALL_PLANTS).doesNotBlockMovement().hardnessAndResistance(0.0F).sound(SoundType.PLANT)), "tallgrassdouble_hallowed"),
-            setup(new TerraBlockReeds(Block.Properties.create(Material.PLANTS).doesNotBlockMovement().tickRandomly().hardnessAndResistance(0.0F).sound(SoundType.PLANT)), "reed_corrupt"),
-            setup(new TerraBlockReeds(Block.Properties.create(Material.PLANTS).doesNotBlockMovement().tickRandomly().hardnessAndResistance(0.0F).sound(SoundType.PLANT)), "reed_crimson"),
-            setup(new TerraBlockReeds(Block.Properties.create(Material.PLANTS).doesNotBlockMovement().tickRandomly().hardnessAndResistance(0.0F).sound(SoundType.PLANT)), "reed_hallowed"),
-            setup(new TerraBlockThornBush(Block.Properties.create(Material.PLANTS).doesNotBlockMovement().tickRandomly().hardnessAndResistance(0.3F).sound(SoundType.PLANT)), "plant_thorn_purple"),
-            setup(new TerraBlockThornBush(Block.Properties.create(Material.PLANTS).doesNotBlockMovement().tickRandomly().hardnessAndResistance(0.3F).sound(SoundType.PLANT)), "plant_thorn_red"),
-            setup(new TerraBlockThornBush(Block.Properties.create(Material.PLANTS).doesNotBlockMovement().tickRandomly().hardnessAndResistance(0.3F).sound(SoundType.PLANT)), "plant_thorn_jungle"),
-            setup(new TerraBlockDoubleGrass(Block.Properties.create(Material.TALL_PLANTS).doesNotBlockMovement().hardnessAndResistance(0.0F).sound(SoundType.PLANT)), "plant_dye_purple"),
-            setup(new TerraBlockDoubleGrass(Block.Properties.create(Material.TALL_PLANTS).doesNotBlockMovement().hardnessAndResistance(0.0F).sound(SoundType.PLANT)), "plant_dye_red"),
-            setup(new TerraBlockDoubleGrass(Block.Properties.create(Material.TALL_PLANTS).doesNotBlockMovement().hardnessAndResistance(0.0F).sound(SoundType.PLANT)), "plant_dye_cyan"),
-            setup(new TerraBlockDoubleGrass(Block.Properties.create(Material.TALL_PLANTS).doesNotBlockMovement().hardnessAndResistance(0.0F).sound(SoundType.PLANT)), "plant_dye_orange"),
+    public static final RegistryObject<Block> STAIR_BOREAL = null;
+    public static final RegistryObject<Block> STAIR_PALM = null;
+    public static final RegistryObject<Block> STAIR_MAHOGANY = null;
+    public static final RegistryObject<Block> STAIR_EBON = null;
+    public static final RegistryObject<Block> STAIR_SHADE = null;
+    public static final RegistryObject<Block> STAIR_PEARL = null;
 
-            //Ores
-            setup(new TerraBlockOre(Block.Properties.create(Material.ROCK).hardnessAndResistance(3.0F, 3.0F)), "ore_tin"),
-            setup(new TerraBlockOre(Block.Properties.create(Material.ROCK).hardnessAndResistance(3.0F, 3.0F)), "ore_copper"),
-            setup(new TerraBlockOre(Block.Properties.create(Material.ROCK).hardnessAndResistance(3.0F, 3.0F)), "ore_iron"),
-            setup(new TerraBlockOre(Block.Properties.create(Material.ROCK).hardnessAndResistance(3.0F, 3.0F)), "ore_lead"),
-            setup(new TerraBlockOre(Block.Properties.create(Material.ROCK).hardnessAndResistance(3.0F, 3.0F)), "ore_silver"),
-            setup(new TerraBlockOre(Block.Properties.create(Material.ROCK).hardnessAndResistance(3.0F, 3.0F)), "ore_tungsten"),
-            setup(new TerraBlockOre(Block.Properties.create(Material.ROCK).hardnessAndResistance(3.0F, 3.0F)), "ore_gold"),
-            setup(new TerraBlockOre(Block.Properties.create(Material.ROCK).hardnessAndResistance(3.0F, 3.0F)), "ore_platinum"),
-            setup(new TerraBlockOre(Block.Properties.create(Material.ROCK).hardnessAndResistance(3.0F, 3.0F)), "ore_meteorite"),
-            setup(new TerraBlockOre(Block.Properties.create(Material.ROCK).hardnessAndResistance(3.0F, 3.0F)), "ore_demonite"),
-            setup(new TerraBlockOre(Block.Properties.create(Material.ROCK).hardnessAndResistance(3.0F, 3.0F)), "ore_crimtane"),
-            setup(new TerraBlockOre(Block.Properties.create(Material.EARTH).hardnessAndResistance(3.0F, 3.0F).sound(SoundType.GROUND)), "ore_hellstone"),
-            setup(new TerraBlockOre(Block.Properties.create(Material.ROCK).hardnessAndResistance(3.0F, 3.0F)), "ore_cobalt"),
-            setup(new TerraBlockOre(Block.Properties.create(Material.ROCK).hardnessAndResistance(3.0F, 3.0F)), "ore_palladium"),
-            setup(new TerraBlockOre(Block.Properties.create(Material.ROCK).hardnessAndResistance(3.0F, 3.0F)), "ore_mythril"),
-            setup(new TerraBlockOre(Block.Properties.create(Material.ROCK).hardnessAndResistance(3.0F, 3.0F)), "ore_orichalcum"),
-            setup(new TerraBlockOre(Block.Properties.create(Material.ROCK).hardnessAndResistance(3.0F, 3.0F)), "ore_adamantite"),
-            setup(new TerraBlockOre(Block.Properties.create(Material.ROCK).hardnessAndResistance(3.0F, 3.0F)), "ore_titanium"),
-            setup(new TerraBlockOre(Block.Properties.create(Material.EARTH).hardnessAndResistance(3.0F, 3.0F).sound(SoundType.GROUND)), "ore_chlorophyte"),
-            setup(new TerraBlockOre(Block.Properties.create(Material.ROCK).hardnessAndResistance(3.0F, 3.0F)), "ore_coal"),
-            setup(new TerraBlockOre(Block.Properties.create(Material.ROCK).hardnessAndResistance(3.0F, 3.0F)), "ore_lapis"),
-            setup(new TerraBlockOre(Block.Properties.create(Material.ROCK).hardnessAndResistance(3.0F, 3.0F)), "ore_redstone"),
-            setup(new TerraBlockOre(Block.Properties.create(Material.ROCK).hardnessAndResistance(3.0F, 3.0F)), "ore_amethyst"),
-            setup(new TerraBlockOre(Block.Properties.create(Material.ROCK).hardnessAndResistance(3.0F, 3.0F)), "ore_topaz"),
-            setup(new TerraBlockOre(Block.Properties.create(Material.ROCK).hardnessAndResistance(3.0F, 3.0F)), "ore_sapphire"),
-            setup(new TerraBlockOre(Block.Properties.create(Material.ROCK).hardnessAndResistance(3.0F, 3.0F)), "ore_ruby"),
-            setup(new TerraBlockOre(Block.Properties.create(Material.ROCK).hardnessAndResistance(3.0F, 3.0F)), "ore_emerald"),
-            setup(new TerraBlockOre(Block.Properties.create(Material.ROCK).hardnessAndResistance(3.0F, 3.0F)), "ore_diamond"),
+    //Structure Dungeon
+    public static final RegistryObject<Block> DUNGEON_BLUE_FLOOR_BRICK = null;
+    public static final RegistryObject<Block> DUNGEON_BLUE_FLOOR_TILE = null;
+    public static final RegistryObject<Block> DUNGEON_BLUE_FLOOR_SLAB = null;
+    public static final RegistryObject<Block> DUNGEON_BLUE_WALL_BASE = null;
+    public static final RegistryObject<Block> DUNGEON_BLUE_WALL_TOP = null;
+    public static final RegistryObject<Block> DUNGEON_BLUE_WALL_MID = null;
+    public static final RegistryObject<Block> DUNGEON_BLUE_WALL_BOT = null;
+    public static final RegistryObject<Block> DUNGEON_BLUE_PILLAR = null;
+    public static final RegistryObject<Block> DUNGEON_BLUE_BRICK = null;
+    public static final RegistryObject<Block> DUNGEON_BLUE_SLAB = null;
+    public static final RegistryObject<Block> WALL_DUNGEON_BLUE_BRICKS = null;
+    public static final RegistryObject<Block> WALL_DUNGEON_BLUE_BRICK = null;
+    public static final RegistryObject<Block> WALL_DUNGEON_BLUE_TILE = null;
+    public static final RegistryObject<Block> WALL_DUNGEON_BLUE_SLAB = null;
+    public static final RegistryObject<Block> WALL_DUNGEON_BLUE_WALL = null;
+    public static final RegistryObject<Block> STAIR_DUNGEON_BLUE_BRICKS = null;
+    public static final RegistryObject<Block> STAIR_DUNGEON_BLUE_BRICK = null;
+    public static final RegistryObject<Block> STAIR_DUNGEON_BLUE_TILE = null;
+    public static final RegistryObject<Block> STAIR_DUNGEON_BLUE_SLAB = null;
+    public static final RegistryObject<Block> STAIR_DUNGEON_BLUE_TRIM = null;
 
-            //Misc Structures
-            setup(new TerraBlockWall(Block.Properties.create(Material.WOOD).sound(SoundType.WOOD).hardnessAndResistance(1.5F, 6.0F)), "wall_oak"),
-            setup(new TerraBlockWall(Block.Properties.create(Material.WOOD).sound(SoundType.WOOD).hardnessAndResistance(1.5F, 6.0F)), "wall_spruce"),
-            setup(new TerraBlockWall(Block.Properties.create(Material.WOOD).sound(SoundType.WOOD).hardnessAndResistance(1.5F, 6.0F)), "wall_birch"),
-            setup(new TerraBlockWall(Block.Properties.create(Material.WOOD).sound(SoundType.WOOD).hardnessAndResistance(1.5F, 6.0F)), "wall_jungle"),
-            setup(new TerraBlockWall(Block.Properties.create(Material.WOOD).sound(SoundType.WOOD).hardnessAndResistance(1.5F, 6.0F)), "wall_darkoak"),
-            setup(new TerraBlockWall(Block.Properties.create(Material.WOOD).sound(SoundType.WOOD).hardnessAndResistance(1.5F, 6.0F)), "wall_acacia"),
-            setup(new TerraBlockWall(Block.Properties.create(Material.WOOD).sound(SoundType.WOOD).hardnessAndResistance(1.5F, 6.0F)), "wall_boreal"),
-            setup(new TerraBlockWall(Block.Properties.create(Material.WOOD).sound(SoundType.WOOD).hardnessAndResistance(1.5F, 6.0F)), "wall_palm"),
-            setup(new TerraBlockWall(Block.Properties.create(Material.WOOD).sound(SoundType.WOOD).hardnessAndResistance(1.5F, 6.0F)), "wall_mahogany"),
-            setup(new TerraBlockWall(Block.Properties.create(Material.WOOD).sound(SoundType.WOOD).hardnessAndResistance(1.5F, 6.0F)), "wall_ebon"),
-            setup(new TerraBlockWall(Block.Properties.create(Material.WOOD).sound(SoundType.WOOD).hardnessAndResistance(1.5F, 6.0F)), "wall_shade"),
-            setup(new TerraBlockWall(Block.Properties.create(Material.WOOD).sound(SoundType.WOOD).hardnessAndResistance(1.5F, 6.0F)), "wall_pearl"),
-            setup(new TerraBlockWall(Block.Properties.create(Material.LEAVES).sound(SoundType.PLANT).hardnessAndResistance(1.5F, 6.0F)), "wall_boreal_leaf"),
-            setup(new TerraBlockWall(Block.Properties.create(Material.LEAVES).sound(SoundType.PLANT).hardnessAndResistance(1.5F, 6.0F)), "wall_palm_leaf"),
-            setup(new TerraBlockWall(Block.Properties.create(Material.LEAVES).sound(SoundType.PLANT).hardnessAndResistance(1.5F, 6.0F)), "wall_mahogany_leaf"),
-            setup(new TerraBlockWall(Block.Properties.create(Material.LEAVES).sound(SoundType.PLANT).hardnessAndResistance(1.5F, 6.0F)), "wall_ebon_leaf"),
-            setup(new TerraBlockWall(Block.Properties.create(Material.LEAVES).sound(SoundType.PLANT).hardnessAndResistance(1.5F, 6.0F)), "wall_shade_leaf"),
-            setup(new TerraBlockWall(Block.Properties.create(Material.LEAVES).sound(SoundType.PLANT).hardnessAndResistance(1.5F, 6.0F)), "wall_pearl_leaf"),
-            setup(new TerraBlockWall(Block.Properties.create(Material.WOOD).sound(SoundType.WOOD).hardnessAndResistance(1.5F, 6.0F)), "wall_oak_plank"),
-            setup(new TerraBlockWall(Block.Properties.create(Material.WOOD).sound(SoundType.WOOD).hardnessAndResistance(1.5F, 6.0F)), "wall_spruce_plank"),
-            setup(new TerraBlockWall(Block.Properties.create(Material.WOOD).sound(SoundType.WOOD).hardnessAndResistance(1.5F, 6.0F)), "wall_birch_plank"),
-            setup(new TerraBlockWall(Block.Properties.create(Material.WOOD).sound(SoundType.WOOD).hardnessAndResistance(1.5F, 6.0F)), "wall_jungle_plank"),
-            setup(new TerraBlockWall(Block.Properties.create(Material.WOOD).sound(SoundType.WOOD).hardnessAndResistance(1.5F, 6.0F)), "wall_dark_oak_plank"),
-            setup(new TerraBlockWall(Block.Properties.create(Material.WOOD).sound(SoundType.WOOD).hardnessAndResistance(1.5F, 6.0F)), "wall_acacia_plank"),
-            setup(new TerraBlockWall(Block.Properties.create(Material.WOOD).sound(SoundType.WOOD).hardnessAndResistance(1.5F, 6.0F)), "wall_boreal_plank"),
-            setup(new TerraBlockWall(Block.Properties.create(Material.WOOD).sound(SoundType.WOOD).hardnessAndResistance(1.5F, 6.0F)), "wall_palm_plank"),
-            setup(new TerraBlockWall(Block.Properties.create(Material.WOOD).sound(SoundType.WOOD).hardnessAndResistance(1.5F, 6.0F)), "wall_mahogany_plank"),
-            setup(new TerraBlockWall(Block.Properties.create(Material.WOOD).sound(SoundType.WOOD).hardnessAndResistance(1.5F, 6.0F)), "wall_ebon_plank"),
-            setup(new TerraBlockWall(Block.Properties.create(Material.WOOD).sound(SoundType.WOOD).hardnessAndResistance(1.5F, 6.0F)), "wall_shade_plank"),
-            setup(new TerraBlockWall(Block.Properties.create(Material.WOOD).sound(SoundType.WOOD).hardnessAndResistance(1.5F, 6.0F)), "wall_pearl_plank"),
-            setup(new TerraBlockWall(Block.Properties.create(Material.WOOD).sound(SoundType.WOOD).hardnessAndResistance(1.5F, 6.0F)), "wall_dynasty_plank"),
-            setup(new TerraBlockWall(Block.Properties.create(Material.WOOD).sound(SoundType.WOOD).hardnessAndResistance(1.5F, 6.0F)), "wall_spooky_plank"),
-            setup(new TerraBlockWall(Block.Properties.create(Material.ROCK).sound(SoundType.STONE).hardnessAndResistance(2.0F, 6.0F)), "wall_stonebrick_ebon"),
-            setup(new TerraBlockWall(Block.Properties.create(Material.ROCK).sound(SoundType.STONE).hardnessAndResistance(2.0F, 6.0F)), "wall_stonebrick_crim"),
-            setup(new TerraBlockWall(Block.Properties.create(Material.ROCK).sound(SoundType.STONE).hardnessAndResistance(2.0F, 6.0F)), "wall_stonebrick_pearl"),
-            setup(new TerraBlockWall(Block.Properties.create(Material.ROCK).sound(SoundType.STONE).hardnessAndResistance(2.0F, 6.0F)), "wall_cobblestone_ebon"),
-            setup(new TerraBlockWall(Block.Properties.create(Material.ROCK).sound(SoundType.STONE).hardnessAndResistance(2.0F, 6.0F)), "wall_cobblestone_crim"),
-            setup(new TerraBlockWall(Block.Properties.create(Material.ROCK).sound(SoundType.STONE).hardnessAndResistance(2.0F, 6.0F)), "wall_cobblestone_pearl"),
-            setup(new TerraBlockWall(Block.Properties.create(Material.ROCK).sound(SoundType.STONE).hardnessAndResistance(2.0F, 6.0F)), "wall_sandstone_ebon"),
-            setup(new TerraBlockWall(Block.Properties.create(Material.ROCK).sound(SoundType.STONE).hardnessAndResistance(2.0F, 6.0F)), "wall_sandstone_crim"),
-            setup(new TerraBlockWall(Block.Properties.create(Material.ROCK).sound(SoundType.STONE).hardnessAndResistance(2.0F, 6.0F)), "wall_sandstone_pearl"),
+    public static final RegistryObject<Block> DUNGEON_GREEN_FLOOR_BRICK = null;
+    public static final RegistryObject<Block> DUNGEON_GREEN_FLOOR_TILE = null;
+    public static final RegistryObject<Block> DUNGEON_GREEN_FLOOR_SLAB = null;
+    public static final RegistryObject<Block> DUNGEON_GREEN_WALL_BASE = null;
+    public static final RegistryObject<Block> DUNGEON_GREEN_WALL_TOP = null;
+    public static final RegistryObject<Block> DUNGEON_GREEN_WALL_MID = null;
+    public static final RegistryObject<Block> DUNGEON_GREEN_WALL_BOT = null;
+    public static final RegistryObject<Block> DUNGEON_GREEN_PILLAR = null;
+    public static final RegistryObject<Block> DUNGEON_GREEN_BRICK = null;
+    public static final RegistryObject<Block> DUNGEON_GREEN_SLAB = null;
+    public static final RegistryObject<Block> WALL_DUNGEON_GREEN_BRICKS = null;
+    public static final RegistryObject<Block> WALL_DUNGEON_GREEN_BRICK = null;
+    public static final RegistryObject<Block> WALL_DUNGEON_GREEN_TILE = null;
+    public static final RegistryObject<Block> WALL_DUNGEON_GREEN_SLAB = null;
+    public static final RegistryObject<Block> WALL_DUNGEON_GREEN_WALL = null;
+    public static final RegistryObject<Block> STAIR_DUNGEON_GREEN_BRICKS = null;
+    public static final RegistryObject<Block> STAIR_DUNGEON_GREEN_BRICK = null;
+    public static final RegistryObject<Block> STAIR_DUNGEON_GREEN_TILE = null;
+    public static final RegistryObject<Block> STAIR_DUNGEON_GREEN_SLAB = null;
+    public static final RegistryObject<Block> STAIR_DUNGEON_GREEN_TRIM = null;
 
-            //Dungeon Structures
-                setup(new Block(Block.Properties.create(Material.ROCK).harvestLevel(4).hardnessAndResistance(9.0F, 9.0F).sound(SoundType.STONE)), "dungeon_blue_floor_brick"),
-                setup(new Block(Block.Properties.create(Material.ROCK).harvestLevel(4).hardnessAndResistance(9.0F, 9.0F).sound(SoundType.STONE)), "dungeon_blue_floor_tile"),
-                setup(new Block(Block.Properties.create(Material.ROCK).harvestLevel(4).hardnessAndResistance(9.0F, 9.0F).sound(SoundType.STONE)), "dungeon_blue_floor_slab"),
-                setup(new Block(Block.Properties.create(Material.ROCK).harvestLevel(4).hardnessAndResistance(9.0F, 9.0F).sound(SoundType.STONE)), "dungeon_blue_wall_base"),
-                setup(new Block(Block.Properties.create(Material.ROCK).harvestLevel(4).hardnessAndResistance(9.0F, 9.0F).sound(SoundType.STONE)), "dungeon_blue_wall_top"),
-                setup(new Block(Block.Properties.create(Material.ROCK).harvestLevel(4).hardnessAndResistance(9.0F, 9.0F).sound(SoundType.STONE)), "dungeon_blue_wall_mid"),
-                setup(new Block(Block.Properties.create(Material.ROCK).harvestLevel(4).hardnessAndResistance(9.0F, 9.0F).sound(SoundType.STONE)), "dungeon_blue_wall_bot"),
-                setup(new RotatedPillarBlock(Block.Properties.create(Material.ROCK).harvestLevel(4).hardnessAndResistance(9.0F, 9.0F).sound(SoundType.STONE)), "dungeon_blue_pillar"),
-                setup(new Block(Block.Properties.create(Material.ROCK).harvestLevel(4).hardnessAndResistance(9.0F, 9.0F).sound(SoundType.STONE)), "dungeon_blue_brick"),
-                setup(new Block(Block.Properties.create(Material.ROCK).harvestLevel(4).hardnessAndResistance(9.0F, 9.0F).sound(SoundType.STONE)), "dungeon_blue_slab"),
-                setup(new TerraBlockWall(Block.Properties.create(Material.ROCK).sound(SoundType.STONE).hardnessAndResistance(9.0F, 9.0F)), "wall_dungeon_blue_bricks"),
-                setup(new TerraBlockWall(Block.Properties.create(Material.ROCK).sound(SoundType.STONE).hardnessAndResistance(9.0F, 9.0F)), "wall_dungeon_blue_brick"),
-                setup(new TerraBlockWall(Block.Properties.create(Material.ROCK).sound(SoundType.STONE).hardnessAndResistance(9.0F, 9.0F)), "wall_dungeon_blue_tile"),
-                setup(new TerraBlockWall(Block.Properties.create(Material.ROCK).sound(SoundType.STONE).hardnessAndResistance(9.0F, 9.0F)), "wall_dungeon_blue_slab"),
-                setup(new TerraBlockWall(Block.Properties.create(Material.ROCK).sound(SoundType.STONE).hardnessAndResistance(9.0F, 9.0F)), "wall_dungeon_blue_trim"),
-                setup(new StairsBlock(nightmareTier.getDefaultState(), Block.Properties.from(nightmareTier)), "stair_dungeon_blue_bricks"),
-                setup(new StairsBlock(nightmareTier.getDefaultState(), Block.Properties.from(nightmareTier)), "stair_dungeon_blue_brick"),
-                setup(new StairsBlock(nightmareTier.getDefaultState(), Block.Properties.from(nightmareTier)), "stair_dungeon_blue_tile"),
-                setup(new StairsBlock(nightmareTier.getDefaultState(), Block.Properties.from(nightmareTier)), "stair_dungeon_blue_slab"),
-                setup(new StairsBlock(nightmareTier.getDefaultState(), Block.Properties.from(nightmareTier)), "stair_dungeon_blue_trim_bot"),
-                setup(new StairsBlock(nightmareTier.getDefaultState(), Block.Properties.from(nightmareTier)), "stair_dungeon_blue_trim_mid"),
-                setup(new StairsBlock(nightmareTier.getDefaultState(), Block.Properties.from(nightmareTier)), "stair_dungeon_blue_trim_top"),
-                setup(new SlabBlock(Block.Properties.create(Material.ROCK, MaterialColor.BLUE).hardnessAndResistance(9.0F, 9.0F)), "slab_dungeon_blue"),
-                setup(new SlabBlock(Block.Properties.create(Material.ROCK, MaterialColor.BLUE).hardnessAndResistance(9.0F, 9.0F)), "slab_dungeon_blue_bricks"),
-                setup(new SlabBlock(Block.Properties.create(Material.ROCK, MaterialColor.BLUE).hardnessAndResistance(9.0F, 9.0F)), "slab_dungeon_blue_brick"),
-                setup(new SlabBlock(Block.Properties.create(Material.ROCK, MaterialColor.BLUE).hardnessAndResistance(9.0F, 9.0F)), "slab_dungeon_blue_tile"),
-                setup(new Block(Block.Properties.create(Material.ROCK).harvestLevel(4).hardnessAndResistance(9.0F, 9.0F).sound(SoundType.STONE)), "dungeon_green_floor_brick"),
-                setup(new Block(Block.Properties.create(Material.ROCK).harvestLevel(4).hardnessAndResistance(9.0F, 9.0F).sound(SoundType.STONE)), "dungeon_green_floor_tile"),
-                setup(new Block(Block.Properties.create(Material.ROCK).harvestLevel(4).hardnessAndResistance(9.0F, 9.0F).sound(SoundType.STONE)), "dungeon_green_floor_slab"),
-                setup(new Block(Block.Properties.create(Material.ROCK).harvestLevel(4).hardnessAndResistance(9.0F, 9.0F).sound(SoundType.STONE)), "dungeon_green_wall_base"),
-                setup(new Block(Block.Properties.create(Material.ROCK).harvestLevel(4).hardnessAndResistance(9.0F, 9.0F).sound(SoundType.STONE)), "dungeon_green_wall_top"),
-                setup(new Block(Block.Properties.create(Material.ROCK).harvestLevel(4).hardnessAndResistance(9.0F, 9.0F).sound(SoundType.STONE)), "dungeon_green_wall_mid"),
-                setup(new Block(Block.Properties.create(Material.ROCK).harvestLevel(4).hardnessAndResistance(9.0F, 9.0F).sound(SoundType.STONE)), "dungeon_green_wall_bot"),
-                setup(new RotatedPillarBlock(Block.Properties.create(Material.ROCK).harvestLevel(4).hardnessAndResistance(9.0F, 9.0F).sound(SoundType.STONE)), "dungeon_green_pillar"),
-                setup(new Block(Block.Properties.create(Material.ROCK).harvestLevel(4).hardnessAndResistance(9.0F, 9.0F).sound(SoundType.STONE)), "dungeon_green_brick"),
-                setup(new Block(Block.Properties.create(Material.ROCK).harvestLevel(4).hardnessAndResistance(9.0F, 9.0F).sound(SoundType.STONE)), "dungeon_green_slab"),
-                setup(new TerraBlockWall(Block.Properties.create(Material.ROCK).sound(SoundType.STONE).hardnessAndResistance(9.0F, 9.0F)), "wall_dungeon_green_bricks"),
-                setup(new TerraBlockWall(Block.Properties.create(Material.ROCK).sound(SoundType.STONE).hardnessAndResistance(9.0F, 9.0F)), "wall_dungeon_green_brick"),
-                setup(new TerraBlockWall(Block.Properties.create(Material.ROCK).sound(SoundType.STONE).hardnessAndResistance(9.0F, 9.0F)), "wall_dungeon_green_tile"),
-                setup(new TerraBlockWall(Block.Properties.create(Material.ROCK).sound(SoundType.STONE).hardnessAndResistance(9.0F, 9.0F)), "wall_dungeon_green_slab"),
-                setup(new TerraBlockWall(Block.Properties.create(Material.ROCK).sound(SoundType.STONE).hardnessAndResistance(9.0F, 9.0F)), "wall_dungeon_green_trim"),
-                setup(new StairsBlock(nightmareTier.getDefaultState(), Block.Properties.from(nightmareTier)), "stair_dungeon_green_bricks"),
-                setup(new StairsBlock(nightmareTier.getDefaultState(), Block.Properties.from(nightmareTier)), "stair_dungeon_green_brick"),
-                setup(new StairsBlock(nightmareTier.getDefaultState(), Block.Properties.from(nightmareTier)), "stair_dungeon_green_tile"),
-                setup(new StairsBlock(nightmareTier.getDefaultState(), Block.Properties.from(nightmareTier)), "stair_dungeon_green_slab"),
-                setup(new StairsBlock(nightmareTier.getDefaultState(), Block.Properties.from(nightmareTier)), "stair_dungeon_green_trim_bot"),
-                setup(new StairsBlock(nightmareTier.getDefaultState(), Block.Properties.from(nightmareTier)), "stair_dungeon_green_trim_mid"),
-                setup(new StairsBlock(nightmareTier.getDefaultState(), Block.Properties.from(nightmareTier)), "stair_dungeon_green_trim_top"),
-                setup(new SlabBlock(Block.Properties.create(Material.ROCK, MaterialColor.GREEN).hardnessAndResistance(9.0F, 9.0F)), "slab_dungeon_green"),
-                setup(new SlabBlock(Block.Properties.create(Material.ROCK, MaterialColor.GREEN).hardnessAndResistance(9.0F, 9.0F)), "slab_dungeon_green_bricks"),
-                setup(new SlabBlock(Block.Properties.create(Material.ROCK, MaterialColor.GREEN).hardnessAndResistance(9.0F, 9.0F)), "slab_dungeon_green_brick"),
-                setup(new SlabBlock(Block.Properties.create(Material.ROCK, MaterialColor.GREEN).hardnessAndResistance(9.0F, 9.0F)), "slab_dungeon_green_tile")
-        );
-    }
+    public static final RegistryObject<Block> DUNGEON_RED_FLOOR_BRICK = null;
+    public static final RegistryObject<Block> DUNGEON_RED_FLOOR_TILE = null;
+    public static final RegistryObject<Block> DUNGEON_RED_FLOOR_SLAB = null;
+    public static final RegistryObject<Block> DUNGEON_RED_WALL_BASE = null;
+    public static final RegistryObject<Block> DUNGEON_RED_WALL_TOP = null;
+    public static final RegistryObject<Block> DUNGEON_RED_WALL_MID = null;
+    public static final RegistryObject<Block> DUNGEON_RED_WALL_BOT = null;
+    public static final RegistryObject<Block> DUNGEON_RED_PILLAR = null;
+    public static final RegistryObject<Block> DUNGEON_RED_BRICK = null;
+    public static final RegistryObject<Block> DUNGEON_RED_SLAB = null;
+    public static final RegistryObject<Block> WALL_DUNGEON_RED_BRICKS = null;
+    public static final RegistryObject<Block> WALL_DUNGEON_RED_BRICK = null;
+    public static final RegistryObject<Block> WALL_DUNGEON_RED_TILE = null;
+    public static final RegistryObject<Block> WALL_DUNGEON_RED_SLAB = null;
+    public static final RegistryObject<Block> WALL_DUNGEON_RED_WALL = null;
+    public static final RegistryObject<Block> STAIR_DUNGEON_RED_BRICKS = null;
+    public static final RegistryObject<Block> STAIR_DUNGEON_RED_BRICK = null;
+    public static final RegistryObject<Block> STAIR_DUNGEON_RED_TILE = null;
+    public static final RegistryObject<Block> STAIR_DUNGEON_RED_SLAB = null;
+    public static final RegistryObject<Block> STAIR_DUNGEON_RED_TRIM = null;
 
-    @SubscribeEvent
-    public static void onRegisterItems(final RegistryEvent.Register<Item> event)
-    {
-        final IForgeRegistry<Item> registry = event.getRegistry();
+    //Structure Temple
+    public static final RegistryObject<Block> LIHZAHRD = null;
 
-        // We need to go over the entire registry so that we include any potential Registry Overrides
-        for (final Block block : ForgeRegistries.BLOCKS.getValues())
-        {
-            final ResourceLocation blockRegistryName = block.getRegistryName();
-            // An extra safe-guard against badly registered blocks
-            Preconditions.checkNotNull(blockRegistryName, "Registry Name of Block \"" + block + "\" of class \"" + block.getClass().getName() + "\"is null! This is not allowed!");
+    //Bricks
+    public static final RegistryObject<Block> BRICK_SNOW = null;
+    public static final RegistryObject<Block> BRICK_ICE = null;
+    public static final RegistryObject<Block> BRICK_MUDSTONE = null;
+    public static final RegistryObject<Block> BRICK_ASHSTONE = null;
+    public static final RegistryObject<Block> BRICK_EBONSTONE = null;
+    public static final RegistryObject<Block> BRICK_PEARLSTONE = null;
+    public static final RegistryObject<Block> BRICK_COPPER = null;
+    public static final RegistryObject<Block> BRICK_TIN = null;
+    public static final RegistryObject<Block> BRICK_SILVER = null;
+    public static final RegistryObject<Block> BRICK_TUNGSTEN = null;
+    public static final RegistryObject<Block> BRICK_GOLD = null;
+    public static final RegistryObject<Block> BRICK_PLATINUM = null;
+    public static final RegistryObject<Block> BRICK_DEMONITE = null;
+    public static final RegistryObject<Block> BRICK_CRIMTANE = null;
+    public static final RegistryObject<Block> BRICK_METEORITE = null;
+    public static final RegistryObject<Block> BRICK_OBSIDIAN = null;
+    public static final RegistryObject<Block> BRICK_HELLSTONE = null;
+    public static final RegistryObject<Block> BRICK_COBALT = null;
+    public static final RegistryObject<Block> BRICK_PALLADIUM = null;
+    public static final RegistryObject<Block> BRICK_MYTHRIL = null;
+    public static final RegistryObject<Block> BRICK_ORICHALCUM = null;
+    public static final RegistryObject<Block> BRICK_ADAMANTITE = null;
+    public static final RegistryObject<Block> BRICK_TITANIUM = null;
+    public static final RegistryObject<Block> BRICK_CHLOROPHYTE = null;
+    public static final RegistryObject<Block> BRICK_LUMINITE = null;
+    public static final RegistryObject<Block> BRICK_RAINBOW = null;
+    public static final RegistryObject<Block> BRICK_SUNPLATE = null;
+    public static final RegistryObject<Block> BRICK_STUCCO = null;
+    public static final RegistryObject<Block> BRICK_STUCCO_RED = null;
+    public static final RegistryObject<Block> BRICK_STUCCO_GREEN = null;
+    public static final RegistryObject<Block> BRICK_STUCCO_YELLOW = null;
+    public static final RegistryObject<Block> BRICK_FLESH = null;
+    public static final RegistryObject<Block> BRICK_STONE = null;
+    public static final RegistryObject<Block> BRICK_SANDSTONE = null;
+    public static final RegistryObject<Block> PLATE_TIN = null;
+    public static final RegistryObject<Block> PLATE_COPPER = null;
+    public static final RegistryObject<Block> PLATE_MARTIAN = null;
+    public static final RegistryObject<Block> PLATE_SHROOMITE = null;
+    public static final RegistryObject<Block> BRICK_CRYSTAL = null;
+    public static final RegistryObject<Block> BRICK_GRANITE = null;
+    public static final RegistryObject<Block> BRICK_MARBLE = null;
 
-            // Check that the blocks is from our mod, if not, continue to the next block
-            if (!blockRegistryName.getNamespace().equals(Reference.MODID))
-            {
-                continue;
-            }
-            // Make the properties, and make it so that the item will be on our ItemGroup (CreativeTab)
-            final Item.Properties TerraBlocksTab = new Item.Properties().group(TerraItemGroups.TERRA_BLOCKS_TAB);
-            final Item.Properties TerraDecorationsTab = new Item.Properties().group(TerraItemGroups.TERRA_DECORATIONS_TAB);
-            // Create the new BlockItem with the block and it's properties
-            final BlockItem blockItem = new BlockItem(block,
-                    block instanceof TerraBlockSnowLayer ||
-                    block instanceof TerraBlockSapling ||
-                    block instanceof HugeMushroomBlock ||
-                    block instanceof LeavesBlock ||
-                    block instanceof TerraBlockCactus ||
-                    block instanceof TerraBlockTallGrass ||
-                    block instanceof TerraBlockPotionPlant ||
-                    block instanceof TerraBlockDoubleGrass ||
-                    block instanceof TerraBlockReeds ||
-                    block instanceof TerraBlockThornBush
-                            ? TerraDecorationsTab : TerraBlocksTab);
-            // Setup the new BlockItem with the block's registry name and register it
-            registry.register(setup(blockItem, blockRegistryName));
-        }
-        LOGGER.debug("Registered Items");
-    }
+    //Ores
+    public static final RegistryObject<Block> ORE_COPPER = BLOCKS.register("ore_copper", () -> new TerraBlockOre(Block.Properties.create(Material.ROCK).hardnessAndResistance(3.0F)));
+    public static final RegistryObject<Block> ORE_TIN = BLOCKS.register("ore_tin", () -> new TerraBlockOre(Block.Properties.create(Material.ROCK).hardnessAndResistance(3.0F)));
+    public static final RegistryObject<Block> ORE_LEAD = BLOCKS.register("ore_lead", () -> new TerraBlockOre(Block.Properties.create(Material.ROCK).hardnessAndResistance(3.0F)));
+    public static final RegistryObject<Block> ORE_IRON = BLOCKS.register("ore_iron", () -> new TerraBlockOre(Block.Properties.create(Material.ROCK).hardnessAndResistance(3.0F)));
+    public static final RegistryObject<Block> ORE_SILVER = BLOCKS.register("ore_silver", () -> new TerraBlockOre(Block.Properties.create(Material.ROCK).hardnessAndResistance(3.0F)));
+    public static final RegistryObject<Block> ORE_TUNGSTEN = BLOCKS.register("ore_tungsten", () -> new TerraBlockOre(Block.Properties.create(Material.ROCK).hardnessAndResistance(3.0F)));
+    public static final RegistryObject<Block> ORE_GOLD = BLOCKS.register("ore_gold", () -> new TerraBlockOre(Block.Properties.create(Material.ROCK).hardnessAndResistance(3.0F)));
+    public static final RegistryObject<Block> ORE_PLATINUM = BLOCKS.register("ore_platinum", () -> new TerraBlockOre(Block.Properties.create(Material.ROCK).hardnessAndResistance(3.0F)));
+    public static final RegistryObject<Block> ORE_METEORITE = BLOCKS.register("ore_meteorite", () -> new TerraBlockOre(Block.Properties.create(Material.ROCK).hardnessAndResistance(3.0F)));
+    public static final RegistryObject<Block> ORE_DEMONITE = BLOCKS.register("ore_demonite", () -> new TerraBlockOre(Block.Properties.create(Material.ROCK).hardnessAndResistance(3.0F)));
+    public static final RegistryObject<Block> ORE_CRIMTANE = BLOCKS.register("ore_crimtane", () -> new TerraBlockOre(Block.Properties.create(Material.ROCK).hardnessAndResistance(3.0F)));
+    public static final RegistryObject<Block> ORE_HELLSTONE = BLOCKS.register("ore_hellstone", () -> new TerraBlockOre(Block.Properties.create(Material.EARTH).sound(SoundType.GROUND).hardnessAndResistance(3.0F)));
+    public static final RegistryObject<Block> ORE_COBALT = BLOCKS.register("ore_cobalt", () -> new TerraBlockOre(Block.Properties.create(Material.ROCK).hardnessAndResistance(3.0F)));
+    public static final RegistryObject<Block> ORE_PALLADIUM = BLOCKS.register("ore_palladium", () -> new TerraBlockOre(Block.Properties.create(Material.ROCK).hardnessAndResistance(3.0F)));
+    public static final RegistryObject<Block> ORE_MYTHRIL = BLOCKS.register("ore_mythril", () -> new TerraBlockOre(Block.Properties.create(Material.ROCK).hardnessAndResistance(3.0F)));
+    public static final RegistryObject<Block> ORE_ORICHALCUM = BLOCKS.register("ore_orichalcum", () -> new TerraBlockOre(Block.Properties.create(Material.ROCK).hardnessAndResistance(3.0F)));
+    public static final RegistryObject<Block> ORE_ADAMANTITE = BLOCKS.register("ore_adamantite", () -> new TerraBlockOre(Block.Properties.create(Material.ROCK).hardnessAndResistance(3.0F)));
+    public static final RegistryObject<Block> ORE_TITANIUM = BLOCKS.register("ore_titanium", () -> new TerraBlockOre(Block.Properties.create(Material.ROCK).hardnessAndResistance(3.0F)));
+    public static final RegistryObject<Block> ORE_CHLOROPHYTE = BLOCKS.register("ore_chlorophyte", () -> new TerraBlockOre(Block.Properties.create(Material.EARTH).sound(SoundType.GROUND).hardnessAndResistance(3.0F)));
+    public static final RegistryObject<Block> ORE_COAL = BLOCKS.register("ore_coal", () -> new TerraBlockOre(Block.Properties.create(Material.ROCK).hardnessAndResistance(3.0F)));
+    public static final RegistryObject<Block> ORE_LAPIS = BLOCKS.register("ore_lapis", () -> new TerraBlockOre(Block.Properties.create(Material.ROCK).hardnessAndResistance(3.0F)));
+    public static final RegistryObject<Block> ORE_REDSTONE = BLOCKS.register("ore_redstone", () -> new TerraBlockOre(Block.Properties.create(Material.ROCK).hardnessAndResistance(3.0F)));
+    public static final RegistryObject<Block> ORE_AMETHYST = BLOCKS.register("ore_amethyst", () -> new TerraBlockOre(Block.Properties.create(Material.ROCK).hardnessAndResistance(3.0F)));
+    public static final RegistryObject<Block> ORE_TOPAZ = BLOCKS.register("ore_topaz", () -> new TerraBlockOre(Block.Properties.create(Material.ROCK).hardnessAndResistance(3.0F)));
+    public static final RegistryObject<Block> ORE_SAPPHIRE = BLOCKS.register("ore_sapphire", () -> new TerraBlockOre(Block.Properties.create(Material.ROCK).hardnessAndResistance(3.0F)));
+    public static final RegistryObject<Block> ORE_RUBY = BLOCKS.register("ore_ruby", () -> new TerraBlockOre(Block.Properties.create(Material.ROCK).hardnessAndResistance(3.0F)));
+    public static final RegistryObject<Block> ORE_EMERALD = BLOCKS.register("ore_emerald", () -> new TerraBlockOre(Block.Properties.create(Material.ROCK).hardnessAndResistance(3.0F)));
+    public static final RegistryObject<Block> ORE_DIAMOND = BLOCKS.register("ore_diamond", () -> new TerraBlockOre(Block.Properties.create(Material.ROCK).hardnessAndResistance(3.0F)));
 
-    public static <T extends IForgeRegistryEntry<T>> T setup(final T entry, final String name)
-    {
-        return setup(entry, new ResourceLocation(Reference.MODID, name));
-    }
+    //Misc
+    public static final RegistryObject<Block> MISC_CLOUD = null;
+    public static final RegistryObject<Block> MISC_RAINCLOUD = null;
+    public static final RegistryObject<Block> MISC_HIVE = null;
+    public static final RegistryObject<Block> MISC_HONEY = null;
+    public static final RegistryObject<Block> MISC_CRISPYHONEY = null;
+    public static final RegistryObject<Block> SLIME_ALT = null;
+    public static final RegistryObject<Block> SLIME_FROZEN = null;
+    public static final RegistryObject<Block> SLIME_BOUNCY = null;
+    public static final RegistryObject<Block> MISC_ASPHALT = null;
+    public static final RegistryObject<Block> MISC_SHINGLE_BLUE = null;
+    public static final RegistryObject<Block> MISC_SHINGLE_RED = null;
+    public static final RegistryObject<Block> MISC_COG = null;
+    public static final RegistryObject<Block> MISC_CANDY_RED = null;
+    public static final RegistryObject<Block> MISC_CANDY_GREEN = null;
+    public static final RegistryObject<Block> MISC_BONE = null;
+	public static final RegistryObject<Block> MISC_ROPE = null;
+    public static final RegistryObject<Block> MISC_ROPE_VINE = null;
+    public static final RegistryObject<Block> MISC_ROPE_WEB = null;
+    public static final RegistryObject<Block> MISC_ROPE_SILK = null;
+    public static final RegistryObject<Block> MISC_CHAIN = null;
 
-    public static <T extends IForgeRegistryEntry<T>> T setup(final T entry, final ResourceLocation registryName)
-    {
-        entry.setRegistryName(registryName);
-        return entry;
-    }
+    //Traps
+    public static final RegistryObject<Block> TRAP_DART = null;
+    public static final RegistryObject<Block> TRAP_SUPERDART = null;
+    public static final RegistryObject<Block> TRAP_BALL = null;
+    public static final RegistryObject<Block> TRAP_SPEAR = null;
+    public static final RegistryObject<Block> TRAP_FLAME = null;
+    public static final RegistryObject<Block> TRAP_SPIKE = null;
+    public static final RegistryObject<Block> TRAP_SUPERSPIKE = null;
+    public static final RegistryObject<Block> TRAP_GEYSER = null;*/
 }

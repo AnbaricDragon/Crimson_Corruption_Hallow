@@ -11,7 +11,6 @@ import net.minecraft.state.IntegerProperty;
 import net.minecraft.state.StateContainer;
 import net.minecraft.state.properties.BlockStateProperties;
 import net.minecraft.tags.FluidTags;
-import net.minecraft.util.BlockRenderLayer;
 import net.minecraft.util.DamageSource;
 import net.minecraft.util.Direction;
 import net.minecraft.util.math.BlockPos;
@@ -21,6 +20,7 @@ import net.minecraft.world.IBlockReader;
 import net.minecraft.world.IWorld;
 import net.minecraft.world.IWorldReader;
 import net.minecraft.world.World;
+import net.minecraft.world.server.ServerWorld;
 import net.minecraftforge.common.IPlantable;
 import net.minecraftforge.common.PlantType;
 
@@ -38,7 +38,8 @@ public class TerraBlockCactus extends Block implements net.minecraftforge.common
         this.setDefaultState(this.stateContainer.getBaseState().with(AGE, Integer.valueOf(0)));
     }
 
-    public void tick(BlockState state, World worldIn, BlockPos pos, Random random)
+    @Override
+    public void tick(BlockState state, ServerWorld worldIn, BlockPos pos, Random random)
     {
         if (!worldIn.isAreaLoaded(pos, 1))
         {
@@ -98,12 +99,7 @@ public class TerraBlockCactus extends Block implements net.minecraftforge.common
         return field_196401_c;
     }
 
-    public boolean isSolid(BlockState state)
-    {
-        return true;
-    }
-
-    /**
+     /**
      * Update the provided state given the provided neighbor facing and neighbor state, returning a new state.
      * For example, fences make their connections to the passed in state if possible, and wet concrete powder immediately
      * returns its solidified counterpart.
@@ -144,11 +140,6 @@ public class TerraBlockCactus extends Block implements net.minecraftforge.common
     public void onEntityCollision(BlockState state, World worldIn, BlockPos pos, Entity entityIn)
     {
         entityIn.attackEntityFrom(DamageSource.CACTUS, 1.0F);
-    }
-
-    public BlockRenderLayer getRenderLayer()
-    {
-        return BlockRenderLayer.CUTOUT;
     }
 
     protected void fillStateContainer(StateContainer.Builder<Block, BlockState> builder)

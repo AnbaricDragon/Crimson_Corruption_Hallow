@@ -4,12 +4,15 @@ import com.anbaric.terra_reforged.TerraReforged;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
+import net.minecraft.item.BlockItemUseContext;
 import net.minecraft.util.Direction;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.IBlockReader;
 import net.minecraft.world.IWorld;
 import net.minecraft.world.World;
+import net.minecraft.world.server.ServerWorld;
 import net.minecraftforge.common.IPlantable;
+import net.minecraftforge.server.permission.context.IContext;
 
 import java.util.Random;
 
@@ -26,16 +29,16 @@ public class TerraBlockMoss extends Block
     @Override
     public boolean canSustainPlant(BlockState state, IBlockReader world, BlockPos pos, Direction facing, IPlantable plantable)
     {
-//        return plantable.getPlantType(world, pos) == TerraReforged.MOSS;
-        return true;
+        return plantable.getPlantType(world, pos) == TerraReforged.MOSS;
     }
 
     public boolean canSpread(World worldIn, BlockPos pos)
     {
-        return !worldIn.getBlockState(pos.up()).isOpaqueCube(worldIn, pos);
+        return worldIn.getBlockState(pos.up()).isAir(worldIn, pos);
     }
 
-    public void tick(BlockState state, World worldIn, BlockPos pos, Random random)
+    @Override
+    public void tick(BlockState state, ServerWorld worldIn, BlockPos pos, Random random)
     {
         if (!worldIn.isRemote)
         {

@@ -11,6 +11,7 @@ import net.minecraft.util.Direction;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.IBlockReader;
 import net.minecraft.world.World;
+import net.minecraft.world.server.ServerWorld;
 import net.minecraftforge.common.IPlantable;
 import net.minecraftforge.common.PlantType;
 
@@ -36,7 +37,8 @@ public class TerraBlockSpreading extends Block
         return targetPlant == this.plantType;
     }
 
-    public void tick(BlockState state, World worldIn, BlockPos pos, Random random)
+    @Override
+    public void tick(BlockState state, ServerWorld worldIn, BlockPos pos, Random random)
     {
         if (!worldIn.isRemote)
         {

@@ -1,6 +1,5 @@
 package com.anbaric.terra_reforged.blocks.potionplants;
 
-import com.anbaric.terra_reforged.blocks.TerraBlocks;
 import com.anbaric.terra_reforged.util.init.TerraBlockRegistry;
 import net.minecraft.block.*;
 import net.minecraft.entity.Entity;
@@ -16,6 +15,7 @@ import net.minecraft.util.math.shapes.VoxelShape;
 import net.minecraft.world.IBlockReader;
 import net.minecraft.world.IWorldReader;
 import net.minecraft.world.World;
+import net.minecraft.world.server.ServerWorld;
 
 import java.util.Random;
 
@@ -31,12 +31,12 @@ public class TerraBlockPotionPlant extends BushBlock implements IGrowable
 
     public Block[][] BLOCKS = new Block[][]
     {
-        {Blocks.DIRT, Blocks.GRASS_BLOCK, TerraBlockRegistry.GRASS_CORRUPT.get(), TerraBlockRegistry.GRASS_CRIMSON.get(), TerraBlockRegistry.GRASS_HALLOWED.get(), Blocks.STONE, TerraBlockRegistry.STONE_EBON.get(), TerraBlockRegistry.STONE_CRIM.get(), TerraBlockRegistry.STONE_PEARL.get()},
+        {Blocks.DIRT, Blocks.GRASS_BLOCK, TerraBlockRegistry.GRASS_CORRUPT.get(), TerraBlockRegistry.GRASS_CRIMSON.get(), TerraBlockRegistry.GRASS_HALLOWED.get(), Blocks.STONE/*, TerraBlockRegistry.STONE_EBON.get(), TerraBlockRegistry.STONE_CRIM.get(), TerraBlockRegistry.STONE_PEARL.get()*/},
         {Blocks.GRASS_BLOCK, TerraBlockRegistry.GRASS_HALLOWED.get()},
-        {TerraBlockRegistry.GRASS_CORRUPT.get(), TerraBlockRegistry.GRASS_CRIMSON.get(), TerraBlockRegistry.STONE_EBON.get(), TerraBlockRegistry.STONE_CRIM.get()},
+        {TerraBlockRegistry.GRASS_CORRUPT.get(), TerraBlockRegistry.GRASS_CRIMSON.get()/*, TerraBlockRegistry.STONE_EBON.get(), TerraBlockRegistry.STONE_CRIM.get()*/},
         {TerraBlockRegistry.SOIL_ASH.get()},
         {TerraBlockRegistry.SOIL_MUD.get(), TerraBlockRegistry.GRASS_JUNGLE.get(), TerraBlockRegistry.GRASS_MUSHROOM.get()},
-        {Blocks.SNOW, TerraBlockRegistry.SNOW_CORRUPT, TerraBlockRegistry.SNOW_CRIMSON, TerraBlockRegistry.SNOW_HALLOWED, Blocks.ICE, TerraBlockRegistry.ICE_PURPLE.get(), TerraBlockRegistry.ICE_RED.get(), TerraBlockRegistry.ICE_PINK.get(), Blocks.PACKED_ICE, TerraBlockRegistry.ICE_HARD_PURPLE.get(), TerraBlockRegistry.ICE_HARD_RED.get(), TerraBlockRegistry.ICE_HARD_PINK.get()},
+        {Blocks.SNOW, TerraBlockRegistry.SNOW_CORRUPT.get(), TerraBlockRegistry.SNOW_CRIMSON.get(), TerraBlockRegistry.SNOW_HALLOWED.get(), Blocks.ICE/*, TerraBlockRegistry.ICE_PURPLE.get(), TerraBlockRegistry.ICE_RED.get(), TerraBlockRegistry.ICE_PINK.get(), Blocks.PACKED_ICE, TerraBlockRegistry.ICE_HARD_PURPLE.get(), TerraBlockRegistry.ICE_HARD_RED.get(), TerraBlockRegistry.ICE_HARD_PINK.get()*/},
         {Blocks.SAND, TerraBlockRegistry.SAND_HARD.get(), TerraBlockRegistry.SAND_PEARL.get(), TerraBlockRegistry.SAND_HARDPEARL.get()}
     };
 
@@ -146,9 +146,10 @@ public class TerraBlockPotionPlant extends BushBlock implements IGrowable
         return false;
     }
 
-    public void grow(World worldIn, Random rand, BlockPos pos, BlockState state)
+    @Override
+    public void grow(ServerWorld p_225535_1_, Random p_225535_2_, BlockPos p_225535_3_, BlockState p_225535_4_)
     {
-        this.grow(worldIn, pos, state);
+        this.grow(p_225535_1_, p_225535_3_, p_225535_4_);
     }
 
     protected void fillStateContainer(StateContainer.Builder<Block, BlockState> builder)

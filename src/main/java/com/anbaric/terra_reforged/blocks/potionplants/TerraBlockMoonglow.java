@@ -1,12 +1,13 @@
 package com.anbaric.terra_reforged.blocks.potionplants;
 
-import com.anbaric.terra_reforged.blocks.TerraBlocks;
-import com.anbaric.terra_reforged.items.TerraItems;
+import com.anbaric.terra_reforged.util.init.TerraBlockRegistry;
+import com.anbaric.terra_reforged.util.init.TerraItemRegistry;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.IBlockReader;
 import net.minecraft.world.World;
+import net.minecraft.world.server.ServerWorld;
 
 import java.util.Random;
 
@@ -14,18 +15,18 @@ public class TerraBlockMoonglow extends TerraBlockPotionPlant
 {
     public TerraBlockMoonglow(Properties builder)
     {
-        super(builder, 4, TerraItems.SEED_MOONGLOW);
+        super(builder, 4, TerraItemRegistry.SEED_MOONGLOW.get());
     }
 
     @Override
     protected boolean isValidGround(BlockState state, IBlockReader worldIn, BlockPos pos)
     {
         Block target = state.getBlock();
-        return target == TerraBlocks.SOIL_MUD || target == TerraBlocks.GRASS_JUNGLE || target == TerraBlocks.GRASS_MUSHROOM;
+        return target == TerraBlockRegistry.SOIL_MUD.get() || target == TerraBlockRegistry.GRASS_JUNGLE.get() || target == TerraBlockRegistry.GRASS_MUSHROOM.get();
     }
 
     @Override
-    public void tick(BlockState state, World worldIn, BlockPos pos, Random random)
+    public void tick(BlockState state, ServerWorld worldIn, BlockPos pos, Random random)
     {
         if (!worldIn.isRemote)
         {

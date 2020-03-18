@@ -1,12 +1,13 @@
 package com.anbaric.terra_reforged.blocks.potionplants;
 
-import com.anbaric.terra_reforged.blocks.TerraBlocks;
-import com.anbaric.terra_reforged.items.TerraItems;
+import com.anbaric.terra_reforged.util.init.TerraBlockRegistry;
+import com.anbaric.terra_reforged.util.init.TerraItemRegistry;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.IBlockReader;
 import net.minecraft.world.World;
+import net.minecraft.world.server.ServerWorld;
 
 import java.util.Random;
 
@@ -14,18 +15,18 @@ public class TerraBlockFireblossom extends TerraBlockPotionPlant
 {
     public TerraBlockFireblossom(Properties builder)
     {
-        super(builder, 3, TerraItems.SEED_FIREBLOSSOM);
+        super(builder, 3, TerraItemRegistry.SEED_FIREBLOSSOM.get());
     }
 
     @Override
     protected boolean isValidGround(BlockState state, IBlockReader worldIn, BlockPos pos)
     {
         Block target = state.getBlock();
-        return target == TerraBlocks.SOIL_ASH;
+        return target == TerraBlockRegistry.SOIL_ASH.get();
     }
 
     @Override
-    public void tick(BlockState state, World worldIn, BlockPos pos, Random random)
+    public void tick(BlockState state, ServerWorld worldIn, BlockPos pos, Random random)
     {
         if (!worldIn.isRemote)
         {

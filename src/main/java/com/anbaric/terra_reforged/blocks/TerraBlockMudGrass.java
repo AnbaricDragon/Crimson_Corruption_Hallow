@@ -53,7 +53,8 @@ public class TerraBlockMudGrass extends Block implements IGrowable
         return canSpread(state, world, pos) && !world.getFluidState(blockpos).isTagged(FluidTags.WATER);
     }
 
-    public void tick(BlockState state, World worldIn, BlockPos pos, Random random)
+    @Override
+    public void tick(BlockState state, ServerWorld worldIn, BlockPos pos, Random random)
     {
         if (!worldIn.isRemote)
         {

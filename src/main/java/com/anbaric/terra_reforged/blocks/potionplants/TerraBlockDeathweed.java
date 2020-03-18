@@ -1,12 +1,13 @@
 package com.anbaric.terra_reforged.blocks.potionplants;
 
-import com.anbaric.terra_reforged.blocks.TerraBlocks;
-import com.anbaric.terra_reforged.items.TerraItems;
+import com.anbaric.terra_reforged.util.init.TerraBlockRegistry;
+import com.anbaric.terra_reforged.util.init.TerraItemRegistry;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.IBlockReader;
 import net.minecraft.world.World;
+import net.minecraft.world.server.ServerWorld;
 
 import java.util.Random;
 
@@ -14,18 +15,18 @@ public class TerraBlockDeathweed extends TerraBlockPotionPlant
 {
     public TerraBlockDeathweed(Properties builder)
     {
-        super(builder, 2, TerraItems.SEED_DEATHWEED);
+        super(builder, 2, TerraItemRegistry.SEED_DEATHWEED.get());
     }
 
     @Override
     protected boolean isValidGround(BlockState state, IBlockReader worldIn, BlockPos pos)
     {
         Block target = state.getBlock();
-        return target == TerraBlocks.GRASS_CORRUPT || target == TerraBlocks.GRASS_CRIMSON || target == TerraBlocks.STONE_EBON || target == TerraBlocks.STONE_CRIM;
+        return target == TerraBlockRegistry.GRASS_CORRUPT.get() || target == TerraBlockRegistry.GRASS_CRIMSON.get()/* || target == TerraBlockRegistry.STONE_EBON.get() || target == TerraBlockRegistry.STONE_CRIM.get()*/;
     }
 
     @Override
-    public void tick(BlockState state, World worldIn, BlockPos pos, Random random)
+    public void tick(BlockState state, ServerWorld worldIn, BlockPos pos, Random random)
     {
         if (!worldIn.isRemote)
         {

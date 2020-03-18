@@ -16,6 +16,7 @@ import net.minecraft.world.IBlockReader;
 import net.minecraft.world.IWorld;
 import net.minecraft.world.IWorldReader;
 import net.minecraft.world.World;
+import net.minecraft.world.server.ServerWorld;
 import net.minecraftforge.common.IPlantable;
 
 import java.util.Random;
@@ -42,7 +43,8 @@ public class TerraBlockReeds extends Block implements net.minecraftforge.common.
         return SHAPE;
     }
 
-    public void tick(BlockState state, World worldIn, BlockPos pos, Random random)
+    @Override
+    public void tick(BlockState state, ServerWorld worldIn, BlockPos pos, Random random)
     {
         if (!state.isValidPosition(worldIn, pos))
         {

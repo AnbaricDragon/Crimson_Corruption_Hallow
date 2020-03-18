@@ -1,5 +1,6 @@
 package com.anbaric.terra_reforged.blocks;
 
+import com.anbaric.terra_reforged.util.init.TerraBlockRegistry;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
@@ -8,6 +9,7 @@ import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.util.*;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.MathHelper;
+import net.minecraft.util.math.Vec3d;
 import net.minecraft.world.World;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
@@ -19,15 +21,10 @@ public class TerraBlockThinIce extends Block
         super(properties);
     }
 
-    public BlockRenderLayer getRenderLayer()
-    {
-        return BlockRenderLayer.TRANSLUCENT;
-    }
-
     public void destroyNotIce(World worldIn, BlockPos pos)
     {
         int i;
-        for (i = 0; worldIn.getBlockState(pos.down(i)).getBlock() == TerraBlocks.ICE_THIN; i++)
+        for (i = 0; worldIn.getBlockState(pos.down(i)).getBlock() == TerraBlockRegistry.ICE_THIN.get(); i++)
         {
             worldIn.playSound(null, pos.down(i), SoundEvents.BLOCK_GLASS_BREAK, SoundCategory.BLOCKS, 1.0F, 1.0F);
             worldIn.setBlockState(pos.down(i), Blocks.AIR.getDefaultState());
@@ -36,10 +33,12 @@ public class TerraBlockThinIce extends Block
 
     public void onFallenUpon(World worldIn, BlockPos pos, Entity entityIn, float fallDistance)
     {
-        double x = entityIn.posX;
-        double z = entityIn.posZ;
-        double xi = MathHelper.floor(entityIn.posX);
-        double zi = MathHelper.floor(entityIn.posZ);
+        Vec3d entityPos = entityIn.getPositionVec();
+
+        double x = entityPos.x;
+        double z = entityPos.z;
+        double xi = MathHelper.floor(entityPos.x);
+        double zi = MathHelper.floor(entityPos.z);
         double dotX = MathHelper.abs((float) (x - xi));
         double dotZ = MathHelper.abs((float) (z - zi));
 

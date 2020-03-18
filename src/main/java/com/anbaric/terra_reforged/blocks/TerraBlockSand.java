@@ -14,6 +14,7 @@ import net.minecraft.util.Direction;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.IBlockReader;
 import net.minecraft.world.World;
+import net.minecraft.world.server.ServerWorld;
 import net.minecraftforge.common.PlantType;
 
 import java.util.Random;
@@ -48,7 +49,8 @@ public class TerraBlockSand extends FallingBlock
         return plantable.getPlantType(world, pos) == PlantType.Desert || plantable.getPlantType(world, pos) == PlantType.Desert || reed;
     }
 
-    public void tick(BlockState state, World worldIn, BlockPos pos, Random random)
+    @Override
+    public void tick(BlockState state, ServerWorld worldIn, BlockPos pos, Random random)
     {
         if (!worldIn.isRemote)
         {

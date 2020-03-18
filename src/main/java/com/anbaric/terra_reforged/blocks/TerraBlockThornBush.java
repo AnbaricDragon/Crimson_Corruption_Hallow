@@ -1,18 +1,22 @@
 package com.anbaric.terra_reforged.blocks;
 
 import com.anbaric.terra_reforged.TerraReforged;
+import com.anbaric.terra_reforged.util.init.TerraBlockRegistry;
 import com.google.common.collect.Maps;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
+import net.minecraft.block.FenceGateBlock;
 import net.minecraft.entity.Entity;
+import net.minecraft.fluid.Fluids;
+import net.minecraft.fluid.IFluidState;
 import net.minecraft.item.BlockItemUseContext;
 import net.minecraft.pathfinding.PathType;
 import net.minecraft.state.BooleanProperty;
 import net.minecraft.state.IntegerProperty;
 import net.minecraft.state.StateContainer;
 import net.minecraft.state.properties.BlockStateProperties;
-import net.minecraft.util.BlockRenderLayer;
+import net.minecraft.tags.BlockTags;
 import net.minecraft.util.Direction;
 import net.minecraft.util.Util;
 import net.minecraft.util.math.BlockPos;
@@ -23,6 +27,7 @@ import net.minecraft.world.IBlockReader;
 import net.minecraft.world.IWorld;
 import net.minecraft.world.IWorldReader;
 import net.minecraft.world.World;
+import net.minecraft.world.server.ServerWorld;
 
 import java.util.Map;
 import java.util.Random;
@@ -47,10 +52,12 @@ public class TerraBlockThornBush extends Block
     public static final IntegerProperty GROWTH = IntegerProperty.create("growth", 0, 9);
 
     private final VoxelShape[] renderShapes;
+    private final Float damage;
 
-    public TerraBlockThornBush(Properties properties)
+    public TerraBlockThornBush(Properties properties, Float damage)
     {
         super(properties);
+        this.damage = damage;
 
         this.renderShapes = this.makeShapes();
         this.setDefaultState(this.stateContainer.getBaseState().with(UP, false).with(DOWN, false).with(NORTH, false).with(EAST, false).with(SOUTH, false).with(WEST, false).with(GROWTH, 0));
@@ -126,33 +133,21 @@ public class TerraBlockThornBush extends Block
         return this.renderShapes[this.getIndex(state)];
     }
 
-    public BlockRenderLayer getRenderLayer()
-    {
-        return BlockRenderLayer.CUTOUT;
-    }
-
-    public boolean canAttach(BlockState state, boolean solidSide)
-    {
-        Block   block = state.getBlock();
-        boolean flag  = state.isSolid();
-        boolean flag1 = block instanceof TerraBlockThornBush;
-        return !cannotAttach(block) && solidSide || flag || flag1;
-    }
-
     public Block getGrass()
     {
-        if (this == TerraBlocks.PLANT_THORN_PURPLE)
-        {
-            return TerraBlocks.GRASS_CORRUPT;
-        }
-        else if (this == TerraBlocks.PLANT_THORN_RED)
-        {
-            return TerraBlocks.GRASS_CRIMSON;
-        }
-        else
-        {
-            return TerraBlocks.GRASS_JUNGLE;
-        }
+//        if (this == TerraBlockRegistry.PLANT_THORN_PURPLE.get())
+//        {
+//            return TerraBlockRegistry.GRASS_CORRUPT.get();
+//        }
+//        else if (this == TerraBlockRegistry.PLANT_THORN_RED.get())
+//        {
+//            return TerraBlockRegistry.GRASS_CRIMSON.get();
+//        }
+//        else
+//        {
+//            return TerraBlockRegistry.GRASS_JUNGLE.get();
+//        }
+        return TerraBlockRegistry.GRASS_JUNGLE.get();
     }
 
     public int getProperGrowth(IBlockReader worldIn, BlockPos pos)
@@ -220,6 +215,14 @@ public class TerraBlockThornBush extends Block
         return countNei;
     }
 
+    public boolean canAttach(BlockState state)
+    {
+        Block   block = state.getBlock();
+        boolean flag  = state.isSolid();
+        boolean flag1 = block instanceof TerraBlockThornBush || block == getGrass();
+        return !cannotAttach(block) || flag || flag1;
+    }
+
     public BlockState getStateForPlacement(BlockItemUseContext context)
     {
         IBlockReader world     = context.getWorld();
@@ -236,18 +239,25 @@ public class TerraBlockThornBush extends Block
         BlockState   stateW    = world.getBlockState(blockposW);
         BlockState   stateU    = world.getBlockState(blockposU);
         BlockState   stateD    = world.getBlockState(blockposD);
-        return super.getStateForPlacement(context).with(NORTH, this.canAttach(stateN, stateN.func_224755_d(world, blockposN, Direction.SOUTH))).with(EAST, this.canAttach(stateE, stateE.func_224755_d(world, blockposE, Direction.WEST))).with(SOUTH, this.canAttach(stateS, stateS.func_224755_d(world, blockposS, Direction.NORTH))).with(WEST, this.canAttach(stateW, stateW.func_224755_d(world, blockposW, Direction.EAST))).with(UP, this.canAttach(stateU, stateU.func_224755_d(world, blockposU, Direction.DOWN))).with(DOWN, this.canAttach(stateD, stateD.func_224755_d(world, blockposD, Direction.UP))).with(GROWTH, this.getProperGrowth(world, blockpos));
+        return super.getStateForPlacement(context)
+                .with(NORTH, this.canAttach(stateN))
+                .with(EAST, this.canAttach(stateE))
+                .with(SOUTH, this.canAttach(stateS))
+                .with(WEST, this.canAttach(stateW))
+                .with(UP, this.canAttach(stateU))
+                .with(DOWN, this.canAttach(stateD))
+                .with(GROWTH, this.getProperGrowth(world, blockpos));
     }
 
     public BlockState updatePostPlacement(BlockState stateIn, Direction facing, BlockState facingState, IWorld worldIn, BlockPos currentPos, BlockPos facingPos)
     {
-        return stateIn.with(FACING_TO_PROPERTY_MAP.get(facing), this.canAttach(facingState, facingState.func_224755_d(worldIn, facingPos, facing.getOpposite())));
+        return stateIn.with(FACING_TO_PROPERTY_MAP.get(facing), this.canAttach(facingState));
     }
 
     @Override
     public void onEntityCollision(BlockState state, World worldIn, BlockPos pos, Entity entityIn)
     {
-        entityIn.attackEntityFrom(TerraReforged.THORNS, this == TerraBlocks.PLANT_THORN_JUNGLE ? 8 : 4);
+        entityIn.attackEntityFrom(TerraReforged.THORNS, this.damage);
         worldIn.destroyBlock(pos, false);
     }
 
@@ -272,7 +282,7 @@ public class TerraBlockThornBush extends Block
     }
 
     @Override
-    public void tick(BlockState state, World worldIn, BlockPos pos, Random random)
+    public void tick(BlockState state, ServerWorld worldIn, BlockPos pos, Random random)
     {
         int growth = state.get(GROWTH);
         if (!isValidPosition(state, worldIn, pos))

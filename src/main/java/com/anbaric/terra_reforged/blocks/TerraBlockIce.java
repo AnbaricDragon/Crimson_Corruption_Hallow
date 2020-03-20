@@ -7,10 +7,14 @@ import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.util.Direction;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.world.IBlockReader;
 import net.minecraft.world.server.ServerWorld;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
+import net.minecraftforge.common.IPlantable;
+import net.minecraftforge.common.PlantType;
 
+import javax.annotation.Nullable;
 import java.util.Random;
 
 public class TerraBlockIce extends Block
@@ -26,7 +30,13 @@ public class TerraBlockIce extends Block
     @OnlyIn(Dist.CLIENT)
     public boolean isSideInvisible(BlockState state, BlockState adjacentBlockState, Direction side)
     {
-        return adjacentBlockState.getBlock() == this ? true : super.isSideInvisible(state, adjacentBlockState, side);
+        return adjacentBlockState.getBlock() == this || super.isSideInvisible(state, adjacentBlockState, side);
+    }
+
+    @Override
+    public boolean canSustainPlant(BlockState state, IBlockReader world, BlockPos pos, Direction facing, @Nullable IPlantable plantable)
+    {
+        return plantable.getPlantType(world, pos) == TerraReforged.BOREAL;
     }
 
     @Override

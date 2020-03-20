@@ -15,7 +15,7 @@ public class TerraBlockFireblossom extends TerraBlockPotionPlant
 {
     public TerraBlockFireblossom(Properties builder)
     {
-        super(builder, 3, TerraItemRegistry.SEED_FIREBLOSSOM.get());
+        super(builder, 3);
     }
 
     @Override

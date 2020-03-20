@@ -15,7 +15,7 @@ public class TerraBlockMoonglow extends TerraBlockPotionPlant
 {
     public TerraBlockMoonglow(Properties builder)
     {
-        super(builder, 4, TerraItemRegistry.SEED_MOONGLOW.get());
+        super(builder, 4);
     }
 
     @Override

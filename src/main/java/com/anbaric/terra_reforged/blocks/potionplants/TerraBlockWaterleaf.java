@@ -16,7 +16,7 @@ public class TerraBlockWaterleaf extends TerraBlockPotionPlant
 {
     public TerraBlockWaterleaf(Properties builder)
     {
-        super(builder, 6, TerraItemRegistry.SEED_WATERLEAF.get());
+        super(builder, 6);
     }
 
     @Override

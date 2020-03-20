@@ -1,9 +1,11 @@
 package com.anbaric.terra_reforged.blocks;
 
 import com.anbaric.terra_reforged.TerraReforged;
+import com.anbaric.terra_reforged.util.init.TerraBlockRegistry;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
+import net.minecraft.block.BushBlock;
 import net.minecraft.item.BlockItemUseContext;
 import net.minecraft.util.Direction;
 import net.minecraft.util.math.BlockPos;
@@ -20,7 +22,7 @@ public class TerraBlockMoss extends Block
 {
     public Block moss;
 
-    public TerraBlockMoss(Properties properties, Block moss)
+    public TerraBlockMoss(Properties properties)
     {
         super(properties);
         this.moss = moss;
@@ -29,12 +31,22 @@ public class TerraBlockMoss extends Block
     @Override
     public boolean canSustainPlant(BlockState state, IBlockReader world, BlockPos pos, Direction facing, IPlantable plantable)
     {
-        return plantable.getPlantType(world, pos) == TerraReforged.MOSS;
+        return plantable.getPlant(world, pos).getBlock() instanceof TerraBlockMossPlant;
     }
 
     public boolean canSpread(World worldIn, BlockPos pos)
     {
-        return worldIn.getBlockState(pos.up()).isAir(worldIn, pos);
+        return worldIn.getBlockState(pos.up()).isAir(worldIn, pos) || worldIn.getBlockState(pos.up()).getBlock() instanceof BushBlock;
+    }
+
+    public Block getMoss()
+    {
+        if (this == TerraBlockRegistry.STONE_MOSS_RED.get()) { return TerraBlockRegistry.PLANT_MOSS_RED.get();}
+        else if (this == TerraBlockRegistry.STONE_MOSS_YELLOW.get()) { return TerraBlockRegistry.PLANT_MOSS_YELLOW.get();}
+        else if (this == TerraBlockRegistry.STONE_MOSS_GREEN.get()) { return TerraBlockRegistry.PLANT_MOSS_GREEN.get();}
+        else if (this == TerraBlockRegistry.STONE_MOSS_BLUE.get()) { return TerraBlockRegistry.PLANT_MOSS_BLUE.get();}
+        else if (this == TerraBlockRegistry.STONE_MOSS_PURPLE.get()) { return TerraBlockRegistry.PLANT_MOSS_PURPLE.get();}
+        else return TerraBlockRegistry.PLANT_MOSS_FIRE.get();
     }
 
     @Override
@@ -50,6 +62,10 @@ public class TerraBlockMoss extends Block
             {
                 worldIn.setBlockState(pos, Blocks.STONE.getDefaultState());
             }
+            if (worldIn.getBlockState(pos.up()).isAir(worldIn, pos.up()))
+            {
+                worldIn.setBlockState(pos.up(), getMoss().getDefaultState());
+            }
             for (int i = 0; i < 4; ++i)
             {
                 BlockPos targetPos = pos.add(random.nextInt(3) - 1, random.nextInt(3) - 1, random.nextInt(3) - 1);
@@ -63,6 +79,7 @@ public class TerraBlockMoss extends Block
         }
     }
 
+    @Override
     public void onPlayerDestroy(IWorld worldIn, BlockPos pos, BlockState state)
     {
         if (worldIn.getBlockState(pos.up()).getBlock() == this.moss)

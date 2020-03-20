@@ -1,11 +1,8 @@
 package com.anbaric.terra_reforged.blocks.potionplants;
 
-import com.anbaric.terra_reforged.util.init.TerraBlockRegistry;
 import net.minecraft.block.*;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.monster.RavagerEntity;
-import net.minecraft.item.Item;
-import net.minecraft.item.ItemStack;
 import net.minecraft.state.IntegerProperty;
 import net.minecraft.state.StateContainer;
 import net.minecraft.state.properties.BlockStateProperties;
@@ -29,24 +26,11 @@ public class TerraBlockPotionPlant extends BushBlock implements IGrowable
         Block.makeCuboidShape(4.0D, 0.0D, 4.0D, 12.0D, 10.0D, 12.0D)
     };
 
-    public Block[][] BLOCKS = new Block[][]
-    {
-        {Blocks.DIRT, Blocks.GRASS_BLOCK, TerraBlockRegistry.GRASS_CORRUPT.get(), TerraBlockRegistry.GRASS_CRIMSON.get(), TerraBlockRegistry.GRASS_HALLOWED.get(), Blocks.STONE/*, TerraBlockRegistry.STONE_EBON.get(), TerraBlockRegistry.STONE_CRIM.get(), TerraBlockRegistry.STONE_PEARL.get()*/},
-        {Blocks.GRASS_BLOCK, TerraBlockRegistry.GRASS_HALLOWED.get()},
-        {TerraBlockRegistry.GRASS_CORRUPT.get(), TerraBlockRegistry.GRASS_CRIMSON.get()/*, TerraBlockRegistry.STONE_EBON.get(), TerraBlockRegistry.STONE_CRIM.get()*/},
-        {TerraBlockRegistry.SOIL_ASH.get()},
-        {TerraBlockRegistry.SOIL_MUD.get(), TerraBlockRegistry.GRASS_JUNGLE.get(), TerraBlockRegistry.GRASS_MUSHROOM.get()},
-        {Blocks.SNOW, TerraBlockRegistry.SNOW_CORRUPT.get(), TerraBlockRegistry.SNOW_CRIMSON.get(), TerraBlockRegistry.SNOW_HALLOWED.get(), Blocks.ICE/*, TerraBlockRegistry.ICE_PURPLE.get(), TerraBlockRegistry.ICE_RED.get(), TerraBlockRegistry.ICE_PINK.get(), Blocks.PACKED_ICE, TerraBlockRegistry.ICE_HARD_PURPLE.get(), TerraBlockRegistry.ICE_HARD_RED.get(), TerraBlockRegistry.ICE_HARD_PINK.get()*/},
-        {Blocks.SAND, TerraBlockRegistry.SAND_HARD.get(), TerraBlockRegistry.SAND_PEARL.get(), TerraBlockRegistry.SAND_HARDPEARL.get()}
-    };
-
     public int blocksIndex;
-    public Item seed;
 
-    protected TerraBlockPotionPlant(Block.Properties builder, Integer arrayIndex, Item seed)
+    protected TerraBlockPotionPlant(Block.Properties builder, Integer arrayIndex)
     {
         super(builder);
-        this.seed = seed;
         this.blocksIndex = arrayIndex;
         this.setDefaultState(this.stateContainer.getBaseState().with(this.getAgeProperty(), Integer.valueOf(0)));
     }
@@ -54,26 +38,6 @@ public class TerraBlockPotionPlant extends BushBlock implements IGrowable
     public VoxelShape getShape(BlockState state, IBlockReader worldIn, BlockPos pos, ISelectionContext context)
     {
         return SHAPE_BY_AGE[state.get(this.getAgeProperty())];
-    }
-
-    public Block[] getBlocks(Block[][] mainArray, Integer index)
-    {
-        return mainArray[index];
-    }
-
-    protected boolean isValidGround(BlockState state, IBlockReader worldIn, BlockPos pos)
-    {
-        Block[] validBlocks = getBlocks(BLOCKS, blocksIndex);
-        System.out.println(validBlocks);
-        boolean isValid = false;
-        for (Block block : validBlocks)
-        {
-            if (state.getBlock() == block)
-            {
-                isValid = true;
-            }
-        }
-        return isValid;
     }
 
     public IntegerProperty getAgeProperty()
@@ -93,7 +57,7 @@ public class TerraBlockPotionPlant extends BushBlock implements IGrowable
 
     public BlockState withAge(int age)
     {
-        return this.getDefaultState().with(this.getAgeProperty(), Integer.valueOf(age));
+        return this.getDefaultState().with(this.getAgeProperty(), age);
     }
 
     public boolean isMaxAge(BlockState state)
@@ -126,11 +90,6 @@ public class TerraBlockPotionPlant extends BushBlock implements IGrowable
         }
 
         super.onEntityCollision(state, worldIn, pos, entityIn);
-    }
-
-    public ItemStack getItem(IBlockReader worldIn, BlockPos pos, BlockState state)
-    {
-        return new ItemStack(this.seed);
     }
 
     /**

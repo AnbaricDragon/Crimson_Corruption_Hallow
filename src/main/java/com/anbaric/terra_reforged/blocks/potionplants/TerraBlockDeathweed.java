@@ -15,14 +15,14 @@ public class TerraBlockDeathweed extends TerraBlockPotionPlant
 {
     public TerraBlockDeathweed(Properties builder)
     {
-        super(builder, 2, TerraItemRegistry.SEED_DEATHWEED.get());
+        super(builder, 2);
     }
 
     @Override
     protected boolean isValidGround(BlockState state, IBlockReader worldIn, BlockPos pos)
     {
         Block target = state.getBlock();
-        return target == TerraBlockRegistry.GRASS_CORRUPT.get() || target == TerraBlockRegistry.GRASS_CRIMSON.get()/* || target == TerraBlockRegistry.STONE_EBON.get() || target == TerraBlockRegistry.STONE_CRIM.get()*/;
+        return target == TerraBlockRegistry.GRASS_CORRUPT.get() || target == TerraBlockRegistry.GRASS_CRIMSON.get() || target == TerraBlockRegistry.STONE_EBON.get() || target == TerraBlockRegistry.STONE_CRIM.get();
     }
 
     @Override

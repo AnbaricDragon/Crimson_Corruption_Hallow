@@ -142,14 +142,14 @@ public class TerraBlockBiomeGrass extends SnowyDirtBlock implements IGrowable
         else
         {
             Block block = facingState.getBlock();
-            return stateIn.with(SNOWY, Boolean.valueOf(block == Blocks.SNOW_BLOCK || block == Blocks.SNOW/* || block == TerraBlockRegistry.SNOW_CORRUPT_LAYER.get() || block == TerraBlockRegistry.SNOW_CRIMSON_LAYER.get() || block == TerraBlockRegistry.SNOW_HALLOWED_LAYER.get()*/));
+            return stateIn.with(SNOWY, block == Blocks.SNOW_BLOCK || block == Blocks.SNOW || block == TerraBlockRegistry.SNOW_CORRUPT_LAYER.get() || block == TerraBlockRegistry.SNOW_CRIMSON_LAYER.get() || block == TerraBlockRegistry.SNOW_HALLOWED_LAYER.get());
         }
     }
 
     public BlockState getStateForPlacement(BlockItemUseContext context)
     {
         Block block = context.getWorld().getBlockState(context.getPos().up()).getBlock();
-        return this.getDefaultState().with(SNOWY, Boolean.valueOf(block == Blocks.SNOW_BLOCK || block == Blocks.SNOW/* || block == TerraBlockRegistry.SNOW_CORRUPT_LAYER.get() || block == TerraBlockRegistry.SNOW_CRIMSON_LAYER.get() || block == TerraBlockRegistry.SNOW_HALLOWED_LAYER.get()*/));
+        return this.getDefaultState().with(SNOWY, block == Blocks.SNOW_BLOCK || block == Blocks.SNOW || block == TerraBlockRegistry.SNOW_CORRUPT_LAYER.get() || block == TerraBlockRegistry.SNOW_CRIMSON_LAYER.get() || block == TerraBlockRegistry.SNOW_HALLOWED_LAYER.get());
     }
 
     public Block transformedState(EnumBiomeType type, Block target)

@@ -16,7 +16,7 @@ public class TerraBlockDaybloom extends TerraBlockPotionPlant
 {
     public TerraBlockDaybloom(Properties builder)
     {
-        super(builder, 1, TerraItemRegistry.SEED_DAYBLOOM.get());
+        super(builder, 1);
     }
 
     @Override

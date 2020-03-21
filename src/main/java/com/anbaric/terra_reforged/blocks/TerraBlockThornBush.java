@@ -6,17 +6,13 @@ import com.google.common.collect.Maps;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
-import net.minecraft.block.FenceGateBlock;
 import net.minecraft.entity.Entity;
-import net.minecraft.fluid.Fluids;
-import net.minecraft.fluid.IFluidState;
 import net.minecraft.item.BlockItemUseContext;
 import net.minecraft.pathfinding.PathType;
 import net.minecraft.state.BooleanProperty;
 import net.minecraft.state.IntegerProperty;
 import net.minecraft.state.StateContainer;
 import net.minecraft.state.properties.BlockStateProperties;
-import net.minecraft.tags.BlockTags;
 import net.minecraft.util.Direction;
 import net.minecraft.util.Util;
 import net.minecraft.util.math.BlockPos;
@@ -52,6 +48,7 @@ public class TerraBlockThornBush extends Block
     public static final IntegerProperty GROWTH = IntegerProperty.create("growth", 0, 9);
 
     private final VoxelShape[] renderShapes;
+
     private final Float damage;
 
     public TerraBlockThornBush(Properties properties, Float damage)
@@ -133,21 +130,28 @@ public class TerraBlockThornBush extends Block
         return this.renderShapes[this.getIndex(state)];
     }
 
+    public boolean canAttach(BlockState state, boolean solidSide)
+    {
+        Block   block = state.getBlock();
+        boolean flag  = state.isSolid();
+        boolean flag1 = block instanceof TerraBlockThornBush;
+        return !cannotAttach(block) && solidSide || flag || flag1;
+    }
+
     public Block getGrass()
     {
-//        if (this == TerraBlockRegistry.PLANT_THORN_PURPLE.get())
-//        {
-//            return TerraBlockRegistry.GRASS_CORRUPT.get();
-//        }
-//        else if (this == TerraBlockRegistry.PLANT_THORN_RED.get())
-//        {
-//            return TerraBlockRegistry.GRASS_CRIMSON.get();
-//        }
-//        else
-//        {
-//            return TerraBlockRegistry.GRASS_JUNGLE.get();
-//        }
-        return TerraBlockRegistry.GRASS_JUNGLE.get();
+        if (this == TerraBlockRegistry.PLANT_THORN_PURPLE.get())
+        {
+            return TerraBlockRegistry.GRASS_CORRUPT.get();
+        }
+        else if (this == TerraBlockRegistry.PLANT_THORN_RED.get())
+        {
+            return TerraBlockRegistry.GRASS_CRIMSON.get();
+        }
+        else
+        {
+            return TerraBlockRegistry.GRASS_JUNGLE.get();
+        }
     }
 
     public int getProperGrowth(IBlockReader worldIn, BlockPos pos)
@@ -215,14 +219,6 @@ public class TerraBlockThornBush extends Block
         return countNei;
     }
 
-    public boolean canAttach(BlockState state)
-    {
-        Block   block = state.getBlock();
-        boolean flag  = state.isSolid();
-        boolean flag1 = block instanceof TerraBlockThornBush || block == getGrass();
-        return !cannotAttach(block) || flag || flag1;
-    }
-
     public BlockState getStateForPlacement(BlockItemUseContext context)
     {
         IBlockReader world     = context.getWorld();
@@ -239,19 +235,12 @@ public class TerraBlockThornBush extends Block
         BlockState   stateW    = world.getBlockState(blockposW);
         BlockState   stateU    = world.getBlockState(blockposU);
         BlockState   stateD    = world.getBlockState(blockposD);
-        return super.getStateForPlacement(context)
-                .with(NORTH, this.canAttach(stateN))
-                .with(EAST, this.canAttach(stateE))
-                .with(SOUTH, this.canAttach(stateS))
-                .with(WEST, this.canAttach(stateW))
-                .with(UP, this.canAttach(stateU))
-                .with(DOWN, this.canAttach(stateD))
-                .with(GROWTH, this.getProperGrowth(world, blockpos));
+        return super.getStateForPlacement(context).with(NORTH, this.canAttach(stateN, stateN.isSolidSide(world, blockposN, Direction.SOUTH))).with(EAST, this.canAttach(stateE, stateE.isSolidSide(world, blockposE, Direction.WEST))).with(SOUTH, this.canAttach(stateS, stateS.isSolidSide(world, blockposS, Direction.NORTH))).with(WEST, this.canAttach(stateW, stateW.isSolidSide(world, blockposW, Direction.EAST))).with(UP, this.canAttach(stateU, stateU.isSolidSide(world, blockposU, Direction.DOWN))).with(DOWN, this.canAttach(stateD, stateD.isSolidSide(world, blockposD, Direction.UP))).with(GROWTH, this.getProperGrowth(world, blockpos));
     }
 
     public BlockState updatePostPlacement(BlockState stateIn, Direction facing, BlockState facingState, IWorld worldIn, BlockPos currentPos, BlockPos facingPos)
     {
-        return stateIn.with(FACING_TO_PROPERTY_MAP.get(facing), this.canAttach(facingState));
+        return stateIn.with(FACING_TO_PROPERTY_MAP.get(facing), this.canAttach(facingState, facingState.isSolidSide(worldIn, facingPos, facing.getOpposite())));
     }
 
     @Override

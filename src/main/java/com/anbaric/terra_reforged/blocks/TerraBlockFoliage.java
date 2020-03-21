@@ -4,10 +4,17 @@ import com.anbaric.terra_reforged.util.init.TerraBlockRegistry;
 import net.minecraft.block.*;
 import net.minecraft.util.Direction;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.math.shapes.ISelectionContext;
+import net.minecraft.util.math.shapes.VoxelShape;
+import net.minecraft.world.IBlockReader;
 import net.minecraft.world.IWorldReader;
 
-public class TerraBlockFoliage extends MushroomBlock
+public class TerraBlockFoliage extends BushBlock
 {
+    protected static final VoxelShape MUSHROOM_SHAPE = Block.makeCuboidShape(5.0D, 0.0D, 5.0D, 11.0D, 6.0D, 11.0D);
+    protected static final VoxelShape MOSS_SHAPE = Block.makeCuboidShape(0.0D, 0.0D, 0.0D, 16.0D, 1.0D, 16.0D);
+    protected static final VoxelShape NULL_SHAPE = Block.makeCuboidShape(0.0D, 0.0D, 0.0D, 0.0D, 0.0D, 0.0D);
+
     public TerraBlockFoliage(Block.Properties builder)
     {
         super(builder.notSolid());
@@ -57,5 +64,29 @@ public class TerraBlockFoliage extends MushroomBlock
         }
 
         return soilState.canSustainPlant(worldIn, pos.down(), Direction.UP, this);
+    }
+
+    @Override
+    public VoxelShape getShape(BlockState state, IBlockReader worldIn, BlockPos pos, ISelectionContext context)
+    {
+        if (this == TerraBlockRegistry.PLANT_MOSS_RED.get() ||
+            this == TerraBlockRegistry.PLANT_MOSS_YELLOW.get() ||
+            this == TerraBlockRegistry.PLANT_MOSS_GREEN.get() ||
+            this == TerraBlockRegistry.PLANT_MOSS_BLUE.get() ||
+            this == TerraBlockRegistry.PLANT_MOSS_PURPLE.get() ||
+            this == TerraBlockRegistry.PLANT_MOSS_FIRE.get())
+        {
+            return MOSS_SHAPE;
+        }
+        else if (this == TerraBlockRegistry.PLANT_MUSHROOM_GLOWING.get() ||
+            this == TerraBlockRegistry.PLANT_MUSHROOM_VILE.get() ||
+            this == TerraBlockRegistry.PLANT_MUSHROOM_VICIOUS.get())
+        {
+            return MUSHROOM_SHAPE;
+        }
+        else
+        {
+            return NULL_SHAPE;
+        }
     }
 }

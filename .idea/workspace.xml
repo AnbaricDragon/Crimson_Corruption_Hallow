@@ -9,48 +9,13 @@
       <change beforePath="$PROJECT_DIR$/.gradle/4.9/taskHistory/taskHistory.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/4.9/taskHistory/taskHistory.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/resources/main/assets/terra_reforged/blockstates/plant_mushroom_glowing.json" beforeDir="false" afterPath="$PROJECT_DIR$/build/resources/main/assets/terra_reforged/blockstates/plant_mushroom_glowing.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/resources/main/assets/terra_reforged/textures/blocks/stone_moss_blue_side.png" beforeDir="false" afterPath="$PROJECT_DIR$/build/resources/main/assets/terra_reforged/textures/blocks/stone_moss_blue_side.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/resources/main/assets/terra_reforged/textures/blocks/stone_moss_blue_top.png" beforeDir="false" afterPath="$PROJECT_DIR$/build/resources/main/assets/terra_reforged/textures/blocks/stone_moss_blue_top.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/resources/main/assets/terra_reforged/textures/blocks/stone_moss_fire_side.png" beforeDir="false" afterPath="$PROJECT_DIR$/build/resources/main/assets/terra_reforged/textures/blocks/stone_moss_fire_side.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/resources/main/assets/terra_reforged/textures/blocks/stone_moss_fire_side_glow.png" beforeDir="false" afterPath="$PROJECT_DIR$/build/resources/main/assets/terra_reforged/textures/blocks/stone_moss_fire_side_glow.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/resources/main/assets/terra_reforged/textures/blocks/stone_moss_fire_top.png" beforeDir="false" afterPath="$PROJECT_DIR$/build/resources/main/assets/terra_reforged/textures/blocks/stone_moss_fire_top.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/resources/main/assets/terra_reforged/textures/blocks/stone_moss_green_side.png" beforeDir="false" afterPath="$PROJECT_DIR$/build/resources/main/assets/terra_reforged/textures/blocks/stone_moss_green_side.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/resources/main/assets/terra_reforged/textures/blocks/stone_moss_green_top.png" beforeDir="false" afterPath="$PROJECT_DIR$/build/resources/main/assets/terra_reforged/textures/blocks/stone_moss_green_top.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/resources/main/assets/terra_reforged/textures/blocks/stone_moss_purple_side.png" beforeDir="false" afterPath="$PROJECT_DIR$/build/resources/main/assets/terra_reforged/textures/blocks/stone_moss_purple_side.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/resources/main/assets/terra_reforged/textures/blocks/stone_moss_purple_top.png" beforeDir="false" afterPath="$PROJECT_DIR$/build/resources/main/assets/terra_reforged/textures/blocks/stone_moss_purple_top.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/resources/main/assets/terra_reforged/textures/blocks/stone_moss_red_side.png" beforeDir="false" afterPath="$PROJECT_DIR$/build/resources/main/assets/terra_reforged/textures/blocks/stone_moss_red_side.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/resources/main/assets/terra_reforged/textures/blocks/stone_moss_red_top.png" beforeDir="false" afterPath="$PROJECT_DIR$/build/resources/main/assets/terra_reforged/textures/blocks/stone_moss_red_top.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/resources/main/assets/terra_reforged/textures/blocks/stone_moss_yellow_side.png" beforeDir="false" afterPath="$PROJECT_DIR$/build/resources/main/assets/terra_reforged/textures/blocks/stone_moss_yellow_side.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/resources/main/assets/terra_reforged/textures/blocks/stone_moss_yellow_top.png" beforeDir="false" afterPath="$PROJECT_DIR$/build/resources/main/assets/terra_reforged/textures/blocks/stone_moss_yellow_top.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/data/terra_reforged/tags/blocks/blinkroot.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/anbaric/Terra_Reforged/TerraReforged.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/anbaric/Terra_Reforged/TerraReforged.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/anbaric/Terra_Reforged/util/init/TerraBlockRegistry.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/anbaric/Terra_Reforged/util/init/TerraBlockRegistry.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/anbaric/terra_reforged/blocks/TerraBlockBiomeGrass.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/anbaric/terra_reforged/blocks/TerraBlockBiomeGrass.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/anbaric/terra_reforged/blocks/TerraBlockIce.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/anbaric/terra_reforged/blocks/TerraBlockIce.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/anbaric/terra_reforged/blocks/TerraBlockFoliage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/anbaric/terra_reforged/blocks/TerraBlockFoliage.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/anbaric/terra_reforged/blocks/TerraBlockMoss.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/anbaric/terra_reforged/blocks/TerraBlockMoss.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/anbaric/terra_reforged/blocks/potionplants/TerraBlockBlinkroot.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/anbaric/terra_reforged/blocks/potionplants/TerraBlockBlinkroot.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/anbaric/terra_reforged/blocks/potionplants/TerraBlockDaybloom.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/anbaric/terra_reforged/blocks/potionplants/TerraBlockDaybloom.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/anbaric/terra_reforged/blocks/potionplants/TerraBlockDeathweed.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/anbaric/terra_reforged/blocks/potionplants/TerraBlockDeathweed.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/anbaric/terra_reforged/blocks/potionplants/TerraBlockFireblossom.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/anbaric/terra_reforged/blocks/potionplants/TerraBlockFireblossom.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/anbaric/terra_reforged/blocks/potionplants/TerraBlockMoonglow.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/anbaric/terra_reforged/blocks/potionplants/TerraBlockMoonglow.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/anbaric/terra_reforged/blocks/potionplants/TerraBlockPotionPlant.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/anbaric/terra_reforged/blocks/potionplants/TerraBlockPotionPlant.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/anbaric/terra_reforged/blocks/potionplants/TerraBlockShiverthorn.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/anbaric/terra_reforged/blocks/potionplants/TerraBlockShiverthorn.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/anbaric/terra_reforged/blocks/potionplants/TerraBlockWaterleaf.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/anbaric/terra_reforged/blocks/potionplants/TerraBlockWaterleaf.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/anbaric/terra_reforged/util/handlers/EnumHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/anbaric/terra_reforged/util/handlers/EnumHandler.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/anbaric/terra_reforged/util/handlers/RenderHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/anbaric/terra_reforged/util/handlers/RenderHandler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/assets/terra_reforged/blockstates/plant_mushroom_glowing.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/assets/terra_reforged/blockstates/plant_mushroom_glowing.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/assets/terra_reforged/textures/blocks/stone_moss_blue_side.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/assets/terra_reforged/textures/blocks/stone_moss_blue_side.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/assets/terra_reforged/textures/blocks/stone_moss_blue_top.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/assets/terra_reforged/textures/blocks/stone_moss_blue_top.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/assets/terra_reforged/textures/blocks/stone_moss_fire_side.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/assets/terra_reforged/textures/blocks/stone_moss_fire_side.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/assets/terra_reforged/textures/blocks/stone_moss_fire_side_glow.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/assets/terra_reforged/textures/blocks/stone_moss_fire_side_glow.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/assets/terra_reforged/textures/blocks/stone_moss_fire_top.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/assets/terra_reforged/textures/blocks/stone_moss_fire_top.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/assets/terra_reforged/textures/blocks/stone_moss_green_side.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/assets/terra_reforged/textures/blocks/stone_moss_green_side.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/assets/terra_reforged/textures/blocks/stone_moss_green_top.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/assets/terra_reforged/textures/blocks/stone_moss_green_top.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/assets/terra_reforged/textures/blocks/stone_moss_purple_side.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/assets/terra_reforged/textures/blocks/stone_moss_purple_side.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/assets/terra_reforged/textures/blocks/stone_moss_purple_top.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/assets/terra_reforged/textures/blocks/stone_moss_purple_top.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/assets/terra_reforged/textures/blocks/stone_moss_red_side.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/assets/terra_reforged/textures/blocks/stone_moss_red_side.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/assets/terra_reforged/textures/blocks/stone_moss_red_top.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/assets/terra_reforged/textures/blocks/stone_moss_red_top.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/assets/terra_reforged/textures/blocks/stone_moss_yellow_side.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/assets/terra_reforged/textures/blocks/stone_moss_yellow_side.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/assets/terra_reforged/textures/blocks/stone_moss_yellow_top.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/assets/terra_reforged/textures/blocks/stone_moss_yellow_top.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/data/terra_reforged/tags/blocks/blinkroot.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/data/terra_reforged/tags/blocks/moss.json" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -3970,22 +3935,22 @@
       <screen x="0" y="0" width="1920" height="1026" />
     </state>
     <state x="679" y="246" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/1920.312.1366.714/-1920.0.1920.1080/0.0.1920.1026@0.0.1920.1026" timestamp="1584686207447" />
-    <state width="1876" height="771" key="GridCell.Tab.0.bottom" timestamp="1584680669606">
+    <state width="1876" height="2" key="GridCell.Tab.0.bottom" timestamp="1584759983826">
       <screen x="0" y="0" width="1920" height="1026" />
     </state>
-    <state width="1876" height="771" key="GridCell.Tab.0.bottom/1920.312.1366.714/-1920.0.1920.1080/0.0.1920.1026@0.0.1920.1026" timestamp="1584680669606" />
-    <state width="1876" height="771" key="GridCell.Tab.0.center" timestamp="1584680669606">
+    <state width="1876" height="2" key="GridCell.Tab.0.bottom/1920.312.1366.714/-1920.0.1920.1080/0.0.1920.1026@0.0.1920.1026" timestamp="1584759983826" />
+    <state width="1876" height="2" key="GridCell.Tab.0.center" timestamp="1584759983826">
       <screen x="0" y="0" width="1920" height="1026" />
     </state>
-    <state width="1876" height="771" key="GridCell.Tab.0.center/1920.312.1366.714/-1920.0.1920.1080/0.0.1920.1026@0.0.1920.1026" timestamp="1584680669606" />
-    <state width="1876" height="771" key="GridCell.Tab.0.left" timestamp="1584680669606">
+    <state width="1876" height="2" key="GridCell.Tab.0.center/1920.312.1366.714/-1920.0.1920.1080/0.0.1920.1026@0.0.1920.1026" timestamp="1584759983826" />
+    <state width="1876" height="2" key="GridCell.Tab.0.left" timestamp="1584759983825">
       <screen x="0" y="0" width="1920" height="1026" />
     </state>
-    <state width="1876" height="771" key="GridCell.Tab.0.left/1920.312.1366.714/-1920.0.1920.1080/0.0.1920.1026@0.0.1920.1026" timestamp="1584680669606" />
-    <state width="1876" height="771" key="GridCell.Tab.0.right" timestamp="1584680669606">
+    <state width="1876" height="2" key="GridCell.Tab.0.left/1920.312.1366.714/-1920.0.1920.1080/0.0.1920.1026@0.0.1920.1026" timestamp="1584759983825" />
+    <state width="1876" height="2" key="GridCell.Tab.0.right" timestamp="1584759983826">
       <screen x="0" y="0" width="1920" height="1026" />
     </state>
-    <state width="1876" height="771" key="GridCell.Tab.0.right/1920.312.1366.714/-1920.0.1920.1080/0.0.1920.1026@0.0.1920.1026" timestamp="1584680669606" />
+    <state width="1876" height="2" key="GridCell.Tab.0.right/1920.312.1366.714/-1920.0.1920.1080/0.0.1920.1026@0.0.1920.1026" timestamp="1584759983826" />
     <state width="1876" height="335" key="GridCell.Tab.1.bottom" timestamp="1584650774321">
       <screen x="0" y="0" width="1920" height="1026" />
     </state>
@@ -4010,5 +3975,9 @@
       <screen x="0" y="0" width="1920" height="1026" />
     </state>
     <state x="605" y="225" key="run.anything.popup/1920.312.1366.714/-1920.0.1920.1080/0.0.1920.1026@0.0.1920.1026" timestamp="1584331686326" />
+    <state x="623" y="216" width="672" height="678" key="search.everywhere.popup" timestamp="1584722224004">
+      <screen x="0" y="0" width="1920" height="1026" />
+    </state>
+    <state x="623" y="216" width="672" height="678" key="search.everywhere.popup/1920.312.1366.714/-1920.0.1920.1080/0.0.1920.1026@0.0.1920.1026" timestamp="1584722224004" />
   </component>
 </project>

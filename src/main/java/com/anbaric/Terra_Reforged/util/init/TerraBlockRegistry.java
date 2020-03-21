@@ -146,8 +146,8 @@ public final class TerraBlockRegistry
     public static final RegistryObject<Block> PLANT_MUSHROOM_VILE = BLOCKS.register("plant_mushroom_vile", () -> new TerraBlockFoliage(Block.Properties.create(Material.PLANTS).sound(SoundType.PLANT).doesNotBlockMovement().hardnessAndResistance(0.0F)));
     public static final RegistryObject<Block> PLANT_MUSHROOM_VICIOUS = BLOCKS.register("plant_mushroom_vicious", () -> new TerraBlockFoliage(Block.Properties.create(Material.PLANTS).sound(SoundType.PLANT).doesNotBlockMovement().hardnessAndResistance(0.0F)));
     public static final RegistryObject<Block> PLANT_LIFEFRUIT = BLOCKS.register("plant_lifefruit", () -> new TerraBlockFoliage(Block.Properties.create(Material.PLANTS).sound(SoundType.PLANT).doesNotBlockMovement().hardnessAndResistance(0.0F)));
-    /*public static final RegistryObject<Block> PLANT_BLOODROOT = null;
-    public static final RegistryObject<Block> PLANT_DYE_PURPLE = null;
+    public static final RegistryObject<Block> PLANT_BLOODROOT = BLOCKS.register("plant_bloodroot", () -> new TerraBlockHangingPlant(Block.Properties.create(Material.PLANTS).sound(SoundType.PLANT).doesNotBlockMovement().hardnessAndResistance(0.0F)));
+    /*public static final RegistryObject<Block> PLANT_DYE_PURPLE = null;
     public static final RegistryObject<Block> PLANT_DYE_ORANGE = null;
     public static final RegistryObject<Block> PLANT_DYE_CYAN = null;
     public static final RegistryObject<Block> PLANT_DYE_RED = null;

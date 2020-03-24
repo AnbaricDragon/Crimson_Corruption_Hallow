@@ -45,14 +45,14 @@ public class EnumHandler
         SNOWLAYER(Blocks.SNOW, TerraBlockRegistry.SNOW_CORRUPT_LAYER.get(), TerraBlockRegistry.SNOW_CRIMSON_LAYER.get(), TerraBlockRegistry.SNOW_HALLOWED_LAYER.get()),
         ICE(Blocks.ICE, TerraBlockRegistry.ICE_PURPLE.get(), TerraBlockRegistry.ICE_RED.get(), TerraBlockRegistry.ICE_PINK.get()),
         HARDICE(Blocks.PACKED_ICE, TerraBlockRegistry.ICE_HARD_PURPLE.get(), TerraBlockRegistry.ICE_HARD_RED.get(), TerraBlockRegistry.ICE_HARD_PINK.get()),
-        STONE(Blocks.STONE, TerraBlockRegistry.STONE_EBON.get(), TerraBlockRegistry.STONE_CRIM.get(), TerraBlockRegistry.STONE_PEARL.get()),
+//        STONE(Blocks.STONE, TerraBlockRegistry.STONE_EBON.get(), TerraBlockRegistry.STONE_CRIM.get(), TerraBlockRegistry.STONE_PEARL.get()),
         COBBLE(Blocks.COBBLESTONE, TerraBlockRegistry.COBBLESTONE_EBON.get(), TerraBlockRegistry.COBBLESTONE_CRIM.get(), TerraBlockRegistry.COBBLESTONE_PEARL.get()),
         MOSSYCOBBLE(Blocks.MOSSY_COBBLESTONE, TerraBlockRegistry.COBBLESTONE_EBON_MOSSY.get(), TerraBlockRegistry.COBBLESTONE_CRIM_MOSSY.get(), TerraBlockRegistry.COBBLESTONE_PEARL_MOSSY.get()),
         STONEBRICK(Blocks.STONE_BRICKS, TerraBlockRegistry.STONEBRICK_EBON.get(), TerraBlockRegistry.STONEBRICK_CRIM.get(), TerraBlockRegistry.STONEBRICK_PEARL.get()),
         CRACKEDSTONEBRICK(Blocks.CRACKED_STONE_BRICKS, TerraBlockRegistry.STONEBRICK_EBON_CRACKED.get(), TerraBlockRegistry.STONEBRICK_CRIM_CRACKED.get(), TerraBlockRegistry.STONEBRICK_PEARL_CRACKED.get()),
         CHISELEDSTONEBRICK(Blocks.CHISELED_STONE_BRICKS, TerraBlockRegistry.STONEBRICK_EBON_CHISELED.get(), TerraBlockRegistry.STONEBRICK_CRIM_CHISELED.get(), TerraBlockRegistry.STONEBRICK_PEARL_CHISELED.get()),
-        MOSSYSTONEBRICK(Blocks.MOSSY_STONE_BRICKS, TerraBlockRegistry.STONEBRICK_EBON_MOSSY.get(), TerraBlockRegistry.STONEBRICK_CRIM_MOSSY.get(), TerraBlockRegistry.STONEBRICK_PEARL_MOSSY.get());
-//        CACTUS(Blocks.CACTUS, TerraBlockRegistry.CACTUS_EBON.get(), TerraBlockRegistry.CACTUS_CRIM.get(), TerraBlockRegistry.CACTUS_PEARL.get()),
+        MOSSYSTONEBRICK(Blocks.MOSSY_STONE_BRICKS, TerraBlockRegistry.STONEBRICK_EBON_MOSSY.get(), TerraBlockRegistry.STONEBRICK_CRIM_MOSSY.get(), TerraBlockRegistry.STONEBRICK_PEARL_MOSSY.get()),
+        CACTUS(Blocks.CACTUS, TerraBlockRegistry.CACTUS_EBON.get(), TerraBlockRegistry.CACTUS_CRIM.get(), TerraBlockRegistry.CACTUS_PEARL.get()),
 //        ORECOPPER(TerraBlockRegistry.ORE_COPPER, TerraBlockRegistry.ORE_COPPER.with(TerraBlockOres.VARIANT, EnumBiomeType.CORRUPT), TerraBlockRegistry.ORE_COPPER.withProperty(TerraBlockOres.VARIANT, EnumBiomeType.CRIMSON), TerraBlockRegistry.ORE_COPPER.withProperty(TerraBlockOres.VARIANT, EnumBiomeType.HALLOWED)),
 //        ORETIN(TerraBlockRegistry.ORE_TIN, TerraBlockRegistry.ORE_TIN.withProperty(TerraBlockOres.VARIANT, EnumBiomeType.CORRUPT), TerraBlockRegistry.ORE_TIN.withProperty(TerraBlockOres.VARIANT, EnumBiomeType.CRIMSON), TerraBlockRegistry.ORE_TIN.withProperty(TerraBlockOres.VARIANT, EnumBiomeType.HALLOWED)),
 //        ORELEAD(TerraBlockRegistry.ORE_LEAD, TerraBlockRegistry.ORE_LEAD.withProperty(TerraBlockOres.VARIANT, EnumBiomeType.CORRUPT), TerraBlockRegistry.ORE_LEAD.withProperty(TerraBlockOres.VARIANT, EnumBiomeType.CRIMSON), TerraBlockRegistry.ORE_LEAD.withProperty(TerraBlockOres.VARIANT, EnumBiomeType.HALLOWED)),
@@ -81,7 +81,7 @@ public class EnumHandler
 //        SAPLING_A(Blocks.SAPLING.withProperty(BlockSapling.TYPE, BlockPlanks.EnumType.OAK).withProperty(BlockSapling.STAGE, 0), TerraBlockRegistry.SAPLING_EBON, TerraBlockRegistry.SAPLING_SHADE, TerraBlockRegistry.SAPLING_PEARL),
 //        SAPLING_B(Blocks.SAPLING.withProperty(BlockSapling.TYPE, BlockPlanks.EnumType.OAK).withProperty(BlockSapling.STAGE, 1), TerraBlockRegistry.SAPLING_EBON, TerraBlockRegistry.SAPLING_SHADE, TerraBlockRegistry.SAPLING_PEARL),
 //        TALLGRASS(Blocks.GRASS, TerraBlockRegistry.TALLGRASS_CORRUPT.get(), TerraBlockRegistry.TALLGRASS_CRIMSON.get(), TerraBlockRegistry.TALLGRASS_HALLOWED.get()),
-//        REEDS(Blocks.SUGAR_CANE, TerraBlockRegistry.REED_CORRUPT.get(), TerraBlockRegistry.REED_CRIMSON.get(), TerraBlockRegistry.REED_HALLOWED.get());
+        REEDS(Blocks.SUGAR_CANE, TerraBlockRegistry.REED_CORRUPT.get(), TerraBlockRegistry.REED_CRIMSON.get(), TerraBlockRegistry.REED_HALLOWED.get());
 //        TALLGRASS_BOT(Blocks.DOUBLE_PLANT.withProperty(net.minecraft.block.BlockDoublePlant.VARIANT, net.minecraft.block.BlockDoublePlant.EnumPlantType.GRASS).withProperty(net.minecraft.block.BlockDoublePlant.HALF, net.minecraft.block.BlockDoublePlant.EnumBlockHalf.LOWER), TerraBlockRegistry.DOUBLEGRASS_CORRUPT.withProperty(TerraBlockDoublePlant.HALF, EnumHandler.EnumBlockHalf.LOWER), TerraBlockRegistry.DOUBLEGRASS_CRIMSON.withProperty(TerraBlockDoublePlant.HALF, EnumHandler.EnumBlockHalf.LOWER), TerraBlockRegistry.DOUBLEGRASS_HALLOWED.withProperty(TerraBlockDoublePlant.HALF, EnumHandler.EnumBlockHalf.LOWER), TALLGRASS_TOP);
 
         public Block pure, corrupt, crimson, hallowed;

@@ -1,6 +1,7 @@
 package com.anbaric.terra_reforged;
 
 import com.anbaric.terra_reforged.util.Reference;
+import com.anbaric.terra_reforged.util.TerraCompat;
 import com.anbaric.terra_reforged.util.init.TerraBlockRegistry;
 import com.anbaric.terra_reforged.util.init.TerraItemRegistry;
 import net.minecraft.block.Block;
@@ -68,9 +69,7 @@ import java.util.stream.Collectors;
 
     private void setup(final FMLCommonSetupEvent event)
     {
-        // some preinit code
-        LOGGER.info("HELLO FROM PREINIT");
-        LOGGER.info("DIRT BLOCK >> {}", Blocks.DIRT.getRegistryName());
+        TerraCompat.setup();
     }
 
     private void doClientStuff(final FMLClientSetupEvent event)

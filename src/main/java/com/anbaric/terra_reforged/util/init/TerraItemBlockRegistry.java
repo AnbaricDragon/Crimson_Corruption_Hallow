@@ -1,6 +1,8 @@
 package com.anbaric.terra_reforged.util.init;
 
+import com.anbaric.terra_reforged.blocks.TerraBlockCactus;
 import com.anbaric.terra_reforged.blocks.TerraBlockReeds;
+import com.anbaric.terra_reforged.blocks.TerraBlockThornBush;
 import com.anbaric.terra_reforged.util.Reference;
 import com.anbaric.terra_reforged.util.TerraItemGroups;
 import net.minecraft.item.BlockItem;
@@ -25,7 +27,16 @@ public class TerraItemBlockRegistry
         // Automatically register BlockItems for all our Blocks
         TerraBlockRegistry.BLOCKS.getEntries().stream().map(RegistryObject::get)
                 // You can do extra filtering here if you don't want some blocks to have an BlockItem automatically registered for them
-                //.filter(block -> block instanceof TerraBlockReeds)
+                .filter(block ->
+                        !(block instanceof TerraBlockReeds) &&
+                        !(block instanceof TerraBlockCactus) &&
+                        !(block instanceof TerraBlockThornBush) &&
+                        block != TerraBlockRegistry.PLANT_MOSS_RED.get() &&
+                        block != TerraBlockRegistry.PLANT_MOSS_FIRE.get() &&
+                        block != TerraBlockRegistry.PLANT_MOSS_YELLOW.get() &&
+                        block != TerraBlockRegistry.PLANT_MOSS_GREEN.get() &&
+                        block != TerraBlockRegistry.PLANT_MOSS_BLUE.get() &&
+                        block != TerraBlockRegistry.PLANT_MOSS_PURPLE.get())
                 // Register the BlockItem for the block
                 .forEach(block -> {
                     // Make the properties, and make it so that the item will be on our ItemGroup (CreativeTab)

@@ -38,7 +38,7 @@ import java.util.stream.Collectors;
 {
     private static final Logger LOGGER = LogManager.getLogger(Reference.MODID);
 
-    public static final boolean debugSpreading = true;
+    public static final boolean debugSpreading = false;
 
     public static PlantType BOREAL = PlantType.create("Boreal");
 

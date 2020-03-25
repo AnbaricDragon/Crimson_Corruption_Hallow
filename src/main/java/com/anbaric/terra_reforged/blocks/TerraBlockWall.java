@@ -2,10 +2,14 @@ package com.anbaric.terra_reforged.blocks;
 
 import net.minecraft.block.*;
 import net.minecraft.block.material.Material;
+import net.minecraft.fluid.Fluids;
+import net.minecraft.fluid.IFluidState;
 import net.minecraft.item.BlockItemUseContext;
 import net.minecraft.pathfinding.PathType;
+import net.minecraft.state.BooleanProperty;
 import net.minecraft.state.EnumProperty;
 import net.minecraft.state.StateContainer;
+import net.minecraft.state.properties.BlockStateProperties;
 import net.minecraft.tags.BlockTags;
 import net.minecraft.util.Direction;
 import net.minecraft.util.IStringSerializable;
@@ -16,7 +20,7 @@ import net.minecraft.util.math.shapes.VoxelShapes;
 import net.minecraft.world.IBlockReader;
 import net.minecraft.world.IWorld;
 
-public class TerraBlockWall extends Block
+public class TerraBlockWall extends Block implements IWaterLoggable
 {
     public static final EnumProperty<WallSide> NORTH = EnumProperty.create("north", WallSide.class);
     public static final EnumProperty<WallSide> EAST = EnumProperty.create("east", WallSide.class);
@@ -24,6 +28,8 @@ public class TerraBlockWall extends Block
     public static final EnumProperty<WallSide> WEST = EnumProperty.create("west", WallSide.class);
 
     public static final EnumProperty<WallColumn> UP = EnumProperty.create("up", WallColumn.class);
+
+    public static final BooleanProperty WATERLOGGED = BlockStateProperties.WATERLOGGED;
 
     private final VoxelShape[] renderShapes;
     private final VoxelShape[] collideShapes;
@@ -33,7 +39,11 @@ public class TerraBlockWall extends Block
         super(properties);
         this.renderShapes = this.makeShapes(14.0D);
         this.collideShapes = this.makeShapes(22.0D);
-        this.setDefaultState(this.stateContainer.getBaseState().with(NORTH, WallSide.NONE).with(EAST, WallSide.NONE).with(SOUTH, WallSide.NONE).with(WEST, WallSide.NONE).with(UP, WallColumn.PILLAR));
+        this.setDefaultState(this.stateContainer.getBaseState().with(NORTH, WallSide.NONE).with(EAST, WallSide.NONE).with(SOUTH, WallSide.NONE).with(WEST, WallSide.NONE).with(UP, WallColumn.PILLAR).with(WATERLOGGED, false));
+    }
+
+    public IFluidState getFluidState(BlockState state) {
+        return state.get(WATERLOGGED) ? Fluids.WATER.getStillFluidState(false) : super.getFluidState(state);
     }
 
     @Override
@@ -49,16 +59,23 @@ public class TerraBlockWall extends Block
 
         WallColumn pillar = this.getTop(world, pos);
 
+        IFluidState waterlogged = context.getWorld().getFluidState(context.getPos());
+
         return super.getStateForPlacement(context)
                 .with(NORTH, northSide)
                 .with(EAST, eastSide)
                 .with(SOUTH, southSide)
                 .with(WEST, westSide)
-                .with(UP, pillar);
+                .with(UP, pillar)
+                .with(WATERLOGGED, waterlogged.getFluid() == Fluids.WATER);
     }
 
     public BlockState updatePostPlacement(BlockState stateIn, Direction facing, BlockState facingState, IWorld world, BlockPos pos, BlockPos facingPos)
     {
+        if (stateIn.get(WATERLOGGED)) {
+            world.getPendingFluidTicks().scheduleTick(pos, Fluids.WATER, Fluids.WATER.getTickRate(world));
+        }
+
         WallSide northSide = facing == Direction.NORTH || facing == Direction.UP || facing == Direction.DOWN ? this.getSide(world, pos, Direction.NORTH) : stateIn.get(NORTH);
         WallSide eastSide = facing == Direction.EAST || facing == Direction.UP || facing == Direction.DOWN ? this.getSide(world, pos, Direction.EAST) : stateIn.get(EAST);
         WallSide southSide = facing == Direction.SOUTH || facing == Direction.UP || facing == Direction.DOWN ? this.getSide(world, pos, Direction.SOUTH) : stateIn.get(SOUTH);
@@ -72,12 +89,12 @@ public class TerraBlockWall extends Block
     {
         BlockState sideState    = world.getBlockState(pos.offset(facing));
         Boolean    sideIsWall   = sideState.getBlock().isIn(BlockTags.WALLS);
-        Boolean    sideIsOpaque = sideState.isOpaqueCube(world, pos.offset(facing));
+        boolean    sideIsOpaque = sideState.isOpaqueCube(world, pos.offset(facing));
         Boolean    sideIsGate   = sideState.getBlock() instanceof FenceGateBlock && FenceGateBlock.isParallel(sideState, facing);
 
         BlockState topState    = world.getBlockState(pos.up());
-        Boolean    topIsWall   = topState.getBlock().isIn(BlockTags.WALLS);
-        Boolean    topIsOpaque = topState.isOpaqueCube(world, pos.up());
+        boolean    topIsWall   = topState.getBlock().isIn(BlockTags.WALLS);
+        boolean    topIsOpaque = topState.isOpaqueCube(world, pos.up());
 
         BlockState diaState    = world.getBlockState(pos.offset(facing).up());
         Boolean    diaIsWall   = diaState.getBlock().isIn(BlockTags.WALLS);
@@ -112,6 +129,8 @@ public class TerraBlockWall extends Block
         boolean E = getSide(world, pos, Direction.EAST) != WallSide.NONE;
         boolean S = getSide(world, pos, Direction.SOUTH) != WallSide.NONE;
         boolean W = getSide(world, pos, Direction.WEST) != WallSide.NONE;
+
+        boolean water = topBlock == Blocks.WATER;
 
         boolean NSFlag = N & !E & S & !W;
         boolean EWFlag = !N & E & !S & W;
@@ -166,13 +185,13 @@ public class TerraBlockWall extends Block
         }
         else
         {
-            return topBlock == Blocks.AIR && crossFlag ? WallColumn.NONE : WallColumn.PILLAR;
+            return (topBlock == Blocks.AIR || water)&& crossFlag ? WallColumn.NONE : WallColumn.PILLAR;
         }
     }
 
     protected void fillStateContainer(StateContainer.Builder<Block, BlockState> builder)
     {
-        builder.add(UP, NORTH, EAST, SOUTH, WEST);
+        builder.add(UP, NORTH, EAST, SOUTH, WEST, WATERLOGGED);
     }
 
     protected VoxelShape[] makeShapes(Double height)
@@ -257,6 +276,10 @@ public class TerraBlockWall extends Block
             i += 1;
         }
         return i;
+    }
+
+    public boolean propagatesSkylightDown(BlockState state, IBlockReader reader, BlockPos pos) {
+        return !state.get(WATERLOGGED);
     }
 
     public boolean allowsMovement(BlockState state, IBlockReader worldIn, BlockPos pos, PathType type)

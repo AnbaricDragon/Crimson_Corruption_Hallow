@@ -5,6 +5,7 @@ import com.anbaric.terra_reforged.blocks.TerraBlockOre.OreBiomes;
 import com.anbaric.terra_reforged.util.init.TerraBlockRegistry;
 import net.minecraft.block.Block;
 import net.minecraft.block.Blocks;
+import net.minecraft.state.properties.Half;
 
 public class EnumHandler
 {
@@ -80,9 +81,8 @@ public class EnumHandler
 //        OREDIAMOND(Blocks.DIAMOND_ORE, TerraBlockRegistry.ORE_DIAMOND.withProperty(TerraBlockDOres.D_VARIANT, EnumDOreType.CORRUPT), TerraBlockRegistry.ORE_DIAMOND.withProperty(TerraBlockDOres.D_VARIANT, EnumDOreType.CRIMSON), TerraBlockRegistry.ORE_DIAMOND.withProperty(TerraBlockDOres.D_VARIANT, EnumDOreType.HALLOWED)),
 //        SAPLING_A(Blocks.SAPLING.withProperty(BlockSapling.TYPE, BlockPlanks.EnumType.OAK).withProperty(BlockSapling.STAGE, 0), TerraBlockRegistry.SAPLING_EBON, TerraBlockRegistry.SAPLING_SHADE, TerraBlockRegistry.SAPLING_PEARL),
 //        SAPLING_B(Blocks.SAPLING.withProperty(BlockSapling.TYPE, BlockPlanks.EnumType.OAK).withProperty(BlockSapling.STAGE, 1), TerraBlockRegistry.SAPLING_EBON, TerraBlockRegistry.SAPLING_SHADE, TerraBlockRegistry.SAPLING_PEARL),
-//        TALLGRASS(Blocks.GRASS, TerraBlockRegistry.TALLGRASS_CORRUPT.get(), TerraBlockRegistry.TALLGRASS_CRIMSON.get(), TerraBlockRegistry.TALLGRASS_HALLOWED.get()),
+        TALLGRASS(Blocks.GRASS, TerraBlockRegistry.TALLGRASS_CORRUPT.get(), TerraBlockRegistry.TALLGRASS_CRIMSON.get(), TerraBlockRegistry.TALLGRASS_HALLOWED.get()),
         REEDS(Blocks.SUGAR_CANE, TerraBlockRegistry.REED_CORRUPT.get(), TerraBlockRegistry.REED_CRIMSON.get(), TerraBlockRegistry.REED_HALLOWED.get());
-//        TALLGRASS_BOT(Blocks.DOUBLE_PLANT.withProperty(net.minecraft.block.BlockDoublePlant.VARIANT, net.minecraft.block.BlockDoublePlant.EnumPlantType.GRASS).withProperty(net.minecraft.block.BlockDoublePlant.HALF, net.minecraft.block.BlockDoublePlant.EnumBlockHalf.LOWER), TerraBlockRegistry.DOUBLEGRASS_CORRUPT.withProperty(TerraBlockDoublePlant.HALF, EnumHandler.EnumBlockHalf.LOWER), TerraBlockRegistry.DOUBLEGRASS_CRIMSON.withProperty(TerraBlockDoublePlant.HALF, EnumHandler.EnumBlockHalf.LOWER), TerraBlockRegistry.DOUBLEGRASS_HALLOWED.withProperty(TerraBlockDoublePlant.HALF, EnumHandler.EnumBlockHalf.LOWER), TALLGRASS_TOP);
 
         public Block pure, corrupt, crimson, hallowed;
 

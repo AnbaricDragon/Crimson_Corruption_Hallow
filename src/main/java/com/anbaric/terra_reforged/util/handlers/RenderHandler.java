@@ -73,5 +73,14 @@ public class RenderHandler
         RenderTypeLookup.setRenderLayer(TerraBlockRegistry.CACTUS_CRIM.get(), cutoutMipped);
         RenderTypeLookup.setRenderLayer(TerraBlockRegistry.CACTUS_EBON.get(), cutoutMipped);
         RenderTypeLookup.setRenderLayer(TerraBlockRegistry.CACTUS_PEARL.get(), cutoutMipped);
+        RenderTypeLookup.setRenderLayer(TerraBlockRegistry.REED_CORRUPT.get(), cutoutMipped);
+        RenderTypeLookup.setRenderLayer(TerraBlockRegistry.REED_CRIMSON.get(), cutoutMipped);
+        RenderTypeLookup.setRenderLayer(TerraBlockRegistry.REED_HALLOWED.get(), cutoutMipped);
+        RenderTypeLookup.setRenderLayer(TerraBlockRegistry.TALLGRASS_CORRUPT.get(), cutoutMipped);
+        RenderTypeLookup.setRenderLayer(TerraBlockRegistry.TALLGRASS_CRIMSON.get(), cutoutMipped);
+        RenderTypeLookup.setRenderLayer(TerraBlockRegistry.TALLGRASS_HALLOWED.get(), cutoutMipped);
+        RenderTypeLookup.setRenderLayer(TerraBlockRegistry.TALLGRASSDOUBLE_CORRUPT.get(), cutoutMipped);
+        RenderTypeLookup.setRenderLayer(TerraBlockRegistry.TALLGRASSDOUBLE_CRIMSON.get(), cutoutMipped);
+        RenderTypeLookup.setRenderLayer(TerraBlockRegistry.TALLGRASSDOUBLE_HALLOWED.get(), cutoutMipped);
     }
 }

@@ -48,12 +48,12 @@ public class TerraBlockTallGrass extends BushBlock implements IGrowable, net.min
     @Override
     public void grow(ServerWorld worldIn, Random p_225535_2_, BlockPos pos, BlockState p_225535_4_)
     {
-//        TerraBlockDoubleGrass doublePlant = (TerraBlockDoubleGrass) (this == TerraBlockRegistry.TALLGRASS_CORRUPT.get() ? TerraBlockRegistry.TALLGRASSDOUBLE_CORRUPT.get() : this == TerraBlockRegistry.TALLGRASS_CRIMSON.get() ? TerraBlockRegistry.TALLGRASSDOUBLE_CRIMSON.get() : TerraBlockRegistry.TALLGRASSDOUBLE_HALLOWED.get());
-//        if (doublePlant.getDefaultState().isValidPosition(worldIn, pos) && worldIn.isAirBlock(pos.up()))
-//        {
-//            System.out.println("Attempting to grow from bonemeal");
-//            doublePlant.placeAt(worldIn, pos, 2);
-//        }
+        DoublePlantBlock doublePlant = (DoublePlantBlock) (this == TerraBlockRegistry.TALLGRASS_CORRUPT.get() ? TerraBlockRegistry.TALLGRASSDOUBLE_CORRUPT.get() : this == TerraBlockRegistry.TALLGRASS_CRIMSON.get() ? TerraBlockRegistry.TALLGRASSDOUBLE_CRIMSON.get() : TerraBlockRegistry.TALLGRASSDOUBLE_HALLOWED.get());
+        if (doublePlant.getDefaultState().isValidPosition(worldIn, pos) && worldIn.isAirBlock(pos.up()))
+        {
+            System.out.println("Attempting to grow from bonemeal");
+            doublePlant.placeAt(worldIn, pos, 2);
+        }
     }
 
     /**

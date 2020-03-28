@@ -1,11 +1,16 @@
 package com.anbaric.terra_reforged.util.handlers;
 
+import com.anbaric.terra_reforged.blocks.TerraBlockOre;
 import com.anbaric.terra_reforged.util.Reference;
 import com.anbaric.terra_reforged.util.init.TerraBlockRegistry;
+import net.minecraft.block.Block;
+import net.minecraft.block.SoundType;
+import net.minecraft.block.material.Material;
 import net.minecraft.client.renderer.RenderType;
 import net.minecraft.client.renderer.RenderTypeLookup;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
+import net.minecraftforge.fml.RegistryObject;
 import net.minecraftforge.fml.common.Mod.EventBusSubscriber;
 import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
 
@@ -17,6 +22,7 @@ public class RenderHandler
     {
         RenderType translucent = RenderType.getTranslucent();
         RenderType cutoutMipped = RenderType.getCutoutMipped();
+        RenderType cutout = RenderType.getCutout();
 
         //Blocks
         RenderTypeLookup.setRenderLayer(TerraBlockRegistry.GRASS_MUSHROOM.get(), cutoutMipped);
@@ -89,5 +95,36 @@ public class RenderHandler
         RenderTypeLookup.setRenderLayer(TerraBlockRegistry.TALLGRASSDOUBLE_CORRUPT.get(), cutoutMipped);
         RenderTypeLookup.setRenderLayer(TerraBlockRegistry.TALLGRASSDOUBLE_CRIMSON.get(), cutoutMipped);
         RenderTypeLookup.setRenderLayer(TerraBlockRegistry.TALLGRASSDOUBLE_HALLOWED.get(), cutoutMipped);
+
+        //Ores
+
+        RenderTypeLookup.setRenderLayer(TerraBlockRegistry.ORE_TIN.get(), cutout);
+        RenderTypeLookup.setRenderLayer(TerraBlockRegistry.ORE_COPPER.get(), cutout);
+        RenderTypeLookup.setRenderLayer(TerraBlockRegistry.ORE_TIN.get(), cutout);
+        RenderTypeLookup.setRenderLayer(TerraBlockRegistry.ORE_LEAD.get(), cutout);
+        RenderTypeLookup.setRenderLayer(TerraBlockRegistry.ORE_IRON.get(), cutout);
+        RenderTypeLookup.setRenderLayer(TerraBlockRegistry.ORE_SILVER.get(), cutout);
+        RenderTypeLookup.setRenderLayer(TerraBlockRegistry.ORE_TUNGSTEN.get(), cutout);
+        RenderTypeLookup.setRenderLayer(TerraBlockRegistry.ORE_GOLD.get(), cutout);
+        RenderTypeLookup.setRenderLayer(TerraBlockRegistry.ORE_PLATINUM.get(), cutout);
+        RenderTypeLookup.setRenderLayer(TerraBlockRegistry.ORE_METEORITE.get(), cutout);
+        RenderTypeLookup.setRenderLayer(TerraBlockRegistry.ORE_DEMONITE.get(), cutout);
+        RenderTypeLookup.setRenderLayer(TerraBlockRegistry.ORE_CRIMTANE.get(), cutout);
+        RenderTypeLookup.setRenderLayer(TerraBlockRegistry.ORE_HELLSTONE.get(), cutout);
+        RenderTypeLookup.setRenderLayer(TerraBlockRegistry.ORE_COBALT.get(), cutout);
+        RenderTypeLookup.setRenderLayer(TerraBlockRegistry.ORE_PALLADIUM.get(), cutout);
+        RenderTypeLookup.setRenderLayer(TerraBlockRegistry.ORE_MYTHRIL.get(), cutout);
+        RenderTypeLookup.setRenderLayer(TerraBlockRegistry.ORE_ORICHALCUM.get(), cutout);
+        RenderTypeLookup.setRenderLayer(TerraBlockRegistry.ORE_ADAMANTITE.get(), cutout);
+        RenderTypeLookup.setRenderLayer(TerraBlockRegistry.ORE_TITANIUM.get(), cutout);
+        RenderTypeLookup.setRenderLayer(TerraBlockRegistry.ORE_COAL.get(), cutout);
+        RenderTypeLookup.setRenderLayer(TerraBlockRegistry.ORE_LAPIS.get(), cutout);
+        RenderTypeLookup.setRenderLayer(TerraBlockRegistry.ORE_REDSTONE.get(), cutout);
+        RenderTypeLookup.setRenderLayer(TerraBlockRegistry.ORE_AMETHYST.get(), cutout);
+        RenderTypeLookup.setRenderLayer(TerraBlockRegistry.ORE_TOPAZ.get(), cutout);
+        RenderTypeLookup.setRenderLayer(TerraBlockRegistry.ORE_SAPPHIRE.get(), cutout);
+        RenderTypeLookup.setRenderLayer(TerraBlockRegistry.ORE_RUBY.get(), cutout);
+        RenderTypeLookup.setRenderLayer(TerraBlockRegistry.ORE_EMERALD.get(), cutout);
+        RenderTypeLookup.setRenderLayer(TerraBlockRegistry.ORE_DIAMOND.get(), cutout);
     }
 }

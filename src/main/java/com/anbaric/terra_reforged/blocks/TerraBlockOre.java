@@ -4,11 +4,16 @@ import com.anbaric.terra_reforged.util.handlers.EnumHandler.EnumBiomeType;
 import com.anbaric.terra_reforged.util.init.TerraBlockRegistry;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
+import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.state.EnumProperty;
 import net.minecraft.state.StateContainer;
+import net.minecraft.util.ActionResultType;
+import net.minecraft.util.Hand;
 import net.minecraft.util.IStringSerializable;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.math.BlockRayTraceResult;
 import net.minecraft.util.math.MathHelper;
+import net.minecraft.world.World;
 
 import java.util.Random;
 
@@ -24,9 +29,7 @@ public class TerraBlockOre extends Block
 
     protected int getExperience(Random random)
     {
-        return
-
-        /*if (this == TerraBlockRegistry.ORE_COAL.get())
+        if (this == TerraBlockRegistry.ORE_COAL.get())
         {
             return MathHelper.nextInt(random, 0, 2);
         }
@@ -62,9 +65,13 @@ public class TerraBlockOre extends Block
         {
             return this == TerraBlockRegistry.ORE_REDSTONE.get() ? 1 + random.nextInt(5) : 0;
         }
+    }
 
-         */
-        random.nextInt(5);
+    @Override
+    public ActionResultType onBlockActivated(BlockState state, World worldIn, BlockPos pos, PlayerEntity player, Hand handIn, BlockRayTraceResult hit)
+    {
+
+        return worldIn.setBlockState(pos, state.with(BIOME, OreBiomes.HALLOWED)) ? ActionResultType.SUCCESS : ActionResultType.FAIL;
     }
 
     @Override
@@ -80,7 +87,10 @@ public class TerraBlockOre extends Block
 
     public enum OreBiomes implements IStringSerializable
     {
-        PURE("pure", EnumBiomeType.PURE), CORRUPT("corrupt", EnumBiomeType.CORRUPT), CRIMSON("crimson", EnumBiomeType.CRIMSON), HALLOWED("hallowed", EnumBiomeType.HALLOWED);
+        PURE("pure", EnumBiomeType.PURE),
+        CORRUPT("corrupt", EnumBiomeType.CORRUPT),
+        CRIMSON("crimson", EnumBiomeType.CRIMSON),
+        HALLOWED("hallowed", EnumBiomeType.HALLOWED);
 
         private final String name;
         private final EnumBiomeType biome;

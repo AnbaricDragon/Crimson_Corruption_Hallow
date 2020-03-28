@@ -20,17 +20,18 @@ import net.minecraftforge.fml.common.Mod.EventBusSubscriber.Bus;
 @Mod.EventBusSubscriber(modid = Reference.MODID, bus = Bus.MOD, value = { Dist.CLIENT })
 public class ColorHandler
 {
+
+
     @OnlyIn(Dist.CLIENT)
     @SubscribeEvent
     public static void registerBlockColorHandlers(final ColorHandlerEvent.Block event)
     {
-        event.getBlockColors().register((x, reader, pos, u) ->  BiomeColors.getFoliageColor(reader, pos), TerraBlockRegistry.WALL_OAK_LEAF.get());
+        event.getBlockColors().register((x, reader, pos, u) ->  reader != null && pos != null ? BiomeColors.getFoliageColor(reader, pos) : FoliageColors.getDefault(), TerraBlockRegistry.WALL_OAK_LEAF.get());
         event.getBlockColors().register((x, reader, pos, u) ->  FoliageColors.getSpruce(), TerraBlockRegistry.WALL_SPRUCE_LEAF.get());
         event.getBlockColors().register((x, reader, pos, u) ->  FoliageColors.getBirch(), TerraBlockRegistry.WALL_BIRCH_LEAF.get());
-        event.getBlockColors().register((x, reader, pos, u) ->  BiomeColors.getFoliageColor(reader, pos), TerraBlockRegistry.WALL_JUNGLE_LEAF.get());
-        event.getBlockColors().register((x, reader, pos, u) ->  BiomeColors.getFoliageColor(reader, pos), TerraBlockRegistry.WALL_ACACIA_LEAF.get());
-        event.getBlockColors().register((x, reader, pos, u) ->  BiomeColors.getFoliageColor(reader, pos), TerraBlockRegistry.WALL_DARKOAK_LEAF.get());
-
+        event.getBlockColors().register((x, reader, pos, u) ->  reader != null && pos != null ? BiomeColors.getFoliageColor(reader, pos) : FoliageColors.getDefault(), TerraBlockRegistry.WALL_JUNGLE_LEAF.get());
+        event.getBlockColors().register((x, reader, pos, u) ->  reader != null && pos != null ? BiomeColors.getFoliageColor(reader, pos) : FoliageColors.getDefault(), TerraBlockRegistry.WALL_ACACIA_LEAF.get());
+        event.getBlockColors().register((x, reader, pos, u) ->  reader != null && pos != null ? BiomeColors.getFoliageColor(reader, pos) : FoliageColors.getDefault(), TerraBlockRegistry.WALL_DARKOAK_LEAF.get());
     }
 
 

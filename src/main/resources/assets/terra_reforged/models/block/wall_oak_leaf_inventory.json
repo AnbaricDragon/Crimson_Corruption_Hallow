@@ -1,0 +1,6 @@
+{
+    "parent": "terra_reforged:block/wall_leaves_inventory",
+    "textures": {
+        "wall": "block/oak_leaves"
+    }
+}

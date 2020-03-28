@@ -1,5 +1,5 @@
 {
-    "parent": "terra_reforged:block/stair",
+    "parent": "block/stairs",
     "textures": {
         "bottom": "terra_reforged:blocks/plank_pearl",
         "top": "terra_reforged:blocks/plank_pearl",

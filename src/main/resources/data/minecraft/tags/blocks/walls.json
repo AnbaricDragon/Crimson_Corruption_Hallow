@@ -41,6 +41,27 @@
     "terra_reforged:wall_cobblestone_pearl",
     "terra_reforged:wall_sandstone_ebon",
     "terra_reforged:wall_sandstone_crim",
-    "terra_reforged:wall_sandstone_pearl"
+    "terra_reforged:wall_sandstone_pearl",
+    "terra_reforged:wall_dungeon_blue_bricks",
+    "terra_reforged:wall_dungeon_blue_brick",
+    "terra_reforged:wall_dungeon_blue_tile",
+    "terra_reforged:wall_dungeon_blue_slab",
+    "terra_reforged:wall_dungeon_blue_wall",
+    "terra_reforged:wall_dungeon_green_bricks",
+    "terra_reforged:wall_dungeon_green_brick",
+    "terra_reforged:wall_dungeon_green_tile",
+    "terra_reforged:wall_dungeon_green_slab",
+    "terra_reforged:wall_dungeon_green_wall",
+    "terra_reforged:wall_dungeon_red_bricks",
+    "terra_reforged:wall_dungeon_red_brick",
+    "terra_reforged:wall_dungeon_red_tile",
+    "terra_reforged:wall_dungeon_red_slab",
+    "terra_reforged:wall_dungeon_red_wall",
+    "terra_reforged:wall_oak_leaf",
+    "terra_reforged:wall_birch_leaf",
+    "terra_reforged:wall_spruce_leaf",
+    "terra_reforged:wall_jungle_leaf",
+    "terra_reforged:wall_acacia_leaf",
+    "terra_reforged:wall_darkoak_leaf"
   ]
 }

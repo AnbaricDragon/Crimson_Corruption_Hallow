@@ -1,0 +1,6 @@
+{
+    "parent": "terra_reforged:block/wall_leaves_post",
+    "textures": {
+        "wall": "block/acacia_leaves"
+    }
+}

@@ -1,6 +1,6 @@
 {
-    "parent": "terra_reforged:block/wall_inventory",
+    "parent": "terra_reforged:block/wall_leaves_inventory",
     "textures": {
-        "wall": "blocks/leaves_birch"
+        "wall": "block/birch_leaves"
     }
 }

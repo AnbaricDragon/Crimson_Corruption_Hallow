@@ -2,6 +2,7 @@ package com.anbaric.terra_reforged;
 
 import com.anbaric.terra_reforged.util.Reference;
 import com.anbaric.terra_reforged.util.TerraCompat;
+import com.anbaric.terra_reforged.util.handlers.ColorHandler;
 import com.anbaric.terra_reforged.util.init.TerraBlockRegistry;
 import com.anbaric.terra_reforged.util.init.TerraItemRegistry;
 import net.minecraft.block.Block;
@@ -74,7 +75,6 @@ import java.util.stream.Collectors;
 
     private void doClientStuff(final FMLClientSetupEvent event)
     {
-        // do something that can only be done on the client
         LOGGER.info("Got game settings {}", event.getMinecraftSupplier().get().gameSettings);
     }
 

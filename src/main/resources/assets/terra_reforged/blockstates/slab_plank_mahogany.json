@@ -1,0 +1,7 @@
+{
+    "variants": {
+        "type=bottom":  { "model": "terra_reforged:block/slab_plank_mahogany" },
+        "type=top":  { "model": "terra_reforged:block/slab_plank_mahogany_top" },
+        "type=double":  { "model": "terra_reforged:block/plank_mahogany" }
+    }
+}

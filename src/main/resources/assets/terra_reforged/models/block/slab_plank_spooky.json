@@ -1,0 +1,8 @@
+{
+    "parent": "block/slab",
+    "textures": {
+        "bottom": "terra_reforged:blocks/plank_spooky",
+        "top": "terra_reforged:blocks/plank_spooky",
+        "side": "terra_reforged:blocks/plank_spooky"
+    }
+}

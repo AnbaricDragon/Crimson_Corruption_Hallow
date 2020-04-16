@@ -1,0 +1,7 @@
+{
+    "variants": {
+        "type=bottom":  { "model": "terra_reforged:block/slab_plank_pearl" },
+        "type=top":  { "model": "terra_reforged:block/slab_plank_pearl_top" },
+        "type=double":  { "model": "terra_reforged:block/plank_pearl" }
+    }
+}

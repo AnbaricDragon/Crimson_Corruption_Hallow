@@ -1,0 +1,8 @@
+{
+    "parent": "block/slab",
+    "textures": {
+        "bottom": "terra_reforged:blocks/cobblestone_crim",
+        "top": "terra_reforged:blocks/cobblestone_crim",
+        "side": "terra_reforged:blocks/cobblestone_crim"
+    }
+}

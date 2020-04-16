@@ -1,0 +1,7 @@
+{
+    "variants": {
+        "type=bottom":  { "model": "terra_reforged:block/slab_stonebrick_ebon" },
+        "type=top":  { "model": "terra_reforged:block/slab_stonebrick_ebon_top" },
+        "type=double":  { "model": "terra_reforged:block/stonebrick_ebon" }
+    }
+}

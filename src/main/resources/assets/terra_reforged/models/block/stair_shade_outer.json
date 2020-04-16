@@ -1,8 +1,0 @@
-{
-    "parent": "block/outer_stairs",
-    "textures": {
-        "bottom": "terra_reforged:blocks/plank_shade",
-        "top": "terra_reforged:blocks/plank_shade",
-        "side": "terra_reforged:blocks/plank_shade"
-    }
-}

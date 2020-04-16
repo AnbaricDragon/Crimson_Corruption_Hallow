@@ -1,0 +1,8 @@
+{
+    "parent": "block/inner_stairs",
+    "textures": {
+        "bottom": "terra_reforged:blocks/stonebrick_pearl",
+        "top": "terra_reforged:blocks/stonebrick_pearl",
+        "side": "terra_reforged:blocks/stonebrick_pearl"
+    }
+}

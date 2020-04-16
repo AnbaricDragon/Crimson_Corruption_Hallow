@@ -1,0 +1,6 @@
+{
+    "multipart": [
+        { "apply": { "model": "terra_reforged:block/ore_ruby" }},		
+				{ "apply": { "model": "terra_reforged:block/ore_metal_crimson" }}
+    ]
+}

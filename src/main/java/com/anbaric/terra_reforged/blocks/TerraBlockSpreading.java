@@ -4,9 +4,9 @@ import com.anbaric.terra_reforged.TerraReforged;
 import com.anbaric.terra_reforged.util.handlers.EnumHandler.EnumBiomeBlockType;
 import com.anbaric.terra_reforged.util.handlers.EnumHandler.EnumBiomeType;
 import com.anbaric.terra_reforged.util.init.TerraBlockRegistry;
-import net.minecraft.block.Block;
-import net.minecraft.block.BlockState;
-import net.minecraft.block.Blocks;
+import net.minecraft.block.*;
+import net.minecraft.state.DirectionProperty;
+import net.minecraft.state.properties.SlabType;
 import net.minecraft.util.Direction;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.IBlockReader;
@@ -53,19 +53,25 @@ public class TerraBlockSpreading extends Block
                     BlockPos targetPos = pos.add(random.nextInt(3) - 1, random.nextInt(3) - 1, random.nextInt(3) - 1);
                     Block targetBlock = worldIn.getBlockState(targetPos).getBlock();
 
-                    if (targetBlock instanceof TerraBlockOre)
-                    {
-                        worldIn.setBlockState(targetPos, targetBlock.getDefaultState().with(TerraBlockOre.BIOME, this.biome.getOreBiome()));
-                    }
-//                    if (targetBlock == Blocks.IRON_ORE) { worldIn.setBlockState(targetPos, TerraBlockRegistry.ORE_IRON.get().getDefaultState().with(TerraBlockOre.BIOME, this.biome.getOreBiome())); }
-//                    if (targetBlock == Blocks.GOLD_ORE) { worldIn.setBlockState(targetPos, TerraBlockRegistry.ORE_GOLD.get().getDefaultState().with(TerraBlockOre.BIOME, this.biome.getOreBiome())); }
-//                    if (targetBlock == Blocks.COAL_ORE) { worldIn.setBlockState(targetPos, TerraBlockRegistry.ORE_COAL.get().getDefaultState().with(TerraBlockOre.BIOME, this.biome.getOreBiome())); }
-//                    if (targetBlock == Blocks.LAPIS_ORE) { worldIn.setBlockState(targetPos, TerraBlockRegistry.ORE_LAPIS.get().getDefaultState().with(TerraBlockOre.BIOME, this.biome.getOreBiome())); }
-//                    if (targetBlock == Blocks.REDSTONE_ORE) { worldIn.setBlockState(targetPos, TerraBlockRegistry.ORE_REDSTONE.get().getDefaultState().with(TerraBlockOre.BIOME, this.biome.getOreBiome())); }
-//                    if (targetBlock == Blocks.DIAMOND_ORE) { worldIn.setBlockState(targetPos, TerraBlockRegistry.ORE_DIAMOND.get().getDefaultState().with(TerraBlockOre.BIOME, this.biome.getOreBiome())); }
-//                    if (targetBlock == Blocks.EMERALD_ORE) { worldIn.setBlockState(targetPos, TerraBlockRegistry.ORE_EMERALD.get().getDefaultState().with(TerraBlockOre.BIOME, this.biome.getOreBiome())); }
                     if (checkTransformable(targetBlock))
                     {
+                        if (targetBlock instanceof StairsBlock)
+                        {
+                            worldIn.setBlockState(targetPos, transformedState(biome, targetBlock).getDefaultState()
+                                    .with(StairsBlock.FACING, worldIn.getBlockState(targetPos).get(StairsBlock.FACING))
+                                    .with(StairsBlock.HALF, worldIn.getBlockState(targetPos).get(StairsBlock.HALF))
+                                    .with(StairsBlock.SHAPE, worldIn.getBlockState(targetPos).get(StairsBlock.SHAPE))
+                                    .with(StairsBlock.WATERLOGGED, worldIn.getBlockState(targetPos).get(StairsBlock.WATERLOGGED)));
+                            return;
+                        }
+                        if (targetBlock instanceof SlabBlock)
+                        {
+                            worldIn.setBlockState(targetPos, transformedState(biome, targetBlock).getDefaultState()
+                                    .with(SlabBlock.TYPE, worldIn.getBlockState(targetPos).get(SlabBlock.TYPE))
+                                    .with(SlabBlock.WATERLOGGED, worldIn.getBlockState(targetPos).get(SlabBlock.WATERLOGGED)));
+                            return;
+                        }
+
                         worldIn.setBlockState(targetPos, transformedState(biome, targetBlock).getDefaultState());
                     }
                 }

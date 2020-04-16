@@ -1,0 +1,6 @@
+{
+    "multipart": [
+        { "apply": { "model": "terra_reforged:block/ore_topaz" }},		
+				{ "apply": { "model": "terra_reforged:block/ore_metal_crimson" }}
+    ]
+}

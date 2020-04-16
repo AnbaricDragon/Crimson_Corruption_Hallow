@@ -1,0 +1,7 @@
+{
+    "variants": {
+        "type=bottom":  { "model": "terra_reforged:block/slab_stone_pearl" },
+        "type=top":  { "model": "terra_reforged:block/slab_stone_pearl_top" },
+        "type=double":  { "model": "terra_reforged:block/stone_pearl" }
+    }
+}

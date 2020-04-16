@@ -124,6 +124,23 @@ public class TerraBlockBiomeGrass extends SnowyDirtBlock implements IGrowable
                         {
                             if (TerraReforged.debugSpreading)
                             {
+                                if (targetBlock instanceof StairsBlock)
+                                {
+                                    worldIn.setBlockState(targetPos, transformedState(biome, targetBlock).getDefaultState()
+                                            .with(StairsBlock.FACING, worldIn.getBlockState(targetPos).get(StairsBlock.FACING))
+                                            .with(StairsBlock.HALF, worldIn.getBlockState(targetPos).get(StairsBlock.HALF))
+                                            .with(StairsBlock.SHAPE, worldIn.getBlockState(targetPos).get(StairsBlock.SHAPE))
+                                            .with(StairsBlock.WATERLOGGED, worldIn.getBlockState(targetPos).get(StairsBlock.WATERLOGGED)));
+                                    return;
+                                }
+                                if (targetBlock instanceof SlabBlock)
+                                {
+                                    worldIn.setBlockState(targetPos, transformedState(biome, targetBlock).getDefaultState()
+                                            .with(SlabBlock.TYPE, worldIn.getBlockState(targetPos).get(SlabBlock.TYPE))
+                                            .with(SlabBlock.WATERLOGGED, worldIn.getBlockState(targetPos).get(SlabBlock.WATERLOGGED)));
+                                    return;
+                                }
+
                                 worldIn.setBlockState(targetPos, transformedState(biome, targetBlock).getDefaultState());
                             }
                         }

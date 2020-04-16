@@ -1,0 +1,8 @@
+{
+    "parent": "block/slab",
+    "textures": {
+        "bottom": "terra_reforged:blocks/plank_mahogany",
+        "top": "terra_reforged:blocks/plank_mahogany",
+        "side": "terra_reforged:blocks/plank_mahogany"
+    }
+}

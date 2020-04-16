@@ -5,6 +5,8 @@ import com.anbaric.terra_reforged.util.handlers.EnumHandler.EnumBiomeBlockType;
 import com.anbaric.terra_reforged.util.handlers.EnumHandler.EnumBiomeType;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
+import net.minecraft.block.SlabBlock;
+import net.minecraft.block.StairsBlock;
 import net.minecraft.util.Direction;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.IBlockReader;
@@ -58,6 +60,23 @@ public class TerraBlockIce extends Block
 
                     if (checkTransformable(targetBlock) && i == 0)
                     {
+                        if (targetBlock instanceof StairsBlock)
+                        {
+                            worldIn.setBlockState(targetPos, transformedState(biome, targetBlock).getDefaultState()
+                                    .with(StairsBlock.FACING, worldIn.getBlockState(targetPos).get(StairsBlock.FACING))
+                                    .with(StairsBlock.HALF, worldIn.getBlockState(targetPos).get(StairsBlock.HALF))
+                                    .with(StairsBlock.SHAPE, worldIn.getBlockState(targetPos).get(StairsBlock.SHAPE))
+                                    .with(StairsBlock.WATERLOGGED, worldIn.getBlockState(targetPos).get(StairsBlock.WATERLOGGED)));
+                            return;
+                        }
+                        if (targetBlock instanceof SlabBlock)
+                        {
+                            worldIn.setBlockState(targetPos, transformedState(biome, targetBlock).getDefaultState()
+                                    .with(SlabBlock.TYPE, worldIn.getBlockState(targetPos).get(SlabBlock.TYPE))
+                                    .with(SlabBlock.WATERLOGGED, worldIn.getBlockState(targetPos).get(SlabBlock.WATERLOGGED)));
+                            return;
+                        }
+
                         worldIn.setBlockState(targetPos, transformedState(biome, targetBlock).getDefaultState());
                     }
                 }

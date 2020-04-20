@@ -8,6 +8,8 @@ import com.anbaric.terra_reforged.util.handlers.EnumHandler.EnumBiomeType;
 import net.minecraft.block.*;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.material.MaterialColor;
+import net.minecraft.tileentity.TileEntity;
+import net.minecraft.tileentity.TileEntityType;
 import net.minecraftforge.common.PlantType;
 import net.minecraftforge.common.ToolType;
 import net.minecraftforge.fml.RegistryObject;
@@ -152,7 +154,7 @@ public final class TerraBlockRegistry
     public static final RegistryObject<Block> PLANT_DYE_ORANGE = BLOCKS.register("plant_dye_orange", () -> new DoublePlantBlock(Block.Properties.create(Material.PLANTS).sound(SoundType.PLANT).doesNotBlockMovement().hardnessAndResistance(0.5F)));
     public static final RegistryObject<Block> PLANT_DYE_CYAN = BLOCKS.register("plant_dye_cyan", () -> new DoublePlantBlock(Block.Properties.create(Material.PLANTS).sound(SoundType.PLANT).doesNotBlockMovement().hardnessAndResistance(0.5F)));
     public static final RegistryObject<Block> PLANT_DYE_RED = BLOCKS.register("plant_dye_red", () -> new DoublePlantBlock(Block.Properties.create(Material.PLANTS).sound(SoundType.PLANT).doesNotBlockMovement().hardnessAndResistance(0.5F)));
-    /*public static final RegistryObject<Block> PLANT_BULB = null;*/
+//    public static final RegistryObject<Block> PLANT_BULB = null;
     public static final RegistryObject<Block> PLANT_THORN_PURPLE = BLOCKS.register("plant_thorn_purple", () -> new TerraBlockThornBush(Block.Properties.create(Material.PLANTS).sound(SoundType.PLANT).tickRandomly(), 4.0F));
     public static final RegistryObject<Block> PLANT_THORN_RED = BLOCKS.register("plant_thorn_red", () -> new TerraBlockThornBush(Block.Properties.create(Material.PLANTS).sound(SoundType.PLANT).tickRandomly(), 4.0F));
     public static final RegistryObject<Block> PLANT_THORN_JUNGLE = BLOCKS.register("plant_thorn_jungle", () -> new TerraBlockThornBush(Block.Properties.create(Material.PLANTS).sound(SoundType.PLANT).tickRandomly(), 8.0F));
@@ -187,6 +189,9 @@ public final class TerraBlockRegistry
     public static final RegistryObject<Block> TALLGRASSDOUBLE_CORRUPT = BLOCKS.register("tallgrassdouble_corrupt", () -> new DoublePlantBlock(Block.Properties.create(Material.PLANTS).sound(SoundType.PLANT).hardnessAndResistance(0.0F).doesNotBlockMovement().notSolid()));
     public static final RegistryObject<Block> TALLGRASSDOUBLE_CRIMSON = BLOCKS.register("tallgrassdouble_crimson", () -> new DoublePlantBlock(Block.Properties.create(Material.PLANTS).sound(SoundType.PLANT).hardnessAndResistance(0.0F).doesNotBlockMovement().notSolid()));
     public static final RegistryObject<Block> TALLGRASSDOUBLE_HALLOWED = BLOCKS.register("tallgrassdouble_hallowed", () -> new DoublePlantBlock(Block.Properties.create(Material.PLANTS).sound(SoundType.PLANT).hardnessAndResistance(0.0F).doesNotBlockMovement().notSolid()));
+
+    //Furnature
+
 
     //Structure Blocks
     public static final RegistryObject<Block> BRICK_SNOW = BLOCKS.register("brick_snow", () -> new Block(Block.Properties.create(Material.SNOW_BLOCK).sound(SoundType.SNOW).hardnessAndResistance(0.7F, 3.0F)));
@@ -317,6 +322,35 @@ public final class TerraBlockRegistry
     public static final RegistryObject<Block> SLAB_SANDSTONE_EBON = BLOCKS.register("slab_sandstone_ebon", () -> new SlabBlock(Block.Properties.from(TerraBlockRegistry.SANDSTONE_EBON.get())));
     public static final RegistryObject<Block> SLAB_SANDSTONE_CRIM = BLOCKS.register("slab_sandstone_crim", () -> new SlabBlock(Block.Properties.from(TerraBlockRegistry.SANDSTONE_CRIM.get())));
     public static final RegistryObject<Block> SLAB_SANDSTONE_PEARL = BLOCKS.register("slab_sandstone_pearl", () -> new SlabBlock(Block.Properties.from(TerraBlockRegistry.SANDSTONE_PEARL.get())));
+
+    public static final RegistryObject<Block> TORCH_GEM_RED = BLOCKS.register("torch_gem_red", () -> new TorchBlock(Block.Properties.create(Material.MISCELLANEOUS).doesNotBlockMovement().zeroHardnessAndResistance().lightValue(14).sound(SoundType.WOOD)));
+    public static final RegistryObject<Block> TORCH_GEM_RED_WALL = BLOCKS.register("torch_gem_red_wall", () -> new WallTorchBlock(Block.Properties.create(Material.MISCELLANEOUS).doesNotBlockMovement().zeroHardnessAndResistance().lightValue(14).sound(SoundType.WOOD).lootFrom(TerraBlockRegistry.TORCH_GEM_RED.get())));
+    public static final RegistryObject<Block> TORCH_GEM_ORANGE = BLOCKS.register("torch_gem_orange", () -> new TorchBlock(Block.Properties.create(Material.MISCELLANEOUS).doesNotBlockMovement().zeroHardnessAndResistance().lightValue(14).sound(SoundType.WOOD)));
+    public static final RegistryObject<Block> TORCH_GEM_ORANGE_WALL = BLOCKS.register("torch_gem_orange_wall", () -> new WallTorchBlock(Block.Properties.create(Material.MISCELLANEOUS).doesNotBlockMovement().zeroHardnessAndResistance().lightValue(14).sound(SoundType.WOOD).lootFrom(TerraBlockRegistry.TORCH_GEM_ORANGE.get())));
+    public static final RegistryObject<Block> TORCH_GEM_YELLOW = BLOCKS.register("torch_gem_yellow", () -> new TorchBlock(Block.Properties.create(Material.MISCELLANEOUS).doesNotBlockMovement().zeroHardnessAndResistance().lightValue(14).sound(SoundType.WOOD)));
+    public static final RegistryObject<Block> TORCH_GEM_YELLOW_WALL = BLOCKS.register("torch_gem_yellow_wall", () -> new WallTorchBlock(Block.Properties.create(Material.MISCELLANEOUS).doesNotBlockMovement().zeroHardnessAndResistance().lightValue(14).sound(SoundType.WOOD).lootFrom(TerraBlockRegistry.TORCH_GEM_YELLOW.get())));
+    public static final RegistryObject<Block> TORCH_GEM_GREEN = BLOCKS.register("torch_gem_green", () -> new TorchBlock(Block.Properties.create(Material.MISCELLANEOUS).doesNotBlockMovement().zeroHardnessAndResistance().lightValue(14).sound(SoundType.WOOD)));
+    public static final RegistryObject<Block> TORCH_GEM_GREEN_WALL = BLOCKS.register("torch_gem_green_wall", () -> new WallTorchBlock(Block.Properties.create(Material.MISCELLANEOUS).doesNotBlockMovement().zeroHardnessAndResistance().lightValue(14).sound(SoundType.WOOD).lootFrom(TerraBlockRegistry.TORCH_GEM_GREEN.get())));
+    public static final RegistryObject<Block> TORCH_GEM_BLUE = BLOCKS.register("torch_gem_blue", () -> new TorchBlock(Block.Properties.create(Material.MISCELLANEOUS).doesNotBlockMovement().zeroHardnessAndResistance().lightValue(14).sound(SoundType.WOOD)));
+    public static final RegistryObject<Block> TORCH_GEM_BLUE_WALL = BLOCKS.register("torch_gem_blue_wall", () -> new WallTorchBlock(Block.Properties.create(Material.MISCELLANEOUS).doesNotBlockMovement().zeroHardnessAndResistance().lightValue(14).sound(SoundType.WOOD).lootFrom(TerraBlockRegistry.TORCH_GEM_BLUE.get())));
+    public static final RegistryObject<Block> TORCH_GEM_PURPLE = BLOCKS.register("torch_gem_purple", () -> new TorchBlock(Block.Properties.create(Material.MISCELLANEOUS).doesNotBlockMovement().zeroHardnessAndResistance().lightValue(14).sound(SoundType.WOOD)));
+    public static final RegistryObject<Block> TORCH_GEM_PURPLE_WALL = BLOCKS.register("torch_gem_purple_wall", () -> new WallTorchBlock(Block.Properties.create(Material.MISCELLANEOUS).doesNotBlockMovement().zeroHardnessAndResistance().lightValue(14).sound(SoundType.WOOD).lootFrom(TerraBlockRegistry.TORCH_GEM_PURPLE.get())));
+    public static final RegistryObject<Block> TORCH_GEM_WHITE = BLOCKS.register("torch_gem_white", () -> new TorchBlock(Block.Properties.create(Material.MISCELLANEOUS).doesNotBlockMovement().zeroHardnessAndResistance().lightValue(14).sound(SoundType.WOOD)));
+    public static final RegistryObject<Block> TORCH_GEM_WHITE_WALL = BLOCKS.register("torch_gem_white_wall", () -> new WallTorchBlock(Block.Properties.create(Material.MISCELLANEOUS).doesNotBlockMovement().zeroHardnessAndResistance().lightValue(14).sound(SoundType.WOOD).lootFrom(TerraBlockRegistry.TORCH_GEM_WHITE.get())));
+    public static final RegistryObject<Block> TORCH_RAINBOW = BLOCKS.register("torch_rainbow", () -> new TorchBlock(Block.Properties.create(Material.MISCELLANEOUS).doesNotBlockMovement().zeroHardnessAndResistance().lightValue(14).sound(SoundType.WOOD)));
+    public static final RegistryObject<Block> TORCH_RAINBOW_WALL = BLOCKS.register("torch_rainbow_wall", () -> new WallTorchBlock(Block.Properties.create(Material.MISCELLANEOUS).doesNotBlockMovement().zeroHardnessAndResistance().lightValue(14).sound(SoundType.WOOD).lootFrom(TerraBlockRegistry.TORCH_RAINBOW.get())));
+    public static final RegistryObject<Block> TORCH_ICE = BLOCKS.register("torch_ice", () -> new TorchBlock(Block.Properties.create(Material.MISCELLANEOUS).doesNotBlockMovement().zeroHardnessAndResistance().lightValue(14).sound(SoundType.GLASS)));
+    public static final RegistryObject<Block> TORCH_ICE_WALL = BLOCKS.register("torch_ice_wall", () -> new WallTorchBlock(Block.Properties.create(Material.MISCELLANEOUS).doesNotBlockMovement().zeroHardnessAndResistance().lightValue(14).sound(SoundType.GLASS).lootFrom(TerraBlockRegistry.TORCH_ICE.get())));
+    public static final RegistryObject<Block> TORCH_BONE = BLOCKS.register("torch_bone", () -> new TorchBlock(Block.Properties.create(Material.MISCELLANEOUS).doesNotBlockMovement().zeroHardnessAndResistance().lightValue(14).sound(SoundType.STONE)));
+    public static final RegistryObject<Block> TORCH_BONE_WALL = BLOCKS.register("torch_bone_wall", () -> new WallTorchBlock(Block.Properties.create(Material.MISCELLANEOUS).doesNotBlockMovement().zeroHardnessAndResistance().lightValue(14).sound(SoundType.STONE).lootFrom(TerraBlockRegistry.TORCH_BONE.get())));
+    public static final RegistryObject<Block> TORCH_BRIGHT = BLOCKS.register("torch_bright", () -> new TorchBlock(Block.Properties.create(Material.MISCELLANEOUS).doesNotBlockMovement().zeroHardnessAndResistance().lightValue(15).sound(SoundType.WOOD)));
+    public static final RegistryObject<Block> TORCH_BRIGHT_WALL = BLOCKS.register("torch_bright_wall", () -> new WallTorchBlock(Block.Properties.create(Material.MISCELLANEOUS).doesNotBlockMovement().zeroHardnessAndResistance().lightValue(15).sound(SoundType.WOOD).lootFrom(TerraBlockRegistry.TORCH_BRIGHT.get())));
+    public static final RegistryObject<Block> TORCH_DEMON = BLOCKS.register("torch_demon", () -> new TorchBlock(Block.Properties.create(Material.MISCELLANEOUS).doesNotBlockMovement().zeroHardnessAndResistance().lightValue(14).sound(SoundType.STONE)));
+    public static final RegistryObject<Block> TORCH_DEMON_WALL = BLOCKS.register("torch_demon_wall", () -> new WallTorchBlock(Block.Properties.create(Material.MISCELLANEOUS).doesNotBlockMovement().zeroHardnessAndResistance().lightValue(14).sound(SoundType.STONE).lootFrom(TerraBlockRegistry.TORCH_DEMON.get())));
+    public static final RegistryObject<Block> TORCH_CURSED = BLOCKS.register("torch_cursed", () -> new TerraBlockTorch(Block.Properties.create(Material.MISCELLANEOUS).doesNotBlockMovement().zeroHardnessAndResistance().lightValue(14).sound(SoundType.WOOD)));
+    public static final RegistryObject<Block> TORCH_CURSED_WALL = BLOCKS.register("torch_cursed_wall", () -> new TerraBlockTorchWall(Block.Properties.create(Material.MISCELLANEOUS).doesNotBlockMovement().zeroHardnessAndResistance().lightValue(14).sound(SoundType.WOOD).lootFrom(TerraBlockRegistry.TORCH_CURSED.get())));
+    public static final RegistryObject<Block> TORCH_ICHOR = BLOCKS.register("torch_ichor", () -> new TerraBlockTorch(Block.Properties.create(Material.MISCELLANEOUS).doesNotBlockMovement().zeroHardnessAndResistance().lightValue(14).sound(SoundType.WOOD)));
+    public static final RegistryObject<Block> TORCH_ICHOR_WALL = BLOCKS.register("torch_ichor_wall", () -> new TerraBlockTorchWall(Block.Properties.create(Material.MISCELLANEOUS).doesNotBlockMovement().zeroHardnessAndResistance().lightValue(14).sound(SoundType.WOOD).lootFrom(TerraBlockRegistry.TORCH_ICHOR.get())));
 
     //Structure Dungeon
     public static final RegistryObject<Block> DUNGEON_BLUE_FLOOR_BRICK = BLOCKS.register("dungeon_blue_floor_brick", () -> new Block(Block.Properties.create(Material.ROCK).sound(SoundType.STONE).hardnessAndResistance(9.0F).harvestLevel(3).harvestTool(ToolType.PICKAXE)));

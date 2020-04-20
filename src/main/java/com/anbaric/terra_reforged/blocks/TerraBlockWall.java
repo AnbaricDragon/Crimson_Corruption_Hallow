@@ -72,7 +72,8 @@ public class TerraBlockWall extends Block implements IWaterLoggable
 
     public BlockState updatePostPlacement(BlockState stateIn, Direction facing, BlockState facingState, IWorld world, BlockPos pos, BlockPos facingPos)
     {
-        if (stateIn.get(WATERLOGGED)) {
+        if (stateIn.get(WATERLOGGED))
+        {
             world.getPendingFluidTicks().scheduleTick(pos, Fluids.WATER, Fluids.WATER.getTickRate(world));
         }
 

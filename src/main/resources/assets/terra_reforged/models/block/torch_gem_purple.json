@@ -1,0 +1,6 @@
+{
+    "parent": "block/template_torch",
+    "textures": {
+        "torch": "terra_reforged:blocks/torch_gem_purple"
+    }
+}

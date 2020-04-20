@@ -1,0 +1,8 @@
+{
+    "variants": {
+        "facing=east": { "model": "terra_reforged:block/torch_rainbow_wall" },
+        "facing=south": { "model": "terra_reforged:block/torch_rainbow_wall", "y": 90 },
+        "facing=west": { "model": "terra_reforged:block/torch_rainbow_wall", "y": 180 },
+        "facing=north": { "model": "terra_reforged:block/torch_rainbow_wall", "y": 270 }
+    }
+}

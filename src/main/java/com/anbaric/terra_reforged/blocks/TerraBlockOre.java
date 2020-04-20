@@ -1,7 +1,5 @@
 package com.anbaric.terra_reforged.blocks;
 
-
-import com.anbaric.terra_reforged.util.handlers.EnumHandler;
 import com.anbaric.terra_reforged.util.handlers.EnumHandler.*;
 import com.anbaric.terra_reforged.util.init.TerraBlockRegistry;
 import net.minecraft.block.Block;
@@ -10,9 +8,6 @@ import net.minecraft.block.Blocks;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
-import net.minecraft.state.EnumProperty;
-import net.minecraft.state.StateContainer;
-import net.minecraft.util.IStringSerializable;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.util.math.RayTraceResult;

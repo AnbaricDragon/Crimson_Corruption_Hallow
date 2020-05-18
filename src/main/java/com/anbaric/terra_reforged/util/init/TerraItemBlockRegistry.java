@@ -1,10 +1,11 @@
 package com.anbaric.terra_reforged.util.init;
 
-import com.anbaric.terra_reforged.blocks.TerraBlockCactus;
-import com.anbaric.terra_reforged.blocks.TerraBlockReeds;
-import com.anbaric.terra_reforged.blocks.TerraBlockThornBush;
+import com.anbaric.terra_reforged.blocks.*;
+import com.anbaric.terra_reforged.blocks.potionplants.TerraBlockPotionPlant;
 import com.anbaric.terra_reforged.util.Reference;
 import com.anbaric.terra_reforged.util.TerraItemGroups;
+import net.minecraft.block.DoublePlantBlock;
+import net.minecraft.block.LeavesBlock;
 import net.minecraft.item.BlockItem;
 import net.minecraft.item.Item;
 import net.minecraftforge.event.RegistryEvent;
@@ -31,12 +32,14 @@ public class TerraItemBlockRegistry
                         !(block instanceof TerraBlockReeds) &&
                         !(block instanceof TerraBlockCactus) &&
                         !(block instanceof TerraBlockThornBush) &&
+                        !(block instanceof TerraBlockPotionPlant) &&
                         block != TerraBlockRegistry.PLANT_MOSS_RED.get() &&
                         block != TerraBlockRegistry.PLANT_MOSS_FIRE.get() &&
                         block != TerraBlockRegistry.PLANT_MOSS_YELLOW.get() &&
                         block != TerraBlockRegistry.PLANT_MOSS_GREEN.get() &&
                         block != TerraBlockRegistry.PLANT_MOSS_BLUE.get() &&
                         block != TerraBlockRegistry.PLANT_MOSS_PURPLE.get() &&
+                        block != TerraBlockRegistry.PLANT_LIFEFRUIT.get() &&
                         block != TerraBlockRegistry.ORE_COPPER_CORRUPT.get() && block != TerraBlockRegistry.ORE_COPPER_CRIMSON.get() && block != TerraBlockRegistry.ORE_COPPER_HALLOWED.get() &&
                         block != TerraBlockRegistry.ORE_TIN_CORRUPT.get() && block != TerraBlockRegistry.ORE_TIN_CRIMSON.get() && block != TerraBlockRegistry.ORE_TIN_HALLOWED.get() &&
                         block != TerraBlockRegistry.ORE_IRON_CORRUPT.get() && block != TerraBlockRegistry.ORE_IRON_CRIMSON.get() && block != TerraBlockRegistry.ORE_IRON_HALLOWED.get() &&
@@ -79,7 +82,19 @@ public class TerraItemBlockRegistry
                 // Register the BlockItem for the block
                 .forEach(block -> {
                     // Make the properties, and make it so that the item will be on our ItemGroup (CreativeTab)
-                    final Item.Properties properties = new Item.Properties().group(TerraItemGroups.TERRA_BLOCKS_TAB);
+                    final Item.Properties properties = new Item.Properties().group(
+                            block instanceof LeavesBlock ||
+                            block instanceof TerraBlockTallGrass ||
+                            block instanceof DoublePlantBlock ||
+                            block instanceof TerraBlockWall ||
+                            block instanceof TerraBlockHangingPlant ||
+                            block instanceof TerraBlockSnowLayer
+                            ? TerraItemGroups.TERRA_DECORATIONS_TAB :
+
+                            block instanceof TerraBlockHangingLantern
+                            ? TerraItemGroups.TERRA_MECHANICS_TAB :
+
+                            TerraItemGroups.TERRA_BLOCKS_TAB);
                     // Create the new BlockItem with the block and it's properties
                     final BlockItem blockItem = new BlockItem(block, properties);
                     // Set the new BlockItem's registry name to the block's registry name

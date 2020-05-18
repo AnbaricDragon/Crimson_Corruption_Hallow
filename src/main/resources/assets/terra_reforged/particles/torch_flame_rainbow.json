@@ -1,0 +1,10 @@
+{
+  "textures": [
+    "terra_reforged:torch_flame_red",
+		"terra_reforged:torch_flame_orange",
+		"terra_reforged:torch_flame_yellow",
+		"terra_reforged:torch_flame_green",
+		"terra_reforged:torch_flame_blue",
+		"terra_reforged:torch_flame_purple"		
+  ]
+}

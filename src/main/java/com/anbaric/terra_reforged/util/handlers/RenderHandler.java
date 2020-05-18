@@ -70,6 +70,8 @@ import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
         RenderTypeLookup.setRenderLayer(TerraBlockRegistry.TORCH_CURSED_WALL.get(), cutout);
         RenderTypeLookup.setRenderLayer(TerraBlockRegistry.TORCH_ICHOR.get(), cutout);
         RenderTypeLookup.setRenderLayer(TerraBlockRegistry.TORCH_ICHOR_WALL.get(), cutout);
+        RenderTypeLookup.setRenderLayer(TerraBlockRegistry.TALL_LANTERN_FIREFLY.get(), translucent);
+        RenderTypeLookup.setRenderLayer(TerraBlockRegistry.TALL_LANTERN_LIGHTNINGBUG.get(), translucent);
 
         //Plants
         RenderTypeLookup.setRenderLayer(TerraBlockRegistry.PLANT_BLINKROOT.get(), cutoutMipped);
@@ -122,6 +124,7 @@ import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
         RenderTypeLookup.setRenderLayer(TerraBlockRegistry.TALLGRASSDOUBLE_CORRUPT.get(), cutoutMipped);
         RenderTypeLookup.setRenderLayer(TerraBlockRegistry.TALLGRASSDOUBLE_CRIMSON.get(), cutoutMipped);
         RenderTypeLookup.setRenderLayer(TerraBlockRegistry.TALLGRASSDOUBLE_HALLOWED.get(), cutoutMipped);
+        RenderTypeLookup.setRenderLayer(TerraBlockRegistry.SAPLING_BOREAL.get(), cutoutMipped);
 
         //Ores
         RenderTypeLookup.setRenderLayer(TerraBlockRegistry.ORE_TIN_PURE.get(), cutoutMipped);

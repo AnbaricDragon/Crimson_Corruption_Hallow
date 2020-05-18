@@ -2,22 +2,18 @@ package com.anbaric.terra_reforged;
 
 import com.anbaric.terra_reforged.util.Reference;
 import com.anbaric.terra_reforged.util.TerraCompat;
-import com.anbaric.terra_reforged.util.handlers.ColorHandler;
+import com.anbaric.terra_reforged.util.events.TerraTestEvent;
+import com.anbaric.terra_reforged.util.init.TerraBiomeRegistry;
 import com.anbaric.terra_reforged.util.init.TerraBlockRegistry;
 import com.anbaric.terra_reforged.util.init.TerraItemRegistry;
+import com.anbaric.terra_reforged.util.init.TerraParticleRegistry;
 import net.minecraft.block.Block;
-import net.minecraft.block.Blocks;
-import net.minecraft.client.renderer.RenderType;
-import net.minecraft.client.renderer.RenderTypeLookup;
-import net.minecraft.item.Item;
 import net.minecraft.tags.BlockTags;
-import net.minecraft.tags.ItemTags;
 import net.minecraft.tags.Tag;
 import net.minecraft.util.DamageSource;
+import net.minecraft.world.biome.Biome;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.common.PlantType;
-import net.minecraftforge.common.Tags;
-import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.InterModComms;
@@ -53,19 +49,23 @@ import java.util.stream.Collectors;
 
         final IEventBus modEventBus = FMLJavaModLoadingContext.get().getModEventBus();
 
+        TerraParticleRegistry.PARTICLES.register(modEventBus);
         TerraBlockRegistry.BLOCKS.register(modEventBus);
         TerraItemRegistry.ITEMS.register(modEventBus);
+        TerraBiomeRegistry.BIOMES.register(modEventBus);
         // Register the setup method for modloading
-        FMLJavaModLoadingContext.get().getModEventBus().addListener(this::setup);
+        modEventBus.addListener(this::setup);
         // Register the enqueueIMC method for modloading
-        FMLJavaModLoadingContext.get().getModEventBus().addListener(this::enqueueIMC);
+        modEventBus.addListener(this::enqueueIMC);
         // Register the processIMC method for modloading
-        FMLJavaModLoadingContext.get().getModEventBus().addListener(this::processIMC);
+        modEventBus.addListener(this::processIMC);
         // Register the doClientStuff method for modloading
-        FMLJavaModLoadingContext.get().getModEventBus().addListener(this::doClientStuff);
+        modEventBus.addListener(this::doClientStuff);
 
         // Register ourselves for server and other game events we are interested in
         MinecraftForge.EVENT_BUS.register(this);
+        MinecraftForge.EVENT_BUS.register(TerraTestEvent.class);
+
     }
 
     private void setup(final FMLCommonSetupEvent event)

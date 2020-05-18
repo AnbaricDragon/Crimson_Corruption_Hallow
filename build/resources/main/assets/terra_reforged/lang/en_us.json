@@ -1,6 +1,8 @@
 {
   "generator.Terran": "Terrarian",
 
+  "biome.terra_reforged.mud_jungle": "Mud Jungle",
+
   "itemGroup.terra_materials_tab": "Terra Reforged Materials",
   "itemGroup.terra_blocks_tab": "Terra Reforged Blocks",
   "itemGroup.terra_decorations_tab": "Terra Reforged Decorations",
@@ -116,6 +118,9 @@
   "block.terra_reforged.tallgrass_corrupt": "Corrupt Grass",
   "block.terra_reforged.tallgrass_crimson": "Crimson Grass",
   "block.terra_reforged.tallgrass_hallowed": "Hallowed Grass",
+  "block.terra_reforged.tallgrassdouble_corrupt": "Corrupt Tall Grass",
+  "block.terra_reforged.tallgrassdouble_crimson": "Crimson Tall Grass",
+  "block.terra_reforged.tallgrassdouble_hallowed": "Hallowed Tall Grass",
 
   "block.terra_reforged.stone_ebon": "Ebonstone",
   "block.terra_reforged.stone_crim": "Crimstone",
@@ -123,6 +128,9 @@
   "block.terra_reforged.cobblestone_ebon": "Eboncobblestone",
   "block.terra_reforged.cobblestone_crim": "Crimcobblestone",
   "block.terra_reforged.cobblestone_pearl": "Pearlcobblestone",
+  "block.terra_reforged.cobblestone_ebon_mossy": "Mossy Eboncobblestone",
+  "block.terra_reforged.cobblestone_crim_mossy": "Mossy Crimcobblestone",
+  "block.terra_reforged.cobblestone_pearl_mossy": "Mossy Pearlcobblestone",
   "block.terra_reforged.stonebrick_ebon": "Ebonstonebrick",
   "block.terra_reforged.stonebrick_crim": "Crimstonebrick",
   "block.terra_reforged.stonebrick_pearl": "Pearlstonebrick",
@@ -232,6 +240,8 @@
   "block.terra_reforged.stair_sandstone_ebon": "Ebonsandstone Stairs",
   "block.terra_reforged.stair_sandstone_crim": "Crimsandstone Stairs",
   "block.terra_reforged.stair_sandstone_pearl": "Pearlsandstone Stairs",
+  "block.terra_reforged.stair_brick_mudstone": "Mudstone Brick Stairs",
+  "block.terra_reforged.stair_brick_gold": "Gold Brick Stairs",
 
   "block.terra_reforged.slab_plank_boreal": "Boreal Wood Slabs",
   "block.terra_reforged.slab_plank_palm": "Palm Wood Slabs",
@@ -253,6 +263,8 @@
   "block.terra_reforged.slab_sandstone_ebon": "Ebonsandstone Slabs",
   "block.terra_reforged.slab_sandstone_crim": "Crimsandstone Slabs",
   "block.terra_reforged.slab_sandstone_pearl": "Pearlsandstone Slabs",
+
+  "block.terra_reforged.tall_lantern_bone": "Tall Bone Lantern",
 
   "block.terra_reforged.dungeon_blue_floor_brick": "Dungeon Brick Floor",
   "block.terra_reforged.dungeon_blue_floor_tile": "Dungeon Tile Floor",
@@ -366,6 +378,9 @@
   "block.terra_reforged.brick_rainbow": "Rainbow Brick",
   "block.terra_reforged.brick_lihzahrd": "Lihzahrd Brick",
   "block.terra_reforged.brick_stucco": "Stucco",
+  "block.terra_reforged.brick_marble": "Marble Brick",
+  "block.terra_reforged.brick_granite": "Granite Brick",
+  "block.terra_reforged.brick_crystal": "Crystal Brick",
   "block.terra_reforged.brick_stucco_red": "Red Stucco",
   "block.terra_reforged.brick_stucco_green": "Green Stucco",
   "block.terra_reforged.brick_stucco_yellow": "Yellow Stucco",
@@ -442,5 +457,20 @@
   "item.terra_reforged.ingot_hallowed": "Hallowed Ingot",
   "item.terra_reforged.ingot_shroomite": "Shroomite Ingot",
   "item.terra_reforged.ingot_luminite": "Luminite Ingot",
-  "item.terra_reforged.fruit_lifefruit": "Lifefruit"
+  "item.terra_reforged.plant_blinkroot": "Blinkroot",
+  "item.terra_reforged.plant_daybloom": "Daybloom",
+  "item.terra_reforged.plant_deathweed": "Deathweed",
+  "item.terra_reforged.plant_fireblossom": "Fireblossom",
+  "item.terra_reforged.plant_moonglow": "Moonglow",
+  "item.terra_reforged.plant_shiverthorn": "Shiverthorn",
+  "item.terra_reforged.plant_waterleaf": "Waterleaf",
+
+  "item.terra_reforged.fruit_lifefruit": "Lifefruit",
+  "item.terra_reforged.seed_blinkroot": "Blinkroot Seed",
+  "item.terra_reforged.seed_daybloom": "Daybloom Seed",
+  "item.terra_reforged.seed_deathweed": "Deathweed Seed",
+  "item.terra_reforged.seed_fireblossom": "Fireblossom Seed",
+  "item.terra_reforged.seed_moonglow": "Moonglow Seed",
+  "item.terra_reforged.seed_shiverthorn": "Shiverthorn Seed",
+  "item.terra_reforged.seed_waterleaf": "Waterleaf Seed"
 }

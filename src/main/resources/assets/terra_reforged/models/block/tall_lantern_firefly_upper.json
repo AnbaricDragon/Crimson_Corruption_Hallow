@@ -1,0 +1,126 @@
+{
+	"ambientocclusion": false,
+	"textures": {
+		"1": "terra_reforged:blocks/lantern_bottle_firefly",
+		"particle": "terra_reforged:blocks/lantern_bottle_side"
+	},
+	"elements": [
+		{
+			"name": "rope - cross",
+			"from": [3, -2, 7],
+			"to": [13, 0, 9],
+			"faces": {
+				"north": {"uv": [0, 2, 2, 12], "rotation": 90, "texture": "#1"},
+				"east": {"uv": [0, 1, 2, 3], "texture": "#1"},
+				"south": {"uv": [0, 3, 2, 13], "rotation": 90, "texture": "#1"},
+				"west": {"uv": [0, 1, 2, 3], "texture": "#1"},
+				"up": {"uv": [0, 2, 2, 12], "rotation": 90, "texture": "#1"},
+				"down": {"uv": [0, 2, 2, 12], "rotation": 90, "texture": "#1"}
+			}
+		},
+		{
+			"name": "rope - support",
+			"from": [7, 0, 7],
+			"to": [9, 12, 9],
+			"faces": {
+				"north": {"uv": [0, 0, 2, 12], "texture": "#1"},
+				"east": {"uv": [0, 0, 2, 12], "texture": "#1"},
+				"south": {"uv": [0, 0, 2, 12], "texture": "#1"},
+				"west": {"uv": [0, 0, 2, 12], "texture": "#1"},
+				"down": {"uv": [0, 0, 2, 2], "texture": "#1"}
+			}
+		},
+		{
+			"name": "rope - eastnub",
+			"from": [11, -4, 7],
+			"to": [13, -2, 9],
+			"faces": {
+				"north": {"uv": [0, 14, 2, 16], "texture": "#1"},
+				"east": {"uv": [0, 14, 2, 16], "texture": "#1"},
+				"south": {"uv": [0, 14, 2, 16], "texture": "#1"},
+				"up": {"uv": [0, 0, 2, 2], "texture": "#missing"},
+				"down": {"uv": [0, 14, 2, 16], "texture": "#1"}
+			}
+		},
+		{
+			"name": "rope - westnub",
+			"from": [3, -4, 7],
+			"to": [5, -2, 9],
+			"faces": {
+				"north": {"uv": [0, 14, 2, 16], "texture": "#1"},
+				"south": {"uv": [0, 14, 2, 16], "texture": "#1"},
+				"west": {"uv": [0, 2, 2, 4], "texture": "#1"},
+				"up": {"uv": [0, 0, 2, 2], "rotation": 180, "texture": "#missing"},
+				"down": {"uv": [0, 14, 2, 16], "texture": "#1"}
+			}
+		},
+		{
+			"name": "rope - topnub",
+			"from": [7, 14, 7],
+			"to": [9, 16, 9],
+			"faces": {
+				"east": {"uv": [0, 0, 2, 2], "texture": "#1"},
+				"west": {"uv": [0, 0, 2, 2], "texture": "#1"}
+			}
+		},
+		{
+			"name": "rope - northnub",
+			"from": [7, 10, 5],
+			"to": [9, 16, 7],
+			"faces": {
+				"north": {"uv": [0, 9, 2, 15], "texture": "#1"},
+				"east": {"uv": [4, 0, 6, 6], "texture": "#1"},
+				"west": {"uv": [2, 0, 4, 6], "texture": "#1"},
+				"down": {"uv": [0, 14, 2, 16], "texture": "#1"}
+			}
+		},
+		{
+			"name": "rope - southnub",
+			"from": [7, 10, 9],
+			"to": [9, 16, 11],
+			"faces": {
+				"east": {"uv": [2, 0, 4, 6], "texture": "#1"},
+				"south": {"uv": [0, 9, 2, 15], "texture": "#1"},
+				"west": {"uv": [4, 0, 6, 6], "texture": "#1"},
+				"down": {"uv": [0, 14, 2, 16], "texture": "#1"}
+			}
+		},
+		{
+			"name": "anchor - cross",
+			"from": [4, 12, 7],
+			"to": [12, 14, 9],
+			"faces": {
+				"north": {"uv": [14, 4, 16, 12], "rotation": 90, "texture": "#1"},
+				"east": {"uv": [14, 4, 16, 6], "rotation": 90, "texture": "#1"},
+				"south": {"uv": [14, 4, 16, 12], "rotation": 90, "texture": "#1"},
+				"west": {"uv": [14, 10, 16, 12], "rotation": 90, "texture": "#1"},
+				"up": {"uv": [14, 4, 16, 12], "rotation": 90, "texture": "#1"},
+				"down": {"uv": [14, 4, 16, 12], "rotation": 90, "texture": "#1"}
+			}
+		},
+		{
+			"name": "anchor - westnub",
+			"from": [4, 12, 7],
+			"to": [6, 16, 9],
+			"faces": {
+				"north": {"uv": [12, 4, 16, 6], "rotation": 90, "texture": "#1"},
+				"east": {"uv": [12, 4, 16, 6], "rotation": 90, "texture": "#1"},
+				"south": {"uv": [12, 10, 16, 12], "rotation": 90, "texture": "#1"},
+				"west": {"uv": [12, 10, 16, 12], "rotation": 90, "texture": "#1"},
+				"down": {"uv": [14, 10, 16, 12], "rotation": 90, "texture": "#1"}
+			}
+		},
+		{
+			"name": "anchor - eastnub",
+			"from": [10, 12, 7],
+			"to": [12, 16, 9],
+			"faces": {
+				"north": {"uv": [12, 10, 16, 12], "rotation": 90, "texture": "#1"},
+				"east": {"uv": [12, 4, 16, 6], "rotation": 90, "texture": "#1"},
+				"south": {"uv": [12, 4, 16, 6], "rotation": 90, "texture": "#1"},
+				"west": {"uv": [12, 10, 16, 12], "rotation": 90, "texture": "#1"},
+				"down": {"uv": [14, 4, 16, 6], "rotation": 90, "texture": "#1"}
+			}
+		}
+	]
+}

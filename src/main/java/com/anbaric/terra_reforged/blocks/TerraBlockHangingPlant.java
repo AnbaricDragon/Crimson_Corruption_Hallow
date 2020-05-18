@@ -59,20 +59,6 @@ public class TerraBlockHangingPlant extends BushBlock
         }
     }
 
-//    public BlockState updateDEFAULTPostPlacement(BlockState stateIn, Direction facing, BlockState facingState, IWorld worldIn, BlockPos currentPos, BlockPos facingPos)
-//    {
-//        DoubleBlockHalf doubleblockhalf = (DoubleBlockHalf) stateIn.get(HALF);
-//        if (facing.getAxis() != Direction.Axis.Y || doubleblockhalf == DoubleBlockHalf.LOWER != (facing == Direction.UP) || facingState.getBlock() == this && facingState.get(HALF) != doubleblockhalf)
-//        {
-//            return doubleblockhalf == DoubleBlockHalf.LOWER && facing == Direction.DOWN && !stateIn.isValidPosition(worldIn, currentPos) ? Blocks.AIR.getDefaultState() : super.updatePostPlacement(stateIn, facing, facingState, worldIn, currentPos, facingPos);
-//        }
-//        else
-//        {
-//            return Blocks.AIR.getDefaultState();
-//        }
-
-//    }
-
     @Nullable
     public BlockState getStateForPlacement(BlockItemUseContext context)
     {
@@ -92,11 +78,7 @@ public class TerraBlockHangingPlant extends BushBlock
     protected boolean isValidGround(BlockState state, IBlockReader worldIn, BlockPos pos)
     {
         Block block = state.getBlock();
-        return block == Blocks.GRASS_BLOCK || block == Blocks.DIRT || block == Blocks.COARSE_DIRT ||
-               block == Blocks.PODZOL || block == Blocks.FARMLAND || block == Blocks.SANDSTONE || block == Blocks.STONE ||
-               block == TerraBlockRegistry.GRASS_CRIMSON.get() || block == TerraBlockRegistry.GRASS_CORRUPT.get() || block == TerraBlockRegistry.GRASS_HALLOWED.get() ||
-               block == TerraBlockRegistry.STONE_CRIM.get() || block == TerraBlockRegistry.STONE_EBON.get() || block == TerraBlockRegistry.STONE_PEARL.get() ||
-               block == TerraBlockRegistry.SOIL_MUD.get() || block == TerraBlockRegistry.GRASS_MUSHROOM.get() || block == TerraBlockRegistry.GRASS_JUNGLE.get();
+        return block == Blocks.GRASS_BLOCK || block == Blocks.DIRT || block == Blocks.COARSE_DIRT || block == Blocks.PODZOL || block == Blocks.FARMLAND || block == Blocks.SANDSTONE || block == Blocks.STONE || block == TerraBlockRegistry.GRASS_CRIMSON.get() || block == TerraBlockRegistry.GRASS_CORRUPT.get() || block == TerraBlockRegistry.GRASS_HALLOWED.get() || block == TerraBlockRegistry.STONE_CRIM.get() || block == TerraBlockRegistry.STONE_EBON.get() || block == TerraBlockRegistry.STONE_PEARL.get() || block == TerraBlockRegistry.SOIL_MUD.get() || block == TerraBlockRegistry.GRASS_MUSHROOM.get() || block == TerraBlockRegistry.GRASS_JUNGLE.get();
     }
 
     public boolean isValidAnchor(BlockState state, IWorldReader worldIn, BlockPos pos)

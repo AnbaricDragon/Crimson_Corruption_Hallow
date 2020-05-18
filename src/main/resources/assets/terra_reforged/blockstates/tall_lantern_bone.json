@@ -1,0 +1,29 @@
+{
+    "variants": 
+		{
+        "lit=true,half=upper": 
+				[
+						{ "model": "terra_reforged:block/tall_lantern_bone_upper" },
+						{ "model": "terra_reforged:block/tall_lantern_bone_upper" , "y": 90}
+				],
+        "lit=false,half=upper": 
+				[
+						{ "model": "terra_reforged:block/tall_lantern_bone_upper" },
+						{ "model": "terra_reforged:block/tall_lantern_bone_upper" , "y": 90}
+				],
+        "lit=true,half=lower": 
+				[
+						{ "model": "terra_reforged:block/tall_lantern_bone_lower_lit" },
+						{ "model": "terra_reforged:block/tall_lantern_bone_lower_lit", "y": 90 },
+						{ "model": "terra_reforged:block/tall_lantern_bone_lower_lit", "y": 180 },
+						{ "model": "terra_reforged:block/tall_lantern_bone_lower_lit", "y": 270 }
+				],
+				"lit=false,half=lower": 
+				[
+						{ "model": "terra_reforged:block/tall_lantern_bone_lower_unlit" },
+						{ "model": "terra_reforged:block/tall_lantern_bone_lower_unlit", "y": 90 },
+						{ "model": "terra_reforged:block/tall_lantern_bone_lower_unlit", "y": 180 },
+						{ "model": "terra_reforged:block/tall_lantern_bone_lower_unlit", "y": 270 }
+				]
+    }
+}

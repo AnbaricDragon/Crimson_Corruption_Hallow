@@ -3,10 +3,7 @@ package com.anbaric.terra_reforged.util.init;
 import com.anbaric.terra_reforged.util.Reference;
 import com.anbaric.terra_reforged.util.TerraItemGroups;
 import net.minecraft.block.Blocks;
-import net.minecraft.item.BlockItem;
-import net.minecraft.item.Item;
-import net.minecraft.item.ItemGroup;
-import net.minecraft.item.WallOrFloorItem;
+import net.minecraft.item.*;
 import net.minecraftforge.fml.RegistryObject;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
@@ -54,13 +51,21 @@ public final class TerraItemRegistry
     public static final RegistryObject<Item> INGOT_SHROOMITE = ITEMS.register("ingot_shroomite", () -> new Item(new Item.Properties().group(TerraItemGroups.TERRA_MATERIALS_TAB)));
     public static final RegistryObject<Item> INGOT_LUMINITE = ITEMS.register("ingot_luminite", () -> new Item(new Item.Properties().group(TerraItemGroups.TERRA_MATERIALS_TAB)));
 
+    public static final RegistryObject<Item> PLANT_BLINKROOT = ITEMS.register("plant_blinkroot", () -> new Item(new Item.Properties().group(TerraItemGroups.TERRA_MATERIALS_TAB)));
+    public static final RegistryObject<Item> PLANT_DAYBLOOM = ITEMS.register("plant_daybloom", () -> new Item(new Item.Properties().group(TerraItemGroups.TERRA_MATERIALS_TAB)));
+    public static final RegistryObject<Item> PLANT_DEATHWEED = ITEMS.register("plant_deathweed", () -> new Item(new Item.Properties().group(TerraItemGroups.TERRA_MATERIALS_TAB)));
+    public static final RegistryObject<Item> PLANT_FIREBLOSSOM = ITEMS.register("plant_fireblossom", () -> new Item(new Item.Properties().group(TerraItemGroups.TERRA_MATERIALS_TAB)));
+    public static final RegistryObject<Item> PLANT_MOONGLOW = ITEMS.register("plant_moonglow", () -> new Item(new Item.Properties().group(TerraItemGroups.TERRA_MATERIALS_TAB)));
+    public static final RegistryObject<Item> PLANT_SHIVERTHORN = ITEMS.register("plant_shiverthorn", () -> new Item(new Item.Properties().group(TerraItemGroups.TERRA_MATERIALS_TAB)));
+    public static final RegistryObject<Item> PLANT_WATERLEAF = ITEMS.register("plant_waterleaf", () -> new Item(new Item.Properties().group(TerraItemGroups.TERRA_MATERIALS_TAB)));
+
     //Misc
     public static final RegistryObject<Item> FRUIT_LIFEFRUIT = ITEMS.register("fruit_lifefruit", () -> new Item(new Item.Properties().group(TerraItemGroups.TERRA_TOOLS_TAB)));
-    public static final RegistryObject<Item> SEED_BLINKROOT = ITEMS.register("seed_blinkroot", () -> new Item(new Item.Properties().group(TerraItemGroups.TERRA_DECORATIONS_TAB)));
-    public static final RegistryObject<Item> SEED_DAYBLOOM = ITEMS.register("seed_daybloom", () -> new Item(new Item.Properties().group(TerraItemGroups.TERRA_DECORATIONS_TAB)));
-    public static final RegistryObject<Item> SEED_DEATHWEED = ITEMS.register("seed_deathweed", () -> new Item(new Item.Properties().group(TerraItemGroups.TERRA_DECORATIONS_TAB)));
-    public static final RegistryObject<Item> SEED_FIREBLOSSOM = ITEMS.register("seed_fireblossom", () -> new Item(new Item.Properties().group(TerraItemGroups.TERRA_DECORATIONS_TAB)));
-    public static final RegistryObject<Item> SEED_MOONGLOW = ITEMS.register("seed_moonglow", () -> new Item(new Item.Properties().group(TerraItemGroups.TERRA_DECORATIONS_TAB)));
-    public static final RegistryObject<Item> SEED_SHIVERTHORN = ITEMS.register("seed_shiverthorn", () -> new Item(new Item.Properties().group(TerraItemGroups.TERRA_DECORATIONS_TAB)));
-    public static final RegistryObject<Item> SEED_WATERLEAF = ITEMS.register("seed_waterleaf", () -> new Item(new Item.Properties().group(TerraItemGroups.TERRA_DECORATIONS_TAB)));
+    public static final RegistryObject<Item> SEED_BLINKROOT = ITEMS.register("seed_blinkroot", () -> new BlockNamedItem(TerraBlockRegistry.PLANT_BLINKROOT.get(), new Item.Properties().group(TerraItemGroups.TERRA_DECORATIONS_TAB)));
+    public static final RegistryObject<Item> SEED_DAYBLOOM = ITEMS.register("seed_daybloom", () -> new BlockNamedItem(TerraBlockRegistry.PLANT_DAYBLOOM.get(), new Item.Properties().group(TerraItemGroups.TERRA_DECORATIONS_TAB)));
+    public static final RegistryObject<Item> SEED_DEATHWEED = ITEMS.register("seed_deathweed", () -> new BlockNamedItem(TerraBlockRegistry.PLANT_DEATHWEED.get(), new Item.Properties().group(TerraItemGroups.TERRA_DECORATIONS_TAB)));
+    public static final RegistryObject<Item> SEED_FIREBLOSSOM = ITEMS.register("seed_fireblossom", () -> new BlockNamedItem(TerraBlockRegistry.PLANT_FIREBLOSSOM.get(), new Item.Properties().group(TerraItemGroups.TERRA_DECORATIONS_TAB)));
+    public static final RegistryObject<Item> SEED_MOONGLOW = ITEMS.register("seed_moonglow", () -> new BlockNamedItem(TerraBlockRegistry.PLANT_MOONGLOW.get(), new Item.Properties().group(TerraItemGroups.TERRA_DECORATIONS_TAB)));
+    public static final RegistryObject<Item> SEED_SHIVERTHORN = ITEMS.register("seed_shiverthorn", () -> new BlockNamedItem(TerraBlockRegistry.PLANT_SHIVERTHORN.get(), new Item.Properties().group(TerraItemGroups.TERRA_DECORATIONS_TAB)));
+    public static final RegistryObject<Item> SEED_WATERLEAF = ITEMS.register("seed_waterleaf", () -> new BlockNamedItem(TerraBlockRegistry.PLANT_WATERLEAF.get(), new Item.Properties().group(TerraItemGroups.TERRA_DECORATIONS_TAB)));
 }

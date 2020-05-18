@@ -1,11 +1,14 @@
 package com.anbaric.terra_reforged.blocks;
 
+import com.anbaric.terra_reforged.util.init.TerraBlockRegistry;
+import com.anbaric.terra_reforged.util.init.TerraParticleRegistry;
 import com.google.common.collect.ImmutableMap;
 import com.google.common.collect.Maps;
 import net.minecraft.block.*;
 import net.minecraft.fluid.Fluids;
 import net.minecraft.fluid.IFluidState;
 import net.minecraft.item.BlockItemUseContext;
+import net.minecraft.particles.IParticleData;
 import net.minecraft.particles.ParticleTypes;
 import net.minecraft.state.DirectionProperty;
 import net.minecraft.state.IProperty;
@@ -27,7 +30,7 @@ import javax.annotation.Nullable;
 import java.util.Map;
 import java.util.Random;
 
-public class TerraBlockTorchWall extends TerraBlockTorch implements IWaterLoggable
+public class TerraBlockTorchWall extends TerraBlockTorch
 {
     public static final DirectionProperty HORIZONTAL_FACING;
     private static final Map<Direction, VoxelShape> SHAPES;
@@ -35,7 +38,24 @@ public class TerraBlockTorchWall extends TerraBlockTorch implements IWaterLoggab
     public TerraBlockTorchWall(Block.Properties p_i48298_1_)
     {
         super(p_i48298_1_);
-        this.setDefaultState(this.stateContainer.getBaseState().with(HORIZONTAL_FACING, Direction.NORTH).with(WATERLOGGED, false));
+        this.setDefaultState(this.stateContainer.getBaseState().with(HORIZONTAL_FACING, Direction.NORTH));
+    }
+
+    @Override
+    public IParticleData getParticle()
+    {
+        if (this == TerraBlockRegistry.TORCH_GEM_RED_WALL.get()) { return TerraParticleRegistry.TORCH_FLAME_RED.get(); }
+        else if (this == TerraBlockRegistry.TORCH_GEM_ORANGE_WALL.get()) { return TerraParticleRegistry.TORCH_FLAME_ORANGE.get(); }
+        else if (this == TerraBlockRegistry.TORCH_GEM_YELLOW_WALL.get()) { return TerraParticleRegistry.TORCH_FLAME_YELLOW.get(); }
+        else if (this == TerraBlockRegistry.TORCH_GEM_GREEN_WALL.get()) { return TerraParticleRegistry.TORCH_FLAME_GREEN.get(); }
+        else if (this == TerraBlockRegistry.TORCH_GEM_BLUE_WALL.get()) { return TerraParticleRegistry.TORCH_FLAME_BLUE.get(); }
+        else if (this == TerraBlockRegistry.TORCH_GEM_PURPLE_WALL.get()) { return TerraParticleRegistry.TORCH_FLAME_PURPLE.get(); }
+        else if (this == TerraBlockRegistry.TORCH_GEM_WHITE_WALL.get()) { return TerraParticleRegistry.TORCH_FLAME_WHITE.get(); }
+        else if (this == TerraBlockRegistry.TORCH_RAINBOW_WALL.get()) { return TerraParticleRegistry.TORCH_FLAME_RAINBOW.get(); }
+        else if (this == TerraBlockRegistry.TORCH_ICE_WALL.get()) { return TerraParticleRegistry.TORCH_FLAME_ICE.get(); }
+        else if (this == TerraBlockRegistry.TORCH_BONE_WALL.get()) { return TerraParticleRegistry.TORCH_FLAME_BONE.get(); }
+        else if (this == TerraBlockRegistry.TORCH_BRIGHT_WALL.get()) { return TerraParticleRegistry.TORCH_FLAME_BRIGHT.get(); }
+        else return this == TerraBlockRegistry.TORCH_DEMON_WALL.get() ? TerraParticleRegistry.TORCH_FLAME_DEMON.get() : ParticleTypes.FLAME;
     }
 
     public String getTranslationKey()
@@ -55,8 +75,8 @@ public class TerraBlockTorchWall extends TerraBlockTorch implements IWaterLoggab
 
     public boolean isValidPosition(BlockState state, IWorldReader world, BlockPos pos)
     {
-        Direction  facing = state.get(HORIZONTAL_FACING);
-        BlockPos   oppositePos = pos.offset(facing.getOpposite());
+        Direction  facing        = state.get(HORIZONTAL_FACING);
+        BlockPos   oppositePos   = pos.offset(facing.getOpposite());
         BlockState oppositeState = world.getBlockState(oppositePos);
         return oppositeState.isSolidSide(world, oppositePos, facing);
     }
@@ -64,14 +84,12 @@ public class TerraBlockTorchWall extends TerraBlockTorch implements IWaterLoggab
     @Nullable
     public BlockState getStateForPlacement(BlockItemUseContext context)
     {
-        BlockState   state = this.getDefaultState();
-        IWorldReader world = context.getWorld();
-        BlockPos     pos = context.getPos();
+        BlockState   state    = this.getDefaultState();
+        IWorldReader world    = context.getWorld();
+        BlockPos     pos      = context.getPos();
         Direction[]  lvt_5_1_ = context.getNearestLookingDirections();
         Direction[]  var6     = lvt_5_1_;
         int          var7     = lvt_5_1_.length;
-
-        IFluidState waterlogged = context.getWorld().getFluidState(context.getPos());
 
         for (int var8 = 0; var8 < var7; ++var8)
         {
@@ -82,7 +100,7 @@ public class TerraBlockTorchWall extends TerraBlockTorch implements IWaterLoggab
                 state = (BlockState) state.with(HORIZONTAL_FACING, lvt_10_1_);
                 if (state.isValidPosition(world, pos))
                 {
-                    return state.with(WATERLOGGED, waterlogged.getFluid() == Fluids.WATER);
+                    return state;
                 }
             }
         }
@@ -92,7 +110,6 @@ public class TerraBlockTorchWall extends TerraBlockTorch implements IWaterLoggab
 
     public BlockState updatePostPlacement(BlockState stateIn, Direction facing, BlockState facingState, IWorld worldIn, BlockPos currentPos, BlockPos facingPos)
     {
-        worldIn.getPendingFluidTicks().scheduleTick(currentPos, Fluids.WATER, Fluids.WATER.getTickRate(worldIn));
         return facing.getOpposite() == stateIn.get(HORIZONTAL_FACING) && !stateIn.isValidPosition(worldIn, currentPos) ? Blocks.AIR.getDefaultState() : stateIn;
     }
 
@@ -107,7 +124,7 @@ public class TerraBlockTorchWall extends TerraBlockTorch implements IWaterLoggab
         double    lvt_14_1_ = 0.27D;
         Direction lvt_16_1_ = lvt_5_1_.getOpposite();
         p_180655_2_.addParticle(ParticleTypes.SMOKE, lvt_6_1_ + 0.27D * (double) lvt_16_1_.getXOffset(), lvt_8_1_ + 0.22D, lvt_10_1_ + 0.27D * (double) lvt_16_1_.getZOffset(), 0.0D, 0.0D, 0.0D);
-        p_180655_2_.addParticle(ParticleTypes.FLAME, lvt_6_1_ + 0.27D * (double) lvt_16_1_.getXOffset(), lvt_8_1_ + 0.22D, lvt_10_1_ + 0.27D * (double) lvt_16_1_.getZOffset(), 0.0D, 0.0D, 0.0D);
+        p_180655_2_.addParticle(this.getParticle(), lvt_6_1_ + 0.27D * (double) lvt_16_1_.getXOffset(), lvt_8_1_ + 0.22D, lvt_10_1_ + 0.27D * (double) lvt_16_1_.getZOffset(), 0.0D, 0.0D, 0.0D);
     }
 
     public BlockState rotate(BlockState p_185499_1_, Rotation p_185499_2_)
@@ -122,7 +139,7 @@ public class TerraBlockTorchWall extends TerraBlockTorch implements IWaterLoggab
 
     protected void fillStateContainer(StateContainer.Builder<Block, BlockState> p_206840_1_)
     {
-        p_206840_1_.add(new IProperty[]{HORIZONTAL_FACING, WATERLOGGED});
+        p_206840_1_.add(new IProperty[]{HORIZONTAL_FACING});
     }
 
     static

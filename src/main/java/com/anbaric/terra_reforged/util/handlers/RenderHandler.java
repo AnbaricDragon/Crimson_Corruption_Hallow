@@ -59,7 +59,7 @@ import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
         RenderTypeLookup.setRenderLayer(TerraBlockRegistry.TORCH_RAINBOW.get(), cutout);
         RenderTypeLookup.setRenderLayer(TerraBlockRegistry.TORCH_RAINBOW_WALL.get(), cutout);
         RenderTypeLookup.setRenderLayer(TerraBlockRegistry.TORCH_ICE.get(), cutout);
-        RenderTypeLookup.setRenderLayer(TerraBlockRegistry.TORCH_ICE.get(), cutout);
+        RenderTypeLookup.setRenderLayer(TerraBlockRegistry.TORCH_ICE_WALL.get(), cutout);
         RenderTypeLookup.setRenderLayer(TerraBlockRegistry.TORCH_BONE.get(), cutout);
         RenderTypeLookup.setRenderLayer(TerraBlockRegistry.TORCH_BONE_WALL.get(), cutout);
         RenderTypeLookup.setRenderLayer(TerraBlockRegistry.TORCH_BRIGHT.get(), cutout);
@@ -125,6 +125,11 @@ import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
         RenderTypeLookup.setRenderLayer(TerraBlockRegistry.TALLGRASSDOUBLE_CRIMSON.get(), cutoutMipped);
         RenderTypeLookup.setRenderLayer(TerraBlockRegistry.TALLGRASSDOUBLE_HALLOWED.get(), cutoutMipped);
         RenderTypeLookup.setRenderLayer(TerraBlockRegistry.SAPLING_BOREAL.get(), cutoutMipped);
+        RenderTypeLookup.setRenderLayer(TerraBlockRegistry.SAPLING_PALM.get(), cutoutMipped);
+        RenderTypeLookup.setRenderLayer(TerraBlockRegistry.SAPLING_MAHOGANY.get(), cutoutMipped);
+        RenderTypeLookup.setRenderLayer(TerraBlockRegistry.SAPLING_EBON.get(), cutoutMipped);
+        RenderTypeLookup.setRenderLayer(TerraBlockRegistry.SAPLING_SHADE.get(), cutoutMipped);
+        RenderTypeLookup.setRenderLayer(TerraBlockRegistry.SAPLING_PEARL.get(), cutoutMipped);
 
         //Ores
         RenderTypeLookup.setRenderLayer(TerraBlockRegistry.ORE_TIN_PURE.get(), cutoutMipped);

@@ -37,7 +37,6 @@ public class TerraBlockSapling extends BushBlock implements IGrowable
         return SHAPE;
     }
 
-    @SuppressWarnings("deprecation")
     @Override
     public void tick(BlockState state, ServerWorld worldIn, BlockPos pos, Random rand)
     {
@@ -71,13 +70,22 @@ public class TerraBlockSapling extends BushBlock implements IGrowable
     protected boolean isValidGround(BlockState state, IBlockReader worldIn, BlockPos pos)
     {
         Block target = state.getBlock();
-        return target == Blocks.GRASS_BLOCK || target == Blocks.DIRT || target == Blocks.PODZOL || target == Blocks.SNOW_BLOCK || target == TerraBlockRegistry.SNOW_CORRUPT.get() || target == TerraBlockRegistry.SNOW_CRIMSON.get() || target == TerraBlockRegistry.SNOW_HALLOWED.get();
+        if (this == TerraBlockRegistry.SAPLING_BOREAL.get()) {return target == Blocks.SNOW_BLOCK || target == TerraBlockRegistry.SNOW_CORRUPT.get() || target == TerraBlockRegistry.SNOW_CRIMSON.get() || target == TerraBlockRegistry.SNOW_HALLOWED.get() || target == Blocks.DIRT || target == Blocks.GRASS_BLOCK;}
+        else if (this == TerraBlockRegistry.SAPLING_PALM.get()) {return target == Blocks.SAND || target == TerraBlockRegistry.SAND_EBON.get() || target == TerraBlockRegistry.SAND_CRIM.get() || target == TerraBlockRegistry.SAND_PEARL.get() || target == Blocks.DIRT || target == Blocks.GRASS_BLOCK;}
+        else if (this == TerraBlockRegistry.SAPLING_MAHOGANY.get()) {return target == TerraBlockRegistry.SOIL_MUD.get() || target == TerraBlockRegistry.GRASS_JUNGLE.get() || target == TerraBlockRegistry.GRASS_MUSHROOM.get();}
+        else if (this == TerraBlockRegistry.SAPLING_EBON.get()) {return target == TerraBlockRegistry.GRASS_CORRUPT.get() || target == Blocks.DIRT || target == Blocks.GRASS_BLOCK;}
+        else if (this == TerraBlockRegistry.SAPLING_SHADE.get()) {return target == TerraBlockRegistry.GRASS_CRIMSON.get() || target == Blocks.DIRT || target == Blocks.GRASS_BLOCK;}
+        else return this == TerraBlockRegistry.SAPLING_PEARL.get() ? target == TerraBlockRegistry.GRASS_HALLOWED.get() || target == Blocks.DIRT || target == Blocks.GRASS_BLOCK : target == Blocks.GRASS_BLOCK || target == Blocks.DIRT;
     }
 
-    public boolean isValidPosition(BlockState state, IWorldReader worldIn, BlockPos pos) {
+    @Override
+    public boolean isValidPosition(BlockState state, IWorldReader worldIn, BlockPos pos)
+    {
         BlockPos blockpos = pos.down();
         if (state.getBlock() == this) //Forge: This function is called during world gen and placement, before this block is set, so if we are not 'here' then assume it's the pre-check.
-            return worldIn.getBlockState(blockpos).canSustainPlant(worldIn, blockpos, Direction.UP, this);
+        {
+            return this.isValidGround(worldIn.getBlockState(blockpos), worldIn, blockpos);
+        }
         return this.isValidGround(worldIn.getBlockState(blockpos), worldIn, blockpos);
     }
 

@@ -107,17 +107,20 @@ public class TerraBlockTorchWallWaterproof extends TerraBlockTorchWaterproof imp
     }
 
     @OnlyIn(Dist.CLIENT)
-    public void animateTick(BlockState p_180655_1_, World p_180655_2_, BlockPos p_180655_3_, Random p_180655_4_)
+    public void animateTick(BlockState state, World world, BlockPos pos, Random rand)
     {
-        Direction lvt_5_1_  = (Direction) p_180655_1_.get(HORIZONTAL_FACING);
-        double    lvt_6_1_  = (double) p_180655_3_.getX() + 0.5D;
-        double    lvt_8_1_  = (double) p_180655_3_.getY() + 0.7D;
-        double    lvt_10_1_ = (double) p_180655_3_.getZ() + 0.5D;
+        Direction facing  = (Direction) state.get(HORIZONTAL_FACING);
+        double    lvt_6_1_  = (double) pos.getX() + 0.5D;
+        double    lvt_8_1_  = (double) pos.getY() + 0.7D;
+        double    lvt_10_1_ = (double) pos.getZ() + 0.5D;
         double    lvt_12_1_ = 0.22D;
         double    lvt_14_1_ = 0.27D;
-        Direction lvt_16_1_ = lvt_5_1_.getOpposite();
-        p_180655_2_.addParticle(ParticleTypes.SMOKE, lvt_6_1_ + 0.27D * (double) lvt_16_1_.getXOffset(), lvt_8_1_ + 0.22D, lvt_10_1_ + 0.27D * (double) lvt_16_1_.getZOffset(), 0.0D, 0.0D, 0.0D);
-        p_180655_2_.addParticle(this.getParticle(), lvt_6_1_ + 0.27D * (double) lvt_16_1_.getXOffset(), lvt_8_1_ + 0.22D, lvt_10_1_ + 0.27D * (double) lvt_16_1_.getZOffset(), 0.0D, 0.0D, 0.0D);
+        Direction lvt_16_1_ = facing.getOpposite();
+        if (!state.get(WATERLOGGED))
+        {
+            world.addParticle(ParticleTypes.SMOKE, lvt_6_1_ + 0.27D * (double) lvt_16_1_.getXOffset(), lvt_8_1_ + 0.22D, lvt_10_1_ + 0.27D * (double) lvt_16_1_.getZOffset(), 0.0D, 0.0D, 0.0D);
+            world.addParticle(this.getParticle(), lvt_6_1_ + 0.27D * (double) lvt_16_1_.getXOffset(), lvt_8_1_ + 0.22D, lvt_10_1_ + 0.27D * (double) lvt_16_1_.getZOffset(), 0.0D, 0.0D, 0.0D);
+        }
     }
 
     public BlockState rotate(BlockState p_185499_1_, Rotation p_185499_2_)

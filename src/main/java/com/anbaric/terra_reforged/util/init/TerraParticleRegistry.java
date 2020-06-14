@@ -11,6 +11,8 @@ public class TerraParticleRegistry
 {
     public static final DeferredRegister<ParticleType<?>> PARTICLES = new DeferredRegister<>(ForgeRegistries.PARTICLE_TYPES, Reference.MODID);
 
+    public static final RegistryObject<BasicParticleType> SPORE_MUSHROOM = PARTICLES.register("spore_mushroom", () -> new BasicParticleType(true));
+
     public static final RegistryObject<BasicParticleType> TORCH_FLAME_RED = PARTICLES.register("torch_flame_red", () -> new BasicParticleType(true));
     public static final RegistryObject<BasicParticleType> TORCH_FLAME_ORANGE = PARTICLES.register("torch_flame_orange", () -> new BasicParticleType(true));
     public static final RegistryObject<BasicParticleType> TORCH_FLAME_YELLOW  = PARTICLES.register("torch_flame_yellow", () -> new BasicParticleType(true));

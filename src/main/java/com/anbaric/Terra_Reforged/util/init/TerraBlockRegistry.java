@@ -3,14 +3,12 @@ package com.anbaric.terra_reforged.util.init;
 import com.anbaric.terra_reforged.TerraReforged;
 import com.anbaric.terra_reforged.blocks.*;
 import com.anbaric.terra_reforged.blocks.potionplants.*;
-import com.anbaric.terra_reforged.structures.trees.TerraTreeBoreal;
+import com.anbaric.terra_reforged.features.trees.*;
 import com.anbaric.terra_reforged.util.Reference;
 import com.anbaric.terra_reforged.util.handlers.EnumHandler.EnumBiomeType;
 import net.minecraft.block.*;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.material.MaterialColor;
-import net.minecraft.tileentity.TileEntity;
-import net.minecraft.tileentity.TileEntityType;
 import net.minecraftforge.common.PlantType;
 import net.minecraftforge.common.ToolType;
 import net.minecraftforge.fml.RegistryObject;
@@ -173,11 +171,11 @@ public final class TerraBlockRegistry
     public static final RegistryObject<Block> LEAF_PEARL_GREEN = BLOCKS.register("leaf_pearl_green", () -> new LeavesBlock(Block.Properties.create(Material.LEAVES).hardnessAndResistance(0.2F).tickRandomly().sound(SoundType.PLANT).notSolid()));
     public static final RegistryObject<Block> LEAF_PEARL_PURPLE = BLOCKS.register("leaf_pearl_purple", () -> new LeavesBlock(Block.Properties.create(Material.LEAVES).hardnessAndResistance(0.2F).tickRandomly().sound(SoundType.PLANT).notSolid()));
     public static final RegistryObject<Block> SAPLING_BOREAL = BLOCKS.register("sapling_boreal", () -> new TerraBlockSapling(() -> new TerraTreeBoreal(), Block.Properties.create(Material.PLANTS).doesNotBlockMovement().tickRandomly().zeroHardnessAndResistance().sound(SoundType.PLANT)));
-//    public static final RegistryObject<Block> SAPLING_PALM = BLOCKS.register("sapling_palm", () -> new TerraBlockSapling(() -> new TerraTreePalm(), Block.Properties.create(Material.PLANTS).doesNotBlockMovement().tickRandomly().zeroHardnessAndResistance().sound(SoundType.PLANT)));
-//    public static final RegistryObject<Block> SAPLING_MAHOGANY = BLOCKS.register("sapling_mahogany", () -> new TerraBlockSapling(() -> new TerraTreeMahogany(), Block.Properties.create(Material.PLANTS).doesNotBlockMovement().tickRandomly().zeroHardnessAndResistance().sound(SoundType.PLANT)));
-//    public static final RegistryObject<Block> SAPLING_EBON = BLOCKS.register("sapling_ebon", () -> new TerraBlockSapling(() -> new TerraTreeEbon(), Block.Properties.create(Material.PLANTS).doesNotBlockMovement().tickRandomly().zeroHardnessAndResistance().sound(SoundType.PLANT)));
-//    public static final RegistryObject<Block> SAPLING_SHADE = BLOCKS.register("sapling_shade", () -> new TerraBlockSapling(() -> new TerraTreeShade(), Block.Properties.create(Material.PLANTS).doesNotBlockMovement().tickRandomly().zeroHardnessAndResistance().sound(SoundType.PLANT)));
-//    public static final RegistryObject<Block> SAPLING_PEARL = BLOCKS.register("sapling_pearl", () -> new TerraBlockSapling(() -> new TerraTreePearl(), Block.Properties.create(Material.PLANTS).doesNotBlockMovement().tickRandomly().zeroHardnessAndResistance().sound(SoundType.PLANT)));
+    public static final RegistryObject<Block> SAPLING_PALM = BLOCKS.register("sapling_palm", () -> new TerraBlockSapling(() -> new TerraTreePalm(), Block.Properties.create(Material.PLANTS).doesNotBlockMovement().tickRandomly().zeroHardnessAndResistance().sound(SoundType.PLANT)));
+    public static final RegistryObject<Block> SAPLING_MAHOGANY = BLOCKS.register("sapling_mahogany", () -> new TerraBlockSapling(() -> new TerraTreeMahogany(), Block.Properties.create(Material.PLANTS).doesNotBlockMovement().tickRandomly().zeroHardnessAndResistance().sound(SoundType.PLANT)));
+    public static final RegistryObject<Block> SAPLING_EBON = BLOCKS.register("sapling_ebon", () -> new TerraBlockSapling(() -> new TerraTreeEbon(), Block.Properties.create(Material.PLANTS).doesNotBlockMovement().tickRandomly().zeroHardnessAndResistance().sound(SoundType.PLANT)));
+    public static final RegistryObject<Block> SAPLING_SHADE = BLOCKS.register("sapling_shade", () -> new TerraBlockSapling(() -> new TerraTreeShade(), Block.Properties.create(Material.PLANTS).doesNotBlockMovement().tickRandomly().zeroHardnessAndResistance().sound(SoundType.PLANT)));
+    public static final RegistryObject<Block> SAPLING_PEARL = BLOCKS.register("sapling_pearl", () -> new TerraBlockSapling(() -> new TerraTreePearl(), Block.Properties.create(Material.PLANTS).doesNotBlockMovement().tickRandomly().zeroHardnessAndResistance().sound(SoundType.PLANT)));
     public static final RegistryObject<Block> CACTUS_EBON = BLOCKS.register("cactus_ebon", () -> new TerraBlockCactus(Block.Properties.create(Material.CACTUS).tickRandomly().hardnessAndResistance(0.4F).sound(SoundType.CLOTH)));
     public static final RegistryObject<Block> CACTUS_CRIM = BLOCKS.register("cactus_crim", () -> new TerraBlockCactus(Block.Properties.create(Material.CACTUS).tickRandomly().hardnessAndResistance(0.4F).sound(SoundType.CLOTH)));
     public static final RegistryObject<Block> CACTUS_PEARL = BLOCKS.register("cactus_pearl", () -> new TerraBlockCactus(Block.Properties.create(Material.CACTUS).tickRandomly().hardnessAndResistance(0.4F).sound(SoundType.CLOTH)));
@@ -584,7 +582,8 @@ public final class TerraBlockRegistry
     public static final RegistryObject<Block> ORE_DIAMOND_CRIMSON  = BLOCKS.register("ore_diamond_crimson" , () -> new TerraBlockOre(Block.Properties.create(Material.ROCK).harvestLevel(2).hardnessAndResistance(3.0F)));
     public static final RegistryObject<Block> ORE_DIAMOND_HALLOWED = BLOCKS.register("ore_diamond_hallowed", () -> new TerraBlockOre(Block.Properties.create(Material.ROCK).harvestLevel(2).hardnessAndResistance(3.0F)));
 //
-//    //Misc
+    //Misc
+    public static final RegistryObject<Block> AIR_JUNGLE = BLOCKS.register("air_jungle", () -> new TerraBlockJungleAir(Block.Properties.create(Material.AIR).doesNotBlockMovement().noDrops().tickRandomly().lightValue(15)));
 //    public static final RegistryObject<Block> MISC_CLOUD = null;
 //    public static final RegistryObject<Block> MISC_RAINCLOUD = null;
 //    public static final RegistryObject<Block> MISC_HIVE = null;

@@ -1,0 +1,12 @@
+{
+  "replace": false,
+  "values": [
+	  "terra_reforged:stone_pearl",
+	  "terra_reforged:snow_hallowed",
+	  "terra_reforged:sand_pearl",
+	  "terra_reforged:sand_hardpearl",
+	  "terra_reforged:sandstone_pearl",
+	  "terra_reforged:ice_pink",
+	  "terra_reforged:ice_hard_pink"
+  ]
+}

@@ -1,0 +1,15 @@
+{
+  "replace": false,
+  "values": [
+	  "minecraft:sand",
+	  "terra_reforged:sand_ebon",
+	  "terra_reforged:sand_crim",
+	  "terra_reforged:sand_pearl",
+	  "terra_reforged:sand_hardebon",
+	  "terra_reforged:sand_hardcrim",
+	  "terra_reforged:sand_hardpearl",
+	  "terra_reforged:sandstone_ebon",
+	  "terra_reforged:sandstone_crim",
+	  "terra_reforged:sandstone_pearl"
+  ]
+}

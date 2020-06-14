@@ -20,8 +20,7 @@ public class TerraMudJungleBuilder extends SurfaceBuilder<SurfaceBuilderConfig>
 
     private static final BlockState AIR = Blocks.AIR.getDefaultState();
     private static final BlockState SOIL_MUD = TerraBlockRegistry.SOIL_MUD.get().getDefaultState();
-    protected long field_205552_a;
-    protected OctavesNoiseGenerator noiseGen;
+    private static final BlockState GRASS_JUNGLE = TerraBlockRegistry.GRASS_JUNGLE.get().getDefaultState();
 
     public TerraMudJungleBuilder(Function<Dynamic<?>, ? extends SurfaceBuilderConfig> function)
     {
@@ -31,63 +30,24 @@ public class TerraMudJungleBuilder extends SurfaceBuilder<SurfaceBuilderConfig>
     @Override
     public void buildSurface(Random random, IChunk chunkIn, Biome biomeIn, int x, int z, int startHeight, double noise, BlockState defaultBlock, BlockState defaultFluid, int seaLevel, long seed, SurfaceBuilderConfig config)
     {
-        SurfaceBuilder.DEFAULT.buildSurface(random, chunkIn, biomeIn, x, z, startHeight, noise, defaultBlock, defaultFluid, seaLevel, seed, TerraSurfaceBuilderRegistry.MUD_JUNGLE_CONFIG);
+        int              chunkPosX = x & 15;
+        int              chunkPosZ = z & 15;
+        BlockPos.Mutable targetPos = new BlockPos.Mutable();
 
-        int              chunkSealevel = seaLevel + 1;
-        int              chunkPosX     = x & 15;
-        int              chunkPosZ     = z & 15;
-        int              l             = (int) (noise / 3.0D + 3.0D + random.nextDouble() * 0.25D);
-        BlockPos.Mutable targetPos     = new BlockPos.Mutable();
-        int              i1            = -1;
-        BlockState       blockstate    = SOIL_MUD;
-        BlockState       blockstate1   = SOIL_MUD;
-
-        for (int iter = 127; iter >= 0; --iter)
+        for (int iter = startHeight - 1; iter >= 0; --iter)
         {
             targetPos.setPos(chunkPosX, iter, chunkPosZ);
-            BlockState targetState = chunkIn.getBlockState(targetPos);
-            if (targetState.getBlock() != null && !targetState.isAir())
+
+            if (iter == startHeight - 1)
             {
-                if (targetState.getBlock() == defaultBlock.getBlock())
-                {
-                    if (i1 == -1)
-                    {
-                        if (l <= 0)
-                        {
-                            blockstate = AIR;
-                            blockstate1 = SOIL_MUD;
-                        }
-                        else if (iter >= chunkSealevel - 4 && iter <= chunkSealevel + 1)
-                        {
-                            blockstate = SOIL_MUD;
-                            blockstate1 = SOIL_MUD;
-                        }
-
-                        if (iter < chunkSealevel && (blockstate == null || blockstate.isAir()))
-                        {
-                            blockstate = defaultFluid;
-                        }
-
-                        i1 = l;
-                        if (iter >= chunkSealevel - 1)
-                        {
-                            chunkIn.setBlockState(targetPos, blockstate, false);
-                        }
-                        else
-                        {
-                            chunkIn.setBlockState(targetPos, blockstate1, false);
-                        }
-                    }
-                    else if (i1 > 0)
-                    {
-                        --i1;
-                        chunkIn.setBlockState(targetPos, blockstate1, false);
-                    }
-                }
+                chunkIn.setBlockState(targetPos, GRASS_JUNGLE, false);
             }
             else
             {
-                i1 = -1;
+                if (!chunkIn.getBlockState(targetPos).isAir())
+                {
+                    chunkIn.setBlockState(targetPos, SOIL_MUD, false);
+                }
             }
         }
     }

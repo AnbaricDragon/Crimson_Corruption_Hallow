@@ -1,5 +1,11 @@
 {
     "variants": {
-        "": { "model": "terra_reforged:block/brick_cobalt" }
+        "": [
+						{ "model": "terra_reforged:block/brick_cobalt_0", "weight": 5 },
+						{ "model": "terra_reforged:block/brick_cobalt_1", "weight": 3 },
+						{ "model": "terra_reforged:block/brick_cobalt_2", "weight": 3 },
+						{ "model": "terra_reforged:block/brick_cobalt_3", "weight": 3 },
+						{ "model": "terra_reforged:block/brick_cobalt_4", "weight": 3 }
+				]
     }
 }

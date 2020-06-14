@@ -2,6 +2,10 @@
   "generator.Terran": "Terrarian",
 
   "biome.terra_reforged.mud_jungle": "Mud Jungle",
+  "biome.terra_reforged.snow_pure": "Icy Tundra",
+  "biome.terra_reforged.snow_corrupt": "Corrupt Icy Tundra",
+  "biome.terra_reforged.snow_crimson": "Crimson Icy Tundra",
+  "biome.terra_reforged.snow_hallowed": "Hallowed Icy Tundra",
 
   "itemGroup.terra_materials_tab": "Terra Reforged Materials",
   "itemGroup.terra_blocks_tab": "Terra Reforged Blocks",

@@ -1,0 +1,17 @@
+{
+  "replace": false,
+  "values": [
+	  "minecraft:snow_block",
+	  "terra_reforged:snow_corrupt",
+	  "terra_reforged:snow_crimson",
+	  "terra_reforged:snow_hallowed",
+	  "minecraft:ice",
+	  "terra_reforged:ice_purple",
+	  "terra_reforged:ice_red",
+	  "terra_reforged:ice_pink",
+	  "minecraft:packed_ice",
+	  "terra_reforged:ice_hard_purple",
+	  "terra_reforged:ice_hard_red",
+	  "terra_reforged:ice_hard_pink"
+  ]
+}

@@ -15,11 +15,14 @@ import java.util.function.Function;
 
 public class TerraWorldCarver extends CaveWorldCarver
 {
+    public static final WorldCarver<ProbabilityConfig> TERRA_CAVES = register("terra_caves", new TerraWorldCarver(ProbabilityConfig::deserialize, 256));
+    public static final WorldCarver<ProbabilityConfig> TERRA_CAVERNS = register("terra_caverns", new TerraCavernCarver(ProbabilityConfig::deserialize, 256));
     public static final WorldCarver<ProbabilityConfig> TERRA_JUNGLE_CAVES = register("terra_jungle_caves", new TerraJungleCarver(ProbabilityConfig::deserialize, 256));
     public static final WorldCarver<ProbabilityConfig> TERRA_SNOW_CAVES = register("terra_snow_caves", new TerraSnowCarver(ProbabilityConfig::deserialize, 256));
 
     protected Set<Block> carvableTerraBlocks = ImmutableSet.of(
         TerraBlockRegistry.SOIL_MUD.get(), TerraBlockRegistry.SAND_HARD.get(), TerraBlockRegistry.GRASS_JUNGLE.get(),
+        TerraBlockRegistry.GRASS_CORRUPT.get(), TerraBlockRegistry.GRASS_CRIMSON.get(), TerraBlockRegistry.GRASS_HALLOWED.get(),
         TerraBlockRegistry.STONE_EBON.get(), TerraBlockRegistry.STONE_CRIM.get(), TerraBlockRegistry.STONE_PEARL.get(),
         TerraBlockRegistry.SAND_EBON.get(), TerraBlockRegistry.SAND_CRIM.get(), TerraBlockRegistry.SAND_PEARL.get(),
         TerraBlockRegistry.SAND_HARDEBON.get(), TerraBlockRegistry.SAND_HARDCRIM.get(), TerraBlockRegistry.SAND_HARDPEARL.get(),

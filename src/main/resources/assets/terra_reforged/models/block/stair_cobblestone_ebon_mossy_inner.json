@@ -1,0 +1,8 @@
+{
+    "parent": "block/inner_stairs",
+    "textures": {
+        "bottom": "terra_reforged:blocks/cobblestone_ebon_mossy",
+        "top": "terra_reforged:blocks/cobblestone_ebon_mossy",
+        "side": "terra_reforged:blocks/cobblestone_ebon_mossy"
+    }
+}

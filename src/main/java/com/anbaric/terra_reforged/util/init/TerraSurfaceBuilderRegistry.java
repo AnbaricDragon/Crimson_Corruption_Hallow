@@ -2,9 +2,9 @@ package com.anbaric.terra_reforged.util.init;
 
 import com.anbaric.terra_reforged.biomes.builders.TerraMudJungleBuilder;
 import com.anbaric.terra_reforged.biomes.builders.TerraIceBiomeBuilder;
+import com.anbaric.terra_reforged.biomes.builders.TerraBiomeBuilder;
 import com.anbaric.terra_reforged.features.TerraBiomeFeatures;
 import net.minecraft.block.BlockState;
-import net.minecraft.block.Blocks;
 import net.minecraft.util.registry.Registry;
 import net.minecraft.world.biome.Biome;
 import net.minecraft.world.chunk.IChunk;
@@ -19,15 +19,29 @@ import java.util.function.Function;
 public class TerraSurfaceBuilderRegistry extends SurfaceBuilder
 {
     public static final SurfaceBuilderConfig MUD_JUNGLE_CONFIG = new SurfaceBuilderConfig(TerraBiomeFeatures.GRASS_JUNGLE, TerraBiomeFeatures.SOIL_MUD, TerraBiomeFeatures.SOIL_MUD);
+
     public static final SurfaceBuilderConfig SNOW_PURE_CONFIG = new SurfaceBuilderConfig(TerraBiomeFeatures.SNOW, TerraBiomeFeatures.SNOW, TerraBiomeFeatures.SNOW);
+
+    public static final SurfaceBuilderConfig GRASS_CORRUPT_CONFIG = new SurfaceBuilderConfig(TerraBiomeFeatures.GRASS_CORRUPT, DIRT, GRAVEL);
     public static final SurfaceBuilderConfig SNOW_CORRUPT_CONFIG = new SurfaceBuilderConfig(TerraBiomeFeatures.CORRUPT_SNOW, TerraBiomeFeatures.CORRUPT_SNOW, TerraBiomeFeatures.CORRUPT_SNOW);
+
+    public static final SurfaceBuilderConfig GRASS_CRIMSON_CONFIG = new SurfaceBuilderConfig(TerraBiomeFeatures.GRASS_CRIMSON, DIRT, GRAVEL);
     public static final SurfaceBuilderConfig SNOW_CRIMSON_CONFIG = new SurfaceBuilderConfig(TerraBiomeFeatures.CRIMSON_SNOW, TerraBiomeFeatures.CRIMSON_SNOW, TerraBiomeFeatures.CRIMSON_SNOW);
+
+    public static final SurfaceBuilderConfig GRASS_HALLOWED_CONFIG = new SurfaceBuilderConfig(TerraBiomeFeatures.GRASS_HALLOWED, DIRT, GRAVEL);
     public static final SurfaceBuilderConfig SNOW_HALLOWED_CONFIG = new SurfaceBuilderConfig(TerraBiomeFeatures.HALLOWED_SNOW, TerraBiomeFeatures.HALLOWED_SNOW, TerraBiomeFeatures.HALLOWED_SNOW);
 
     public static final SurfaceBuilder<SurfaceBuilderConfig> MUD_JUNGLE = register("mud_jungle", new TerraMudJungleBuilder(SurfaceBuilderConfig::deserialize));
+
     public static final SurfaceBuilder<SurfaceBuilderConfig> SNOW_PURE = register("snow_pure", new TerraIceBiomeBuilder(SurfaceBuilderConfig::deserialize, TerraBiomeFeatures.SNOW, TerraBiomeFeatures.ICE, TerraBiomeFeatures.PACKED_ICE));
+
+    public static final SurfaceBuilder<SurfaceBuilderConfig> BASE_CORRUPT = register("base_corrupt", new TerraBiomeBuilder(SurfaceBuilderConfig::deserialize, TerraBiomeFeatures.GRASS_CORRUPT, TerraBiomeFeatures.CORRUPT_STONE));
     public static final SurfaceBuilder<SurfaceBuilderConfig> SNOW_CORRUPT = register("snow_corrupt", new TerraIceBiomeBuilder(SurfaceBuilderConfig::deserialize, TerraBiomeFeatures.CORRUPT_SNOW, TerraBiomeFeatures.CORRUPT_ICE, TerraBiomeFeatures.CORRUPT_PACKED_ICE));
+
+    public static final SurfaceBuilder<SurfaceBuilderConfig> BASE_CRIMSON = register("plains_crimson", new TerraBiomeBuilder(SurfaceBuilderConfig::deserialize, TerraBiomeFeatures.GRASS_CRIMSON, TerraBiomeFeatures.CRIMSON_STONE));
     public static final SurfaceBuilder<SurfaceBuilderConfig> SNOW_CRIMSON = register("snow_crimson", new TerraIceBiomeBuilder(SurfaceBuilderConfig::deserialize, TerraBiomeFeatures.CRIMSON_SNOW, TerraBiomeFeatures.CRIMSON_ICE, TerraBiomeFeatures.CRIMSON_PACKED_ICE));
+
+    public static final SurfaceBuilder<SurfaceBuilderConfig> BASE_HALLOWED = register("plains_hallowed", new TerraBiomeBuilder(SurfaceBuilderConfig::deserialize, TerraBiomeFeatures.GRASS_HALLOWED, TerraBiomeFeatures.HALLOWED_STONE));
     public static final SurfaceBuilder<SurfaceBuilderConfig> SNOW_HALLOWED = register("snow_hallowed", new TerraIceBiomeBuilder(SurfaceBuilderConfig::deserialize, TerraBiomeFeatures.HALLOWED_SNOW, TerraBiomeFeatures.HALLOWED_ICE, TerraBiomeFeatures.HALLOWED_PACKED_ICE));
 
     public TerraSurfaceBuilderRegistry(Function function)

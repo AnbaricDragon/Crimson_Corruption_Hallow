@@ -1,0 +1,8 @@
+{
+    "parent": "block/stairs",
+    "textures": {
+        "bottom": "terra_reforged:blocks/stonebrick_crim_mossy",
+        "top": "terra_reforged:blocks/stonebrick_crim_mossy",
+        "side": "terra_reforged:blocks/stonebrick_crim_mossy"
+    }
+}

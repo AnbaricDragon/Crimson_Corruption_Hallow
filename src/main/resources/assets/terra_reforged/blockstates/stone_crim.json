@@ -1,6 +1,8 @@
 {
     "variants": {
-        "": { "model": "terra_reforged:block/stone_crim" },
-				"": { "model": "terra_reforged:block/stone_crim", "y": 90 }
+        "": [
+						{ "model": "terra_reforged:block/stone_crim" },
+						{ "model": "terra_reforged:block/stone_crim_mirrored" }
+				]
     }
 }

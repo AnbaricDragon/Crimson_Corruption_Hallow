@@ -89,7 +89,7 @@ public class TerraBlockBiomeGrass extends SnowyDirtBlock implements IGrowable
             {
                 return; // Forge: prevent loading unloaded chunks when checking neighbor's light and spreading
             }
-            if (!canSpread(state, worldIn, pos))
+            if (!canSpread(state, worldIn, pos) || worldIn.getBlockState(pos.up()).getBlock() == Blocks.WATER)
             {
                 worldIn.setBlockState(pos, Blocks.DIRT.getDefaultState());
             }

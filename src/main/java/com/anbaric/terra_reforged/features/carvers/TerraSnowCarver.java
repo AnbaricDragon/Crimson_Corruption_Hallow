@@ -1,5 +1,6 @@
 package com.anbaric.terra_reforged.features.carvers;
 
+import com.anbaric.terra_reforged.features.TerraBiomeFeatures;
 import com.anbaric.terra_reforged.util.init.TerraBlockRegistry;
 import com.mojang.datafixers.Dynamic;
 import net.minecraft.block.BlockState;
@@ -47,7 +48,11 @@ public class TerraSnowCarver extends TerraWorldCarver
             }
             else
             {
-                if (y < 11)
+                if (y == 11)
+                {
+                    chunk.setBlockState(pos, TerraBiomeFeatures.THIN_ICE, false);
+                }
+                else if (y <= 10)
                 {
                     chunk.setBlockState(pos, WATER.getBlockState(), false);
                 }

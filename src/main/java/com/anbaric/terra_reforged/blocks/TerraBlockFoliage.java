@@ -56,11 +56,15 @@ public class TerraBlockFoliage extends BushBlock
         }
         if (this == TerraBlockRegistry.PLANT_MUSHROOM_VILE.get())
         {
-            return soil == TerraBlockRegistry.GRASS_CORRUPT.get();
+            return soil == TerraBlockRegistry.GRASS_CORRUPT.get() ||
+                   soil == TerraBlockRegistry.STONE_EBON.get() ||
+                   soil == Blocks.DIRT;
         }
         if (this == TerraBlockRegistry.PLANT_MUSHROOM_VICIOUS.get())
         {
-            return soil == TerraBlockRegistry.GRASS_CRIMSON.get();
+            return soil == TerraBlockRegistry.GRASS_CRIMSON.get() ||
+                   soil == TerraBlockRegistry.STONE_CRIM.get() ||
+                   soil == Blocks.DIRT;
         }
 
         return soilState.canSustainPlant(worldIn, pos.down(), Direction.UP, this);

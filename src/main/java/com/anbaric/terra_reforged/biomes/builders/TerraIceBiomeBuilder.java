@@ -1,5 +1,6 @@
 package com.anbaric.terra_reforged.biomes.builders;
 
+import com.anbaric.terra_reforged.features.TerraBiomeFeatures;
 import com.anbaric.terra_reforged.util.init.TerraBlockRegistry;
 import com.anbaric.terra_reforged.util.init.TerraSurfaceBuilderRegistry;
 import com.mojang.datafixers.Dynamic;
@@ -31,29 +32,45 @@ public class TerraIceBiomeBuilder extends SurfaceBuilder<SurfaceBuilderConfig>
     }
 
     @Override
-    public void buildSurface(Random random, IChunk chunkIn, Biome biomeIn, int x, int z, int startHeight, double noise, BlockState defaultBlock, BlockState defaultFluid, int seaLevel, long seed, SurfaceBuilderConfig config)
+    public void buildSurface(Random random, IChunk chunkIn, Biome biomeIn, int x, int z, int startHeight, double noise, BlockState defaultBlock, BlockState defaultFluid, int seaLevel, long seed, SurfaceBuilderConfig config) {
+        this.buildSurface(random, chunkIn, biomeIn, x, z, startHeight, noise, defaultBlock, defaultFluid, config.getTop(), config.getUnder(), config.getUnderWaterMaterial(), seaLevel);
+    }
+
+    public void buildSurface(Random random, IChunk chunkIn, Biome biomeIn, int x, int z, int startHeight, double noise, BlockState stone, BlockState water, BlockState top, BlockState middle, BlockState bottom, int seaLevel)
     {
+        BlockState       topState  = top;
+        BlockState       midState  = middle;
         int              chunkPosX = x & 15;
         int              chunkPosZ = z & 15;
         BlockPos.Mutable targetPos = new BlockPos.Mutable();
 
-        for (int iter = startHeight-1; iter >= 0; --iter)
+        for (int iter = startHeight; iter > 0; --iter)
         {
             targetPos.setPos(chunkPosX, iter, chunkPosZ);
-
-            if (iter > startHeight - 4)
+            BlockState targetState = chunkIn.getBlockState(targetPos);
+            if (targetState.getBlock() == stone.getBlock())
             {
-                chunkIn.setBlockState(targetPos, SNOW, false);
-            }
-            else
-            {
-                if (!chunkIn.getBlockState(targetPos).isAir())
+                if (iter > startHeight - 4)
+                {
+                    chunkIn.setBlockState(targetPos, SNOW, false);
+                }
+                else
                 {
                     if (random.nextFloat() > 0.4)
                     {
                         chunkIn.setBlockState(targetPos, PACKED_ICE, false);
                     }
                     else
+                    {
+                        chunkIn.setBlockState(targetPos, ICE, false);
+                    }
+                }
+            }
+            else if (targetState.getBlock() == water.getBlock())
+            {
+                if (iter >= seaLevel - 1)
+                {
+                    if (biomeIn.getTemperature(targetPos.setPos(x, iter, z)) < 0.15F)
                     {
                         chunkIn.setBlockState(targetPos, ICE, false);
                     }

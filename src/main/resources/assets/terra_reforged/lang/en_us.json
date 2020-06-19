@@ -3,8 +3,14 @@
 
   "biome.terra_reforged.mud_jungle": "Mud Jungle",
   "biome.terra_reforged.snow_pure": "Icy Tundra",
+  "biome.terra_reforged.plains_corrupt": "Corrupt Plains",
+  "biome.terra_reforged.forest_corrupt": "Corrupt Forest",
   "biome.terra_reforged.snow_corrupt": "Corrupt Icy Tundra",
+  "biome.terra_reforged.plains_crimson": "Crimson Plains",
+  "biome.terra_reforged.forest_crimson": "Crimson Forest",
   "biome.terra_reforged.snow_crimson": "Crimson Icy Tundra",
+  "biome.terra_reforged.plains_hallowed": "Hallowed Plains",
+  "biome.terra_reforged.forest_hallowed": "Hallowed Forest",
   "biome.terra_reforged.snow_hallowed": "Hallowed Icy Tundra",
 
   "itemGroup.terra_materials_tab": "Terra Reforged Materials",

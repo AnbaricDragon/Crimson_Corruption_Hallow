@@ -22,7 +22,6 @@ import net.minecraft.world.gen.surfacebuilders.SurfaceBuilderConfig;
 
 public class TerraBiomeMudJungle extends Biome
 {
-    private static final BlockState AIR = Blocks.CAVE_AIR.getDefaultState();
     private static final BlockState WATER = Blocks.WATER.getDefaultState();
 
     public TerraBiomeMudJungle(Builder biomeBuilder)
@@ -32,7 +31,7 @@ public class TerraBiomeMudJungle extends Biome
                 .surfaceBuilder(TerraSurfaceBuilderRegistry.MUD_JUNGLE, TerraSurfaceBuilderRegistry.MUD_JUNGLE_CONFIG)
         );
         TerraBiomeFeatures.addStoneVariants(this, TerraBiomeFeatures.PURE);
-        TerraBiomeFeatures.addSedimentDisks(this, AIR);
+        TerraBiomeFeatures.addSedimentDisks(this, TerraBiomeFeatures.GRAVEL, TerraBiomeFeatures.SAND);
         this.addCarver(GenerationStage.Carving.AIR, Biome.createCarver(TerraWorldCarver.TERRA_JUNGLE_CAVES, new ProbabilityConfig(0.5F)));
         this.addFeature(GenerationStage.Decoration.UNDERGROUND_STRUCTURES, Feature.MINESHAFT.withConfiguration(new MineshaftConfig((double)0.004F, MineshaftStructure.Type.NORMAL)).withPlacement(Placement.NOPE.configure(IPlacementConfig.NO_PLACEMENT_CONFIG)));
         this.addFeature(GenerationStage.Decoration.LOCAL_MODIFICATIONS, Feature.LAKE.withConfiguration(new BlockStateFeatureConfig(WATER)).withPlacement(Placement.WATER_LAKE.configure(new ChanceConfig(4))));

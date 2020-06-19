@@ -1,22 +1,26 @@
 package com.anbaric.terra_reforged;
 
+import com.anbaric.terra_reforged.features.TerraBiomeFeatures;
+import com.anbaric.terra_reforged.features.landscape.TerraFeatureSnowLayer;
 import com.anbaric.terra_reforged.util.Reference;
 import com.anbaric.terra_reforged.util.TerraCompat;
 import com.anbaric.terra_reforged.util.events.TerraTestEvent;
-import com.anbaric.terra_reforged.util.init.TerraBiomeRegistry;
-import com.anbaric.terra_reforged.util.init.TerraBlockRegistry;
-import com.anbaric.terra_reforged.util.init.TerraItemRegistry;
-import com.anbaric.terra_reforged.util.init.TerraParticleRegistry;
+import com.anbaric.terra_reforged.util.init.*;
 import net.minecraft.block.Block;
 import net.minecraft.tags.BlockTags;
 import net.minecraft.tags.Tag;
 import net.minecraft.util.DamageSource;
 import net.minecraft.world.biome.Biome;
+import net.minecraft.world.gen.feature.Feature;
+import net.minecraft.world.gen.feature.IFeatureConfig;
+import net.minecraft.world.gen.feature.NoFeatureConfig;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.common.PlantType;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
+import net.minecraftforge.fml.DeferredWorkQueue;
 import net.minecraftforge.fml.InterModComms;
+import net.minecraftforge.fml.RegistryObject;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
@@ -53,6 +57,7 @@ import java.util.stream.Collectors;
         TerraBlockRegistry.BLOCKS.register(modEventBus);
         TerraItemRegistry.ITEMS.register(modEventBus);
         TerraBiomeRegistry.BIOMES.register(modEventBus);
+        TerraFeatureRegistry.FEATURES.register(modEventBus);
         // Register the setup method for modloading
         modEventBus.addListener(this::setup);
         // Register the enqueueIMC method for modloading
@@ -71,6 +76,8 @@ import java.util.stream.Collectors;
     private void setup(final FMLCommonSetupEvent event)
     {
         TerraCompat.setup();
+
+
     }
 
     private void doClientStuff(final FMLClientSetupEvent event)

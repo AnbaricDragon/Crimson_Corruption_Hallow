@@ -37,16 +37,20 @@ public class TerraMudJungleBuilder extends SurfaceBuilder<SurfaceBuilderConfig>
         for (int iter = startHeight - 1; iter >= 0; --iter)
         {
             targetPos.setPos(chunkPosX, iter, chunkPosZ);
+            BlockState targetState = chunkIn.getBlockState(targetPos);
 
-            if (iter == startHeight - 1)
+            if (targetState.getBlock() == defaultBlock.getBlock())
             {
-                chunkIn.setBlockState(targetPos, GRASS_JUNGLE, false);
-            }
-            else
-            {
-                if (!chunkIn.getBlockState(targetPos).isAir())
+                if (iter == startHeight - 1)
                 {
-                    chunkIn.setBlockState(targetPos, SOIL_MUD, false);
+                    chunkIn.setBlockState(targetPos, GRASS_JUNGLE, false);
+                }
+                else
+                {
+                    if (!chunkIn.getBlockState(targetPos).isAir())
+                    {
+                        chunkIn.setBlockState(targetPos, SOIL_MUD, false);
+                    }
                 }
             }
         }

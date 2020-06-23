@@ -1,0 +1,7 @@
+{
+    "variants": {
+        "type=bottom":  { "model": "terra_reforged:block/slab_sandstone_ebon_cut" },
+        "type=top":  { "model": "terra_reforged:block/slab_sandstone_ebon_cut_top" },
+        "type=double":  { "model": "terra_reforged:block/sandstone_ebon_cut" }
+    }
+}

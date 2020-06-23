@@ -1,0 +1,8 @@
+{
+    "parent": "block/slab_top",
+    "textures": {
+        "bottom": "terra_reforged:blocks/sandstone_crim_bottom",
+        "top": "terra_reforged:blocks/sandstone_crim_top",
+        "side": "terra_reforged:blocks/sandstone_crim_side_cut"
+    }
+}

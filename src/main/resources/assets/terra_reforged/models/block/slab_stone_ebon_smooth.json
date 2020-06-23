@@ -1,0 +1,8 @@
+{
+    "parent": "block/slab",
+    "textures": {
+        "bottom": "terra_reforged:blocks/stone_ebon_smooth",
+        "top": "terra_reforged:blocks/stone_ebon_smooth",
+        "side": "terra_reforged:blocks/stone_ebon_smooth_side"
+    }
+}

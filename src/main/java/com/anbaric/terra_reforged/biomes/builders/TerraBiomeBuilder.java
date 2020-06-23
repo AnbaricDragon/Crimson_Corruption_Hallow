@@ -14,14 +14,12 @@ import java.util.function.Function;
 
 public class TerraBiomeBuilder extends SurfaceBuilder<SurfaceBuilderConfig>
 {
-    private final BlockState GRASS;
     private final BlockState STONE;
 
-    public TerraBiomeBuilder(Function<Dynamic<?>, ? extends SurfaceBuilderConfig> p_i51315_1_, BlockState grass, BlockState stone)
+    public TerraBiomeBuilder(Function<Dynamic<?>, ? extends SurfaceBuilderConfig> config, BlockState stone)
     {
-        super(p_i51315_1_);
+        super(config);
         this.STONE = stone;
-        this.GRASS = grass;
     }
 
     @Override
@@ -50,9 +48,16 @@ public class TerraBiomeBuilder extends SurfaceBuilder<SurfaceBuilderConfig>
                     found = true;
                     blockFound = iter;
                 }
-                if (iter == blockFound && chunkIn.getBlockState(targetPos.up()) != defaultFluid)
+                if (iter == blockFound)
                 {
-                    chunkIn.setBlockState(targetPos, GRASS, false);
+                    if (chunkIn.getBlockState(targetPos.up()) != defaultFluid)
+                    {
+                        chunkIn.setBlockState(targetPos, top, false);
+                    }
+                    else
+                    {
+                        chunkIn.setBlockState(targetPos, bottom, false);
+                    }
                 }
                 else if (iter >= blockFound - 4)
                 {

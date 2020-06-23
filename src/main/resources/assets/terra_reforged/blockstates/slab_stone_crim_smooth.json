@@ -1,0 +1,7 @@
+{
+    "variants": {
+        "type=bottom":  { "model": "terra_reforged:block/slab_stone_crim_smooth" },
+        "type=top":  { "model": "terra_reforged:block/slab_stone_crim_smooth_top" },
+        "type=double":  { "model": "terra_reforged:block/stone_crim_smooth_slab" }
+    }
+}

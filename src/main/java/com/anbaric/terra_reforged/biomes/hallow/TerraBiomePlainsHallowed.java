@@ -16,7 +16,7 @@ public class TerraBiomePlainsHallowed extends Biome
     {
         super(new Builder()
                 .surfaceBuilder(TerraSurfaceBuilderRegistry.BASE_HALLOWED, TerraSurfaceBuilderRegistry.GRASS_HALLOWED_CONFIG)
-                .precipitation(RainType.RAIN).category(Category.PLAINS).depth(0.125F).scale(0.05F).temperature(0.8F).downfall(0.4F).waterColor(4159204).waterFogColor(329011).parent("hallowed"));
+                .precipitation(RainType.RAIN).category(Category.PLAINS).depth(0.125F).scale(0.05F).temperature(0.8F).downfall(0.4F).waterColor(16745727).waterFogColor(16758783).parent("hallowed"));
         this.addStructure(Feature.VILLAGE.withConfiguration(new VillageConfig("village/plains/town_centers", 6)));
         this.addStructure(Feature.PILLAGER_OUTPOST.withConfiguration(IFeatureConfig.NO_FEATURE_CONFIG));
         this.addStructure(Feature.MINESHAFT.withConfiguration(new MineshaftConfig(0.004D, MineshaftStructure.Type.NORMAL)));

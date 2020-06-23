@@ -8,6 +8,7 @@ import net.minecraft.world.gen.feature.Feature;
 import net.minecraft.world.gen.feature.IFeatureConfig;
 import net.minecraft.world.gen.feature.structure.MineshaftConfig;
 import net.minecraft.world.gen.feature.structure.MineshaftStructure;
+import net.minecraft.world.gen.feature.structure.VillageConfig;
 
 public class TerraBiomeForestHallowed extends Biome
 {
@@ -15,7 +16,8 @@ public class TerraBiomeForestHallowed extends Biome
     {
         super(new Builder()
                 .surfaceBuilder(TerraSurfaceBuilderRegistry.BASE_HALLOWED, TerraSurfaceBuilderRegistry.GRASS_HALLOWED_CONFIG).precipitation(RainType.RAIN).category(Category.FOREST)
-                .depth(0.1F).scale(0.2F).temperature(0.7F).downfall(0.8F).waterColor(4159204).waterFogColor(329011).parent("hallowed"));
+                .depth(0.1F).scale(0.2F).temperature(0.7F).downfall(0.8F).waterColor(16745727).waterFogColor(16758783).parent("hallowed"));
+        this.addStructure(Feature.VILLAGE.withConfiguration(new VillageConfig("village/plains/town_centers", 6)));
         this.addStructure(Feature.MINESHAFT.withConfiguration(new MineshaftConfig(0.004D, MineshaftStructure.Type.NORMAL)));
         this.addStructure(Feature.STRONGHOLD.withConfiguration(IFeatureConfig.NO_FEATURE_CONFIG));
         this.addStructure(Feature.STRONGHOLD.withConfiguration(IFeatureConfig.NO_FEATURE_CONFIG));

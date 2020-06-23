@@ -22,6 +22,7 @@ import net.minecraft.world.gen.carver.WorldCarver;
 import net.minecraft.world.gen.feature.*;
 import net.minecraft.world.gen.foliageplacer.BlobFoliagePlacer;
 import net.minecraft.world.gen.placement.*;
+import net.minecraft.world.gen.treedecorator.LeaveVineTreeDecorator;
 
 import javax.annotation.Nullable;
 import java.util.Arrays;
@@ -41,6 +42,7 @@ public class TerraBiomeFeatures
     public static final BlockState DIRT = Blocks.DIRT.getDefaultState();
     public static final BlockState SNOW_LAYER = Blocks.SNOW.getDefaultState();
     public static final BlockState SAND = Blocks.SAND.getDefaultState();
+    public static final BlockState SANDSTONE = Blocks.SANDSTONE.getDefaultState();
     public static final BlockState GRAVEL = Blocks.GRAVEL.getDefaultState();
     public static final BlockState CLAY = Blocks.CLAY.getDefaultState();
     public static final BlockState SNOW = Blocks.SNOW_BLOCK.getDefaultState();
@@ -51,22 +53,10 @@ public class TerraBiomeFeatures
     public static final BlockState SOIL_MUD = TerraBlockRegistry.SOIL_MUD.get().getDefaultState();
     public static final BlockState GRASS_JUNGLE = TerraBlockRegistry.GRASS_JUNGLE.get().getDefaultState();
     public static final BlockState GRASS_MUSHROOM = TerraBlockRegistry.GRASS_MUSHROOM.get().getDefaultState();
-    public static final BlockState GRASS_CORRUPT = TerraBlockRegistry.GRASS_CORRUPT.get().getDefaultState();
-    public static final BlockState GRASS_CRIMSON = TerraBlockRegistry.GRASS_CRIMSON.get().getDefaultState();
-    public static final BlockState GRASS_HALLOWED = TerraBlockRegistry.GRASS_HALLOWED.get().getDefaultState();
-    public static final BlockState CORRUPT_SNOW_LAYER = TerraBlockRegistry.SAND_EBON.get().getDefaultState();
-    public static final BlockState CRIMSON_SNOW_LAYER = TerraBlockRegistry.SAND_CRIM.get().getDefaultState();
-    public static final BlockState HALLOWED_SNOW_LAYER = TerraBlockRegistry.SAND_PEARL.get().getDefaultState();
-    public static final BlockState CORRUPT_SAND = TerraBlockRegistry.SAND_EBON.get().getDefaultState();
-    public static final BlockState CRIMSON_SAND = TerraBlockRegistry.SAND_CRIM.get().getDefaultState();
-    public static final BlockState HALLOWED_SAND = TerraBlockRegistry.SAND_PEARL.get().getDefaultState();
-    public static final BlockState CORRUPT_SANDSTONE = TerraBlockRegistry.SANDSTONE_EBON.get().getDefaultState();
-    public static final BlockState CRIMSON_SANDSTONE = TerraBlockRegistry.SANDSTONE_CRIM.get().getDefaultState();
-    public static final BlockState HALLOWED_SANDSTONE = TerraBlockRegistry.SANDSTONE_PEARL.get().getDefaultState();
-    public static final BlockState CORRUPT_STONE = TerraBlockRegistry.STONE_EBON.get().getDefaultState();
-    public static final BlockState CRIMSON_STONE = TerraBlockRegistry.STONE_CRIM.get().getDefaultState();
-    public static final BlockState HALLOWED_STONE = TerraBlockRegistry.STONE_PEARL.get().getDefaultState();
     public static final BlockState SLUSH = TerraBlockRegistry.SAND_SLUSH.get().getDefaultState();
+    public static final BlockState SILT = TerraBlockRegistry.SAND_SILT.get().getDefaultState();
+    public static final BlockState HARD_SAND = TerraBlockRegistry.SAND_HARD.get().getDefaultState();
+    public static final BlockState FOSSIL = TerraBlockRegistry.STONE_FOSSIL.get().getDefaultState();
     public static final BlockState THIN_ICE = TerraBlockRegistry.ICE_THIN.get().getDefaultState();
     public static final BlockState BOREAL_LOG = TerraBlockRegistry.LOG_BOREAL.get().getDefaultState();
     public static final BlockState BOREAL_LEAF = TerraBlockRegistry.LEAF_BOREAL.get().getDefaultState();
@@ -87,9 +77,6 @@ public class TerraBiomeFeatures
     public static final BlockState PEARL_LEAF_PURPLE = TerraBlockRegistry.LEAF_PEARL_PURPLE.get().getDefaultState();
     public static final BlockState PEARL_LEAF_RED = TerraBlockRegistry.LEAF_PEARL_RED.get().getDefaultState();
     public static final BlockState PEARL_LEAF_YELLOW = TerraBlockRegistry.LEAF_PEARL_YELLOW.get().getDefaultState();
-    public static final BlockState CORRUPT_SUGAR_CANE = TerraBlockRegistry.REED_CORRUPT.get().getDefaultState();
-    public static final BlockState CRIMSON_SUGAR_CANE = TerraBlockRegistry.REED_CRIMSON.get().getDefaultState();
-    public static final BlockState HALLOWED_SUGAR_CANE = TerraBlockRegistry.REED_HALLOWED.get().getDefaultState();
     public static final BlockState VILE_MUSHROOM = TerraBlockRegistry.PLANT_MUSHROOM_VILE.get().getDefaultState();
     public static final BlockState VICIOUS_MUSHROOM = TerraBlockRegistry.PLANT_MUSHROOM_VICIOUS.get().getDefaultState();
     public static final BlockState DYE_PLANT_PURPLE = TerraBlockRegistry.PLANT_DYE_PURPLE.get().getDefaultState();
@@ -121,11 +108,19 @@ public class TerraBiomeFeatures
     public static final BlockState RUBY_ORE = TerraBlockRegistry.ORE_RUBY_PURE.get().getDefaultState();
 
     //Corrupt Blocks
+    public static final BlockState GRASS_CORRUPT = TerraBlockRegistry.GRASS_CORRUPT.get().getDefaultState();
     public static final BlockState CORRUPT_SNOW = TerraBlockRegistry.SNOW_CORRUPT.get().getDefaultState();
+    public static final BlockState CORRUPT_SNOW_LAYER = TerraBlockRegistry.SAND_EBON.get().getDefaultState();
     public static final BlockState CORRUPT_ICE = TerraBlockRegistry.ICE_PURPLE.get().getDefaultState();
     public static final BlockState CORRUPT_PACKED_ICE = TerraBlockRegistry.ICE_HARD_PURPLE.get().getDefaultState();
+    public static final BlockState CORRUPT_SAND = TerraBlockRegistry.SAND_EBON.get().getDefaultState();
+    public static final BlockState CORRUPT_HARDSAND = TerraBlockRegistry.SAND_HARDEBON.get().getDefaultState();
+    public static final BlockState CORRUPT_SANDSTONE = TerraBlockRegistry.SANDSTONE_EBON.get().getDefaultState();
+    public static final BlockState CORRUPT_STONE = TerraBlockRegistry.STONE_EBON.get().getDefaultState();
     public static final BlockState CORRUPT_TALL_GRASS = TerraBlockRegistry.TALLGRASS_CORRUPT.get().getDefaultState();
     public static final BlockState DOUBLE_CORRUPT_TALL_GRASS = TerraBlockRegistry.TALLGRASSDOUBLE_CORRUPT.get().getDefaultState();
+    public static final BlockState CORRUPT_SUGAR_CANE = TerraBlockRegistry.REED_CORRUPT.get().getDefaultState();
+    public static final BlockState CORRUPT_CACTUS = TerraBlockRegistry.CACTUS_EBON.get().getDefaultState();
     public static final BlockState CORRUPT_COPPER_ORE = TerraBlockRegistry.ORE_COPPER_CORRUPT.get().getDefaultState();
     public static final BlockState CORRUPT_TIN_ORE = TerraBlockRegistry.ORE_TIN_CORRUPT.get().getDefaultState();
     public static final BlockState CORRUPT_IRON_ORE = TerraBlockRegistry.ORE_IRON_CORRUPT.get().getDefaultState();
@@ -147,11 +142,19 @@ public class TerraBiomeFeatures
     public static final BlockState CORRUPT_RUBY_ORE = TerraBlockRegistry.ORE_RUBY_CORRUPT.get().getDefaultState();
 
     //Crimson Blocks
+    public static final BlockState GRASS_CRIMSON = TerraBlockRegistry.GRASS_CRIMSON.get().getDefaultState();
     public static final BlockState CRIMSON_SNOW = TerraBlockRegistry.SNOW_CRIMSON.get().getDefaultState();
+    public static final BlockState CRIMSON_SNOW_LAYER = TerraBlockRegistry.SAND_CRIM.get().getDefaultState();
     public static final BlockState CRIMSON_ICE = TerraBlockRegistry.ICE_RED.get().getDefaultState();
     public static final BlockState CRIMSON_PACKED_ICE = TerraBlockRegistry.ICE_HARD_RED.get().getDefaultState();
+    public static final BlockState CRIMSON_SAND = TerraBlockRegistry.SAND_CRIM.get().getDefaultState();
+    public static final BlockState CRIMSON_HARDSAND = TerraBlockRegistry.SAND_HARDCRIM.get().getDefaultState();
+    public static final BlockState CRIMSON_SANDSTONE = TerraBlockRegistry.SANDSTONE_CRIM.get().getDefaultState();
+    public static final BlockState CRIMSON_STONE = TerraBlockRegistry.STONE_CRIM.get().getDefaultState();
     public static final BlockState CRIMSON_TALL_GRASS = TerraBlockRegistry.TALLGRASS_CRIMSON.get().getDefaultState();
     public static final BlockState DOUBLE_CRIMSON_TALL_GRASS = TerraBlockRegistry.TALLGRASSDOUBLE_CRIMSON.get().getDefaultState();
+    public static final BlockState CRIMSON_SUGAR_CANE = TerraBlockRegistry.REED_CRIMSON.get().getDefaultState();
+    public static final BlockState CRIMSON_CACTUS = TerraBlockRegistry.CACTUS_CRIM.get().getDefaultState();
     public static final BlockState CRIMSON_COPPER_ORE = TerraBlockRegistry.ORE_COPPER_CRIMSON.get().getDefaultState();
     public static final BlockState CRIMSON_TIN_ORE = TerraBlockRegistry.ORE_TIN_CRIMSON.get().getDefaultState();
     public static final BlockState CRIMSON_IRON_ORE = TerraBlockRegistry.ORE_IRON_CRIMSON.get().getDefaultState();
@@ -173,11 +176,19 @@ public class TerraBiomeFeatures
     public static final BlockState CRIMSON_RUBY_ORE = TerraBlockRegistry.ORE_RUBY_CRIMSON.get().getDefaultState();
 
     //Hallowed Blocks
+    public static final BlockState GRASS_HALLOWED = TerraBlockRegistry.GRASS_HALLOWED.get().getDefaultState();
+    public static final BlockState HALLOWED_SNOW_LAYER = TerraBlockRegistry.SAND_PEARL.get().getDefaultState();
     public static final BlockState HALLOWED_SNOW = TerraBlockRegistry.SNOW_HALLOWED.get().getDefaultState();
     public static final BlockState HALLOWED_ICE = TerraBlockRegistry.ICE_PINK.get().getDefaultState();
     public static final BlockState HALLOWED_PACKED_ICE = TerraBlockRegistry.ICE_HARD_PINK.get().getDefaultState();
+    public static final BlockState HALLOWED_SAND = TerraBlockRegistry.SAND_PEARL.get().getDefaultState();
+    public static final BlockState HALLOWED_HARDSAND = TerraBlockRegistry.SAND_HARDPEARL.get().getDefaultState();
+    public static final BlockState HALLOWED_SANDSTONE = TerraBlockRegistry.SANDSTONE_PEARL.get().getDefaultState();
     public static final BlockState HALLOWED_TALL_GRASS = TerraBlockRegistry.TALLGRASS_HALLOWED.get().getDefaultState();
+    public static final BlockState HALLOWED_STONE = TerraBlockRegistry.STONE_PEARL.get().getDefaultState();
     public static final BlockState DOUBLE_HALLOWED_TALL_GRASS = TerraBlockRegistry.TALLGRASSDOUBLE_HALLOWED.get().getDefaultState();
+    public static final BlockState HALLOWED_SUGAR_CANE = TerraBlockRegistry.REED_HALLOWED.get().getDefaultState();
+    public static final BlockState HALLOWED_CACTUS = TerraBlockRegistry.CACTUS_PEARL.get().getDefaultState();
     public static final BlockState HALLOWED_COPPER_ORE = TerraBlockRegistry.ORE_COPPER_HALLOWED.get().getDefaultState();
     public static final BlockState HALLOWED_TIN_ORE = TerraBlockRegistry.ORE_TIN_HALLOWED.get().getDefaultState();
     public static final BlockState HALLOWED_IRON_ORE = TerraBlockRegistry.ORE_IRON_HALLOWED.get().getDefaultState();
@@ -186,8 +197,6 @@ public class TerraBiomeFeatures
     public static final BlockState HALLOWED_TUNGSTEN_ORE = TerraBlockRegistry.ORE_TUNGSTEN_HALLOWED.get().getDefaultState();
     public static final BlockState HALLOWED_GOLD_ORE = TerraBlockRegistry.ORE_GOLD_HALLOWED.get().getDefaultState();
     public static final BlockState HALLOWED_PLATINUM_ORE = TerraBlockRegistry.ORE_PLATINUM_HALLOWED.get().getDefaultState();
-    public static final BlockState HALLOWED_DEMONITE_ORE = TerraBlockRegistry.ORE_DEMONITE_HALLOWED.get().getDefaultState();
-    public static final BlockState HALLOWED_CRIMTANE_ORE = TerraBlockRegistry.ORE_CRIMTANE_HALLOWED.get().getDefaultState();
     public static final BlockState HALLOWED_COAL_ORE = TerraBlockRegistry.ORE_COAL_HALLOWED.get().getDefaultState();
     public static final BlockState HALLOWED_REDSTONE_ORE = TerraBlockRegistry.ORE_REDSTONE_HALLOWED.get().getDefaultState();
     public static final BlockState HALLOWED_LAPIS_ORE = TerraBlockRegistry.ORE_LAPIS_HALLOWED.get().getDefaultState();
@@ -199,16 +208,19 @@ public class TerraBiomeFeatures
     public static final BlockState HALLOWED_RUBY_ORE = TerraBlockRegistry.ORE_RUBY_HALLOWED.get().getDefaultState();
 
     public static final BlockClusterFeatureConfig VILE_MUSHROOM_CONFIG = (new BlockClusterFeatureConfig.Builder(new SimpleBlockStateProvider(VILE_MUSHROOM), new SimpleBlockPlacer())).tries(64).func_227317_b_().build();
-    public static final BlockClusterFeatureConfig VICIOUS_MUSHROOM_CONFIG = (new BlockClusterFeatureConfig.Builder(new SimpleBlockStateProvider(VICIOUS_MUSHROOM), new SimpleBlockPlacer())).tries(64).func_227317_b_().build();
     public static final BlockClusterFeatureConfig CORRUPT_TALL_GRASS_CONFIG = (new BlockClusterFeatureConfig.Builder(new SimpleBlockStateProvider(CORRUPT_TALL_GRASS), new SimpleBlockPlacer())).tries(32).build();
     public static final BlockClusterFeatureConfig CORRUPT_DOUBLE_TALL_GRASS_CONFIG = (new BlockClusterFeatureConfig.Builder(new SimpleBlockStateProvider(DOUBLE_CORRUPT_TALL_GRASS), new DoublePlantBlockPlacer())).tries(64).func_227317_b_().build();
+    public static final BlockClusterFeatureConfig CORRUPT_SUGAR_CANE_CONFIG = (new BlockClusterFeatureConfig.Builder(new SimpleBlockStateProvider(CORRUPT_SUGAR_CANE), new ColumnBlockPlacer(2, 2))).tries(20).xSpread(4).ySpread(0).zSpread(4).func_227317_b_().requiresWater().build();
+    public static final BlockClusterFeatureConfig CORRUPT_CACTUS_CONFIG = (new BlockClusterFeatureConfig.Builder(new SimpleBlockStateProvider(CORRUPT_CACTUS), new ColumnBlockPlacer(1, 2))).tries(10).func_227317_b_().build();
+    public static final BlockClusterFeatureConfig VICIOUS_MUSHROOM_CONFIG = (new BlockClusterFeatureConfig.Builder(new SimpleBlockStateProvider(VICIOUS_MUSHROOM), new SimpleBlockPlacer())).tries(64).func_227317_b_().build();
     public static final BlockClusterFeatureConfig CRIMSON_TALL_GRASS_CONFIG = (new BlockClusterFeatureConfig.Builder(new SimpleBlockStateProvider(CRIMSON_TALL_GRASS), new SimpleBlockPlacer())).tries(32).build();
     public static final BlockClusterFeatureConfig CRIMSON_DOUBLE_TALL_GRASS_CONFIG = (new BlockClusterFeatureConfig.Builder(new SimpleBlockStateProvider(DOUBLE_CRIMSON_TALL_GRASS), new DoublePlantBlockPlacer())).tries(64).func_227317_b_().build();
+    public static final BlockClusterFeatureConfig CRIMSON_SUGAR_CANE_CONFIG = (new BlockClusterFeatureConfig.Builder(new SimpleBlockStateProvider(CRIMSON_SUGAR_CANE), new ColumnBlockPlacer(2, 2))).tries(20).xSpread(4).ySpread(0).zSpread(4).func_227317_b_().requiresWater().build();
+    public static final BlockClusterFeatureConfig CRIMSON_CACTUS_CONFIG = (new BlockClusterFeatureConfig.Builder(new SimpleBlockStateProvider(CRIMSON_CACTUS), new ColumnBlockPlacer(1, 2))).tries(10).func_227317_b_().build();
     public static final BlockClusterFeatureConfig HALLOWED_TALL_GRASS_CONFIG = (new BlockClusterFeatureConfig.Builder(new SimpleBlockStateProvider(HALLOWED_TALL_GRASS), new SimpleBlockPlacer())).tries(32).build();
     public static final BlockClusterFeatureConfig HALLOWED_DOUBLE_TALL_GRASS_CONFIG = (new BlockClusterFeatureConfig.Builder(new SimpleBlockStateProvider(DOUBLE_HALLOWED_TALL_GRASS), new DoublePlantBlockPlacer())).tries(64).func_227317_b_().build();
-    public static final BlockClusterFeatureConfig CORRUPT_SUGAR_CANE_CONFIG = (new BlockClusterFeatureConfig.Builder(new SimpleBlockStateProvider(CORRUPT_SUGAR_CANE), new ColumnBlockPlacer(2, 2))).tries(20).xSpread(4).ySpread(0).zSpread(4).func_227317_b_().requiresWater().build();
-    public static final BlockClusterFeatureConfig CRIMSON_SUGAR_CANE_CONFIG = (new BlockClusterFeatureConfig.Builder(new SimpleBlockStateProvider(CRIMSON_SUGAR_CANE), new ColumnBlockPlacer(2, 2))).tries(20).xSpread(4).ySpread(0).zSpread(4).func_227317_b_().requiresWater().build();
     public static final BlockClusterFeatureConfig HALLOWED_SUGAR_CANE_CONFIG = (new BlockClusterFeatureConfig.Builder(new SimpleBlockStateProvider(HALLOWED_SUGAR_CANE), new ColumnBlockPlacer(2, 2))).tries(20).xSpread(4).ySpread(0).zSpread(4).func_227317_b_().requiresWater().build();
+    public static final BlockClusterFeatureConfig HALLOWED_CACTUS_CONFIG = (new BlockClusterFeatureConfig.Builder(new SimpleBlockStateProvider(HALLOWED_CACTUS), new ColumnBlockPlacer(1, 2))).tries(10).func_227317_b_().build();
     public static final BlockClusterFeatureConfig DYE_PLANT_PURPLE_CONFIG = (new BlockClusterFeatureConfig.Builder(new SimpleBlockStateProvider(DYE_PLANT_PURPLE), new DoublePlantBlockPlacer())).tries(1).func_227317_b_().build();
     public static final BlockClusterFeatureConfig DYE_PLANT_ORANGE_CONFIG = (new BlockClusterFeatureConfig.Builder(new SimpleBlockStateProvider(DYE_PLANT_ORANGE), new DoublePlantBlockPlacer())).tries(1).func_227317_b_().build();
     public static final BlockClusterFeatureConfig DYE_PLANT_CYAN_CONFIG = (new BlockClusterFeatureConfig.Builder(new SimpleBlockStateProvider(DYE_PLANT_CYAN), new DoublePlantBlockPlacer())).tries(1).func_227317_b_().build();
@@ -218,20 +230,25 @@ public class TerraBiomeFeatures
     public static final TreeFeatureConfig PALM_TREE_CONFIG = (new TreeFeatureConfig.Builder(new SimpleBlockStateProvider(PALM_LOG), new SimpleBlockStateProvider(PALM_LEAF), new BlobFoliagePlacer(2, 0))).baseHeight(4).heightRandA(2).foliageHeight(3).ignoreVines().setSapling((net.minecraftforge.common.IPlantable) TerraBlockRegistry.SAPLING_PALM.get()).build();
     public static final TreeFeatureConfig MAHOGANY_TREE_CONFIG = (new TreeFeatureConfig.Builder(new SimpleBlockStateProvider(MAHOGANY_LOG), new SimpleBlockStateProvider(MAHOGANY_LEAF), new BlobFoliagePlacer(2, 0))).baseHeight(4).heightRandA(2).foliageHeight(3).ignoreVines().setSapling((net.minecraftforge.common.IPlantable) TerraBlockRegistry.SAPLING_MAHOGANY.get()).build();
     public static final TreeFeatureConfig EBON_TREE_CONFIG = (new TreeFeatureConfig.Builder(new SimpleBlockStateProvider(EBON_LOG), new SimpleBlockStateProvider(EBON_LEAF), new BlobFoliagePlacer(2, 0))).baseHeight(4).heightRandA(2).foliageHeight(3).ignoreVines().setSapling((net.minecraftforge.common.IPlantable) TerraBlockRegistry.SAPLING_EBON.get()).build();
+    public static final TreeFeatureConfig EBON_SWAMP_TREE_CONFIG = (new TreeFeatureConfig.Builder(new SimpleBlockStateProvider(EBON_LOG), new SimpleBlockStateProvider(EBON_LEAF), new BlobFoliagePlacer(3, 0))).baseHeight(5).heightRandA(3).foliageHeight(3).maxWaterDepth(1).decorators(ImmutableList.of(new LeaveVineTreeDecorator())).setSapling((net.minecraftforge.common.IPlantable) Blocks.OAK_SAPLING).build();
     public static final TreeFeatureConfig SHADE_TREE_CONFIG = (new TreeFeatureConfig.Builder(new SimpleBlockStateProvider(SHADE_LOG), new SimpleBlockStateProvider(SHADE_LEAF), new BlobFoliagePlacer(2, 0))).baseHeight(4).heightRandA(2).foliageHeight(3).ignoreVines().setSapling((net.minecraftforge.common.IPlantable) TerraBlockRegistry.SAPLING_SHADE.get()).build();
+    public static final TreeFeatureConfig SHADE_SWAMP_TREE_CONFIG = (new TreeFeatureConfig.Builder(new SimpleBlockStateProvider(SHADE_LOG), new SimpleBlockStateProvider(SHADE_LEAF), new BlobFoliagePlacer(3, 0))).baseHeight(5).heightRandA(3).foliageHeight(3).maxWaterDepth(1).decorators(ImmutableList.of(new LeaveVineTreeDecorator())).setSapling((net.minecraftforge.common.IPlantable) Blocks.OAK_SAPLING).build();
     public static final TreeFeatureConfig PEARL_TREE_BLUE_CONFIG = (new TreeFeatureConfig.Builder(new SimpleBlockStateProvider(PEARL_LOG), new SimpleBlockStateProvider(PEARL_LEAF_BLUE), new BlobFoliagePlacer(2, 0))).baseHeight(4).heightRandA(2).foliageHeight(3).ignoreVines().setSapling((net.minecraftforge.common.IPlantable) TerraBlockRegistry.SAPLING_PEARL.get()).build();
+    public static final TreeFeatureConfig PEARL_SWAMP_TREE_BLUE_CONFIG = (new TreeFeatureConfig.Builder(new SimpleBlockStateProvider(PEARL_LOG), new SimpleBlockStateProvider(PEARL_LEAF_BLUE), new BlobFoliagePlacer(3, 0))).baseHeight(5).heightRandA(3).foliageHeight(3).maxWaterDepth(1).decorators(ImmutableList.of(new LeaveVineTreeDecorator())).setSapling((net.minecraftforge.common.IPlantable) Blocks.OAK_SAPLING).build();
     public static final TreeFeatureConfig PEARL_TREE_CYAN_CONFIG = (new TreeFeatureConfig.Builder(new SimpleBlockStateProvider(PEARL_LOG), new SimpleBlockStateProvider(PEARL_LEAF_CYAN), new BlobFoliagePlacer(2, 0))).baseHeight(4).heightRandA(2).foliageHeight(3).ignoreVines().setSapling((net.minecraftforge.common.IPlantable) TerraBlockRegistry.SAPLING_PEARL.get()).build();
+    public static final TreeFeatureConfig PEARL_SWAMP_TREE_CYAN_CONFIG = (new TreeFeatureConfig.Builder(new SimpleBlockStateProvider(PEARL_LOG), new SimpleBlockStateProvider(PEARL_LEAF_CYAN), new BlobFoliagePlacer(3, 0))).baseHeight(5).heightRandA(3).foliageHeight(3).maxWaterDepth(1).decorators(ImmutableList.of(new LeaveVineTreeDecorator())).setSapling((net.minecraftforge.common.IPlantable) Blocks.OAK_SAPLING).build();
     public static final TreeFeatureConfig PEARL_TREE_GREEN_CONFIG = (new TreeFeatureConfig.Builder(new SimpleBlockStateProvider(PEARL_LOG), new SimpleBlockStateProvider(PEARL_LEAF_GREEN), new BlobFoliagePlacer(2, 0))).baseHeight(4).heightRandA(2).foliageHeight(3).ignoreVines().setSapling((net.minecraftforge.common.IPlantable) TerraBlockRegistry.SAPLING_PEARL.get()).build();
+    public static final TreeFeatureConfig PEARL_SWAMP_TREE_GREEN_CONFIG = (new TreeFeatureConfig.Builder(new SimpleBlockStateProvider(PEARL_LOG), new SimpleBlockStateProvider(PEARL_LEAF_GREEN), new BlobFoliagePlacer(3, 0))).baseHeight(5).heightRandA(3).foliageHeight(3).maxWaterDepth(1).decorators(ImmutableList.of(new LeaveVineTreeDecorator())).setSapling((net.minecraftforge.common.IPlantable) Blocks.OAK_SAPLING).build();
     public static final TreeFeatureConfig PEARL_TREE_MAGENTA_CONFIG = (new TreeFeatureConfig.Builder(new SimpleBlockStateProvider(PEARL_LOG), new SimpleBlockStateProvider(PEARL_LEAF_MAGENTA), new BlobFoliagePlacer(2, 0))).baseHeight(4).heightRandA(2).foliageHeight(3).ignoreVines().setSapling((net.minecraftforge.common.IPlantable) TerraBlockRegistry.SAPLING_PEARL.get()).build();
+    public static final TreeFeatureConfig PEARL_SWAMP_TREE_MAGENTA_CONFIG = (new TreeFeatureConfig.Builder(new SimpleBlockStateProvider(PEARL_LOG), new SimpleBlockStateProvider(PEARL_LEAF_MAGENTA), new BlobFoliagePlacer(3, 0))).baseHeight(5).heightRandA(3).foliageHeight(3).maxWaterDepth(1).decorators(ImmutableList.of(new LeaveVineTreeDecorator())).setSapling((net.minecraftforge.common.IPlantable) Blocks.OAK_SAPLING).build();
     public static final TreeFeatureConfig PEARL_TREE_PINK_CONFIG = (new TreeFeatureConfig.Builder(new SimpleBlockStateProvider(PEARL_LOG), new SimpleBlockStateProvider(PEARL_LEAF_PINK), new BlobFoliagePlacer(2, 0))).baseHeight(4).heightRandA(2).foliageHeight(3).ignoreVines().setSapling((net.minecraftforge.common.IPlantable) TerraBlockRegistry.SAPLING_PEARL.get()).build();
+    public static final TreeFeatureConfig PEARL_SWAMP_TREE_PINK_CONFIG = (new TreeFeatureConfig.Builder(new SimpleBlockStateProvider(PEARL_LOG), new SimpleBlockStateProvider(PEARL_LEAF_PINK), new BlobFoliagePlacer(3, 0))).baseHeight(5).heightRandA(3).foliageHeight(3).maxWaterDepth(1).decorators(ImmutableList.of(new LeaveVineTreeDecorator())).setSapling((net.minecraftforge.common.IPlantable) Blocks.OAK_SAPLING).build();
     public static final TreeFeatureConfig PEARL_TREE_PURPLE_CONFIG = (new TreeFeatureConfig.Builder(new SimpleBlockStateProvider(PEARL_LOG), new SimpleBlockStateProvider(PEARL_LEAF_PURPLE), new BlobFoliagePlacer(2, 0))).baseHeight(4).heightRandA(2).foliageHeight(3).ignoreVines().setSapling((net.minecraftforge.common.IPlantable) TerraBlockRegistry.SAPLING_PEARL.get()).build();
+    public static final TreeFeatureConfig PEARL_SWAMP_TREE_PURPLE_CONFIG = (new TreeFeatureConfig.Builder(new SimpleBlockStateProvider(PEARL_LOG), new SimpleBlockStateProvider(PEARL_LEAF_PURPLE), new BlobFoliagePlacer(3, 0))).baseHeight(5).heightRandA(3).foliageHeight(3).maxWaterDepth(1).decorators(ImmutableList.of(new LeaveVineTreeDecorator())).setSapling((net.minecraftforge.common.IPlantable) Blocks.OAK_SAPLING).build();
     public static final TreeFeatureConfig PEARL_TREE_RED_CONFIG = (new TreeFeatureConfig.Builder(new SimpleBlockStateProvider(PEARL_LOG), new SimpleBlockStateProvider(PEARL_LEAF_RED), new BlobFoliagePlacer(2, 0))).baseHeight(4).heightRandA(2).foliageHeight(3).ignoreVines().setSapling((net.minecraftforge.common.IPlantable) TerraBlockRegistry.SAPLING_PEARL.get()).build();
+    public static final TreeFeatureConfig PEARL_SWAMP_TREE_RED_CONFIG = (new TreeFeatureConfig.Builder(new SimpleBlockStateProvider(PEARL_LOG), new SimpleBlockStateProvider(PEARL_LEAF_RED), new BlobFoliagePlacer(3, 0))).baseHeight(5).heightRandA(3).foliageHeight(3).maxWaterDepth(1).decorators(ImmutableList.of(new LeaveVineTreeDecorator())).setSapling((net.minecraftforge.common.IPlantable) Blocks.OAK_SAPLING).build();
     public static final TreeFeatureConfig PEARL_TREE_YELLOW_CONFIG = (new TreeFeatureConfig.Builder(new SimpleBlockStateProvider(PEARL_LOG), new SimpleBlockStateProvider(PEARL_LEAF_YELLOW), new BlobFoliagePlacer(2, 0))).baseHeight(4).heightRandA(2).foliageHeight(3).ignoreVines().setSapling((net.minecraftforge.common.IPlantable) TerraBlockRegistry.SAPLING_PEARL.get()).build();
-
-    public static void addEbonTrees(Biome biome)
-    {
-
-    }
+    public static final TreeFeatureConfig PEARL_SWAMP_TREE_YELLOW_CONFIG = (new TreeFeatureConfig.Builder(new SimpleBlockStateProvider(PEARL_LOG), new SimpleBlockStateProvider(PEARL_LEAF_YELLOW), new BlobFoliagePlacer(3, 0))).baseHeight(5).heightRandA(3).foliageHeight(3).maxWaterDepth(1).decorators(ImmutableList.of(new LeaveVineTreeDecorator())).setSapling((net.minecraftforge.common.IPlantable) Blocks.OAK_SAPLING).build();
 
     public static void addPearlTrees(Biome biomeIn)
     {
@@ -273,6 +290,19 @@ public class TerraBiomeFeatures
         biomeIn.addFeature(GenerationStage.Decoration.VEGETAL_DECORATION, Feature.RANDOM_PATCH.withConfiguration(DefaultBiomeFeatures.PUMPKIN_PATCH_CONFIG).withPlacement(Placement.CHANCE_HEIGHTMAP_DOUBLE.configure(new ChanceConfig(32))));
     }
 
+    public static void addExtraReedsPumpkinsCactus(Biome biomeIn, BlockClusterFeatureConfig cane, BlockClusterFeatureConfig cactus)
+    {
+        biomeIn.addFeature(GenerationStage.Decoration.VEGETAL_DECORATION, Feature.RANDOM_PATCH.withConfiguration(cane).withPlacement(Placement.COUNT_HEIGHTMAP_DOUBLE.configure(new FrequencyConfig(60))));
+        biomeIn.addFeature(GenerationStage.Decoration.VEGETAL_DECORATION, Feature.RANDOM_PATCH.withConfiguration(DefaultBiomeFeatures.PUMPKIN_PATCH_CONFIG).withPlacement(Placement.CHANCE_HEIGHTMAP_DOUBLE.configure(new ChanceConfig(32))));
+        biomeIn.addFeature(GenerationStage.Decoration.VEGETAL_DECORATION, Feature.RANDOM_PATCH.withConfiguration(cactus).withPlacement(Placement.COUNT_HEIGHTMAP_DOUBLE.configure(new FrequencyConfig(10))));
+    }
+
+    public static void addExtraReedsAndPumpkins(Biome biomeIn, BlockClusterFeatureConfig sugarCane)
+    {
+        biomeIn.addFeature(GenerationStage.Decoration.VEGETAL_DECORATION, Feature.RANDOM_PATCH.withConfiguration(sugarCane).withPlacement(Placement.COUNT_HEIGHTMAP_DOUBLE.configure(new FrequencyConfig(20))));
+        biomeIn.addFeature(GenerationStage.Decoration.VEGETAL_DECORATION, Feature.RANDOM_PATCH.withConfiguration(DefaultBiomeFeatures.PUMPKIN_PATCH_CONFIG).withPlacement(Placement.CHANCE_HEIGHTMAP_DOUBLE.configure(new ChanceConfig(32))));
+    }
+
     public static void addMushrooms(Biome biomeIn, BlockClusterFeatureConfig mushroom)
     {
         biomeIn.addFeature(GenerationStage.Decoration.VEGETAL_DECORATION, Feature.FLOWER.withConfiguration(mushroom).withPlacement(Placement.COUNT_HEIGHTMAP_32.configure(new FrequencyConfig(6))));
@@ -280,9 +310,57 @@ public class TerraBiomeFeatures
         biomeIn.addFeature(GenerationStage.Decoration.VEGETAL_DECORATION, Feature.RANDOM_PATCH.withConfiguration(DefaultBiomeFeatures.RED_MUSHROOM_CONFIG).withPlacement(Placement.CHANCE_HEIGHTMAP_DOUBLE.configure(new ChanceConfig(8))));
     }
 
+    public static void addEbonSwampVegetation(Biome biomeIn)
+    {
+        biomeIn.addFeature(GenerationStage.Decoration.VEGETAL_DECORATION, Feature.NORMAL_TREE.withConfiguration(EBON_SWAMP_TREE_CONFIG).withPlacement(Placement.COUNT_EXTRA_HEIGHTMAP.configure(new AtSurfaceWithExtraConfig(2, 0.1F, 1))));
+        biomeIn.addFeature(GenerationStage.Decoration.VEGETAL_DECORATION, Feature.FLOWER.withConfiguration(DefaultBiomeFeatures.BLUE_ORCHID_CONFIG).withPlacement(Placement.COUNT_HEIGHTMAP_32.configure(new FrequencyConfig(1))));
+        biomeIn.addFeature(GenerationStage.Decoration.VEGETAL_DECORATION, Feature.RANDOM_PATCH.withConfiguration(CORRUPT_TALL_GRASS_CONFIG).withPlacement(Placement.COUNT_HEIGHTMAP_DOUBLE.configure(new FrequencyConfig(5))));
+        biomeIn.addFeature(GenerationStage.Decoration.VEGETAL_DECORATION, Feature.RANDOM_PATCH.withConfiguration(DefaultBiomeFeatures.DEAD_BUSH_CONFIG).withPlacement(Placement.COUNT_HEIGHTMAP_DOUBLE.configure(new FrequencyConfig(1))));
+        biomeIn.addFeature(GenerationStage.Decoration.VEGETAL_DECORATION, Feature.RANDOM_PATCH.withConfiguration(DefaultBiomeFeatures.LILY_PAD_CONFIG).withPlacement(Placement.COUNT_HEIGHTMAP_DOUBLE.configure(new FrequencyConfig(4))));
+        biomeIn.addFeature(GenerationStage.Decoration.VEGETAL_DECORATION, Feature.RANDOM_PATCH.withConfiguration(VILE_MUSHROOM_CONFIG).withPlacement(Placement.COUNT_CHANCE_HEIGHTMAP.configure(new HeightWithChanceConfig(8, 0.125F))));
+        biomeIn.addFeature(GenerationStage.Decoration.VEGETAL_DECORATION, Feature.RANDOM_PATCH.withConfiguration(DefaultBiomeFeatures.BROWN_MUSHROOM_CONFIG).withPlacement(Placement.COUNT_CHANCE_HEIGHTMAP.configure(new HeightWithChanceConfig(4, 0.25F))));
+        biomeIn.addFeature(GenerationStage.Decoration.VEGETAL_DECORATION, Feature.RANDOM_PATCH.withConfiguration(DefaultBiomeFeatures.RED_MUSHROOM_CONFIG).withPlacement(Placement.COUNT_CHANCE_HEIGHTMAP_DOUBLE.configure(new HeightWithChanceConfig(4, 0.125F))));
+    }
+
+    public static void addShadeSwampVegetation(Biome biomeIn)
+    {
+        biomeIn.addFeature(GenerationStage.Decoration.VEGETAL_DECORATION, Feature.NORMAL_TREE.withConfiguration(SHADE_SWAMP_TREE_CONFIG).withPlacement(Placement.COUNT_EXTRA_HEIGHTMAP.configure(new AtSurfaceWithExtraConfig(2, 0.1F, 1))));
+        biomeIn.addFeature(GenerationStage.Decoration.VEGETAL_DECORATION, Feature.FLOWER.withConfiguration(DefaultBiomeFeatures.BLUE_ORCHID_CONFIG).withPlacement(Placement.COUNT_HEIGHTMAP_32.configure(new FrequencyConfig(1))));
+        biomeIn.addFeature(GenerationStage.Decoration.VEGETAL_DECORATION, Feature.RANDOM_PATCH.withConfiguration(CRIMSON_TALL_GRASS_CONFIG).withPlacement(Placement.COUNT_HEIGHTMAP_DOUBLE.configure(new FrequencyConfig(5))));
+        biomeIn.addFeature(GenerationStage.Decoration.VEGETAL_DECORATION, Feature.RANDOM_PATCH.withConfiguration(DefaultBiomeFeatures.DEAD_BUSH_CONFIG).withPlacement(Placement.COUNT_HEIGHTMAP_DOUBLE.configure(new FrequencyConfig(1))));
+        biomeIn.addFeature(GenerationStage.Decoration.VEGETAL_DECORATION, Feature.RANDOM_PATCH.withConfiguration(DefaultBiomeFeatures.LILY_PAD_CONFIG).withPlacement(Placement.COUNT_HEIGHTMAP_DOUBLE.configure(new FrequencyConfig(4))));
+        biomeIn.addFeature(GenerationStage.Decoration.VEGETAL_DECORATION, Feature.RANDOM_PATCH.withConfiguration(VICIOUS_MUSHROOM_CONFIG).withPlacement(Placement.COUNT_CHANCE_HEIGHTMAP.configure(new HeightWithChanceConfig(8, 0.125F))));
+        biomeIn.addFeature(GenerationStage.Decoration.VEGETAL_DECORATION, Feature.RANDOM_PATCH.withConfiguration(DefaultBiomeFeatures.BROWN_MUSHROOM_CONFIG).withPlacement(Placement.COUNT_CHANCE_HEIGHTMAP.configure(new HeightWithChanceConfig(4, 0.25F))));
+        biomeIn.addFeature(GenerationStage.Decoration.VEGETAL_DECORATION, Feature.RANDOM_PATCH.withConfiguration(DefaultBiomeFeatures.RED_MUSHROOM_CONFIG).withPlacement(Placement.COUNT_CHANCE_HEIGHTMAP_DOUBLE.configure(new HeightWithChanceConfig(4, 0.125F))));
+    }
+
+    public static void addPearlSwampVegetation(Biome biomeIn)
+    {
+        biomeIn.addFeature(GenerationStage.Decoration.VEGETAL_DECORATION, Feature.RANDOM_SELECTOR.withConfiguration(new MultipleRandomFeatureConfig(ImmutableList.of(
+                Feature.NORMAL_TREE.withConfiguration(PEARL_SWAMP_TREE_BLUE_CONFIG).withChance(0.2F),
+                Feature.NORMAL_TREE.withConfiguration(PEARL_SWAMP_TREE_CYAN_CONFIG).withChance(0.2F),
+                Feature.NORMAL_TREE.withConfiguration(PEARL_SWAMP_TREE_GREEN_CONFIG).withChance(0.2F),
+                Feature.NORMAL_TREE.withConfiguration(PEARL_SWAMP_TREE_MAGENTA_CONFIG).withChance(0.2F),
+                Feature.NORMAL_TREE.withConfiguration(PEARL_SWAMP_TREE_PINK_CONFIG).withChance(0.2F),
+                Feature.NORMAL_TREE.withConfiguration(PEARL_SWAMP_TREE_PURPLE_CONFIG).withChance(0.2F),
+                Feature.NORMAL_TREE.withConfiguration(PEARL_SWAMP_TREE_RED_CONFIG).withChance(0.2F)),
+                Feature.NORMAL_TREE.withConfiguration(PEARL_SWAMP_TREE_YELLOW_CONFIG))).withPlacement(Placement.COUNT_EXTRA_HEIGHTMAP.configure(new AtSurfaceWithExtraConfig(2, 0.1F, 1))));
+        biomeIn.addFeature(GenerationStage.Decoration.VEGETAL_DECORATION, Feature.FLOWER.withConfiguration(DefaultBiomeFeatures.BLUE_ORCHID_CONFIG).withPlacement(Placement.COUNT_HEIGHTMAP_32.configure(new FrequencyConfig(1))));
+        biomeIn.addFeature(GenerationStage.Decoration.VEGETAL_DECORATION, Feature.RANDOM_PATCH.withConfiguration(DefaultBiomeFeatures.GRASS_CONFIG).withPlacement(Placement.COUNT_HEIGHTMAP_DOUBLE.configure(new FrequencyConfig(5))));
+        biomeIn.addFeature(GenerationStage.Decoration.VEGETAL_DECORATION, Feature.RANDOM_PATCH.withConfiguration(DefaultBiomeFeatures.DEAD_BUSH_CONFIG).withPlacement(Placement.COUNT_HEIGHTMAP_DOUBLE.configure(new FrequencyConfig(1))));
+        biomeIn.addFeature(GenerationStage.Decoration.VEGETAL_DECORATION, Feature.RANDOM_PATCH.withConfiguration(DefaultBiomeFeatures.LILY_PAD_CONFIG).withPlacement(Placement.COUNT_HEIGHTMAP_DOUBLE.configure(new FrequencyConfig(4))));
+        biomeIn.addFeature(GenerationStage.Decoration.VEGETAL_DECORATION, Feature.RANDOM_PATCH.withConfiguration(DefaultBiomeFeatures.BROWN_MUSHROOM_CONFIG).withPlacement(Placement.COUNT_CHANCE_HEIGHTMAP.configure(new HeightWithChanceConfig(8, 0.25F))));
+        biomeIn.addFeature(GenerationStage.Decoration.VEGETAL_DECORATION, Feature.RANDOM_PATCH.withConfiguration(DefaultBiomeFeatures.RED_MUSHROOM_CONFIG).withPlacement(Placement.COUNT_CHANCE_HEIGHTMAP_DOUBLE.configure(new HeightWithChanceConfig(8, 0.125F))));
+    }
+
     public static void addTallGrass(Biome biomeIn, BlockClusterFeatureConfig tallGrass)
     {
-        biomeIn.addFeature(GenerationStage.Decoration.VEGETAL_DECORATION, Feature.RANDOM_PATCH.withConfiguration(tallGrass).withPlacement(Placement.COUNT_HEIGHTMAP_DOUBLE.configure(new FrequencyConfig(2))));
+        biomeIn.addFeature(GenerationStage.Decoration.VEGETAL_DECORATION, Feature.RANDOM_PATCH.withConfiguration(tallGrass).withPlacement(Placement.COUNT_HEIGHTMAP_DOUBLE.configure(new FrequencyConfig(3))));
+    }
+
+    public static void addSparseTallGrass(Biome biomeIn, BlockClusterFeatureConfig tallGrass)
+    {
+        biomeIn.addFeature(GenerationStage.Decoration.VEGETAL_DECORATION, Feature.RANDOM_PATCH.withConfiguration(tallGrass).withPlacement(Placement.COUNT_HEIGHTMAP_DOUBLE.configure(new FrequencyConfig(1))));
     }
 
     public static void addDoubleGrass(Biome biomeIn, BlockClusterFeatureConfig doubleGrass)
@@ -408,6 +486,14 @@ public class TerraBiomeFeatures
         biomeIn.addFeature(GenerationStage.Decoration.UNDERGROUND_ORES, Feature.ORE.withConfiguration(new OreFeatureConfig(type, ANDESITE, 33)).withPlacement(Placement.COUNT_RANGE.configure(new CountRangeConfig(6, 0, 0, 80))));
     }
 
+    public static void addSandstoneVariants(Biome biomeIn, OreFeatureConfig.FillerBlockType type, BlockState sand, BlockState hardSand, BlockState sandStone)
+    {
+        biomeIn.addFeature(GenerationStage.Decoration.UNDERGROUND_ORES, Feature.ORE.withConfiguration(new OreFeatureConfig(type, sand, 33)).withPlacement(Placement.COUNT_RANGE.configure(new CountRangeConfig(4, 0, 0, 256))));
+        biomeIn.addFeature(GenerationStage.Decoration.UNDERGROUND_ORES, Feature.ORE.withConfiguration(new OreFeatureConfig(type, hardSand, 33)).withPlacement(Placement.COUNT_RANGE.configure(new CountRangeConfig(8, 0, 0, 256))));
+        biomeIn.addFeature(GenerationStage.Decoration.UNDERGROUND_ORES, Feature.ORE.withConfiguration(new OreFeatureConfig(type, sandStone, 33)).withPlacement(Placement.COUNT_RANGE.configure(new CountRangeConfig(6, 0, 0, 256))));
+        biomeIn.addFeature(GenerationStage.Decoration.UNDERGROUND_ORES, Feature.ORE.withConfiguration(new OreFeatureConfig(type, FOSSIL, 33)).withPlacement(Placement.COUNT_RANGE.configure(new CountRangeConfig(3, 0, 0, 80))));
+    }
+
     public static void addIceVariants(Biome biomeIn, OreFeatureConfig.FillerBlockType type, BlockState snow, BlockState ice, BlockState packedIce)
     {
         biomeIn.addFeature(GenerationStage.Decoration.UNDERGROUND_ORES, Feature.ORE.withConfiguration(new OreFeatureConfig(type, DIRT, 33)).withPlacement(Placement.COUNT_RANGE.configure(new CountRangeConfig(10, 0, 0, 256))));
@@ -424,10 +510,10 @@ public class TerraBiomeFeatures
         biomeIn.addCarver(GenerationStage.Carving.AIR, Biome.createCarver(TerraWorldCarver.TERRA_CAVERNS, new ProbabilityConfig(0.02F)));
     }
 
-    public static final Predicate<BlockState> PURE_PREDICATE = blockState -> blockState.getBlock() == Blocks.STONE || blockState.getBlock() == Blocks.ANDESITE || blockState.getBlock() == Blocks.DIORITE || blockState.getBlock() == Blocks.GRANITE || blockState.getBlock() == Blocks.SANDSTONE || blockState.getBlock() == Blocks.ICE || blockState.getBlock() == Blocks.PACKED_ICE || blockState.getBlock() == TerraBlockRegistry.SOIL_MUD.get();
-    public static final Predicate<BlockState> CORRUPT_PREDICATE = blockState -> blockState.getBlock() == TerraBlockRegistry.STONE_EBON.get() || blockState.getBlock() == TerraBlockRegistry.SAND_EBON.get() || blockState.getBlock() == TerraBlockRegistry.SANDSTONE_EBON.get() || blockState.getBlock() == TerraBlockRegistry.SAND_HARDEBON.get() || blockState.getBlock() == TerraBlockRegistry.ICE_PURPLE.get() || blockState.getBlock() == TerraBlockRegistry.ICE_HARD_PURPLE.get();
-    public static final Predicate<BlockState> CRIMSON_PREDICATE = blockState -> blockState.getBlock() == TerraBlockRegistry.STONE_CRIM.get() || blockState.getBlock() == TerraBlockRegistry.SAND_CRIM.get() || blockState.getBlock() == TerraBlockRegistry.SANDSTONE_CRIM.get() || blockState.getBlock() == TerraBlockRegistry.SAND_HARDCRIM.get() || blockState.getBlock() == TerraBlockRegistry.ICE_RED.get() || blockState.getBlock() == TerraBlockRegistry.ICE_HARD_RED.get();
-    public static final Predicate<BlockState> HALLOWED_PREDICATE = blockState -> blockState.getBlock() == TerraBlockRegistry.STONE_PEARL.get() || blockState.getBlock() == TerraBlockRegistry.SAND_PEARL.get() || blockState.getBlock() == TerraBlockRegistry.SANDSTONE_PEARL.get() || blockState.getBlock() == TerraBlockRegistry.SAND_HARDPEARL.get() || blockState.getBlock() == TerraBlockRegistry.ICE_PINK.get() || blockState.getBlock() == TerraBlockRegistry.ICE_HARD_PINK.get();
+    public static final Predicate<BlockState> PURE_PREDICATE = blockState -> blockState.getBlock() == Blocks.STONE || blockState.getBlock() == Blocks.ANDESITE || blockState.getBlock() == Blocks.DIORITE || blockState.getBlock() == Blocks.GRANITE || blockState.getBlock() == Blocks.SANDSTONE || blockState.getBlock() == TerraBlockRegistry.SAND_HARD.get() || blockState.getBlock() == Blocks.ICE || blockState.getBlock() == Blocks.PACKED_ICE || blockState.getBlock() == TerraBlockRegistry.SOIL_MUD.get();
+    public static final Predicate<BlockState> CORRUPT_PREDICATE = blockState -> blockState.getBlock() == TerraBlockRegistry.STONE_EBON.get() || blockState.getBlock() == TerraBlockRegistry.SANDSTONE_EBON.get() || blockState.getBlock() == TerraBlockRegistry.SAND_HARDEBON.get() || blockState.getBlock() == TerraBlockRegistry.ICE_PURPLE.get() || blockState.getBlock() == TerraBlockRegistry.ICE_HARD_PURPLE.get();
+    public static final Predicate<BlockState> CRIMSON_PREDICATE = blockState -> blockState.getBlock() == TerraBlockRegistry.STONE_CRIM.get() || blockState.getBlock() == TerraBlockRegistry.SANDSTONE_CRIM.get() || blockState.getBlock() == TerraBlockRegistry.SAND_HARDCRIM.get() || blockState.getBlock() == TerraBlockRegistry.ICE_RED.get() || blockState.getBlock() == TerraBlockRegistry.ICE_HARD_RED.get();
+    public static final Predicate<BlockState> HALLOWED_PREDICATE = blockState -> blockState.getBlock() == TerraBlockRegistry.STONE_PEARL.get() || blockState.getBlock() == TerraBlockRegistry.SANDSTONE_PEARL.get() || blockState.getBlock() == TerraBlockRegistry.SAND_HARDPEARL.get() || blockState.getBlock() == TerraBlockRegistry.ICE_PINK.get() || blockState.getBlock() == TerraBlockRegistry.ICE_HARD_PINK.get();
 
     public static final OreFeatureConfig.FillerBlockType PURE = OreFeatureConfig.FillerBlockType.create("JUNGLE", null, PURE_PREDICATE);
     public static final OreFeatureConfig.FillerBlockType CORRUPT = OreFeatureConfig.FillerBlockType.create("CORRUPT", null, CORRUPT_PREDICATE);

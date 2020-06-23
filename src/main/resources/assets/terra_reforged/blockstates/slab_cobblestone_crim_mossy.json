@@ -1,0 +1,7 @@
+{
+    "variants": {
+        "type=bottom":  { "model": "terra_reforged:block/slab_cobblestone_crim_mossy" },
+        "type=top":  { "model": "terra_reforged:block/slab_cobblestone_crim_mossy_top" },
+        "type=double":  { "model": "terra_reforged:block/cobblestone_crim_mossy" }
+    }
+}

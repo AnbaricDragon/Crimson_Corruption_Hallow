@@ -1,0 +1,8 @@
+{
+    "parent": "block/slab",
+    "textures": {
+        "bottom": "terra_reforged:blocks/stone_crim_smooth",
+        "top": "terra_reforged:blocks/stone_crim_smooth",
+        "side": "terra_reforged:blocks/stone_crim_smooth_side"
+    }
+}

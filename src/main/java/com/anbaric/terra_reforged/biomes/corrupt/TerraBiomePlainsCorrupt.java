@@ -9,6 +9,8 @@ import net.minecraft.world.gen.feature.IFeatureConfig;
 import net.minecraft.world.gen.feature.structure.MineshaftConfig;
 import net.minecraft.world.gen.feature.structure.MineshaftStructure;
 import net.minecraft.world.gen.feature.structure.VillageConfig;
+import net.minecraftforge.api.distmarker.Dist;
+import net.minecraftforge.api.distmarker.OnlyIn;
 
 public class TerraBiomePlainsCorrupt extends Biome
 {
@@ -25,7 +27,7 @@ public class TerraBiomePlainsCorrupt extends Biome
         DefaultBiomeFeatures.addStructures(this);
         DefaultBiomeFeatures.addLakes(this);
         DefaultBiomeFeatures.addMonsterRooms(this);
-        TerraBiomeFeatures.addDoubleGrass(this, TerraBiomeFeatures.CORRUPT_DOUBLE_TALL_GRASS_CONFIG);
+        DefaultBiomeFeatures.addPlainsTallGrass(this);
         TerraBiomeFeatures.addDyeFlowers(this);
         TerraBiomeFeatures.addStoneVariants(this, TerraBiomeFeatures.CORRUPT);
         TerraBiomeFeatures.addCrimsonOres(this);
@@ -35,5 +37,27 @@ public class TerraBiomePlainsCorrupt extends Biome
         TerraBiomeFeatures.addReedsAndPumpkins(this, TerraBiomeFeatures.CORRUPT_SUGAR_CANE_CONFIG);
         DefaultBiomeFeatures.addSprings(this);
         //TerraBiomeFeatures.addCorruptSnowLayer(this);
+    }
+
+    @OnlyIn(Dist.CLIENT)
+    @Override
+    public int getSkyColor()
+    {
+        return 4660844;
+    }
+
+    @OnlyIn(Dist.CLIENT)
+    @Override
+    public int getGrassColor(double posX, double posZ)
+    {
+        return 4597881;
+    }
+
+    @OnlyIn(Dist.CLIENT)
+    @Override
+    public int getFoliageColor()
+
+    {
+        return 4597881;
     }
 }

@@ -9,6 +9,8 @@ import net.minecraft.world.gen.feature.IFeatureConfig;
 import net.minecraft.world.gen.feature.structure.MineshaftConfig;
 import net.minecraft.world.gen.feature.structure.MineshaftStructure;
 import net.minecraft.world.gen.feature.structure.VillageConfig;
+import net.minecraftforge.api.distmarker.Dist;
+import net.minecraftforge.api.distmarker.OnlyIn;
 
 public class TerraBiomeForestCrimson extends Biome
 {
@@ -32,11 +34,32 @@ public class TerraBiomeForestCrimson extends Biome
         TerraBiomeFeatures.addSedimentDisks(this, TerraBiomeFeatures.GRAVEL, TerraBiomeFeatures.CRIMSON_SAND);
         TerraBiomeFeatures.addForestTrees(this, TerraBiomeFeatures.SHADE_TREE_CONFIG, TerraBiomeFeatures.SHADE_TREE_CONFIG);
         DefaultBiomeFeatures.addDefaultFlowers(this);
-        TerraBiomeFeatures.addDoubleGrass(this, TerraBiomeFeatures.CRIMSON_DOUBLE_TALL_GRASS_CONFIG);
-        TerraBiomeFeatures.addTallGrass(this, TerraBiomeFeatures.CRIMSON_TALL_GRASS_CONFIG);
+        DefaultBiomeFeatures.addGrass(this);
         TerraBiomeFeatures.addMushrooms(this, TerraBiomeFeatures.VICIOUS_MUSHROOM_CONFIG);
         TerraBiomeFeatures.addReedsAndPumpkins(this, TerraBiomeFeatures.CRIMSON_SUGAR_CANE_CONFIG);
         DefaultBiomeFeatures.addSprings(this);
         DefaultBiomeFeatures.addFreezeTopLayer(this);
+    }
+
+    @OnlyIn(Dist.CLIENT)
+    @Override
+    public int getSkyColor()
+    {
+        return 6302760;
+    }
+
+    @OnlyIn(Dist.CLIENT)
+    @Override
+    public int getGrassColor(double posX, double posZ)
+    {
+        return 7020047;
+    }
+
+    @OnlyIn(Dist.CLIENT)
+    @Override
+    public int getFoliageColor()
+
+    {
+        return 7020047;
     }
 }

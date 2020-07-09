@@ -9,6 +9,8 @@ import net.minecraft.world.gen.feature.IFeatureConfig;
 import net.minecraft.world.gen.feature.structure.MineshaftConfig;
 import net.minecraft.world.gen.feature.structure.MineshaftStructure;
 import net.minecraft.world.gen.feature.structure.VillageConfig;
+import net.minecraftforge.api.distmarker.Dist;
+import net.minecraftforge.api.distmarker.OnlyIn;
 
 public class TerraBiomeDesertHallowed extends Biome
 {
@@ -30,12 +32,34 @@ public class TerraBiomeDesertHallowed extends Biome
         TerraBiomeFeatures.addHallowedOres(this);
         TerraBiomeFeatures.addSedimentDisks(this, TerraBiomeFeatures.SILT, TerraBiomeFeatures.HALLOWED_SAND);
         DefaultBiomeFeatures.addDefaultFlowers(this);
-        TerraBiomeFeatures.addSparseTallGrass(this, TerraBiomeFeatures.HALLOWED_TALL_GRASS_CONFIG);
+        DefaultBiomeFeatures.addSparseGrass(this);
         DefaultBiomeFeatures.addMushrooms(this);
         DefaultBiomeFeatures.addDeadBushes(this);
         TerraBiomeFeatures.addExtraReedsPumpkinsCactus(this, TerraBiomeFeatures.HALLOWED_SUGAR_CANE_CONFIG, TerraBiomeFeatures.HALLOWED_CACTUS_CONFIG);
         DefaultBiomeFeatures.addSprings(this);
         DefaultBiomeFeatures.addDesertFeatures(this);
         DefaultBiomeFeatures.addFreezeTopLayer(this);
+    }
+
+    @OnlyIn(Dist.CLIENT)
+    @Override
+    public int getSkyColor()
+    {
+        return 7060209;
+    }
+
+    @OnlyIn(Dist.CLIENT)
+    @Override
+    public int getGrassColor(double posX, double posZ)
+    {
+        return 56831;
+    }
+
+    @OnlyIn(Dist.CLIENT)
+    @Override
+    public int getFoliageColor()
+
+    {
+        return 56831;
     }
 }

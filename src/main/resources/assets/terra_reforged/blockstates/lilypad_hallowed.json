@@ -1,0 +1,38 @@
+{
+    "variants": {
+        "": [
+						{ "model": "terra_reforged:block/lilypad_hallowed_0"},
+						{ "model": "terra_reforged:block/lilypad_hallowed_0", "y": 90 },
+						{ "model": "terra_reforged:block/lilypad_hallowed_0", "y": 180 },
+						{ "model": "terra_reforged:block/lilypad_hallowed_0", "y": 270 },
+						{ "model": "terra_reforged:block/lilypad_hallowed_1"},
+						{ "model": "terra_reforged:block/lilypad_hallowed_1", "y": 90 },
+						{ "model": "terra_reforged:block/lilypad_hallowed_1", "y": 180 },
+						{ "model": "terra_reforged:block/lilypad_hallowed_1", "y": 270 },
+						{ "model": "terra_reforged:block/lilypad_hallowed_2"},
+						{ "model": "terra_reforged:block/lilypad_hallowed_2", "y": 90 },
+						{ "model": "terra_reforged:block/lilypad_hallowed_2", "y": 180 },
+						{ "model": "terra_reforged:block/lilypad_hallowed_2", "y": 270 },
+						{ "model": "terra_reforged:block/lilypad_hallowed_3"},
+						{ "model": "terra_reforged:block/lilypad_hallowed_3", "y": 90 },
+						{ "model": "terra_reforged:block/lilypad_hallowed_3", "y": 180 },
+						{ "model": "terra_reforged:block/lilypad_hallowed_3", "y": 270 },
+						{ "model": "terra_reforged:block/lilypad_hallowed_4"},
+						{ "model": "terra_reforged:block/lilypad_hallowed_4", "y": 90 },
+						{ "model": "terra_reforged:block/lilypad_hallowed_4", "y": 180 },
+						{ "model": "terra_reforged:block/lilypad_hallowed_4", "y": 270 },
+						{ "model": "terra_reforged:block/lilypad_hallowed_5"},
+						{ "model": "terra_reforged:block/lilypad_hallowed_5", "y": 90 },
+						{ "model": "terra_reforged:block/lilypad_hallowed_5", "y": 180 },
+						{ "model": "terra_reforged:block/lilypad_hallowed_5", "y": 270 },
+						{ "model": "terra_reforged:block/lilypad_hallowed_6"},
+						{ "model": "terra_reforged:block/lilypad_hallowed_6", "y": 90 },
+						{ "model": "terra_reforged:block/lilypad_hallowed_6", "y": 180 },
+						{ "model": "terra_reforged:block/lilypad_hallowed_6", "y": 270 },
+						{ "model": "terra_reforged:block/lilypad_hallowed_7"},
+						{ "model": "terra_reforged:block/lilypad_hallowed_7", "y": 90 },
+						{ "model": "terra_reforged:block/lilypad_hallowed_7", "y": 180 },
+						{ "model": "terra_reforged:block/lilypad_hallowed_7", "y": 270 }
+				]
+    }
+}

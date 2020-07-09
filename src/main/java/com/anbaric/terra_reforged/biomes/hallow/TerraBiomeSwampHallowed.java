@@ -45,61 +45,25 @@ public class TerraBiomeSwampHallowed extends Biome
         DefaultBiomeFeatures.addFreezeTopLayer(this);
     }
 
-    public int getHallowedFoliageColor(double temp, double rain)
-    {
-        if (temp < 0.50)
-        {
-            if (rain < 0.25)
-            {
-                return 13085763;
-            }
-            else if (rain < 0.5)
-            {
-                return 4420295;
-            }
-            else if (rain < 0.75)
-            {
-                return 13058914;
-            }
-            else
-            {
-                return 9716679;
-            }
-        }
-        else
-        {
-            if (rain < 0.25)
-            {
-                return 4441933;
-            }
-            else if (rain < 0.5)
-            {
-                return 7095239;
-            }
-            else if (rain < 0.75)
-            {
-                return 12550089;
-            }
-            else
-            {
-                return 4376508;
-            }
-        }
-    }
-
     @OnlyIn(Dist.CLIENT)
     @Override
-    public int getFoliageColor()
+    public int getSkyColor()
     {
-        double temp = (double)MathHelper.clamp(this.getDefaultTemperature(), 0.0F, 1.0F);
-        double rain = (double)MathHelper.clamp(this.getDownfall(), 0.0F, 1.0F);
-        return getHallowedFoliageColor(temp, rain);
+        return 40177;
     }
 
     @OnlyIn(Dist.CLIENT)
     @Override
     public int getGrassColor(double posX, double posZ)
     {
-        return 4896970;
+        return 56831;
+    }
+
+    @OnlyIn(Dist.CLIENT)
+    @Override
+    public int getFoliageColor()
+
+    {
+        return 56831;
     }
 }

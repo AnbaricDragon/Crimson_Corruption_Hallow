@@ -17,6 +17,8 @@ import net.minecraft.world.gen.feature.structure.VillageConfig;
 import net.minecraft.world.gen.placement.ChanceConfig;
 import net.minecraft.world.gen.placement.IPlacementConfig;
 import net.minecraft.world.gen.placement.Placement;
+import net.minecraftforge.api.distmarker.Dist;
+import net.minecraftforge.api.distmarker.OnlyIn;
 
 public class TerraBiomeSnowCrimson extends Biome
 {
@@ -38,5 +40,27 @@ public class TerraBiomeSnowCrimson extends Biome
         TerraBiomeFeatures.addSedimentDisks(this, TerraBiomeFeatures.SLUSH, TerraBiomeFeatures.CRIMSON_SAND);
         TerraBiomeFeatures.addDyeFlowers(this);
 //        TerraBiomeFeatures.addCrimsonSnowLayer(this);
+    }
+
+    @OnlyIn(Dist.CLIENT)
+    @Override
+    public int getSkyColor()
+    {
+        return 6302760;
+    }
+
+    @OnlyIn(Dist.CLIENT)
+    @Override
+    public int getGrassColor(double posX, double posZ)
+    {
+        return 7020047;
+    }
+
+    @OnlyIn(Dist.CLIENT)
+    @Override
+    public int getFoliageColor()
+
+    {
+        return 7020047;
     }
 }

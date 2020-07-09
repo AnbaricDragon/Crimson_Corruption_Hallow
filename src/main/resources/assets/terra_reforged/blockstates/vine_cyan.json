@@ -1,0 +1,19 @@
+{
+    "multipart": [
+        {   "when": { "north": "true" },
+            "apply": { "model": "terra_reforged:block/vine_cyan", "y": 180, "uvlock": true }
+        },
+				{   "when": { "south": "true" },
+            "apply": { "model": "terra_reforged:block/vine_cyan", "uvlock": true }
+        },
+				{   "when": { "east": "true" },
+            "apply": { "model": "terra_reforged:block/vine_cyan", "y": 270, "uvlock": true }
+        },
+				{   "when": { "west": "true" },
+            "apply": { "model": "terra_reforged:block/vine_cyan", "y": 90, "uvlock": true }
+        },
+				{   "when": { "up": "true" },
+            "apply": { "model": "terra_reforged:block/vine_cyan", "x": 90, "uvlock": true }
+        }
+    ]
+}

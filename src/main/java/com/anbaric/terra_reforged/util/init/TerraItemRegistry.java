@@ -1,5 +1,6 @@
 package com.anbaric.terra_reforged.util.init;
 
+import com.anbaric.terra_reforged.items.TerraItemLilyPad;
 import com.anbaric.terra_reforged.util.Reference;
 import com.anbaric.terra_reforged.util.TerraItemGroups;
 import net.minecraft.block.Blocks;
@@ -68,4 +69,7 @@ public final class TerraItemRegistry
     public static final RegistryObject<Item> SEED_MOONGLOW = ITEMS.register("seed_moonglow", () -> new BlockNamedItem(TerraBlockRegistry.PLANT_MOONGLOW.get(), new Item.Properties().group(TerraItemGroups.TERRA_DECORATIONS_TAB)));
     public static final RegistryObject<Item> SEED_SHIVERTHORN = ITEMS.register("seed_shiverthorn", () -> new BlockNamedItem(TerraBlockRegistry.PLANT_SHIVERTHORN.get(), new Item.Properties().group(TerraItemGroups.TERRA_DECORATIONS_TAB)));
     public static final RegistryObject<Item> SEED_WATERLEAF = ITEMS.register("seed_waterleaf", () -> new BlockNamedItem(TerraBlockRegistry.PLANT_WATERLEAF.get(), new Item.Properties().group(TerraItemGroups.TERRA_DECORATIONS_TAB)));
+    public static final RegistryObject<Item> LILYPAD_CORRUPT = ITEMS.register("lilypad_corrupt", () -> new TerraItemLilyPad(TerraBlockRegistry.LILYPAD_CORRUPT.get(), new Item.Properties().group(TerraItemGroups.TERRA_DECORATIONS_TAB)));
+    public static final RegistryObject<Item> LILYPAD_CRIMSON = ITEMS.register("lilypad_crimson", () -> new TerraItemLilyPad(TerraBlockRegistry.LILYPAD_CRIMSON.get(), new Item.Properties().group(TerraItemGroups.TERRA_DECORATIONS_TAB)));
+    public static final RegistryObject<Item> LILYPAD_HALLOWED = ITEMS.register("lilypad_hallowed", () -> new TerraItemLilyPad(TerraBlockRegistry.LILYPAD_HALLOWED.get(), new Item.Properties().group(TerraItemGroups.TERRA_DECORATIONS_TAB)));
 }

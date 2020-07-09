@@ -1,0 +1,10 @@
+{
+    "variants": {
+        "": [
+						{ "model": "terra_reforged:block/lilypad_crimson"},
+						{ "model": "terra_reforged:block/lilypad_crimson", "y": 90 },
+						{ "model": "terra_reforged:block/lilypad_crimson", "y": 180 },
+						{ "model": "terra_reforged:block/lilypad_crimson", "y": 270 }
+				]
+    }
+}

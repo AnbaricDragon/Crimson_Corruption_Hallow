@@ -1,0 +1,7 @@
+{
+    "parent": "terra_reforged:block/lilypad",
+    "textures": {
+        "all": "terra_reforged:blocks/lilypad_hallowed_1",
+				"particle": "terra_reforged:blocks/lilypad_hallowed_1"
+    }
+}

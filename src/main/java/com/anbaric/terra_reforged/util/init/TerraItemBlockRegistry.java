@@ -6,6 +6,7 @@ import com.anbaric.terra_reforged.util.Reference;
 import com.anbaric.terra_reforged.util.TerraItemGroups;
 import net.minecraft.block.DoublePlantBlock;
 import net.minecraft.block.LeavesBlock;
+import net.minecraft.block.LilyPadBlock;
 import net.minecraft.item.BlockItem;
 import net.minecraft.item.Item;
 import net.minecraftforge.event.RegistryEvent;
@@ -33,6 +34,7 @@ public class TerraItemBlockRegistry
                         !(block instanceof TerraBlockCactus) &&
                         !(block instanceof TerraBlockThornBush) &&
                         !(block instanceof TerraBlockPotionPlant) &&
+                        !(block instanceof LilyPadBlock) &&
                         block != TerraBlockRegistry.PLANT_MOSS_RED.get() &&
                         block != TerraBlockRegistry.PLANT_MOSS_FIRE.get() &&
                         block != TerraBlockRegistry.PLANT_MOSS_YELLOW.get() &&
@@ -84,7 +86,6 @@ public class TerraItemBlockRegistry
                     // Make the properties, and make it so that the item will be on our ItemGroup (CreativeTab)
                     final Item.Properties properties = new Item.Properties().group(
                             block instanceof LeavesBlock ||
-                            block instanceof TerraBlockTallGrass ||
                             block instanceof DoublePlantBlock ||
                             block instanceof TerraBlockWall ||
                             block instanceof TerraBlockHangingPlant ||

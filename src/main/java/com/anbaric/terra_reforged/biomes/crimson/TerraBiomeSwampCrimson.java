@@ -12,6 +12,8 @@ import net.minecraft.world.gen.feature.structure.MineshaftConfig;
 import net.minecraft.world.gen.feature.structure.MineshaftStructure;
 import net.minecraft.world.gen.placement.IPlacementConfig;
 import net.minecraft.world.gen.placement.Placement;
+import net.minecraftforge.api.distmarker.Dist;
+import net.minecraftforge.api.distmarker.OnlyIn;
 
 public class TerraBiomeSwampCrimson extends Biome
 {
@@ -20,7 +22,7 @@ public class TerraBiomeSwampCrimson extends Biome
         super(new Builder()
                 .surfaceBuilder(TerraSurfaceBuilderRegistry.SWAMP_CRIMSON, TerraSurfaceBuilderRegistry.GRASS_CRIMSON_CONFIG)
                 .precipitation(RainType.RAIN).category(Category.SWAMP).depth(-0.2F).scale(0.1F).temperature(0.8F).downfall(0.9F)
-                .waterColor(6821670).waterFogColor(7804710).parent("crimson"));
+                .waterColor(7020047).waterFogColor(7804710).parent("crimson"));
         this.addStructure(Feature.SWAMP_HUT.withConfiguration(IFeatureConfig.NO_FEATURE_CONFIG));
         this.addStructure(Feature.MINESHAFT.withConfiguration(new MineshaftConfig(0.004D, MineshaftStructure.Type.NORMAL)));
         TerraBiomeFeatures.addCarvers(this);
@@ -35,5 +37,27 @@ public class TerraBiomeSwampCrimson extends Biome
         TerraBiomeFeatures.addExtraReedsAndPumpkins(this, TerraBiomeFeatures.CRIMSON_SUGAR_CANE_CONFIG);
         DefaultBiomeFeatures.addFossils(this);
         DefaultBiomeFeatures.addFreezeTopLayer(this);
+    }
+
+    @OnlyIn(Dist.CLIENT)
+    @Override
+    public int getSkyColor()
+    {
+        return 6302760;
+    }
+
+    @OnlyIn(Dist.CLIENT)
+    @Override
+    public int getGrassColor(double posX, double posZ)
+    {
+        return 7020047;
+    }
+
+    @OnlyIn(Dist.CLIENT)
+    @Override
+    public int getFoliageColor()
+
+    {
+        return 7020047;
     }
 }

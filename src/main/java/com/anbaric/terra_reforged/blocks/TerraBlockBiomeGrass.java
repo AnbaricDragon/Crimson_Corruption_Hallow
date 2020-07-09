@@ -110,16 +110,6 @@ public class TerraBlockBiomeGrass extends SnowyDirtBlock implements IGrowable
                                 worldIn.setBlockState(targetPos, this.getDefaultState());
                             }
                         }
-                        if (targetBlock == Blocks.TALL_GRASS)
-                        {
-                            DoublePlantBlock doublePlant = (DoublePlantBlock) (this == TerraBlockRegistry.GRASS_CORRUPT.get() ? TerraBlockRegistry.TALLGRASSDOUBLE_CORRUPT.get() : this == TerraBlockRegistry.GRASS_CRIMSON.get() ? TerraBlockRegistry.TALLGRASSDOUBLE_CRIMSON.get() : TerraBlockRegistry.TALLGRASSDOUBLE_HALLOWED.get());
-                            if (doublePlant.getDefaultState().isValidPosition(worldIn, targetPos))
-                            {
-                                System.out.println("Attempting to spread to" + targetBlock + " at " + targetPos);
-                                doublePlant.placeAt(worldIn, targetPos, 2);
-                                doublePlant.placeAt(worldIn, targetPos, 2);
-                            }
-                        }
                         if (checkTransformable(targetBlock))
                         {
                             if (TerraReforged.debugSpreading)

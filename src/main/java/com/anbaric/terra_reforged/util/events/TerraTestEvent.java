@@ -8,6 +8,7 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.chunk.Chunk;
 import net.minecraft.world.chunk.IChunk;
 import net.minecraft.world.gen.Heightmap;
+import net.minecraftforge.client.event.EntityViewRenderEvent;
 import net.minecraftforge.common.Tags;
 import net.minecraftforge.event.TickEvent;
 import net.minecraftforge.event.world.ChunkEvent;
@@ -18,7 +19,7 @@ import java.util.UUID;
 public class TerraTestEvent
 {
     @SubscribeEvent
-    static void onTickWorld(TickEvent.WorldTickEvent event)
+    static void onFogWorld(EntityViewRenderEvent.FogColors event)
     {
 
     }

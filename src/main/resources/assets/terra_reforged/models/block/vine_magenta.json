@@ -1,0 +1,7 @@
+{
+    "parent": "terra_reforged:block/vine",
+    "textures": {
+        "vine": "terra_reforged:blocks/vine_magenta",
+				"particle": "terra_reforged:blocks/vine_magenta"
+    }
+}

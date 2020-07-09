@@ -39,4 +39,26 @@ public class TerraBiomeSwampCorrupt extends Biome
         DefaultBiomeFeatures.addFossils(this);
         DefaultBiomeFeatures.addFreezeTopLayer(this);
     }
+
+    @OnlyIn(Dist.CLIENT)
+    @Override
+    public int getSkyColor()
+    {
+        return 4660844;
+    }
+
+    @OnlyIn(Dist.CLIENT)
+    @Override
+    public int getGrassColor(double posX, double posZ)
+    {
+        return 4597881;
+    }
+
+    @OnlyIn(Dist.CLIENT)
+    @Override
+    public int getFoliageColor()
+
+    {
+        return 4597881;
+    }
 }

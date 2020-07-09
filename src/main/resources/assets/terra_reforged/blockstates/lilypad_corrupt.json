@@ -1,0 +1,10 @@
+{
+    "variants": {
+        "": [
+						{ "model": "terra_reforged:block/lilypad_corrupt"},
+						{ "model": "terra_reforged:block/lilypad_corrupt", "y": 90 },
+						{ "model": "terra_reforged:block/lilypad_corrupt", "y": 180 },
+						{ "model": "terra_reforged:block/lilypad_corrupt", "y": 270 }
+				]
+    }
+}

@@ -40,18 +40,32 @@ public class TerraBiomeForestCorrupt extends Biome
         TerraBiomeFeatures.addSedimentDisks(this, TerraBiomeFeatures.GRAVEL, TerraBiomeFeatures.CORRUPT_SAND);
         TerraBiomeFeatures.addForestTrees(this, TerraBiomeFeatures.EBON_TREE_CONFIG, TerraBiomeFeatures.EBON_TREE_CONFIG);
         DefaultBiomeFeatures.addDefaultFlowers(this);
-        TerraBiomeFeatures.addDoubleGrass(this, TerraBiomeFeatures.CORRUPT_DOUBLE_TALL_GRASS_CONFIG);
-        TerraBiomeFeatures.addTallGrass(this, TerraBiomeFeatures.CORRUPT_TALL_GRASS_CONFIG);
+        DefaultBiomeFeatures.addGrass(this);
         TerraBiomeFeatures.addMushrooms(this, TerraBiomeFeatures.VILE_MUSHROOM_CONFIG);
         TerraBiomeFeatures.addReedsAndPumpkins(this, TerraBiomeFeatures.CORRUPT_SUGAR_CANE_CONFIG);
         DefaultBiomeFeatures.addSprings(this);
         DefaultBiomeFeatures.addFreezeTopLayer(this);
     }
 
-    @Override
     @OnlyIn(Dist.CLIENT)
+    @Override
+    public int getSkyColor()
+    {
+        return 4660844;
+    }
+
+    @OnlyIn(Dist.CLIENT)
+    @Override
     public int getGrassColor(double posX, double posZ)
     {
-        return 5636216;
+        return 4597881;
+    }
+
+    @OnlyIn(Dist.CLIENT)
+    @Override
+    public int getFoliageColor()
+
+    {
+        return 4597881;
     }
 }

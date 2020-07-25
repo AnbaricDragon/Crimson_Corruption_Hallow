@@ -21,7 +21,7 @@ public class TerraCaveCarver extends TerraWorldCarver
     }
 
     @Override
-    public boolean func_225555_a_(IChunk p_225555_1_, Function<BlockPos, Biome> p_225555_2_, Random rand, int p_225555_4_, int p_225555_5_, int p_225555_6_, int p_225555_7_, int p_225555_8_, BitSet p_225555_9_, ProbabilityConfig p_225555_10_) {
+    public boolean carveRegion(IChunk p_225555_1_, Function<BlockPos, Biome> p_225555_2_, Random rand, int p_225555_4_, int p_225555_5_, int p_225555_6_, int p_225555_7_, int p_225555_8_, BitSet p_225555_9_, ProbabilityConfig p_225555_10_) {
         int i = (this.func_222704_c() * 2 - 1) * 16;
         double d0 = (double)(p_225555_5_ * 16 + rand.nextInt(16));
         double d1 = (double)(rand.nextInt(rand.nextInt(40) + 8) + 20);

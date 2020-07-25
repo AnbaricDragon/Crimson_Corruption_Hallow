@@ -18,6 +18,7 @@ public final class TerraItemGroups
     public static final ItemGroup TERRA_MECHANICS_TAB = new TerraItemGroup("terra_mechanics_tab", () -> new ItemStack(Items.REDSTONE));
     public static final ItemGroup TERRA_MONSTERS_TAB = new TerraItemGroup("terra_monsters_tab", () -> new ItemStack(Items.FOX_SPAWN_EGG));
     public static final ItemGroup TERRA_TOOLS_TAB = new TerraItemGroup("terra_tools_tab", () -> new ItemStack(Items.DIAMOND_PICKAXE));
+    public static final ItemGroup TERRA_WEAPONS_TAB = new TerraItemGroup("terra_weapons_tab", () -> new ItemStack(Items.DIAMOND_SWORD));
 
     public static final class TerraItemGroup extends ItemGroup
     {

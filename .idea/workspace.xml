@@ -2,6 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="615e6a56-9c3e-4258-a2c2-5ff06602281c" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/anbaric/Terra_Reforged/features/trees/TerraFeatureTree.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/4.9/fileContent/annotation-processors.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/4.9/fileContent/annotation-processors.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/4.9/fileContent/fileContent.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/4.9/fileContent/fileContent.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/4.9/fileHashes/fileHashes.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/4.9/fileHashes/fileHashes.bin" afterDir="false" />
@@ -10,59 +11,57 @@
       <change beforePath="$PROJECT_DIR$/.gradle/4.9/taskHistory/taskHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/4.9/taskHistory/taskHistory.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/4.9/taskHistory/taskHistory.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/4.9/taskHistory/taskHistory.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/build.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/assets/terra_reforged/blockstates/misc_candy_red.json" beforeDir="false" afterPath="$PROJECT_DIR$/build/resources/main/assets/terra_reforged/blockstates/misc_candy_red.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/resources/main/assets/terra_reforged/lang/en_us.json" beforeDir="false" afterPath="$PROJECT_DIR$/build/resources/main/assets/terra_reforged/lang/en_us.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/resources/main/assets/terra_reforged/textures/blocks/grass_corrupt_side.png" beforeDir="false" afterPath="$PROJECT_DIR$/build/resources/main/assets/terra_reforged/textures/blocks/grass_corrupt_side.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/resources/main/assets/terra_reforged/textures/blocks/grass_corrupt_top.png" beforeDir="false" afterPath="$PROJECT_DIR$/build/resources/main/assets/terra_reforged/textures/blocks/grass_corrupt_top.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/resources/main/assets/terra_reforged/textures/blocks/grass_crimson_side.png" beforeDir="false" afterPath="$PROJECT_DIR$/build/resources/main/assets/terra_reforged/textures/blocks/grass_crimson_side.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/resources/main/assets/terra_reforged/textures/blocks/grass_crimson_top.png" beforeDir="false" afterPath="$PROJECT_DIR$/build/resources/main/assets/terra_reforged/textures/blocks/grass_crimson_top.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/resources/main/assets/terra_reforged/textures/blocks/grass_hallowed_side.png" beforeDir="false" afterPath="$PROJECT_DIR$/build/resources/main/assets/terra_reforged/textures/blocks/grass_hallowed_side.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/resources/main/assets/terra_reforged/textures/blocks/grass_hallowed_top.png" beforeDir="false" afterPath="$PROJECT_DIR$/build/resources/main/assets/terra_reforged/textures/blocks/grass_hallowed_top.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/resources/main/assets/terra_reforged/textures/blocks/tallgrass_hallowed.png" beforeDir="false" afterPath="$PROJECT_DIR$/build/resources/main/assets/terra_reforged/textures/blocks/tallgrass_hallowed.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/resources/main/assets/terra_reforged/textures/blocks/tallgrassdouble_hallowed_bottom.png" beforeDir="false" afterPath="$PROJECT_DIR$/build/resources/main/assets/terra_reforged/textures/blocks/tallgrassdouble_hallowed_bottom.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/resources/main/assets/terra_reforged/textures/blocks/tallgrassdouble_hallowed_top.png" beforeDir="false" afterPath="$PROJECT_DIR$/build/resources/main/assets/terra_reforged/textures/blocks/tallgrassdouble_hallowed_top.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/anbaric/Terra_Reforged/biomes/corrupt/TerraBiomeSnowCorrupt.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/anbaric/Terra_Reforged/biomes/corrupt/TerraBiomeSnowCorrupt.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/anbaric/Terra_Reforged/biomes/crimson/TerraBiomeSnowCrimson.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/anbaric/Terra_Reforged/biomes/crimson/TerraBiomeSnowCrimson.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/anbaric/Terra_Reforged/biomes/hallow/TerraBiomeSnowHallowed.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/anbaric/Terra_Reforged/biomes/hallow/TerraBiomeSnowHallowed.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/assets/terra_reforged/models/block/misc_candy_red.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/assets/terra_reforged/models/item/misc_candy_red.json" beforeDir="false" afterPath="$PROJECT_DIR$/build/resources/main/assets/terra_reforged/models/item/misc_candy_red.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/assets/terra_reforged/textures/blocks/misc_candy_green.png" beforeDir="false" afterPath="$PROJECT_DIR$/build/resources/main/assets/terra_reforged/textures/blocks/misc_candy_green.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/data/terra_reforged/tags/blocks/wooden/ebon_logs.json" beforeDir="false" afterPath="$PROJECT_DIR$/build/resources/main/data/terra_reforged/tags/blocks/wooden/ebon_logs.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/anbaric/Terra_Reforged/TerraReforged.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/anbaric/Terra_Reforged/TerraReforged.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/anbaric/Terra_Reforged/util/init/TerraBlockRegistry.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/anbaric/Terra_Reforged/util/init/TerraBlockRegistry.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/anbaric/terra_reforged/TEST.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/anbaric/terra_reforged/TEST.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/anbaric/terra_reforged/biomes/corrupt/TerraBiomeDesertCorrupt.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/anbaric/terra_reforged/biomes/corrupt/TerraBiomeDesertCorrupt.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/anbaric/terra_reforged/biomes/corrupt/TerraBiomeForestCorrupt.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/anbaric/terra_reforged/biomes/corrupt/TerraBiomeForestCorrupt.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/anbaric/terra_reforged/biomes/corrupt/TerraBiomeMountainCorrupt.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/anbaric/terra_reforged/biomes/corrupt/TerraBiomeMountainCorrupt.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/anbaric/terra_reforged/biomes/corrupt/TerraBiomePlainsCorrupt.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/anbaric/terra_reforged/biomes/corrupt/TerraBiomePlainsCorrupt.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/anbaric/terra_reforged/biomes/corrupt/TerraBiomeSwampCorrupt.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/anbaric/terra_reforged/biomes/corrupt/TerraBiomeSwampCorrupt.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/anbaric/terra_reforged/biomes/crimson/TerraBiomeDesertCrimson.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/anbaric/terra_reforged/biomes/crimson/TerraBiomeDesertCrimson.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/anbaric/terra_reforged/biomes/crimson/TerraBiomeForestCrimson.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/anbaric/terra_reforged/biomes/crimson/TerraBiomeForestCrimson.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/anbaric/terra_reforged/biomes/crimson/TerraBiomeMountainCrimson.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/anbaric/terra_reforged/biomes/crimson/TerraBiomeMountainCrimson.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/anbaric/terra_reforged/biomes/crimson/TerraBiomePlainsCrimson.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/anbaric/terra_reforged/biomes/crimson/TerraBiomePlainsCrimson.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/anbaric/terra_reforged/biomes/crimson/TerraBiomeSwampCrimson.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/anbaric/terra_reforged/biomes/crimson/TerraBiomeSwampCrimson.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/anbaric/terra_reforged/biomes/hallow/TerraBiomeDesertHallowed.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/anbaric/terra_reforged/biomes/hallow/TerraBiomeDesertHallowed.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/anbaric/terra_reforged/biomes/hallow/TerraBiomeForestHallowed.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/anbaric/terra_reforged/biomes/hallow/TerraBiomeForestHallowed.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/anbaric/terra_reforged/biomes/hallow/TerraBiomeMountainHallowed.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/anbaric/terra_reforged/biomes/hallow/TerraBiomeMountainHallowed.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/anbaric/terra_reforged/biomes/hallow/TerraBiomePlainsHallowed.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/anbaric/terra_reforged/biomes/hallow/TerraBiomePlainsHallowed.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/anbaric/terra_reforged/biomes/hallow/TerraBiomeSwampHallowed.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/anbaric/terra_reforged/biomes/hallow/TerraBiomeSwampHallowed.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/anbaric/terra_reforged/blocks/TerraBlockBiomeGrass.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/anbaric/terra_reforged/blocks/TerraBlockBiomeGrass.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/anbaric/terra_reforged/blocks/TerraBlockDoubleGrass.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/anbaric/terra_reforged/blocks/TerraBlockTallGrass.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/anbaric/terra_reforged/blocks/TerraBlockIce.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/anbaric/terra_reforged/blocks/TerraBlockIce.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/anbaric/terra_reforged/blocks/TerraBlockMoss.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/anbaric/terra_reforged/blocks/TerraBlockMoss.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/anbaric/terra_reforged/blocks/TerraBlockOre.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/anbaric/terra_reforged/blocks/TerraBlockOre.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/anbaric/terra_reforged/blocks/TerraBlockSand.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/anbaric/terra_reforged/blocks/TerraBlockSand.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/anbaric/terra_reforged/blocks/TerraBlockSapling.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/anbaric/terra_reforged/blocks/TerraBlockSpreading.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/anbaric/terra_reforged/blocks/TerraBlockSpreading.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/anbaric/terra_reforged/features/TerraBiomeFeatures.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/anbaric/terra_reforged/features/TerraBiomeFeatures.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/anbaric/terra_reforged/features/carvers/TerraCaveCarver.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/anbaric/terra_reforged/features/carvers/TerraCaveCarver.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/anbaric/terra_reforged/features/carvers/TerraCavernCarver.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/anbaric/terra_reforged/features/carvers/TerraCavernCarver.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/anbaric/terra_reforged/features/carvers/TerraJungleCarver.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/anbaric/terra_reforged/features/carvers/TerraJungleCarver.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/anbaric/terra_reforged/features/carvers/TerraSnowCarver.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/anbaric/terra_reforged/features/carvers/TerraSnowCarver.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/anbaric/terra_reforged/features/trees/TerraTreeBoreal.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/anbaric/terra_reforged/features/trees/TerraTreeEbon.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/anbaric/Terra_Reforged/features/trees/TerraTreeBoreal.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/anbaric/terra_reforged/features/trees/TerraTreeMahogany.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/anbaric/terra_reforged/features/trees/TerraTreePalm.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/anbaric/terra_reforged/features/trees/TerraTreePearl.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/anbaric/terra_reforged/features/trees/TerraTreeShade.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/anbaric/terra_reforged/util/TerraCompat.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/anbaric/Terra_Reforged/util/TerraVanillaCompat.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/anbaric/terra_reforged/util/TerraItemGroups.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/anbaric/terra_reforged/util/TerraItemGroups.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/anbaric/terra_reforged/util/events/TerraTestEvent.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/anbaric/terra_reforged/util/events/TerraTestEvent.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/anbaric/terra_reforged/util/handlers/ColorHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/anbaric/terra_reforged/util/handlers/ColorHandler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/anbaric/terra_reforged/util/handlers/EnumHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/anbaric/terra_reforged/util/handlers/EnumHandler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/anbaric/terra_reforged/util/handlers/RenderHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/anbaric/terra_reforged/util/handlers/RenderHandler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/anbaric/terra_reforged/util/init/TerraItemBlockRegistry.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/anbaric/terra_reforged/util/init/TerraItemBlockRegistry.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/anbaric/terra_reforged/util/handlers/EnumHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/anbaric/Terra_Reforged/util/handlers/SpreadingHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/anbaric/terra_reforged/util/init/TerraFeatureRegistry.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/anbaric/terra_reforged/util/init/TerraFeatureRegistry.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/anbaric/terra_reforged/util/init/TerraItemRegistry.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/anbaric/terra_reforged/util/init/TerraItemRegistry.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/META-INF/accesstransformer.cfg" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/META-INF/accesstransformer.cfg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/assets/terra_reforged/blockstates/lihzahrd_brick_wall.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/assets/terra_reforged/blockstates/misc_candy_red.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/assets/terra_reforged/blockstates/misc_candy_red.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/assets/terra_reforged/lang/en_us.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/assets/terra_reforged/lang/en_us.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/assets/terra_reforged/textures/blocks/grass_corrupt_side.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/assets/terra_reforged/textures/blocks/grass_corrupt_side.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/assets/terra_reforged/textures/blocks/grass_corrupt_top.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/assets/terra_reforged/textures/blocks/grass_corrupt_top.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/assets/terra_reforged/textures/blocks/grass_crimson_side.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/assets/terra_reforged/textures/blocks/grass_crimson_side.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/assets/terra_reforged/textures/blocks/grass_crimson_top.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/assets/terra_reforged/textures/blocks/grass_crimson_top.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/assets/terra_reforged/textures/blocks/grass_hallowed_side.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/assets/terra_reforged/textures/blocks/grass_hallowed_side.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/assets/terra_reforged/textures/blocks/grass_hallowed_top.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/assets/terra_reforged/textures/blocks/grass_hallowed_top.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/assets/terra_reforged/textures/blocks/tallgrass_hallowed.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/assets/terra_reforged/textures/blocks/tallgrass_hallowed.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/assets/terra_reforged/textures/blocks/tallgrassdouble_hallowed_bottom.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/assets/terra_reforged/textures/blocks/tallgrassdouble_hallowed_bottom.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/assets/terra_reforged/textures/blocks/tallgrassdouble_hallowed_top.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/assets/terra_reforged/textures/blocks/tallgrassdouble_hallowed_top.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/assets/terra_reforged/models/block/lihzahrd_brick_wall.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/assets/terra_reforged/models/block/misc_candy_red.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/assets/terra_reforged/models/item/lihzahrd_brick_wall.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/assets/terra_reforged/models/item/misc_candy_red.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/assets/terra_reforged/models/item/misc_candy_red.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/assets/terra_reforged/textures/blocks/lihzahrd_brick_0.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/assets/terra_reforged/textures/blocks/lihzahrd_brick_1.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/assets/terra_reforged/textures/blocks/lihzahrd_brick_2.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/assets/terra_reforged/textures/blocks/lihzahrd_brick_3.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/assets/terra_reforged/textures/blocks/lihzahrd_brick_4.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/assets/terra_reforged/textures/blocks/lihzahrd_brick_5.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/assets/terra_reforged/textures/blocks/misc_candy_green.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/assets/terra_reforged/textures/blocks/misc_candy_green.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/data/terra_reforged/tags/blocks/wooden/ebon_logs.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/data/terra_reforged/tags/blocks/wooden/ebon_logs.json" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -153,6 +152,7 @@
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/main/resources/data/forge/tags/items/ingots" />
     <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.0" />
     <property name="project.structure.side.proportion" value="0.0" />
@@ -160,23 +160,26 @@
     <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
   </component>
   <component name="RecentsManager">
-    <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
-      <recent name="com.anbaric.terra_reforged.renderers" />
-      <recent name="com.anbaric.terra_reforged.ctm" />
-    </key>
-    <key name="CopyClassDialog.RECENTS_KEY">
-      <recent name="com.anbaric.terra_reforged.biomes.hallow" />
-      <recent name="com.anbaric.terra_reforged.biomes.crimson" />
-      <recent name="com.anbaric.terra_reforged.biomes.corrupt" />
-      <recent name="com.anbaric.terra_reforged.biomes.builders" />
-      <recent name="com.anbaric.terra_reforged.biomes" />
-    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="D:\Downloads\Coding\Repositories\Terra_Reforged\src\main\resources" />
       <recent name="D:\Downloads\Coding\Repositories\Terra_Reforged\src\main\java\com\anbaric\terra_reforged\items" />
       <recent name="D:\Downloads\Coding\Repositories\Terra_Reforged\src\main\java\com\anbaric\terra_reforged\blocks" />
       <recent name="D:\Downloads\Coding\Repositories\Terra_Reforged\src\main\java\com\anbaric\terra_reforged\util" />
       <recent name="D:\Downloads\Coding\Repositories\Terra_Reforged\src\main\java\com\anbaric\terra_reforged\util\init" />
+    </key>
+    <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
+      <recent name="com.anbaric.terra_reforged.renderers" />
+      <recent name="com.anbaric.terra_reforged.ctm" />
+    </key>
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="com.anbaric.terra_reforged.features.trees" />
+      <recent name="com.anbaric.terra_reforged.blocks.saplings" />
+      <recent name="com.anbaric.terra_reforged.util.handlers" />
+      <recent name="com.anbaric.terra_reforged.blocks" />
+      <recent name="com.anbaric.terra_reforged.biomes.hallow" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\Downloads\Coding\Repositories\Terra_Reforged\src\main\resources\data\forge\tags\items\ingots" />
     </key>
   </component>
   <component name="RunManager" selected="Gradle.Terra_Reforged [runClient]">
@@ -275,14 +278,14 @@
       <screen x="0" y="0" width="1920" height="1026" />
     </state>
     <state x="541" y="157" key="#Notifications/1920.312.1366.714/-1920.0.1920.1080/0.0.1920.1026@0.0.1920.1026" timestamp="1586990070754" />
-    <state x="541" y="157" key="#Project_Structure" timestamp="1587245991781">
+    <state x="541" y="146" key="#Project_Structure" timestamp="1595353645858">
       <screen x="0" y="0" width="1920" height="1026" />
     </state>
-    <state x="541" y="157" key="#Project_Structure/1920.312.1366.714/-1920.0.1920.1080/0.0.1920.1026@0.0.1920.1026" timestamp="1587245991781" />
-    <state x="754" y="208" key="#com.intellij.ide.util.MemberChooser" timestamp="1591495932149">
+    <state x="541" y="146" key="#Project_Structure/1920.312.1366.714/-1920.0.1920.1080/0.0.1920.1026@0.0.1920.1026" timestamp="1595353645858" />
+    <state x="754" y="208" key="#com.intellij.ide.util.MemberChooser" timestamp="1595204995445">
       <screen x="0" y="0" width="1920" height="1026" />
     </state>
-    <state x="754" y="208" key="#com.intellij.ide.util.MemberChooser/1920.312.1366.714/-1920.0.1920.1080/0.0.1920.1026@0.0.1920.1026" timestamp="1591495932149" />
+    <state x="754" y="208" key="#com.intellij.ide.util.MemberChooser/1920.312.1366.714/-1920.0.1920.1080/0.0.1920.1026@0.0.1920.1026" timestamp="1595204995445" />
     <state x="629" y="235" key="#com.intellij.openapi.updateSettings.impl.PluginUpdateInfoDialog" timestamp="1593057625584">
       <screen x="0" y="0" width="1920" height="1026" />
     </state>
@@ -299,29 +302,29 @@
       <screen x="0" y="0" width="1920" height="1026" />
     </state>
     <state x="679" y="246" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/1920.312.1366.714/-1920.0.1920.1080/0.0.1920.1026@0.0.1920.1026" timestamp="1593318406421" />
-    <state width="1876" height="2" key="GridCell.Tab.0.bottom" timestamp="1594268324678">
+    <state width="1876" height="2" key="GridCell.Tab.0.bottom" timestamp="1595654044392">
       <screen x="0" y="0" width="1920" height="1026" />
     </state>
     <state width="1876" height="2" key="GridCell.Tab.0.bottom/1920.312.1366.714/-1920.0.1920.1080/0.0.1920.1026@-1920.0.1920.1080" timestamp="1594008699714" />
-    <state width="1876" height="2" key="GridCell.Tab.0.bottom/1920.312.1366.714/-1920.0.1920.1080/0.0.1920.1026@0.0.1920.1026" timestamp="1594268324678" />
+    <state width="1876" height="2" key="GridCell.Tab.0.bottom/1920.312.1366.714/-1920.0.1920.1080/0.0.1920.1026@0.0.1920.1026" timestamp="1595654044392" />
     <state width="1322" height="2" key="GridCell.Tab.0.bottom/1920.312.1366.714/-1920.0.1920.1080/0.0.1920.1026@1920.312.1366.714" timestamp="1590348792583" />
-    <state width="1876" height="2" key="GridCell.Tab.0.center" timestamp="1594268324677">
+    <state width="1876" height="2" key="GridCell.Tab.0.center" timestamp="1595654044392">
       <screen x="0" y="0" width="1920" height="1026" />
     </state>
     <state width="1876" height="2" key="GridCell.Tab.0.center/1920.312.1366.714/-1920.0.1920.1080/0.0.1920.1026@-1920.0.1920.1080" timestamp="1594008699714" />
-    <state width="1876" height="2" key="GridCell.Tab.0.center/1920.312.1366.714/-1920.0.1920.1080/0.0.1920.1026@0.0.1920.1026" timestamp="1594268324677" />
+    <state width="1876" height="2" key="GridCell.Tab.0.center/1920.312.1366.714/-1920.0.1920.1080/0.0.1920.1026@0.0.1920.1026" timestamp="1595654044392" />
     <state width="1322" height="2" key="GridCell.Tab.0.center/1920.312.1366.714/-1920.0.1920.1080/0.0.1920.1026@1920.312.1366.714" timestamp="1590348792582" />
-    <state width="1876" height="2" key="GridCell.Tab.0.left" timestamp="1594268324677">
+    <state width="1876" height="2" key="GridCell.Tab.0.left" timestamp="1595654044392">
       <screen x="0" y="0" width="1920" height="1026" />
     </state>
     <state width="1876" height="2" key="GridCell.Tab.0.left/1920.312.1366.714/-1920.0.1920.1080/0.0.1920.1026@-1920.0.1920.1080" timestamp="1594008699714" />
-    <state width="1876" height="2" key="GridCell.Tab.0.left/1920.312.1366.714/-1920.0.1920.1080/0.0.1920.1026@0.0.1920.1026" timestamp="1594268324677" />
+    <state width="1876" height="2" key="GridCell.Tab.0.left/1920.312.1366.714/-1920.0.1920.1080/0.0.1920.1026@0.0.1920.1026" timestamp="1595654044392" />
     <state width="1322" height="2" key="GridCell.Tab.0.left/1920.312.1366.714/-1920.0.1920.1080/0.0.1920.1026@1920.312.1366.714" timestamp="1590348792582" />
-    <state width="1876" height="2" key="GridCell.Tab.0.right" timestamp="1594268324677">
+    <state width="1876" height="2" key="GridCell.Tab.0.right" timestamp="1595654044392">
       <screen x="0" y="0" width="1920" height="1026" />
     </state>
     <state width="1876" height="2" key="GridCell.Tab.0.right/1920.312.1366.714/-1920.0.1920.1080/0.0.1920.1026@-1920.0.1920.1080" timestamp="1594008699714" />
-    <state width="1876" height="2" key="GridCell.Tab.0.right/1920.312.1366.714/-1920.0.1920.1080/0.0.1920.1026@0.0.1920.1026" timestamp="1594268324677" />
+    <state width="1876" height="2" key="GridCell.Tab.0.right/1920.312.1366.714/-1920.0.1920.1080/0.0.1920.1026@0.0.1920.1026" timestamp="1595654044392" />
     <state width="1322" height="2" key="GridCell.Tab.0.right/1920.312.1366.714/-1920.0.1920.1080/0.0.1920.1026@1920.312.1366.714" timestamp="1590348792582" />
     <state x="529" y="241" key="IDE.errors.dialog" timestamp="1587011824946">
       <screen x="0" y="0" width="1920" height="1026" />
@@ -335,19 +338,23 @@
       <screen x="0" y="0" width="1920" height="1026" />
     </state>
     <state width="647" height="445" key="SwitcherDM/1920.312.1366.714/-1920.0.1920.1080/0.0.1920.1026@0.0.1920.1026" timestamp="1589139216511" />
-    <state x="1869" y="293" width="1619" height="995" maximized="true" key="dock-window-1" timestamp="1593538601002">
+    <state x="772" y="413" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1594583436306">
+      <screen x="0" y="0" width="1920" height="1026" />
+    </state>
+    <state x="772" y="413" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/1920.312.1366.714/-1920.0.1920.1080/0.0.1920.1026@0.0.1920.1026" timestamp="1594583436306" />
+    <state x="1857" y="368" width="1404" height="830" key="dock-window-1" timestamp="1595518640697">
       <screen x="1920" y="312" width="1366" height="714" />
     </state>
-    <state x="1869" y="293" width="1619" height="995" maximized="true" key="dock-window-1/1920.312.1366.714/-1920.0.1920.1080/0.0.1920.1026@0.0.1920.1026" timestamp="1593538601002" />
+    <state x="1857" y="368" width="1404" height="830" key="dock-window-1/1920.312.1366.714/-1920.0.1920.1080/0.0.1920.1026@0.0.1920.1026" timestamp="1595518640697" />
     <state x="-1917" y="-23" width="1646" height="833" maximized="true" key="dock-window-2" timestamp="1592373247935">
       <screen x="-1920" y="0" width="1920" height="1080" />
     </state>
     <state x="-1917" y="-23" width="1646" height="833" maximized="true" key="dock-window-2/1920.312.1366.714/-1920.0.1920.1080/0.0.1920.1026@0.0.1920.1026" timestamp="1592373247935" />
-    <state x="-1709" y="-27" width="1362" height="729" key="dock-window-3" timestamp="1594010335288">
+    <state x="-1626" y="-14" width="1362" height="729" key="dock-window-3" timestamp="1594959463116">
       <screen x="-1920" y="0" width="1920" height="1080" />
     </state>
     <state x="-1456" y="127" width="1362" height="729" key="dock-window-3/1920.312.1366.714/-1920.0.1920.1080/0.0.1920.1026@-1920.0.1920.1080" timestamp="1594008643029" />
-    <state x="-1709" y="-27" width="1362" height="729" key="dock-window-3/1920.312.1366.714/-1920.0.1920.1080/0.0.1920.1026@0.0.1920.1026" timestamp="1594010335288" />
+    <state x="-1626" y="-14" width="1362" height="729" key="dock-window-3/1920.312.1366.714/-1920.0.1920.1080/0.0.1920.1026@0.0.1920.1026" timestamp="1594959463116" />
     <state x="718" y="422" width="1404" height="830" key="dock-window-4" timestamp="1592492176669">
       <screen x="0" y="0" width="1920" height="1026" />
     </state>

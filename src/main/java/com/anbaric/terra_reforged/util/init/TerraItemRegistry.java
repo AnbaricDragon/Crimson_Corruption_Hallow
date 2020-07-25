@@ -3,7 +3,7 @@ package com.anbaric.terra_reforged.util.init;
 import com.anbaric.terra_reforged.items.TerraItemLilyPad;
 import com.anbaric.terra_reforged.util.Reference;
 import com.anbaric.terra_reforged.util.TerraItemGroups;
-import net.minecraft.block.Blocks;
+import com.anbaric.terra_reforged.util.handlers.MaterialHandler;
 import net.minecraft.item.*;
 import net.minecraftforge.fml.RegistryObject;
 import net.minecraftforge.registries.DeferredRegister;
@@ -72,4 +72,42 @@ public final class TerraItemRegistry
     public static final RegistryObject<Item> LILYPAD_CORRUPT = ITEMS.register("lilypad_corrupt", () -> new TerraItemLilyPad(TerraBlockRegistry.LILYPAD_CORRUPT.get(), new Item.Properties().group(TerraItemGroups.TERRA_DECORATIONS_TAB)));
     public static final RegistryObject<Item> LILYPAD_CRIMSON = ITEMS.register("lilypad_crimson", () -> new TerraItemLilyPad(TerraBlockRegistry.LILYPAD_CRIMSON.get(), new Item.Properties().group(TerraItemGroups.TERRA_DECORATIONS_TAB)));
     public static final RegistryObject<Item> LILYPAD_HALLOWED = ITEMS.register("lilypad_hallowed", () -> new TerraItemLilyPad(TerraBlockRegistry.LILYPAD_HALLOWED.get(), new Item.Properties().group(TerraItemGroups.TERRA_DECORATIONS_TAB)));
+
+    //Tools
+
+    //Pickaxes
+    public static final RegistryObject<Item> PICKAXE_CACTUS = ITEMS.register("pickaxe_cactus", () -> new PickaxeItem(MaterialHandler.CACTUS, 1, -2.8F, new Item.Properties().group(TerraItemGroups.TERRA_TOOLS_TAB)));
+    public static final RegistryObject<Item> PICKAXE_COPPER = ITEMS.register("pickaxe_copper", () -> new PickaxeItem(MaterialHandler.COPPER, 1, -2.8F, new Item.Properties().group(TerraItemGroups.TERRA_TOOLS_TAB)));
+    public static final RegistryObject<Item> PICKAXE_TIN = ITEMS.register("pickaxe_tin", () -> new PickaxeItem(MaterialHandler.TIN, 1, -2.8F, new Item.Properties().group(TerraItemGroups.TERRA_TOOLS_TAB)));
+    public static final RegistryObject<Item> PICKAXE_LEAD = ITEMS.register("pickaxe_lead", () -> new PickaxeItem(MaterialHandler.LEAD, 1, -2.8F, new Item.Properties().group(TerraItemGroups.TERRA_TOOLS_TAB)));
+    public static final RegistryObject<Item> PICKAXE_SILVER = ITEMS.register("pickaxe_silver", () -> new PickaxeItem(MaterialHandler.SILVER, 1, -2.8F, new Item.Properties().group(TerraItemGroups.TERRA_TOOLS_TAB)));
+    public static final RegistryObject<Item> PICKAXE_TUNGSTEN = ITEMS.register("pickaxe_tungsten", () -> new PickaxeItem(MaterialHandler.TUNGSTEN, 1, -2.8F, new Item.Properties().group(TerraItemGroups.TERRA_TOOLS_TAB)));
+    public static final RegistryObject<Item> PICKAXE_GOLD = ITEMS.register("pickaxe_gold", () -> new PickaxeItem(MaterialHandler.GOLD, 1, -2.6F, new Item.Properties().group(TerraItemGroups.TERRA_TOOLS_TAB)));
+    public static final RegistryObject<Item> PICKAXE_CANDY = ITEMS.register("pickaxe_candy", () -> new PickaxeItem(MaterialHandler.CANDY, 1, -2.6F, new Item.Properties().group(TerraItemGroups.TERRA_TOOLS_TAB)));
+    public static final RegistryObject<Item> PICKAXE_FOSSIL = ITEMS.register("pickaxe_fossil", () -> new PickaxeItem(MaterialHandler.FOSSIL, 1, -2.6F, new Item.Properties().group(TerraItemGroups.TERRA_TOOLS_TAB)));
+    public static final RegistryObject<Item> PICKAXE_BONE = ITEMS.register("pickaxe_bone", () -> new PickaxeItem(MaterialHandler.BONE, 1, -2.6F, new Item.Properties().group(TerraItemGroups.TERRA_TOOLS_TAB)));
+    public static final RegistryObject<Item> PICKAXE_SHARK = ITEMS.register("pickaxe_shark", () -> new PickaxeItem(MaterialHandler.SHARK, 1, -2.6F, new Item.Properties().group(TerraItemGroups.TERRA_TOOLS_TAB)));
+    public static final RegistryObject<Item> PICKAXE_PLATINUM = ITEMS.register("pickaxe_platinum", () -> new PickaxeItem(MaterialHandler.PLATINUM, 1, -2.6F, new Item.Properties().group(TerraItemGroups.TERRA_TOOLS_TAB)));
+    public static final RegistryObject<Item> PICKAXE_NIGHTMARE = ITEMS.register("pickaxe_nightmare", () -> new PickaxeItem(MaterialHandler.DEMONITE, 1, -2.4F, new Item.Properties().group(TerraItemGroups.TERRA_TOOLS_TAB)));
+    public static final RegistryObject<Item> PICKAXE_DEATHBRINGER = ITEMS.register("pickaxe_deathbringer", () -> new PickaxeItem(MaterialHandler.CRIMTANE, 1, -2.4F, new Item.Properties().group(TerraItemGroups.TERRA_TOOLS_TAB)));
+    public static final RegistryObject<Item> PICKAXE_MOLTEN = ITEMS.register("pickaxe_molten", () -> new PickaxeItem(MaterialHandler.MOLTEN, 1, -3.5F, new Item.Properties().group(TerraItemGroups.TERRA_TOOLS_TAB)));
+    public static final RegistryObject<Item> PICKAXE_COBALT = ITEMS.register("pickaxe_cobalt", () -> new PickaxeItem(MaterialHandler.COBALT, 1, -2.2F, new Item.Properties().group(TerraItemGroups.TERRA_TOOLS_TAB)));
+    public static final RegistryObject<Item> PICKAXE_PALLADIUM = ITEMS.register("pickaxe_palladium", () -> new PickaxeItem(MaterialHandler.PALLADIUM, 1, -2.2F, new Item.Properties().group(TerraItemGroups.TERRA_TOOLS_TAB)));
+    public static final RegistryObject<Item> PICKAXE_MYTHRIL = ITEMS.register("pickaxe_mythril", () -> new PickaxeItem(MaterialHandler.MYTHRIL, 1, -2.2F, new Item.Properties().group(TerraItemGroups.TERRA_TOOLS_TAB)));
+    public static final RegistryObject<Item> PICKAXE_ORICHALCUM = ITEMS.register("pickaxe_orichalcum", () -> new PickaxeItem(MaterialHandler.ORICHALCUM, 1, -2.2F, new Item.Properties().group(TerraItemGroups.TERRA_TOOLS_TAB)));
+    public static final RegistryObject<Item> PICKAXE_ADAMANTITE = ITEMS.register("pickaxe_adamantite", () -> new PickaxeItem(MaterialHandler.ADAMANTITE, 1, -2.0F, new Item.Properties().group(TerraItemGroups.TERRA_TOOLS_TAB)));
+    public static final RegistryObject<Item> PICKAXE_TITANIUM = ITEMS.register("pickaxe_titanium", () -> new PickaxeItem(MaterialHandler.TITANIUM, 1, -2.0F, new Item.Properties().group(TerraItemGroups.TERRA_TOOLS_TAB)));
+    public static final RegistryObject<Item> PICKAXE_SPECTRE = ITEMS.register("pickaxe_spectre", () -> new PickaxeItem(MaterialHandler.SPECTRE, 1, -2.0F, new Item.Properties().group(TerraItemGroups.TERRA_TOOLS_TAB)));
+    public static final RegistryObject<Item> PICKAXE_CHLOROPHYTE = ITEMS.register("pickaxe_chlorophyte", () -> new PickaxeItem(MaterialHandler.CHLOROPHYTE, 1, -2.0F, new Item.Properties().group(TerraItemGroups.TERRA_TOOLS_TAB)));
+    public static final RegistryObject<Item> PICKAXE_HALLOWED = ITEMS.register("pickaxe_hallowed", () -> new PickaxeItem(MaterialHandler.HALLOWED, 1, -2.0F, new Item.Properties().group(TerraItemGroups.TERRA_TOOLS_TAB)));
+    public static final RegistryObject<Item> PICKAXE_SHROOMITE = ITEMS.register("pickaxe_shroomite", () -> new PickaxeItem(MaterialHandler.SHROOMITE, 1, -1.5F, new Item.Properties().group(TerraItemGroups.TERRA_TOOLS_TAB)));
+    public static final RegistryObject<Item> PICKAXE_JUNGLE = ITEMS.register("pickaxe_jungle", () -> new PickaxeItem(MaterialHandler.JUNGLE, 1, -2.0F, new Item.Properties().group(TerraItemGroups.TERRA_TOOLS_TAB)));
+    public static final RegistryObject<Item> PICKAXE_VORTEX = ITEMS.register("pickaxe_vortex", () -> new PickaxeItem(MaterialHandler.LUMINITE, 1, -2.0F, new Item.Properties().group(TerraItemGroups.TERRA_TOOLS_TAB)));
+    public static final RegistryObject<Item> PICKAXE_NEBULA = ITEMS.register("pickaxe_nebula", () -> new PickaxeItem(MaterialHandler.LUMINITE, 1, -2.0F, new Item.Properties().group(TerraItemGroups.TERRA_TOOLS_TAB)));
+    public static final RegistryObject<Item> PICKAXE_SOLAR = ITEMS.register("pickaxe_solar", () -> new PickaxeItem(MaterialHandler.LUMINITE, 1, -2.0F, new Item.Properties().group(TerraItemGroups.TERRA_TOOLS_TAB)));
+    public static final RegistryObject<Item> PICKAXE_STARDUST = ITEMS.register("pickaxe_stardust", () -> new PickaxeItem(MaterialHandler.LUMINITE, 1, -2.0F, new Item.Properties().group(TerraItemGroups.TERRA_TOOLS_TAB)));
+    //Weapons
+
+    //Swords
+    public static final RegistryObject<Item> SWORD_COPPER = ITEMS.register("sword_copper", () -> new SwordItem(MaterialHandler.COPPER,  3, -2.4F, new Item.Properties().group(TerraItemGroups.TERRA_WEAPONS_TAB)));
 }

@@ -31,8 +31,7 @@ public class TerraJungleCarver extends TerraWorldCarver
         super(deserialize, maxHeight); // The 256 is the maximum height that this carver can cave to
     }
 
-    @Override
-    protected boolean func_225556_a_(IChunk chunk, Function<BlockPos, Biome> p_225556_2_, BitSet p_225556_3_, Random p_225556_4_, BlockPos.Mutable pos, BlockPos.Mutable targetPos, BlockPos.Mutable p_225556_7_, int p_225556_8_, int p_225556_9_, int p_225556_10_, int x, int z, int p_225556_13_, int y, int p_225556_15_, AtomicBoolean p_225556_16_)
+    protected boolean carveRegion(IChunk chunk, Function<BlockPos, Biome> p_225556_2_, BitSet p_225556_3_, Random p_225556_4_, BlockPos.Mutable pos, BlockPos.Mutable targetPos, BlockPos.Mutable p_225556_7_, int p_225556_8_, int p_225556_9_, int p_225556_10_, int x, int z, int p_225556_13_, int y, int p_225556_15_, AtomicBoolean p_225556_16_)
     {
         int i = p_225556_13_ + 3 | p_225556_15_ << 6 | y << 10;
         if (p_225556_3_.get(i))

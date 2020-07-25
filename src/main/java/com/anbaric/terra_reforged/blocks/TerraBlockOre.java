@@ -1,6 +1,6 @@
 package com.anbaric.terra_reforged.blocks;
 
-import com.anbaric.terra_reforged.util.handlers.EnumHandler.*;
+import com.anbaric.terra_reforged.util.handlers.SpreadingHandler.*;
 import com.anbaric.terra_reforged.util.init.TerraBlockRegistry;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;

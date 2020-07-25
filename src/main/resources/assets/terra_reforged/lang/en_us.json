@@ -29,6 +29,7 @@
   "itemGroup.terra_monsters_tab": "Terra Reforged Monsters",
   "itemGroup.terra_mechanics_tab": "Terra Reforged Mechanisms",
   "itemGroup.terra_tools_tab": "Terra Reforged Tools",
+  "itemGroup.terra_weapons_tab": "Terra Reforged Weapons",
 
   "block.terra_reforged.soil_mud": "Mud",
   "block.terra_reforged.soil_ash": "Ash",
@@ -408,6 +409,10 @@
   "block.terra_reforged.slab_dungeon_red_bricks": "Dungeon Bricks Slab",
   "block.terra_reforged.slab_dungeon_red_tile": "Dungeon Tile Slab",
 
+  "block.terra_reforged.temple_brick": "Lihzahrd Brick",
+  "block.terra_reforged.temple_brick_mossy": "Mossy Lihzahrd Brick",
+  "block.terra_reforged.temple_brick_cracked": "Cracked Lihzahrd Brick",
+
   "block.terra_reforged.brick_snow": "Snow Brick",
   "block.terra_reforged.brick_ice": "Ice Brick",
   "block.terra_reforged.brick_mudstone": "Mudstone Brick",
@@ -449,6 +454,8 @@
   "block.terra_reforged.slime_alt": "Slime",
   "block.terra_reforged.slime_frozen": "Frozen Slime",
   "block.terra_reforged.slime_bouncy": "Bouncy Slime",
+  "block.terra_reforged.misc_candy_red": "Red Candy Cane",
+  "block.terra_reforged.misc_candy_green": "Green Candy Cane",
 
   "block.terra_reforged.ore_copper": "Copper Ore",
   "block.terra_reforged.ore_tin": "Tin Ore",
@@ -532,5 +539,38 @@
   "item.terra_reforged.seed_fireblossom": "Fireblossom Seed",
   "item.terra_reforged.seed_moonglow": "Moonglow Seed",
   "item.terra_reforged.seed_shiverthorn": "Shiverthorn Seed",
-  "item.terra_reforged.seed_waterleaf": "Waterleaf Seed"
+  "item.terra_reforged.seed_waterleaf": "Waterleaf Seed",
+
+  "item.terra_reforged.pickaxe_cactus": "Cactus Pickaxe",
+  "item.terra_reforged.pickaxe_copper": "Copper Pickaxe",
+  "item.terra_reforged.pickaxe_tin": "Tin Pickaxe",
+  "item.terra_reforged.pickaxe_lead": "Lead Pickaxe",
+  "item.terra_reforged.pickaxe_silver": "Silver Pickaxe",
+  "item.terra_reforged.pickaxe_tungsten": "Tungsten Pickaxe",
+  "item.terra_reforged.pickaxe_gold": "Gold Pickaxe",
+  "item.terra_reforged.pickaxe_candy": "Candy Cane Pickaxe",
+  "item.terra_reforged.pickaxe_fossil": "Fossil Pickaxe",
+  "item.terra_reforged.pickaxe_bone": "Bone Pickaxe",
+  "item.terra_reforged.pickaxe_shark": "Reaver Shark",
+  "item.terra_reforged.pickaxe_platinum": "Platinum Pickaxe",
+  "item.terra_reforged.pickaxe_nightmare": "Nightmare Pickaxe",
+  "item.terra_reforged.pickaxe_deathbringer": "Deathbringer Pickaxe",
+  "item.terra_reforged.pickaxe_molten": "Molten Pickaxe",
+  "item.terra_reforged.pickaxe_cobalt": "Cobalt Pickaxe",
+  "item.terra_reforged.pickaxe_palladium": "Palladium Pickaxe",
+  "item.terra_reforged.pickaxe_mythril": "Mythril Pickaxe",
+  "item.terra_reforged.pickaxe_orichalcum": "Orichalcum Pickaxe",
+  "item.terra_reforged.pickaxe_adamantite": "Adamantite Pickaxe",
+  "item.terra_reforged.pickaxe_titanium": "Titanium Pickaxe",
+  "item.terra_reforged.pickaxe_spectre": "Spectre Pickaxe",
+  "item.terra_reforged.pickaxe_chlorophyte": "Chlorophyte Pickaxe",
+  "item.terra_reforged.pickaxe_hallowed": "Pickaxe Axe",
+  "item.terra_reforged.pickaxe_shroomite": "Shroomite Digging Claw",
+  "item.terra_reforged.pickaxe_jungle": "Picksaw",
+  "item.terra_reforged.pickaxe_vortex": "Vortex Pickaxe",
+  "item.terra_reforged.pickaxe_nebula": "Nebula Pickaxe",
+  "item.terra_reforged.pickaxe_solar": "Solar Pickaxe",
+  "item.terra_reforged.pickaxe_stardust": "Stardust Pickaxe",
+
+  "item.terra_reforged.sword_copper": "Copper Sword"
 }

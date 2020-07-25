@@ -1,16 +1,12 @@
 package com.anbaric.terra_reforged.blocks;
 
 import com.anbaric.terra_reforged.TerraReforged;
-import com.anbaric.terra_reforged.util.handlers.EnumHandler.EnumBiomeBlockType;
-import com.anbaric.terra_reforged.util.handlers.EnumHandler.EnumBiomeType;
-import com.anbaric.terra_reforged.util.init.TerraBlockRegistry;
+import com.anbaric.terra_reforged.util.handlers.SpreadingHandler.EnumBiomeBlockType;
+import com.anbaric.terra_reforged.util.handlers.SpreadingHandler.EnumBiomeType;
 import net.minecraft.block.*;
-import net.minecraft.state.DirectionProperty;
-import net.minecraft.state.properties.SlabType;
 import net.minecraft.util.Direction;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.IBlockReader;
-import net.minecraft.world.World;
 import net.minecraft.world.server.ServerWorld;
 import net.minecraftforge.common.IPlantable;
 import net.minecraftforge.common.PlantType;

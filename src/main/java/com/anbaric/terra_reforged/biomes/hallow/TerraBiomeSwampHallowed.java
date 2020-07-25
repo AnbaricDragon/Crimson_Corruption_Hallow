@@ -24,10 +24,7 @@ public class TerraBiomeSwampHallowed extends Biome
 {
     public TerraBiomeSwampHallowed(Builder biomeBuilder)
     {
-        super(new Builder()
-                .surfaceBuilder(TerraSurfaceBuilderRegistry.SWAMP_HALLOWED, TerraSurfaceBuilderRegistry.GRASS_HALLOWED_CONFIG)
-                .precipitation(RainType.RAIN).category(Category.SWAMP).depth(-0.2F).scale(0.1F).temperature(0.8F).downfall(0.9F)
-                .waterColor(16745727).waterFogColor(16758783).parent("hallowed"));
+        super(new Builder().surfaceBuilder(TerraSurfaceBuilderRegistry.SWAMP_HALLOWED, TerraSurfaceBuilderRegistry.GRASS_HALLOWED_CONFIG).precipitation(RainType.RAIN).category(Category.SWAMP).depth(-0.2F).scale(0.1F).temperature(0.8F).downfall(0.9F).waterColor(16745727).waterFogColor(16758783).parent("hallowed"));
         this.addStructure(Feature.SWAMP_HUT.withConfiguration(IFeatureConfig.NO_FEATURE_CONFIG));
         this.addStructure(Feature.MINESHAFT.withConfiguration(new MineshaftConfig(0.004D, MineshaftStructure.Type.NORMAL)));
         TerraBiomeFeatures.addCarvers(this);
@@ -47,10 +44,7 @@ public class TerraBiomeSwampHallowed extends Biome
 
     @OnlyIn(Dist.CLIENT)
     @Override
-    public int getSkyColor()
-    {
-        return 40177;
-    }
+    public int getSkyColor() { return 40177; }
 
     @OnlyIn(Dist.CLIENT)
     @Override

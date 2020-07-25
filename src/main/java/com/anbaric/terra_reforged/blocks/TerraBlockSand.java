@@ -1,8 +1,8 @@
 package com.anbaric.terra_reforged.blocks;
 
 import com.anbaric.terra_reforged.TerraReforged;
-import com.anbaric.terra_reforged.util.handlers.EnumHandler.EnumBiomeBlockType;
-import com.anbaric.terra_reforged.util.handlers.EnumHandler.EnumBiomeType;
+import com.anbaric.terra_reforged.util.handlers.SpreadingHandler.EnumBiomeBlockType;
+import com.anbaric.terra_reforged.util.handlers.SpreadingHandler.EnumBiomeType;
 import net.minecraft.block.*;
 import net.minecraft.entity.item.FallingBlockEntity;
 import net.minecraft.fluid.IFluidState;

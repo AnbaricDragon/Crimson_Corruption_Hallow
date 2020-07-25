@@ -2,6 +2,7 @@ package com.anbaric.terra_reforged.blocks;
 
 import com.anbaric.terra_reforged.TerraReforged;
 import com.anbaric.terra_reforged.util.init.TerraBlockRegistry;
+import com.anbaric.terra_reforged.util.init.TerraTagRegistry;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
@@ -33,7 +34,7 @@ public class TerraBlockMoss extends Block
     {
         Block plant = plantable.getPlant(world, pos).getBlock();
 
-        return plant.isIn(TerraReforged.MOSS);
+        return plant.isIn(TerraTagRegistry.MOSS);
     }
 
     public boolean canSpread(World worldIn, BlockPos pos)

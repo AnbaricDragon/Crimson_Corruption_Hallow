@@ -1,0 +1,6 @@
+{
+    "parent": "item/handheld",
+    "textures": {
+        "layer0": "terra_reforged:items/tools/pickaxe_deathbringer"
+    }
+}

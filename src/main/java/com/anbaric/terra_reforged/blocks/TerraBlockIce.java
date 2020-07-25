@@ -1,8 +1,8 @@
 package com.anbaric.terra_reforged.blocks;
 
 import com.anbaric.terra_reforged.TerraReforged;
-import com.anbaric.terra_reforged.util.handlers.EnumHandler.EnumBiomeBlockType;
-import com.anbaric.terra_reforged.util.handlers.EnumHandler.EnumBiomeType;
+import com.anbaric.terra_reforged.util.handlers.SpreadingHandler.EnumBiomeBlockType;
+import com.anbaric.terra_reforged.util.handlers.SpreadingHandler.EnumBiomeType;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.SlabBlock;
@@ -10,12 +10,10 @@ import net.minecraft.block.StairsBlock;
 import net.minecraft.util.Direction;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.IBlockReader;
-import net.minecraft.world.IWorldReader;
 import net.minecraft.world.server.ServerWorld;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 import net.minecraftforge.common.IPlantable;
-import net.minecraftforge.common.PlantType;
 
 import javax.annotation.Nullable;
 import java.util.Random;

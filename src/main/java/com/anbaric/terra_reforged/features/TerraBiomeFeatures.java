@@ -6,11 +6,8 @@ import com.anbaric.terra_reforged.util.init.TerraBlockRegistry;
 import com.anbaric.terra_reforged.util.init.TerraFeatureRegistry;
 import com.google.common.collect.ImmutableList;
 import com.google.common.collect.Lists;
-import com.sun.org.apache.xpath.internal.operations.Or;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
-import net.minecraft.block.SweetBerryBushBlock;
-import net.minecraft.block.pattern.BlockMatcher;
 import net.minecraft.world.biome.Biome;
 import net.minecraft.world.biome.DefaultBiomeFeatures;
 import net.minecraft.world.gen.GenerationStage;
@@ -18,7 +15,6 @@ import net.minecraft.world.gen.blockplacer.ColumnBlockPlacer;
 import net.minecraft.world.gen.blockplacer.DoublePlantBlockPlacer;
 import net.minecraft.world.gen.blockplacer.SimpleBlockPlacer;
 import net.minecraft.world.gen.blockstateprovider.SimpleBlockStateProvider;
-import net.minecraft.world.gen.carver.WorldCarver;
 import net.minecraft.world.gen.feature.*;
 import net.minecraft.world.gen.foliageplacer.BlobFoliagePlacer;
 import net.minecraft.world.gen.placement.*;
@@ -219,7 +215,7 @@ public class TerraBiomeFeatures
     public static final BlockClusterFeatureConfig CORRUPT_LILYPAD_CONFIG = (new BlockClusterFeatureConfig.Builder(new SimpleBlockStateProvider(CORRUPT_LILYPAD), new SimpleBlockPlacer())).tries(10).requiresWater().build();
     public static final BlockClusterFeatureConfig CRIMSON_LILYPAD_CONFIG = (new BlockClusterFeatureConfig.Builder(new SimpleBlockStateProvider(CRIMSON_LILYPAD), new SimpleBlockPlacer())).tries(10).requiresWater().build();
     public static final BlockClusterFeatureConfig HALLOWED_LILYPAD_CONFIG = (new BlockClusterFeatureConfig.Builder(new SimpleBlockStateProvider(HALLOWED_LILYPAD), new SimpleBlockPlacer())).tries(10).requiresWater().build();
-    
+
     public static final TreeFeatureConfig BOREAL_TREE_CONFIG = (new TreeFeatureConfig.Builder(new SimpleBlockStateProvider(BOREAL_LOG), new SimpleBlockStateProvider(BOREAL_LEAF), new BlobFoliagePlacer(2, 0))).baseHeight(4).heightRandA(2).foliageHeight(3).ignoreVines().setSapling((net.minecraftforge.common.IPlantable) TerraBlockRegistry.SAPLING_BOREAL.get()).build();
     public static final TreeFeatureConfig PALM_TREE_CONFIG = (new TreeFeatureConfig.Builder(new SimpleBlockStateProvider(PALM_LOG), new SimpleBlockStateProvider(PALM_LEAF), new BlobFoliagePlacer(2, 0))).baseHeight(4).heightRandA(2).foliageHeight(3).ignoreVines().setSapling((net.minecraftforge.common.IPlantable) TerraBlockRegistry.SAPLING_PALM.get()).build();
     public static final TreeFeatureConfig MAHOGANY_TREE_CONFIG = (new TreeFeatureConfig.Builder(new SimpleBlockStateProvider(MAHOGANY_LOG), new SimpleBlockStateProvider(MAHOGANY_LEAF), new BlobFoliagePlacer(2, 0))).baseHeight(4).heightRandA(2).foliageHeight(3).ignoreVines().setSapling((net.minecraftforge.common.IPlantable) TerraBlockRegistry.SAPLING_MAHOGANY.get()).build();
@@ -243,6 +239,11 @@ public class TerraBiomeFeatures
     public static final TreeFeatureConfig PEARL_SWAMP_TREE_RED_CONFIG = (new TreeFeatureConfig.Builder(new SimpleBlockStateProvider(PEARL_LOG), new SimpleBlockStateProvider(PEARL_LEAF_RED), new BlobFoliagePlacer(3, 0))).baseHeight(5).heightRandA(3).foliageHeight(3).maxWaterDepth(1).decorators(ImmutableList.of(new LeaveVineTreeDecorator())).setSapling((net.minecraftforge.common.IPlantable) TerraBlockRegistry.SAPLING_PEARL.get()).build();
     public static final TreeFeatureConfig PEARL_TREE_YELLOW_CONFIG = (new TreeFeatureConfig.Builder(new SimpleBlockStateProvider(PEARL_LOG), new SimpleBlockStateProvider(PEARL_LEAF_YELLOW), new BlobFoliagePlacer(2, 0))).baseHeight(4).heightRandA(2).foliageHeight(3).ignoreVines().setSapling((net.minecraftforge.common.IPlantable) TerraBlockRegistry.SAPLING_PEARL.get()).build();
     public static final TreeFeatureConfig PEARL_SWAMP_TREE_YELLOW_CONFIG = (new TreeFeatureConfig.Builder(new SimpleBlockStateProvider(PEARL_LOG), new SimpleBlockStateProvider(PEARL_LEAF_YELLOW), new BlobFoliagePlacer(3, 0))).baseHeight(5).heightRandA(3).foliageHeight(3).maxWaterDepth(1).decorators(ImmutableList.of(new LeaveVineTreeDecorator())).setSapling((net.minecraftforge.common.IPlantable) TerraBlockRegistry.SAPLING_PEARL.get()).build();
+
+//    public static void addSnowTrees(Biome biomeIn)
+//    {
+//        biomeIn.addFeature(GenerationStage.Decoration.VEGETAL_DECORATION, TerraFeatureRegistry.TREE_BOREAL.get().withConfiguration(IFeatureConfig.NO_FEATURE_CONFIG));
+//    }
 
     public static void addPearlTrees(Biome biomeIn)
     {
@@ -373,6 +374,22 @@ public class TerraBiomeFeatures
     //    public static void addHallowedSnowLayer(Biome biomeIn) {
     //        biomeIn.addFeature(GenerationStage.Decoration.TOP_LAYER_MODIFICATION, TerraReforged.HALLOWED_SNOW_LAYER.withConfiguration(IFeatureConfig.NO_FEATURE_CONFIG).withPlacement(Placement.NOPE.configure(IPlacementConfig.NO_PLACEMENT_CONFIG)));
     //    }
+
+    public static void addVanillaOres(Biome biomeIn)
+    {
+        biomeIn.addFeature(GenerationStage.Decoration.UNDERGROUND_ORES, Feature.ORE.withConfiguration(new OreFeatureConfig(PURE, COPPER_ORE, 9)).withPlacement(Placement.COUNT_RANGE.configure(new CountRangeConfig(15, 0, 0, 64))));
+        biomeIn.addFeature(GenerationStage.Decoration.UNDERGROUND_ORES, Feature.ORE.withConfiguration(new OreFeatureConfig(PURE, TIN_ORE, 9)).withPlacement(Placement.COUNT_RANGE.configure(new CountRangeConfig(15, 0, 0, 64))));
+        biomeIn.addFeature(GenerationStage.Decoration.UNDERGROUND_ORES, Feature.ORE.withConfiguration(new OreFeatureConfig(PURE, LEAD_ORE, 9)).withPlacement(Placement.COUNT_RANGE.configure(new CountRangeConfig(13, 0, 0, 64))));
+        biomeIn.addFeature(GenerationStage.Decoration.UNDERGROUND_ORES, Feature.ORE.withConfiguration(new OreFeatureConfig(PURE, SILVER_ORE, 9)).withPlacement(Placement.COUNT_RANGE.configure(new CountRangeConfig(10, 0, 0, 32))));
+        biomeIn.addFeature(GenerationStage.Decoration.UNDERGROUND_ORES, Feature.ORE.withConfiguration(new OreFeatureConfig(PURE, TUNGSTEN_ORE, 9)).withPlacement(Placement.COUNT_RANGE.configure(new CountRangeConfig(10, 0, 0, 32))));
+        biomeIn.addFeature(GenerationStage.Decoration.UNDERGROUND_ORES, Feature.ORE.withConfiguration(new OreFeatureConfig(PURE, PLATINUM_ORE, 9)).withPlacement(Placement.COUNT_RANGE.configure(new CountRangeConfig(6, 0, 0, 32))));
+        biomeIn.addFeature(GenerationStage.Decoration.UNDERGROUND_ORES, Feature.ORE.withConfiguration(new OreFeatureConfig(PURE, DEMONITE_ORE, 9)).withPlacement(Placement.COUNT_RANGE.configure(new CountRangeConfig(1, 0, 0, 4))));
+        biomeIn.addFeature(GenerationStage.Decoration.UNDERGROUND_ORES, Feature.ORE.withConfiguration(new OreFeatureConfig(PURE, CRIMTANE_ORE, 9)).withPlacement(Placement.COUNT_RANGE.configure(new CountRangeConfig(1, 0, 0, 4))));
+        biomeIn.addFeature(GenerationStage.Decoration.UNDERGROUND_ORES, Feature.ORE.withConfiguration(new OreFeatureConfig(PURE, RUBY_ORE, 8)).withPlacement(Placement.COUNT_RANGE.configure(new CountRangeConfig(1, 0, 0, 7))));
+        biomeIn.addFeature(GenerationStage.Decoration.UNDERGROUND_ORES, Feature.ORE.withConfiguration(new OreFeatureConfig(PURE, SAPPHIRE_ORE, 8)).withPlacement(Placement.COUNT_RANGE.configure(new CountRangeConfig(1, 0, 0, 7))));
+        biomeIn.addFeature(GenerationStage.Decoration.UNDERGROUND_ORES, Feature.ORE.withConfiguration(new OreFeatureConfig(PURE, TOPAZ_ORE, 8)).withPlacement(Placement.COUNT_RANGE.configure(new CountRangeConfig(1, 0, 0, 7))));
+        biomeIn.addFeature(GenerationStage.Decoration.UNDERGROUND_ORES, Feature.ORE.withConfiguration(new OreFeatureConfig(PURE, AMETHYST_ORE, 8)).withPlacement(Placement.COUNT_RANGE.configure(new CountRangeConfig(1, 0, 0, 7))));
+    }
 
     public static void addPureOres(Biome biomeIn)
     {

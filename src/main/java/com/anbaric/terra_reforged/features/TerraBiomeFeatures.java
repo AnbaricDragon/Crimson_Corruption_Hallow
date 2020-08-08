@@ -2,6 +2,7 @@ package com.anbaric.terra_reforged.features;
 
 import com.anbaric.terra_reforged.TerraReforged;
 import com.anbaric.terra_reforged.features.carvers.TerraWorldCarver;
+import com.anbaric.terra_reforged.features.vegetation.TerraTreeBoreal;
 import com.anbaric.terra_reforged.util.init.TerraBlockRegistry;
 import com.anbaric.terra_reforged.util.init.TerraFeatureRegistry;
 import com.google.common.collect.ImmutableList;
@@ -19,6 +20,7 @@ import net.minecraft.world.gen.feature.*;
 import net.minecraft.world.gen.foliageplacer.BlobFoliagePlacer;
 import net.minecraft.world.gen.placement.*;
 import net.minecraft.world.gen.treedecorator.LeaveVineTreeDecorator;
+import net.minecraftforge.fml.RegistryObject;
 
 import javax.annotation.Nullable;
 import java.util.Arrays;
@@ -215,6 +217,8 @@ public class TerraBiomeFeatures
     public static final BlockClusterFeatureConfig CORRUPT_LILYPAD_CONFIG = (new BlockClusterFeatureConfig.Builder(new SimpleBlockStateProvider(CORRUPT_LILYPAD), new SimpleBlockPlacer())).tries(10).requiresWater().build();
     public static final BlockClusterFeatureConfig CRIMSON_LILYPAD_CONFIG = (new BlockClusterFeatureConfig.Builder(new SimpleBlockStateProvider(CRIMSON_LILYPAD), new SimpleBlockPlacer())).tries(10).requiresWater().build();
     public static final BlockClusterFeatureConfig HALLOWED_LILYPAD_CONFIG = (new BlockClusterFeatureConfig.Builder(new SimpleBlockStateProvider(HALLOWED_LILYPAD), new SimpleBlockPlacer())).tries(10).requiresWater().build();
+
+    public static final TerraTreeBoreal TREE_BOREAL = new TerraTreeBoreal(NoFeatureConfig::deserialize);
 
     public static final TreeFeatureConfig BOREAL_TREE_CONFIG = (new TreeFeatureConfig.Builder(new SimpleBlockStateProvider(BOREAL_LOG), new SimpleBlockStateProvider(BOREAL_LEAF), new BlobFoliagePlacer(2, 0))).baseHeight(4).heightRandA(2).foliageHeight(3).ignoreVines().setSapling((net.minecraftforge.common.IPlantable) TerraBlockRegistry.SAPLING_BOREAL.get()).build();
     public static final TreeFeatureConfig PALM_TREE_CONFIG = (new TreeFeatureConfig.Builder(new SimpleBlockStateProvider(PALM_LOG), new SimpleBlockStateProvider(PALM_LEAF), new BlobFoliagePlacer(2, 0))).baseHeight(4).heightRandA(2).foliageHeight(3).ignoreVines().setSapling((net.minecraftforge.common.IPlantable) TerraBlockRegistry.SAPLING_PALM.get()).build();

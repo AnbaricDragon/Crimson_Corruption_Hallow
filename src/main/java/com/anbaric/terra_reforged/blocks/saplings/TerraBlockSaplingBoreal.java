@@ -1,6 +1,7 @@
 package com.anbaric.terra_reforged.blocks.saplings;
 
-import com.anbaric.terra_reforged.features.trees.TerraTreeBoreal;
+import com.anbaric.terra_reforged.features.vegetation.TerraTreeBoreal;
+import com.anbaric.terra_reforged.util.init.TerraBlockRegistry;
 import net.minecraft.block.*;
 import net.minecraft.state.IntegerProperty;
 import net.minecraft.state.StateContainer;
@@ -23,6 +24,13 @@ public class TerraBlockSaplingBoreal extends BushBlock implements IGrowable
     {
         super(properties);
         this.setDefaultState(this.stateContainer.getBaseState().with(STAGE, Integer.valueOf(0)));
+    }
+
+    @Override
+    protected boolean isValidGround(BlockState state, IBlockReader worldIn, BlockPos pos)
+    {
+        Block target = state.getBlock();
+        return target == Blocks.SNOW_BLOCK || target == TerraBlockRegistry.SNOW_CORRUPT.get() || target == TerraBlockRegistry.SNOW_CRIMSON.get() || target == TerraBlockRegistry.SNOW_HALLOWED.get() || target == Blocks.DIRT || target == Blocks.GRASS_BLOCK;
     }
 
     @Override

@@ -21,8 +21,6 @@ import net.minecraftforge.fml.common.Mod.EventBusSubscriber.Bus;
 @Mod.EventBusSubscriber(modid = Reference.MODID, bus = Bus.MOD, value = { Dist.CLIENT })
 public class ColorHandler
 {
-
-
     @OnlyIn(Dist.CLIENT)
     @SubscribeEvent
     public static void registerBlockColorHandlers(final ColorHandlerEvent.Block event)

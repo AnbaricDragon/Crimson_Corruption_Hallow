@@ -1,4 +1,4 @@
-package com.anbaric.terra_reforged.features.trees;
+package com.anbaric.terra_reforged.features.vegetation;
 
 import com.anbaric.terra_reforged.util.init.TerraBlockRegistry;
 import com.mojang.datafixers.Dynamic;
@@ -24,30 +24,29 @@ public class TerraTreeMahogany extends Feature<NoFeatureConfig>
     public static final BlockState LEAF_MAHOGANY = TerraBlockRegistry.LEAF_MAHOGANY.get().getDefaultState();
 
     public static final char[][][] MAHOGANY_ARRAY =
+    {{{'O', 'j', 'k', 'j', 'k', 'j', 'O'},
+    {'k', 'L', 'L', 'L', 'L', 'L', 'k'},
+    {'j', 'L', 'L', 'v', 'L', 'L', 'j'},
+    {'k', 'L', 'h', 'W', 'h', 'L', 'k'},
+    {'j', 'L', 'L', 'v', 'L', 'L', 'j'},
+    {'k', 'L', 'L', 'L', 'L', 'L', 'k'},
+    {'O', 'j', 'k', 'j', 'k', 'j', 'O'}},
 
-        {{{'O', 'j', 'k', 'j', 'k', 'j', 'O'},
-        {'k', 'L', 'L', 'L', 'L', 'L', 'k'},
-        {'j', 'L', 'L', 'v', 'L', 'L', 'j'},
-        {'k', 'L', 'h', 'W', 'h', 'L', 'k'},
-        {'j', 'L', 'L', 'v', 'L', 'L', 'j'},
-        {'k', 'L', 'L', 'L', 'L', 'L', 'k'},
-        {'O', 'j', 'k', 'j', 'k', 'j', 'O'}},
+    {{'O', 'O', '3', 'L', '3', 'O', 'O'},
+    {'O', 'L', 'L', 'L', 'L', 'L', 'O'},
+    {'3', 'L', 'L', 'L', 'L', 'L', '3'},
+    {'L', 'L', 'L', 'W', 'L', 'L', 'L'},
+    {'3', 'L', 'L', 'L', 'L', 'L', '3'},
+    {'O', 'L', 'L', 'L', 'L', 'L', 'O'},
+    {'O', 'O', '3', 'L', '3', 'O', 'O'}},
 
-        {{'O', 'O', '3', 'L', '3', 'O', 'O'},
-        {'O', 'L', 'L', 'L', 'L', 'L', 'O'},
-        {'3', 'L', 'L', 'L', 'L', 'L', '3'},
-        {'L', 'L', 'L', 'W', 'L', 'L', 'L'},
-        {'3', 'L', 'L', 'L', 'L', 'L', '3'},
-        {'O', 'L', 'L', 'L', 'L', 'L', 'O'},
-        {'O', 'O', '3', 'L', '3', 'O', 'O'}},
-
-        {{'O', 'O', 'O', 'O', 'O', 'O', 'O'},
-        {'O', 'O', 'O', 'L', 'O', 'O', 'O'},
-        {'O', 'O', 'L', 'L', 'L', 'O', 'O'},
-        {'O', 'L', 'L', 'L', 'L', 'L', 'O'},
-        {'O', 'O', 'L', 'L', 'L', 'O', 'O'},
-        {'O', 'O', 'O', 'L', 'O', 'O', 'O'},
-        {'O', 'O', 'O', 'O', 'O', 'O', 'O'}}};
+    {{'O', 'O', 'O', 'O', 'O', 'O', 'O'},
+    {'O', 'O', 'O', 'L', 'O', 'O', 'O'},
+    {'O', 'O', 'L', 'L', 'L', 'O', 'O'},
+    {'O', 'L', 'L', 'L', 'L', 'L', 'O'},
+    {'O', 'O', 'L', 'L', 'L', 'O', 'O'},
+    {'O', 'O', 'O', 'L', 'O', 'O', 'O'},
+    {'O', 'O', 'O', 'O', 'O', 'O', 'O'}}};
 
     public TerraTreeMahogany(Function<Dynamic<?>, ? extends NoFeatureConfig> configFactory)
     {
@@ -63,7 +62,7 @@ public class TerraTreeMahogany extends Feature<NoFeatureConfig>
     private static char[][][] mutateArray(char[][][] inputArray, Random rand)
     {
         char[][][] outputArray = new char[inputArray.length][inputArray[0].length][inputArray[0][0].length];
-        boolean orient = rand.nextBoolean();
+        boolean    orient      = rand.nextBoolean();
 
         for (int y = 0; y < inputArray.length; y++)
         {
@@ -71,8 +70,8 @@ public class TerraTreeMahogany extends Feature<NoFeatureConfig>
             {
                 for (int z = 0; z < inputArray[0][0].length; z++)
                 {
-                    float chance = Character.getNumericValue(inputArray[y][x][z]) * 0.25F;
-                    boolean won = rand.nextFloat() < chance;
+                    float   chance = Character.getNumericValue(inputArray[y][x][z]) * 0.25F;
+                    boolean won    = rand.nextFloat() < chance;
                     switch (inputArray[y][x][z])
                     {
                         case '1': case '2': case '3':
@@ -103,21 +102,17 @@ public class TerraTreeMahogany extends Feature<NoFeatureConfig>
     public static boolean checkSpace(IWorld world, BlockPos pos, int trunkHeight, char[][][] template)
     {
         int     arrayX     = 0, arrayY = 0, arrayZ = 0;
-        boolean canSpawn   = true;
-        int     radius     = 3;
+        int     radius     = 2;
         int     treeHeight = template.length;
+        boolean canGrow    = true;
 
         BlockPos.Mutable target = new BlockPos.Mutable();
 
         for (int i = 0; i <= trunkHeight; i++)
         {
-            if (world.getBlockState(pos.up(i)).isAir(world, pos) || world.getBlockState(pos.up(i)).getBlock() == TerraBlockRegistry.SAPLING_MAHOGANY.get())
+            if (!world.getBlockState(pos.up(i)).canBeReplacedByLogs(world, pos))
             {
-                canSpawn = true;
-            }
-            else
-            {
-                canSpawn = false;
+                canGrow = false;
             }
         }
         for (int y = pos.getY() + trunkHeight; y < pos.getY() + treeHeight + trunkHeight; y++)
@@ -127,11 +122,19 @@ public class TerraTreeMahogany extends Feature<NoFeatureConfig>
                 for (int z = pos.getZ() - radius; z <= pos.getZ() + radius; z++)
                 {
                     target.setPos(x, y, z);
-                    if (template[arrayY][arrayX][arrayZ] != 'O')
+                    char targetChar = template[arrayY][arrayX][arrayZ];
+                    if (targetChar == 'W' || targetChar == 'h' || targetChar == 'v')
                     {
-                        if (!world.getBlockState(target).isAir(world, pos) || world.getBlockState(target).getBlock() == TerraBlockRegistry.LEAF_MAHOGANY.get())
+                        if (!world.getBlockState(target).canBeReplacedByLogs(world, target))
                         {
-                            canSpawn = false;
+                            canGrow = false;
+                        }
+                    }
+                    else if (targetChar == 'L' || targetChar == 'l')
+                    {
+                        if (!world.getBlockState(target).canBeReplacedByLeaves(world, target))
+                        {
+                            canGrow = false;
                         }
                     }
                     arrayZ++;
@@ -142,23 +145,21 @@ public class TerraTreeMahogany extends Feature<NoFeatureConfig>
             arrayY++;
             arrayX = 0;
         }
-        return canSpawn;
+        return canGrow;
+
     }
 
-    public static void generateTree(IWorld world, BlockPos pos, Random rand, BlockState state)
+    public static void generateTree(IWorld world, BlockPos pos, Random rand)
     {
-        int        arrayX       = 0, arrayY = 0, arrayZ = 0;
-        int        trunkHeight  = rand.nextInt(5) + 4;
-        int        treeHeight   = MAHOGANY_ARRAY.length;
-        char[][][] template     = mutateArray(MAHOGANY_ARRAY, rand);
+        int        arrayX      = 0, arrayY = 0, arrayZ = 0;
+        int        trunkHeight = rand.nextInt(4) + 4;
+        int        treeHeight  = MAHOGANY_ARRAY.length;
+        char[][][] template    = mutateArray(MAHOGANY_ARRAY, rand);
+        boolean hasSpace = checkSpace(world, pos, trunkHeight, template);
 
-        if (checkSpace(world, pos, trunkHeight, template))
+        if (hasSpace)
         {
             BlockPos.Mutable target = new BlockPos.Mutable();
-            for (int i = 0; i < trunkHeight; i++)
-            {
-                world.setBlockState(pos.up(i), LOG_MAHOGANY, 3);
-            }
             for (int y = pos.getY() + trunkHeight; y < pos.getY() + treeHeight + trunkHeight; y++)
             {
                 for (int x = pos.getX() - 3; x <= pos.getX() + 3; x++)
@@ -167,7 +168,7 @@ public class TerraTreeMahogany extends Feature<NoFeatureConfig>
                     {
                         target.setPos(x, y, z);
                         char inputChar = template[arrayY][arrayX][arrayZ];
-                        int droop = rand.nextInt(3) + 1;
+                        int  droop     = rand.nextInt(3) + 1;
                         switch (inputChar)
                         {
                             case 'L':
@@ -186,12 +187,11 @@ public class TerraTreeMahogany extends Feature<NoFeatureConfig>
                                 world.setBlockState(target, LEAF_MAHOGANY, 3);
                                 for (int i = 1; i <= droop; i++)
                                 {
-                                    if(world.getBlockState(target.add(0, -i, 0)).getBlock() == Blocks.AIR)
+                                    if (world.getBlockState(target.add(0, -i, 0)).getBlock() == Blocks.AIR)
                                     {
                                         world.setBlockState(target.add(0, -i, 0), LEAF_MAHOGANY, 3);
                                     }
-                                };
-
+                                }
                         }
                         arrayZ++;
                     }
@@ -201,6 +201,10 @@ public class TerraTreeMahogany extends Feature<NoFeatureConfig>
                 arrayY++;
                 arrayX = 0;
             }
+            for (int i = 0; i < trunkHeight; i++)
+            {
+                world.setBlockState(pos.up(i), LOG_MAHOGANY, 3);
+            }
         }
     }
 
@@ -209,7 +213,7 @@ public class TerraTreeMahogany extends Feature<NoFeatureConfig>
     {
         if (isValidGround(world.getBlockState(pos.down()), world, pos) && world.getBlockState(pos).getMaterial().isReplaceable())
         {
-            generateTree(world, pos, random, LOG_MAHOGANY);
+            generateTree(world, pos, random);
             return true;
         }
         return false;

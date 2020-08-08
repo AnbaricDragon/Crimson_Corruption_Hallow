@@ -1,0 +1,9 @@
+{
+  "replace": false,
+  "values": [
+    "terra_reforged:ore_topaz",
+    "terra_reforged:ore_topaz_corrupt",
+    "terra_reforged:ore_topaz_crimson",
+    "terra_reforged:ore_topaz_hallowed"
+  ]
+}

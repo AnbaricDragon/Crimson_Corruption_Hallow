@@ -1,13 +1,20 @@
 {
     "textures": {
-        "texture": "terra_reforged:blocks/mushroom_cap_glow",
+        "side": "terra_reforged:blocks/mushroom_cap_glow",
+				"dots": "terra_reforged:blocks/mushroom_cap",
         "particle": "terra_reforged:blocks/mushroom_cap_glow"
     },
     "elements": [
         {   "from": [ 0, 0, 0 ],
             "to": [ 16, 16, 0 ],
             "faces": {
-                "north": { "texture": "#texture", "cullface":"north" }
+                "north": { "texture": "#side", "cullface":"north" }
+            }
+        },
+				{   "from": [ 0, 0, 0 ],
+            "to": [ 16, 16, 0 ],
+            "faces": {
+                "north": { "texture": "#dots", "cullface":"north" }
             }
         }
     ]

@@ -6,6 +6,7 @@ import net.minecraft.util.Direction;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.shapes.ISelectionContext;
 import net.minecraft.util.math.shapes.VoxelShape;
+import net.minecraft.util.math.shapes.VoxelShapes;
 import net.minecraft.world.IBlockReader;
 import net.minecraft.world.IWorldReader;
 
@@ -13,7 +14,6 @@ public class TerraBlockFoliage extends BushBlock
 {
     protected static final VoxelShape MUSHROOM_SHAPE = Block.makeCuboidShape(5.0D, 0.0D, 5.0D, 11.0D, 6.0D, 11.0D);
     protected static final VoxelShape MOSS_SHAPE = Block.makeCuboidShape(0.0D, 0.0D, 0.0D, 16.0D, 1.0D, 16.0D);
-    protected static final VoxelShape NULL_SHAPE = Block.makeCuboidShape(0.0D, 0.0D, 0.0D, 0.0D, 0.0D, 0.0D);
 
     public TerraBlockFoliage(Block.Properties builder)
     {
@@ -50,10 +50,6 @@ public class TerraBlockFoliage extends BushBlock
         {
             return soil == TerraBlockRegistry.STONE_MOSS_FIRE.get();
         }
-        if (this == TerraBlockRegistry.PLANT_MUSHROOM_GLOWING.get())
-        {
-            return soil == TerraBlockRegistry.GRASS_MUSHROOM.get();
-        }
         if (this == TerraBlockRegistry.PLANT_MUSHROOM_VILE.get())
         {
             return soil == TerraBlockRegistry.GRASS_CORRUPT.get() ||
@@ -82,15 +78,14 @@ public class TerraBlockFoliage extends BushBlock
         {
             return MOSS_SHAPE;
         }
-        else if (this == TerraBlockRegistry.PLANT_MUSHROOM_GLOWING.get() ||
-            this == TerraBlockRegistry.PLANT_MUSHROOM_VILE.get() ||
-            this == TerraBlockRegistry.PLANT_MUSHROOM_VICIOUS.get())
+        else if (this == TerraBlockRegistry.PLANT_MUSHROOM_VILE.get() ||
+                 this == TerraBlockRegistry.PLANT_MUSHROOM_VICIOUS.get())
         {
             return MUSHROOM_SHAPE;
         }
         else
         {
-            return NULL_SHAPE;
+            return VoxelShapes.empty();
         }
     }
 }

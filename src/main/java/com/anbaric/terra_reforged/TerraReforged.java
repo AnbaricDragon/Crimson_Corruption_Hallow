@@ -2,11 +2,8 @@ package com.anbaric.terra_reforged;
 
 import com.anbaric.terra_reforged.util.Reference;
 import com.anbaric.terra_reforged.util.TerraVanillaCompat;
-import com.anbaric.terra_reforged.util.events.TerraTestEvent;
+import com.anbaric.terra_reforged.util.events.TerraStructureProtectEvent;
 import com.anbaric.terra_reforged.util.init.*;
-import net.minecraft.block.Block;
-import net.minecraft.tags.BlockTags;
-import net.minecraft.tags.Tag;
 import net.minecraft.util.DamageSource;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.common.PlantType;
@@ -20,7 +17,6 @@ import net.minecraftforge.fml.event.lifecycle.InterModEnqueueEvent;
 import net.minecraftforge.fml.event.lifecycle.InterModProcessEvent;
 import net.minecraftforge.fml.event.server.FMLServerStartingEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
-import net.minecraft.util.ResourceLocation;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -37,8 +33,6 @@ import java.util.stream.Collectors;
 
     public static DamageSource THORNS = new DamageSource("thorns").setDamageBypassesArmor();
 
-    public static final Tag<Block> MOSS = new BlockTags.Wrapper(new ResourceLocation("moss"));
-
     public TerraReforged()
     {
         LOGGER.debug("Hello from Terra Reforged!");
@@ -48,8 +42,8 @@ import java.util.stream.Collectors;
         TerraParticleRegistry.PARTICLES.register(modEventBus);
         TerraBlockRegistry.BLOCKS.register(modEventBus);
         TerraItemRegistry.ITEMS.register(modEventBus);
-        TerraBiomeRegistry.BIOMES.register(modEventBus);
         TerraFeatureRegistry.FEATURES.register(modEventBus);
+        TerraBiomeRegistry.BIOMES.register(modEventBus);
         // Register the setup method for modloading
         modEventBus.addListener(this::setup);
         // Register the enqueueIMC method for modloading
@@ -61,7 +55,7 @@ import java.util.stream.Collectors;
 
         // Register ourselves for server and other game events we are interested in
         MinecraftForge.EVENT_BUS.register(this);
-        MinecraftForge.EVENT_BUS.register(TerraTestEvent.class);
+        MinecraftForge.EVENT_BUS.register(TerraStructureProtectEvent.class);
 
     }
 

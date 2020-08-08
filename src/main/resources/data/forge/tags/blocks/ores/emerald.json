@@ -1,0 +1,8 @@
+{
+  "replace": false,
+  "values": [
+    "terra_reforged:ore_emerald_corrupt",
+    "terra_reforged:ore_emerald_crimson",
+    "terra_reforged:ore_emerald_hallowed"
+  ]
+}

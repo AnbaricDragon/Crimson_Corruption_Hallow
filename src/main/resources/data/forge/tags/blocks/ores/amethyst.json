@@ -1,0 +1,9 @@
+{
+  "replace": false,
+  "values": [
+    "terra_reforged:ore_amethyst",
+    "terra_reforged:ore_amethyst_corrupt",
+    "terra_reforged:ore_amethyst_crimson",
+    "terra_reforged:ore_amethyst_hallowed"
+  ]
+}

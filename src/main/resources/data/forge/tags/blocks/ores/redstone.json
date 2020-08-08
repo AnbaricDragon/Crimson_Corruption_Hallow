@@ -1,0 +1,8 @@
+{
+  "replace": false,
+  "values": [
+    "terra_reforged:ore_redstone_corrupt",
+    "terra_reforged:ore_redstone_crimson",
+    "terra_reforged:ore_redstone_hallowed"
+  ]
+}

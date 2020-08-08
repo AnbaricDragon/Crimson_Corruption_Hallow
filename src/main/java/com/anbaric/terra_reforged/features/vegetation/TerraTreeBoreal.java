@@ -1,4 +1,4 @@
-package com.anbaric.terra_reforged.features.trees;
+package com.anbaric.terra_reforged.features.vegetation;
 
 import com.anbaric.terra_reforged.util.init.TerraBlockRegistry;
 import com.mojang.datafixers.Dynamic;
@@ -127,21 +127,17 @@ public class TerraTreeBoreal extends Feature<NoFeatureConfig>
     public static boolean checkSpace(IWorld world, BlockPos pos, int trunkHeight, char[][][] template)
     {
         int     arrayX     = 0, arrayY = 0, arrayZ = 0;
-        boolean canSpawn   = true;
         int     radius     = 2;
         int     treeHeight = template.length;
+        boolean canGrow    = true;
 
         BlockPos.Mutable target = new BlockPos.Mutable();
 
         for (int i = 0; i <= trunkHeight; i++)
         {
-            if (world.getBlockState(pos.up(i)).isAir(world, pos) || world.getBlockState(pos.up(i)).getBlock() == TerraBlockRegistry.SAPLING_BOREAL.get())
+            if (!world.getBlockState(pos.up(i)).canBeReplacedByLogs(world, pos))
             {
-                canSpawn = true;
-            }
-            else
-            {
-                canSpawn = false;
+                canGrow = false;
             }
         }
         for (int y = pos.getY() + trunkHeight; y < pos.getY() + treeHeight + trunkHeight; y++)
@@ -151,29 +147,21 @@ public class TerraTreeBoreal extends Feature<NoFeatureConfig>
                 for (int z = pos.getZ() - radius; z <= pos.getZ() + radius; z++)
                 {
                     target.setPos(x, y, z);
-                    if (template[arrayY][arrayX][arrayZ] != 'O')
+                    char targetChar = template[arrayY][arrayX][arrayZ];
+                    if (targetChar == 'W')
                     {
-                        if (!world.getBlockState(target).isAir(world, pos))
+                        if (!world.getBlockState(target).canBeReplacedByLogs(world, pos))
                         {
-                            canSpawn = false;
+                            canGrow = false;
                         }
                     }
-                    //                    switch (template[arrayY][arrayX][arrayZ])
-                    //                    {
-                    //                        case 'W':
-                    //                            if (!world.getBlockState(target).getMaterial().isReplaceable())
-                    //                            {
-                    //                                canSpawn = false;
-                    //                            }
-                    //
-                    //                        case 'L':
-                    //                            if (!world.getBlockState(target).getMaterial().isReplaceable() || world.getBlockState(target).getMaterial() != Material.LEAVES)
-                    //                            {
-                    //                                canSpawn = false;
-                    //                            }
-                    //
-                    //                        default:
-                    //                    }
+                    else if (targetChar == 'L')
+                    {
+                        if (!world.getBlockState(target).canBeReplacedByLeaves(world, target))
+                        {
+                            canGrow = false;
+                        }
+                    }
                     arrayZ++;
                 }
                 arrayX++;
@@ -182,13 +170,13 @@ public class TerraTreeBoreal extends Feature<NoFeatureConfig>
             arrayY++;
             arrayX = 0;
         }
-        return canSpawn;
+        return canGrow;
     }
 
     public static void generateTree(IWorld world, BlockPos pos, Random rand)
     {
         int        arrayX       = 0, arrayY = 0, arrayZ = 0;
-        int        trunkHeight  = rand.nextInt(4);
+        int        trunkHeight  = rand.nextInt(3) + 1;
         int        canopyHeight = rand.nextInt(3);
         int        treeHeight   = BOREAL_ARRAY.length;
         char[][][] template     = mutateArray(BOREAL_ARRAY, canopyHeight);

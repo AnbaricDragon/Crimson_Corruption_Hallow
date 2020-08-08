@@ -4,7 +4,7 @@
         "type":"CTM",
         "layer":"SOLID",
         "textures":[
-            "tere:blocks/brick_crimtane_ctm"
+            "terra_reforged:blocks/brick_crimtane_ctm"
         ],
 				"extra": {
             "connect_inside": true

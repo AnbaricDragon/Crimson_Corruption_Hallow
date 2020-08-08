@@ -2,8 +2,8 @@
   "replace": false,
   "values": [
     "terra_reforged:log_boreal",
-		"terra_reforged:log_boreal_solid",
-		"terra_reforged:log_boreal_stripped",
-		"terra_reforged:log_boreal_solid_stripped"
+    "terra_reforged:log_boreal_solid",
+    "terra_reforged:log_boreal_stripped",
+    "terra_reforged:log_boreal_solid_stripped"
   ]
 }

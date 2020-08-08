@@ -24,8 +24,9 @@ import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
         RenderType cutout       = RenderType.getCutout();
 
         //Blocks
-        RenderTypeLookup.setRenderLayer(TerraBlockRegistry.GRASS_MUSHROOM.get(), cutoutMipped);
-        RenderTypeLookup.setRenderLayer(TerraBlockRegistry.STONE_MOSS_FIRE.get(), cutoutMipped);
+        RenderTypeLookup.setRenderLayer(TerraBlockRegistry.GRASS_MUSHROOM.get(), cutout);
+        RenderTypeLookup.setRenderLayer(TerraBlockRegistry.STONE_MOSS_FIRE.get(), cutout);
+        RenderTypeLookup.setRenderLayer(TerraBlockRegistry.MUSHROOM_CAP.get(), cutout);
         RenderTypeLookup.setRenderLayer(TerraBlockRegistry.ICE_PURPLE.get(), translucent);
         RenderTypeLookup.setRenderLayer(TerraBlockRegistry.ICE_RED.get(), translucent);
         RenderTypeLookup.setRenderLayer(TerraBlockRegistry.ICE_PINK.get(), translucent);

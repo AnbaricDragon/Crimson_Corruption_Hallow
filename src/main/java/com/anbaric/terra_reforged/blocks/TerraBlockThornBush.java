@@ -238,9 +238,9 @@ public class TerraBlockThornBush extends Block
         return super.getStateForPlacement(context).with(NORTH, this.canAttach(stateN, stateN.isSolidSide(world, blockposN, Direction.SOUTH))).with(EAST, this.canAttach(stateE, stateE.isSolidSide(world, blockposE, Direction.WEST))).with(SOUTH, this.canAttach(stateS, stateS.isSolidSide(world, blockposS, Direction.NORTH))).with(WEST, this.canAttach(stateW, stateW.isSolidSide(world, blockposW, Direction.EAST))).with(UP, this.canAttach(stateU, stateU.isSolidSide(world, blockposU, Direction.DOWN))).with(DOWN, this.canAttach(stateD, stateD.isSolidSide(world, blockposD, Direction.UP))).with(GROWTH, this.getProperGrowth(world, blockpos));
     }
 
-    public BlockState updatePostPlacement(BlockState stateIn, Direction facing, BlockState facingState, IWorld worldIn, BlockPos currentPos, BlockPos facingPos)
+    public BlockState updatePostPlacement(BlockState state, Direction facing, BlockState facingState, IWorld worldIn, BlockPos currentPos, BlockPos facingPos)
     {
-        return stateIn.with(FACING_TO_PROPERTY_MAP.get(facing), this.canAttach(facingState, facingState.isSolidSide(worldIn, facingPos, facing.getOpposite())));
+        return state.with(FACING_TO_PROPERTY_MAP.get(facing), this.canAttach(facingState, facingState.isSolidSide(worldIn, facingPos, facing.getOpposite())));
     }
 
     @Override

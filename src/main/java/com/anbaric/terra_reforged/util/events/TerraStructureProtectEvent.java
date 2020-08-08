@@ -11,7 +11,7 @@ import net.minecraftforge.eventbus.api.SubscribeEvent;
 import java.util.Arrays;
 import java.util.List;
 
-public class TerraTestEvent
+public class TerraStructureProtectEvent
 {
     private static List<Block> UNBREAKABLE = Arrays.asList(
             TerraBlockRegistry.DUNGEON_BLUE_BRICK.get(), TerraBlockRegistry.DUNGEON_BLUE_FLOOR_BRICK.get(), TerraBlockRegistry.DUNGEON_BLUE_FLOOR_SLAB.get(), TerraBlockRegistry.DUNGEON_BLUE_FLOOR_TILE.get(),

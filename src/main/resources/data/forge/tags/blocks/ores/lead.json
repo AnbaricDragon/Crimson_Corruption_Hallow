@@ -1,0 +1,9 @@
+{
+  "replace": false,
+  "values": [
+    "terra_reforged:ore_lead",
+    "terra_reforged:ore_lead_corrupt",
+    "terra_reforged:ore_lead_crimson",
+    "terra_reforged:ore_lead_hallowed"
+  ]
+}

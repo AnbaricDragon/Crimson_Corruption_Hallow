@@ -1,0 +1,9 @@
+{
+  "replace": false,
+  "values": [
+    "terra_reforged:ore_palladium",
+    "terra_reforged:ore_palladium_corrupt",
+    "terra_reforged:ore_palladium_crimson",
+    "terra_reforged:ore_palladium_hallowed"
+  ]
+}

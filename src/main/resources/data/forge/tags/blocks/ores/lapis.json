@@ -1,0 +1,8 @@
+{
+  "replace": false,
+  "values": [
+    "terra_reforged:ore_lapis_corrupt",
+    "terra_reforged:ore_lapis_crimson",
+    "terra_reforged:ore_lapis_hallowed"
+  ]
+}

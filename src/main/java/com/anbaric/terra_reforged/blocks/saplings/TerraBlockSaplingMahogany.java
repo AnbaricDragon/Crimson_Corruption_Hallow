@@ -1,8 +1,7 @@
 package com.anbaric.terra_reforged.blocks.saplings;
 
-import com.anbaric.terra_reforged.features.trees.TerraTreeBoreal;
-import com.anbaric.terra_reforged.features.trees.TerraTreeMahogany;
-import com.anbaric.terra_reforged.util.init.TerraBlockRegistry;
+import com.anbaric.terra_reforged.features.vegetation.TerraTreeBoreal;
+import com.anbaric.terra_reforged.features.vegetation.TerraTreeMahogany;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.BushBlock;
@@ -54,6 +53,8 @@ public class TerraBlockSaplingMahogany extends BushBlock implements IGrowable
 
     public void grow(ServerWorld worldIn, BlockPos pos, BlockState state, Random rand)
     {
+        boolean is2x2 = false;
+        BlockPos growthPos = pos;
         if (state.get(STAGE) == 0)
         {
             worldIn.setBlockState(pos, state.cycle(STAGE), 4);
@@ -66,16 +67,35 @@ public class TerraBlockSaplingMahogany extends BushBlock implements IGrowable
             }
             for (int i = 0; i < 4; i++)
             {
-                if (worldIn.getBlockState(pos.offset(Direction.byHorizontalIndex(i))).getBlock() == this &&
-                    worldIn.getBlockState(pos.offset(Direction.byHorizontalIndex(i)).offset(Direction.byHorizontalIndex(i + (i == 3 ? -3 : 1)))).getBlock() == this &&
-                    worldIn.getBlockState(pos.offset(Direction.byHorizontalIndex(i)).offset(Direction.byHorizontalIndex(i + (i == 3 ? -3 : 1))).offset(Direction.byHorizontalIndex(i + (i == 2 ? -2 : 2)))).getBlock() == this)
+                BlockPos A = pos;
+                BlockPos B = A.offset(Direction.byHorizontalIndex(i));
+                BlockPos C = B.offset(Direction.byHorizontalIndex((i+1)%4));
+                BlockPos D = C.offset(Direction.byHorizontalIndex((i+2)%4));
+
+                Block blockA = worldIn.getBlockState(A).getBlock();
+                Block blockB = worldIn.getBlockState(B).getBlock();
+                Block blockC = worldIn.getBlockState(C).getBlock();
+                Block blockD = worldIn.getBlockState(D).getBlock();
+
+                if (blockA == this && blockB == this && blockC == this && blockD == this)
                 {
-                    TerraTreeMahogany.generateTree(worldIn, pos, rand, TerraBlockRegistry.LEAF_MAHOGANY.get().getDefaultState());
+                    switch(i)
+                    {
+                        case 0: growthPos = D; break;
+                        case 1: growthPos = C; break;
+                        case 2: growthPos = B; break;
+                        case 3: growthPos = A; break;
+                    }
+                    is2x2 = true;
                 }
-                else
-                {
-                    TerraTreeMahogany.generateTree(worldIn, pos, rand, TerraBlockRegistry.LEAF_BOREAL.get().getDefaultState());
-                }
+            }
+            if (is2x2)
+            {
+                TerraTreeBoreal.generateTree(worldIn, growthPos, rand);
+            }
+            else
+            {
+                TerraTreeMahogany.generateTree(worldIn, pos, rand);
             }
         }
     }

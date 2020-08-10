@@ -117,62 +117,9 @@ public class TerraBlockMudGrass extends Block implements IGrowable
 
     public boolean canUseBonemeal(World worldIn, Random rand, BlockPos pos, BlockState state)
     {
-        return true;
+        return false;
     }
 
     @Override
-    public void grow(ServerWorld p_225535_1_, Random p_225535_2_, BlockPos p_225535_3_, BlockState p_225535_4_)
-    {
-        BlockPos   blockpos   = p_225535_3_.up();
-        BlockState blockstate = this.getDefaultState();
-
-        label48:
-        for (int i = 0; i < 128; ++i)
-        {
-            BlockPos blockpos1 = blockpos;
-
-            for (int j = 0; j < i / 16; ++j)
-            {
-                blockpos1 = blockpos1.add(p_225535_2_.nextInt(3) - 1, (p_225535_2_.nextInt(3) - 1) * p_225535_2_.nextInt(3) / 2, p_225535_2_.nextInt(3) - 1);
-                if (p_225535_1_.getBlockState(blockpos1.down()).getBlock() != this || p_225535_1_.getBlockState(blockpos1).isCollisionShapeOpaque(p_225535_1_, blockpos1))
-                {
-                    continue label48;
-                }
-            }
-
-            BlockState blockstate2 = p_225535_1_.getBlockState(blockpos1);
-            if (blockstate2.getBlock() == blockstate.getBlock() && p_225535_2_.nextInt(10) == 0)
-            {
-                ((IGrowable) blockstate.getBlock()).grow(p_225535_1_, p_225535_2_, blockpos1, blockstate2);
-            }
-
-            if (blockstate2.isAir())
-            {
-                BlockState blockstate1;
-                if (p_225535_2_.nextInt(8) == 0)
-                {
-                    List<ConfiguredFeature<?, ?>> list = p_225535_1_.getBiome(blockpos1).getFlowers();
-                    if (list.isEmpty())
-                    {
-                        continue;
-                    }
-
-                    ConfiguredFeature<?, ?> configuredfeature = ((DecoratedFeatureConfig) ((ConfiguredFeature) list.get(0)).config).feature;
-                    blockstate1 = ((FlowersFeature) configuredfeature.feature).getFlowerToPlace(p_225535_2_, blockpos1, configuredfeature.config);
-                }
-                else
-                {
-                    blockstate1 = blockstate;
-                }
-
-                if (blockstate1.isValidPosition(p_225535_1_, blockpos1))
-                {
-                    p_225535_1_.setBlockState(blockpos1, blockstate1, 3);
-                }
-            }
-        }
-
-    }
+    public void grow(ServerWorld p_225535_1_, Random p_225535_2_, BlockPos p_225535_3_, BlockState p_225535_4_) { }
 }
-
-

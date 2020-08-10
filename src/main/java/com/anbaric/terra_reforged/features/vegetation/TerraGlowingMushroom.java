@@ -3,6 +3,7 @@ package com.anbaric.terra_reforged.features.vegetation;
 import com.anbaric.terra_reforged.util.init.TerraBlockRegistry;
 import com.mojang.datafixers.Dynamic;
 import net.minecraft.block.*;
+import net.minecraft.block.material.Material;
 import net.minecraft.util.Direction;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.IBlockReader;
@@ -29,7 +30,13 @@ public class TerraGlowingMushroom extends Feature<NoFeatureConfig>
     public static final BlockState CAP_MUSHROOM_UP = TerraBlockRegistry.MUSHROOM_CAP.get().getDefaultState().with(HugeMushroomBlock.DOWN, false).with(HugeMushroomBlock.SOUTH, false).with(HugeMushroomBlock.EAST, false).with(HugeMushroomBlock.WEST, false).with(HugeMushroomBlock.NORTH, false);
 
     public static final char[][][] MUSHROOM_ARRAY =
-  {{{'O', 'A', 'B', 'C', 'O'},
+  {{{'O', 'O', 'O', 'O', 'O'},
+    {'O', 'O', 'O', 'O', 'O'},
+    {'O', 'O', 'W', 'O', 'O'},
+    {'O', 'O', 'O', 'O', 'O'},
+    {'O', 'O', 'O', 'O', 'O'}},
+
+   {{'O', 'A', 'B', 'C', 'O'},
     {'A', 'O', 'O', 'O', 'C'},
     {'H', 'O', 'W', 'O', 'D'},
     {'G', 'O', 'O', 'O', 'E'},
@@ -58,32 +65,30 @@ public class TerraGlowingMushroom extends Feature<NoFeatureConfig>
         super(configFactory);
     }
 
-    private boolean isValidGround(BlockState state, IBlockReader worldIn, BlockPos pos)
+    private boolean isValidGround(BlockState state, IBlockReader world, BlockPos pos)
     {
+        Random rand = new Random();
         Block target = state.getBlock();
         return target == TerraBlockRegistry.GRASS_MUSHROOM.get();
     }
 
-    public static boolean checkSpace(IWorld world, BlockPos pos, int trunkHeight, char[][][] template)
+    private static int getRandomNumberInRange(int min, int max)
     {
-        System.out.println("Successfully checking space");
+        Random rand = new Random();
+        return rand.nextInt((max - min) + 1) + min;
+    }
 
-        int     arrayX     = 0, arrayY = 0, arrayZ = 0;
+    public static boolean checkCapSpace(IWorld world, BlockPos pos, Random rand, int startingLayer)
+    {
+        int     arrayX     = 0, arrayY = startingLayer - 1, arrayZ = 0;
         int     radius     = 2;
-        int     treeHeight = template.length;
-        boolean canGrow = true;
-        int blockage = 0;
+        int     treeHeight = MUSHROOM_ARRAY.length;
+        char[][][] template = MUSHROOM_ARRAY;
+        boolean canGrow    = true;
 
         BlockPos.Mutable target = new BlockPos.Mutable();
 
-        for (int i = 0; i <= trunkHeight; i++)
-        {
-            if (!world.getBlockState(pos.up(i)).canBeReplacedByLogs(world, pos))
-            {
-                canGrow = false;
-            }
-        }
-        for (int y = pos.getY() + trunkHeight; y < pos.getY() + treeHeight + trunkHeight; y++)
+        for (int y = pos.getY(); y < pos.getY() + (treeHeight - (startingLayer - 1)); y++)
         {
             for (int x = pos.getX() - radius; x <= pos.getX() + radius; x++)
             {
@@ -91,8 +96,7 @@ public class TerraGlowingMushroom extends Feature<NoFeatureConfig>
                 {
                     target.setPos(x, y, z);
                     char targetChar = template[arrayY][arrayX][arrayZ];
-                    if (target.getY() > world.getMaxHeight() || target.getY() < 1) {return false;}
-                    if (targetChar == 'W')
+                    if (targetChar == 'W' || targetChar == 'h' || targetChar == 'v')
                     {
                         if (!world.getBlockState(target).canBeReplacedByLogs(world, pos))
                         {
@@ -101,64 +105,7 @@ public class TerraGlowingMushroom extends Feature<NoFeatureConfig>
                     }
                     else if (targetChar != 'O')
                     {
-                        if (!world.getBlockState(target).canBeReplacedByLeaves(world, target))
-                        {
-                            blockage++;
-                        }
-                    }
-                    arrayZ++;
-                }
-                arrayX++;
-                arrayZ = 0;
-            }
-            arrayY++;
-            arrayX = 0;
-        }
-        return blockage < 4 && canGrow;
-    }
-
-    public static boolean checkBranchSpace(IWorld world, BlockPos pos, int offshootLength, int offshootHeight, Direction offshootDir, char[][][] template)
-    {
-        System.out.println("Successfully checking branch space");
-        int     arrayX     = 0, arrayY = 2, arrayZ = 0;
-        int     radius     = 2;
-        boolean canGrow = true;
-        BlockPos.Mutable target = new BlockPos.Mutable();
-
-        target = target.setPos(pos.getX(), pos.getY(), pos.getZ());
-
-        for (int j = 0; j <= offshootLength; j++)
-        {
-            if (!world.getBlockState(target.move(offshootDir, j)).canBeReplacedByLogs(world, pos))
-            {
-                canGrow = false;
-            }
-        }
-        for (int i = 0; i <= offshootHeight; i++)
-        {
-            if (!world.getBlockState(target.move(Direction.UP, i)).canBeReplacedByLogs(world, pos))
-            {
-                canGrow = false;
-            }
-        }
-        for (int y = target.getY(); y <= target.getY() + 1; y++)
-        {
-            for (int x = target.getX() - radius; x <= target.getX() + radius; x++)
-            {
-                for (int z = target.getZ() - radius; z <= target.getZ() + radius; z++)
-                {
-                    target.setPos(x, y, z);
-                    char targetChar = template[arrayY][arrayX][arrayZ];
-                    if (targetChar == 'W')
-                    {
-                        if (!world.getBlockState(target).canBeReplacedByLogs(world, pos))
-                        {
-                            canGrow = false;
-                        }
-                    }
-                    else if (targetChar != 'O')
-                    {
-                        if (!world.getBlockState(target).canBeReplacedByLeaves(world, target))
+                        if (!world.getBlockState(target).canBeReplacedByLeaves(world, target) && world.getBlockState(target).getBlock() != LOG_MUSHROOM.getBlock())
                         {
                             canGrow = false;
                         }
@@ -176,36 +123,34 @@ public class TerraGlowingMushroom extends Feature<NoFeatureConfig>
 
     public static void placeBlock(IWorld world, BlockPos pos, BlockState block)
     {
-        if (world.getBlockState(pos).canBeReplacedByLeaves(world, pos))
+        if (world.getBlockState(pos).getBlock() != LOG_MUSHROOM.getBlock())
         {
             world.setBlockState(pos, block, 3);
         }
     }
 
-    private static int getRandomNumberInRange(int min, int max) {
-
-        Random r = new Random();
-        return r.nextInt((max - min) + 1) + min;
+    public static int randExcept(Random rand)
+    {
+        int range = rand.nextInt(5) - 2;
+        return range == 0 ? randExcept(rand) : range;
     }
 
-    public static void generateTree(IWorld world, BlockPos pos, Random rand)
+    public static boolean generateCap(IWorld world, BlockPos pos, Random rand, int startingLayer)
     {
-        int        arrayX      = 0, arrayY = 0, arrayZ = 0;
-        int        trunkHeight = rand.nextInt(7) + 1;
-        int        treeHeight  = MUSHROOM_ARRAY.length;
-        int        radius      = 2;
+        System.out.println("Successfully started generating cap");
+        int        arrayX      = 0, arrayY = startingLayer - 1, arrayZ = 0;
+        int        capHeight  = MUSHROOM_ARRAY.length - (startingLayer-1);
         char[][][] template    = MUSHROOM_ARRAY;
-        boolean    hasSpace    = checkSpace(world, pos, trunkHeight, template);
-        boolean canSeeSky = world.canBlockSeeSky(pos);
+        boolean hasSpace = checkCapSpace(world, pos, rand, startingLayer);
 
         if (hasSpace)
         {
             BlockPos.Mutable target = new BlockPos.Mutable();
-            for (int y = pos.getY() + trunkHeight; y < pos.getY() + treeHeight + trunkHeight; y++)
+            for (int y = pos.getY(); y < pos.getY() + capHeight; y++)
             {
-                for (int x = pos.getX() - radius; x <= pos.getX() + radius; x++)
+                for (int x = pos.getX() - 2; x <= pos.getX() + 2; x++)
                 {
-                    for (int z = pos.getZ() - radius; z <= pos.getZ() + radius; z++)
+                    for (int z = pos.getZ() - 2; z <= pos.getZ() + 2; z++)
                     {
                         target.setPos(x, y, z);
                         char inputChar = template[arrayY][arrayX][arrayZ];
@@ -256,98 +201,57 @@ public class TerraGlowingMushroom extends Feature<NoFeatureConfig>
                 arrayY++;
                 arrayX = 0;
             }
-            for (int i = 0; i < trunkHeight; i++)
-            {
-                world.setBlockState(pos.up(i), LOG_MUSHROOM, 3);
-            }
-//            target.setPos(pos.getX(), pos.getY(), pos.getZ());
-//            if (canSeeSky && trunkHeight > 2)
-//            {
-//                int offshootHeight = rand.nextInt(2);
-//                int offshootPos = getRandomNumberInRange(1, trunkHeight - 2);
-//                int offshootLength = rand.nextInt(2) + 1;
-//                Direction offshootDir = Direction.byHorizontalIndex(rand.nextInt(4));
-//                boolean canSpawnBranch = checkBranchSpace(world, pos.add(0, offshootPos, 0), offshootLength, offshootHeight, offshootDir, template);
-//
-//                target.add(0, offshootPos, 0);
-//
-//                for (int j = 0; j <= offshootLength; j++)
-//                {
-//                    world.setBlockState(target.move(offshootDir, j), LOG_MUSHROOM.with(LogBlock.AXIS, offshootDir.getAxis()), 3);
-//                }
-//                for (int i = 0; i <= offshootHeight; i++)
-//                {
-//                    world.setBlockState(target.move(Direction.UP), LOG_MUSHROOM, 3);
-//                }
-//                arrayY = 2;
-//                BlockPos branchCapPos = target;
-//                for (int y = branchCapPos.getY(); y <= branchCapPos.getY() + 1; y++)
-//                {
-//                    for (int x = branchCapPos.getX() - radius; x <= branchCapPos.getX() + radius; x++)
-//                    {
-//                        for (int z = branchCapPos.getZ() - radius; z <= branchCapPos.getZ() + radius; z++)
-//                        {
-//                            target.setPos(x, y, z);
-//                            char targetChar = template[arrayY][arrayX][arrayZ];
-//                            target.setPos(x, y, z);
-//                            char inputChar = template[arrayY][arrayX][arrayZ];
-//                            switch (inputChar)
-//                            {
-//                                case 'A':
-//                                    placeBlock(world, target, CAP_MUSHROOM_NORTH_WEST);
-//                                    break;
-//                                case 'B':
-//                                    placeBlock(world, target, CAP_MUSHROOM_WEST);
-//                                    break;
-//                                case 'C':
-//                                    placeBlock(world, target, CAP_MUSHROOM_SOUTH_WEST);
-//                                    break;
-//                                case 'D':
-//                                    placeBlock(world, target, CAP_MUSHROOM_SOUTH);
-//                                    break;
-//                                case 'E':
-//                                    placeBlock(world, target, CAP_MUSHROOM_SOUTH_EAST);
-//                                    break;
-//                                case 'F':
-//                                    placeBlock(world, target, CAP_MUSHROOM_EAST);
-//                                    break;
-//                                case 'G':
-//                                    placeBlock(world, target, CAP_MUSHROOM_NORTH_EAST);
-//                                    break;
-//                                case 'H':
-//                                    placeBlock(world, target, CAP_MUSHROOM_NORTH);
-//                                    break;
-//                                case 'I':
-//                                    placeBlock(world, target, CAP_MUSHROOM_UP);
-//                                    break;
-//                                case 'W':
-//                                    world.setBlockState(target, LOG_MUSHROOM, 3);
-//                                    break;
-//                                case 'v':
-//                                    world.setBlockState(target, LOG_MUSHROOM.with(LogBlock.AXIS, Direction.Axis.X), 3);
-//                                    break;
-//                                case 'h':
-//                                    world.setBlockState(target, LOG_MUSHROOM.with(LogBlock.AXIS, Direction.Axis.Z), 3);
-//                                    break;
-//                            }
-//                            arrayZ++;
-//                        }
-//                        arrayX++;
-//                        arrayZ = 0;
-//                    }
-//                    arrayY++;
-//                    arrayX = 0;
-//                }
-//            }
+            return true;
         }
+        else return false;
+    }
+
+    public static boolean generateMushroom(IWorld world, BlockPos pos, Random rand)
+    {
+        BlockPos.Mutable target = new BlockPos.Mutable();
+        target.setPos(pos);
+        int trunkHeight = rand.nextInt(8);
+        boolean canSpawn = true;
+        boolean canSeeSky = world.canBlockSeeSky(pos);
+
+        for (int trunk = 0; trunk < trunkHeight; trunk++)
+        {
+            if (!world.getBlockState(pos.up(trunk)).canBeReplacedByLogs(world, pos))
+            {
+                canSpawn = false;
+            }
+        }
+
+        if (canSpawn && checkCapSpace(world, pos.up(trunkHeight), rand, 1))
+        {
+            for (int trunk = 0; trunk < trunkHeight; trunk++)
+            {
+                world.setBlockState(pos.up(trunk), LOG_MUSHROOM, 3);
+            }
+            generateCap(world, pos.up(trunkHeight), rand, 1);
+
+            if (canSeeSky && trunkHeight > 2)
+            {
+                boolean xAxis = rand.nextBoolean();
+                BlockPos branchPos = pos.add(xAxis ? randExcept(rand) : 0, getRandomNumberInRange(1, Math.max(1, trunkHeight - 2)), xAxis ? 0 : randExcept(rand));
+
+                if (checkCapSpace(world, branchPos, rand, 4))
+                {
+                    generateCap(world, branchPos, rand, 4);
+                }
+            }
+
+            return true;
+        }
+        else return false;
     }
 
     @Override
     public boolean place(IWorld world, ChunkGenerator<? extends GenerationSettings> generator, Random random, BlockPos pos, NoFeatureConfig config)
     {
-        if (isValidGround(world.getBlockState(pos.down()), world, pos) && world.getBlockState(pos).getMaterial().isReplaceable())
+        if (isValidGround(world.getBlockState(pos.down()), world, pos))
         {
-            generateTree(world, pos, random);
+            generateMushroom(world, pos, random);
             return true;
         }
         return false;

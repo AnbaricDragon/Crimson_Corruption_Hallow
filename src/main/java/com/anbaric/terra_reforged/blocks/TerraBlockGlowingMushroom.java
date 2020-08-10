@@ -78,7 +78,7 @@ public class TerraBlockGlowingMushroom extends BushBlock implements IGrowable
             {
                 return;
             }
-            TerraGlowingMushroom.generateTree(worldIn, pos, rand);
+            TerraGlowingMushroom.generateMushroom(worldIn, pos, rand);
         }
 
     }

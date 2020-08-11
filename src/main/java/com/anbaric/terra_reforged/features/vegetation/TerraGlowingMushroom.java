@@ -232,12 +232,24 @@ public class TerraGlowingMushroom extends Feature<NoFeatureConfig>
 
             if (canSeeSky && trunkHeight > 2)
             {
-                boolean xAxis = rand.nextBoolean();
-                BlockPos branchPos = pos.add(xAxis ? randExcept(rand) : 0, getRandomNumberInRange(1, Math.max(1, trunkHeight - 2)), xAxis ? 0 : randExcept(rand));
+                Direction branchDir = Direction.byHorizontalIndex(rand.nextInt(4));
+                int branchHeight = getRandomNumberInRange(1, Math.max(1, trunkHeight - 2));
+                int branchLength = rand.nextInt(2) + 1;
+
+                BlockPos branchPos = pos.up(branchHeight).offset(branchDir, branchLength);
 
                 if (checkCapSpace(world, branchPos, rand, 4))
                 {
                     generateCap(world, branchPos, rand, 4);
+                    for (int branch = 1; branch <= branchLength; branch++)
+                    {
+                        BlockPos branchTarget = pos.up(branchHeight > 2 ? branchHeight - 1 : branchHeight).offset(branchDir, branch);
+
+                        if (world.getBlockState(branchTarget).canBeReplacedByLogs(world, pos) || world.getBlockState(branchTarget).getBlock() == LOG_MUSHROOM.getBlock())
+                        {
+                            world.setBlockState(branchTarget, LOG_MUSHROOM.with(LogBlock.AXIS, branchDir.getAxis()), 3);
+                        }
+                    }
                 }
             }
 

@@ -12,7 +12,17 @@
       <change beforePath="$PROJECT_DIR$/.gradle/4.9/taskHistory/taskHistory.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/4.9/taskHistory/taskHistory.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/assets/terra_reforged/blockstates/grass_mushroom.json" beforeDir="false" afterPath="$PROJECT_DIR$/build/resources/main/assets/terra_reforged/blockstates/grass_mushroom.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/anbaric/terra_reforged/TerraReforged.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/anbaric/terra_reforged/TerraReforged.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/anbaric/terra_reforged/blocks/TerraBlockGlowingMushroom.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/anbaric/terra_reforged/blocks/TerraBlockGlowingMushroom.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/anbaric/terra_reforged/blocks/TerraBlockMudGrass.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/anbaric/terra_reforged/blocks/TerraBlockMudGrass.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/anbaric/terra_reforged/blocks/saplings/TerraBlockSaplingMahogany.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/anbaric/terra_reforged/blocks/saplings/TerraBlockSaplingMahogany.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/anbaric/terra_reforged/features/vegetation/TerraGlowingMushroom.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/anbaric/terra_reforged/features/vegetation/TerraGlowingMushroom.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/anbaric/terra_reforged/features/vegetation/TerraTreeMahogany.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/anbaric/terra_reforged/features/vegetation/TerraTreeMahoganyLesser.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/anbaric/terra_reforged/util/init/TerraBlockRegistry.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/anbaric/terra_reforged/util/init/TerraBlockRegistry.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/anbaric/terra_reforged/util/init/TerraFeatureRegistry.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/anbaric/terra_reforged/util/init/TerraFeatureRegistry.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/assets/terra_reforged/blockstates/grass_mushroom.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/assets/terra_reforged/blockstates/grass_mushroom.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/data/minecraft/tags/blocks/leaves.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/data/minecraft/tags/blocks/leaves.json" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -120,14 +130,16 @@
     <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
   </component>
   <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\Downloads\Coding\Repositories\Terra_Reforged\src\main\resources\data\forge\tags\blocks" />
+      <recent name="D:\Downloads\Coding\Repositories\Terra_Reforged\src\main\resources" />
+      <recent name="D:\Downloads\Coding\Repositories\Terra_Reforged\src\main\java\com\anbaric\terra_reforged\items" />
+      <recent name="D:\Downloads\Coding\Repositories\Terra_Reforged\src\main\java\com\anbaric\terra_reforged\blocks" />
+      <recent name="D:\Downloads\Coding\Repositories\Terra_Reforged\src\main\java\com\anbaric\terra_reforged\util" />
+    </key>
     <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
       <recent name="com.anbaric.terra_reforged.renderers" />
       <recent name="com.anbaric.terra_reforged.ctm" />
-    </key>
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="D:\Downloads\Coding\Repositories\Terra_Reforged\src\main\resources\data\forge\tags\blocks\ores" />
-      <recent name="D:\Downloads\Coding\Repositories\Terra_Reforged\src\main\resources\data\minecraft\tags\blocks" />
-      <recent name="D:\Downloads\Coding\Repositories\Terra_Reforged\src\main\resources\data\forge\tags\items\ingots" />
     </key>
     <key name="CopyClassDialog.RECENTS_KEY">
       <recent name="com.anbaric.terra_reforged.features.vegetation" />
@@ -136,12 +148,10 @@
       <recent name="com.anbaric.terra_reforged.features.trees" />
       <recent name="com.anbaric.terra_reforged.util.events" />
     </key>
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="D:\Downloads\Coding\Repositories\Terra_Reforged\src\main\resources\data\forge\tags\blocks" />
-      <recent name="D:\Downloads\Coding\Repositories\Terra_Reforged\src\main\resources" />
-      <recent name="D:\Downloads\Coding\Repositories\Terra_Reforged\src\main\java\com\anbaric\terra_reforged\items" />
-      <recent name="D:\Downloads\Coding\Repositories\Terra_Reforged\src\main\java\com\anbaric\terra_reforged\blocks" />
-      <recent name="D:\Downloads\Coding\Repositories\Terra_Reforged\src\main\java\com\anbaric\terra_reforged\util" />
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\Downloads\Coding\Repositories\Terra_Reforged\src\main\resources\data\forge\tags\blocks\ores" />
+      <recent name="D:\Downloads\Coding\Repositories\Terra_Reforged\src\main\resources\data\minecraft\tags\blocks" />
+      <recent name="D:\Downloads\Coding\Repositories\Terra_Reforged\src\main\resources\data\forge\tags\items\ingots" />
     </key>
   </component>
   <component name="RunManager" selected="Gradle.Terra_Reforged [runClient]">
@@ -285,29 +295,29 @@
       <screen x="0" y="0" width="1920" height="1026" />
     </state>
     <state x="679" y="246" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/1920.312.1366.714/-1920.0.1920.1080/0.0.1920.1026@0.0.1920.1026" timestamp="1593318406421" />
-    <state width="1876" height="2" key="GridCell.Tab.0.bottom" timestamp="1597119404267">
+    <state width="1876" height="98" key="GridCell.Tab.0.bottom" timestamp="1597285708130">
       <screen x="0" y="0" width="1920" height="1026" />
     </state>
     <state width="1876" height="2" key="GridCell.Tab.0.bottom/1920.312.1366.714/-1920.0.1920.1080/0.0.1920.1026@-1920.0.1920.1080" timestamp="1594008699714" />
-    <state width="1876" height="2" key="GridCell.Tab.0.bottom/1920.312.1366.714/-1920.0.1920.1080/0.0.1920.1026@0.0.1920.1026" timestamp="1597119404267" />
+    <state width="1876" height="98" key="GridCell.Tab.0.bottom/1920.312.1366.714/-1920.0.1920.1080/0.0.1920.1026@0.0.1920.1026" timestamp="1597285708130" />
     <state width="1322" height="2" key="GridCell.Tab.0.bottom/1920.312.1366.714/-1920.0.1920.1080/0.0.1920.1026@1920.312.1366.714" timestamp="1590348792583" />
-    <state width="1876" height="2" key="GridCell.Tab.0.center" timestamp="1597119404266">
+    <state width="1876" height="98" key="GridCell.Tab.0.center" timestamp="1597285708130">
       <screen x="0" y="0" width="1920" height="1026" />
     </state>
     <state width="1876" height="2" key="GridCell.Tab.0.center/1920.312.1366.714/-1920.0.1920.1080/0.0.1920.1026@-1920.0.1920.1080" timestamp="1594008699714" />
-    <state width="1876" height="2" key="GridCell.Tab.0.center/1920.312.1366.714/-1920.0.1920.1080/0.0.1920.1026@0.0.1920.1026" timestamp="1597119404266" />
+    <state width="1876" height="98" key="GridCell.Tab.0.center/1920.312.1366.714/-1920.0.1920.1080/0.0.1920.1026@0.0.1920.1026" timestamp="1597285708130" />
     <state width="1322" height="2" key="GridCell.Tab.0.center/1920.312.1366.714/-1920.0.1920.1080/0.0.1920.1026@1920.312.1366.714" timestamp="1590348792582" />
-    <state width="1876" height="2" key="GridCell.Tab.0.left" timestamp="1597119404266">
+    <state width="1876" height="98" key="GridCell.Tab.0.left" timestamp="1597285708130">
       <screen x="0" y="0" width="1920" height="1026" />
     </state>
     <state width="1876" height="2" key="GridCell.Tab.0.left/1920.312.1366.714/-1920.0.1920.1080/0.0.1920.1026@-1920.0.1920.1080" timestamp="1594008699714" />
-    <state width="1876" height="2" key="GridCell.Tab.0.left/1920.312.1366.714/-1920.0.1920.1080/0.0.1920.1026@0.0.1920.1026" timestamp="1597119404266" />
+    <state width="1876" height="98" key="GridCell.Tab.0.left/1920.312.1366.714/-1920.0.1920.1080/0.0.1920.1026@0.0.1920.1026" timestamp="1597285708130" />
     <state width="1322" height="2" key="GridCell.Tab.0.left/1920.312.1366.714/-1920.0.1920.1080/0.0.1920.1026@1920.312.1366.714" timestamp="1590348792582" />
-    <state width="1876" height="2" key="GridCell.Tab.0.right" timestamp="1597119404266">
+    <state width="1876" height="98" key="GridCell.Tab.0.right" timestamp="1597285708130">
       <screen x="0" y="0" width="1920" height="1026" />
     </state>
     <state width="1876" height="2" key="GridCell.Tab.0.right/1920.312.1366.714/-1920.0.1920.1080/0.0.1920.1026@-1920.0.1920.1080" timestamp="1594008699714" />
-    <state width="1876" height="2" key="GridCell.Tab.0.right/1920.312.1366.714/-1920.0.1920.1080/0.0.1920.1026@0.0.1920.1026" timestamp="1597119404266" />
+    <state width="1876" height="98" key="GridCell.Tab.0.right/1920.312.1366.714/-1920.0.1920.1080/0.0.1920.1026@0.0.1920.1026" timestamp="1597285708130" />
     <state width="1322" height="2" key="GridCell.Tab.0.right/1920.312.1366.714/-1920.0.1920.1080/0.0.1920.1026@1920.312.1366.714" timestamp="1590348792582" />
     <state x="671" y="176" key="SettingsEditor" timestamp="1593060135003">
       <screen x="0" y="0" width="1920" height="1026" />
@@ -321,11 +331,15 @@
       <screen x="0" y="0" width="1920" height="1026" />
     </state>
     <state x="772" y="413" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/1920.312.1366.714/-1920.0.1920.1080/0.0.1920.1026@0.0.1920.1026" timestamp="1594583436306" />
-    <state x="-4" y="0" width="1606" height="1049" key="dock-window-1" timestamp="1596513675156">
+    <state x="508" y="234" width="903" height="649" key="com.intellij.xdebugger.impl.breakpoints.ui.BreakpointsDialogFactory$2" timestamp="1597248106342">
       <screen x="0" y="0" width="1920" height="1026" />
     </state>
+    <state x="508" y="234" width="903" height="649" key="com.intellij.xdebugger.impl.breakpoints.ui.BreakpointsDialogFactory$2/1920.312.1366.714/-1920.0.1920.1080/0.0.1920.1026@0.0.1920.1026" timestamp="1597248106342" />
+    <state x="-1706" y="-13" width="1550" height="995" maximized="true" key="dock-window-1" timestamp="1597196258555">
+      <screen x="-1920" y="0" width="1920" height="1080" />
+    </state>
     <state x="-4" y="0" width="1606" height="1049" key="dock-window-1/1920.312.1366.714/-1920.0.1920.1080/0.0.1920.1026@-1920.0.1920.1080" timestamp="1596513675156" />
-    <state x="1857" y="368" width="1404" height="830" key="dock-window-1/1920.312.1366.714/-1920.0.1920.1080/0.0.1920.1026@0.0.1920.1026" timestamp="1595518640697" />
+    <state x="-1706" y="-13" width="1550" height="995" maximized="true" key="dock-window-1/1920.312.1366.714/-1920.0.1920.1080/0.0.1920.1026@0.0.1920.1026" timestamp="1597196258555" />
     <state x="0" y="0" width="1606" height="1049" key="dock-window-2" timestamp="1596513675156">
       <screen x="0" y="0" width="1920" height="1026" />
     </state>
@@ -356,13 +370,23 @@
       <screen x="0" y="0" width="1920" height="1026" />
     </state>
     <state x="616" y="224" width="957" height="578" key="find.popup/1920.312.1366.714/-1920.0.1920.1080/0.0.1920.1026@0.0.1920.1026" timestamp="1592627182285" />
-    <state x="605" y="225" key="run.anything.popup" timestamp="1591897291213">
+    <state x="605" y="225" key="run.anything.popup" timestamp="1597194596344">
       <screen x="0" y="0" width="1920" height="1026" />
     </state>
-    <state x="605" y="225" key="run.anything.popup/1920.312.1366.714/-1920.0.1920.1080/0.0.1920.1026@0.0.1920.1026" timestamp="1591897291213" />
+    <state x="605" y="225" key="run.anything.popup/1920.312.1366.714/-1920.0.1920.1080/0.0.1920.1026@0.0.1920.1026" timestamp="1597194596344" />
     <state x="623" y="216" width="672" height="678" key="search.everywhere.popup" timestamp="1593060294098">
       <screen x="0" y="0" width="1920" height="1026" />
     </state>
     <state x="623" y="216" width="672" height="678" key="search.everywhere.popup/1920.312.1366.714/-1920.0.1920.1080/0.0.1920.1026@0.0.1920.1026" timestamp="1593060294098" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <breakpoint enabled="true" type="java-exception">
+          <properties class="java.lang.StackOverflowError" package="java.lang" />
+          <option name="timeStamp" value="2" />
+        </breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>

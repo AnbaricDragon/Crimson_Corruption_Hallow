@@ -30,6 +30,7 @@ import java.util.stream.Collectors;
     public static final boolean debugSpreading = true;
 
     public static PlantType BOREAL = PlantType.create("Boreal");
+    public static PlantType MUSHROOM = PlantType.create("Mushroom");
 
     public static DamageSource THORNS = new DamageSource("thorns").setDamageBypassesArmor();
 

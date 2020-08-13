@@ -1,7 +1,7 @@
 package com.anbaric.terra_reforged.blocks.saplings;
 
-import com.anbaric.terra_reforged.features.vegetation.TerraTreeBoreal;
-import com.anbaric.terra_reforged.features.vegetation.TerraTreeMahogany;
+import com.anbaric.terra_reforged.features.vegetation.TerraTreeMahoganyGreat;
+import com.anbaric.terra_reforged.features.vegetation.TerraTreeMahoganyLesser;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.BushBlock;
@@ -91,11 +91,11 @@ public class TerraBlockSaplingMahogany extends BushBlock implements IGrowable
             }
             if (is2x2)
             {
-                TerraTreeBoreal.generateTree(worldIn, growthPos, rand);
+                TerraTreeMahoganyGreat.generateTree(worldIn, growthPos, rand);
             }
             else
             {
-                TerraTreeMahogany.generateTree(worldIn, pos, rand);
+                TerraTreeMahoganyLesser.generateTree(worldIn, pos, rand);
             }
         }
     }

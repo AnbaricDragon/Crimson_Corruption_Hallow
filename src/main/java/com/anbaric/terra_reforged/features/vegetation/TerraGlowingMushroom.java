@@ -137,7 +137,6 @@ public class TerraGlowingMushroom extends Feature<NoFeatureConfig>
 
     public static boolean generateCap(IWorld world, BlockPos pos, Random rand, int startingLayer)
     {
-        System.out.println("Successfully started generating cap");
         int        arrayX      = 0, arrayY = startingLayer - 1, arrayZ = 0;
         int        capHeight  = MUSHROOM_ARRAY.length - (startingLayer-1);
         char[][][] template    = MUSHROOM_ARRAY;

@@ -1,5 +1,7 @@
 package com.anbaric.terra_reforged.blocks;
 
+import com.anbaric.terra_reforged.TerraReforged;
+import com.anbaric.terra_reforged.features.vegetation.TerraGlowingMushroom;
 import com.anbaric.terra_reforged.util.init.TerraBlockRegistry;
 import com.anbaric.terra_reforged.util.init.TerraParticleRegistry;
 import net.minecraft.block.*;
@@ -19,7 +21,9 @@ import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 import net.minecraftforge.common.IPlantable;
 import net.minecraftforge.common.PlantType;
+import org.apache.commons.lang3.tuple.Triple;
 
+import java.util.Iterator;
 import java.util.List;
 import java.util.Random;
 
@@ -34,7 +38,7 @@ public class TerraBlockMudGrass extends Block implements IGrowable
     public boolean canSustainPlant(BlockState state, IBlockReader world, BlockPos pos, Direction facing, IPlantable plantable)
     {
         PlantType type = plantable.getPlantType(world, pos);
-        return type == PlantType.Plains;
+        return this == TerraBlockRegistry.GRASS_MUSHROOM.get() ? type == TerraReforged.MUSHROOM || type == PlantType.Plains : type == PlantType.Plains;
     }
 
     private static boolean canSpread(BlockState state, IWorldReader world, BlockPos pos)
@@ -67,6 +71,8 @@ public class TerraBlockMudGrass extends Block implements IGrowable
     @Override
     public void tick(BlockState state, ServerWorld worldIn, BlockPos pos, Random random)
     {
+        int maxShrooms = 10;
+
         if (!worldIn.isRemote)
         {
             if (!worldIn.isAreaLoaded(pos, 3))
@@ -95,6 +101,27 @@ public class TerraBlockMudGrass extends Block implements IGrowable
                             }
                         }
                     }
+                }
+            }
+            if (random.nextInt(250) == 0 && this == TerraBlockRegistry.GRASS_MUSHROOM.get() && worldIn.getBlockState(pos.up()).isAir(worldIn, pos))
+            {
+                Iterator cubicRange = BlockPos.getAllInBoxMutable(pos.add(-8, -1, -8), pos.add(8, 1, 8)).iterator();
+
+                while (cubicRange.hasNext())
+                {
+                    BlockPos blockpos = (BlockPos) cubicRange.next();
+                    if (worldIn.getBlockState(blockpos).getBlock() == TerraBlockRegistry.PLANT_MUSHROOM_GLOWING.get())
+                    {
+                        --maxShrooms;
+                        if (maxShrooms <= 0)
+                        {
+                            return;
+                        }
+                    }
+                }
+                if (maxShrooms > 0)
+                {
+                    worldIn.setBlockState(pos.up(), TerraBlockRegistry.PLANT_MUSHROOM_GLOWING.get().getDefaultState());
                 }
             }
         }

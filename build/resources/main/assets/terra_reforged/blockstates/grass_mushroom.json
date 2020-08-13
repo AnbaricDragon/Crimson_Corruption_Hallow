@@ -1,5 +1,10 @@
 {
     "variants": {
-        "": { "model": "terra_reforged:block/grass_mushroom" }
+        "": [
+            { "model": "terra_reforged:block/grass_mushroom" },
+            { "model": "terra_reforged:block/grass_mushroom", "y": 90 },
+            { "model": "terra_reforged:block/grass_mushroom", "y": 180 },
+            { "model": "terra_reforged:block/grass_mushroom", "y": 270 }
+        ]
     }
 }

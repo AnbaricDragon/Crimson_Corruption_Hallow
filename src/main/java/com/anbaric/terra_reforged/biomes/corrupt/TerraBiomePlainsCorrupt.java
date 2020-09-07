@@ -32,7 +32,7 @@ public class TerraBiomePlainsCorrupt extends Biome
         TerraBiomeFeatures.addStoneVariants(this, TerraBiomeFeatures.CORRUPT);
         TerraBiomeFeatures.addCrimsonOres(this);
         TerraBiomeFeatures.addSedimentDisks(this, TerraBiomeFeatures.GRAVEL, TerraBiomeFeatures.CORRUPT_SAND);
-        TerraBiomeFeatures.addEbonTreesGrass(this);
+        TerraBiomeFeatures.addEbonTreesGrass(this, 0, 0.05F, 1);
         TerraBiomeFeatures.addMushrooms(this, TerraBiomeFeatures.VILE_MUSHROOM_CONFIG);
         TerraBiomeFeatures.addReedsAndPumpkins(this, TerraBiomeFeatures.CORRUPT_SUGAR_CANE_CONFIG);
         DefaultBiomeFeatures.addSprings(this);

@@ -1,7 +1,7 @@
 package com.anbaric.terra_reforged.blocks.saplings;
 
-import com.anbaric.terra_reforged.features.vegetation.TerraTreeMahoganyGreat;
-import com.anbaric.terra_reforged.features.vegetation.TerraTreeMahoganyLesser;
+import com.anbaric.terra_reforged.features.vegetation.trees.TerraTreeMahoganyGreat;
+import com.anbaric.terra_reforged.features.vegetation.trees.TerraTreeMahoganyLesser;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.BushBlock;
@@ -16,10 +16,12 @@ import net.minecraft.util.math.shapes.VoxelShape;
 import net.minecraft.world.IBlockReader;
 import net.minecraft.world.World;
 import net.minecraft.world.server.ServerWorld;
+import net.minecraftforge.common.IPlantable;
+import net.minecraftforge.common.PlantType;
 
 import java.util.Random;
 
-public class TerraBlockSaplingMahogany extends BushBlock implements IGrowable
+public class TerraBlockSaplingMahogany extends BushBlock implements IGrowable, IPlantable
 {
     public static final IntegerProperty STAGE = BlockStateProperties.STAGE_0_1;
     protected static final VoxelShape SHAPE = Block.makeCuboidShape(2.0D, 0.0D, 2.0D, 14.0D, 12.0D, 14.0D);
@@ -28,6 +30,12 @@ public class TerraBlockSaplingMahogany extends BushBlock implements IGrowable
     {
         super(properties);
         this.setDefaultState(this.stateContainer.getBaseState().with(STAGE, Integer.valueOf(0)));
+    }
+
+    @Override
+    public PlantType getPlantType(IBlockReader world, BlockPos pos)
+    {
+        return PlantType.Plains;
     }
 
     @Override

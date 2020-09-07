@@ -1,8 +1,7 @@
 package com.anbaric.terra_reforged.features;
 
-import com.anbaric.terra_reforged.TerraReforged;
 import com.anbaric.terra_reforged.features.carvers.TerraWorldCarver;
-import com.anbaric.terra_reforged.features.vegetation.TerraTreeBoreal;
+import com.anbaric.terra_reforged.features.vegetation.trees.*;
 import com.anbaric.terra_reforged.util.init.TerraBlockRegistry;
 import com.anbaric.terra_reforged.util.init.TerraFeatureRegistry;
 import com.google.common.collect.ImmutableList;
@@ -20,14 +19,8 @@ import net.minecraft.world.gen.feature.*;
 import net.minecraft.world.gen.foliageplacer.BlobFoliagePlacer;
 import net.minecraft.world.gen.placement.*;
 import net.minecraft.world.gen.treedecorator.LeaveVineTreeDecorator;
-import net.minecraftforge.fml.RegistryObject;
 
-import javax.annotation.Nullable;
-import java.util.Arrays;
-import java.util.List;
-import java.util.Map;
 import java.util.function.Predicate;
-import java.util.stream.Collectors;
 
 public class TerraBiomeFeatures
 {
@@ -218,11 +211,13 @@ public class TerraBiomeFeatures
     public static final BlockClusterFeatureConfig CRIMSON_LILYPAD_CONFIG = (new BlockClusterFeatureConfig.Builder(new SimpleBlockStateProvider(CRIMSON_LILYPAD), new SimpleBlockPlacer())).tries(10).requiresWater().build();
     public static final BlockClusterFeatureConfig HALLOWED_LILYPAD_CONFIG = (new BlockClusterFeatureConfig.Builder(new SimpleBlockStateProvider(HALLOWED_LILYPAD), new SimpleBlockPlacer())).tries(10).requiresWater().build();
 
-    public static final TerraTreeBoreal TREE_BOREAL = new TerraTreeBoreal(NoFeatureConfig::deserialize);
+    public static final ConfiguredFeature BOREAL_TREE = new TerraTreeBoreal(NoFeatureConfig::deserialize).withConfiguration(IFeatureConfig.NO_FEATURE_CONFIG);
+    public static final ConfiguredFeature MAHOGANY_TREE_LESSER = new TerraTreeMahoganyLesser(NoFeatureConfig::deserialize).withConfiguration(IFeatureConfig.NO_FEATURE_CONFIG);
+    public static final ConfiguredFeature MAHOGANY_TREE_GREATER = new TerraTreeMahoganyGreat(NoFeatureConfig::deserialize).withConfiguration(IFeatureConfig.NO_FEATURE_CONFIG);
+    public static final ConfiguredFeature EBON_TREE = new TerraTreeEbon(NoFeatureConfig::deserialize).withConfiguration(IFeatureConfig.NO_FEATURE_CONFIG);
+    public static final ConfiguredFeature SHADE_TREE = new TerraTreeShade(NoFeatureConfig::deserialize).withConfiguration(IFeatureConfig.NO_FEATURE_CONFIG);
+    public static final ConfiguredFeature PEARL_TREE = new TerraTreePearl(NoFeatureConfig::deserialize).withConfiguration(IFeatureConfig.NO_FEATURE_CONFIG);
 
-    public static final TreeFeatureConfig BOREAL_TREE_CONFIG = (new TreeFeatureConfig.Builder(new SimpleBlockStateProvider(BOREAL_LOG), new SimpleBlockStateProvider(BOREAL_LEAF), new BlobFoliagePlacer(2, 0))).baseHeight(4).heightRandA(2).foliageHeight(3).ignoreVines().setSapling((net.minecraftforge.common.IPlantable) TerraBlockRegistry.SAPLING_BOREAL.get()).build();
-    public static final TreeFeatureConfig PALM_TREE_CONFIG = (new TreeFeatureConfig.Builder(new SimpleBlockStateProvider(PALM_LOG), new SimpleBlockStateProvider(PALM_LEAF), new BlobFoliagePlacer(2, 0))).baseHeight(4).heightRandA(2).foliageHeight(3).ignoreVines().setSapling((net.minecraftforge.common.IPlantable) TerraBlockRegistry.SAPLING_PALM.get()).build();
-    public static final TreeFeatureConfig MAHOGANY_TREE_CONFIG = (new TreeFeatureConfig.Builder(new SimpleBlockStateProvider(MAHOGANY_LOG), new SimpleBlockStateProvider(MAHOGANY_LEAF), new BlobFoliagePlacer(2, 0))).baseHeight(4).heightRandA(2).foliageHeight(3).ignoreVines().setSapling((net.minecraftforge.common.IPlantable) TerraBlockRegistry.SAPLING_MAHOGANY.get()).build();
     public static final TreeFeatureConfig EBON_TREE_CONFIG = (new TreeFeatureConfig.Builder(new SimpleBlockStateProvider(EBON_LOG), new SimpleBlockStateProvider(EBON_LEAF), new BlobFoliagePlacer(2, 0))).baseHeight(4).heightRandA(2).foliageHeight(3).ignoreVines().setSapling((net.minecraftforge.common.IPlantable) TerraBlockRegistry.SAPLING_EBON.get()).build();
     public static final TreeFeatureConfig EBON_SWAMP_TREE_CONFIG = (new TreeFeatureConfig.Builder(new SimpleBlockStateProvider(EBON_LOG), new SimpleBlockStateProvider(EBON_LEAF), new BlobFoliagePlacer(3, 0))).baseHeight(5).heightRandA(3).foliageHeight(3).maxWaterDepth(1).decorators(ImmutableList.of(new LeaveVineTreeDecorator())).setSapling((net.minecraftforge.common.IPlantable) TerraBlockRegistry.SAPLING_EBON.get()).build();
     public static final TreeFeatureConfig SHADE_TREE_CONFIG = (new TreeFeatureConfig.Builder(new SimpleBlockStateProvider(SHADE_LOG), new SimpleBlockStateProvider(SHADE_LEAF), new BlobFoliagePlacer(2, 0))).baseHeight(4).heightRandA(2).foliageHeight(3).ignoreVines().setSapling((net.minecraftforge.common.IPlantable) TerraBlockRegistry.SAPLING_SHADE.get()).build();
@@ -243,39 +238,58 @@ public class TerraBiomeFeatures
     public static final TreeFeatureConfig PEARL_SWAMP_TREE_RED_CONFIG = (new TreeFeatureConfig.Builder(new SimpleBlockStateProvider(PEARL_LOG), new SimpleBlockStateProvider(PEARL_LEAF_RED), new BlobFoliagePlacer(3, 0))).baseHeight(5).heightRandA(3).foliageHeight(3).maxWaterDepth(1).decorators(ImmutableList.of(new LeaveVineTreeDecorator())).setSapling((net.minecraftforge.common.IPlantable) TerraBlockRegistry.SAPLING_PEARL.get()).build();
     public static final TreeFeatureConfig PEARL_TREE_YELLOW_CONFIG = (new TreeFeatureConfig.Builder(new SimpleBlockStateProvider(PEARL_LOG), new SimpleBlockStateProvider(PEARL_LEAF_YELLOW), new BlobFoliagePlacer(2, 0))).baseHeight(4).heightRandA(2).foliageHeight(3).ignoreVines().setSapling((net.minecraftforge.common.IPlantable) TerraBlockRegistry.SAPLING_PEARL.get()).build();
     public static final TreeFeatureConfig PEARL_SWAMP_TREE_YELLOW_CONFIG = (new TreeFeatureConfig.Builder(new SimpleBlockStateProvider(PEARL_LOG), new SimpleBlockStateProvider(PEARL_LEAF_YELLOW), new BlobFoliagePlacer(3, 0))).baseHeight(5).heightRandA(3).foliageHeight(3).maxWaterDepth(1).decorators(ImmutableList.of(new LeaveVineTreeDecorator())).setSapling((net.minecraftforge.common.IPlantable) TerraBlockRegistry.SAPLING_PEARL.get()).build();
+    public static final BaseTreeFeatureConfig MAHOGANY_GROUND_BUSH_CONFIG = (new BaseTreeFeatureConfig.Builder(new SimpleBlockStateProvider(MAHOGANY_LOG), new SimpleBlockStateProvider(MAHOGANY_LEAF))).baseHeight(4).setSapling((net.minecraftforge.common.IPlantable)TerraBlockRegistry.SAPLING_MAHOGANY.get()).build();
 
-//    public static void addSnowTrees(Biome biomeIn)
-//    {
-//        biomeIn.addFeature(GenerationStage.Decoration.VEGETAL_DECORATION, TerraFeatureRegistry.TREE_BOREAL.get().withConfiguration(IFeatureConfig.NO_FEATURE_CONFIG));
-//    }
 
-    public static void addPearlTrees(Biome biomeIn)
+    public static void addSnowTrees(Biome biomeIn)
     {
-        biomeIn.addFeature(GenerationStage.Decoration.VEGETAL_DECORATION, Feature.RANDOM_SELECTOR.withConfiguration(new MultipleRandomFeatureConfig(ImmutableList.of(Feature.FANCY_TREE.withConfiguration(PEARL_TREE_BLUE_CONFIG).withChance(0.2F), Feature.FANCY_TREE.withConfiguration(PEARL_TREE_CYAN_CONFIG).withChance(0.2F), Feature.FANCY_TREE.withConfiguration(PEARL_TREE_GREEN_CONFIG).withChance(0.2F), Feature.FANCY_TREE.withConfiguration(PEARL_TREE_MAGENTA_CONFIG).withChance(0.2F), Feature.FANCY_TREE.withConfiguration(PEARL_TREE_PINK_CONFIG).withChance(0.2F), Feature.FANCY_TREE.withConfiguration(PEARL_TREE_PURPLE_CONFIG).withChance(0.2F), Feature.FANCY_TREE.withConfiguration(PEARL_TREE_RED_CONFIG).withChance(0.2F)), Feature.FANCY_TREE.withConfiguration(PEARL_TREE_YELLOW_CONFIG))).withPlacement(Placement.COUNT_EXTRA_HEIGHTMAP.configure(new AtSurfaceWithExtraConfig(3, 0.2F, 1))));
+        biomeIn.addFeature(GenerationStage.Decoration.VEGETAL_DECORATION, BOREAL_TREE.withPlacement(Placement.COUNT_EXTRA_HEIGHTMAP.configure(new AtSurfaceWithExtraConfig(5, 0.2F, 1))));
     }
 
-    public static void addEbonTreesGrass(Biome biomeIn)
+    public static void addEbonTreesGrass(Biome biomeIn, int count, float extraChance, int extra)
     {
-        biomeIn.addFeature(GenerationStage.Decoration.VEGETAL_DECORATION, Feature.RANDOM_SELECTOR.withConfiguration(new MultipleRandomFeatureConfig(ImmutableList.of(Feature.FANCY_TREE.withConfiguration(EBON_TREE_CONFIG).withChance(0.1F)), Feature.NORMAL_TREE.withConfiguration(EBON_TREE_CONFIG))).withPlacement(Placement.COUNT_EXTRA_HEIGHTMAP.configure(new AtSurfaceWithExtraConfig(3, 0.2F, 1))));
+        biomeIn.addFeature(GenerationStage.Decoration.VEGETAL_DECORATION, EBON_TREE.withPlacement(Placement.COUNT_EXTRA_HEIGHTMAP.configure(new AtSurfaceWithExtraConfig(count, extraChance, extra))));
         biomeIn.addFeature(GenerationStage.Decoration.VEGETAL_DECORATION, Feature.RANDOM_PATCH.withConfiguration(DefaultBiomeFeatures.GRASS_CONFIG).withPlacement(Placement.NOISE_HEIGHTMAP_DOUBLE.configure(new NoiseDependant(-0.8D, 5, 10))));
     }
 
-    public static void addShadeTreesGrass(Biome biomeIn)
+    public static void addEbonForest(Biome biomeIn)
     {
-        biomeIn.addFeature(GenerationStage.Decoration.VEGETAL_DECORATION, Feature.RANDOM_SELECTOR.withConfiguration(new MultipleRandomFeatureConfig(ImmutableList.of(Feature.FANCY_TREE.withConfiguration(SHADE_TREE_CONFIG).withChance(0.1F)), Feature.NORMAL_TREE.withConfiguration(SHADE_TREE_CONFIG))).withPlacement(Placement.COUNT_EXTRA_HEIGHTMAP.configure(new AtSurfaceWithExtraConfig(3, 0.2F, 1))));
+        biomeIn.addFeature(GenerationStage.Decoration.VEGETAL_DECORATION, EBON_TREE.withPlacement(Placement.COUNT_EXTRA_HEIGHTMAP.configure(new AtSurfaceWithExtraConfig(10, 0.1F, 1))));
+    }
+
+    public static void addShadeTreesGrass(Biome biomeIn, int count, float extraChance, int extra)
+    {
+        biomeIn.addFeature(GenerationStage.Decoration.VEGETAL_DECORATION, SHADE_TREE.withPlacement(Placement.COUNT_EXTRA_HEIGHTMAP.configure(new AtSurfaceWithExtraConfig(count, extraChance, extra))));
         biomeIn.addFeature(GenerationStage.Decoration.VEGETAL_DECORATION, Feature.RANDOM_PATCH.withConfiguration(DefaultBiomeFeatures.GRASS_CONFIG).withPlacement(Placement.NOISE_HEIGHTMAP_DOUBLE.configure(new NoiseDependant(-0.8D, 5, 10))));
     }
 
-    public static void addPearlTreesFlowersGrass(Biome biomeIn)
+    public static void addShadeForest(Biome biomeIn)
     {
-        biomeIn.addFeature(GenerationStage.Decoration.VEGETAL_DECORATION, Feature.RANDOM_SELECTOR.withConfiguration(new MultipleRandomFeatureConfig(ImmutableList.of(Feature.FANCY_TREE.withConfiguration(PEARL_TREE_BLUE_CONFIG).withChance(0.2F), Feature.FANCY_TREE.withConfiguration(PEARL_TREE_CYAN_CONFIG).withChance(0.2F), Feature.FANCY_TREE.withConfiguration(PEARL_TREE_GREEN_CONFIG).withChance(0.2F), Feature.FANCY_TREE.withConfiguration(PEARL_TREE_MAGENTA_CONFIG).withChance(0.2F), Feature.FANCY_TREE.withConfiguration(PEARL_TREE_PINK_CONFIG).withChance(0.2F), Feature.FANCY_TREE.withConfiguration(PEARL_TREE_PURPLE_CONFIG).withChance(0.2F), Feature.FANCY_TREE.withConfiguration(PEARL_TREE_RED_CONFIG).withChance(0.2F)), Feature.FANCY_TREE.withConfiguration(PEARL_TREE_YELLOW_CONFIG))).withPlacement(Placement.COUNT_EXTRA_HEIGHTMAP.configure(new AtSurfaceWithExtraConfig(3, 0.2F, 1))));
+        biomeIn.addFeature(GenerationStage.Decoration.VEGETAL_DECORATION, SHADE_TREE.withPlacement(Placement.COUNT_EXTRA_HEIGHTMAP.configure(new AtSurfaceWithExtraConfig(10, 0.1F, 1))));
+    }
+
+    public static void addPearlTreesFlowersGrass(Biome biomeIn, int count, float extraChance, int extra)
+    {
+        biomeIn.addFeature(GenerationStage.Decoration.VEGETAL_DECORATION, PEARL_TREE.withPlacement(Placement.COUNT_EXTRA_HEIGHTMAP.configure(new AtSurfaceWithExtraConfig(count, extraChance, extra))));
         biomeIn.addFeature(GenerationStage.Decoration.VEGETAL_DECORATION, Feature.FLOWER.withConfiguration(DefaultBiomeFeatures.DEFAULT_FLOWER_CONFIG).withPlacement(Placement.NOISE_HEIGHTMAP_32.configure(new NoiseDependant(-0.8D, 15, 4))));
         biomeIn.addFeature(GenerationStage.Decoration.VEGETAL_DECORATION, Feature.RANDOM_PATCH.withConfiguration(DefaultBiomeFeatures.GRASS_CONFIG).withPlacement(Placement.NOISE_HEIGHTMAP_DOUBLE.configure(new NoiseDependant(-0.8D, 5, 10))));
     }
 
-    public static void addForestTrees(Biome biomeIn, TreeFeatureConfig normalTree, TreeFeatureConfig fancyTree)
+    public static void addPearlForest(Biome biomeIn)
     {
-        biomeIn.addFeature(GenerationStage.Decoration.VEGETAL_DECORATION, Feature.RANDOM_SELECTOR.withConfiguration(new MultipleRandomFeatureConfig(ImmutableList.of(Feature.NORMAL_TREE.withConfiguration(normalTree).withChance(0.2F), Feature.FANCY_TREE.withConfiguration(fancyTree).withChance(0.1F)), Feature.NORMAL_TREE.withConfiguration(normalTree))).withPlacement(Placement.COUNT_EXTRA_HEIGHTMAP.configure(new AtSurfaceWithExtraConfig(10, 0.1F, 1))));
+        biomeIn.addFeature(GenerationStage.Decoration.VEGETAL_DECORATION, PEARL_TREE.withPlacement(Placement.COUNT_EXTRA_HEIGHTMAP.configure(new AtSurfaceWithExtraConfig(10, 0.1F, 1))));
+    }
+
+    public static void addMahoganyTrees(Biome biomeIn)
+    {
+        biomeIn.addFeature(GenerationStage.Decoration.VEGETAL_DECORATION, Feature.JUNGLE_GROUND_BUSH.withConfiguration(MAHOGANY_GROUND_BUSH_CONFIG).withPlacement(Placement.COUNT_EXTRA_HEIGHTMAP.configure(new AtSurfaceWithExtraConfig(8, 0.5F, 1))));
+        biomeIn.addFeature(GenerationStage.Decoration.VEGETAL_DECORATION, MAHOGANY_TREE_LESSER.withPlacement(Placement.COUNT_EXTRA_HEIGHTMAP.configure(new AtSurfaceWithExtraConfig(8, 0.5F, 1))));
+        biomeIn.addFeature(GenerationStage.Decoration.VEGETAL_DECORATION, MAHOGANY_TREE_GREATER.withPlacement(Placement.COUNT_EXTRA_HEIGHTMAP.configure(new AtSurfaceWithExtraConfig(8, 0.5F, 1))));
+    }
+
+    public static void addForestTrees(Biome biomeIn, ConfiguredFeature tree)
+    {
+        biomeIn.addFeature(GenerationStage.Decoration.VEGETAL_DECORATION, tree.withPlacement(Placement.COUNT_EXTRA_HEIGHTMAP.configure(new AtSurfaceWithExtraConfig(10, 0.1F, 1))));
     }
 
     public static void addDyeFlowers(Biome biomeIn)

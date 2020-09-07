@@ -20,8 +20,6 @@ import org.apache.logging.log4j.Logger;
 @Mod.EventBusSubscriber(modid = Reference.MODID, bus = Mod.EventBusSubscriber.Bus.MOD)
 public class TerraItemBlockRegistry
 {
-    private static final Logger LOGGER = LogManager.getLogger(Reference.MODID + " ItemBlock Registry");
-
     @SubscribeEvent
     public static void onRegisterItems(final RegistryEvent.Register<Item> event)
     {
@@ -103,6 +101,5 @@ public class TerraItemBlockRegistry
                     // Register the BlockItem
                     registry.register(blockItem);
                 });
-        LOGGER.debug("Registered ItemBlocks");
     }
 }

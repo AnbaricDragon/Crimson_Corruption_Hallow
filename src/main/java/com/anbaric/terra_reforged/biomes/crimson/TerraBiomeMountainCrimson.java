@@ -27,7 +27,7 @@ public class TerraBiomeMountainCrimson extends Biome
         TerraBiomeFeatures.addStoneVariants(this, TerraBiomeFeatures.CRIMSON);
         TerraBiomeFeatures.addCorruptOres(this);
         TerraBiomeFeatures.addSedimentDisks(this, TerraBiomeFeatures.GRAVEL, TerraBiomeFeatures.CRIMSON_SAND);
-        TerraBiomeFeatures.addShadeTreesGrass(this);
+        TerraBiomeFeatures.addShadeTreesGrass(this,0, 0.1F, 1);
         TerraBiomeFeatures.addMushrooms(this, TerraBiomeFeatures.VICIOUS_MUSHROOM_CONFIG);
         TerraBiomeFeatures.addReedsAndPumpkins(this, TerraBiomeFeatures.CRIMSON_SUGAR_CANE_CONFIG);
         DefaultBiomeFeatures.addSprings(this);

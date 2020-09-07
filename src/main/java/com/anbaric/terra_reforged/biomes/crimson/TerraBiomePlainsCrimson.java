@@ -32,7 +32,7 @@ public class TerraBiomePlainsCrimson extends Biome
         TerraBiomeFeatures.addStoneVariants(this, TerraBiomeFeatures.CRIMSON);
         TerraBiomeFeatures.addCrimsonOres(this);
         TerraBiomeFeatures.addSedimentDisks(this, TerraBiomeFeatures.GRAVEL, TerraBiomeFeatures.CRIMSON_SAND);
-        TerraBiomeFeatures.addShadeTreesGrass(this);
+        TerraBiomeFeatures.addShadeTreesGrass(this, 0, 0.05F, 1);
         DefaultBiomeFeatures.addMushrooms(this);
         TerraBiomeFeatures.addReedsAndPumpkins(this, TerraBiomeFeatures.CRIMSON_SUGAR_CANE_CONFIG);
         DefaultBiomeFeatures.addSprings(this);

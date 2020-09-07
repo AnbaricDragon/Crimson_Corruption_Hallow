@@ -22,8 +22,8 @@ import org.apache.logging.log4j.Logger;
 
 import java.util.stream.Collectors;
 
-// The value here should match an entry in the META-INF/mods.toml file
-@Mod(Reference.MODID) public class TerraReforged
+@Mod(Reference.MODID)
+public class TerraReforged
 {
     private static final Logger LOGGER = LogManager.getLogger(Reference.MODID);
 

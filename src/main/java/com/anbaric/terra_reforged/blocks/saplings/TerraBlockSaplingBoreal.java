@@ -1,6 +1,6 @@
 package com.anbaric.terra_reforged.blocks.saplings;
 
-import com.anbaric.terra_reforged.features.vegetation.TerraTreeBoreal;
+import com.anbaric.terra_reforged.features.vegetation.trees.TerraTreeBoreal;
 import com.anbaric.terra_reforged.util.init.TerraBlockRegistry;
 import net.minecraft.block.*;
 import net.minecraft.state.IntegerProperty;

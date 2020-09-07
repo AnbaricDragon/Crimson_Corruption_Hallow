@@ -32,8 +32,9 @@ public class TerraBiomeSnowPure extends Biome
         this.addStructure(Feature.STRONGHOLD.withConfiguration(IFeatureConfig.NO_FEATURE_CONFIG));
         this.addCarver(GenerationStage.Carving.AIR, Biome.createCarver(TerraWorldCarver.TERRA_SNOW_CAVES, new ProbabilityConfig(0.7F)));
         TerraBiomeFeatures.addIceVariants(this, TerraBiomeFeatures.PURE, TerraBiomeFeatures.SNOW, TerraBiomeFeatures.ICE, TerraBiomeFeatures.PACKED_ICE);
+        TerraBiomeFeatures.addSnowTrees(this);
         TerraBiomeFeatures.addPureOres(this);
         TerraBiomeFeatures.addDyeFlowers(this);
-        DefaultBiomeFeatures.addFreezeTopLayer(this);
+        //DefaultBiomeFeatures.addFreezeTopLayer(this);
     }
 }

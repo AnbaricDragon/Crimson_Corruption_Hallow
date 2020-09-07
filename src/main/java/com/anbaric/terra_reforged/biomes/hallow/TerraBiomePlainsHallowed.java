@@ -32,7 +32,7 @@ public class TerraBiomePlainsHallowed extends Biome
         TerraBiomeFeatures.addStoneVariants(this, TerraBiomeFeatures.HALLOWED);
         TerraBiomeFeatures.addHallowedOres(this);
         TerraBiomeFeatures.addSedimentDisks(this, TerraBiomeFeatures.GRAVEL, TerraBiomeFeatures.HALLOWED_SAND);
-        TerraBiomeFeatures.addPearlTreesFlowersGrass(this);
+        TerraBiomeFeatures.addPearlTreesFlowersGrass(this, 0, 0.05F, 1);
         DefaultBiomeFeatures.addMushrooms(this);
         TerraBiomeFeatures.addReedsAndPumpkins(this, TerraBiomeFeatures.HALLOWED_SUGAR_CANE_CONFIG);
         DefaultBiomeFeatures.addSprings(this);

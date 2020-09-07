@@ -1,7 +1,7 @@
 package com.anbaric.terra_reforged.blocks.saplings;
 
-import com.anbaric.terra_reforged.features.vegetation.TerraTreeShade;
 import com.anbaric.terra_reforged.util.init.TerraBlockRegistry;
+import com.anbaric.terra_reforged.util.init.TerraFeatureRegistry;
 import net.minecraft.block.*;
 import net.minecraft.state.IntegerProperty;
 import net.minecraft.state.StateContainer;
@@ -76,7 +76,7 @@ public class TerraBlockSaplingShade extends BushBlock implements IGrowable
             {
                 return;
             }
-            TerraTreeShade.generateTree(worldIn, pos, rand);
+            TerraFeatureRegistry.TREE_SHADE.get().generateTree(worldIn, pos, rand);
         }
 
     }

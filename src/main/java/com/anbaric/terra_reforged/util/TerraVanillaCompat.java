@@ -1,6 +1,7 @@
 package com.anbaric.terra_reforged.util;
 
 import com.anbaric.terra_reforged.features.TerraBiomeFeatures;
+import com.anbaric.terra_reforged.features.vegetation.trees.TerraTreeBoreal;
 import com.anbaric.terra_reforged.util.init.TerraBlockRegistry;
 import com.google.common.collect.Maps;
 import net.minecraft.block.Block;
@@ -10,11 +11,9 @@ import net.minecraft.block.FireBlock;
 import net.minecraft.item.AxeItem;
 import net.minecraft.util.IItemProvider;
 import net.minecraft.world.biome.Biome;
-import net.minecraft.world.biome.DefaultBiomeFeatures;
 import net.minecraft.world.gen.GenerationStage;
-import net.minecraft.world.gen.feature.Feature;
-import net.minecraft.world.gen.feature.OreFeatureConfig;
-import net.minecraft.world.gen.placement.CountRangeConfig;
+import net.minecraft.world.gen.feature.*;
+import net.minecraft.world.gen.placement.AtSurfaceWithExtraConfig;
 import net.minecraft.world.gen.placement.Placement;
 import net.minecraftforge.registries.ForgeRegistries;
 
@@ -142,16 +141,15 @@ public class TerraVanillaCompat
         }
     }
 
+    public static final ConfiguredFeature BOREAL_TREE = new TerraTreeBoreal(NoFeatureConfig::deserialize).withConfiguration(IFeatureConfig.NO_FEATURE_CONFIG).withPlacement(Placement.COUNT_EXTRA_HEIGHTMAP.configure(new AtSurfaceWithExtraConfig(5, 0.2F, 1)));
+
     public static void setupTrees()
     {
         for (Biome biome : ForgeRegistries.BIOMES)
         {
-            if (!biome.getRegistryName().getNamespace().startsWith(Reference.MODID))
+            if(biome.getPrecipitation() == Biome.RainType.SNOW && !biome.getRegistryName().getNamespace().startsWith(Reference.MODID))
             {
-                if(biome.getPrecipitation() == Biome.RainType.SNOW)
-                {
-
-                }
+                biome.addFeature(GenerationStage.Decoration.VEGETAL_DECORATION, BOREAL_TREE);
             }
         }
     }
@@ -170,6 +168,4 @@ public class TerraVanillaCompat
         FireBlock fireblock = (FireBlock) Blocks.FIRE;
         fireblock.setFireInfo(blockIn, encouragement, flammability);
     }
-
-
 }

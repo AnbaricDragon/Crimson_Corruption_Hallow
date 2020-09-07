@@ -2,7 +2,6 @@ package com.anbaric.terra_reforged.blocks;
 
 import com.anbaric.terra_reforged.TerraReforged;
 import com.anbaric.terra_reforged.features.vegetation.TerraGlowingMushroom;
-import com.anbaric.terra_reforged.features.vegetation.TerraTreeShade;
 import com.anbaric.terra_reforged.util.init.TerraBlockRegistry;
 import net.minecraft.block.*;
 import net.minecraft.state.IntegerProperty;

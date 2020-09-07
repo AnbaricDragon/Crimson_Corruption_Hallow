@@ -38,7 +38,7 @@ public class TerraBiomeForestCorrupt extends Biome
         TerraBiomeFeatures.addStoneVariants(this, TerraBiomeFeatures.CORRUPT);
         TerraBiomeFeatures.addCorruptOres(this);
         TerraBiomeFeatures.addSedimentDisks(this, TerraBiomeFeatures.GRAVEL, TerraBiomeFeatures.CORRUPT_SAND);
-        TerraBiomeFeatures.addForestTrees(this, TerraBiomeFeatures.EBON_TREE_CONFIG, TerraBiomeFeatures.EBON_TREE_CONFIG);
+        TerraBiomeFeatures.addEbonForest(this);
         DefaultBiomeFeatures.addDefaultFlowers(this);
         DefaultBiomeFeatures.addGrass(this);
         TerraBiomeFeatures.addMushrooms(this, TerraBiomeFeatures.VILE_MUSHROOM_CONFIG);

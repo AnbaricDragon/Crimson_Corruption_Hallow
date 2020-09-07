@@ -32,7 +32,7 @@ public class TerraBiomeForestCrimson extends Biome
         TerraBiomeFeatures.addStoneVariants(this, TerraBiomeFeatures.CRIMSON);
         TerraBiomeFeatures.addCrimsonOres(this);
         TerraBiomeFeatures.addSedimentDisks(this, TerraBiomeFeatures.GRAVEL, TerraBiomeFeatures.CRIMSON_SAND);
-        TerraBiomeFeatures.addForestTrees(this, TerraBiomeFeatures.SHADE_TREE_CONFIG, TerraBiomeFeatures.SHADE_TREE_CONFIG);
+        TerraBiomeFeatures.addShadeForest(this);
         DefaultBiomeFeatures.addDefaultFlowers(this);
         DefaultBiomeFeatures.addGrass(this);
         TerraBiomeFeatures.addMushrooms(this, TerraBiomeFeatures.VICIOUS_MUSHROOM_CONFIG);

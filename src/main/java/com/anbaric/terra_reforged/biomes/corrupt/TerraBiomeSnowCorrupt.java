@@ -39,7 +39,8 @@ public class TerraBiomeSnowCorrupt extends Biome
         TerraBiomeFeatures.addCorruptOres(this);
         TerraBiomeFeatures.addSedimentDisks(this, TerraBiomeFeatures.SLUSH, TerraBiomeFeatures.CORRUPT_SAND);
         TerraBiomeFeatures.addDyeFlowers(this);
-//        TerraBiomeFeatures.addCorruptSnowLayer(this);
+        TerraBiomeFeatures.addSnowTrees(this);
+        TerraBiomeFeatures.addCorruptSnowLayer(this);
     }
 
     @OnlyIn(Dist.CLIENT)

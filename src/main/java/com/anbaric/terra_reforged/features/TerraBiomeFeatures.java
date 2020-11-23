@@ -1,6 +1,8 @@
 package com.anbaric.terra_reforged.features;
 
+import com.anbaric.terra_reforged.TerraReforged;
 import com.anbaric.terra_reforged.features.carvers.TerraWorldCarver;
+import com.anbaric.terra_reforged.features.landscape.TerraFeatureSnowLayer;
 import com.anbaric.terra_reforged.features.vegetation.trees.*;
 import com.anbaric.terra_reforged.util.init.TerraBlockRegistry;
 import com.anbaric.terra_reforged.util.init.TerraFeatureRegistry;
@@ -101,7 +103,7 @@ public class TerraBiomeFeatures
     //Corrupt Blocks
     public static final BlockState GRASS_CORRUPT = TerraBlockRegistry.GRASS_CORRUPT.get().getDefaultState();
     public static final BlockState CORRUPT_SNOW = TerraBlockRegistry.SNOW_CORRUPT.get().getDefaultState();
-    public static final BlockState CORRUPT_SNOW_LAYER = TerraBlockRegistry.SAND_EBON.get().getDefaultState();
+    public static final BlockState CORRUPT_SNOW_LAYER = TerraBlockRegistry.SNOW_CORRUPT_LAYER.get().getDefaultState();
     public static final BlockState CORRUPT_ICE = TerraBlockRegistry.ICE_PURPLE.get().getDefaultState();
     public static final BlockState CORRUPT_PACKED_ICE = TerraBlockRegistry.ICE_HARD_PURPLE.get().getDefaultState();
     public static final BlockState CORRUPT_SAND = TerraBlockRegistry.SAND_EBON.get().getDefaultState();
@@ -134,7 +136,7 @@ public class TerraBiomeFeatures
     //Crimson Blocks
     public static final BlockState GRASS_CRIMSON = TerraBlockRegistry.GRASS_CRIMSON.get().getDefaultState();
     public static final BlockState CRIMSON_SNOW = TerraBlockRegistry.SNOW_CRIMSON.get().getDefaultState();
-    public static final BlockState CRIMSON_SNOW_LAYER = TerraBlockRegistry.SAND_CRIM.get().getDefaultState();
+    public static final BlockState CRIMSON_SNOW_LAYER = TerraBlockRegistry.SNOW_CRIMSON_LAYER.get().getDefaultState();
     public static final BlockState CRIMSON_ICE = TerraBlockRegistry.ICE_RED.get().getDefaultState();
     public static final BlockState CRIMSON_PACKED_ICE = TerraBlockRegistry.ICE_HARD_RED.get().getDefaultState();
     public static final BlockState CRIMSON_SAND = TerraBlockRegistry.SAND_CRIM.get().getDefaultState();
@@ -166,8 +168,8 @@ public class TerraBiomeFeatures
 
     //Hallowed Blocks
     public static final BlockState GRASS_HALLOWED = TerraBlockRegistry.GRASS_HALLOWED.get().getDefaultState();
-    public static final BlockState HALLOWED_SNOW_LAYER = TerraBlockRegistry.SAND_PEARL.get().getDefaultState();
     public static final BlockState HALLOWED_SNOW = TerraBlockRegistry.SNOW_HALLOWED.get().getDefaultState();
+    public static final BlockState HALLOWED_SNOW_LAYER = TerraBlockRegistry.SNOW_HALLOWED_LAYER.get().getDefaultState();
     public static final BlockState HALLOWED_ICE = TerraBlockRegistry.ICE_PINK.get().getDefaultState();
     public static final BlockState HALLOWED_PACKED_ICE = TerraBlockRegistry.ICE_HARD_PINK.get().getDefaultState();
     public static final BlockState HALLOWED_SAND = TerraBlockRegistry.SAND_PEARL.get().getDefaultState();
@@ -217,6 +219,9 @@ public class TerraBiomeFeatures
     public static final ConfiguredFeature EBON_TREE = new TerraTreeEbon(NoFeatureConfig::deserialize).withConfiguration(IFeatureConfig.NO_FEATURE_CONFIG);
     public static final ConfiguredFeature SHADE_TREE = new TerraTreeShade(NoFeatureConfig::deserialize).withConfiguration(IFeatureConfig.NO_FEATURE_CONFIG);
     public static final ConfiguredFeature PEARL_TREE = new TerraTreePearl(NoFeatureConfig::deserialize).withConfiguration(IFeatureConfig.NO_FEATURE_CONFIG);
+    public static final ConfiguredFeature CORRUPT_LAYER_SNOW = new TerraFeatureSnowLayer(NoFeatureConfig::deserialize, CORRUPT_ICE, CORRUPT_SNOW_LAYER).withConfiguration(IFeatureConfig.NO_FEATURE_CONFIG);
+    public static final ConfiguredFeature CRIMSON_LAYER_SNOW = new TerraFeatureSnowLayer(NoFeatureConfig::deserialize, CRIMSON_ICE, CRIMSON_SNOW_LAYER).withConfiguration(IFeatureConfig.NO_FEATURE_CONFIG);
+    public static final ConfiguredFeature HALLOWED_LAYER_SNOW = new TerraFeatureSnowLayer(NoFeatureConfig::deserialize, HALLOWED_ICE, HALLOWED_SNOW_LAYER).withConfiguration(IFeatureConfig.NO_FEATURE_CONFIG);
 
     public static final TreeFeatureConfig EBON_TREE_CONFIG = (new TreeFeatureConfig.Builder(new SimpleBlockStateProvider(EBON_LOG), new SimpleBlockStateProvider(EBON_LEAF), new BlobFoliagePlacer(2, 0))).baseHeight(4).heightRandA(2).foliageHeight(3).ignoreVines().setSapling((net.minecraftforge.common.IPlantable) TerraBlockRegistry.SAPLING_EBON.get()).build();
     public static final TreeFeatureConfig EBON_SWAMP_TREE_CONFIG = (new TreeFeatureConfig.Builder(new SimpleBlockStateProvider(EBON_LOG), new SimpleBlockStateProvider(EBON_LEAF), new BlobFoliagePlacer(3, 0))).baseHeight(5).heightRandA(3).foliageHeight(3).maxWaterDepth(1).decorators(ImmutableList.of(new LeaveVineTreeDecorator())).setSapling((net.minecraftforge.common.IPlantable) TerraBlockRegistry.SAPLING_EBON.get()).build();
@@ -381,17 +386,20 @@ public class TerraBiomeFeatures
         biomeIn.addFeature(GenerationStage.Decoration.VEGETAL_DECORATION, Feature.RANDOM_PATCH.withConfiguration(doubleGrass).withPlacement(Placement.NOISE_HEIGHTMAP_32.configure(new NoiseDependant(-0.8D, 0, 7))));
     }
 
-    //    public static void addCorruptSnowLayer(Biome biomeIn) {
-    //        biomeIn.addFeature(GenerationStage.Decoration.TOP_LAYER_MODIFICATION, TerraReforged.CORRUPT_SNOW_LAYER.withConfiguration(IFeatureConfig.NO_FEATURE_CONFIG).withPlacement(Placement.NOPE.configure(IPlacementConfig.NO_PLACEMENT_CONFIG)));
-    //    }
-    //
-    //    public static void addCrimsonSnowLayer(Biome biomeIn) {
-    //        biomeIn.addFeature(GenerationStage.Decoration.TOP_LAYER_MODIFICATION, TerraReforged.CRIMSON_SNOW_LAYER.withConfiguration(IFeatureConfig.NO_FEATURE_CONFIG).withPlacement(Placement.NOPE.configure(IPlacementConfig.NO_PLACEMENT_CONFIG)));
-    //    }
-    //
-    //    public static void addHallowedSnowLayer(Biome biomeIn) {
-    //        biomeIn.addFeature(GenerationStage.Decoration.TOP_LAYER_MODIFICATION, TerraReforged.HALLOWED_SNOW_LAYER.withConfiguration(IFeatureConfig.NO_FEATURE_CONFIG).withPlacement(Placement.NOPE.configure(IPlacementConfig.NO_PLACEMENT_CONFIG)));
-    //    }
+    public static void addCorruptSnowLayer(Biome biomeIn)
+    {
+        biomeIn.addFeature(GenerationStage.Decoration.TOP_LAYER_MODIFICATION, CORRUPT_LAYER_SNOW.withPlacement(Placement.NOPE.configure(IPlacementConfig.NO_PLACEMENT_CONFIG)));
+    }
+
+    public static void addCrimsonSnowLayer(Biome biomeIn)
+    {
+        biomeIn.addFeature(GenerationStage.Decoration.TOP_LAYER_MODIFICATION, CRIMSON_LAYER_SNOW.withPlacement(Placement.NOPE.configure(IPlacementConfig.NO_PLACEMENT_CONFIG)));
+    }
+
+    public static void addHallowedSnowLayer(Biome biomeIn)
+    {
+        biomeIn.addFeature(GenerationStage.Decoration.TOP_LAYER_MODIFICATION, HALLOWED_LAYER_SNOW.withPlacement(Placement.NOPE.configure(IPlacementConfig.NO_PLACEMENT_CONFIG)));
+    }
 
     public static void addVanillaOres(Biome biomeIn)
     {

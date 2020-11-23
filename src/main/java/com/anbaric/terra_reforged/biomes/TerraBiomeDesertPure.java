@@ -38,4 +38,6 @@ public class TerraBiomeDesertPure extends Biome
         DefaultBiomeFeatures.addDesertFeatures(this);
         DefaultBiomeFeatures.addFreezeTopLayer(this);
     }
+
+
 }

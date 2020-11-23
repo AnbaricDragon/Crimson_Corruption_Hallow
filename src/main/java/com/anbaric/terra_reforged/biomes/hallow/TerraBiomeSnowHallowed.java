@@ -40,7 +40,8 @@ public class TerraBiomeSnowHallowed extends Biome
         TerraBiomeFeatures.addHallowedOres(this);
         TerraBiomeFeatures.addSedimentDisks(this, TerraBiomeFeatures.SLUSH, TerraBiomeFeatures.HALLOWED_SAND);
         TerraBiomeFeatures.addDyeFlowers(this);
-//        TerraBiomeFeatures.addHallowedSnowLayer(this);
+        TerraBiomeFeatures.addSnowTrees(this);
+        TerraBiomeFeatures.addHallowedSnowLayer(this);
     }
 
     @OnlyIn(Dist.CLIENT)

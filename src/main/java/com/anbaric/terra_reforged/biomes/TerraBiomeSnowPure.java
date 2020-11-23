@@ -35,6 +35,6 @@ public class TerraBiomeSnowPure extends Biome
         TerraBiomeFeatures.addSnowTrees(this);
         TerraBiomeFeatures.addPureOres(this);
         TerraBiomeFeatures.addDyeFlowers(this);
-        //DefaultBiomeFeatures.addFreezeTopLayer(this);
+        DefaultBiomeFeatures.addFreezeTopLayer(this);
     }
 }

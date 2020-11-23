@@ -59,7 +59,6 @@ public class TerraFeatureSnowLayer extends Feature<NoFeatureConfig>
                 }
             }
         }
-
         return true;
     }
 }

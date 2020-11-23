@@ -2,6 +2,9 @@ package com.anbaric.terra_reforged;
 
 import com.anbaric.terra_reforged.util.Reference;
 import com.anbaric.terra_reforged.util.TerraVanillaCompat;
+import com.anbaric.terra_reforged.util.capabilities.multijump.TerraCapabilityMultiJump;
+import com.anbaric.terra_reforged.util.events.TerraCapabilitiesEvent;
+import com.anbaric.terra_reforged.util.events.TerraJumpingItemsEvent;
 import com.anbaric.terra_reforged.util.events.TerraStructureProtectEvent;
 import com.anbaric.terra_reforged.util.init.*;
 import net.minecraft.util.DamageSource;
@@ -57,6 +60,8 @@ public class TerraReforged
         // Register ourselves for server and other game events we are interested in
         MinecraftForge.EVENT_BUS.register(this);
         MinecraftForge.EVENT_BUS.register(TerraStructureProtectEvent.class);
+        MinecraftForge.EVENT_BUS.register(TerraCapabilitiesEvent.class);
+        MinecraftForge.EVENT_BUS.register(TerraJumpingItemsEvent.class);
 
     }
 
@@ -67,6 +72,8 @@ public class TerraReforged
         TerraVanillaCompat.setupOres();
         TerraVanillaCompat.setupDyePlants();
         TerraVanillaCompat.setupTrees();
+
+        TerraCapabilityMultiJump.register();
     }
 
     private void doClientStuff(final FMLClientSetupEvent event)

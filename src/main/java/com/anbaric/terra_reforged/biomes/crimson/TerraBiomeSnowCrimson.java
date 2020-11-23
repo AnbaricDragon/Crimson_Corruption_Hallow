@@ -39,7 +39,8 @@ public class TerraBiomeSnowCrimson extends Biome
         TerraBiomeFeatures.addCrimsonOres(this);
         TerraBiomeFeatures.addSedimentDisks(this, TerraBiomeFeatures.SLUSH, TerraBiomeFeatures.CRIMSON_SAND);
         TerraBiomeFeatures.addDyeFlowers(this);
-//        TerraBiomeFeatures.addCrimsonSnowLayer(this);
+        TerraBiomeFeatures.addSnowTrees(this);
+        TerraBiomeFeatures.addCrimsonSnowLayer(this);
     }
 
     @OnlyIn(Dist.CLIENT)

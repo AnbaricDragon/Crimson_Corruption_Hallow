@@ -41,6 +41,7 @@ public class TerraBiomeMudJungle extends Biome
         DefaultBiomeFeatures.addReedsAndPumpkins(this);
         DefaultBiomeFeatures.addSprings(this);
         DefaultBiomeFeatures.addJunglePlants(this);
-
     }
+
+
 }

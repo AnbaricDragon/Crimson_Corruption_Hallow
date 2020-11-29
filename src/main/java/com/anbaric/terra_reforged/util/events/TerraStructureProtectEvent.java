@@ -1,10 +1,8 @@
 package com.anbaric.terra_reforged.util.events;
 
-import com.anbaric.terra_reforged.features.TerraBiomeFeatures;
 import com.anbaric.terra_reforged.util.init.TerraBlockRegistry;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
-import net.minecraft.item.ItemStack;
 import net.minecraftforge.event.world.BlockEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 

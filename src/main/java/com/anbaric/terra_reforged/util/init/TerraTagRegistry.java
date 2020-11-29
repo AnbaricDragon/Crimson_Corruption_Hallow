@@ -1,24 +1,21 @@
 package com.anbaric.terra_reforged.util.init;
 
-import com.anbaric.terra_reforged.util.TerraItemGroups;
 import net.minecraft.block.Block;
 import net.minecraft.item.Item;
 import net.minecraft.tags.BlockTags;
+import net.minecraft.tags.ITag;
 import net.minecraft.tags.ItemTags;
-import net.minecraft.tags.Tag;
-import net.minecraft.util.ResourceLocation;
-import net.minecraftforge.fml.RegistryObject;
 
 public class TerraTagRegistry
 {
-    public static final Tag<Block> MOSS = new BlockTags.Wrapper(new ResourceLocation("moss"));
+    public static final ITag.INamedTag<Block> MOSS = BlockTags.makeWrapperTag("terra_reforged:moss");
 
-    public static final Tag<Item> INGOT_COPPER = new ItemTags.Wrapper(new ResourceLocation("forge:ingots/copper"));
-    public static final Tag<Item> INGOT_TIN = new ItemTags.Wrapper(new ResourceLocation("forge:ingots/tin"));
-    public static final Tag<Item> INGOT_LEAD = new ItemTags.Wrapper(new ResourceLocation("forge:ingots/lead"));
-    public static final Tag<Item> INGOT_TUNGSTEN = new ItemTags.Wrapper(new ResourceLocation("forge:ingots/tungsten"));
-    public static final Tag<Item> INGOT_SILVER = new ItemTags.Wrapper(new ResourceLocation("forge:ingots/silver"));
-    public static final Tag<Item> INGOT_PLATINUM = new ItemTags.Wrapper(new ResourceLocation("forge:ingots/platinum"));
-    public static final Tag<Item> INGOT_MYTHRIL = new ItemTags.Wrapper(new ResourceLocation("forge:ingots/mythril"));
-    public static final Tag<Item> INGOT_TITANIUM = new ItemTags.Wrapper(new ResourceLocation("forge:ingots/titanium"));
+    public static final ITag.INamedTag<Item> INGOT_COPPER = ItemTags.makeWrapperTag("forge:ingots/copper");
+    public static final ITag.INamedTag<Item> INGOT_TIN = ItemTags.makeWrapperTag("forge:ingots/tin");
+    public static final ITag.INamedTag<Item> INGOT_LEAD = ItemTags.makeWrapperTag("forge:ingots/lead");
+    public static final ITag.INamedTag<Item> INGOT_TUNGSTEN = ItemTags.makeWrapperTag("forge:ingots/tungsten");
+    public static final ITag.INamedTag<Item> INGOT_SILVER = ItemTags.makeWrapperTag("forge:ingots/silver");
+    public static final ITag.INamedTag<Item> INGOT_PLATINUM = ItemTags.makeWrapperTag("forge:ingots/platinum");
+    public static final ITag.INamedTag<Item> INGOT_MYTHRIL = ItemTags.makeWrapperTag("forge:ingots/mythril");
+    public static final ITag.INamedTag<Item> INGOT_TITANIUM = ItemTags.makeWrapperTag("forge:ingots/titanium");
 }

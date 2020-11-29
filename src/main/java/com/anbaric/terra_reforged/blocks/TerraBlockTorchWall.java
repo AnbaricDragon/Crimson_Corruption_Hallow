@@ -5,13 +5,10 @@ import com.anbaric.terra_reforged.util.init.TerraParticleRegistry;
 import com.google.common.collect.ImmutableMap;
 import com.google.common.collect.Maps;
 import net.minecraft.block.*;
-import net.minecraft.fluid.Fluids;
-import net.minecraft.fluid.IFluidState;
 import net.minecraft.item.BlockItemUseContext;
 import net.minecraft.particles.IParticleData;
 import net.minecraft.particles.ParticleTypes;
 import net.minecraft.state.DirectionProperty;
-import net.minecraft.state.IProperty;
 import net.minecraft.state.StateContainer;
 import net.minecraft.util.Direction;
 import net.minecraft.util.Mirror;
@@ -56,11 +53,6 @@ public class TerraBlockTorchWall extends TerraBlockTorch
         else if (this == TerraBlockRegistry.TORCH_BONE_WALL.get()) { return TerraParticleRegistry.TORCH_FLAME_BONE.get(); }
         else if (this == TerraBlockRegistry.TORCH_BRIGHT_WALL.get()) { return TerraParticleRegistry.TORCH_FLAME_BRIGHT.get(); }
         else return this == TerraBlockRegistry.TORCH_DEMON_WALL.get() ? TerraParticleRegistry.TORCH_FLAME_DEMON.get() : ParticleTypes.FLAME;
-    }
-
-    public String getTranslationKey()
-    {
-        return this.asItem().getTranslationKey();
     }
 
     public VoxelShape getShape(BlockState state, IBlockReader worldIn, BlockPos pos, ISelectionContext context)
@@ -127,19 +119,18 @@ public class TerraBlockTorchWall extends TerraBlockTorch
         p_180655_2_.addParticle(this.getParticle(), lvt_6_1_ + 0.27D * (double) lvt_16_1_.getXOffset(), lvt_8_1_ + 0.22D, lvt_10_1_ + 0.27D * (double) lvt_16_1_.getZOffset(), 0.0D, 0.0D, 0.0D);
     }
 
-    public BlockState rotate(BlockState p_185499_1_, Rotation p_185499_2_)
+    public BlockState rotate(BlockState state, Rotation p_185499_2_)
     {
-        return (BlockState) p_185499_1_.with(HORIZONTAL_FACING, p_185499_2_.rotate((Direction) p_185499_1_.get(HORIZONTAL_FACING)));
+        return (BlockState) state.with(HORIZONTAL_FACING, p_185499_2_.rotate((Direction) state.get(HORIZONTAL_FACING)));
     }
 
-    public BlockState mirror(BlockState p_185471_1_, Mirror p_185471_2_)
+    public BlockState mirror(BlockState state, Mirror p_185471_2_)
     {
-        return p_185471_1_.rotate(p_185471_2_.toRotation((Direction) p_185471_1_.get(HORIZONTAL_FACING)));
+        return state.rotate(p_185471_2_.toRotation((Direction) state.get(HORIZONTAL_FACING)));
     }
 
-    protected void fillStateContainer(StateContainer.Builder<Block, BlockState> p_206840_1_)
-    {
-        p_206840_1_.add(new IProperty[]{HORIZONTAL_FACING});
+    protected void fillStateContainer(StateContainer.Builder<Block, BlockState> builder) {
+        builder.add(HORIZONTAL_FACING);
     }
 
     static

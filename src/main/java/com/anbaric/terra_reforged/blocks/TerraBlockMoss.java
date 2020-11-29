@@ -3,10 +3,7 @@ package com.anbaric.terra_reforged.blocks;
 import com.anbaric.terra_reforged.TerraReforged;
 import com.anbaric.terra_reforged.util.init.TerraBlockRegistry;
 import com.anbaric.terra_reforged.util.init.TerraTagRegistry;
-import net.minecraft.block.Block;
-import net.minecraft.block.BlockState;
-import net.minecraft.block.Blocks;
-import net.minecraft.block.BushBlock;
+import net.minecraft.block.*;
 import net.minecraft.item.BlockItemUseContext;
 import net.minecraft.util.Direction;
 import net.minecraft.util.math.BlockPos;
@@ -34,7 +31,7 @@ public class TerraBlockMoss extends Block
     {
         Block plant = plantable.getPlant(world, pos).getBlock();
 
-        return plant.isIn(TerraTagRegistry.MOSS);
+        return plant.isIn(TerraTagRegistry.MOSS) || plant == getMoss();
     }
 
     public boolean canSpread(World worldIn, BlockPos pos)
@@ -87,9 +84,9 @@ public class TerraBlockMoss extends Block
     {
         if (worldIn.getBlockState(pos.up()).getBlock() == this.moss)
         {
-            worldIn.getWorld().setBlockState(pos.up(), Blocks.AIR.getDefaultState());
+            worldIn.setBlockState(pos, Blocks.AIR.getDefaultState(), 3);
         }
-        worldIn.getWorld().setBlockState(pos, Blocks.STONE.getDefaultState(), 0);
+        worldIn.setBlockState(pos, Blocks.STONE.getDefaultState(), 0);
     }
 }
 

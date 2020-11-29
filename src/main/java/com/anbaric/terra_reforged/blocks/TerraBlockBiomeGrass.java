@@ -5,7 +5,7 @@ import com.anbaric.terra_reforged.util.handlers.SpreadingHandler.EnumBiomeBlockT
 import com.anbaric.terra_reforged.util.handlers.SpreadingHandler.EnumBiomeType;
 import com.anbaric.terra_reforged.util.init.TerraBlockRegistry;
 import net.minecraft.block.*;
-import net.minecraft.fluid.IFluidState;
+import net.minecraft.fluid.FluidState;
 import net.minecraft.item.BlockItemUseContext;
 import net.minecraft.tags.FluidTags;
 import net.minecraft.util.Direction;
@@ -44,15 +44,15 @@ public class TerraBlockBiomeGrass extends SnowyDirtBlock implements IGrowable
         {
             for (Direction direction : Direction.Plane.HORIZONTAL)
             {
-                BlockState  blockstate  = world.getBlockState(pos.offset(direction));
-                IFluidState ifluidstate = world.getFluidState(pos.offset(direction));
+                BlockState blockstate  = world.getBlockState(pos.offset(direction));
+                FluidState ifluidstate = world.getFluidState(pos.offset(direction));
                 if (ifluidstate.isTagged(FluidTags.WATER) || blockstate.getBlock() == Blocks.FROSTED_ICE)
                 {
                     reed = true;
                 }
             }
         }
-        return plantable.getPlantType(world, pos) == PlantType.Plains || reed;
+        return plantable.getPlantType(world, pos) == PlantType.PLAINS || reed;
     }
 
     private static boolean canSpread(BlockState state, IWorldReader world, BlockPos pos)
@@ -197,56 +197,47 @@ public class TerraBlockBiomeGrass extends SnowyDirtBlock implements IGrowable
     }
 
     @Override
-    public void grow(ServerWorld p_225535_1_, Random p_225535_2_, BlockPos p_225535_3_, BlockState p_225535_4_)
-    {
-        BlockPos   blockpos   = p_225535_3_.up();
-        BlockState blockstate = this.getDefaultState();
+    public void grow(ServerWorld worldIn, Random rand, BlockPos pos, BlockState state) {
+        BlockPos blockpos = pos.up();
+        BlockState blockstate = Blocks.GRASS.getDefaultState();
 
         label48:
-        for (int i = 0; i < 128; ++i)
-        {
+        for(int i = 0; i < 128; ++i) {
             BlockPos blockpos1 = blockpos;
 
-            for (int j = 0; j < i / 16; ++j)
-            {
-                blockpos1 = blockpos1.add(p_225535_2_.nextInt(3) - 1, (p_225535_2_.nextInt(3) - 1) * p_225535_2_.nextInt(3) / 2, p_225535_2_.nextInt(3) - 1);
-                if (p_225535_1_.getBlockState(blockpos1.down()).getBlock() != this || p_225535_1_.getBlockState(blockpos1).isCollisionShapeOpaque(p_225535_1_, blockpos1))
-                {
+            for(int j = 0; j < i / 16; ++j) {
+                blockpos1 = blockpos1.add(rand.nextInt(3) - 1, (rand.nextInt(3) - 1) * rand.nextInt(3) / 2, rand.nextInt(3) - 1);
+                if (!worldIn.getBlockState(blockpos1.down()).isIn(this) || worldIn.getBlockState(blockpos1).hasOpaqueCollisionShape(worldIn, blockpos1)) {
                     continue label48;
                 }
             }
 
-            BlockState blockstate2 = p_225535_1_.getBlockState(blockpos1);
-            if (blockstate2.getBlock() == blockstate.getBlock() && p_225535_2_.nextInt(10) == 0)
-            {
-                ((IGrowable) blockstate.getBlock()).grow(p_225535_1_, p_225535_2_, blockpos1, blockstate2);
+            BlockState blockstate2 = worldIn.getBlockState(blockpos1);
+            if (blockstate2.isIn(blockstate.getBlock()) && rand.nextInt(10) == 0) {
+                ((IGrowable)blockstate.getBlock()).grow(worldIn, rand, blockpos1, blockstate2);
             }
 
-            if (blockstate2.isAir())
-            {
+            if (blockstate2.isAir()) {
                 BlockState blockstate1;
-                if (p_225535_2_.nextInt(8) == 0)
-                {
-                    List<ConfiguredFeature<?, ?>> list = p_225535_1_.getBiome(blockpos1).getFlowers();
-                    if (list.isEmpty())
-                    {
+                if (rand.nextInt(8) == 0) {
+                    List<ConfiguredFeature<?, ?>> list = worldIn.getBiome(blockpos1).getGenerationSettings().getFlowerFeatures();
+                    if (list.isEmpty()) {
                         continue;
                     }
 
-                    ConfiguredFeature<?, ?> configuredfeature = ((DecoratedFeatureConfig) ((ConfiguredFeature) list.get(0)).config).feature;
-                    blockstate1 = ((FlowersFeature) configuredfeature.feature).getFlowerToPlace(p_225535_2_, blockpos1, configuredfeature.config);
-                }
-                else
-                {
+                    ConfiguredFeature<?, ?> configuredfeature = list.get(0);
+                    FlowersFeature flowersfeature = (FlowersFeature)configuredfeature.feature;
+                    blockstate1 = flowersfeature.getFlowerToPlace(rand, blockpos1, configuredfeature.getConfig());
+                } else {
                     blockstate1 = blockstate;
                 }
 
-                if (blockstate1.isValidPosition(p_225535_1_, blockpos1))
-                {
-                    p_225535_1_.setBlockState(blockpos1, blockstate1, 3);
+                if (blockstate1.isValidPosition(worldIn, blockpos1)) {
+                    worldIn.setBlockState(blockpos1, blockstate1, 3);
                 }
             }
         }
+
     }
 }
 

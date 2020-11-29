@@ -2,7 +2,6 @@ package com.anbaric.terra_reforged.blocks.potionplants;
 
 import com.anbaric.terra_reforged.TerraReforged;
 import com.anbaric.terra_reforged.util.init.TerraBlockRegistry;
-import com.anbaric.terra_reforged.util.init.TerraItemRegistry;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
@@ -46,7 +45,7 @@ public class TerraBlockShiverthorn extends TerraBlockPotionPlant
             }
             if (random.nextFloat() < 0.05F && state.get(AGE) != 2)
             {
-                worldIn.setBlockState(pos, state.cycle(AGE));
+                worldIn.setBlockState(pos, state.with(AGE, state.get(AGE) + 1));
             }
         }
     }

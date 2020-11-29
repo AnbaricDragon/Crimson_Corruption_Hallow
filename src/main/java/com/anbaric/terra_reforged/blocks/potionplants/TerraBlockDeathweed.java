@@ -1,7 +1,6 @@
 package com.anbaric.terra_reforged.blocks.potionplants;
 
 import com.anbaric.terra_reforged.util.init.TerraBlockRegistry;
-import com.anbaric.terra_reforged.util.init.TerraItemRegistry;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.util.math.BlockPos;
@@ -40,8 +39,8 @@ public class TerraBlockDeathweed extends TerraBlockPotionPlant
             }
             else
             {
-                if (worldIn.getCurrentMoonPhaseFactor() == 1.0f && !worldIn.isDaytime() && state.get(AGE) == 1) {worldIn.setBlockState(pos, this.getDefaultState().with(AGE, 2));}
-                if (worldIn.getCurrentMoonPhaseFactor() != 1.0f && state.get(AGE) == 2) {worldIn.setBlockState(pos, this.getDefaultState().with(AGE, 1));}
+                if (worldIn.getMoonFactor() == 1.0f && !worldIn.isDaytime() && state.get(AGE) == 1) {worldIn.setBlockState(pos, this.getDefaultState().with(AGE, 2));}
+                if (worldIn.getMoonFactor() != 1.0f && state.get(AGE) == 2) {worldIn.setBlockState(pos, this.getDefaultState().with(AGE, 1));}
             }
         }
     }

@@ -1,5 +1,7 @@
 package com.anbaric.terra_reforged.util.init;
 
+//import com.anbaric.terra_reforged.blocks.*;
+//import com.anbaric.terra_reforged.blocks.potionplants.TerraBlockPotionPlant;
 import com.anbaric.terra_reforged.blocks.*;
 import com.anbaric.terra_reforged.blocks.potionplants.TerraBlockPotionPlant;
 import com.anbaric.terra_reforged.util.Reference;
@@ -33,6 +35,10 @@ public class TerraItemBlockRegistry
                         !(block instanceof TerraBlockThornBush) &&
                         !(block instanceof TerraBlockPotionPlant) &&
                         !(block instanceof LilyPadBlock) &&
+                        !(block instanceof TerraBlockTorch) &&
+                        !(block instanceof TerraBlockTorchWall) &&
+                        !(block instanceof TerraBlockTorchWaterproof) &&
+                        !(block instanceof TerraBlockTorchWallWaterproof) &&
                         block != TerraBlockRegistry.PLANT_MOSS_RED.get() &&
                         block != TerraBlockRegistry.PLANT_MOSS_FIRE.get() &&
                         block != TerraBlockRegistry.PLANT_MOSS_YELLOW.get() &&
@@ -64,21 +70,7 @@ public class TerraItemBlockRegistry
                         block != TerraBlockRegistry.ORE_RUBY_CORRUPT.get() && block != TerraBlockRegistry.ORE_RUBY_CRIMSON.get() && block != TerraBlockRegistry.ORE_RUBY_HALLOWED.get() &&
                         block != TerraBlockRegistry.ORE_AMETHYST_CORRUPT.get() && block != TerraBlockRegistry.ORE_AMETHYST_CRIMSON.get() && block != TerraBlockRegistry.ORE_AMETHYST_HALLOWED.get() &&
                         block != TerraBlockRegistry.ORE_DIAMOND_CORRUPT.get() && block != TerraBlockRegistry.ORE_DIAMOND_CRIMSON.get() && block != TerraBlockRegistry.ORE_DIAMOND_HALLOWED.get() &&
-                        block != TerraBlockRegistry.ORE_EMERALD_CORRUPT.get() && block != TerraBlockRegistry.ORE_EMERALD_CRIMSON.get() && block != TerraBlockRegistry.ORE_EMERALD_HALLOWED.get() &&
-                        block != TerraBlockRegistry.TORCH_GEM_RED.get() && block != TerraBlockRegistry.TORCH_GEM_RED_WALL.get() &&
-                        block != TerraBlockRegistry.TORCH_GEM_ORANGE.get() && block != TerraBlockRegistry.TORCH_GEM_ORANGE_WALL.get() &&
-                        block != TerraBlockRegistry.TORCH_GEM_YELLOW.get() && block != TerraBlockRegistry.TORCH_GEM_YELLOW_WALL.get() &&
-                        block != TerraBlockRegistry.TORCH_GEM_GREEN.get() && block != TerraBlockRegistry.TORCH_GEM_GREEN_WALL.get() &&
-                        block != TerraBlockRegistry.TORCH_GEM_BLUE.get() && block != TerraBlockRegistry.TORCH_GEM_BLUE_WALL.get() &&
-                        block != TerraBlockRegistry.TORCH_GEM_PURPLE.get() && block != TerraBlockRegistry.TORCH_GEM_PURPLE_WALL.get() &&
-                        block != TerraBlockRegistry.TORCH_GEM_WHITE.get() && block != TerraBlockRegistry.TORCH_GEM_WHITE_WALL.get() &&
-                        block != TerraBlockRegistry.TORCH_RAINBOW.get() && block != TerraBlockRegistry.TORCH_RAINBOW_WALL.get() &&
-                        block != TerraBlockRegistry.TORCH_ICE.get() && block != TerraBlockRegistry.TORCH_ICE_WALL.get() &&
-                        block != TerraBlockRegistry.TORCH_BONE.get() && block != TerraBlockRegistry.TORCH_BONE_WALL.get() &&
-                        block != TerraBlockRegistry.TORCH_BRIGHT.get() && block != TerraBlockRegistry.TORCH_BRIGHT_WALL.get() &&
-                        block != TerraBlockRegistry.TORCH_DEMON.get() && block != TerraBlockRegistry.TORCH_DEMON_WALL.get() &&
-                        block != TerraBlockRegistry.TORCH_CURSED.get() && block != TerraBlockRegistry.TORCH_CURSED_WALL.get() &&
-                        block != TerraBlockRegistry.TORCH_ICHOR.get() && block != TerraBlockRegistry.TORCH_ICHOR_WALL.get())
+                        block != TerraBlockRegistry.ORE_EMERALD_CORRUPT.get() && block != TerraBlockRegistry.ORE_EMERALD_CRIMSON.get() && block != TerraBlockRegistry.ORE_EMERALD_HALLOWED.get())
                 // Register the BlockItem for the block
                 .forEach(block -> {
                     // Make the properties, and make it so that the item will be on our ItemGroup (CreativeTab)

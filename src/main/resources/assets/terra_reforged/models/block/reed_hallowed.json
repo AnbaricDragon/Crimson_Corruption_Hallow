@@ -1,5 +1,5 @@
 {
-    "parent": "block/cross",
+    "parent": "terra_reforged:block/cross",
     "textures": {
         "cross": "terra_reforged:blocks/reed_hallowed"
     }

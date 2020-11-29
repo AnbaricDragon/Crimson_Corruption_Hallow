@@ -9,7 +9,7 @@ import net.minecraftforge.registries.ForgeRegistries;
 
 public class TerraParticleRegistry
 {
-    public static final DeferredRegister<ParticleType<?>> PARTICLES = new DeferredRegister<>(ForgeRegistries.PARTICLE_TYPES, Reference.MODID);
+    public static final DeferredRegister<ParticleType<?>> PARTICLES = DeferredRegister.create(ForgeRegistries.PARTICLE_TYPES, Reference.MODID);
 
     public static final RegistryObject<BasicParticleType> SPORE_MUSHROOM = PARTICLES.register("spore_mushroom", () -> new BasicParticleType(true));
 
@@ -27,6 +27,4 @@ public class TerraParticleRegistry
     public static final RegistryObject<BasicParticleType> TORCH_FLAME_DEMON = PARTICLES.register("torch_flame_demon", () -> new BasicParticleType(true));
     public static final RegistryObject<BasicParticleType> TORCH_FLAME_CURSED = PARTICLES.register("torch_flame_cursed", () -> new BasicParticleType(true));
     public static final RegistryObject<BasicParticleType> TORCH_FLAME_ICHOR = PARTICLES.register("torch_flame_ichor", () -> new BasicParticleType(true));
-
-
 }

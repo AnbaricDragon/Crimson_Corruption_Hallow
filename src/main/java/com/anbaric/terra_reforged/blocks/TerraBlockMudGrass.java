@@ -1,10 +1,10 @@
 package com.anbaric.terra_reforged.blocks;
 
 import com.anbaric.terra_reforged.TerraReforged;
-import com.anbaric.terra_reforged.features.vegetation.TerraGlowingMushroom;
 import com.anbaric.terra_reforged.util.init.TerraBlockRegistry;
 import com.anbaric.terra_reforged.util.init.TerraParticleRegistry;
 import net.minecraft.block.*;
+import net.minecraft.client.particle.Particle;
 import net.minecraft.particles.ParticleTypes;
 import net.minecraft.tags.FluidTags;
 import net.minecraft.util.Direction;
@@ -38,7 +38,7 @@ public class TerraBlockMudGrass extends Block implements IGrowable
     public boolean canSustainPlant(BlockState state, IBlockReader world, BlockPos pos, Direction facing, IPlantable plantable)
     {
         PlantType type = plantable.getPlantType(world, pos);
-        return this == TerraBlockRegistry.GRASS_MUSHROOM.get() ? type == TerraReforged.MUSHROOM || type == PlantType.Plains : type == PlantType.Plains;
+        return this == TerraBlockRegistry.GRASS_MUSHROOM.get() ? type == TerraReforged.MUSHROOM || type == PlantType.PLAINS : type == PlantType.PLAINS;
     }
 
     private static boolean canSpread(BlockState state, IWorldReader world, BlockPos pos)
@@ -133,6 +133,7 @@ public class TerraBlockMudGrass extends Block implements IGrowable
         super.animateTick(stateIn, worldIn, pos, rand);
         if (rand.nextInt(5) == 0 && this == TerraBlockRegistry.GRASS_MUSHROOM.get())
         {
+            //TODO
             worldIn.addParticle(TerraParticleRegistry.SPORE_MUSHROOM.get(), (double) pos.getX() + (double) rand.nextFloat(), (double) pos.getY() + 1.1D, (double) pos.getZ() + (double) rand.nextFloat(), 0.0D, 0.0D, 0.0D);
         }
     }

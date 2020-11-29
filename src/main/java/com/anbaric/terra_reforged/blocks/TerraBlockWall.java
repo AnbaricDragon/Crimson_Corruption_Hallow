@@ -3,7 +3,7 @@ package com.anbaric.terra_reforged.blocks;
 import net.minecraft.block.*;
 import net.minecraft.block.material.Material;
 import net.minecraft.fluid.Fluids;
-import net.minecraft.fluid.IFluidState;
+import net.minecraft.fluid.FluidState;
 import net.minecraft.item.BlockItemUseContext;
 import net.minecraft.pathfinding.PathType;
 import net.minecraft.state.BooleanProperty;
@@ -42,7 +42,7 @@ public class TerraBlockWall extends Block implements IWaterLoggable
         this.setDefaultState(this.stateContainer.getBaseState().with(NORTH, WallSide.NONE).with(EAST, WallSide.NONE).with(SOUTH, WallSide.NONE).with(WEST, WallSide.NONE).with(UP, WallColumn.PILLAR).with(WATERLOGGED, false));
     }
 
-    public IFluidState getFluidState(BlockState state)
+    public FluidState getFluidState(BlockState state)
     {
         return state.get(WATERLOGGED) ? Fluids.WATER.getStillFluidState(false) : super.getFluidState(state);
     }
@@ -60,7 +60,7 @@ public class TerraBlockWall extends Block implements IWaterLoggable
 
         WallColumn pillar = this.getTop(world, pos);
 
-        IFluidState waterlogged = context.getWorld().getFluidState(context.getPos());
+        FluidState waterlogged = context.getWorld().getFluidState(context.getPos());
 
         return super.getStateForPlacement(context).with(NORTH, northSide).with(EAST, eastSide).with(SOUTH, southSide).with(WEST, westSide).with(UP, pillar).with(WATERLOGGED, waterlogged.getFluid() == Fluids.WATER);
     }
@@ -311,6 +311,12 @@ public class TerraBlockWall extends Block implements IWaterLoggable
         {
             return this.name;
         }
+
+        @Override
+        public String getString()
+        {
+            return this.name;
+        }
     }
 
     public enum WallColumn implements IStringSerializable
@@ -330,6 +336,12 @@ public class TerraBlockWall extends Block implements IWaterLoggable
         }
 
         public String getName()
+        {
+            return this.name;
+        }
+
+        @Override
+        public String getString()
         {
             return this.name;
         }

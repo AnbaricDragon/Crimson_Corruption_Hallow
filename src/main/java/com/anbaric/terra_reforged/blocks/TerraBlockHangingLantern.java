@@ -57,18 +57,18 @@ public class TerraBlockHangingLantern extends Block
     {
         if (!worldIn.isRemote && state.get(HALF) == DoubleBlockHalf.UPPER)
         {
-            boolean flag = state.get(LIT);
-            if (flag != worldIn.isBlockPowered(state.get(HALF) == DoubleBlockHalf.UPPER ? pos : pos.up()))
+            boolean isLit = state.get(LIT);
+            if (isLit != worldIn.isBlockPowered(state.get(HALF) == DoubleBlockHalf.UPPER ? pos : pos.up()))
             {
-                if (flag)
+                if (isLit)
                 {
                     worldIn.getPendingBlockTicks().scheduleTick(pos, this, 4);
                     worldIn.getPendingBlockTicks().scheduleTick(pos.down(), this, 4);
                 }
                 else
                 {
-                    worldIn.setBlockState(pos, state.cycle(LIT), 3);
-                    worldIn.setBlockState(pos.down(), state.cycle(LIT).with(HALF, DoubleBlockHalf.LOWER), 3);
+                    worldIn.setBlockState(pos, state.with(LIT, true), 3);
+                    worldIn.setBlockState(pos.down(), state.with(LIT, true).with(HALF, DoubleBlockHalf.LOWER), 3);
                 }
             }
         }
@@ -78,10 +78,9 @@ public class TerraBlockHangingLantern extends Block
     {
         if (state.get(LIT) && state.get(HALF) == DoubleBlockHalf.UPPER && !worldIn.isBlockPowered(pos))
         {
-            worldIn.setBlockState(pos, state.cycle(LIT), 3);
-            worldIn.setBlockState(pos.down(), state.cycle(LIT).with(HALF, DoubleBlockHalf.LOWER), 3);
+            worldIn.setBlockState(pos, state.with(LIT, false), 3);
+            worldIn.setBlockState(pos.down(), state.with(LIT, false).with(HALF, DoubleBlockHalf.LOWER), 3);
         }
-
     }
 
     public VoxelShape getShape(BlockState state, IBlockReader worldIn, BlockPos pos, ISelectionContext context)
@@ -125,9 +124,9 @@ public class TerraBlockHangingLantern extends Block
         BlockPos blockpos = pos.up();
         if (state.getBlock() == this) //Forge: This function is called during world gen and placement, before this block is set, so if we are not 'here' then assume it's the pre-check.
         {
-            return worldIn.getBlockState(pos.up()).getBlock().isSolid(state);
+            return worldIn.getBlockState(pos.up()).isSolid();
         }
-        return worldIn.getBlockState(pos.up()).getBlock().isSolid(state);
+        return worldIn.getBlockState(pos.up()).isSolid();
     }
 
     @Override
@@ -160,8 +159,8 @@ public class TerraBlockHangingLantern extends Block
             worldIn.playEvent(player, 2001, blockpos, Block.getStateId(blockstate));
             if (!worldIn.isRemote && !player.isCreative())
             {
-                spawnDrops(state, worldIn, pos, (TileEntity) null, player, player.getHeldItemMainhand());
-                spawnDrops(blockstate, worldIn, blockpos, (TileEntity) null, player, player.getHeldItemMainhand());
+                spawnDrops(state, worldIn, pos, null, player, player.getHeldItemMainhand());
+                spawnDrops(blockstate, worldIn, blockpos, null, player, player.getHeldItemMainhand());
             }
         }
         super.onBlockHarvested(worldIn, pos, state, player);

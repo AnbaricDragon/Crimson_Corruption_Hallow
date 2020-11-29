@@ -5,7 +5,7 @@ import com.anbaric.terra_reforged.util.handlers.SpreadingHandler.EnumBiomeBlockT
 import com.anbaric.terra_reforged.util.handlers.SpreadingHandler.EnumBiomeType;
 import net.minecraft.block.*;
 import net.minecraft.entity.item.FallingBlockEntity;
-import net.minecraft.fluid.IFluidState;
+import net.minecraft.fluid.FluidState;
 import net.minecraft.tags.FluidTags;
 import net.minecraft.util.Direction;
 import net.minecraft.util.math.BlockPos;
@@ -36,14 +36,14 @@ public class TerraBlockSand extends FallingBlock
             for (Direction direction : Direction.Plane.HORIZONTAL)
             {
                 BlockState  blockstate  = world.getBlockState(pos.offset(direction));
-                IFluidState ifluidstate = world.getFluidState(pos.offset(direction));
-                if (ifluidstate.isTagged(FluidTags.WATER) || blockstate.getBlock() == Blocks.FROSTED_ICE)
+                FluidState fluidstate = world.getFluidState(pos.offset(direction));
+                if (fluidstate.isTagged(FluidTags.WATER) || blockstate.getBlock() == Blocks.FROSTED_ICE)
                 {
                     reed = true;
                 }
             }
         }
-        return plantable.getPlantType(world, pos) == PlantType.Desert || plantable.getPlantType(world, pos) == PlantType.Desert || reed;
+        return plantable.getPlantType(world, pos) == PlantType.DESERT || reed;
     }
 
     @Override

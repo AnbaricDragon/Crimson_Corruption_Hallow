@@ -118,7 +118,7 @@ public class TerraBlockCactus extends Block implements net.minecraftforge.common
     @Override
     public boolean canSustainPlant(BlockState state, IBlockReader world, BlockPos pos, Direction facing, IPlantable plantable)
     {
-        return plantable.getPlantType(world, pos) == PlantType.Desert;
+        return plantable.getPlantType(world, pos) == PlantType.DESERT;
     }
 
     public boolean isValidPosition(BlockState state, IWorldReader worldIn, BlockPos pos)
@@ -155,7 +155,7 @@ public class TerraBlockCactus extends Block implements net.minecraftforge.common
     @Override
     public net.minecraftforge.common.PlantType getPlantType(IBlockReader world, BlockPos pos)
     {
-        return net.minecraftforge.common.PlantType.Desert;
+        return PlantType.DESERT;
     }
 
     @Override

@@ -6,8 +6,8 @@ import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
 import net.minecraft.block.IWaterLoggable;
+import net.minecraft.fluid.FluidState;
 import net.minecraft.fluid.Fluids;
-import net.minecraft.fluid.IFluidState;
 import net.minecraft.item.BlockItemUseContext;
 import net.minecraft.particles.IParticleData;
 import net.minecraft.particles.ParticleTypes;
@@ -44,7 +44,7 @@ public class TerraBlockTorchWaterproof extends Block implements IWaterLoggable
         else return this == TerraBlockRegistry.TORCH_ICHOR.get() ? TerraParticleRegistry.TORCH_FLAME_ICHOR.get() : ParticleTypes.FLAME;
     }
 
-    public IFluidState getFluidState(BlockState state)
+    public FluidState getFluidState(BlockState state)
     {
         return state.get(WATERLOGGED) ? Fluids.WATER.getStillFluidState(false) : super.getFluidState(state);
     }
@@ -57,7 +57,7 @@ public class TerraBlockTorchWaterproof extends Block implements IWaterLoggable
     @Override
     public BlockState getStateForPlacement(BlockItemUseContext context)
     {
-        IFluidState waterlogged = context.getWorld().getFluidState(context.getPos());
+        FluidState waterlogged = context.getWorld().getFluidState(context.getPos());
 
         return super.getStateForPlacement(context).with(WATERLOGGED, waterlogged.getFluid() == Fluids.WATER);
     }

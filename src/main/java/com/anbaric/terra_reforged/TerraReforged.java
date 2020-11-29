@@ -1,10 +1,9 @@
 package com.anbaric.terra_reforged;
 
 import com.anbaric.terra_reforged.util.Reference;
-import com.anbaric.terra_reforged.util.TerraVanillaCompat;
-import com.anbaric.terra_reforged.util.capabilities.multijump.TerraCapabilityMultiJump;
+//import com.anbaric.terra_reforged.util.TerraVanillaCompat;
 import com.anbaric.terra_reforged.util.events.TerraCapabilitiesEvent;
-import com.anbaric.terra_reforged.util.events.TerraJumpingItemsEvent;
+import com.anbaric.terra_reforged.util.events.TerraEffectItemsEvent;
 import com.anbaric.terra_reforged.util.events.TerraStructureProtectEvent;
 import com.anbaric.terra_reforged.util.init.*;
 import net.minecraft.util.DamageSource;
@@ -32,9 +31,8 @@ public class TerraReforged
 
     public static final boolean debugSpreading = true;
 
-    public static PlantType BOREAL = PlantType.create("Boreal");
-    public static PlantType MUSHROOM = PlantType.create("Mushroom");
-
+    public static PlantType BOREAL = PlantType.get("boreal");
+    public static PlantType MUSHROOM = PlantType.get("mushroom");
     public static DamageSource THORNS = new DamageSource("thorns").setDamageBypassesArmor();
 
     public TerraReforged()
@@ -46,8 +44,8 @@ public class TerraReforged
         TerraParticleRegistry.PARTICLES.register(modEventBus);
         TerraBlockRegistry.BLOCKS.register(modEventBus);
         TerraItemRegistry.ITEMS.register(modEventBus);
-        TerraFeatureRegistry.FEATURES.register(modEventBus);
-        TerraBiomeRegistry.BIOMES.register(modEventBus);
+//        TerraFeatureRegistry.FEATURES.register(modEventBus);
+//        TerraBiomeRegistry.BIOMES.register(modEventBus);
         // Register the setup method for modloading
         modEventBus.addListener(this::setup);
         // Register the enqueueIMC method for modloading
@@ -61,19 +59,17 @@ public class TerraReforged
         MinecraftForge.EVENT_BUS.register(this);
         MinecraftForge.EVENT_BUS.register(TerraStructureProtectEvent.class);
         MinecraftForge.EVENT_BUS.register(TerraCapabilitiesEvent.class);
-        MinecraftForge.EVENT_BUS.register(TerraJumpingItemsEvent.class);
+        MinecraftForge.EVENT_BUS.register(TerraEffectItemsEvent.class);
 
     }
 
     private void setup(final FMLCommonSetupEvent event)
     {
-        TerraVanillaCompat.setupStripping();
-        TerraVanillaCompat.setupFlammable();
-        TerraVanillaCompat.setupOres();
-        TerraVanillaCompat.setupDyePlants();
-        TerraVanillaCompat.setupTrees();
-
-        TerraCapabilityMultiJump.register();
+//        TerraVanillaCompat.setupStripping();
+//        TerraVanillaCompat.setupFlammable();
+//        TerraVanillaCompat.setupOres();
+//        TerraVanillaCompat.setupDyePlants();
+//        TerraVanillaCompat.setupTrees();
     }
 
     private void doClientStuff(final FMLClientSetupEvent event)

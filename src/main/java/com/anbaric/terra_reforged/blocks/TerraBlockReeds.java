@@ -3,7 +3,7 @@ package com.anbaric.terra_reforged.blocks;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
-import net.minecraft.fluid.IFluidState;
+import net.minecraft.fluid.FluidState;
 import net.minecraft.state.IntegerProperty;
 import net.minecraft.state.StateContainer;
 import net.minecraft.state.properties.BlockStateProperties;
@@ -18,6 +18,7 @@ import net.minecraft.world.IWorldReader;
 import net.minecraft.world.World;
 import net.minecraft.world.server.ServerWorld;
 import net.minecraftforge.common.IPlantable;
+import net.minecraftforge.common.PlantType;
 
 import java.util.Random;
 
@@ -114,8 +115,8 @@ public class TerraBlockReeds extends Block implements net.minecraftforge.common.
                 for (Direction direction : Direction.Plane.HORIZONTAL)
                 {
                     BlockState  blockstate  = worldIn.getBlockState(blockpos.offset(direction));
-                    IFluidState ifluidstate = worldIn.getFluidState(blockpos.offset(direction));
-                    if (ifluidstate.isTagged(FluidTags.WATER) || blockstate.getBlock() == Blocks.FROSTED_ICE)
+                    FluidState fluidstate = worldIn.getFluidState(blockpos.offset(direction));
+                    if (fluidstate.isTagged(FluidTags.WATER) || blockstate.getBlock() == Blocks.FROSTED_ICE)
                     {
                         return true;
                     }
@@ -134,7 +135,7 @@ public class TerraBlockReeds extends Block implements net.minecraftforge.common.
     @Override
     public net.minecraftforge.common.PlantType getPlantType(IBlockReader world, BlockPos pos)
     {
-        return net.minecraftforge.common.PlantType.Beach;
+        return PlantType.BEACH;
     }
 
     @Override

@@ -1,6 +1,6 @@
 {
     "parent": "item/generated",
     "textures": {
-        "layer0": "terra_reforged:items/reed_corrupt"
+        "layer0": "terra_reforged:blocks/reed_corrupt"
     }
 }

@@ -92,6 +92,8 @@ public class TerraBlockPotionPlant extends BushBlock implements IGrowable
         super.onEntityCollision(state, worldIn, pos, entityIn);
     }
 
+    //TODO Make this use @CropsBlock
+
     /**
      * Whether this IGrowable can grow
      */

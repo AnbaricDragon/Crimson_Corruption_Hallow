@@ -1,7 +1,7 @@
 package com.anbaric.terra_reforged.util.handlers;
 
 
-import com.anbaric.terra_reforged.particles.TerraParticleMushroomSpore;
+//import com.anbaric.terra_reforged.particles.TerraParticleMushroomSpore;
 import com.anbaric.terra_reforged.util.Reference;
 import com.anbaric.terra_reforged.util.init.TerraParticleRegistry;
 import net.minecraft.client.Minecraft;
@@ -18,7 +18,7 @@ public class ParticleHandler
     @SubscribeEvent(priority = EventPriority.LOWEST)
     public static void registerParticles(ParticleFactoryRegisterEvent event)
     {
-        Minecraft.getInstance().particles.registerFactory(TerraParticleRegistry.SPORE_MUSHROOM.get(), TerraParticleMushroomSpore.Factory::new);
+        Minecraft.getInstance().particles.registerFactory(TerraParticleRegistry.SPORE_MUSHROOM.get(), SuspendedTownParticle.Factory::new);
 
         Minecraft.getInstance().particles.registerFactory(TerraParticleRegistry.TORCH_FLAME_RED.get(), FlameParticle.Factory::new);
         Minecraft.getInstance().particles.registerFactory(TerraParticleRegistry.TORCH_FLAME_ORANGE.get(), FlameParticle.Factory::new);

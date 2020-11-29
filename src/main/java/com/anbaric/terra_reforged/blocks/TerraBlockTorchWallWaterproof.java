@@ -6,12 +6,11 @@ import com.google.common.collect.ImmutableMap;
 import com.google.common.collect.Maps;
 import net.minecraft.block.*;
 import net.minecraft.fluid.Fluids;
-import net.minecraft.fluid.IFluidState;
+import net.minecraft.fluid.FluidState;
 import net.minecraft.item.BlockItemUseContext;
 import net.minecraft.particles.IParticleData;
 import net.minecraft.particles.ParticleTypes;
 import net.minecraft.state.DirectionProperty;
-import net.minecraft.state.IProperty;
 import net.minecraft.state.StateContainer;
 import net.minecraft.util.Direction;
 import net.minecraft.util.Mirror;
@@ -48,11 +47,6 @@ public class TerraBlockTorchWallWaterproof extends TerraBlockTorchWaterproof imp
         else return this == TerraBlockRegistry.TORCH_ICHOR_WALL.get() ? TerraParticleRegistry.TORCH_FLAME_ICHOR.get() : ParticleTypes.FLAME;
     }
 
-    public String getTranslationKey()
-    {
-        return this.asItem().getTranslationKey();
-    }
-
     public VoxelShape getShape(BlockState state, IBlockReader worldIn, BlockPos pos, ISelectionContext context)
     {
         return directionShape(state);
@@ -81,7 +75,7 @@ public class TerraBlockTorchWallWaterproof extends TerraBlockTorchWaterproof imp
         Direction[]  var6     = lvt_5_1_;
         int          var7     = lvt_5_1_.length;
 
-        IFluidState waterlogged = context.getWorld().getFluidState(context.getPos());
+        FluidState waterlogged = context.getWorld().getFluidState(context.getPos());
 
         for (int var8 = 0; var8 < var7; ++var8)
         {
@@ -135,7 +129,7 @@ public class TerraBlockTorchWallWaterproof extends TerraBlockTorchWaterproof imp
 
     protected void fillStateContainer(StateContainer.Builder<Block, BlockState> p_206840_1_)
     {
-        p_206840_1_.add(new IProperty[]{HORIZONTAL_FACING, WATERLOGGED});
+        p_206840_1_.add(HORIZONTAL_FACING, WATERLOGGED);
     }
 
     static

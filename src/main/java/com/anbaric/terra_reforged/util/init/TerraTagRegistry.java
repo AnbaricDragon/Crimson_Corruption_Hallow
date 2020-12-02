@@ -18,4 +18,7 @@ public class TerraTagRegistry
     public static final ITag.INamedTag<Item> INGOT_PLATINUM = ItemTags.makeWrapperTag("forge:ingots/platinum");
     public static final ITag.INamedTag<Item> INGOT_MYTHRIL = ItemTags.makeWrapperTag("forge:ingots/mythril");
     public static final ITag.INamedTag<Item> INGOT_TITANIUM = ItemTags.makeWrapperTag("forge:ingots/titanium");
+
+    public static final ITag.INamedTag<Item> CLOUD_JUMPERS = ItemTags.makeWrapperTag("terra_reforged:cloud_jumpers");
+    public static final ITag.INamedTag<Item> BEE_SPAWNERS = ItemTags.makeWrapperTag("terra_reforged:bee_spawners");
 }

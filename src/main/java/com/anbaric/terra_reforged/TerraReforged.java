@@ -44,6 +44,7 @@ public class TerraReforged
         TerraParticleRegistry.PARTICLES.register(modEventBus);
         TerraBlockRegistry.BLOCKS.register(modEventBus);
         TerraItemRegistry.ITEMS.register(modEventBus);
+        TerraEffectRegistry.EFFECTS.register(modEventBus);
 //        TerraFeatureRegistry.FEATURES.register(modEventBus);
 //        TerraBiomeRegistry.BIOMES.register(modEventBus);
         // Register the setup method for modloading

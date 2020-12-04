@@ -14,5 +14,4 @@ public class TerraEffectRegistry
     public static final DeferredRegister<Effect> EFFECTS = DeferredRegister.create(ForgeRegistries.POTIONS, Reference.MODID);
 
     public static final RegistryObject<Effect> LOOMING_DEATH = EFFECTS.register("looming_death", () -> new TerraEffectLoomingDeath(EffectType.HARMFUL, 0));
-
 }

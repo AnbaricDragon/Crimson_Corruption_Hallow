@@ -1,21 +1,19 @@
 package com.anbaric.terra_reforged.util.handlers;
 
+import com.anbaric.terra_reforged.entities.goals.BeeItemGoal;
 import com.anbaric.terra_reforged.util.init.TerraEffectRegistry;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.SpawnReason;
-import net.minecraft.entity.ai.goal.NearestAttackableTargetGoal;
 import net.minecraft.entity.passive.BeeEntity;
 import net.minecraft.potion.EffectInstance;
 import net.minecraft.potion.Effects;
 import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
-import net.minecraft.util.math.vector.Vector3d;
 import net.minecraft.world.server.ServerWorld;
 
 import java.util.Optional;
-import java.util.Random;
 
 public class BeeHandler
 {
@@ -41,7 +39,7 @@ public class BeeHandler
                 foundTarget.ifPresent(target ->
                 { // make bee angry at target
                     bee.setAttackTarget(target);
-                    bee.targetSelector.addGoal(0, new BeeGoalHandler(bee));
+                    bee.targetSelector.addGoal(0, new BeeItemGoal(bee));
                 });
             }
         }

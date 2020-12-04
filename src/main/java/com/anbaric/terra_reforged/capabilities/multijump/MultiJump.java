@@ -20,16 +20,15 @@ public class MultiJump implements IMultiJump
     public boolean getHasTsunamiItem()   { return this.hasTsunamiItem; }
     public boolean getHasFartItem()      { return this.hasFartItem; }
 
-    public void setHasCloudItem(boolean hasItem)     { this.hasCloudItem = hasItem; this.hasCloudJump = hasItem; }
-    public void setHasBlizzardItem(boolean hasItem)  { this.hasBlizzardItem = hasItem; this.hasBlizzardJump = hasItem; }
-    public void setHasSandstormItem(boolean hasItem) { this.hasSandstormItem = hasItem; this.hasSandstormJump = hasItem; }
-    public void setHasTsunamiItem(boolean hasItem)   { this.hasTsunamiItem = hasItem; this.hasTsunamiJump = hasItem; }
-    public void setHasFartItem(boolean hasItem)      { this.hasFartItem = hasItem; this.hasFartJump = hasItem; }
+    public void setHasCloudItem(boolean hasItem)     { this.hasCloudItem = hasItem; }
+    public void setHasBlizzardItem(boolean hasItem)  { this.hasBlizzardItem = hasItem; }
+    public void setHasSandstormItem(boolean hasItem) { this.hasSandstormItem = hasItem; }
+    public void setHasTsunamiItem(boolean hasItem)   { this.hasTsunamiItem = hasItem; }
+    public void setHasFartItem(boolean hasItem)      { this.hasFartItem = hasItem; }
 
     public boolean getCanFartJump()
     {
         boolean canJump = this.hasFartItem && this.hasFartJump;
-        this.hasFartJump = false;
         return canJump;
     }
 
@@ -37,7 +36,6 @@ public class MultiJump implements IMultiJump
     {
         boolean noPrevJumps = !this.hasFartJump;
         boolean canJump     = this.hasTsunamiItem && this.hasTsunamiJump;
-        this.hasTsunamiJump = false;
         return canJump && noPrevJumps;
     }
 
@@ -45,7 +43,6 @@ public class MultiJump implements IMultiJump
     {
         boolean noPrevJumps = !this.hasFartJump && !this.hasTsunamiJump;
         boolean canJump     = this.hasSandstormItem && this.hasSandstormJump;
-        this.hasSandstormJump = false;
         return canJump && noPrevJumps;
     }
 
@@ -53,7 +50,6 @@ public class MultiJump implements IMultiJump
     {
         boolean noPrevJumps = !this.hasFartJump && !this.hasTsunamiJump && !this.hasSandstormJump;
         boolean canJump     = this.hasBlizzardItem && this.hasBlizzardJump;
-        this.hasBlizzardJump = false;
         return canJump && noPrevJumps;
     }
 
@@ -61,7 +57,6 @@ public class MultiJump implements IMultiJump
     {
         boolean noPrevJumps = !this.hasFartJump && !this.hasTsunamiJump && !this.hasSandstormJump && !this.hasBlizzardJump;
         boolean canJump     = this.hasCloudItem && this.hasCloudJump;
-        this.hasCloudJump = false;
         return canJump && noPrevJumps;
     }
 

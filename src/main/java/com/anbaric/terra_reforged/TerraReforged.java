@@ -4,7 +4,9 @@ import com.anbaric.terra_reforged.util.Reference;
 //import com.anbaric.terra_reforged.util.TerraVanillaCompat;
 import com.anbaric.terra_reforged.util.events.TerraCapabilitiesEvent;
 import com.anbaric.terra_reforged.util.events.TerraEffectItemsEvent;
+import com.anbaric.terra_reforged.util.events.TerraJumpEvent;
 import com.anbaric.terra_reforged.util.events.TerraStructureProtectEvent;
+import com.anbaric.terra_reforged.util.handlers.NetworkHandler;
 import com.anbaric.terra_reforged.util.init.*;
 import net.minecraft.util.DamageSource;
 import net.minecraftforge.common.MinecraftForge;
@@ -61,11 +63,14 @@ public class TerraReforged
         MinecraftForge.EVENT_BUS.register(TerraStructureProtectEvent.class);
         MinecraftForge.EVENT_BUS.register(TerraCapabilitiesEvent.class);
         MinecraftForge.EVENT_BUS.register(TerraEffectItemsEvent.class);
+        MinecraftForge.EVENT_BUS.register(new TerraJumpEvent());
 
     }
 
     private void setup(final FMLCommonSetupEvent event)
     {
+        NetworkHandler.register();
+
 //        TerraVanillaCompat.setupStripping();
 //        TerraVanillaCompat.setupFlammable();
 //        TerraVanillaCompat.setupOres();

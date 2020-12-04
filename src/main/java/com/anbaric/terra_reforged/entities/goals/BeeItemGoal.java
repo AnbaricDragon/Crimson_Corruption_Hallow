@@ -1,4 +1,4 @@
-package com.anbaric.terra_reforged.util.handlers;
+package com.anbaric.terra_reforged.entities.goals;
 
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.LivingEntity;
@@ -6,9 +6,9 @@ import net.minecraft.entity.MobEntity;
 import net.minecraft.entity.ai.goal.NearestAttackableTargetGoal;
 import net.minecraft.entity.passive.BeeEntity;
 
-public class BeeGoalHandler extends NearestAttackableTargetGoal<LivingEntity>
+public class BeeItemGoal extends NearestAttackableTargetGoal<LivingEntity>
 {
-    public BeeGoalHandler(MobEntity goalOwnerIn, Class<LivingEntity> targetClassIn, boolean checkSight)
+    public BeeItemGoal(MobEntity goalOwnerIn, Class<LivingEntity> targetClassIn, boolean checkSight)
     {
         super(goalOwnerIn, targetClassIn, checkSight);
     }
@@ -18,9 +18,9 @@ public class BeeGoalHandler extends NearestAttackableTargetGoal<LivingEntity>
         return (ent.getType() != EntityType.BEE && ent.getType() != EntityType.PLAYER);
     }
 
-    BeeGoalHandler(BeeEntity p_i225719_1_)
+    public BeeItemGoal(BeeEntity p_i225719_1_)
     {
-        super(p_i225719_1_, LivingEntity.class, 10, true, false, BeeGoalHandler::isThingAttackable);
+        super(p_i225719_1_, LivingEntity.class, 10, true, false, BeeItemGoal::isThingAttackable);
     }
 
     /**

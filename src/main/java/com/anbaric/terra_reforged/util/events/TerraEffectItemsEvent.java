@@ -1,49 +1,22 @@
 package com.anbaric.terra_reforged.util.events;
 
-import com.anbaric.terra_reforged.capabilities.multijump.IMultiJump;
 import com.anbaric.terra_reforged.capabilities.multijump.TerraCapabilityMultiJump;
-import com.anbaric.terra_reforged.util.Reference;
 import com.anbaric.terra_reforged.util.handlers.BeeHandler;
 import com.anbaric.terra_reforged.util.init.TerraItemRegistry;
-import javafx.scene.effect.Effect;
-import net.minecraft.client.Minecraft;
-import net.minecraft.client.entity.player.ClientPlayerEntity;
-import net.minecraft.enchantment.EnchantmentHelper;
 import net.minecraft.entity.*;
 import net.minecraft.entity.player.PlayerEntity;
-import net.minecraft.inventory.EquipmentSlotType;
-import net.minecraft.item.ElytraItem;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
-import net.minecraft.item.Items;
 import net.minecraft.potion.EffectInstance;
 import net.minecraft.potion.Effects;
-import net.minecraft.util.ResourceLocation;
-import net.minecraft.util.SoundEvents;
-import net.minecraft.util.math.vector.Vector3d;
-import net.minecraft.util.text.ITextComponent;
-import net.minecraft.util.text.StringTextComponent;
 import net.minecraft.world.server.ServerWorld;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import net.minecraftforge.client.event.InputEvent;
-import net.minecraftforge.event.AttachCapabilitiesEvent;
 import net.minecraftforge.event.TickEvent;
-import net.minecraftforge.event.entity.EntityEvent;
 import net.minecraftforge.event.entity.living.LivingDamageEvent;
-import net.minecraftforge.event.entity.living.LivingEvent;
 import net.minecraftforge.event.entity.living.LivingFallEvent;
-import net.minecraftforge.event.entity.living.LivingHurtEvent;
-import net.minecraftforge.event.entity.player.PlayerEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
-import net.minecraftforge.server.command.TextComponentHelper;
-
-import static org.lwjgl.glfw.GLFW.GLFW_PRESS;
 
 import java.util.Arrays;
 import java.util.List;
-import java.util.Random;
-import java.util.UUID;
 
 public class TerraEffectItemsEvent
 {
@@ -55,7 +28,6 @@ public class TerraEffectItemsEvent
     private static List<Item> TSUNAMI_JUMPERS = Arrays.asList(TerraItemRegistry.BOTTLE_TSUNAMI.get(), TerraItemRegistry.BALLOON_SHARK.get(), TerraItemRegistry.HORSESHOE_BALLOON_SHARK.get());
     private static List<Item> FART_JUMPERS = Arrays.asList(TerraItemRegistry.BOTTLE_FART.get(), TerraItemRegistry.BALLOON_FART.get(), TerraItemRegistry.HORSESHOE_BALLOON_FART.get());
     private static List<Item> BEE_SPAWNERS = Arrays.asList(TerraItemRegistry.HONEYCOMB.get(), TerraItemRegistry.BALLOON_HONEY.get(), TerraItemRegistry.HORSESHOE_BALLOON_HONEY.get());
-
 
     @SubscribeEvent
     static void onFall(LivingFallEvent event)
@@ -74,12 +46,6 @@ public class TerraEffectItemsEvent
                 event.setDistance(0.0F);
             }
         }
-        player.getCapability(TerraCapabilityMultiJump.MULTI_JUMP_CAPABILITY).ifPresent(cap ->
-        {
-            boolean hasCloudItem = cap.getHasCloudItem();
-
-            cap.resetJumps();
-        });
     }
 
     @SubscribeEvent
@@ -87,11 +53,9 @@ public class TerraEffectItemsEvent
     {
         PlayerEntity player = event.player;
 
-        //Balloon Item Jump Boost
+        //Accessory Effects
         int jumpModifier = 0;
-        boolean redBalloon = false, cloudBalloon = false, blizzardBalloon = false,
-                sandstormBalloon = false, honeyBalloon = false,
-                sharkBalloon = false, fartBalloon = false;
+        boolean redBalloon = false, cloudBalloon = false, blizzardBalloon = false, sandstormBalloon = false, honeyBalloon = false, sharkBalloon = false, fartBalloon = false;
         for (int i = 0; i < player.inventory.mainInventory.size(); i++)
         {
             Item targetStack = player.inventory.getStackInSlot(i).getItem();
@@ -132,26 +96,20 @@ public class TerraEffectItemsEvent
             cap.setHasSandstormItem(hasSandstormItem);
             cap.setHasTsunamiItem(hasTsunamiItem);
             cap.setHasFartItem(hasFartItem);
+            if (player.isOnGround()) { cap.resetJumps(); }
         });
     }
 
     @SubscribeEvent
-    static void onPlayerHurt(LivingHurtEvent event)
+    static void onPlayerHurt(LivingDamageEvent event)
     {
-        PlayerEntity player = null;
+        PlayerEntity player = event.getEntityLiving() instanceof PlayerEntity ? (PlayerEntity) event.getEntityLiving() : null;
         ServerWorld  world  = (ServerWorld) event.getEntityLiving().getEntityWorld();
-        if (event.getEntityLiving() instanceof PlayerEntity)
-        {
-            player = (PlayerEntity) event.getEntityLiving();
-        }
-        else
-        {
-            return;
-        }
-        float aggroDist = event.getSource().getTrueSource() instanceof LivingEntity ? event.getSource().getTrueSource().getEntity().getDistance(player) : 0F;
+
+        float aggroDist = event.getSource().getTrueSource() instanceof LivingEntity ? event.getSource().getTrueSource().getEntity().getDistance(player) : 10F;
 
 
-        //Honeycomb Item Bee Spawning
+        //Bee Item Spawning
         boolean hasBeeItem = false;
         for (int i = 0; i < player.inventory.mainInventory.size(); i++)
         {
@@ -178,7 +136,7 @@ public class TerraEffectItemsEvent
                     }
                 }
             }
-            
+
             if (!hasBeeCooldown)
             {
                 for (int i = 0; i < player.inventory.mainInventory.size(); i++)
@@ -193,13 +151,8 @@ public class TerraEffectItemsEvent
 
                 if (world instanceof ServerWorld)
                 {
-                    player.sendMessage(new StringTextComponent("You will now spawn BEES"), UUID.fromString("f648da61-7d7c-449b-9fd7-05fa8eac0b0f"));
                     BeeHandler.spawnAngryBees((ServerWorld) world, player.getPosition(), aggroDist);
                 }
-            }
-            else
-            {
-                player.sendMessage(new StringTextComponent("You will not spawn bees"), UUID.fromString("f648da61-7d7c-449b-9fd7-05fa8eac0b0f"));
             }
         }
     }

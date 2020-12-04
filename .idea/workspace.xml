@@ -6,16 +6,14 @@
   <component name="ChangeListManager">
     <list default="true" id="1acd225e-9d0d-4152-80f9-96fe5306eac3" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/build.gradle" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/resources/main/assets/terra_reforged/lang/en_us.json" beforeDir="false" afterPath="$PROJECT_DIR$/build/resources/main/assets/terra_reforged/lang/en_us.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/anbaric/terra_reforged/TerraReforged.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/anbaric/terra_reforged/TerraReforged.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/anbaric/terra_reforged/capabilities/multijump/MultiJump.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/anbaric/terra_reforged/capabilities/multijump/MultiJump.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/anbaric/terra_reforged/util/events/TerraEffectItemsEvent.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/anbaric/terra_reforged/util/events/TerraEffectItemsEvent.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/anbaric/terra_reforged/util/handlers/SpreadingHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/anbaric/terra_reforged/util/handlers/SpreadingHandler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/anbaric/terra_reforged/util/init/TerraItemRegistry.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/anbaric/terra_reforged/util/init/TerraItemRegistry.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/anbaric/terra_reforged/util/init/TerraTagRegistry.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/anbaric/terra_reforged/util/init/TerraTagRegistry.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/assets/terra_reforged/lang/en_us.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/assets/terra_reforged/lang/en_us.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/data/terra_reforged/tags/items/ingot_copper.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/anbaric/terra_reforged/util/handlers/BeeGoalHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/anbaric/terra_reforged/entities/goals/BeeItemGoal.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/anbaric/terra_reforged/util/handlers/BeeHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/anbaric/terra_reforged/util/handlers/BeeHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/anbaric/terra_reforged/util/init/TerraEffectRegistry.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/anbaric/terra_reforged/util/init/TerraEffectRegistry.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -73,21 +71,14 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="HighlightingSettingsPerFile">
+    <setting file="file://$PROJECT_DIR$/build.gradle" root0="SKIP_INSPECTION" />
+    <setting file="file://$PROJECT_DIR$/src/main/java/com/anbaric/terra_reforged/capabilities/multijump/IMultiJump.java" root0="SKIP_INSPECTION" />
+    <setting file="file://$PROJECT_DIR$/src/main/java/com/anbaric/terra_reforged/capabilities/multijump/MultiJump.java" root0="SKIP_INSPECTION" />
+    <setting file="file://$PROJECT_DIR$/src/main/java/com/anbaric/terra_reforged/capabilities/multijump/MultiJumpProvider.java" root0="SKIP_INSPECTION" />
+    <setting file="file://$PROJECT_DIR$/src/main/java/com/anbaric/terra_reforged/util/init/TerraItemRegistry.java" root0="SKIP_INSPECTION" />
     <setting file="file://$PROJECT_DIR$/src/main/java/com/anbaric/terra_reforged/util/events/TerraEffectItemsEvent.java" root0="SKIP_INSPECTION" />
     <setting file="file://$PROJECT_DIR$/src/main/java/com/anbaric/terra_reforged/util/init/TerraBlockRegistry.java" root0="SKIP_INSPECTION" />
-    <setting file="file://$PROJECT_DIR$/src/main/java/com/anbaric/terra_reforged/capabilities/multijump/MultiJumpProvider.java" root0="SKIP_INSPECTION" />
-    <setting file="file://$PROJECT_DIR$/src/main/java/com/anbaric/terra_reforged/capabilities/multijump/MultiJump.java" root0="SKIP_INSPECTION" />
-    <setting file="file://$PROJECT_DIR$/src/main/java/com/anbaric/terra_reforged/util/init/TerraItemRegistry.java" root0="SKIP_INSPECTION" />
-    <setting file="file://$PROJECT_DIR$/src/main/java/com/anbaric/terra_reforged/capabilities/multijump/IMultiJump.java" root0="SKIP_INSPECTION" />
-    <setting file="file://$PROJECT_DIR$/build.gradle" root0="SKIP_INSPECTION" />
     <setting file="file://$PROJECT_DIR$/src/main/java/com/anbaric/terra_reforged/util/init/TerraItemBlockRegistry.java" root0="SKIP_INSPECTION" />
-  </component>
-  <component name="MavenImportPreferences">
-    <option name="generalSettings">
-      <MavenGeneralSettings>
-        <option name="mavenHome" value="D:\Downloads\Coding\IntelliJ\IntelliJ IDEA Community Edition 2019.1.2\plugins\maven\lib\maven3" />
-      </MavenGeneralSettings>
-    </option>
   </component>
   <component name="ProblemsViewState">
     <hideBySeverity>
@@ -131,7 +122,9 @@
         </option>
         <option name="vmOptions" />
       </ExternalSystemSettings>
-      <GradleScriptDebugEnabled>true</GradleScriptDebugEnabled>
+      <ExternalSystemDebugServerProcess>true</ExternalSystemDebugServerProcess>
+      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
+      <DebugAllEnabled>false</DebugAllEnabled>
       <method v="2" />
     </configuration>
     <configuration name="Terra_Reforged [runClient]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
@@ -150,7 +143,9 @@
         </option>
         <option name="vmOptions" />
       </ExternalSystemSettings>
-      <GradleScriptDebugEnabled>true</GradleScriptDebugEnabled>
+      <ExternalSystemDebugServerProcess>true</ExternalSystemDebugServerProcess>
+      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
+      <DebugAllEnabled>false</DebugAllEnabled>
       <method v="2" />
     </configuration>
     <recent_temporary>
@@ -173,58 +168,6 @@
   </component>
   <component name="UnknownFeatures">
     <option featureType="com.intellij.fileTypeFactory" implementationName="*.cfg" />
-  </component>
-  <component name="WindowStateProjectService">
-    <state x="754" y="206" key="#com.intellij.ide.util.MemberChooser" timestamp="1606859500197">
-      <screen x="0" y="0" width="1920" height="1026" />
-    </state>
-    <state x="754" y="206" key="#com.intellij.ide.util.MemberChooser/1920.312.1366.714/-1920.0.1920.1080/0.0.1920.1026@0.0.1920.1026" timestamp="1606859500197" />
-    <state width="1876" height="2" key="GridCell.Tab.0.bottom" timestamp="1606887794900">
-      <screen x="0" y="0" width="1920" height="1026" />
-    </state>
-    <state width="1876" height="2" key="GridCell.Tab.0.bottom/1920.312.1366.714/-1920.0.1920.1080/0.0.1920.1026@-1920.0.1920.1080" timestamp="1606694319253" />
-    <state width="1876" height="2" key="GridCell.Tab.0.bottom/1920.312.1366.714/-1920.0.1920.1080/0.0.1920.1026@0.0.1920.1026" timestamp="1606887794900" />
-    <state width="1876" height="2" key="GridCell.Tab.0.center" timestamp="1606887794900">
-      <screen x="0" y="0" width="1920" height="1026" />
-    </state>
-    <state width="1876" height="2" key="GridCell.Tab.0.center/1920.312.1366.714/-1920.0.1920.1080/0.0.1920.1026@-1920.0.1920.1080" timestamp="1606694319253" />
-    <state width="1876" height="2" key="GridCell.Tab.0.center/1920.312.1366.714/-1920.0.1920.1080/0.0.1920.1026@0.0.1920.1026" timestamp="1606887794900" />
-    <state width="1876" height="2" key="GridCell.Tab.0.left" timestamp="1606887794899">
-      <screen x="0" y="0" width="1920" height="1026" />
-    </state>
-    <state width="1876" height="2" key="GridCell.Tab.0.left/1920.312.1366.714/-1920.0.1920.1080/0.0.1920.1026@-1920.0.1920.1080" timestamp="1606694319253" />
-    <state width="1876" height="2" key="GridCell.Tab.0.left/1920.312.1366.714/-1920.0.1920.1080/0.0.1920.1026@0.0.1920.1026" timestamp="1606887794899" />
-    <state width="1876" height="2" key="GridCell.Tab.0.right" timestamp="1606887794900">
-      <screen x="0" y="0" width="1920" height="1026" />
-    </state>
-    <state width="1876" height="2" key="GridCell.Tab.0.right/1920.312.1366.714/-1920.0.1920.1080/0.0.1920.1026@-1920.0.1920.1080" timestamp="1606694319253" />
-    <state width="1876" height="2" key="GridCell.Tab.0.right/1920.312.1366.714/-1920.0.1920.1080/0.0.1920.1026@0.0.1920.1026" timestamp="1606887794900" />
-    <state x="777" y="196" key="SettingsEditor" timestamp="1606617267872">
-      <screen x="0" y="0" width="1920" height="1026" />
-    </state>
-    <state x="777" y="196" key="SettingsEditor/1920.312.1366.714/-1920.0.1920.1080/0.0.1920.1026@0.0.1920.1026" timestamp="1606617267872" />
-    <state x="503" y="234" width="913" height="649" key="com.intellij.xdebugger.impl.breakpoints.ui.BreakpointsDialogFactory$2" timestamp="1606543665925">
-      <screen x="0" y="0" width="1920" height="1026" />
-    </state>
-    <state x="503" y="234" width="913" height="649" key="com.intellij.xdebugger.impl.breakpoints.ui.BreakpointsDialogFactory$2/1920.312.1366.714/-1920.0.1920.1080/0.0.1920.1026@0.0.1920.1026" timestamp="1606543665925" />
-    <state x="-1819" y="-20" width="1566" height="1025" maximized="true" key="dock-window-1" timestamp="1606857332219">
-      <screen x="-1920" y="0" width="1920" height="1080" />
-    </state>
-    <state x="1777" y="290" width="1587" height="1049" maximized="true" key="dock-window-1/1920.312.1366.714/-1920.0.1920.1080/0.0.1920.1026@-1920.0.1920.1080" timestamp="1606540313310" />
-    <state x="-1819" y="-20" width="1566" height="1025" maximized="true" key="dock-window-1/1920.312.1366.714/-1920.0.1920.1080/0.0.1920.1026@0.0.1920.1026" timestamp="1606857332219" />
-    <state x="156" y="351" width="1580" height="1049" key="dock-window-2" timestamp="1606688207717">
-      <screen x="0" y="0" width="1920" height="1026" />
-    </state>
-    <state x="275" y="-15" width="1580" height="1049" key="dock-window-2/1920.312.1366.714/-1920.0.1920.1080/0.0.1920.1026@-1920.0.1920.1080" timestamp="1606687847376" />
-    <state x="156" y="351" width="1580" height="1049" key="dock-window-2/1920.312.1366.714/-1920.0.1920.1080/0.0.1920.1026@0.0.1920.1026" timestamp="1606688207717" />
-    <state x="-1542" y="0" width="1580" height="1049" key="dock-window-3" timestamp="1606688207717">
-      <screen x="-1920" y="0" width="1920" height="1080" />
-    </state>
-    <state x="-1542" y="0" width="1580" height="1049" key="dock-window-3/1920.312.1366.714/-1920.0.1920.1080/0.0.1920.1026@0.0.1920.1026" timestamp="1606688207717" />
-    <state x="245" y="27" width="1580" height="995" key="dock-window-4" timestamp="1606689411768">
-      <screen x="0" y="0" width="1920" height="1026" />
-    </state>
-    <state x="245" y="27" width="1580" height="995" key="dock-window-4/1920.312.1366.714/-1920.0.1920.1080/0.0.1920.1026@0.0.1920.1026" timestamp="1606689411768" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

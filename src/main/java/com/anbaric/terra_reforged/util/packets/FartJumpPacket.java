@@ -9,13 +9,13 @@ import net.minecraftforge.fml.network.NetworkEvent;
 
 import java.util.function.Supplier;
 
-public class CloudJumpPacket
+public class FartJumpPacket
 {
-    public CloudJumpPacket(PacketBuffer buffer)
+    public FartJumpPacket(PacketBuffer buffer)
     {
     }
 
-    public CloudJumpPacket()
+    public FartJumpPacket()
     {
     }
 

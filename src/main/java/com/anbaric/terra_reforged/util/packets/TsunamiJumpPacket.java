@@ -9,13 +9,13 @@ import net.minecraftforge.fml.network.NetworkEvent;
 
 import java.util.function.Supplier;
 
-public class CloudJumpPacket
+public class TsunamiJumpPacket
 {
-    public CloudJumpPacket(PacketBuffer buffer)
+    public TsunamiJumpPacket(PacketBuffer buffer)
     {
     }
 
-    public CloudJumpPacket()
+    public TsunamiJumpPacket()
     {
     }
 
@@ -31,13 +31,13 @@ public class CloudJumpPacket
             context.get().enqueueWork(() -> {
                 player.fallDistance = 0;
                 TerraJumpEvent.jump(player);
-                player.playSound(SoundEvents.BLOCK_WOOL_FALL, 1, 0.9F + player.getRNG().nextFloat() * 0.2F);
-                for (int i = 0; i < 20; ++i)
+                player.playSound(SoundEvents.AMBIENT_UNDERWATER_EXIT, 1, 0.9F + player.getRNG().nextFloat() * 0.2F);
+                for (int i = 0; i < 40; ++i)
                 {
                     double motionX = player.getRNG().nextGaussian() * 0.02;
                     double motionY = player.getRNG().nextGaussian() * 0.02 + 0.20;
                     double motionZ = player.getRNG().nextGaussian() * 0.02;
-                    player.getServerWorld().spawnParticle(ParticleTypes.POOF, player.getPosX(), player.getPosY(), player.getPosZ(), 1, motionX, motionY, motionZ, 0.15);
+                    player.getServerWorld().spawnParticle(ParticleTypes.FALLING_WATER, player.getPosX(), player.getPosY(), player.getPosZ(), 1, motionX, motionY, motionZ, 0.15);
                 }
             });
         }

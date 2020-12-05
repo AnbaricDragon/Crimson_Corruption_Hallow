@@ -18,13 +18,13 @@ import net.minecraftforge.eventbus.api.SubscribeEvent;
 public class TerraJumpEvent
 {
     @OnlyIn(Dist.CLIENT)
-    private boolean hasReleasedJumpKey;
-
-    @OnlyIn(Dist.CLIENT)
     private boolean jumpState;
 
     @OnlyIn(Dist.CLIENT)
     private boolean lastJumpState;
+
+    @OnlyIn(Dist.CLIENT)
+    private boolean hasfirstJump;
 
     @SubscribeEvent
     @OnlyIn(Dist.CLIENT)
@@ -34,16 +34,29 @@ public class TerraJumpEvent
         {
             ClientPlayerEntity player = Minecraft.getInstance().player;
 
-            jumpState = player.movementInput.jump;
-
-            if (jumpState != lastJumpState)
+            if (player != null)
             {
-                if (jumpState && !player.isOnGround() && !player.isInWater())
+                if (player.isOnGround())
                 {
-                    pickJump(player);
+                    hasfirstJump = true;
                 }
+                jumpState = player.movementInput.jump;
+                if (jumpState != lastJumpState)
+                {
+                    if (jumpState && !player.isOnGround() && !player.isInWater())
+                    {
+                        if (!hasfirstJump)
+                        {
+                            pickJump(player);
+                        }
+                        else
+                        {
+                            hasfirstJump = false;
+                        }
+                    }
+                }
+                lastJumpState = jumpState;
             }
-            lastJumpState = jumpState;
         }
     }
 
@@ -90,6 +103,7 @@ public class TerraJumpEvent
                 player.playSound(SoundEvents.ENTITY_DROWNED_DEATH_WATER, 1, 0.9F + player.getRNG().nextFloat() * 0.2F);
                 return;
             }
+
         });
     }
 

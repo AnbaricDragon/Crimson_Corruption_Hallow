@@ -1,6 +1,5 @@
 package com.anbaric.terra_reforged.util.events;
 
-import com.anbaric.terra_reforged.capabilities.multijump.IMultiJump;
 import com.anbaric.terra_reforged.capabilities.multijump.TerraCapabilityMultiJump;
 import com.anbaric.terra_reforged.util.handlers.NetworkHandler;
 import com.anbaric.terra_reforged.util.packets.*;
@@ -10,15 +9,11 @@ import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.potion.Effects;
 import net.minecraft.stats.Stats;
 import net.minecraft.util.SoundEvents;
-import net.minecraft.util.math.MathHelper;
 import net.minecraft.util.math.vector.Vector3d;
-import net.minecraft.util.text.StringTextComponent;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 import net.minecraftforge.event.TickEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
-
-import java.util.UUID;
 
 public class TerraJumpEvent
 {

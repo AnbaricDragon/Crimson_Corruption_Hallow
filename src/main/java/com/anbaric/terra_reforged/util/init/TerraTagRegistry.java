@@ -20,5 +20,9 @@ public class TerraTagRegistry
     public static final ITag.INamedTag<Item> INGOT_TITANIUM = ItemTags.makeWrapperTag("forge:ingots/titanium");
 
     public static final ITag.INamedTag<Item> CLOUD_JUMPERS = ItemTags.makeWrapperTag("terra_reforged:cloud_jumpers");
+    public static final ITag.INamedTag<Item> BLIZZARD_JUMPERS = ItemTags.makeWrapperTag("terra_reforged:blizzard_jumpers");
+    public static final ITag.INamedTag<Item> SANDSTORM_JUMPERS = ItemTags.makeWrapperTag("terra_reforged:sandstorm_jumpers");
+    public static final ITag.INamedTag<Item> TSUNAMI_JUMPERS = ItemTags.makeWrapperTag("terra_reforged:tsunami_jumpers");
+    public static final ITag.INamedTag<Item> FART_JUMPERS = ItemTags.makeWrapperTag("terra_reforged:fart_jumpers");
     public static final ITag.INamedTag<Item> BEE_SPAWNERS = ItemTags.makeWrapperTag("terra_reforged:bee_spawners");
 }

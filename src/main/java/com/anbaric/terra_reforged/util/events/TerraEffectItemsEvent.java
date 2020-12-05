@@ -3,6 +3,7 @@ package com.anbaric.terra_reforged.util.events;
 import com.anbaric.terra_reforged.capabilities.multijump.TerraCapabilityMultiJump;
 import com.anbaric.terra_reforged.util.handlers.BeeHandler;
 import com.anbaric.terra_reforged.util.init.TerraItemRegistry;
+import com.anbaric.terra_reforged.util.init.TerraTagRegistry;
 import net.minecraft.entity.*;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.Item;
@@ -51,7 +52,7 @@ public class TerraEffectItemsEvent
     @SubscribeEvent
     static void onPlayerTick(TickEvent.PlayerTickEvent event)
     {
-        PlayerEntity player = event.player;
+        PlayerEntity player = event.player != null ? event.player : null;
 
         //Accessory Effects
         int jumpModifier = 0;
@@ -85,7 +86,7 @@ public class TerraEffectItemsEvent
             {
                 ItemStack targetStack = player.inventory.getStackInSlot(i);
 
-                if (CLOUD_JUMPERS.contains(targetStack.getItem())) { hasCloudItem = true; }
+                if (targetStack.getItem().isIn(TerraTagRegistry.CLOUD_JUMPERS)) { hasCloudItem = true; }
                 if (BLIZZARD_JUMPERS.contains(targetStack.getItem())) { hasBlizzardItem = true; }
                 if (SANDSTORM_JUMPERS.contains(targetStack.getItem())) { hasSandstormItem = true; }
                 if (TSUNAMI_JUMPERS.contains(targetStack.getItem())) { hasTsunamiItem = true; }
@@ -104,10 +105,10 @@ public class TerraEffectItemsEvent
     static void onPlayerHurt(LivingDamageEvent event)
     {
         PlayerEntity player = event.getEntityLiving() instanceof PlayerEntity ? (PlayerEntity) event.getEntityLiving() : null;
-        ServerWorld  world  = (ServerWorld) event.getEntityLiving().getEntityWorld();
+        if (player == null) { return; }
+        ServerWorld world  = (ServerWorld) event.getEntity().getEntityWorld();
 
         float aggroDist = event.getSource().getTrueSource() instanceof LivingEntity ? event.getSource().getTrueSource().getEntity().getDistance(player) : 10F;
-
 
         //Bee Item Spawning
         boolean hasBeeItem = false;
@@ -115,7 +116,7 @@ public class TerraEffectItemsEvent
         {
             Item targetStack = player.inventory.getStackInSlot(i).getItem();
 
-            if (BEE_SPAWNERS.contains(targetStack.getItem()))
+            if (targetStack.getItem().isIn(TerraTagRegistry.BEE_SPAWNERS))
             {
                 hasBeeItem = true;
             }

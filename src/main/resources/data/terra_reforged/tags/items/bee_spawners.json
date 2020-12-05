@@ -1,6 +1,8 @@
 {
-	"replace": false,
-	"values": [
-		"terra_reforged:honeycomb"
-	]
+  "replace": false,
+  "values": [
+    "terra_reforged:honeycomb",
+    "terra_reforged:balloon_honey",
+    "terra_reforged:horseshoe_balloon_honey"
+  ]
 }

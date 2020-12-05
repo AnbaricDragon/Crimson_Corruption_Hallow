@@ -20,17 +20,16 @@ import net.minecraftforge.eventbus.api.SubscribeEvent;
 
 import java.util.UUID;
 
-
 public class TerraJumpEvent
 {
     @OnlyIn(Dist.CLIENT)
     private boolean hasReleasedJumpKey;
 
     @OnlyIn(Dist.CLIENT)
-    private int jumpCount = 0;
+    private boolean jumpState;
 
     @OnlyIn(Dist.CLIENT)
-    private int prevJumpCount = 0;
+    private boolean lastJumpState;
 
     @SubscribeEvent
     @OnlyIn(Dist.CLIENT)
@@ -40,29 +39,16 @@ public class TerraJumpEvent
         {
             ClientPlayerEntity player = Minecraft.getInstance().player;
 
-            if (player != null && jumpCount != prevJumpCount)
+            jumpState = player.movementInput.jump;
+
+            if (jumpState != lastJumpState)
             {
-                if ((player.isOnGround() || player.isOnLadder()) && !player.isInWater())
+                if (jumpState && !player.isOnGround() && !player.isInWater())
                 {
-                    hasReleasedJumpKey = false;
-                }
-                else
-                {
-                    if (!player.movementInput.jump)
-                    {
-                        hasReleasedJumpKey = true;
-                    }
-                    else
-                    {
-                        if (!player.abilities.isFlying && hasReleasedJumpKey)
-                        {
-                            pickJump(player);
-                            jumpCount++;
-                            prevJumpCount = jumpCount;
-                        }
-                    }
+                    pickJump(player);
                 }
             }
+            lastJumpState = jumpState;
         }
     }
 

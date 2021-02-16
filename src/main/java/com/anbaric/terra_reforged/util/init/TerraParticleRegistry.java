@@ -27,4 +27,10 @@ public class TerraParticleRegistry
     public static final RegistryObject<BasicParticleType> TORCH_FLAME_DEMON = PARTICLES.register("torch_flame_demon", () -> new BasicParticleType(true));
     public static final RegistryObject<BasicParticleType> TORCH_FLAME_CURSED = PARTICLES.register("torch_flame_cursed", () -> new BasicParticleType(true));
     public static final RegistryObject<BasicParticleType> TORCH_FLAME_ICHOR = PARTICLES.register("torch_flame_ichor", () -> new BasicParticleType(true));
+    public static final RegistryObject<BasicParticleType> TORCH_FLAME_DESERT = PARTICLES.register("torch_flame_desert", () -> new BasicParticleType(true));
+    public static final RegistryObject<BasicParticleType> TORCH_FLAME_CORAL = PARTICLES.register("torch_flame_coral", () -> new BasicParticleType(true));
+    public static final RegistryObject<BasicParticleType> TORCH_FLAME_CORRUPT = PARTICLES.register("torch_flame_corrupt", () -> new BasicParticleType(true));
+    public static final RegistryObject<BasicParticleType> TORCH_FLAME_CRIMSON = PARTICLES.register("torch_flame_crimson", () -> new BasicParticleType(true));
+    public static final RegistryObject<BasicParticleType> TORCH_FLAME_HALLOWED = PARTICLES.register("torch_flame_hallowed", () -> new BasicParticleType(true));
+    public static final RegistryObject<BasicParticleType> TORCH_FLAME_JUNGLE = PARTICLES.register("torch_flame_jungle", () -> new BasicParticleType(true));
 }

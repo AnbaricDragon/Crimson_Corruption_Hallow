@@ -4,33 +4,37 @@ import com.anbaric.terra_reforged.capabilities.multijump.TerraCapabilityMultiJum
 import com.anbaric.terra_reforged.util.handlers.BeeHandler;
 import com.anbaric.terra_reforged.util.init.TerraItemRegistry;
 import com.anbaric.terra_reforged.util.init.TerraTagRegistry;
+import net.minecraft.advancements.criterion.RightClickBlockWithItemTrigger;
+import net.minecraft.block.Block;
+import net.minecraft.block.Blocks;
 import net.minecraft.entity.*;
 import net.minecraft.entity.player.PlayerEntity;
+import net.minecraft.entity.player.ServerPlayerEntity;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
+import net.minecraft.item.Items;
 import net.minecraft.potion.EffectInstance;
 import net.minecraft.potion.Effects;
+import net.minecraft.util.Hand;
+import net.minecraft.util.IItemProvider;
+import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.text.ITextComponent;
+import net.minecraft.world.World;
 import net.minecraft.world.server.ServerWorld;
 import net.minecraftforge.event.TickEvent;
 import net.minecraftforge.event.entity.living.LivingDamageEvent;
 import net.minecraftforge.event.entity.living.LivingFallEvent;
+import net.minecraftforge.event.entity.living.LivingHurtEvent;
+import net.minecraftforge.event.entity.player.PlayerInteractEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
+import net.minecraftforge.items.ItemHandlerHelper;
 
-import java.util.Arrays;
-import java.util.List;
+import java.util.Random;
+import java.util.UUID;
 
 public class TerraEffectItemsEvent
 {
-    private static List<Item> FALL_BREAKERS = Arrays.asList(TerraItemRegistry.HORSESHOE_LUCKY.get(), TerraItemRegistry.HORSESHOE_OBSIDIAN.get(), TerraItemRegistry.HORSESHOE_BALLOON_CLOUD.get(), TerraItemRegistry.HORSESHOE_BALLOON_BLIZZARD.get(), TerraItemRegistry.HORSESHOE_BALLOON_SANDSTORM.get(), TerraItemRegistry.HORSESHOE_BALLOON_SHARK.get(), TerraItemRegistry.HORSESHOE_BALLOON_HONEY.get(), TerraItemRegistry.HORSESHOE_BALLOON_FART.get());
-    private static List<Item> HIGH_JUMPERS = Arrays.asList(TerraItemRegistry.BALLOON_RED.get(), TerraItemRegistry.BALLOON_CLOUD.get(), TerraItemRegistry.BALLOON_BLIZZARD.get(), TerraItemRegistry.BALLOON_SANDSTORM.get(), TerraItemRegistry.BALLOON_HONEY.get(), TerraItemRegistry.BALLOON_PUFFERFISH.get(), TerraItemRegistry.BALLOON_SHARK.get(), TerraItemRegistry.BALLOON_FART.get(), TerraItemRegistry.BALLOON_BUNDLE.get(), TerraItemRegistry.HORSESHOE_BALLOON_CLOUD.get(), TerraItemRegistry.HORSESHOE_BALLOON_BLIZZARD.get(), TerraItemRegistry.HORSESHOE_BALLOON_SANDSTORM.get(), TerraItemRegistry.HORSESHOE_BALLOON_SHARK.get(), TerraItemRegistry.HORSESHOE_BALLOON_FART.get(), TerraItemRegistry.HORSESHOE_BALLOON_HONEY.get());
-    private static List<Item> CLOUD_JUMPERS = Arrays.asList(TerraItemRegistry.BOTTLE_CLOUD.get(), TerraItemRegistry.BALLOON_CLOUD.get(), TerraItemRegistry.HORSESHOE_BALLOON_CLOUD.get(), TerraItemRegistry.BALLOON_BUNDLE.get());
-    private static List<Item> BLIZZARD_JUMPERS = Arrays.asList(TerraItemRegistry.BOTTLE_BLIZZARD.get(), TerraItemRegistry.BALLOON_BLIZZARD.get(), TerraItemRegistry.HORSESHOE_BALLOON_BLIZZARD.get(), TerraItemRegistry.BALLOON_BUNDLE.get());
-    private static List<Item> SANDSTORM_JUMPERS = Arrays.asList(TerraItemRegistry.BOTTLE_SANDSTORM.get(), TerraItemRegistry.BALLOON_SANDSTORM.get(), TerraItemRegistry.HORSESHOE_BALLOON_SANDSTORM.get(), TerraItemRegistry.BALLOON_BUNDLE.get());
-    private static List<Item> TSUNAMI_JUMPERS = Arrays.asList(TerraItemRegistry.BOTTLE_TSUNAMI.get(), TerraItemRegistry.BALLOON_SHARK.get(), TerraItemRegistry.HORSESHOE_BALLOON_SHARK.get());
-    private static List<Item> FART_JUMPERS = Arrays.asList(TerraItemRegistry.BOTTLE_FART.get(), TerraItemRegistry.BALLOON_FART.get(), TerraItemRegistry.HORSESHOE_BALLOON_FART.get());
-    private static List<Item> BEE_SPAWNERS = Arrays.asList(TerraItemRegistry.HONEYCOMB.get(), TerraItemRegistry.BALLOON_HONEY.get(), TerraItemRegistry.HORSESHOE_BALLOON_HONEY.get());
-
-    @SubscribeEvent
+     @SubscribeEvent
     static void onFall(LivingFallEvent event)
     {
         if (!(event.getEntityLiving() instanceof PlayerEntity))
@@ -42,9 +46,48 @@ public class TerraEffectItemsEvent
         for (int i = 0; i < player.inventory.mainInventory.size(); i++)
         {
             ItemStack targetStack = player.inventory.getStackInSlot(i);
-            if (FALL_BREAKERS.contains(targetStack.getItem()))
+            if (targetStack.getItem().isIn(TerraTagRegistry.FALL_BREAKERS))
             {
                 event.setDistance(0.0F);
+            }
+        }
+    }
+
+    @SubscribeEvent
+    public void onLivingHurtEvent(LivingDamageEvent event)
+    {
+        if(event.getEntity().world.isRemote()) return;
+        if (!(event.getEntityLiving() instanceof ServerPlayerEntity)) return;
+
+        ServerPlayerEntity player = (ServerPlayerEntity)event.getEntityLiving();
+        player.sendMessage(ITextComponent.getTextComponentOrEmpty("player taking damage"), UUID.randomUUID());
+
+        if(event.getAmount() >= player.getHealth()) {
+            player.sendMessage(ITextComponent.getTextComponentOrEmpty("fatal damage"), UUID.randomUUID());
+            ItemStack itemstack = null;
+
+            for (Hand hand : Hand.values()) {
+                ItemStack itemstack1 = player.getHeldItem(hand);
+                if (itemstack1.getItem() == TerraItemRegistry.INGOT_COBALT.get()) {
+                    itemstack = itemstack1.copy();
+                    itemstack1.shrink(1);
+                    break;
+                }
+            }
+
+            if (itemstack != null) {
+                player.sendMessage(ITextComponent.getTextComponentOrEmpty("has custom totem"), UUID.randomUUID());
+                player.setHealth(1.0F);
+                player.clearActivePotions();
+                if(itemstack.getItem() == TerraItemRegistry.INGOT_COBALT.get()){
+                    player.addPotionEffect(new EffectInstance(Effects.REGENERATION, 9000, 1));
+                    player.addPotionEffect(new EffectInstance(Effects.ABSORPTION, 10000, 1));
+                    player.addPotionEffect(new EffectInstance(Effects.FIRE_RESISTANCE, 8000, 0));
+                    player.addPotionEffect(new EffectInstance(Effects.HERO_OF_THE_VILLAGE, 1000000, 4));
+                    ItemStack apple = new ItemStack(Items.GOLDEN_APPLE);
+                    player.addItemStackToInventory(apple);
+                }
+                player.world.setEntityState(player, (byte) 35);
             }
         }
     }
@@ -62,12 +105,12 @@ public class TerraEffectItemsEvent
             Item targetStack = player.inventory.getStackInSlot(i).getItem();
 
             if (targetStack == TerraItemRegistry.BALLOON_RED.get()) { redBalloon = true; }
-            if (targetStack == TerraItemRegistry.BALLOON_CLOUD.get() || targetStack == TerraItemRegistry.HORSESHOE_BALLOON_CLOUD.get() || targetStack == TerraItemRegistry.BALLOON_BUNDLE.get()) { cloudBalloon = true; }
-            if (targetStack == TerraItemRegistry.BALLOON_BLIZZARD.get() || targetStack == TerraItemRegistry.HORSESHOE_BALLOON_BLIZZARD.get() || targetStack == TerraItemRegistry.BALLOON_BUNDLE.get()) { blizzardBalloon = true; }
-            if (targetStack == TerraItemRegistry.BALLOON_SANDSTORM.get() || targetStack == TerraItemRegistry.HORSESHOE_BALLOON_SANDSTORM.get() || targetStack == TerraItemRegistry.BALLOON_BUNDLE.get()) { sandstormBalloon = true; }
-            if (targetStack == TerraItemRegistry.BALLOON_HONEY.get() || targetStack == TerraItemRegistry.HORSESHOE_BALLOON_HONEY.get()) { honeyBalloon = true; }
-            if (targetStack == TerraItemRegistry.BALLOON_PUFFERFISH.get() || targetStack == TerraItemRegistry.BALLOON_SHARK.get() || targetStack == TerraItemRegistry.HORSESHOE_BALLOON_SHARK.get()) { sharkBalloon = true; }
-            if (targetStack == TerraItemRegistry.BALLOON_FART.get() || targetStack == TerraItemRegistry.HORSESHOE_BALLOON_FART.get()) { fartBalloon = true; }
+            if (targetStack.isIn(TerraTagRegistry.CLOUD_HIGH_JUMPERS)) { cloudBalloon = true; }
+            if (targetStack.isIn(TerraTagRegistry.BLIZZARD_HIGH_JUMPERS)) { blizzardBalloon = true; }
+            if (targetStack.isIn(TerraTagRegistry.SANDSTORM_HIGH_JUMPERS)) { sandstormBalloon = true; }
+            if (targetStack.isIn(TerraTagRegistry.HONEY_HIGH_JUMPERS)) { honeyBalloon = true; }
+            if (targetStack.isIn(TerraTagRegistry.TSUNAMI_HIGH_JUMPERS)) { sharkBalloon = true; }
+            if (targetStack.isIn(TerraTagRegistry.FART_HIGH_JUMPERS)) { fartBalloon = true; }
         }
         if (redBalloon) { jumpModifier++; }
         if (cloudBalloon) { jumpModifier++; }
@@ -87,10 +130,10 @@ public class TerraEffectItemsEvent
                 ItemStack targetStack = player.inventory.getStackInSlot(i);
 
                 if (targetStack.getItem().isIn(TerraTagRegistry.CLOUD_JUMPERS)) { hasCloudItem = true; }
-                if (BLIZZARD_JUMPERS.contains(targetStack.getItem())) { hasBlizzardItem = true; }
-                if (SANDSTORM_JUMPERS.contains(targetStack.getItem())) { hasSandstormItem = true; }
-                if (TSUNAMI_JUMPERS.contains(targetStack.getItem())) { hasTsunamiItem = true; }
-                if (FART_JUMPERS.contains(targetStack.getItem())) { hasFartItem = true; }
+                if (targetStack.getItem().isIn(TerraTagRegistry.BLIZZARD_JUMPERS)) { hasBlizzardItem = true; }
+                if (targetStack.getItem().isIn(TerraTagRegistry.SANDSTORM_JUMPERS)) { hasSandstormItem = true; }
+                if (targetStack.getItem().isIn(TerraTagRegistry.TSUNAMI_JUMPERS)) { hasTsunamiItem = true; }
+                if (targetStack.getItem().isIn(TerraTagRegistry.FART_JUMPERS)) { hasFartItem = true; }
             }
             cap.setHasCloudItem(hasCloudItem);
             cap.setHasBlizzardItem(hasBlizzardItem);
@@ -110,16 +153,15 @@ public class TerraEffectItemsEvent
 
         float aggroDist = event.getSource().getTrueSource() instanceof LivingEntity ? event.getSource().getTrueSource().getEntity().getDistance(player) : 10F;
 
-        //Bee Item Spawning
-        boolean hasBeeItem = false;
+        //Item Checking
+        boolean hasBeeItem = false, hasPanicItem = false, hasCrossItem = false;
         for (int i = 0; i < player.inventory.mainInventory.size(); i++)
         {
             Item targetStack = player.inventory.getStackInSlot(i).getItem();
 
-            if (targetStack.getItem().isIn(TerraTagRegistry.BEE_SPAWNERS))
-            {
-                hasBeeItem = true;
-            }
+            if (targetStack.getItem().isIn(TerraTagRegistry.BEE_SPAWNERS)) { hasBeeItem = true; }
+            if (targetStack.getItem().isIn(TerraTagRegistry.PANIC_GIVERS)) { hasPanicItem = true; }
+            if (targetStack.getItem().isIn(TerraTagRegistry.INVULN_GIVERS)) { hasCrossItem = true; }
         }
 
         if (hasBeeItem)
@@ -129,7 +171,7 @@ public class TerraEffectItemsEvent
             {
                 Item targetStack = player.inventory.getStackInSlot(i).getItem();
 
-                if (BEE_SPAWNERS.contains(targetStack.getItem()))
+                if (targetStack.getItem().isIn(TerraTagRegistry.BEE_SPAWNERS))
                 {
                     if (player.getCooldownTracker().hasCooldown(targetStack.getItem()))
                     {
@@ -140,21 +182,102 @@ public class TerraEffectItemsEvent
 
             if (!hasBeeCooldown)
             {
+                player.addPotionEffect(new EffectInstance(Effects.REGENERATION, 100));
                 for (int i = 0; i < player.inventory.mainInventory.size(); i++)
                 {
                     Item targetStack = player.inventory.getStackInSlot(i).getItem();
 
-                    if (BEE_SPAWNERS.contains(targetStack.getItem()))
+                    if (targetStack.getItem().isIn(TerraTagRegistry.BEE_SPAWNERS))
                     {
                         player.getCooldownTracker().setCooldown(targetStack.getItem(), 100);
                     }
                 }
+                BeeHandler.spawnAngryBees((ServerWorld) world, player.getPosition(), aggroDist);
+            }
+        }
+        if (hasPanicItem)
+        {
+            boolean hasPanicCooldown = false;
+            for (int i = 0; i < player.inventory.mainInventory.size(); i++)
+            {
+                Item targetStack = player.inventory.getStackInSlot(i).getItem();
 
-                if (world instanceof ServerWorld)
+                if (targetStack.getItem().isIn(TerraTagRegistry.PANIC_GIVERS))
                 {
-                    BeeHandler.spawnAngryBees((ServerWorld) world, player.getPosition(), aggroDist);
+                    if (player.getCooldownTracker().hasCooldown(targetStack.getItem()))
+                    {
+                        hasPanicCooldown = true;
+                    }
+                }
+            }
+
+            if (!hasPanicCooldown)
+            {
+                player.addPotionEffect(new EffectInstance(Effects.SPEED, 100));
+                for (int i = 0; i < player.inventory.mainInventory.size(); i++)
+                {
+                    Item targetStack = player.inventory.getStackInSlot(i).getItem();
+
+                    if (targetStack.getItem().isIn(TerraTagRegistry.PANIC_GIVERS))
+                    {
+                        player.getCooldownTracker().setCooldown(targetStack.getItem(), 100);
+                    }
+                }
+            }
+        }
+        if (hasCrossItem)
+        {
+            boolean hasCrossCooldown = false;
+            for (int i = 0; i < player.inventory.mainInventory.size(); i++)
+            {
+                Item targetStack = player.inventory.getStackInSlot(i).getItem();
+
+                if (targetStack.getItem().isIn(TerraTagRegistry.INVULN_GIVERS))
+                {
+                    if (player.getCooldownTracker().hasCooldown(targetStack.getItem()))
+                    {
+                        hasCrossCooldown = true;
+                    }
+                }
+            }
+
+            if (!hasCrossCooldown)
+            {
+                player.addPotionEffect(new EffectInstance(Effects.RESISTANCE, 40, 5, false, false));
+                for (int i = 0; i < player.inventory.mainInventory.size(); i++)
+                {
+                    Item targetStack = player.inventory.getStackInSlot(i).getItem();
+
+                    if (targetStack.getItem().isIn(TerraTagRegistry.INVULN_GIVERS))
+                    {
+                        player.getCooldownTracker().setCooldown(targetStack.getItem(), 160);
+                    }
                 }
             }
         }
     }
+
+    @SubscribeEvent
+    static void onPlayerAttack(LivingHurtEvent event)
+    {
+        LivingEntity victim = event.getEntityLiving();
+        PlayerEntity player = event.getSource().getTrueSource() instanceof PlayerEntity ? (PlayerEntity) event.getSource().getTrueSource() : null;
+        if (player == null) { return; }
+        int victimArmor = victim.getTotalArmorValue();
+
+        boolean hasArmorPasser = false;
+        for (int i = 0; i < player.inventory.mainInventory.size(); i++)
+        {
+            Item targetStack = player.inventory.getStackInSlot(i).getItem();
+
+            if (targetStack.getItem().isIn(TerraTagRegistry.ARMOR_PASSERS)) { hasArmorPasser = true; }
+        }
+
+        if (hasArmorPasser)
+        {
+            event.setAmount(event.getAmount() * 1.2F);
+        }
+    }
+
+
 }

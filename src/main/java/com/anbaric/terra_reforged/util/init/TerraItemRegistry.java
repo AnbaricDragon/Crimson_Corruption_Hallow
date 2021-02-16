@@ -4,8 +4,12 @@ import com.anbaric.terra_reforged.items.TerraItemLilyPad;
 import com.anbaric.terra_reforged.util.Reference;
 import com.anbaric.terra_reforged.util.TerraItemGroups;
 import com.anbaric.terra_reforged.util.handlers.MaterialHandler;
+import net.minecraft.entity.LivingEntity;
+import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.*;
+import net.minecraft.world.World;
 import net.minecraftforge.fml.RegistryObject;
+import net.minecraftforge.items.ItemHandlerHelper;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 
@@ -28,6 +32,12 @@ public final class TerraItemRegistry
     public static final RegistryObject<Item> TORCH_DEMON = ITEMS.register("torch_demon", () -> new WallOrFloorItem(TerraBlockRegistry.TORCH_DEMON.get(), TerraBlockRegistry.TORCH_DEMON_WALL.get(), new Item.Properties().group(TerraItemGroups.TERRA_DECORATIONS_TAB)));
     public static final RegistryObject<Item> TORCH_CURSED = ITEMS.register("torch_cursed", () -> new WallOrFloorItem(TerraBlockRegistry.TORCH_CURSED.get(), TerraBlockRegistry.TORCH_CURSED_WALL.get(), new Item.Properties().group(TerraItemGroups.TERRA_DECORATIONS_TAB)));
     public static final RegistryObject<Item> TORCH_ICHOR = ITEMS.register("torch_ichor", () -> new WallOrFloorItem(TerraBlockRegistry.TORCH_ICHOR.get(), TerraBlockRegistry.TORCH_ICHOR_WALL.get(), new Item.Properties().group(TerraItemGroups.TERRA_DECORATIONS_TAB)));
+    public static final RegistryObject<Item> TORCH_DESERT = ITEMS.register("torch_desert", () -> new WallOrFloorItem(TerraBlockRegistry.TORCH_DESERT.get(), TerraBlockRegistry.TORCH_DESERT_WALL.get(), new Item.Properties().group(TerraItemGroups.TERRA_DECORATIONS_TAB)));
+    public static final RegistryObject<Item> TORCH_CORAL = ITEMS.register("torch_coral", () -> new WallOrFloorItem(TerraBlockRegistry.TORCH_CORAL.get(), TerraBlockRegistry.TORCH_CORAL_WALL.get(), new Item.Properties().group(TerraItemGroups.TERRA_DECORATIONS_TAB)));
+    public static final RegistryObject<Item> TORCH_CORRUPT = ITEMS.register("torch_corrupt", () -> new WallOrFloorItem(TerraBlockRegistry.TORCH_CORRUPT.get(), TerraBlockRegistry.TORCH_CORRUPT_WALL.get(), new Item.Properties().group(TerraItemGroups.TERRA_DECORATIONS_TAB)));
+    public static final RegistryObject<Item> TORCH_CRIMSON = ITEMS.register("torch_crimson", () -> new WallOrFloorItem(TerraBlockRegistry.TORCH_CRIMSON.get(), TerraBlockRegistry.TORCH_CRIMSON_WALL.get(), new Item.Properties().group(TerraItemGroups.TERRA_DECORATIONS_TAB)));
+    public static final RegistryObject<Item> TORCH_HALLOWED = ITEMS.register("torch_hallowed", () -> new WallOrFloorItem(TerraBlockRegistry.TORCH_HALLOWED.get(), TerraBlockRegistry.TORCH_HALLOWED_WALL.get(), new Item.Properties().group(TerraItemGroups.TERRA_DECORATIONS_TAB)));
+    public static final RegistryObject<Item> TORCH_JUNGLE = ITEMS.register("torch_jungle", () -> new WallOrFloorItem(TerraBlockRegistry.TORCH_JUNGLE.get(), TerraBlockRegistry.TORCH_JUNGLE_WALL.get(), new Item.Properties().group(TerraItemGroups.TERRA_DECORATIONS_TAB)));
 
     //Materials
     public static final RegistryObject<Item> INGOT_COPPER = ITEMS.register("ingot_copper", () -> new Item(new Item.Properties().group(TerraItemGroups.TERRA_MATERIALS_TAB)));
@@ -99,6 +109,12 @@ public final class TerraItemRegistry
     public static final RegistryObject<Item> HORSESHOE_BALLOON_FART = ITEMS.register("horseshoe_balloon_fart", () -> new Item(new Item.Properties().group(TerraItemGroups.TERRA_TOOLS_TAB).maxStackSize(1)));
     public static final RegistryObject<Item> HORSESHOE_BALLOON_HONEY = ITEMS.register("horseshoe_balloon_honey", () -> new Item(new Item.Properties().group(TerraItemGroups.TERRA_TOOLS_TAB).maxStackSize(1)));
     public static final RegistryObject<Item> HONEYCOMB = ITEMS.register("honeycomb", () -> new Item(new Item.Properties().group(TerraItemGroups.TERRA_TOOLS_TAB).maxStackSize(1)));
+    public static final RegistryObject<Item> NECKLACE_PANIC = ITEMS.register("necklace_panic", () -> new Item(new Item.Properties().group(TerraItemGroups.TERRA_TOOLS_TAB).maxStackSize(1)));
+    public static final RegistryObject<Item> NECKLACE_SWEETHEART = ITEMS.register("necklace_sweetheart", () -> new Item(new Item.Properties().group(TerraItemGroups.TERRA_TOOLS_TAB).maxStackSize(1)));
+    public static final RegistryObject<Item> NECKLACE_SHARKTOOTH = ITEMS.register("necklace_sharktooth", () -> new Item(new Item.Properties().group(TerraItemGroups.TERRA_TOOLS_TAB).maxStackSize(1)));
+    public static final RegistryObject<Item> NECKLACE_STINGER = ITEMS.register("necklace_stinger", () -> new Item(new Item.Properties().group(TerraItemGroups.TERRA_TOOLS_TAB).maxStackSize(1)));
+    public static final RegistryObject<Item> NECKLACE_CROSS = ITEMS.register("necklace_cross", () -> new Item(new Item.Properties().group(TerraItemGroups.TERRA_TOOLS_TAB).maxStackSize(1)));
+    public static final RegistryObject<Item> NECKLACE_STARVEIL = ITEMS.register("necklace_starveil", () -> new Item(new Item.Properties().group(TerraItemGroups.TERRA_TOOLS_TAB).maxStackSize(1)));
 
     //Pickaxes
     public static final RegistryObject<Item> PICKAXE_CACTUS = ITEMS.register("pickaxe_cactus", () -> new PickaxeItem(MaterialHandler.CACTUS, 1, -2.8F, new Item.Properties().group(TerraItemGroups.TERRA_TOOLS_TAB)));
@@ -132,8 +148,13 @@ public final class TerraItemRegistry
     public static final RegistryObject<Item> PICKAXE_SOLAR = ITEMS.register("pickaxe_solar", () -> new PickaxeItem(MaterialHandler.LUMINITE, 1, -2.0F, new Item.Properties().group(TerraItemGroups.TERRA_TOOLS_TAB)));
     public static final RegistryObject<Item> PICKAXE_STARDUST = ITEMS.register("pickaxe_stardust", () -> new PickaxeItem(MaterialHandler.LUMINITE, 1, -2.0F, new Item.Properties().group(TerraItemGroups.TERRA_TOOLS_TAB)));
 
+    //Axes
+
+
+
     //Weapons
 
     //Swords
     public static final RegistryObject<Item> SWORD_COPPER = ITEMS.register("sword_copper", () -> new SwordItem(MaterialHandler.COPPER,  3, -2.4F, new Item.Properties().group(TerraItemGroups.TERRA_WEAPONS_TAB)));
+    public static final RegistryObject<Item> SWORD_TERRA = ITEMS.register("sword_terra", () -> new SwordItem(MaterialHandler.TERRA,  30, -2.4F, new Item.Properties().group(TerraItemGroups.TERRA_WEAPONS_TAB)));
 }

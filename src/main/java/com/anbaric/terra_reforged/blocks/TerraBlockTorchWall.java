@@ -52,6 +52,11 @@ public class TerraBlockTorchWall extends TerraBlockTorch
         else if (this == TerraBlockRegistry.TORCH_ICE_WALL.get()) { return TerraParticleRegistry.TORCH_FLAME_ICE.get(); }
         else if (this == TerraBlockRegistry.TORCH_BONE_WALL.get()) { return TerraParticleRegistry.TORCH_FLAME_BONE.get(); }
         else if (this == TerraBlockRegistry.TORCH_BRIGHT_WALL.get()) { return TerraParticleRegistry.TORCH_FLAME_BRIGHT.get(); }
+        else if (this == TerraBlockRegistry.TORCH_DESERT_WALL.get()) { return TerraParticleRegistry.TORCH_FLAME_DESERT.get(); }
+        else if (this == TerraBlockRegistry.TORCH_CORRUPT_WALL.get()) { return TerraParticleRegistry.TORCH_FLAME_CORRUPT.get(); }
+        else if (this == TerraBlockRegistry.TORCH_CRIMSON_WALL.get()) { return TerraParticleRegistry.TORCH_FLAME_CRIMSON.get(); }
+        else if (this == TerraBlockRegistry.TORCH_HALLOWED_WALL.get()) { return TerraParticleRegistry.TORCH_FLAME_HALLOWED.get(); }
+        else if (this == TerraBlockRegistry.TORCH_JUNGLE_WALL.get()) { return TerraParticleRegistry.TORCH_FLAME_JUNGLE.get(); }
         else return this == TerraBlockRegistry.TORCH_DEMON_WALL.get() ? TerraParticleRegistry.TORCH_FLAME_DEMON.get() : ParticleTypes.FLAME;
     }
 

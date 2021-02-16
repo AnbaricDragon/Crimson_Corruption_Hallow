@@ -34,5 +34,11 @@ public class ParticleHandler
         Minecraft.getInstance().particles.registerFactory(TerraParticleRegistry.TORCH_FLAME_DEMON.get(), FlameParticle.Factory::new);
         Minecraft.getInstance().particles.registerFactory(TerraParticleRegistry.TORCH_FLAME_CURSED.get(), FlameParticle.Factory::new);
         Minecraft.getInstance().particles.registerFactory(TerraParticleRegistry.TORCH_FLAME_ICHOR.get(), FlameParticle.Factory::new);
+        Minecraft.getInstance().particles.registerFactory(TerraParticleRegistry.TORCH_FLAME_DESERT.get(), FlameParticle.Factory::new);
+        Minecraft.getInstance().particles.registerFactory(TerraParticleRegistry.TORCH_FLAME_CORAL.get(), FlameParticle.Factory::new);
+        Minecraft.getInstance().particles.registerFactory(TerraParticleRegistry.TORCH_FLAME_CORRUPT.get(), FlameParticle.Factory::new);
+        Minecraft.getInstance().particles.registerFactory(TerraParticleRegistry.TORCH_FLAME_CRIMSON.get(), FlameParticle.Factory::new);
+        Minecraft.getInstance().particles.registerFactory(TerraParticleRegistry.TORCH_FLAME_HALLOWED.get(), FlameParticle.Factory::new);
+        Minecraft.getInstance().particles.registerFactory(TerraParticleRegistry.TORCH_FLAME_JUNGLE.get(), FlameParticle.Factory::new);
     }
 }

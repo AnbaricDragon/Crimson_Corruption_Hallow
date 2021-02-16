@@ -42,6 +42,7 @@ public enum MaterialHandler implements IItemTier
     FOSSIL(3, 500, 12.0F, 1.5F, 14, () -> null),
     BONE(3, 500, 14.0F, 1.5F, 14, () -> null),
     SHARK(3, 500, 18.0F, 1.5F, 14, () -> null),
+    TERRA(0, 1500, 0F, 1.5F, 20, () -> null),
     JUNGLE(10, 2000, 40.0F, 1.5F, 10, () -> { return Ingredient.fromItems(TerraBlockRegistry.PLANT_THORN_JUNGLE.get());});
 
     private final int harvestLevel;

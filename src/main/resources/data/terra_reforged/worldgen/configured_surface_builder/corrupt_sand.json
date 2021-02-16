@@ -1,0 +1,14 @@
+{
+	"type": "minecraft:default",
+	"config": {
+		"top_material": {
+			"Name": "terra_reforged:sand_ebon"
+		},
+		"under_material": {
+			"Name": "terra_reforged:sandstone_ebon"
+		},
+		"underwater_material": {
+			"Name": "terra_reforged:sand_ebon"
+		}
+	}
+}

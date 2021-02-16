@@ -6,6 +6,7 @@ import com.anbaric.terra_reforged.util.init.TerraBlockRegistry;
 import net.minecraft.block.Block;
 import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;
+import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.RenderType;
 import net.minecraft.client.renderer.RenderTypeLookup;
 import net.minecraftforge.api.distmarker.Dist;
@@ -14,10 +15,12 @@ import net.minecraftforge.fml.RegistryObject;
 import net.minecraftforge.fml.common.Mod.EventBusSubscriber;
 import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
 
+import java.util.function.Supplier;
+
 @EventBusSubscriber(value = {Dist.CLIENT}, modid = Reference.MODID, bus = EventBusSubscriber.Bus.MOD) public class RenderHandler
 {
     @SubscribeEvent
-    public static void onClientSetup(FMLClientSetupEvent event)
+    public static void setRenderLayer(FMLClientSetupEvent event)
     {
         RenderType translucent  = RenderType.getTranslucent();
         RenderType cutoutMipped = RenderType.getCutoutMipped();
@@ -71,6 +74,18 @@ import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
         RenderTypeLookup.setRenderLayer(TerraBlockRegistry.TORCH_CURSED_WALL.get(), cutout);
         RenderTypeLookup.setRenderLayer(TerraBlockRegistry.TORCH_ICHOR.get(), cutout);
         RenderTypeLookup.setRenderLayer(TerraBlockRegistry.TORCH_ICHOR_WALL.get(), cutout);
+        RenderTypeLookup.setRenderLayer(TerraBlockRegistry.TORCH_DESERT.get(), cutout);
+        RenderTypeLookup.setRenderLayer(TerraBlockRegistry.TORCH_DESERT_WALL.get(), cutout);
+        RenderTypeLookup.setRenderLayer(TerraBlockRegistry.TORCH_CORAL.get(), cutout);
+        RenderTypeLookup.setRenderLayer(TerraBlockRegistry.TORCH_CORAL_WALL.get(), cutout);
+        RenderTypeLookup.setRenderLayer(TerraBlockRegistry.TORCH_CORRUPT.get(), cutout);
+        RenderTypeLookup.setRenderLayer(TerraBlockRegistry.TORCH_CORRUPT_WALL.get(), cutout);
+        RenderTypeLookup.setRenderLayer(TerraBlockRegistry.TORCH_CRIMSON.get(), cutout);
+        RenderTypeLookup.setRenderLayer(TerraBlockRegistry.TORCH_CRIMSON_WALL.get(), cutout);
+        RenderTypeLookup.setRenderLayer(TerraBlockRegistry.TORCH_HALLOWED.get(), cutout);
+        RenderTypeLookup.setRenderLayer(TerraBlockRegistry.TORCH_HALLOWED_WALL.get(), cutout);
+        RenderTypeLookup.setRenderLayer(TerraBlockRegistry.TORCH_JUNGLE.get(), cutout);
+        RenderTypeLookup.setRenderLayer(TerraBlockRegistry.TORCH_JUNGLE_WALL.get(), cutout);
         RenderTypeLookup.setRenderLayer(TerraBlockRegistry.TALL_LANTERN_FIREFLY.get(), translucent);
         RenderTypeLookup.setRenderLayer(TerraBlockRegistry.TALL_LANTERN_LIGHTNINGBUG.get(), translucent);
 

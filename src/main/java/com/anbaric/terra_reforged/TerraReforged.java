@@ -1,11 +1,12 @@
 package com.anbaric.terra_reforged;
 
 import com.anbaric.terra_reforged.util.Reference;
-//import com.anbaric.terra_reforged.util.TerraVanillaCompat;
 import com.anbaric.terra_reforged.util.events.TerraCapabilitiesEvent;
 import com.anbaric.terra_reforged.util.events.TerraEffectItemsEvent;
 import com.anbaric.terra_reforged.util.events.TerraJumpEvent;
 import com.anbaric.terra_reforged.util.events.TerraStructureProtectEvent;
+import com.anbaric.terra_reforged.util.handlers.BiomeHandler;
+import com.anbaric.terra_reforged.util.handlers.EntityHandler;
 import com.anbaric.terra_reforged.util.handlers.NetworkHandler;
 import com.anbaric.terra_reforged.util.init.*;
 import net.minecraft.util.DamageSource;
@@ -26,8 +27,9 @@ import org.apache.logging.log4j.Logger;
 
 import java.util.stream.Collectors;
 
-@Mod(Reference.MODID)
-public class TerraReforged
+//import com.anbaric.terra_reforged.util.TerraVanillaCompat;
+
+@Mod(Reference.MODID) public class TerraReforged
 {
     private static final Logger LOGGER = LogManager.getLogger(Reference.MODID);
 
@@ -47,8 +49,10 @@ public class TerraReforged
         TerraBlockRegistry.BLOCKS.register(modEventBus);
         TerraItemRegistry.ITEMS.register(modEventBus);
         TerraEffectRegistry.EFFECTS.register(modEventBus);
-//        TerraFeatureRegistry.FEATURES.register(modEventBus);
-//        TerraBiomeRegistry.BIOMES.register(modEventBus);
+        TerraEntityRegistry.ENTITIES.register(modEventBus);
+        TerraFeatureRegistry.FEATURES.register(modEventBus);
+        TerraSurfaceBuilderRegistry.SURFACE_BUILDERS.register(modEventBus);
+        TerraBiomeRegistry.BIOMES.register(modEventBus);
         // Register the setup method for modloading
         modEventBus.addListener(this::setup);
         // Register the enqueueIMC method for modloading
@@ -69,18 +73,20 @@ public class TerraReforged
 
     private void setup(final FMLCommonSetupEvent event)
     {
+        event.enqueueWork(BiomeHandler::addBiomes);
+
         NetworkHandler.register();
 
-//        TerraVanillaCompat.setupStripping();
-//        TerraVanillaCompat.setupFlammable();
-//        TerraVanillaCompat.setupOres();
-//        TerraVanillaCompat.setupDyePlants();
-//        TerraVanillaCompat.setupTrees();
+        //        TerraVanillaCompat.setupStripping();
+        //        TerraVanillaCompat.setupFlammable();
+        //        TerraVanillaCompat.setupOres();
+        //        TerraVanillaCompat.setupDyePlants();
+        //        TerraVanillaCompat.setupTrees();
     }
 
     private void doClientStuff(final FMLClientSetupEvent event)
     {
-        LOGGER.info("Got game settings {}", event.getMinecraftSupplier().get().gameSettings);
+        EntityHandler.register(event.getMinecraftSupplier());
     }
 
     private void enqueueIMC(final InterModEnqueueEvent event)

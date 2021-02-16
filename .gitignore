@@ -23,8 +23,3 @@ run
 
 # Files from Forge MDK
 forge*changelog.txt
-.idea/workspace.xml
-.idea/workspace.xml
-.gradle/buildOutputCleanup/buildOutputCleanup.lock
-*.lock
-*.xml

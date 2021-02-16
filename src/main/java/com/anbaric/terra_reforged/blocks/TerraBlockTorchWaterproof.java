@@ -41,6 +41,7 @@ public class TerraBlockTorchWaterproof extends Block implements IWaterLoggable
     public IParticleData getParticle()
     {
         if (this == TerraBlockRegistry.TORCH_CURSED.get()) { return TerraParticleRegistry.TORCH_FLAME_CURSED.get(); }
+        if (this == TerraBlockRegistry.TORCH_CORAL.get()) { return TerraParticleRegistry.TORCH_FLAME_CORAL.get(); }
         else return this == TerraBlockRegistry.TORCH_ICHOR.get() ? TerraParticleRegistry.TORCH_FLAME_ICHOR.get() : ParticleTypes.FLAME;
     }
 

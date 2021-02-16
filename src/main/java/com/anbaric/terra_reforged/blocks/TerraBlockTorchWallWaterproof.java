@@ -44,6 +44,7 @@ public class TerraBlockTorchWallWaterproof extends TerraBlockTorchWaterproof imp
     public IParticleData getParticle()
     {
         if (this == TerraBlockRegistry.TORCH_CURSED_WALL.get()) { return TerraParticleRegistry.TORCH_FLAME_CURSED.get(); }
+        if (this == TerraBlockRegistry.TORCH_CORAL_WALL.get()) { return TerraParticleRegistry.TORCH_FLAME_CORAL.get(); }
         else return this == TerraBlockRegistry.TORCH_ICHOR_WALL.get() ? TerraParticleRegistry.TORCH_FLAME_ICHOR.get() : ParticleTypes.FLAME;
     }
 

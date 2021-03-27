@@ -18,19 +18,16 @@ import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.Mod.EventBusSubscriber.Bus;
 
-@Mod.EventBusSubscriber(modid = Reference.MODID, bus = Bus.MOD, value = { Dist.CLIENT })
-public class ColorHandler
+@Mod.EventBusSubscriber(modid = Reference.MODID, bus = Bus.MOD, value = {Dist.CLIENT}) public class ColorHandler
 {
     @OnlyIn(Dist.CLIENT)
     @SubscribeEvent
     public static void registerBlockColorHandlers(final ColorHandlerEvent.Block event)
     {
-        event.getBlockColors().register((x, reader, pos, u) ->  reader != null && pos != null ? BiomeColors.getFoliageColor(reader, pos) : FoliageColors.getDefault(), TerraBlockRegistry.WALL_OAK_LEAF.get());
-        event.getBlockColors().register((x, reader, pos, u) ->  FoliageColors.getSpruce(), TerraBlockRegistry.WALL_SPRUCE_LEAF.get());
-        event.getBlockColors().register((x, reader, pos, u) ->  FoliageColors.getBirch(), TerraBlockRegistry.WALL_BIRCH_LEAF.get());
-        event.getBlockColors().register((x, reader, pos, u) ->  reader != null && pos != null ? BiomeColors.getFoliageColor(reader, pos) : FoliageColors.getDefault(), TerraBlockRegistry.WALL_JUNGLE_LEAF.get());
-        event.getBlockColors().register((x, reader, pos, u) ->  reader != null && pos != null ? BiomeColors.getFoliageColor(reader, pos) : FoliageColors.getDefault(), TerraBlockRegistry.WALL_ACACIA_LEAF.get());
-        event.getBlockColors().register((x, reader, pos, u) ->  reader != null && pos != null ? BiomeColors.getFoliageColor(reader, pos) : FoliageColors.getDefault(), TerraBlockRegistry.WALL_DARKOAK_LEAF.get());
+        event.getBlockColors().register((blockstate, world, pos, tintIndex) -> world != null && pos != null ? BiomeColors.getFoliageColor(world, pos) : FoliageColors.getDefault(), TerraBlockRegistry.WALL_OAK_LEAF.get(), TerraBlockRegistry.WALL_JUNGLE_LEAF.get(), TerraBlockRegistry.WALL_ACACIA_LEAF.get(), TerraBlockRegistry.WALL_DARKOAK_LEAF.get());
+        event.getBlockColors().register((blockstate, world, pos, tintIndex) -> FoliageColors.getSpruce(), TerraBlockRegistry.WALL_SPRUCE_LEAF.get());
+        event.getBlockColors().register((blockstate, world, pos, tintIndex) -> FoliageColors.getBirch(), TerraBlockRegistry.WALL_BIRCH_LEAF.get());
+
     }
 
 
@@ -44,8 +41,7 @@ public class ColorHandler
         final ItemColors  itemColors  = event.getItemColors();
 
         // Use the Block's colour handler for an ItemBlock
-        final IItemColor itemBlockColourHandler = (stack, tintIndex) ->
-        {
+        final IItemColor itemBlockColourHandler = (stack, tintIndex) -> {
             final BlockState state = ((BlockItem) stack.getItem()).getBlock().getDefaultState();
             return blockColors.getColor(state, null, null, tintIndex);
         };

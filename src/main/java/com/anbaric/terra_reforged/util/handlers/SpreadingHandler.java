@@ -98,6 +98,7 @@ public class SpreadingHandler
         ORECOAL(Blocks.COAL_ORE, TerraBlockRegistry.ORE_COAL_CORRUPT.get(), TerraBlockRegistry.ORE_COAL_CRIMSON.get(), TerraBlockRegistry.ORE_COAL_HALLOWED.get()),
         ORELAPIS(Blocks.LAPIS_ORE, TerraBlockRegistry.ORE_LAPIS_CORRUPT.get(), TerraBlockRegistry.ORE_LAPIS_CRIMSON.get(), TerraBlockRegistry.ORE_LAPIS_HALLOWED.get()),
         OREREDSTONE(Blocks.REDSTONE_ORE, TerraBlockRegistry.ORE_REDSTONE_CORRUPT.get(), TerraBlockRegistry.ORE_REDSTONE_CRIMSON.get(), TerraBlockRegistry.ORE_REDSTONE_HALLOWED.get()),
+        OREAMBER(TerraBlockRegistry.ORE_AMBER_PURE.get(), TerraBlockRegistry.ORE_AMBER_CORRUPT.get(), TerraBlockRegistry.ORE_AMBER_CRIMSON.get(), TerraBlockRegistry.ORE_AMBER_HALLOWED.get()),
         OREAMETHYST(TerraBlockRegistry.ORE_AMETHYST_PURE.get(), TerraBlockRegistry.ORE_AMETHYST_CORRUPT.get(), TerraBlockRegistry.ORE_AMETHYST_CRIMSON.get(), TerraBlockRegistry.ORE_AMETHYST_HALLOWED.get()),
         ORETOPAZ(TerraBlockRegistry.ORE_TOPAZ_PURE.get(), TerraBlockRegistry.ORE_TOPAZ_CORRUPT.get(), TerraBlockRegistry.ORE_TOPAZ_CRIMSON.get(), TerraBlockRegistry.ORE_TOPAZ_HALLOWED.get()),
         ORESAPPHIRE(TerraBlockRegistry.ORE_SAPPHIRE_PURE.get(), TerraBlockRegistry.ORE_SAPPHIRE_CORRUPT.get(), TerraBlockRegistry.ORE_SAPPHIRE_CRIMSON.get(), TerraBlockRegistry.ORE_SAPPHIRE_HALLOWED.get()),
@@ -121,7 +122,6 @@ public class SpreadingHandler
         SLABSANDSTONECUT(Blocks.CUT_SANDSTONE_SLAB, TerraBlockRegistry.SLAB_SANDSTONE_EBON_CUT.get(), TerraBlockRegistry.SLAB_SANDSTONE_CRIM_CUT.get(), TerraBlockRegistry.SLAB_SANDSTONE_PEARL_CUT.get()),
         SLABSANDSTONESMOOTH(Blocks.SMOOTH_SANDSTONE_SLAB, TerraBlockRegistry.SLAB_SANDSTONE_EBON_SMOOTH.get(), TerraBlockRegistry.SLAB_SANDSTONE_CRIM_SMOOTH.get(), TerraBlockRegistry.SLAB_SANDSTONE_PEARL_SMOOTH.get()),
         REEDS(Blocks.SUGAR_CANE, TerraBlockRegistry.REED_CORRUPT.get(), TerraBlockRegistry.REED_CRIMSON.get(), TerraBlockRegistry.REED_HALLOWED.get());
-        ;
 
         public Block pure, corrupt, crimson, hallowed;
 

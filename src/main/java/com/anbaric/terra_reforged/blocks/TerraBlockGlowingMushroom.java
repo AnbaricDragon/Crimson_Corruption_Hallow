@@ -2,6 +2,7 @@ package com.anbaric.terra_reforged.blocks;
 
 import com.anbaric.terra_reforged.TerraReforged;
 //import com.anbaric.terra_reforged.features.vegetation.TerraGlowingMushroom;
+import com.anbaric.terra_reforged.features.vegetation.TerraFeatureMushroomGlowing;
 import com.anbaric.terra_reforged.util.init.TerraBlockRegistry;
 import net.minecraft.block.*;
 import net.minecraft.state.IntegerProperty;
@@ -82,7 +83,7 @@ public class TerraBlockGlowingMushroom extends BushBlock implements IGrowable, I
             {
                 return;
             }
-//            TerraGlowingMushroom.generateMushroom(worldIn, pos, rand);
+            TerraFeatureMushroomGlowing.generateMushroom(worldIn, pos, rand);
         }
     }
 

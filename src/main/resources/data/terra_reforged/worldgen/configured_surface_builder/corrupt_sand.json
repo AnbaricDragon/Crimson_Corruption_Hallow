@@ -1,5 +1,5 @@
 {
-	"type": "minecraft:default",
+	"type": "terra_reforged:corrupt_sand",
 	"config": {
 		"top_material": {
 			"Name": "terra_reforged:sand_ebon"

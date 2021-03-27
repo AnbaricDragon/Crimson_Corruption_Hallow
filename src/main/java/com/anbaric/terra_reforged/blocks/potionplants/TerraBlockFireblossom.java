@@ -3,6 +3,7 @@ package com.anbaric.terra_reforged.blocks.potionplants;
 import com.anbaric.terra_reforged.util.init.TerraBlockRegistry;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
+import net.minecraft.tags.ITag;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.IBlockReader;
 import net.minecraft.world.World;
@@ -12,9 +13,9 @@ import java.util.Random;
 
 public class TerraBlockFireblossom extends TerraBlockPotionPlant
 {
-    public TerraBlockFireblossom(Properties builder)
+    public TerraBlockFireblossom(Properties builder, ITag<Block> tag)
     {
-        super(builder, 3);
+        super(builder, tag);
     }
 
     @Override

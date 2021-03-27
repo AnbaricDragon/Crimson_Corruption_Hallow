@@ -1,17 +1,25 @@
 package com.anbaric.terra_reforged.blocks.potionplants;
 
+import com.anbaric.terra_reforged.util.init.TerraBiomeRegistry;
+import com.anbaric.terra_reforged.util.init.TerraBlockRegistry;
+import com.anbaric.terra_reforged.util.init.TerraTagRegistry;
 import net.minecraft.block.*;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.monster.RavagerEntity;
 import net.minecraft.state.IntegerProperty;
 import net.minecraft.state.StateContainer;
 import net.minecraft.state.properties.BlockStateProperties;
+import net.minecraft.tags.ITag;
+import net.minecraft.tags.Tag;
+import net.minecraft.util.Direction;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.shapes.ISelectionContext;
 import net.minecraft.util.math.shapes.VoxelShape;
+import net.minecraft.world.DimensionType;
 import net.minecraft.world.IBlockReader;
 import net.minecraft.world.IWorldReader;
 import net.minecraft.world.World;
+import net.minecraft.world.biome.Biome;
 import net.minecraft.world.server.ServerWorld;
 
 import java.util.Random;
@@ -19,19 +27,14 @@ import java.util.Random;
 public class TerraBlockPotionPlant extends BushBlock implements IGrowable
 {
     public static final IntegerProperty AGE = BlockStateProperties.AGE_0_2;
-    public static VoxelShape[] SHAPE_BY_AGE = new VoxelShape[]
-    {
-        Block.makeCuboidShape(6.0D, 0.0D, 6.0D, 10.0D, 6.0D, 10.0D),
-        Block.makeCuboidShape(5.0D, 0.0D, 5.0D, 11.0D, 8.0D, 11.0D),
-        Block.makeCuboidShape(4.0D, 0.0D, 4.0D, 12.0D, 10.0D, 12.0D)
-    };
+    public static VoxelShape[] SHAPE_BY_AGE = new VoxelShape[]{Block.makeCuboidShape(6.0D, 0.0D, 6.0D, 10.0D, 6.0D, 10.0D), Block.makeCuboidShape(5.0D, 0.0D, 5.0D, 11.0D, 8.0D, 11.0D), Block.makeCuboidShape(4.0D, 0.0D, 4.0D, 12.0D, 10.0D, 12.0D)};
 
-    public int blocksIndex;
+    public ITag<Block> tag;
 
-    protected TerraBlockPotionPlant(Block.Properties builder, Integer arrayIndex)
+    protected TerraBlockPotionPlant(Block.Properties builder, ITag<Block> tag)
     {
         super(builder);
-        this.blocksIndex = arrayIndex;
+        this.tag = tag;
         this.setDefaultState(this.stateContainer.getBaseState().with(this.getAgeProperty(), Integer.valueOf(0)));
     }
 
@@ -77,9 +80,46 @@ public class TerraBlockPotionPlant extends BushBlock implements IGrowable
         worldIn.setBlockState(pos, this.withAge(i), 2);
     }
 
+    @Override
+    protected boolean isValidGround(BlockState state, IBlockReader worldIn, BlockPos pos)
+    {
+        return state.getBlock().isIn(tag);
+    }
+
+    public boolean isInPlanter(BlockState state, IBlockReader worldIn, BlockPos pos)
+    {
+        return worldIn.getBlockState(pos.down()).getBlock().isIn(TerraTagRegistry.GENERAL_PLANTERS);
+    }
+
     public boolean isValidPosition(BlockState state, IWorldReader worldIn, BlockPos pos)
     {
-        return this.isValidGround(worldIn.getBlockState(pos.down()), worldIn, pos);
+        Biome biome = worldIn.getBiome(pos);
+        if (isInPlanter(state, worldIn, pos)) return true;
+
+        if (this == TerraBlockRegistry.PLANT_BLINKROOT.get())
+        {
+            return worldIn.getBlockState(pos.down()).isSolid();
+        }
+        else if (this == TerraBlockRegistry.PLANT_DAYBLOOM.get())
+        {
+            return this.isValidGround(worldIn.getBlockState(pos.down()), worldIn, pos) && (!biome.getRegistryName().toString().contains("corrupt") && !biome.getRegistryName().toString().contains("crimson"));
+        }
+        else if (this == TerraBlockRegistry.PLANT_DEATHWEED.get())
+        {
+            return this.isValidGround(worldIn.getBlockState(pos.down()), worldIn, pos) && (biome.getRegistryName().toString().contains("corrupt") || biome.getRegistryName().toString().contains("crimson"));
+        }
+        else if (this == TerraBlockRegistry.PLANT_FIREBLOSSOM.get() || this == TerraBlockRegistry.PLANT_MOONGLOW.get())
+        {
+            return this.isValidGround(worldIn.getBlockState(pos.down()), worldIn, pos);
+        }
+        else if (this == TerraBlockRegistry.PLANT_SHIVERTHORN.get())
+        {
+            return pos.getY() > 55 && this.isValidGround(worldIn.getBlockState(pos.down()), worldIn, pos);
+        }
+        else
+        {
+            return this == TerraBlockRegistry.PLANT_WATERLEAF.get() && pos.getY() > 60 && this.isValidGround(worldIn.getBlockState(pos.down()), worldIn, pos);
+        }
     }
 
     public void onEntityCollision(BlockState state, World worldIn, BlockPos pos, Entity entityIn)

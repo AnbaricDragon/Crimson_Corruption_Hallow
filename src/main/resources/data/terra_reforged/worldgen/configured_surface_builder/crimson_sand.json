@@ -1,0 +1,14 @@
+{
+	"type": "terra_reforged:crimson_sand",
+	"config": {
+		"top_material": {
+			"Name": "terra_reforged:sand_crim"
+		},
+		"under_material": {
+			"Name": "terra_reforged:sandstone_crim"
+		},
+		"underwater_material": {
+			"Name": "terra_reforged:sand_crim"
+		}
+	}
+}

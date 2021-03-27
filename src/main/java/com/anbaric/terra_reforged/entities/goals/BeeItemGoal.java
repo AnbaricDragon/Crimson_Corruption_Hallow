@@ -35,7 +35,7 @@ public class BeeItemGoal extends NearestAttackableTargetGoal<LivingEntity>
     @Override
     protected void findNearestTarget()
     {
-        this.nearestTarget = this.goalOwner.world.func_225318_b(this.targetClass, this.targetEntitySelector, this.goalOwner, this.goalOwner.getPosX(), this.goalOwner.getPosY(), this.goalOwner.getPosZ(), this.getTargetableArea(this.getTargetDistance()));
+        this.nearestTarget = this.goalOwner.world.getClosestEntityWithinAABB(this.targetClass, this.targetEntitySelector, this.goalOwner, this.goalOwner.getPosX(), this.goalOwner.getPosY(), this.goalOwner.getPosZ(), this.getTargetableArea(this.getTargetDistance()));
     }
 
     /**

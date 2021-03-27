@@ -14,9 +14,17 @@ public class BiomeHandler
     public static RegistryKey<Biome> CORRUPT_PLAINS = RegistryKey.getOrCreateKey(Registry.BIOME_KEY, new ResourceLocation(Reference.MODID,"corrupt_plains"));
     public static RegistryKey<Biome> CORRUPT_DESERT = RegistryKey.getOrCreateKey(Registry.BIOME_KEY, new ResourceLocation(Reference.MODID,"corrupt_desert"));
 
+    public static RegistryKey<Biome> CRIMSON_DESERT = RegistryKey.getOrCreateKey(Registry.BIOME_KEY, new ResourceLocation(Reference.MODID,"crimson_desert"));
+
+    public static RegistryKey<Biome> HALLOWED_DESERT = RegistryKey.getOrCreateKey(Registry.BIOME_KEY, new ResourceLocation(Reference.MODID,"hallowed_desert"));
+
     public static void addBiomes()
     {
         BiomeManager.addBiome(BiomeManager.BiomeType.WARM, new BiomeManager.BiomeEntry(CORRUPT_PLAINS, 1));
         BiomeManager.addBiome(BiomeManager.BiomeType.DESERT, new BiomeManager.BiomeEntry(CORRUPT_DESERT, 1));
+
+        BiomeManager.addBiome(BiomeManager.BiomeType.DESERT, new BiomeManager.BiomeEntry(CRIMSON_DESERT, 1));
+
+        BiomeManager.addBiome(BiomeManager.BiomeType.DESERT, new BiomeManager.BiomeEntry(HALLOWED_DESERT, 1));
     }
 }

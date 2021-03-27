@@ -5,6 +5,7 @@ import com.anbaric.terra_reforged.util.init.TerraBlockRegistry;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
+import net.minecraft.tags.ITag;
 import net.minecraft.util.Direction;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.IBlockReader;
@@ -16,9 +17,9 @@ import java.util.Random;
 
 public class TerraBlockShiverthorn extends TerraBlockPotionPlant
 {
-    public TerraBlockShiverthorn(Properties builder)
+    public TerraBlockShiverthorn(Properties builder, ITag<Block> tag)
     {
-        super(builder, 5);
+        super(builder, tag);
     }
 
     @Override

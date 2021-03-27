@@ -6,7 +6,7 @@
   "downfall": 0.4,
   "precipitation": "rain",
   "category": "plains",
-  "player_spawn_friendly": true,
+  "player_spawn_friendly": false,
   "effects": {
     "sky_color": 4597880,
     "fog_color": 7159740,
@@ -22,11 +22,9 @@
     }
   },
   "starts": [
-    "minecraft:village_plains",
     "minecraft:pillager_outpost",
     "minecraft:mineshaft",
-    "minecraft:stronghold",
-    "minecraft:ruined_portal"
+    "minecraft:stronghold"
   ],
   "spawners": {
     "monster": [
@@ -132,47 +130,63 @@
   "spawn_costs": {},
   "carvers": {
     "air": [
-      "minecraft:cave",
-      "minecraft:canyon"
+      "terra_reforged:carver_cave_general",
+      "terra_reforged:carver_ravine_general"
     ]
   },
   "features": [
     [],
     [
-      "minecraft:lake_water",
-      "minecraft:lake_lava"
-    ],
-    [],
-    [
-      "minecraft:monster_room"
+      "terra_reforged:lake_corrupt_water_gen",
+      "terra_reforged:lake_corrupt_lava_gen"
     ],
     [],
     [],
+    [],
+    [],
     [
-      "minecraft:ore_dirt",
-      "minecraft:ore_gravel",
-      "minecraft:ore_granite",
-      "minecraft:ore_diorite",
-      "minecraft:ore_andesite",
-      "minecraft:ore_coal",
-      "minecraft:ore_iron",
-      "minecraft:ore_gold",
-      "minecraft:ore_redstone",
-      "minecraft:ore_diamond",
-      "minecraft:ore_lapis",
+      "terra_reforged:ore_dirt_gen",
+      "terra_reforged:ore_gravel_gen",
+      "terra_reforged:ore_granite_gen",
+      "terra_reforged:ore_diorite_gen",
+      "terra_reforged:ore_andesite_gen",
+      "terra_reforged:ore_corrupt_coal_gen",
+      "terra_reforged:ore_corrupt_iron_gen",
+      "terra_reforged:ore_corrupt_gold_gen",
+      "terra_reforged:ore_corrupt_redstone_gen",
+      "terra_reforged:ore_corrupt_diamond_gen",
+      "terra_reforged:ore_corrupt_lapis_gen",
+      "terra_reforged:ore_corrupt_tin_gen",
+      "terra_reforged:ore_corrupt_copper_gen",
+      "terra_reforged:ore_corrupt_lead_gen",
+      "terra_reforged:ore_corrupt_silver_gen",
+      "terra_reforged:ore_corrupt_tungsten_gen",
+      "terra_reforged:ore_corrupt_platinum_gen",
+      "terra_reforged:ore_corrupt_demonite_gen",
+      "terra_reforged:ore_corrupt_cobalt_gen",
+      "terra_reforged:ore_corrupt_palladium_gen",
+      "terra_reforged:ore_corrupt_mythril_gen",
+      "terra_reforged:ore_corrupt_orichalcum_gen",
+      "terra_reforged:ore_corrupt_adamantite_gen",
+      "terra_reforged:ore_corrupt_titanium_gen",
+      "terra_reforged:ore_corrupt_amber_gen",
+      "terra_reforged:ore_corrupt_ruby_gen",
+      "terra_reforged:ore_corrupt_sapphire_gen",
+      "terra_reforged:ore_corrupt_topaz_gen",
+      "terra_reforged:ore_corrupt_amethyst_gen",
       "minecraft:disk_sand",
       "minecraft:disk_clay",
       "minecraft:disk_gravel"
     ],
     [],
     [
+      "terra_reforged:plant_blinkroot_gen",
+      "terra_reforged:plant_deathweed_gen",
       "minecraft:patch_tall_grass_2",
-      "minecraft:plain_vegetation",
-      "minecraft:flower_plain_decorated",
+      "terra_reforged:tree_ebon_plains_gen",
       "minecraft:patch_grass_plain",
-      "minecraft:brown_mushroom_normal",
-      "minecraft:red_mushroom_normal",
-      "minecraft:patch_sugar_cane",
+      "terra_reforged:mushroom_vile_gen",
+      "terra_reforged:reed_corrupt_gen",
       "minecraft:patch_pumpkin",
       "minecraft:spring_water",
       "minecraft:spring_lava"

@@ -3,6 +3,8 @@ package com.anbaric.terra_reforged.features.vegetation;
 import com.anbaric.terra_reforged.util.init.TerraBlockRegistry;
 import com.anbaric.terra_reforged.util.init.TerraTagRegistry;
 import net.minecraft.block.BlockState;
+import net.minecraft.block.RotatedPillarBlock;
+import net.minecraft.util.Direction;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.ISeedReader;
 import net.minecraft.world.IWorld;
@@ -12,17 +14,17 @@ import net.minecraft.world.gen.feature.NoFeatureConfig;
 
 import java.util.Random;
 
-public class TerraFeatureEbonTree extends Feature<NoFeatureConfig>
+public class TerraFeatureTreeEbon extends Feature<NoFeatureConfig>
 {
-    public TerraFeatureEbonTree()
+    public TerraFeatureTreeEbon()
     {
-        super(NoFeatureConfig.field_236558_a_);
+        super(NoFeatureConfig.CODEC);
     }
 
     @Override
     public boolean generate(ISeedReader world, ChunkGenerator generator, Random rand, BlockPos pos, NoFeatureConfig config)
     {
-        if (world.getBlockState(pos.down()).getBlock().isIn(TerraTagRegistry.BOREAL_PLANTERS))
+        if (world.getBlockState(pos.down()).getBlock().isIn(TerraTagRegistry.EBON_PLANTERS))
         {
             generateTree(world, pos, rand);
             return true;
@@ -30,73 +32,39 @@ public class TerraFeatureEbonTree extends Feature<NoFeatureConfig>
         return false;
     }
 
-    public static final BlockState LOG_BOREAL = TerraBlockRegistry.LOG_BOREAL.get().getDefaultState();
-    public static final BlockState LEAF_BOREAL = TerraBlockRegistry.LEAF_BOREAL.get().getDefaultState();
+    public static final BlockState LOG_EBON = TerraBlockRegistry.LOG_EBON.get().getDefaultState();
+    public static final BlockState LEAF_EBON = TerraBlockRegistry.LEAF_EBON.get().getDefaultState();
 
-    public static final char[][][] BOREAL_ARRAY =
-    {{{'O', 'O', 'O', 'O', 'O'},
-    {'O', 'O', 'L', 'O', 'O'},
-    {'O', 'L', 'W', 'L', 'O'},
-    {'O', 'O', 'L', 'O', 'O'},
-    {'O', 'O', 'O', 'O', 'O'}},
-
-    {{'O', 'O', 'L', 'O', 'O'},
-    {'O', 'L', 'L', 'L', 'O'},
-    {'L', 'L', 'W', 'L', 'L'},
-    {'O', 'L', 'L', 'L', 'O'},
-    {'O', 'O', 'L', 'O', 'O'}},
+    public static final char[][][] EBON_ARRAY =
+    {{{'2', 'L', 'a', 'L', '2'},
+    {'L', 'L', 'a', 'L', 'L'},
+    {'d', 'd', 'W', 'b', 'b'},
+    {'L', 'L', 'c', 'L', 'L'},
+    {'2', 'L', 'c', 'L', '2'}},
 
     {{'O', 'L', 'L', 'L', 'O'},
+    {'L', 'L', 'L', 'L', 'L'},
     {'L', 'L', 'W', 'L', 'L'},
-    {'L', 'W', 'W', 'W', 'L'},
-    {'L', 'L', 'W', 'L', 'L'},
+    {'L', 'L', 'L', 'L', 'L'},
     {'O', 'L', 'L', 'L', 'O'}},
 
-    {{'O', 'R', 'L', 'R', 'O'},
-    {'R', 'L', 'G', 'L', 'R'},
-    {'L', 'G', 'W', 'G', 'L'},
-    {'R', 'L', 'G', 'L', 'R'},
-    {'O', 'R', 'L', 'R', 'O'}},
-
-    {{'O', 'B', 'R', 'B', 'O'},
-    {'B', 'L', 'D', 'L', 'B'},
-    {'R', 'D', 'W', 'D', 'R'},
-    {'B', 'L', 'D', 'L', 'B'},
-    {'O', 'B', 'R', 'B', 'O'}},
-
-    {{'O', 'O', 'B', 'O', 'O'},
-    {'O', 'R', 'L', 'R', 'O'},
-    {'B', 'L', 'W', 'L', 'B'},
-    {'O', 'R', 'L', 'R', 'O'},
-    {'O', 'O', 'B', 'O', 'O'}},
-
     {{'O', 'O', 'O', 'O', 'O'},
-    {'O', 'B', 'R', 'B', 'O'},
-    {'O', 'R', 'G', 'R', 'O'},
-    {'O', 'B', 'R', 'B', 'O'},
+    {'O', '3', 'e', '3', 'O'},
+    {'O', 'h', 'W', 'f', 'O'},
+    {'O', '3', 'g', '3', 'O'},
     {'O', 'O', 'O', 'O', 'O'}},
 
     {{'O', 'O', 'O', 'O', 'O'},
-    {'O', 'O', 'B', 'O', 'O'},
-    {'O', 'B', 'D', 'B', 'O'},
-    {'O', 'O', 'B', 'O', 'O'},
-    {'O', 'O', 'O', 'O', 'O'}},
-
-    {{'O', 'O', 'O', 'O', 'O'},
-    {'O', 'O', 'O', 'O', 'O'},
-    {'O', 'O', 'R', 'O', 'O'},
-    {'O', 'O', 'O', 'O', 'O'},
-    {'O', 'O', 'O', 'O', 'O'}},
-
-    {{'O', 'O', 'O', 'O', 'O'},
-    {'O', 'O', 'O', 'O', 'O'},
-    {'O', 'O', 'B', 'O', 'O'},
-    {'O', 'O', 'O', 'O', 'O'},
+    {'O', 'O', 'L', 'O', 'O'},
+    {'O', 'L', 'L', 'L', 'O'},
+    {'O', 'O', 'L', 'O', 'O'},
     {'O', 'O', 'O', 'O', 'O'}}};
 
-    private static char[][][] mutateArray(char[][][] inputArray, int canopyHeight)
+    private static char[][][] mutateArray(char[][][] inputArray, Random rand)
     {
         char[][][] outputArray = new char[inputArray.length][inputArray[0].length][inputArray[0][0].length];
+        float lowChance = rand.nextFloat();
+        float highChance = rand.nextFloat();
 
         for (int y = 0; y < inputArray.length; y++)
         {
@@ -104,27 +72,48 @@ public class TerraFeatureEbonTree extends Feature<NoFeatureConfig>
             {
                 for (int z = 0; z < inputArray[0][0].length; z++)
                 {
-                    char inputChar = inputArray[y][x][z];
-                    switch (canopyHeight)
+                    float   chance = Character.getNumericValue(inputArray[y][x][z]) * 0.25F;
+                    boolean won    = rand.nextFloat() < chance;
+                    switch (inputArray[y][x][z])
                     {
-                        case 0:
-                            outputArray[y][x][z] = inputChar == 'R' || inputChar == 'B' ? 'O' :
-                                    inputChar == 'G' || inputChar == 'D' ? 'L' :
-                                            inputChar;
+                        case '1': case '2': case '3':
+                        outputArray[y][x][z] = won ? 'L' : 'O';
+                        break;
+
+                        case 'a':
+                            outputArray[y][x][z] = lowChance < 0.2F ? 'v' : 'L';
                             break;
 
-                        case 1:
-                            outputArray[y][x][z] = inputChar == 'B' ? 'O' :
-                                    inputChar == 'G' ? 'W' :
-                                            inputChar == 'R' || inputChar == 'D' ? 'L' :
-                                                    inputChar;
+                        case 'b':
+                            outputArray[y][x][z] = lowChance > 0.2F && lowChance < 0.4F ? 'h' : 'L';
                             break;
 
-                        case 2:
-                            outputArray[y][x][z] = inputChar == 'R' || inputChar == 'B' ? 'L' :
-                                    inputChar == 'G' || inputChar == 'D' ? 'W' :
-                                            inputChar;
+                        case 'c':
+                            outputArray[y][x][z] = lowChance > 0.4F && lowChance < 0.6F ? 'v' : 'L';
                             break;
+
+                        case 'd':
+                            outputArray[y][x][z] = lowChance > 0.6F && lowChance < 0.8F ? 'h' : 'L';
+                            break;
+
+                        case 'e':
+                            outputArray[y][x][z] = highChance < 0.2F ? 'v' : 'L';
+                            break;
+
+                        case 'f':
+                            outputArray[y][x][z] = highChance > 0.2F && highChance < 0.4F ? 'h' : 'L';
+                            break;
+
+                        case 'g':
+                            outputArray[y][x][z] = highChance > 0.4F && highChance < 0.6F ? 'v' : 'L';
+                            break;
+
+                        case 'h':
+                            outputArray[y][x][z] = highChance > 0.6F && highChance < 0.8F ? 'h' : 'L';
+                            break;
+
+                        default:
+                            outputArray[y][x][z] = inputArray[y][x][z];
                     }
                 }
             }
@@ -156,7 +145,7 @@ public class TerraFeatureEbonTree extends Feature<NoFeatureConfig>
                 {
                     target.setPos(x, y, z);
                     char targetChar = template[arrayY][arrayX][arrayZ];
-                    if (targetChar == 'W')
+                    if (targetChar == 'W' || targetChar == 'h' || targetChar == 'v')
                     {
                         if (!world.getBlockState(target).canBeReplacedByLogs(world, pos))
                         {
@@ -183,19 +172,15 @@ public class TerraFeatureEbonTree extends Feature<NoFeatureConfig>
 
     public static void generateTree(IWorld world, BlockPos pos, Random rand)
     {
-        int        arrayX       = 0, arrayY = 0, arrayZ = 0;
-        int        trunkHeight  = rand.nextInt(3) + 1;
-        int        canopyHeight = rand.nextInt(3);
-        int        treeHeight   = BOREAL_ARRAY.length;
-        char[][][] template     = mutateArray(BOREAL_ARRAY, canopyHeight);
+        int        arrayX      = 0, arrayY = 0, arrayZ = 0;
+        int        trunkHeight = rand.nextInt(4) + 1;
+        int        treeHeight  = EBON_ARRAY.length;
+        char[][][] template    = mutateArray(EBON_ARRAY, rand);
+        boolean hasSpace = checkSpace(world, pos, trunkHeight, template);
 
-        if (checkSpace(world, pos, trunkHeight, template))
+        if (hasSpace)
         {
             BlockPos.Mutable target = new BlockPos.Mutable();
-            for (int i = 0; i < trunkHeight; i++)
-            {
-                world.setBlockState(pos.up(i), LOG_BOREAL, 3);
-            }
             for (int y = pos.getY() + trunkHeight; y < pos.getY() + treeHeight + trunkHeight; y++)
             {
                 for (int x = pos.getX() - 2; x <= pos.getX() + 2; x++)
@@ -207,11 +192,17 @@ public class TerraFeatureEbonTree extends Feature<NoFeatureConfig>
                         switch (inputChar)
                         {
                             case 'L':
-                                world.setBlockState(target, LEAF_BOREAL, 3);
+                                world.setBlockState(target, LEAF_EBON, 3);
                                 break;
                             case 'W':
-                                world.setBlockState(target, LOG_BOREAL, 3);
-
+                                world.setBlockState(target, LOG_EBON, 3);
+                                break;
+                            case 'v':
+                                world.setBlockState(target, LOG_EBON.with(RotatedPillarBlock.AXIS, Direction.Axis.X), 3);
+                                break;
+                            case 'h':
+                                world.setBlockState(target, LOG_EBON.with(RotatedPillarBlock.AXIS, Direction.Axis.Z), 3);
+                                break;
                         }
                         arrayZ++;
                     }
@@ -220,6 +211,10 @@ public class TerraFeatureEbonTree extends Feature<NoFeatureConfig>
                 }
                 arrayY++;
                 arrayX = 0;
+            }
+            for (int i = 0; i < trunkHeight; i++)
+            {
+                world.setBlockState(pos.up(i), LOG_EBON, 3);
             }
         }
     }

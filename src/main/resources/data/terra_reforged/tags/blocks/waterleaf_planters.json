@@ -1,0 +1,10 @@
+{
+    "replace": false,
+    "values": [
+				"minecraft:sand",
+				"minecraft:red_sand",
+				"terra_reforged:sand_hard",
+				"terra_reforged:sand_pearl",
+				"terra_reforged:sand_hardpearl"
+    ]
+}

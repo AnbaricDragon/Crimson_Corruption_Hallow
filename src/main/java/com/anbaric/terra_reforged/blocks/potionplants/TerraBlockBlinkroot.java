@@ -4,6 +4,7 @@ import com.anbaric.terra_reforged.util.init.TerraBlockRegistry;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
+import net.minecraft.tags.ITag;
 import net.minecraft.util.Direction;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.MathHelper;
@@ -16,9 +17,9 @@ import java.util.Random;
 
 public class TerraBlockBlinkroot extends TerraBlockPotionPlant
 {
-    public TerraBlockBlinkroot(Properties builder)
+    public TerraBlockBlinkroot(Properties builder, ITag<Block> tag)
     {
-        super(builder, 0);
+        super(builder, tag);
     }
 
     @Override

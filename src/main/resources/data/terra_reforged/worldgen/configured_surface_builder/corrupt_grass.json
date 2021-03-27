@@ -1,5 +1,5 @@
 {
-  "type": "minecraft:default",
+  "type": "terra_reforged:corrupt_grass",
   "config": {
     "top_material": {
       "Name": "terra_reforged:grass_corrupt",

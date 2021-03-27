@@ -10,9 +10,23 @@ public class TerraTagRegistry
 {
     public static final ITag.INamedTag<Block> MOSS = BlockTags.makeWrapperTag("terra_reforged:moss");
     public static final ITag.INamedTag<Block> BOREAL_PLANTERS = BlockTags.makeWrapperTag("terra_reforged:boreal_planters");
-//    public static final ITag.INamedTag<Block> CORRUPT_STONE_BASE = BlockTags.makeWrapperTag("terra_reforged:stone_base_corrupt");
-//    public static final ITag.INamedTag<Block> CRIMSON_STONE_BASE = BlockTags.makeWrapperTag("terra_reforged:stone_base_crimson");
-//    public static final ITag.INamedTag<Block> HALLOWED_STONE_BASE = BlockTags.makeWrapperTag("terra_reforged:stone_base_hallowed");
+    public static final ITag.INamedTag<Block> PALM_PLANTERS = BlockTags.makeWrapperTag("terra_reforged:palm_planters");
+    public static final ITag.INamedTag<Block> MAHOGANY_PLANTERS = BlockTags.makeWrapperTag("terra_reforged:mahogany_planters");
+    public static final ITag.INamedTag<Block> EBON_PLANTERS = BlockTags.makeWrapperTag("terra_reforged:ebon_planters");
+    public static final ITag.INamedTag<Block> SHADE_PLANTERS = BlockTags.makeWrapperTag("terra_reforged:shade_planters");
+    public static final ITag.INamedTag<Block> PEARL_PLANTERS = BlockTags.makeWrapperTag("terra_reforged:pearl_planters");
+    public static final ITag.INamedTag<Block> DAYBLOOM_PLANTERS = BlockTags.makeWrapperTag("terra_reforged:daybloom_planters");
+    public static final ITag.INamedTag<Block> DEATHWEED_PLANTERS = BlockTags.makeWrapperTag("terra_reforged:deathweed_planters");
+    public static final ITag.INamedTag<Block> FIREBLOSSOM_PLANTERS = BlockTags.makeWrapperTag("terra_reforged:fireblossom_planters");
+    public static final ITag.INamedTag<Block> MOONGLOW_PLANTERS = BlockTags.makeWrapperTag("terra_reforged:moonglow_planters");
+    public static final ITag.INamedTag<Block> SHIVERTHORN_PLANTERS = BlockTags.makeWrapperTag("terra_reforged:shiverthorn_planters");
+    public static final ITag.INamedTag<Block> WATERLEAF_PLANTERS = BlockTags.makeWrapperTag("terra_reforged:waterleaf_planters");
+    public static final ITag.INamedTag<Block> GENERAL_PLANTERS = BlockTags.makeWrapperTag("terra_reforged:general_planters");
+    public static final ITag.INamedTag<Block> MUSHROOM_PLANTERS = BlockTags.makeWrapperTag("terra_reforged:mushroom_planters");
+    public static final ITag.INamedTag<Block> CORRUPT_REPLACERS = BlockTags.makeWrapperTag("terra_reforged:gen/corrupt_replacers");
+    public static final ITag.INamedTag<Block> CRIMSON_REPLACERS = BlockTags.makeWrapperTag("terra_reforged:gen/crimson_replacers");
+    public static final ITag.INamedTag<Block> HALLOWED_REPLACERS = BlockTags.makeWrapperTag("terra_reforged:gen/hallowed_replacers");
+    public static final ITag.INamedTag<Block> GENERAL_REPLACERS = BlockTags.makeWrapperTag("terra_reforged:gen/general_replacers");
 
     public static final ITag.INamedTag<Item> INGOT_COPPER = ItemTags.makeWrapperTag("forge:ingots/copper");
     public static final ITag.INamedTag<Item> INGOT_TIN = ItemTags.makeWrapperTag("forge:ingots/tin");

@@ -1,0 +1,14 @@
+{
+	"type": "terra_reforged:hallowed_sand",
+	"config": {
+		"top_material": {
+			"Name": "terra_reforged:sand_pearl"
+		},
+		"under_material": {
+			"Name": "terra_reforged:sandstone_pearl"
+		},
+		"underwater_material": {
+			"Name": "terra_reforged:sand_pearl"
+		}
+	}
+}

@@ -4,6 +4,7 @@ import com.anbaric.terra_reforged.util.init.TerraBlockRegistry;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
+import net.minecraft.tags.ITag;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.IBlockReader;
 import net.minecraft.world.World;
@@ -13,9 +14,9 @@ import java.util.Random;
 
 public class TerraBlockDaybloom extends TerraBlockPotionPlant
 {
-    public TerraBlockDaybloom(Properties builder)
+    public TerraBlockDaybloom(Properties builder, ITag<Block> tag)
     {
-        super(builder, 1);
+        super(builder, tag);
     }
 
     @Override
@@ -40,8 +41,8 @@ public class TerraBlockDaybloom extends TerraBlockPotionPlant
             }
             else
             {
-                if (worldIn.isDaytime() == true && state.get(AGE) == 1) {worldIn.setBlockState(pos, this.getDefaultState().with(AGE, Integer.valueOf(2)));}
-                if (worldIn.isDaytime() == false && state.get(AGE) == 2) {worldIn.setBlockState(pos, this.getDefaultState().with(AGE, Integer.valueOf(1)));}
+                if (worldIn.isDaytime() && state.get(AGE) == 1) {worldIn.setBlockState(pos, this.getDefaultState().with(AGE, 2));}
+                if (!worldIn.isDaytime() && state.get(AGE) == 2) {worldIn.setBlockState(pos, this.getDefaultState().with(AGE, 1));}
             }
         }
     }

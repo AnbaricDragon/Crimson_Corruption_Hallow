@@ -5,13 +5,12 @@ import com.anbaric.terra_reforged.util.events.TerraCapabilitiesEvent;
 import com.anbaric.terra_reforged.util.events.TerraEffectItemsEvent;
 import com.anbaric.terra_reforged.util.events.TerraJumpEvent;
 import com.anbaric.terra_reforged.util.events.TerraStructureProtectEvent;
-import com.anbaric.terra_reforged.util.handlers.BiomeHandler;
-import com.anbaric.terra_reforged.util.handlers.EntityHandler;
-import com.anbaric.terra_reforged.util.handlers.NetworkHandler;
+import com.anbaric.terra_reforged.util.handlers.*;
 import com.anbaric.terra_reforged.util.init.*;
 import net.minecraft.util.DamageSource;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.common.PlantType;
+import net.minecraftforge.event.world.BiomeLoadingEvent;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.InterModComms;
@@ -33,7 +32,7 @@ import java.util.stream.Collectors;
 {
     private static final Logger LOGGER = LogManager.getLogger(Reference.MODID);
 
-    public static final boolean debugSpreading = true;
+    public static final boolean debugSpreading = false;
 
     public static PlantType BOREAL = PlantType.get("boreal");
     public static PlantType MUSHROOM = PlantType.get("mushroom");
@@ -51,6 +50,7 @@ import java.util.stream.Collectors;
         TerraEffectRegistry.EFFECTS.register(modEventBus);
         TerraEntityRegistry.ENTITIES.register(modEventBus);
         TerraFeatureRegistry.FEATURES.register(modEventBus);
+        TerraCarverRegistry.CARVERS.register(modEventBus);
         TerraSurfaceBuilderRegistry.SURFACE_BUILDERS.register(modEventBus);
         TerraBiomeRegistry.BIOMES.register(modEventBus);
         // Register the setup method for modloading
@@ -69,13 +69,18 @@ import java.util.stream.Collectors;
         MinecraftForge.EVENT_BUS.register(TerraEffectItemsEvent.class);
         MinecraftForge.EVENT_BUS.register(new TerraJumpEvent());
 
+        MinecraftForge.EVENT_BUS.register(FeatureGenHandler.class);
     }
 
     private void setup(final FMLCommonSetupEvent event)
     {
         event.enqueueWork(BiomeHandler::addBiomes);
-
+        event.enqueueWork(CarverHandler::addCarvers);
         NetworkHandler.register();
+
+        FeatureGenHandler.configureFeatures();
+
+
 
         //        TerraVanillaCompat.setupStripping();
         //        TerraVanillaCompat.setupFlammable();

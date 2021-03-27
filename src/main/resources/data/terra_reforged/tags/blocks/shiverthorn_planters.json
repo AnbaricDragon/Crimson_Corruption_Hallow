@@ -1,0 +1,9 @@
+{
+    "replace": false,
+    "values": [
+        "minecraft:snow_block",
+        "terra_reforged:snow_corrupt",
+        "terra_reforged:snow_crimson",
+        "terra_reforged:snow_hallowed"
+    ]
+}

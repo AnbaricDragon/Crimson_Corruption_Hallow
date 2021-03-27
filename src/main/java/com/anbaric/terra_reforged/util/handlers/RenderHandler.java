@@ -17,7 +17,8 @@ import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
 
 import java.util.function.Supplier;
 
-@EventBusSubscriber(value = {Dist.CLIENT}, modid = Reference.MODID, bus = EventBusSubscriber.Bus.MOD) public class RenderHandler
+@EventBusSubscriber(value = {Dist.CLIENT}, modid = Reference.MODID, bus = EventBusSubscriber.Bus.MOD)
+public class RenderHandler
 {
     @SubscribeEvent
     public static void setRenderLayer(FMLClientSetupEvent event)
@@ -137,7 +138,7 @@ import java.util.function.Supplier;
 //        RenderTypeLookup.setRenderLayer(TerraBlockRegistry.SAPLING_BOREAL.get(), cutoutMipped);
 //        RenderTypeLookup.setRenderLayer(TerraBlockRegistry.SAPLING_PALM.get(), cutoutMipped);
 //        RenderTypeLookup.setRenderLayer(TerraBlockRegistry.SAPLING_MAHOGANY.get(), cutoutMipped);
-//        RenderTypeLookup.setRenderLayer(TerraBlockRegistry.SAPLING_EBON.get(), cutoutMipped);
+        RenderTypeLookup.setRenderLayer(TerraBlockRegistry.SAPLING_EBON.get(), cutoutMipped);
 //        RenderTypeLookup.setRenderLayer(TerraBlockRegistry.SAPLING_SHADE.get(), cutoutMipped);
 //        RenderTypeLookup.setRenderLayer(TerraBlockRegistry.SAPLING_PEARL.get(), cutoutMipped);
         RenderTypeLookup.setRenderLayer(TerraBlockRegistry.LILYPAD_CORRUPT.get(), cutoutMipped);
@@ -228,6 +229,10 @@ import java.util.function.Supplier;
         RenderTypeLookup.setRenderLayer(TerraBlockRegistry.ORE_REDSTONE_CORRUPT.get(), cutoutMipped);
         RenderTypeLookup.setRenderLayer(TerraBlockRegistry.ORE_REDSTONE_CRIMSON.get(), cutoutMipped);
         RenderTypeLookup.setRenderLayer(TerraBlockRegistry.ORE_REDSTONE_HALLOWED.get(), cutoutMipped);
+        RenderTypeLookup.setRenderLayer(TerraBlockRegistry.ORE_AMBER_PURE.get(), cutoutMipped);
+        RenderTypeLookup.setRenderLayer(TerraBlockRegistry.ORE_AMBER_CORRUPT.get(), cutoutMipped);
+        RenderTypeLookup.setRenderLayer(TerraBlockRegistry.ORE_AMBER_CRIMSON.get(), cutoutMipped);
+        RenderTypeLookup.setRenderLayer(TerraBlockRegistry.ORE_AMBER_HALLOWED.get(), cutoutMipped);
         RenderTypeLookup.setRenderLayer(TerraBlockRegistry.ORE_AMETHYST_PURE.get(), cutoutMipped);
         RenderTypeLookup.setRenderLayer(TerraBlockRegistry.ORE_AMETHYST_CORRUPT.get(), cutoutMipped);
         RenderTypeLookup.setRenderLayer(TerraBlockRegistry.ORE_AMETHYST_CRIMSON.get(), cutoutMipped);

@@ -1,0 +1,11 @@
+{
+    "replace": false,
+    "values": [
+        "minecraft:dirt",
+        "minecraft:grass_block",
+        "minecraft:sand",
+        "terra_reforged:sand_ebon",
+        "terra_reforged:sand_crim",
+        "terra_reforged:sand_pearl"
+    ]
+}

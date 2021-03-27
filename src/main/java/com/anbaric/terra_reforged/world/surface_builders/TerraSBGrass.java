@@ -21,7 +21,7 @@ public class TerraSBGrass extends SurfaceBuilder<SurfaceBuilderConfig>
 
     public TerraSBGrass(SpreadingHandler.EnumBiomeType biomeType)
     {
-        super(SurfaceBuilderConfig.field_237203_a_);
+        super(SurfaceBuilderConfig.CODEC);
         this.STONE = SpreadingHandler.EnumBiomeBlockType.STONE.getBiomeBlock(biomeType).getDefaultState();
 //        this.GRASS = SpreadingHandler.EnumBiomeBlockType.GRASS.getBiomeBlock(biomeType).getDefaultState();
     }

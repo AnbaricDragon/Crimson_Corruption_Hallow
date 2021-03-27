@@ -3,12 +3,14 @@ package com.anbaric.terra_reforged.util.init;
 import com.anbaric.terra_reforged.TerraReforged;
 import com.anbaric.terra_reforged.blocks.*;
 import com.anbaric.terra_reforged.blocks.potionplants.*;
+import com.anbaric.terra_reforged.blocks.saplings.TerraBlockSaplingEbon;
 import com.anbaric.terra_reforged.util.Reference;
 import com.anbaric.terra_reforged.util.handlers.SpreadingHandler.EnumBiomeType;
 import net.minecraft.block.*;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.material.MaterialColor;
 import net.minecraftforge.common.PlantType;
+import net.minecraftforge.common.Tags;
 import net.minecraftforge.common.ToolType;
 import net.minecraftforge.fml.RegistryObject;
 import net.minecraftforge.registries.DeferredRegister;
@@ -139,13 +141,13 @@ public class TerraBlockRegistry
     public static final RegistryObject<Block> PLANT_MOSS_BLUE = BLOCKS.register("plant_moss_blue", () -> new TerraBlockFoliage(Block.Properties.create(Material.PLANTS).sound(SoundType.PLANT).doesNotBlockMovement().hardnessAndResistance(0.0F)));
     public static final RegistryObject<Block> PLANT_MOSS_PURPLE = BLOCKS.register("plant_moss_purple", () -> new TerraBlockFoliage(Block.Properties.create(Material.PLANTS).sound(SoundType.PLANT).doesNotBlockMovement().hardnessAndResistance(0.0F)));
     public static final RegistryObject<Block> PLANT_MOSS_FIRE = BLOCKS.register("plant_moss_fire", () -> new TerraBlockFoliage(Block.Properties.create(Material.PLANTS).sound(SoundType.PLANT).doesNotBlockMovement().hardnessAndResistance(0.0F)));
-    public static final RegistryObject<Block> PLANT_BLINKROOT = BLOCKS.register("plant_blinkroot", () -> new TerraBlockBlinkroot(Block.Properties.create(Material.PLANTS).sound(SoundType.CROP).doesNotBlockMovement().tickRandomly().hardnessAndResistance(0.0F)));
-    public static final RegistryObject<Block> PLANT_DAYBLOOM = BLOCKS.register("plant_daybloom", () -> new TerraBlockDaybloom(Block.Properties.create(Material.PLANTS).sound(SoundType.CROP).doesNotBlockMovement().tickRandomly().hardnessAndResistance(0.0F)));
-    public static final RegistryObject<Block> PLANT_DEATHWEED = BLOCKS.register("plant_deathweed", () -> new TerraBlockDeathweed(Block.Properties.create(Material.PLANTS).sound(SoundType.CROP).doesNotBlockMovement().tickRandomly().hardnessAndResistance(0.0F)));
-    public static final RegistryObject<Block> PLANT_FIREBLOSSOM = BLOCKS.register("plant_fireblossom", () -> new TerraBlockFireblossom(Block.Properties.create(Material.PLANTS).sound(SoundType.CROP).doesNotBlockMovement().tickRandomly().hardnessAndResistance(0.0F)));
-    public static final RegistryObject<Block> PLANT_MOONGLOW = BLOCKS.register("plant_moonglow", () -> new TerraBlockMoonglow(Block.Properties.create(Material.PLANTS).sound(SoundType.CROP).doesNotBlockMovement().tickRandomly().hardnessAndResistance(0.0F)));
-    public static final RegistryObject<Block> PLANT_SHIVERTHORN = BLOCKS.register("plant_shiverthorn", () -> new TerraBlockShiverthorn(Block.Properties.create(Material.PLANTS).sound(SoundType.CROP).doesNotBlockMovement().tickRandomly().hardnessAndResistance(0.0F)));
-    public static final RegistryObject<Block> PLANT_WATERLEAF = BLOCKS.register("plant_waterleaf", () -> new TerraBlockWaterleaf(Block.Properties.create(Material.PLANTS).sound(SoundType.CROP).doesNotBlockMovement().tickRandomly().hardnessAndResistance(0.0F)));
+    public static final RegistryObject<Block> PLANT_BLINKROOT = BLOCKS.register("plant_blinkroot", () -> new TerraBlockBlinkroot(Block.Properties.create(Material.PLANTS).sound(SoundType.CROP).doesNotBlockMovement().tickRandomly().hardnessAndResistance(0.0F), Tags.Blocks.DIRT));
+    public static final RegistryObject<Block> PLANT_DAYBLOOM = BLOCKS.register("plant_daybloom", () -> new TerraBlockDaybloom(Block.Properties.create(Material.PLANTS).sound(SoundType.CROP).doesNotBlockMovement().tickRandomly().hardnessAndResistance(0.0F), TerraTagRegistry.DAYBLOOM_PLANTERS));
+    public static final RegistryObject<Block> PLANT_DEATHWEED = BLOCKS.register("plant_deathweed", () -> new TerraBlockDeathweed(Block.Properties.create(Material.PLANTS).sound(SoundType.CROP).doesNotBlockMovement().tickRandomly().hardnessAndResistance(0.0F), TerraTagRegistry.DEATHWEED_PLANTERS));
+    public static final RegistryObject<Block> PLANT_FIREBLOSSOM = BLOCKS.register("plant_fireblossom", () -> new TerraBlockFireblossom(Block.Properties.create(Material.PLANTS).sound(SoundType.CROP).doesNotBlockMovement().tickRandomly().hardnessAndResistance(0.0F), TerraTagRegistry.FIREBLOSSOM_PLANTERS));
+    public static final RegistryObject<Block> PLANT_MOONGLOW = BLOCKS.register("plant_moonglow", () -> new TerraBlockMoonglow(Block.Properties.create(Material.PLANTS).sound(SoundType.CROP).doesNotBlockMovement().tickRandomly().hardnessAndResistance(0.0F), TerraTagRegistry.MOONGLOW_PLANTERS));
+    public static final RegistryObject<Block> PLANT_SHIVERTHORN = BLOCKS.register("plant_shiverthorn", () -> new TerraBlockShiverthorn(Block.Properties.create(Material.PLANTS).sound(SoundType.CROP).doesNotBlockMovement().tickRandomly().hardnessAndResistance(0.0F), TerraTagRegistry.SHIVERTHORN_PLANTERS));
+    public static final RegistryObject<Block> PLANT_WATERLEAF = BLOCKS.register("plant_waterleaf", () -> new TerraBlockWaterleaf(Block.Properties.create(Material.PLANTS).sound(SoundType.CROP).doesNotBlockMovement().tickRandomly().hardnessAndResistance(0.0F), TerraTagRegistry.WATERLEAF_PLANTERS));
     public static final RegistryObject<Block> PLANT_MUSHROOM_GLOWING = BLOCKS.register("plant_mushroom_glowing", () -> new TerraBlockGlowingMushroom(Block.Properties.create(Material.PLANTS).sound(SoundType.PLANT).doesNotBlockMovement().hardnessAndResistance(0.0F).tickRandomly()));
     public static final RegistryObject<Block> PLANT_MUSHROOM_VILE = BLOCKS.register("plant_mushroom_vile", () -> new TerraBlockFoliage(Block.Properties.create(Material.PLANTS).sound(SoundType.PLANT).doesNotBlockMovement().hardnessAndResistance(0.0F)));
     public static final RegistryObject<Block> PLANT_MUSHROOM_VICIOUS = BLOCKS.register("plant_mushroom_vicious", () -> new TerraBlockFoliage(Block.Properties.create(Material.PLANTS).sound(SoundType.PLANT).doesNotBlockMovement().hardnessAndResistance(0.0F)));
@@ -188,6 +190,7 @@ public class TerraBlockRegistry
     public static final RegistryObject<Block> VINE_BLUE = BLOCKS.register("vine_blue", () -> new VineBlock(Block.Properties.create(Material.PLANTS).zeroHardnessAndResistance().sound(SoundType.PLANT).tickRandomly().notSolid()));
     public static final RegistryObject<Block> VINE_GREEN = BLOCKS.register("vine_green", () -> new VineBlock(Block.Properties.create(Material.PLANTS).zeroHardnessAndResistance().sound(SoundType.PLANT).tickRandomly().notSolid()));
     public static final RegistryObject<Block> VINE_PURPLE = BLOCKS.register("vine_purple", () -> new VineBlock(Block.Properties.create(Material.PLANTS).zeroHardnessAndResistance().sound(SoundType.PLANT).tickRandomly().notSolid()));
+    public static final RegistryObject<Block> SAPLING_EBON = BLOCKS.register("sapling_ebon", () -> new TerraBlockSaplingEbon(AbstractBlock.Properties.create(Material.PLANTS).doesNotBlockMovement().tickRandomly().zeroHardnessAndResistance().sound(SoundType.PLANT)));
 
     //Furnature
     public static final RegistryObject<Block> TALL_LANTERN_BONE = BLOCKS.register("tall_lantern_bone", () -> new TerraBlockHangingLantern(Block.Properties.create(Material.ROCK).sound(SoundType.STONE), 1.0D, 4.0D, 14));
@@ -596,6 +599,10 @@ public class TerraBlockRegistry
     public static final RegistryObject<Block> ORE_REDSTONE_CORRUPT  = BLOCKS.register("ore_redstone_corrupt" , () -> new TerraBlockOre(Block.Properties.create(Material.ROCK).harvestLevel(2).hardnessAndResistance(3.0F)));
     public static final RegistryObject<Block> ORE_REDSTONE_CRIMSON  = BLOCKS.register("ore_redstone_crimson" , () -> new TerraBlockOre(Block.Properties.create(Material.ROCK).harvestLevel(2).hardnessAndResistance(3.0F)));
     public static final RegistryObject<Block> ORE_REDSTONE_HALLOWED = BLOCKS.register("ore_redstone_hallowed", () -> new TerraBlockOre(Block.Properties.create(Material.ROCK).harvestLevel(2).hardnessAndResistance(3.0F)));
+    public static final RegistryObject<Block> ORE_AMBER_PURE     = BLOCKS.register("ore_amber"         , () -> new TerraBlockOre(Block.Properties.create(Material.ROCK).harvestLevel(2).hardnessAndResistance(3.0F)));
+    public static final RegistryObject<Block> ORE_AMBER_CORRUPT  = BLOCKS.register("ore_amber_corrupt" , () -> new TerraBlockOre(Block.Properties.create(Material.ROCK).harvestLevel(2).hardnessAndResistance(3.0F)));
+    public static final RegistryObject<Block> ORE_AMBER_CRIMSON  = BLOCKS.register("ore_amber_crimson" , () -> new TerraBlockOre(Block.Properties.create(Material.ROCK).harvestLevel(2).hardnessAndResistance(3.0F)));
+    public static final RegistryObject<Block> ORE_AMBER_HALLOWED = BLOCKS.register("ore_amber_hallowed", () -> new TerraBlockOre(Block.Properties.create(Material.ROCK).harvestLevel(2).hardnessAndResistance(3.0F)));
     public static final RegistryObject<Block> ORE_AMETHYST_PURE     = BLOCKS.register("ore_amethyst"         , () -> new TerraBlockOre(Block.Properties.create(Material.ROCK).harvestLevel(2).hardnessAndResistance(3.0F)));
     public static final RegistryObject<Block> ORE_AMETHYST_CORRUPT  = BLOCKS.register("ore_amethyst_corrupt" , () -> new TerraBlockOre(Block.Properties.create(Material.ROCK).harvestLevel(2).hardnessAndResistance(3.0F)));
     public static final RegistryObject<Block> ORE_AMETHYST_CRIMSON  = BLOCKS.register("ore_amethyst_crimson" , () -> new TerraBlockOre(Block.Properties.create(Material.ROCK).harvestLevel(2).hardnessAndResistance(3.0F)));

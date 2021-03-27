@@ -1,0 +1,6 @@
+{
+    "type": "terra_reforged:carver_cave_general",
+    "config": {
+        "probability": 0.15
+    }
+}

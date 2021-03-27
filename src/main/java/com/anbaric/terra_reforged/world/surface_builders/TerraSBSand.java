@@ -22,7 +22,7 @@ public class TerraSBSand extends SurfaceBuilder<SurfaceBuilderConfig>
 
     public TerraSBSand(SpreadingHandler.EnumBiomeType biomeType)
     {
-        super(SurfaceBuilderConfig.field_237203_a_);
+        super(SurfaceBuilderConfig.CODEC);
         this.STONE = SpreadingHandler.EnumBiomeBlockType.STONE.getBiomeBlock(biomeType).getDefaultState();
         this.SAND = SpreadingHandler.EnumBiomeBlockType.SAND.getBiomeBlock(biomeType).getDefaultState();
         this.SANDSTONE = SpreadingHandler.EnumBiomeBlockType.SANDSTONE.getBiomeBlock(biomeType).getDefaultState();

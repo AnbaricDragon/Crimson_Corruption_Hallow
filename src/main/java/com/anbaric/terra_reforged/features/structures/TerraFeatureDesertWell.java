@@ -22,8 +22,6 @@ public class TerraFeatureDesertWell extends Feature<NoFeatureConfig>
     private BlockState sand, sandSlab, sandstone;
     private BlockState water = Blocks.WATER.getDefaultState();
 
-    private final BlockStateMatcher IS_SAND = BlockStateMatcher.forBlock(sand.getBlock());
-
     public TerraFeatureDesertWell(EnumBiomeType biomeType)
     {
         super(NoFeatureConfig.CODEC);
@@ -51,7 +49,7 @@ public class TerraFeatureDesertWell extends Feature<NoFeatureConfig>
         {
         }
 
-        if (!IS_SAND.test(reader.getBlockState(pos)))
+        if (reader.getBlockState(pos) != sand)
         {
             return false;
         }

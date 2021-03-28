@@ -20,13 +20,6 @@ public class TerraBlockDaybloom extends TerraBlockPotionPlant
     }
 
     @Override
-    protected boolean isValidGround(BlockState state, IBlockReader worldIn, BlockPos pos)
-    {
-        Block target = state.getBlock();
-        return target == Blocks.GRASS_BLOCK || target == TerraBlockRegistry.GRASS_HALLOWED.get();
-    }
-
-    @Override
     public void tick(BlockState state, ServerWorld worldIn, BlockPos pos, Random random)
     {
         if (!worldIn.isRemote)

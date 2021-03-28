@@ -1,11 +1,11 @@
 {
   "surface_builder": "terra_reforged:corrupt_grass",
-  "depth": 0.125,
-  "scale": 0.05,
-  "temperature": 0.8,
-  "downfall": 0.4,
+  "depth": 0.1,
+  "scale": 0.2,
+  "temperature": 0.7,
+  "downfall": 0.8,
   "precipitation": "rain",
-  "category": "plains",
+  "category": "forest",
   "player_spawn_friendly": false,
   "effects": {
     "sky_color": 4597880,
@@ -22,9 +22,9 @@
     }
   },
   "starts": [
-    "minecraft:pillager_outpost",
     "minecraft:mineshaft",
-    "minecraft:stronghold"
+    "minecraft:stronghold",
+    "minecraft:ruined_portal"
   ],
   "spawners": {
     "monster": [
@@ -184,9 +184,8 @@
     [
       "terra_reforged:plant_blinkroot_gen",
       "terra_reforged:plant_deathweed_gen",
-      "minecraft:patch_tall_grass_2",
-      "terra_reforged:tree_ebon_plains_gen",
-      "minecraft:patch_grass_plain",
+      "minecraft:patch_grass_forest",
+      "terra_reforged:tree_ebon_forest_gen",
       "terra_reforged:mushroom_vile_gen",
       "terra_reforged:reed_corrupt_gen",
       "minecraft:patch_pumpkin",

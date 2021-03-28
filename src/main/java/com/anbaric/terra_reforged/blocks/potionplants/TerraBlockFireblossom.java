@@ -19,13 +19,6 @@ public class TerraBlockFireblossom extends TerraBlockPotionPlant
     }
 
     @Override
-    protected boolean isValidGround(BlockState state, IBlockReader worldIn, BlockPos pos)
-    {
-        Block target = state.getBlock();
-        return target == TerraBlockRegistry.SOIL_ASH.get();
-    }
-
-    @Override
     public void tick(BlockState state, ServerWorld worldIn, BlockPos pos, Random random)
     {
         if (!worldIn.isRemote)

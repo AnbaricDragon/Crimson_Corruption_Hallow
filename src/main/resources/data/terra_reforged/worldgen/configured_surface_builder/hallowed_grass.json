@@ -1,0 +1,17 @@
+{
+  "type": "terra_reforged:hallowed_grass",
+  "config": {
+    "top_material": {
+      "Name": "terra_reforged:grass_hallowed",
+      "Properties": {
+        "snowy": "false"
+      }
+    },
+    "under_material": {
+      "Name": "minecraft:dirt"
+    },
+    "underwater_material": {
+      "Name": "minecraft:gravel"
+    }
+  }
+}

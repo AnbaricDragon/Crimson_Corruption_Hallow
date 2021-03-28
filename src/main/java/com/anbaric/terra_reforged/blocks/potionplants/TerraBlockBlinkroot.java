@@ -23,13 +23,6 @@ public class TerraBlockBlinkroot extends TerraBlockPotionPlant
     }
 
     @Override
-    protected boolean isValidGround(BlockState state, IBlockReader worldIn, BlockPos pos)
-    {
-        Block target = state.getBlock();
-        return target == Blocks.DIRT || target == Blocks.GRASS_BLOCK || target == TerraBlockRegistry.GRASS_CORRUPT.get() || target == TerraBlockRegistry.GRASS_CRIMSON.get() || target == TerraBlockRegistry.GRASS_HALLOWED.get() || target == Blocks.STONE || target == TerraBlockRegistry.STONE_EBON.get() || target == TerraBlockRegistry.STONE_CRIM.get() || target == TerraBlockRegistry.STONE_PEARL.get();
-    }
-
-    @Override
     public PlantType getPlantType(IBlockReader world, BlockPos pos)
     {
         return PlantType.CAVE;

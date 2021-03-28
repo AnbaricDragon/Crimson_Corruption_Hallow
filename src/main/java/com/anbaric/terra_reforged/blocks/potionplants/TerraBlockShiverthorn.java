@@ -29,13 +29,6 @@ public class TerraBlockShiverthorn extends TerraBlockPotionPlant
     }
 
     @Override
-    protected boolean isValidGround(BlockState state, IBlockReader worldIn, BlockPos pos)
-    {
-        Block target = state.getBlock();
-        return target == Blocks.SNOW_BLOCK || target == TerraBlockRegistry.SNOW_CORRUPT.get() || target == TerraBlockRegistry.SNOW_CRIMSON.get() || target == TerraBlockRegistry.SNOW_HALLOWED.get() || target == Blocks.ICE || target == TerraBlockRegistry.ICE_PURPLE.get() || target == TerraBlockRegistry.ICE_RED.get() || target == TerraBlockRegistry.ICE_PINK.get() || target == Blocks.PACKED_ICE || target == TerraBlockRegistry.ICE_HARD_PURPLE.get() || target == TerraBlockRegistry.ICE_HARD_RED.get() || target == TerraBlockRegistry.ICE_HARD_PINK.get();
-    }
-
-    @Override
     public void tick(BlockState state, ServerWorld worldIn, BlockPos pos, Random random)
     {
         if (!worldIn.isRemote)

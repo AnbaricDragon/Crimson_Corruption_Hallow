@@ -20,13 +20,6 @@ public class TerraBlockWaterleaf extends TerraBlockPotionPlant
     }
 
     @Override
-    protected boolean isValidGround(BlockState state, IBlockReader worldIn, BlockPos pos)
-    {
-        Block target = state.getBlock();
-        return target == Blocks.SAND || target == TerraBlockRegistry.SAND_HARD.get() || target == TerraBlockRegistry.SAND_PEARL.get() || target == TerraBlockRegistry.SAND_HARDPEARL.get();
-    }
-
-    @Override
     public void tick(BlockState state, ServerWorld worldIn, BlockPos pos, Random random)
     {
         if (!worldIn.isRemote)

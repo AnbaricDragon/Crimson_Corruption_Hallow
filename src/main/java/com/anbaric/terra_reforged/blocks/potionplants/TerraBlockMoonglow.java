@@ -19,13 +19,6 @@ public class TerraBlockMoonglow extends TerraBlockPotionPlant
     }
 
     @Override
-    protected boolean isValidGround(BlockState state, IBlockReader worldIn, BlockPos pos)
-    {
-        Block target = state.getBlock();
-        return target == TerraBlockRegistry.SOIL_MUD.get() || target == TerraBlockRegistry.GRASS_JUNGLE.get() || target == TerraBlockRegistry.GRASS_MUSHROOM.get();
-    }
-
-    @Override
     public void tick(BlockState state, ServerWorld worldIn, BlockPos pos, Random random)
     {
         if (!worldIn.isRemote)

@@ -1,0 +1,17 @@
+{
+  "type": "terra_reforged:crimson_grass",
+  "config": {
+    "top_material": {
+      "Name": "terra_reforged:grass_crimson",
+      "Properties": {
+        "snowy": "false"
+      }
+    },
+    "under_material": {
+      "Name": "minecraft:dirt"
+    },
+    "underwater_material": {
+      "Name": "minecraft:gravel"
+    }
+  }
+}

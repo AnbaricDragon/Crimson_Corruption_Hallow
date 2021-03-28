@@ -1,6 +1,7 @@
 package com.anbaric.terra_reforged.util.init;
 
 import com.anbaric.terra_reforged.features.landscape.TerraFeatureLakes;
+import com.anbaric.terra_reforged.features.structures.TerraFeatureDesertWell;
 import com.anbaric.terra_reforged.features.vegetation.*;
 import com.anbaric.terra_reforged.util.Reference;
 import com.anbaric.terra_reforged.util.handlers.SpreadingHandler;
@@ -24,7 +25,10 @@ public class TerraFeatureRegistry
     public static final RegistryObject<TerraFeatureCactus> CACTUS_EBON = FEATURES.register("cactus_ebon", () -> new TerraFeatureCactus(TerraBlockRegistry.CACTUS_EBON.get()));
     public static final RegistryObject<TerraFeatureCactus> CACTUS_CRIM = FEATURES.register("cactus_crim", () -> new TerraFeatureCactus(TerraBlockRegistry.CACTUS_CRIM.get()));
     public static final RegistryObject<TerraFeatureCactus> CACTUS_PEARL = FEATURES.register("cactus_pearl", () -> new TerraFeatureCactus(TerraBlockRegistry.CACTUS_PEARL.get()));
-    public static final RegistryObject<TerraFeatureLakes> LAKE_CORRUPT = FEATURES.register("lake_corrupt_water", () -> new TerraFeatureLakes(SpreadingHandler.EnumBiomeType.CORRUPT));
-    public static final RegistryObject<TerraFeatureLakes> LAKE_CRIMSON = FEATURES.register("lake_crimson_water", () -> new TerraFeatureLakes(SpreadingHandler.EnumBiomeType.CRIMSON));
-    public static final RegistryObject<TerraFeatureLakes> LAKE_HALLOWED = FEATURES.register("lake_hallowed_water", () -> new TerraFeatureLakes(SpreadingHandler.EnumBiomeType.HALLOWED));
+    public static final RegistryObject<TerraFeatureLakes> LAKE_CORRUPT = FEATURES.register("lake_corrupt", () -> new TerraFeatureLakes(SpreadingHandler.EnumBiomeType.CORRUPT));
+    public static final RegistryObject<TerraFeatureLakes> LAKE_CRIMSON = FEATURES.register("lake_crimson", () -> new TerraFeatureLakes(SpreadingHandler.EnumBiomeType.CRIMSON));
+    public static final RegistryObject<TerraFeatureLakes> LAKE_HALLOWED = FEATURES.register("lake_hallowed", () -> new TerraFeatureLakes(SpreadingHandler.EnumBiomeType.HALLOWED));
+    public static final RegistryObject<TerraFeatureDesertWell> DESERT_WELL_CORRUPT = FEATURES.register("desert_well_corrupt", () -> new TerraFeatureDesertWell(SpreadingHandler.EnumBiomeType.CORRUPT));
+    public static final RegistryObject<TerraFeatureDesertWell> DESERT_WELL_CRIMSON = FEATURES.register("desert_well_crimson", () -> new TerraFeatureDesertWell(SpreadingHandler.EnumBiomeType.CRIMSON));
+    public static final RegistryObject<TerraFeatureDesertWell> DESERT_WELL_HALLOWED = FEATURES.register("desert_well_hallowed", () -> new TerraFeatureDesertWell(SpreadingHandler.EnumBiomeType.HALLOWED));
 }

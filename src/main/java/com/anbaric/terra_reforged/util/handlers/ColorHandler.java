@@ -18,7 +18,8 @@ import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.Mod.EventBusSubscriber.Bus;
 
-@Mod.EventBusSubscriber(modid = Reference.MODID, bus = Bus.MOD, value = {Dist.CLIENT}) public class ColorHandler
+@Mod.EventBusSubscriber(modid = Reference.MODID, bus = Bus.MOD, value = {Dist.CLIENT})
+public class ColorHandler
 {
     @OnlyIn(Dist.CLIENT)
     @SubscribeEvent

@@ -94,7 +94,10 @@ public class TerraBlockPotionPlant extends BushBlock implements IGrowable
     public boolean isValidPosition(BlockState state, IWorldReader worldIn, BlockPos pos)
     {
         Biome biome = worldIn.getBiome(pos);
-        if (isInPlanter(state, worldIn, pos)) return true;
+        if (isInPlanter(state, worldIn, pos))
+        {
+            return true;
+        }
 
         if (this == TerraBlockRegistry.PLANT_BLINKROOT.get())
         {
@@ -102,7 +105,7 @@ public class TerraBlockPotionPlant extends BushBlock implements IGrowable
         }
         else if (this == TerraBlockRegistry.PLANT_DAYBLOOM.get())
         {
-            return this.isValidGround(worldIn.getBlockState(pos.down()), worldIn, pos) && (!biome.getRegistryName().toString().contains("corrupt") && !biome.getRegistryName().toString().contains("crimson"));
+            return this.isValidGround(worldIn.getBlockState(pos.down()), worldIn, pos) && !biome.getRegistryName().toString().contains("corrupt") && !biome.getRegistryName().toString().contains("crimson");
         }
         else if (this == TerraBlockRegistry.PLANT_DEATHWEED.get())
         {

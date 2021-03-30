@@ -3,7 +3,7 @@ package com.anbaric.terra_reforged.util.init;
 import com.anbaric.terra_reforged.TerraReforged;
 import com.anbaric.terra_reforged.blocks.*;
 import com.anbaric.terra_reforged.blocks.potionplants.*;
-import com.anbaric.terra_reforged.blocks.saplings.TerraBlockSaplingEbon;
+import com.anbaric.terra_reforged.blocks.saplings.*;
 import com.anbaric.terra_reforged.util.Reference;
 import com.anbaric.terra_reforged.util.handlers.SpreadingHandler.EnumBiomeType;
 import net.minecraft.block.*;
@@ -190,7 +190,12 @@ public class TerraBlockRegistry
     public static final RegistryObject<Block> VINE_BLUE = BLOCKS.register("vine_blue", () -> new VineBlock(Block.Properties.create(Material.PLANTS).zeroHardnessAndResistance().sound(SoundType.PLANT).tickRandomly().notSolid()));
     public static final RegistryObject<Block> VINE_GREEN = BLOCKS.register("vine_green", () -> new VineBlock(Block.Properties.create(Material.PLANTS).zeroHardnessAndResistance().sound(SoundType.PLANT).tickRandomly().notSolid()));
     public static final RegistryObject<Block> VINE_PURPLE = BLOCKS.register("vine_purple", () -> new VineBlock(Block.Properties.create(Material.PLANTS).zeroHardnessAndResistance().sound(SoundType.PLANT).tickRandomly().notSolid()));
+    public static final RegistryObject<Block> SAPLING_BOREAL = BLOCKS.register("sapling_boreal", () -> new TerraBlockSaplingBoreal(AbstractBlock.Properties.create(Material.PLANTS).doesNotBlockMovement().tickRandomly().zeroHardnessAndResistance().sound(SoundType.PLANT)));
+    public static final RegistryObject<Block> SAPLING_PALM = BLOCKS.register("sapling_palm", () -> new TerraBlockSaplingPalm(AbstractBlock.Properties.create(Material.PLANTS).doesNotBlockMovement().tickRandomly().zeroHardnessAndResistance().sound(SoundType.PLANT)));
+    public static final RegistryObject<Block> SAPLING_MAHOGANY = BLOCKS.register("sapling_mahogany", () -> new TerraBlockSaplingMahogany(AbstractBlock.Properties.create(Material.PLANTS).doesNotBlockMovement().tickRandomly().zeroHardnessAndResistance().sound(SoundType.PLANT)));
     public static final RegistryObject<Block> SAPLING_EBON = BLOCKS.register("sapling_ebon", () -> new TerraBlockSaplingEbon(AbstractBlock.Properties.create(Material.PLANTS).doesNotBlockMovement().tickRandomly().zeroHardnessAndResistance().sound(SoundType.PLANT)));
+    public static final RegistryObject<Block> SAPLING_SHADE = BLOCKS.register("sapling_shade", () -> new TerraBlockSaplingShade(AbstractBlock.Properties.create(Material.PLANTS).doesNotBlockMovement().tickRandomly().zeroHardnessAndResistance().sound(SoundType.PLANT)));
+    public static final RegistryObject<Block> SAPLING_PEARL = BLOCKS.register("sapling_pearl", () -> new TerraBlockSaplingPearl(AbstractBlock.Properties.create(Material.PLANTS).doesNotBlockMovement().tickRandomly().zeroHardnessAndResistance().sound(SoundType.PLANT)));
 
     //Furnature
     public static final RegistryObject<Block> TALL_LANTERN_BONE = BLOCKS.register("tall_lantern_bone", () -> new TerraBlockHangingLantern(Block.Properties.create(Material.ROCK).sound(SoundType.STONE), 1.0D, 4.0D, 14));

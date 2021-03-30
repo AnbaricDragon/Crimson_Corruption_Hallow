@@ -15,7 +15,7 @@ public class TerraFeatureRegistry
     public static final DeferredRegister<Feature<?>> FEATURES = DeferredRegister.create(ForgeRegistries.FEATURES, Reference.MODID);
 
     public static final RegistryObject<TerraFeatureTreeBoreal> BOREAL_TREE = FEATURES.register("tree_boreal", TerraFeatureTreeBoreal::new);
-    //    public static final RegistryObject<TerraFeaturePalmTree> PALM_TREE = FEATURES.register("tree_palm", TerraFeaturePalmTree::new);
+    public static final RegistryObject<TerraFeatureTreePalm> PALM_TREE = FEATURES.register("tree_palm", TerraFeatureTreePalm::new);
     public static final RegistryObject<TerraFeatureTreeMahogany> MAHOGANY_TREE = FEATURES.register("tree_mahogany", TerraFeatureTreeMahogany::new);
     public static final RegistryObject<TerraFeatureTreeMahoganyLarge> MAHOGANY_TREE_LARGE = FEATURES.register("tree_mahogany_large", TerraFeatureTreeMahoganyLarge::new);
     public static final RegistryObject<TerraFeatureTreeEbon> EBON_TREE = FEATURES.register("tree_ebon", TerraFeatureTreeEbon::new);
@@ -32,3 +32,6 @@ public class TerraFeatureRegistry
     public static final RegistryObject<TerraFeatureDesertWell> DESERT_WELL_CRIMSON = FEATURES.register("desert_well_crimson", () -> new TerraFeatureDesertWell(SpreadingHandler.EnumBiomeType.CRIMSON));
     public static final RegistryObject<TerraFeatureDesertWell> DESERT_WELL_HALLOWED = FEATURES.register("desert_well_hallowed", () -> new TerraFeatureDesertWell(SpreadingHandler.EnumBiomeType.HALLOWED));
 }
+
+
+

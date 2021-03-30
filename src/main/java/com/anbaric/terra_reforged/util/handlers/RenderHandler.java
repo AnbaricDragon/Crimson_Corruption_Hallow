@@ -135,12 +135,12 @@ public class RenderHandler
         RenderTypeLookup.setRenderLayer(TerraBlockRegistry.REED_CORRUPT.get(), cutoutMipped);
         RenderTypeLookup.setRenderLayer(TerraBlockRegistry.REED_CRIMSON.get(), cutoutMipped);
         RenderTypeLookup.setRenderLayer(TerraBlockRegistry.REED_HALLOWED.get(), cutoutMipped);
-//        RenderTypeLookup.setRenderLayer(TerraBlockRegistry.SAPLING_BOREAL.get(), cutoutMipped);
-//        RenderTypeLookup.setRenderLayer(TerraBlockRegistry.SAPLING_PALM.get(), cutoutMipped);
-//        RenderTypeLookup.setRenderLayer(TerraBlockRegistry.SAPLING_MAHOGANY.get(), cutoutMipped);
+        RenderTypeLookup.setRenderLayer(TerraBlockRegistry.SAPLING_BOREAL.get(), cutoutMipped);
+        RenderTypeLookup.setRenderLayer(TerraBlockRegistry.SAPLING_PALM.get(), cutoutMipped);
+        RenderTypeLookup.setRenderLayer(TerraBlockRegistry.SAPLING_MAHOGANY.get(), cutoutMipped);
         RenderTypeLookup.setRenderLayer(TerraBlockRegistry.SAPLING_EBON.get(), cutoutMipped);
-//        RenderTypeLookup.setRenderLayer(TerraBlockRegistry.SAPLING_SHADE.get(), cutoutMipped);
-//        RenderTypeLookup.setRenderLayer(TerraBlockRegistry.SAPLING_PEARL.get(), cutoutMipped);
+        RenderTypeLookup.setRenderLayer(TerraBlockRegistry.SAPLING_SHADE.get(), cutoutMipped);
+        RenderTypeLookup.setRenderLayer(TerraBlockRegistry.SAPLING_PEARL.get(), cutoutMipped);
         RenderTypeLookup.setRenderLayer(TerraBlockRegistry.LILYPAD_CORRUPT.get(), cutoutMipped);
         RenderTypeLookup.setRenderLayer(TerraBlockRegistry.LILYPAD_CRIMSON.get(), cutoutMipped);
         RenderTypeLookup.setRenderLayer(TerraBlockRegistry.LILYPAD_HALLOWED.get(), cutoutMipped);

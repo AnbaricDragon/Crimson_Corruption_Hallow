@@ -1,9 +1,7 @@
 {
   "replace": false,
   "values": [
-    "terra_reforged:plant_mushroom_glowing"
-  ],
-  "optional": [
+    "terra_reforged:plant_mushroom_glowing",
     "terra_reforged:sapling_boreal",
     "terra_reforged:sapling_palm",
     "terra_reforged:sapling_mahogany",

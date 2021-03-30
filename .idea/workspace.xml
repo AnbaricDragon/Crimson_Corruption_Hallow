@@ -7,24 +7,14 @@
     <list default="true" id="1acd225e-9d0d-4152-80f9-96fe5306eac3" name="Default Changelist" comment="Test">
       <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/anbaric/terra_reforged/blocks/potionplants/TerraBlockBlinkroot.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/anbaric/terra_reforged/blocks/potionplants/TerraBlockBlinkroot.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/anbaric/terra_reforged/blocks/potionplants/TerraBlockDaybloom.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/anbaric/terra_reforged/blocks/potionplants/TerraBlockDaybloom.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/anbaric/terra_reforged/blocks/potionplants/TerraBlockFireblossom.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/anbaric/terra_reforged/blocks/potionplants/TerraBlockFireblossom.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/anbaric/terra_reforged/blocks/potionplants/TerraBlockMoonglow.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/anbaric/terra_reforged/blocks/potionplants/TerraBlockMoonglow.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/anbaric/terra_reforged/blocks/potionplants/TerraBlockPotionPlant.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/anbaric/terra_reforged/blocks/potionplants/TerraBlockPotionPlant.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/anbaric/terra_reforged/blocks/potionplants/TerraBlockShiverthorn.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/anbaric/terra_reforged/blocks/potionplants/TerraBlockShiverthorn.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/anbaric/terra_reforged/blocks/potionplants/TerraBlockWaterleaf.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/anbaric/terra_reforged/blocks/potionplants/TerraBlockWaterleaf.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/anbaric/terra_reforged/features/structures/TerraFeatureDesertWell.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/anbaric/terra_reforged/features/structures/TerraFeatureDesertWell.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/anbaric/terra_reforged/features/vegetation/TerraFeatureCactus.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/anbaric/terra_reforged/features/vegetation/TerraFeatureCactus.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/anbaric/terra_reforged/util/handlers/BiomeHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/anbaric/terra_reforged/util/handlers/BiomeHandler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/anbaric/terra_reforged/util/handlers/ColorHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/anbaric/terra_reforged/util/handlers/ColorHandler.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/anbaric/terra_reforged/util/handlers/FeatureGenHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/anbaric/terra_reforged/util/handlers/FeatureGenHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/anbaric/terra_reforged/util/handlers/RenderHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/anbaric/terra_reforged/util/handlers/RenderHandler.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/anbaric/terra_reforged/util/init/TerraBiomeRegistry.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/anbaric/terra_reforged/util/init/TerraBiomeRegistry.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/anbaric/terra_reforged/util/init/TerraBlockRegistry.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/anbaric/terra_reforged/util/init/TerraBlockRegistry.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/anbaric/terra_reforged/util/init/TerraFeatureRegistry.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/anbaric/terra_reforged/util/init/TerraFeatureRegistry.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/data/terra_reforged/worldgen/biome/corrupt_desert.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/data/terra_reforged/worldgen/biome/corrupt_desert.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/data/terra_reforged/worldgen/biome/corrupt_plains.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/data/terra_reforged/worldgen/biome/corrupt_plains.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/data/terra_reforged/worldgen/biome/crimson_desert.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/data/terra_reforged/worldgen/biome/crimson_desert.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/data/terra_reforged/worldgen/biome/hallowed_desert.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/data/terra_reforged/worldgen/biome/hallowed_desert.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/anbaric/terra_reforged/util/init/TerraSurfaceBuilderRegistry.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/anbaric/terra_reforged/util/init/TerraSurfaceBuilderRegistry.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/data/minecraft/tags/blocks/saplings.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/data/minecraft/tags/blocks/saplings.json" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -118,14 +108,14 @@
   </component>
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/main/resources/data/terra_reforged/worldgen/biome" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/main/resources/data/terra_reforged/worldgen/configured_surface_builder" />
     <property name="restartRequiresConfirmation" value="false" />
     <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
-      <recent name="D:\Downloads\Coding\Repositories\Terra_Reforged\src\main\resources\data\terra_reforged\worldgen\biome" />
       <recent name="D:\Downloads\Coding\Repositories\Terra_Reforged\src\main\resources\data\terra_reforged\worldgen\configured_surface_builder" />
+      <recent name="D:\Downloads\Coding\Repositories\Terra_Reforged\src\main\resources\data\terra_reforged\worldgen\biome" />
       <recent name="D:\Downloads\Coding\Repositories\Terra_Reforged\src\main\resources\data\terra_reforged\worldgen\configured_carver" />
       <recent name="D:\Downloads\Coding\Repositories\Terra_Reforged\src\main\resources\data\terra_reforged\tags\blocks" />
       <recent name="D:\Downloads\Coding\Repositories\Terra_Reforged\src\main\resources\data\forge\tags\blocks" />
@@ -135,8 +125,8 @@
       <recent name="D:\Downloads\Coding\Repositories\Terra_Reforged\src\main\resources" />
     </key>
     <key name="CopyClassDialog.RECENTS_KEY">
-      <recent name="com.anbaric.terra_reforged.features.vegetation" />
       <recent name="com.anbaric.terra_reforged.blocks.saplings" />
+      <recent name="com.anbaric.terra_reforged.features.vegetation" />
       <recent name="com.anbaric.terra_reforged.world.surface_builders" />
       <recent name="com.anbaric.terra_reforged.util.packets" />
     </key>
@@ -208,15 +198,5 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Test" />
     <option name="LAST_COMMIT_MESSAGE" value="Test" />
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <breakpoint enabled="true" type="java-exception">
-          <properties class="java.lang.IllegalStateException" package="java.lang" />
-          <option name="timeStamp" value="1" />
-        </breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
   </component>
 </project>

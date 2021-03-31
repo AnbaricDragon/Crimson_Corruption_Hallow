@@ -1,10 +1,7 @@
 package com.anbaric.terra_reforged;
 
 import com.anbaric.terra_reforged.util.Reference;
-import com.anbaric.terra_reforged.util.events.TerraCapabilitiesEvent;
-import com.anbaric.terra_reforged.util.events.TerraEffectItemsEvent;
-import com.anbaric.terra_reforged.util.events.TerraJumpEvent;
-import com.anbaric.terra_reforged.util.events.TerraStructureProtectEvent;
+import com.anbaric.terra_reforged.util.events.*;
 import com.anbaric.terra_reforged.util.handlers.*;
 import com.anbaric.terra_reforged.util.init.*;
 import net.minecraft.util.DamageSource;
@@ -67,6 +64,7 @@ import java.util.stream.Collectors;
         MinecraftForge.EVENT_BUS.register(TerraStructureProtectEvent.class);
         MinecraftForge.EVENT_BUS.register(TerraCapabilitiesEvent.class);
         MinecraftForge.EVENT_BUS.register(TerraEffectItemsEvent.class);
+        MinecraftForge.EVENT_BUS.register(TerraDefaultBiomeAdditionsEvent.class);
         MinecraftForge.EVENT_BUS.register(new TerraJumpEvent());
 
         MinecraftForge.EVENT_BUS.register(FeatureGenHandler.class);

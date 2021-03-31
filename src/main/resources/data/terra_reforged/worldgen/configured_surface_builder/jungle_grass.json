@@ -1,0 +1,14 @@
+{
+	"type": "terra_reforged:jungle_grass",
+	"config": {
+		"top_material": {
+			"Name": "terra_reforged:grass_jungle"
+		},
+		"under_material": {
+			"Name": "terra_reforged:soil_mud"
+		},
+		"underwater_material": {
+			"Name": "terra_reforged:soil_mud"
+		}
+	}
+}

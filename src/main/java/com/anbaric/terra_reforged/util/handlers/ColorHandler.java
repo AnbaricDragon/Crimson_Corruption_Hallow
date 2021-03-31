@@ -28,7 +28,7 @@ public class ColorHandler
         event.getBlockColors().register((blockstate, world, pos, tintIndex) -> world != null && pos != null ? BiomeColors.getFoliageColor(world, pos) : FoliageColors.getDefault(), TerraBlockRegistry.WALL_OAK_LEAF.get(), TerraBlockRegistry.WALL_JUNGLE_LEAF.get(), TerraBlockRegistry.WALL_ACACIA_LEAF.get(), TerraBlockRegistry.WALL_DARKOAK_LEAF.get());
         event.getBlockColors().register((blockstate, world, pos, tintIndex) -> FoliageColors.getSpruce(), TerraBlockRegistry.WALL_SPRUCE_LEAF.get());
         event.getBlockColors().register((blockstate, world, pos, tintIndex) -> FoliageColors.getBirch(), TerraBlockRegistry.WALL_BIRCH_LEAF.get());
-
+        event.getBlockColors().register((blockstate, world, pos, tintIndex) -> world != null && pos != null ? BiomeColors.getGrassColor(world, pos) : GrassColors.get(0.5D, 1.0D), TerraBlockRegistry.GRASS_JUNGLE.get());
     }
 
 
@@ -42,16 +42,17 @@ public class ColorHandler
         final ItemColors  itemColors  = event.getItemColors();
 
         // Use the Block's colour handler for an ItemBlock
-        final IItemColor itemBlockColourHandler = (stack, tintIndex) -> {
+        final IItemColor color = (stack, tintIndex) -> {
             final BlockState state = ((BlockItem) stack.getItem()).getBlock().getDefaultState();
             return blockColors.getColor(state, null, null, tintIndex);
         };
 
-        itemColors.register(itemBlockColourHandler, TerraBlockRegistry.WALL_OAK_LEAF.get());
-        itemColors.register(itemBlockColourHandler, TerraBlockRegistry.WALL_SPRUCE_LEAF.get());
-        itemColors.register(itemBlockColourHandler, TerraBlockRegistry.WALL_BIRCH_LEAF.get());
-        itemColors.register(itemBlockColourHandler, TerraBlockRegistry.WALL_JUNGLE_LEAF.get());
-        itemColors.register(itemBlockColourHandler, TerraBlockRegistry.WALL_DARKOAK_LEAF.get());
-        itemColors.register(itemBlockColourHandler, TerraBlockRegistry.WALL_ACACIA_LEAF.get());
+        itemColors.register(color, TerraBlockRegistry.GRASS_JUNGLE.get());
+        itemColors.register(color, TerraBlockRegistry.WALL_OAK_LEAF.get());
+        itemColors.register(color, TerraBlockRegistry.WALL_SPRUCE_LEAF.get());
+        itemColors.register(color, TerraBlockRegistry.WALL_BIRCH_LEAF.get());
+        itemColors.register(color, TerraBlockRegistry.WALL_JUNGLE_LEAF.get());
+        itemColors.register(color, TerraBlockRegistry.WALL_DARKOAK_LEAF.get());
+        itemColors.register(color, TerraBlockRegistry.WALL_ACACIA_LEAF.get());
     }
 }

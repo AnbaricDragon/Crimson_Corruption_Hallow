@@ -34,7 +34,7 @@ import java.util.UUID;
 
 public class TerraEffectItemsEvent
 {
-     @SubscribeEvent
+    @SubscribeEvent
     static void onFall(LivingFallEvent event)
     {
         if (!(event.getEntityLiving() instanceof PlayerEntity))

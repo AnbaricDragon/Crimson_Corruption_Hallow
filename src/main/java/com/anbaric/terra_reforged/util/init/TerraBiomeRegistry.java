@@ -15,6 +15,8 @@ public class TerraBiomeRegistry
 {
     public static final DeferredRegister<Biome> BIOMES = DeferredRegister.create(ForgeRegistries.BIOMES, Reference.MODID);
 
+    public static final RegistryObject<Biome> MUD_JUNGLE = BIOMES.register("mud_jungle", BiomeMaker::makeVoidBiome);
+
     public static final RegistryObject<Biome> CORRUPT_PLAINS = BIOMES.register("corrupt_plains", BiomeMaker::makeVoidBiome);
     public static final RegistryObject<Biome> CORRUPT_DESERT = BIOMES.register("corrupt_desert", BiomeMaker::makeVoidBiome);
     public static final RegistryObject<Biome> CORRUPT_FOREST = BIOMES.register("corrupt_forest", BiomeMaker::makeVoidBiome);

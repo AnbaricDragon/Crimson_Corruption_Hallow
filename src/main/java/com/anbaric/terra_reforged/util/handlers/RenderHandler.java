@@ -28,6 +28,7 @@ public class RenderHandler
         RenderType cutout       = RenderType.getCutout();
 
         //Blocks
+        RenderTypeLookup.setRenderLayer(TerraBlockRegistry.GRASS_JUNGLE.get(), cutout);
         RenderTypeLookup.setRenderLayer(TerraBlockRegistry.GRASS_MUSHROOM.get(), cutout);
         RenderTypeLookup.setRenderLayer(TerraBlockRegistry.STONE_MOSS_FIRE.get(), cutout);
         RenderTypeLookup.setRenderLayer(TerraBlockRegistry.MUSHROOM_CAP.get(), cutout);

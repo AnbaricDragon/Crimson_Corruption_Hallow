@@ -4,7 +4,10 @@ import com.anbaric.terra_reforged.util.Reference;
 import com.anbaric.terra_reforged.util.events.*;
 import com.anbaric.terra_reforged.util.handlers.*;
 import com.anbaric.terra_reforged.util.init.*;
+import net.minecraft.server.MinecraftServer;
 import net.minecraft.util.DamageSource;
+import net.minecraft.world.GameRules;
+import net.minecraft.world.World;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.common.PlantType;
 import net.minecraftforge.event.world.BiomeLoadingEvent;
@@ -46,6 +49,7 @@ import java.util.stream.Collectors;
         TerraItemRegistry.ITEMS.register(modEventBus);
         TerraEffectRegistry.EFFECTS.register(modEventBus);
         TerraEntityRegistry.ENTITIES.register(modEventBus);
+        TerraTileEntityRegistry.TILE_ENTITIES.register(modEventBus);
         TerraFeatureRegistry.FEATURES.register(modEventBus);
         TerraCarverRegistry.CARVERS.register(modEventBus);
         TerraSurfaceBuilderRegistry.SURFACE_BUILDERS.register(modEventBus);
@@ -61,6 +65,7 @@ import java.util.stream.Collectors;
 
         // Register ourselves for server and other game events we are interested in
         MinecraftForge.EVENT_BUS.register(this);
+        MinecraftForge.EVENT_BUS.register(TerraTestEvent.class);
         MinecraftForge.EVENT_BUS.register(TerraStructureProtectEvent.class);
         MinecraftForge.EVENT_BUS.register(TerraCapabilitiesEvent.class);
         MinecraftForge.EVENT_BUS.register(TerraEffectItemsEvent.class);
@@ -77,8 +82,6 @@ import java.util.stream.Collectors;
         NetworkHandler.register();
 
         FeatureGenHandler.configureFeatures();
-
-
 
         //        TerraVanillaCompat.setupStripping();
         //        TerraVanillaCompat.setupFlammable();

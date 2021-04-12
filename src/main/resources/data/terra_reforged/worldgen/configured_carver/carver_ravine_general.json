@@ -1,6 +1,6 @@
 {
     "type": "terra_reforged:carver_ravine_general",
     "config": {
-        "probability": 0.1
+        "probability": 0.06
     }
 }

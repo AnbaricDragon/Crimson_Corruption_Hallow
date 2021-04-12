@@ -3,6 +3,7 @@ package com.anbaric.terra_reforged.features.landscape;
 import com.anbaric.terra_reforged.util.handlers.SpreadingHandler;
 import com.anbaric.terra_reforged.util.handlers.SpreadingHandler.EnumBiomeType;
 import com.anbaric.terra_reforged.util.handlers.SpreadingHandler.EnumBiomeBlockType;
+import com.anbaric.terra_reforged.util.init.TerraBlockRegistry;
 import com.mojang.serialization.Codec;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
@@ -29,9 +30,9 @@ public class TerraFeatureLakes extends Feature<BlockStateFeatureConfig>
     public TerraFeatureLakes(EnumBiomeType biomeType)
     {
         super(BlockStateFeatureConfig.CODEC);
-        this.stone = biomeBlock(biomeType, Blocks.STONE);
+        this.stone = biomeType == EnumBiomeType.JUNGLE ? TerraBlockRegistry.SOIL_MUD.get().getDefaultState() : biomeBlock(biomeType, Blocks.STONE);
         this.ice = biomeBlock(biomeType, Blocks.ICE);
-        this.grass = biomeBlock(biomeType, Blocks.GRASS_BLOCK);
+        this.grass = biomeType == EnumBiomeType.JUNGLE ? TerraBlockRegistry.GRASS_JUNGLE.get().getDefaultState() : biomeBlock(biomeType, Blocks.GRASS_BLOCK);
     }
 
     public BlockState biomeBlock(EnumBiomeType type, Block target)

@@ -64,10 +64,16 @@ public class TerraBlockSnowLayer extends Block
     public boolean isValidPosition(BlockState state, IWorldReader worldIn, BlockPos pos)
     {
         BlockState blockstate = worldIn.getBlockState(pos.down());
-        Block      block      = blockstate.getBlock();
-        if (block != Blocks.ICE && block != Blocks.PACKED_ICE && block != Blocks.BARRIER)
+        if (!blockstate.matchesBlock(Blocks.ICE) && !blockstate.matchesBlock(Blocks.PACKED_ICE) && !blockstate.matchesBlock(Blocks.BARRIER))
         {
-            return Block.doesSideFillSquare(blockstate.getCollisionShape(worldIn, pos.down()), Direction.UP) || block == this && blockstate.get(LAYERS) == 8;
+            if (!blockstate.matchesBlock(Blocks.HONEY_BLOCK) && !blockstate.matchesBlock(Blocks.SOUL_SAND))
+            {
+                return Block.doesSideFillSquare(blockstate.getCollisionShapeUncached(worldIn, pos.down()), Direction.UP) || blockstate.getBlock() == this && blockstate.get(LAYERS) == 8;
+            }
+            else
+            {
+                return true;
+            }
         }
         else
         {

@@ -121,7 +121,7 @@ public class TerraBlockPotionPlant extends BushBlock implements IGrowable
         }
         else
         {
-            return this == TerraBlockRegistry.PLANT_WATERLEAF.get() && pos.getY() > 60 && this.isValidGround(worldIn.getBlockState(pos.down()), worldIn, pos);
+            return this == TerraBlockRegistry.PLANT_WATERLEAF.get() && pos.getY() > 55 && this.isValidGround(worldIn.getBlockState(pos.down()), worldIn, pos);
         }
     }
 

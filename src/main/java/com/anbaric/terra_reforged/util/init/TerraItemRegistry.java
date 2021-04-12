@@ -1,6 +1,7 @@
 package com.anbaric.terra_reforged.util.init;
 
 import com.anbaric.terra_reforged.items.TerraItemLilyPad;
+import com.anbaric.terra_reforged.items.TerraProjectileSword;
 import com.anbaric.terra_reforged.util.Reference;
 import com.anbaric.terra_reforged.util.TerraItemGroups;
 import com.anbaric.terra_reforged.util.handlers.MaterialHandler;
@@ -156,5 +157,5 @@ public final class TerraItemRegistry
 
     //Swords
     public static final RegistryObject<Item> SWORD_COPPER = ITEMS.register("sword_copper", () -> new SwordItem(MaterialHandler.COPPER,  3, -2.4F, new Item.Properties().group(TerraItemGroups.TERRA_WEAPONS_TAB)));
-    public static final RegistryObject<Item> SWORD_TERRA = ITEMS.register("sword_terra", () -> new SwordItem(MaterialHandler.TERRA,  30, -2.4F, new Item.Properties().group(TerraItemGroups.TERRA_WEAPONS_TAB)));
+    public static final RegistryObject<Item> SWORD_TERRA = ITEMS.register("sword_terra", () -> new TerraProjectileSword(MaterialHandler.TERRA,  30, -2.4F, new Item.Properties().group(TerraItemGroups.TERRA_WEAPONS_TAB)));
 }

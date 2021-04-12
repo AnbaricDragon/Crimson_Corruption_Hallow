@@ -26,6 +26,7 @@ public class TerraTagRegistry
     public static final ITag.INamedTag<Block> CORRUPT_REPLACERS = BlockTags.makeWrapperTag("terra_reforged:gen/corrupt_replacers");
     public static final ITag.INamedTag<Block> CRIMSON_REPLACERS = BlockTags.makeWrapperTag("terra_reforged:gen/crimson_replacers");
     public static final ITag.INamedTag<Block> HALLOWED_REPLACERS = BlockTags.makeWrapperTag("terra_reforged:gen/hallowed_replacers");
+    public static final ITag.INamedTag<Block> JUNGLE_REPLACERS = BlockTags.makeWrapperTag("terra_reforged:gen/jungle_replacers");
     public static final ITag.INamedTag<Block> GENERAL_REPLACERS = BlockTags.makeWrapperTag("terra_reforged:gen/general_replacers");
 
     public static final ITag.INamedTag<Item> INGOT_COPPER = ItemTags.makeWrapperTag("forge:ingots/copper");

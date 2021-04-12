@@ -23,6 +23,7 @@ import net.minecraft.world.IBlockReader;
 import net.minecraft.world.IWorld;
 import net.minecraft.world.IWorldReader;
 import net.minecraft.world.World;
+import net.minecraft.world.biome.Biome;
 import net.minecraft.world.server.ServerWorld;
 
 import java.util.Map;
@@ -74,9 +75,7 @@ public class TerraBlockThornBush extends Block
         VoxelShape Y = VoxelShapes.or(U, D);
         VoxelShape Z = VoxelShapes.or(N, S);
 
-        VoxelShape[]
-                avoxelshape =
-                new VoxelShape[]{VoxelShapes.empty(), D, U, Y, N, VoxelShapes.or(N, D), VoxelShapes.or(N, U), VoxelShapes.or(N, Y), S, VoxelShapes.or(S, D), VoxelShapes.or(S, U), VoxelShapes.or(S, Y), Z, VoxelShapes.or(Z, D), VoxelShapes.or(Z, U), VoxelShapes.or(Z, Y), W, VoxelShapes.or(W, D), VoxelShapes.or(W, U), VoxelShapes.or(W, Y), VoxelShapes.or(W, N), VoxelShapes.or(W, N, D), VoxelShapes.or(W, N, U), VoxelShapes.or(W, N, Y), VoxelShapes.or(W, S), VoxelShapes.or(W, S, D), VoxelShapes.or(W, S, U), VoxelShapes.or(W, S, Y), VoxelShapes.or(W, Z), VoxelShapes.or(W, Z, D), VoxelShapes.or(W, Z, U), VoxelShapes.or(W, Z, Y), E, VoxelShapes.or(E, D), VoxelShapes.or(E, U), VoxelShapes.or(E, Y), VoxelShapes.or(E, N), VoxelShapes.or(E, N, D), VoxelShapes.or(E, N, U), VoxelShapes.or(E, N, Y), VoxelShapes.or(E, S), VoxelShapes.or(E, S, D), VoxelShapes.or(E, S, U), VoxelShapes.or(E, S, Y), VoxelShapes.or(E, Z), VoxelShapes.or(E, Z, D), VoxelShapes.or(E, Z, U), VoxelShapes.or(E, Z, Y), X, VoxelShapes.or(X, D), VoxelShapes.or(X, U), VoxelShapes.or(X, Y), VoxelShapes.or(X, N), VoxelShapes.or(X, N, D), VoxelShapes.or(X, N, U), VoxelShapes.or(X, N, Y), VoxelShapes.or(X, S), VoxelShapes.or(X, S, D), VoxelShapes.or(X, S, U), VoxelShapes.or(X, S, Y), VoxelShapes.or(X, Z), VoxelShapes.or(X, Z, D), VoxelShapes.or(X, Z, U), VoxelShapes.or(X, Z, Y)};
+        VoxelShape[] avoxelshape = new VoxelShape[]{VoxelShapes.empty(), D, U, Y, N, VoxelShapes.or(N, D), VoxelShapes.or(N, U), VoxelShapes.or(N, Y), S, VoxelShapes.or(S, D), VoxelShapes.or(S, U), VoxelShapes.or(S, Y), Z, VoxelShapes.or(Z, D), VoxelShapes.or(Z, U), VoxelShapes.or(Z, Y), W, VoxelShapes.or(W, D), VoxelShapes.or(W, U), VoxelShapes.or(W, Y), VoxelShapes.or(W, N), VoxelShapes.or(W, N, D), VoxelShapes.or(W, N, U), VoxelShapes.or(W, N, Y), VoxelShapes.or(W, S), VoxelShapes.or(W, S, D), VoxelShapes.or(W, S, U), VoxelShapes.or(W, S, Y), VoxelShapes.or(W, Z), VoxelShapes.or(W, Z, D), VoxelShapes.or(W, Z, U), VoxelShapes.or(W, Z, Y), E, VoxelShapes.or(E, D), VoxelShapes.or(E, U), VoxelShapes.or(E, Y), VoxelShapes.or(E, N), VoxelShapes.or(E, N, D), VoxelShapes.or(E, N, U), VoxelShapes.or(E, N, Y), VoxelShapes.or(E, S), VoxelShapes.or(E, S, D), VoxelShapes.or(E, S, U), VoxelShapes.or(E, S, Y), VoxelShapes.or(E, Z), VoxelShapes.or(E, Z, D), VoxelShapes.or(E, Z, U), VoxelShapes.or(E, Z, Y), X, VoxelShapes.or(X, D), VoxelShapes.or(X, U), VoxelShapes.or(X, Y), VoxelShapes.or(X, N), VoxelShapes.or(X, N, D), VoxelShapes.or(X, N, U), VoxelShapes.or(X, N, Y), VoxelShapes.or(X, S), VoxelShapes.or(X, S, D), VoxelShapes.or(X, S, U), VoxelShapes.or(X, S, Y), VoxelShapes.or(X, Z), VoxelShapes.or(X, Z, D), VoxelShapes.or(X, Z, U), VoxelShapes.or(X, Z, Y)};
         for (int i = 0; i < 64; ++i)
         {
             avoxelshape[i] = VoxelShapes.or(base, avoxelshape[i]);
@@ -120,7 +119,8 @@ public class TerraBlockThornBush extends Block
         return i;
     }
 
-    public boolean allowsMovement(BlockState state, IBlockReader worldIn, BlockPos pos, PathType type) {
+    public boolean allowsMovement(BlockState state, IBlockReader worldIn, BlockPos pos, PathType type)
+    {
         return true;
     }
 
@@ -140,13 +140,9 @@ public class TerraBlockThornBush extends Block
 
     public Block getGrass()
     {
-        if (this == TerraBlockRegistry.PLANT_THORN_PURPLE.get())
+        if (this == TerraBlockRegistry.PLANT_THORN_PURPLE.get() || this == TerraBlockRegistry.PLANT_THORN_RED.get())
         {
-            return TerraBlockRegistry.GRASS_CORRUPT.get();
-        }
-        else if (this == TerraBlockRegistry.PLANT_THORN_RED.get())
-        {
-            return TerraBlockRegistry.GRASS_CRIMSON.get();
+            return Blocks.GRASS_BLOCK;
         }
         else
         {
@@ -219,6 +215,13 @@ public class TerraBlockThornBush extends Block
         return countNei;
     }
 
+    public String getBiome()
+    {
+        if (this == TerraBlockRegistry.PLANT_THORN_PURPLE.get()) { return "corrupt"; }
+        else if (this == TerraBlockRegistry.PLANT_THORN_PURPLE.get()) { return "crimson"; }
+        else return this == TerraBlockRegistry.PLANT_THORN_PURPLE.get() ? "mud" : "blabber";
+    }
+
     public BlockState getStateForPlacement(BlockItemUseContext context)
     {
         IBlockReader world     = context.getWorld();
@@ -235,7 +238,14 @@ public class TerraBlockThornBush extends Block
         BlockState   stateW    = world.getBlockState(blockposW);
         BlockState   stateU    = world.getBlockState(blockposU);
         BlockState   stateD    = world.getBlockState(blockposD);
-        return super.getStateForPlacement(context).with(NORTH, this.canAttach(stateN, stateN.isSolidSide(world, blockposN, Direction.SOUTH))).with(EAST, this.canAttach(stateE, stateE.isSolidSide(world, blockposE, Direction.WEST))).with(SOUTH, this.canAttach(stateS, stateS.isSolidSide(world, blockposS, Direction.NORTH))).with(WEST, this.canAttach(stateW, stateW.isSolidSide(world, blockposW, Direction.EAST))).with(UP, this.canAttach(stateU, stateU.isSolidSide(world, blockposU, Direction.DOWN))).with(DOWN, this.canAttach(stateD, stateD.isSolidSide(world, blockposD, Direction.UP))).with(GROWTH, this.getProperGrowth(world, blockpos));
+        return super.getStateForPlacement(context)
+                .with(NORTH, this.canAttach(stateN, stateN.isSolidSide(world, blockposN, Direction.SOUTH)))
+                .with(EAST, this.canAttach(stateE, stateE.isSolidSide(world, blockposE, Direction.WEST)))
+                .with(SOUTH, this.canAttach(stateS, stateS.isSolidSide(world, blockposS, Direction.NORTH)))
+                .with(WEST, this.canAttach(stateW, stateW.isSolidSide(world, blockposW, Direction.EAST)))
+                .with(UP, this.canAttach(stateU, stateU.isSolidSide(world, blockposU, Direction.DOWN)))
+                .with(DOWN, this.canAttach(stateD, stateD.isSolidSide(world, blockposD, Direction.UP)))
+                .with(GROWTH, this.getProperGrowth(world, blockpos));
     }
 
     public BlockState updatePostPlacement(BlockState state, Direction facing, BlockState facingState, IWorld worldIn, BlockPos currentPos, BlockPos facingPos)
@@ -248,6 +258,15 @@ public class TerraBlockThornBush extends Block
     {
         entityIn.attackEntityFrom(TerraReforged.THORNS, this.damage);
         worldIn.destroyBlock(pos, false);
+    }
+
+    @Override
+    public void neighborChanged(BlockState state, World worldIn, BlockPos pos, Block blockIn, BlockPos fromPos, boolean isMoving)
+    {
+        if (!isValidPosition(state, worldIn, pos))
+        {
+            worldIn.destroyBlock(pos, false);
+        }
     }
 
     //for placing block
@@ -271,31 +290,20 @@ public class TerraBlockThornBush extends Block
     }
 
     @Override
-    public void tick(BlockState state, ServerWorld worldIn, BlockPos pos, Random random)
+    public void randomTick(BlockState state, ServerWorld worldIn, BlockPos pos, Random random)
     {
         int growth = state.get(GROWTH);
         if (!isValidPosition(state, worldIn, pos))
         {
             worldIn.destroyBlock(pos, false);
         }
-        else
+        else if (growth < 9)
         {
-            if (growth < 9)
+            int      dirIndex = random.nextInt(6);
+            BlockPos dirPos   = pos.offset(Direction.byIndex(dirIndex));
+            if (worldIn.getBlockState(dirPos).getBlock() == Blocks.AIR && getNeighborCount(worldIn, dirPos) < 2 && worldIn.getBiome(dirPos).getRegistryName().toString().contains(this.getBiome()))
             {
-                int dirIndex = random.nextInt(6);
-                BlockPos dirPos = pos.offset(Direction.byIndex(dirIndex));
-                if (worldIn.getBlockState(dirPos).getBlock() == Blocks.AIR && getNeighborCount(worldIn, dirPos) < 2)
-                {
-                    worldIn.setBlockState(dirPos, this.getDefaultState().with(GROWTH, growth + 1));
-                }
-            }
-            if (worldIn.getBlockState(pos.down()).getBlock() == this.getGrass() && growth != 0)
-            {
-                worldIn.setBlockState(pos, state.with(GROWTH, 0).with(DOWN, true));
-            }
-            if (getLowestNeighbor(worldIn, pos) < growth - 1)
-            {
-                worldIn.setBlockState(pos, state.with(GROWTH, growth - 1));
+                worldIn.setBlockState(dirPos, this.getDefaultState().with(GROWTH, growth + 1));
             }
         }
     }

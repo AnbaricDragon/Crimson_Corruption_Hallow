@@ -18,6 +18,8 @@ import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.Mod.EventBusSubscriber.Bus;
 
+import java.util.Map;
+
 @Mod.EventBusSubscriber(modid = Reference.MODID, bus = Bus.MOD, value = {Dist.CLIENT})
 public class ColorHandler
 {
@@ -25,11 +27,12 @@ public class ColorHandler
     @SubscribeEvent
     public static void registerBlockColorHandlers(final ColorHandlerEvent.Block event)
     {
-        event.getBlockColors().register((blockstate, world, pos, tintIndex) -> world != null && pos != null ? BiomeColors.getFoliageColor(world, pos) : FoliageColors.getDefault(), TerraBlockRegistry.WALL_OAK_LEAF.get(), TerraBlockRegistry.WALL_JUNGLE_LEAF.get(), TerraBlockRegistry.WALL_ACACIA_LEAF.get(), TerraBlockRegistry.WALL_DARKOAK_LEAF.get());
-        event.getBlockColors().register((blockstate, world, pos, tintIndex) -> FoliageColors.getSpruce(), TerraBlockRegistry.WALL_SPRUCE_LEAF.get());
-        event.getBlockColors().register((blockstate, world, pos, tintIndex) -> FoliageColors.getBirch(), TerraBlockRegistry.WALL_BIRCH_LEAF.get());
-        event.getBlockColors().register((blockstate, world, pos, tintIndex) -> world != null && pos != null ? BiomeColors.getGrassColor(world, pos) : GrassColors.get(0.5D, 1.0D), TerraBlockRegistry.GRASS_JUNGLE.get());
-    }
+        BlockColors blockColors = event.getBlockColors();
+
+        blockColors.register((blockstate, world, pos, tintIndex) -> world != null && pos != null ? BiomeColors.getFoliageColor(world, pos) : FoliageColors.getDefault(), TerraBlockRegistry.WALL_OAK_LEAF.get(), TerraBlockRegistry.WALL_JUNGLE_LEAF.get(), TerraBlockRegistry.WALL_ACACIA_LEAF.get(), TerraBlockRegistry.WALL_DARKOAK_LEAF.get());
+        blockColors.register((blockstate, world, pos, tintIndex) -> FoliageColors.getSpruce(), TerraBlockRegistry.WALL_SPRUCE_LEAF.get());
+        blockColors.register((blockstate, world, pos, tintIndex) -> FoliageColors.getBirch(), TerraBlockRegistry.WALL_BIRCH_LEAF.get());
+        blockColors.register((blockstate, world, pos, tintIndex) -> world != null && pos != null ? BiomeColors.getGrassColor(world, pos) : GrassColors.get(0.5D, 1.0D), TerraBlockRegistry.GRASS_JUNGLE.get());    }
 
 
     /**

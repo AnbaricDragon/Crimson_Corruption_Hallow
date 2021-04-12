@@ -1,0 +1,21 @@
+{
+    "variants": 
+		{
+        "lit=true,half=upper": 
+				[
+						{ "model": "terra_reforged:block/tall_lantern_heart_top" }
+				],
+        "lit=false,half=upper": 
+				[
+						{ "model": "terra_reforged:block/tall_lantern_heart_top" }
+				],
+        "lit=true,half=lower": 
+				[
+						{ "model": "terra_reforged:block/tall_lantern_heart_bottom" }
+				],
+				"lit=false,half=lower": 
+				[
+						{ "model": "terra_reforged:block/tall_lantern_heart_bottom" }
+				]
+    }
+}

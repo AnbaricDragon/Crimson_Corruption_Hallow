@@ -9,6 +9,7 @@ import com.anbaric.terra_reforged.util.handlers.SpreadingHandler.EnumBiomeType;
 import net.minecraft.block.*;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.material.MaterialColor;
+import net.minecraft.potion.Effects;
 import net.minecraftforge.common.PlantType;
 import net.minecraftforge.common.Tags;
 import net.minecraftforge.common.ToolType;
@@ -26,9 +27,9 @@ public class TerraBlockRegistry
     public static final RegistryObject<Block> SNOW_CORRUPT = BLOCKS.register("snow_corrupt", () -> new TerraBlockSpreading(Block.Properties.create(Material.SNOW_BLOCK).tickRandomly().sound(SoundType.SNOW).hardnessAndResistance(0.5F, 3.0F), EnumBiomeType.CORRUPT, TerraReforged.BOREAL));
     public static final RegistryObject<Block> SNOW_CRIMSON = BLOCKS.register("snow_crimson", () -> new TerraBlockSpreading(Block.Properties.create(Material.SNOW_BLOCK).tickRandomly().sound(SoundType.SNOW).hardnessAndResistance(0.5F, 3.0F), EnumBiomeType.CRIMSON, TerraReforged.BOREAL));
     public static final RegistryObject<Block> SNOW_HALLOWED = BLOCKS.register("snow_hallowed", () -> new TerraBlockSpreading(Block.Properties.create(Material.SNOW_BLOCK).tickRandomly().sound(SoundType.SNOW).hardnessAndResistance(0.5F, 3.0F), EnumBiomeType.HALLOWED, TerraReforged.BOREAL));
-    public static final RegistryObject<Block> SNOW_CORRUPT_LAYER = BLOCKS.register("snow_corrupt_layer", () -> new TerraBlockSnowLayer(Block.Properties.create(Material.SNOW).sound(SoundType.SNOW).hardnessAndResistance(0.1F).tickRandomly()));
-    public static final RegistryObject<Block> SNOW_CRIMSON_LAYER = BLOCKS.register("snow_crimson_layer", () -> new TerraBlockSnowLayer(Block.Properties.create(Material.SNOW).sound(SoundType.SNOW).hardnessAndResistance(0.1F).tickRandomly()));
-    public static final RegistryObject<Block> SNOW_HALLOWED_LAYER = BLOCKS.register("snow_hallowed_layer", () -> new TerraBlockSnowLayer(Block.Properties.create(Material.SNOW).sound(SoundType.SNOW).hardnessAndResistance(0.1F).tickRandomly()));
+    public static final RegistryObject<Block> SNOW_CORRUPT_LAYER = BLOCKS.register("snow_corrupt_layer", () -> new SnowBlock(Block.Properties.create(Material.SNOW).sound(SoundType.SNOW).hardnessAndResistance(0.1F).tickRandomly()));
+    public static final RegistryObject<Block> SNOW_CRIMSON_LAYER = BLOCKS.register("snow_crimson_layer", () -> new SnowBlock(Block.Properties.create(Material.SNOW).sound(SoundType.SNOW).hardnessAndResistance(0.1F).tickRandomly()));
+    public static final RegistryObject<Block> SNOW_HALLOWED_LAYER = BLOCKS.register("snow_hallowed_layer", () -> new SnowBlock(Block.Properties.create(Material.SNOW).sound(SoundType.SNOW).hardnessAndResistance(0.1F).tickRandomly()));
     public static final RegistryObject<Block> GRASS_JUNGLE = BLOCKS.register("grass_jungle", () -> new TerraBlockMudGrass(Block.Properties.create(Material.ORGANIC).sound(SoundType.PLANT).hardnessAndResistance(0.5F, 3.0F).tickRandomly()));
     public static final RegistryObject<Block> GRASS_MUSHROOM = BLOCKS.register("grass_mushroom", () -> new TerraBlockMudGrass(Block.Properties.create(Material.ORGANIC).sound(SoundType.PLANT).hardnessAndResistance(0.5F, 3.0F).tickRandomly()));
     public static final RegistryObject<Block> GRASS_CORRUPT = BLOCKS.register("grass_corrupt", () -> new TerraBlockBiomeGrass(Block.Properties.create(Material.ORGANIC).sound(SoundType.WET_GRASS).hardnessAndResistance(0.5F, 3.0F).tickRandomly(), EnumBiomeType.CORRUPT));
@@ -198,9 +199,11 @@ public class TerraBlockRegistry
     public static final RegistryObject<Block> SAPLING_PEARL = BLOCKS.register("sapling_pearl", () -> new TerraBlockSaplingPearl(AbstractBlock.Properties.create(Material.PLANTS).doesNotBlockMovement().tickRandomly().zeroHardnessAndResistance().sound(SoundType.PLANT)));
 
     //Furnature
-    public static final RegistryObject<Block> TALL_LANTERN_BONE = BLOCKS.register("tall_lantern_bone", () -> new TerraBlockHangingLantern(Block.Properties.create(Material.ROCK).sound(SoundType.STONE), 1.0D, 4.0D, 14));
-    public static final RegistryObject<Block> TALL_LANTERN_FIREFLY = BLOCKS.register("tall_lantern_firefly", () -> new TerraBlockHangingLantern(Block.Properties.create(Material.ROCK).sound(SoundType.GLASS), 1.0D, 6.0D, 14));
-    public static final RegistryObject<Block> TALL_LANTERN_LIGHTNINGBUG = BLOCKS.register("tall_lantern_lightningbug", () -> new TerraBlockHangingLantern(Block.Properties.create(Material.ROCK).sound(SoundType.GLASS), 1.0D, 6.0D, 14));
+    public static final RegistryObject<Block> TALL_LANTERN_BONE = BLOCKS.register("tall_lantern_bone", () -> new TerraBlockHangingTallLanternPowered(Block.Properties.create(Material.ROCK).sound(SoundType.STONE), 1.0D, 4.0D, 14));
+    public static final RegistryObject<Block> TALL_LANTERN_FIREFLY = BLOCKS.register("tall_lantern_firefly", () -> new TerraBlockHangingTallLanternPowered(Block.Properties.create(Material.ROCK).sound(SoundType.GLASS), 1.0D, 6.0D, 14));
+    public static final RegistryObject<Block> TALL_LANTERN_LIGHTNINGBUG = BLOCKS.register("tall_lantern_lightningbug", () -> new TerraBlockHangingTallLanternPowered(Block.Properties.create(Material.ROCK).sound(SoundType.GLASS), 1.0D, 6.0D, 14));
+    public static final RegistryObject<Block> TALL_LANTERN_HEART = BLOCKS.register("tall_lantern_heart", () -> new TerraBlockHangingTallLanternPoweredEffect(Block.Properties.create(Material.ROCK).sound(SoundType.GLASS), 7.0D, 7.0D, 14, Effects.REGENERATION));
+
 
     //Structure Blocks
     public static final RegistryObject<Block> BRICK_SNOW = BLOCKS.register("brick_snow", () -> new Block(Block.Properties.create(Material.SNOW_BLOCK).sound(SoundType.SNOW).hardnessAndResistance(0.7F, 3.0F)));
@@ -267,7 +270,8 @@ public class TerraBlockRegistry
     public static final RegistryObject<Block> WALL_SHADE_LEAF = BLOCKS.register("wall_shade_leaf", () -> new TerraBlockWall(Block.Properties.create(Material.LEAVES).sound(SoundType.PLANT).hardnessAndResistance(1.5F, 6.0F)));
     public static final RegistryObject<Block> WALL_PEARL_LEAF = BLOCKS.register("wall_pearl_leaf", () -> new TerraBlockWall(Block.Properties.create(Material.LEAVES).sound(SoundType.PLANT).hardnessAndResistance(1.5F, 6.0F)));
     public static final RegistryObject<Block> WALL_OAK_PLANK = BLOCKS.register("wall_oak_plank", () -> new TerraBlockWall(Block.Properties.create(Material.WOOD).sound(SoundType.WOOD).hardnessAndResistance(1.5F, 6.0F)));
-    public static final RegistryObject<Block> WALL_SPRUCE_PLANK = BLOCKS.register("wall_spruce_plank", () -> new TerraBlockWall(Block.Properties.create(Material.WOOD).sound(SoundType.WOOD).hardnessAndResistance(1.5F, 6.0F)));;
+    public static final RegistryObject<Block> WALL_SPRUCE_PLANK = BLOCKS.register("wall_spruce_plank", () -> new TerraBlockWall(Block.Properties.create(Material.WOOD).sound(SoundType.WOOD).hardnessAndResistance(1.5F, 6.0F)));
+    ;
     public static final RegistryObject<Block> WALL_BIRCH_PLANK = BLOCKS.register("wall_birch_plank", () -> new TerraBlockWall(Block.Properties.create(Material.WOOD).sound(SoundType.WOOD).hardnessAndResistance(1.5F, 6.0F)));
     public static final RegistryObject<Block> WALL_JUNGLE_PLANK = BLOCKS.register("wall_jungle_plank", () -> new TerraBlockWall(Block.Properties.create(Material.WOOD).sound(SoundType.WOOD).hardnessAndResistance(1.5F, 6.0F)));
     public static final RegistryObject<Block> WALL_ACACIA_PLANK = BLOCKS.register("wall_acacia_plank", () -> new TerraBlockWall(Block.Properties.create(Material.WOOD).sound(SoundType.WOOD).hardnessAndResistance(1.5F, 6.0F)));
@@ -298,29 +302,29 @@ public class TerraBlockRegistry
     public static final RegistryObject<Block> STAIR_PLANK_PEARL = BLOCKS.register("stair_plank_pearl", () -> new StairsBlock(() -> TerraBlockRegistry.PLANK_PEARL.get().getDefaultState(), Block.Properties.from(TerraBlockRegistry.PLANK_PEARL.get())));
     public static final RegistryObject<Block> STAIR_PLANK_DYNASTY = BLOCKS.register("stair_plank_dynasty", () -> new StairsBlock(() -> TerraBlockRegistry.PLANK_DYNASTY.get().getDefaultState(), Block.Properties.from(TerraBlockRegistry.PLANK_DYNASTY.get())));
     public static final RegistryObject<Block> STAIR_PLANK_SPOOKY = BLOCKS.register("stair_plank_spooky", () -> new StairsBlock(() -> TerraBlockRegistry.PLANK_DYNASTY.get().getDefaultState(), Block.Properties.from(TerraBlockRegistry.PLANK_SPOOKY.get())));
-    public static final RegistryObject<Block> STAIR_STONE_EBON = BLOCKS.register("stair_stone_ebon",  () -> new StairsBlock(() -> TerraBlockRegistry.STONE_EBON.get().getDefaultState(), Block.Properties.from(TerraBlockRegistry.STONE_EBON.get())));
-    public static final RegistryObject<Block> STAIR_STONE_CRIM = BLOCKS.register("stair_stone_crim",  () -> new StairsBlock(() -> TerraBlockRegistry.STONE_CRIM.get().getDefaultState(), Block.Properties.from(TerraBlockRegistry.STONE_CRIM.get())));
-    public static final RegistryObject<Block> STAIR_STONE_PEARL = BLOCKS.register("stair_stone_pearl",  () -> new StairsBlock(() -> TerraBlockRegistry.STONE_PEARL.get().getDefaultState(), Block.Properties.from(TerraBlockRegistry.STONE_PEARL.get())));
-    public static final RegistryObject<Block> STAIR_STONEBRICK_EBON = BLOCKS.register("stair_stonebrick_ebon",  () -> new StairsBlock(() -> TerraBlockRegistry.STONEBRICK_EBON.get().getDefaultState(), Block.Properties.from(TerraBlockRegistry.STONEBRICK_EBON.get())));
-    public static final RegistryObject<Block> STAIR_STONEBRICK_CRIM = BLOCKS.register("stair_stonebrick_crim",  () -> new StairsBlock(() -> TerraBlockRegistry.STONEBRICK_CRIM.get().getDefaultState(), Block.Properties.from(TerraBlockRegistry.STONEBRICK_CRIM.get())));
-    public static final RegistryObject<Block> STAIR_STONEBRICK_PEARL = BLOCKS.register("stair_stonebrick_pearl",  () -> new StairsBlock(() -> TerraBlockRegistry.STONEBRICK_PEARL.get().getDefaultState(), Block.Properties.from(TerraBlockRegistry.STONEBRICK_PEARL.get())));
-    public static final RegistryObject<Block> STAIR_STONEBRICK_EBON_MOSSY = BLOCKS.register("stair_stonebrick_ebon_mossy",  () -> new StairsBlock(() -> TerraBlockRegistry.STONEBRICK_EBON_MOSSY.get().getDefaultState(), Block.Properties.from(TerraBlockRegistry.STONEBRICK_EBON_MOSSY.get())));
-    public static final RegistryObject<Block> STAIR_STONEBRICK_CRIM_MOSSY = BLOCKS.register("stair_stonebrick_crim_mossy",  () -> new StairsBlock(() -> TerraBlockRegistry.STONEBRICK_CRIM_MOSSY.get().getDefaultState(), Block.Properties.from(TerraBlockRegistry.STONEBRICK_CRIM_MOSSY.get())));
-    public static final RegistryObject<Block> STAIR_STONEBRICK_PEARL_MOSSY = BLOCKS.register("stair_stonebrick_pearl_mossy",  () -> new StairsBlock(() -> TerraBlockRegistry.STONEBRICK_PEARL_MOSSY.get().getDefaultState(), Block.Properties.from(TerraBlockRegistry.STONEBRICK_PEARL_MOSSY.get())));
-    public static final RegistryObject<Block> STAIR_COBBLESTONE_EBON = BLOCKS.register("stair_cobblestone_ebon",  () -> new StairsBlock(() -> TerraBlockRegistry.COBBLESTONE_EBON.get().getDefaultState(), Block.Properties.from(TerraBlockRegistry.COBBLESTONE_EBON.get())));
-    public static final RegistryObject<Block> STAIR_COBBLESTONE_CRIM = BLOCKS.register("stair_cobblestone_crim",  () -> new StairsBlock(() -> TerraBlockRegistry.COBBLESTONE_CRIM.get().getDefaultState(), Block.Properties.from(TerraBlockRegistry.COBBLESTONE_CRIM.get())));
-    public static final RegistryObject<Block> STAIR_COBBLESTONE_PEARL = BLOCKS.register("stair_cobblestone_pearl",  () -> new StairsBlock(() -> TerraBlockRegistry.COBBLESTONE_PEARL.get().getDefaultState(), Block.Properties.from(TerraBlockRegistry.COBBLESTONE_PEARL.get())));
-    public static final RegistryObject<Block> STAIR_COBBLESTONE_EBON_MOSSY = BLOCKS.register("stair_cobblestone_ebon_mossy",  () -> new StairsBlock(() -> TerraBlockRegistry.COBBLESTONE_EBON_MOSSY.get().getDefaultState(), Block.Properties.from(TerraBlockRegistry.COBBLESTONE_EBON_MOSSY.get())));
-    public static final RegistryObject<Block> STAIR_COBBLESTONE_CRIM_MOSSY = BLOCKS.register("stair_cobblestone_crim_mossy",  () -> new StairsBlock(() -> TerraBlockRegistry.COBBLESTONE_CRIM_MOSSY.get().getDefaultState(), Block.Properties.from(TerraBlockRegistry.COBBLESTONE_CRIM_MOSSY.get())));
-    public static final RegistryObject<Block> STAIR_COBBLESTONE_PEARL_MOSSY = BLOCKS.register("stair_cobblestone_pearl_mossy",  () -> new StairsBlock(() -> TerraBlockRegistry.COBBLESTONE_PEARL_MOSSY.get().getDefaultState(), Block.Properties.from(TerraBlockRegistry.COBBLESTONE_PEARL_MOSSY.get())));
-    public static final RegistryObject<Block> STAIR_SANDSTONE_EBON = BLOCKS.register("stair_sandstone_ebon",  () -> new StairsBlock(() -> TerraBlockRegistry.SANDSTONE_EBON.get().getDefaultState(), Block.Properties.from(TerraBlockRegistry.SANDSTONE_EBON.get())));
-    public static final RegistryObject<Block> STAIR_SANDSTONE_CRIM = BLOCKS.register("stair_sandstone_crim",  () -> new StairsBlock(() -> TerraBlockRegistry.SANDSTONE_CRIM.get().getDefaultState(), Block.Properties.from(TerraBlockRegistry.SANDSTONE_CRIM.get())));
-    public static final RegistryObject<Block> STAIR_SANDSTONE_PEARL = BLOCKS.register("stair_sandstone_pearl",  () -> new StairsBlock(() -> TerraBlockRegistry.SANDSTONE_PEARL.get().getDefaultState(), Block.Properties.from(TerraBlockRegistry.SANDSTONE_PEARL.get())));
-    public static final RegistryObject<Block> STAIR_SANDSTONE_EBON_SMOOTH = BLOCKS.register("stair_sandstone_ebon_smooth",  () -> new StairsBlock(() -> TerraBlockRegistry.SANDSTONE_EBON_SMOOTH.get().getDefaultState(), Block.Properties.from(TerraBlockRegistry.SANDSTONE_EBON_SMOOTH.get())));
-    public static final RegistryObject<Block> STAIR_SANDSTONE_CRIM_SMOOTH = BLOCKS.register("stair_sandstone_crim_smooth",  () -> new StairsBlock(() -> TerraBlockRegistry.SANDSTONE_CRIM_SMOOTH.get().getDefaultState(), Block.Properties.from(TerraBlockRegistry.SANDSTONE_CRIM_SMOOTH.get())));
-    public static final RegistryObject<Block> STAIR_SANDSTONE_PEARL_SMOOTH = BLOCKS.register("stair_sandstone_pearl_smooth",  () -> new StairsBlock(() -> TerraBlockRegistry.SANDSTONE_PEARL_SMOOTH.get().getDefaultState(), Block.Properties.from(TerraBlockRegistry.SANDSTONE_PEARL_SMOOTH.get())));
-    public static final RegistryObject<Block> STAIR_BRICK_MUDSTONE = BLOCKS.register("stair_brick_mudstone",  () -> new StairsBlock(() -> TerraBlockRegistry.BRICK_MUDSTONE.get().getDefaultState(), Block.Properties.from(TerraBlockRegistry.BRICK_MUDSTONE.get())));
-    public static final RegistryObject<Block> STAIR_BRICK_GOLD = BLOCKS.register("stair_brick_gold",  () -> new StairsBlock(() -> TerraBlockRegistry.BRICK_GOLD.get().getDefaultState(), Block.Properties.from(TerraBlockRegistry.BRICK_GOLD.get())));
+    public static final RegistryObject<Block> STAIR_STONE_EBON = BLOCKS.register("stair_stone_ebon", () -> new StairsBlock(() -> TerraBlockRegistry.STONE_EBON.get().getDefaultState(), Block.Properties.from(TerraBlockRegistry.STONE_EBON.get())));
+    public static final RegistryObject<Block> STAIR_STONE_CRIM = BLOCKS.register("stair_stone_crim", () -> new StairsBlock(() -> TerraBlockRegistry.STONE_CRIM.get().getDefaultState(), Block.Properties.from(TerraBlockRegistry.STONE_CRIM.get())));
+    public static final RegistryObject<Block> STAIR_STONE_PEARL = BLOCKS.register("stair_stone_pearl", () -> new StairsBlock(() -> TerraBlockRegistry.STONE_PEARL.get().getDefaultState(), Block.Properties.from(TerraBlockRegistry.STONE_PEARL.get())));
+    public static final RegistryObject<Block> STAIR_STONEBRICK_EBON = BLOCKS.register("stair_stonebrick_ebon", () -> new StairsBlock(() -> TerraBlockRegistry.STONEBRICK_EBON.get().getDefaultState(), Block.Properties.from(TerraBlockRegistry.STONEBRICK_EBON.get())));
+    public static final RegistryObject<Block> STAIR_STONEBRICK_CRIM = BLOCKS.register("stair_stonebrick_crim", () -> new StairsBlock(() -> TerraBlockRegistry.STONEBRICK_CRIM.get().getDefaultState(), Block.Properties.from(TerraBlockRegistry.STONEBRICK_CRIM.get())));
+    public static final RegistryObject<Block> STAIR_STONEBRICK_PEARL = BLOCKS.register("stair_stonebrick_pearl", () -> new StairsBlock(() -> TerraBlockRegistry.STONEBRICK_PEARL.get().getDefaultState(), Block.Properties.from(TerraBlockRegistry.STONEBRICK_PEARL.get())));
+    public static final RegistryObject<Block> STAIR_STONEBRICK_EBON_MOSSY = BLOCKS.register("stair_stonebrick_ebon_mossy", () -> new StairsBlock(() -> TerraBlockRegistry.STONEBRICK_EBON_MOSSY.get().getDefaultState(), Block.Properties.from(TerraBlockRegistry.STONEBRICK_EBON_MOSSY.get())));
+    public static final RegistryObject<Block> STAIR_STONEBRICK_CRIM_MOSSY = BLOCKS.register("stair_stonebrick_crim_mossy", () -> new StairsBlock(() -> TerraBlockRegistry.STONEBRICK_CRIM_MOSSY.get().getDefaultState(), Block.Properties.from(TerraBlockRegistry.STONEBRICK_CRIM_MOSSY.get())));
+    public static final RegistryObject<Block> STAIR_STONEBRICK_PEARL_MOSSY = BLOCKS.register("stair_stonebrick_pearl_mossy", () -> new StairsBlock(() -> TerraBlockRegistry.STONEBRICK_PEARL_MOSSY.get().getDefaultState(), Block.Properties.from(TerraBlockRegistry.STONEBRICK_PEARL_MOSSY.get())));
+    public static final RegistryObject<Block> STAIR_COBBLESTONE_EBON = BLOCKS.register("stair_cobblestone_ebon", () -> new StairsBlock(() -> TerraBlockRegistry.COBBLESTONE_EBON.get().getDefaultState(), Block.Properties.from(TerraBlockRegistry.COBBLESTONE_EBON.get())));
+    public static final RegistryObject<Block> STAIR_COBBLESTONE_CRIM = BLOCKS.register("stair_cobblestone_crim", () -> new StairsBlock(() -> TerraBlockRegistry.COBBLESTONE_CRIM.get().getDefaultState(), Block.Properties.from(TerraBlockRegistry.COBBLESTONE_CRIM.get())));
+    public static final RegistryObject<Block> STAIR_COBBLESTONE_PEARL = BLOCKS.register("stair_cobblestone_pearl", () -> new StairsBlock(() -> TerraBlockRegistry.COBBLESTONE_PEARL.get().getDefaultState(), Block.Properties.from(TerraBlockRegistry.COBBLESTONE_PEARL.get())));
+    public static final RegistryObject<Block> STAIR_COBBLESTONE_EBON_MOSSY = BLOCKS.register("stair_cobblestone_ebon_mossy", () -> new StairsBlock(() -> TerraBlockRegistry.COBBLESTONE_EBON_MOSSY.get().getDefaultState(), Block.Properties.from(TerraBlockRegistry.COBBLESTONE_EBON_MOSSY.get())));
+    public static final RegistryObject<Block> STAIR_COBBLESTONE_CRIM_MOSSY = BLOCKS.register("stair_cobblestone_crim_mossy", () -> new StairsBlock(() -> TerraBlockRegistry.COBBLESTONE_CRIM_MOSSY.get().getDefaultState(), Block.Properties.from(TerraBlockRegistry.COBBLESTONE_CRIM_MOSSY.get())));
+    public static final RegistryObject<Block> STAIR_COBBLESTONE_PEARL_MOSSY = BLOCKS.register("stair_cobblestone_pearl_mossy", () -> new StairsBlock(() -> TerraBlockRegistry.COBBLESTONE_PEARL_MOSSY.get().getDefaultState(), Block.Properties.from(TerraBlockRegistry.COBBLESTONE_PEARL_MOSSY.get())));
+    public static final RegistryObject<Block> STAIR_SANDSTONE_EBON = BLOCKS.register("stair_sandstone_ebon", () -> new StairsBlock(() -> TerraBlockRegistry.SANDSTONE_EBON.get().getDefaultState(), Block.Properties.from(TerraBlockRegistry.SANDSTONE_EBON.get())));
+    public static final RegistryObject<Block> STAIR_SANDSTONE_CRIM = BLOCKS.register("stair_sandstone_crim", () -> new StairsBlock(() -> TerraBlockRegistry.SANDSTONE_CRIM.get().getDefaultState(), Block.Properties.from(TerraBlockRegistry.SANDSTONE_CRIM.get())));
+    public static final RegistryObject<Block> STAIR_SANDSTONE_PEARL = BLOCKS.register("stair_sandstone_pearl", () -> new StairsBlock(() -> TerraBlockRegistry.SANDSTONE_PEARL.get().getDefaultState(), Block.Properties.from(TerraBlockRegistry.SANDSTONE_PEARL.get())));
+    public static final RegistryObject<Block> STAIR_SANDSTONE_EBON_SMOOTH = BLOCKS.register("stair_sandstone_ebon_smooth", () -> new StairsBlock(() -> TerraBlockRegistry.SANDSTONE_EBON_SMOOTH.get().getDefaultState(), Block.Properties.from(TerraBlockRegistry.SANDSTONE_EBON_SMOOTH.get())));
+    public static final RegistryObject<Block> STAIR_SANDSTONE_CRIM_SMOOTH = BLOCKS.register("stair_sandstone_crim_smooth", () -> new StairsBlock(() -> TerraBlockRegistry.SANDSTONE_CRIM_SMOOTH.get().getDefaultState(), Block.Properties.from(TerraBlockRegistry.SANDSTONE_CRIM_SMOOTH.get())));
+    public static final RegistryObject<Block> STAIR_SANDSTONE_PEARL_SMOOTH = BLOCKS.register("stair_sandstone_pearl_smooth", () -> new StairsBlock(() -> TerraBlockRegistry.SANDSTONE_PEARL_SMOOTH.get().getDefaultState(), Block.Properties.from(TerraBlockRegistry.SANDSTONE_PEARL_SMOOTH.get())));
+    public static final RegistryObject<Block> STAIR_BRICK_MUDSTONE = BLOCKS.register("stair_brick_mudstone", () -> new StairsBlock(() -> TerraBlockRegistry.BRICK_MUDSTONE.get().getDefaultState(), Block.Properties.from(TerraBlockRegistry.BRICK_MUDSTONE.get())));
+    public static final RegistryObject<Block> STAIR_BRICK_GOLD = BLOCKS.register("stair_brick_gold", () -> new StairsBlock(() -> TerraBlockRegistry.BRICK_GOLD.get().getDefaultState(), Block.Properties.from(TerraBlockRegistry.BRICK_GOLD.get())));
 
     public static final RegistryObject<Block> SLAB_PLANK_BOREAL = BLOCKS.register("slab_plank_boreal", () -> new SlabBlock(Block.Properties.from(TerraBlockRegistry.PLANK_BOREAL.get())));
     public static final RegistryObject<Block> SLAB_PLANK_PALM = BLOCKS.register("slab_plank_palm", () -> new SlabBlock(Block.Properties.from(TerraBlockRegistry.PLANK_PALM.get())));
@@ -358,46 +362,126 @@ public class TerraBlockRegistry
     public static final RegistryObject<Block> SLAB_SANDSTONE_CRIM_SMOOTH = BLOCKS.register("slab_sandstone_crim_smooth", () -> new SlabBlock(Block.Properties.from(TerraBlockRegistry.SANDSTONE_CRIM_SMOOTH.get())));
     public static final RegistryObject<Block> SLAB_SANDSTONE_PEARL_SMOOTH = BLOCKS.register("slab_sandstone_pearl_smooth", () -> new SlabBlock(Block.Properties.from(TerraBlockRegistry.SANDSTONE_PEARL_SMOOTH.get())));
 
-    public static final RegistryObject<Block> TORCH_GEM_RED = BLOCKS.register("torch_gem_red", () -> new TerraBlockTorch(Block.Properties.create(Material.MISCELLANEOUS).doesNotBlockMovement().zeroHardnessAndResistance().setLightLevel((state) -> {return 14;}).sound(SoundType.STONE)));
-    public static final RegistryObject<Block> TORCH_GEM_RED_WALL = BLOCKS.register("torch_gem_red_wall", () -> new TerraBlockTorchWall(Block.Properties.create(Material.MISCELLANEOUS).doesNotBlockMovement().zeroHardnessAndResistance().setLightLevel((state) -> {return 14;}).sound(SoundType.STONE).lootFrom(TerraBlockRegistry.TORCH_GEM_RED.get())));
-    public static final RegistryObject<Block> TORCH_GEM_ORANGE = BLOCKS.register("torch_gem_orange", () -> new TerraBlockTorch(Block.Properties.create(Material.MISCELLANEOUS).doesNotBlockMovement().zeroHardnessAndResistance().setLightLevel((state) -> {return 14;}).sound(SoundType.STONE)));
-    public static final RegistryObject<Block> TORCH_GEM_ORANGE_WALL = BLOCKS.register("torch_gem_orange_wall", () -> new TerraBlockTorchWall(Block.Properties.create(Material.MISCELLANEOUS).doesNotBlockMovement().zeroHardnessAndResistance().setLightLevel((state) -> {return 14;}).sound(SoundType.STONE).lootFrom(TerraBlockRegistry.TORCH_GEM_ORANGE.get())));
-    public static final RegistryObject<Block> TORCH_GEM_YELLOW = BLOCKS.register("torch_gem_yellow", () -> new TerraBlockTorch(Block.Properties.create(Material.MISCELLANEOUS).doesNotBlockMovement().zeroHardnessAndResistance().setLightLevel((state) -> {return 14;}).sound(SoundType.STONE)));
-    public static final RegistryObject<Block> TORCH_GEM_YELLOW_WALL = BLOCKS.register("torch_gem_yellow_wall", () -> new TerraBlockTorchWall(Block.Properties.create(Material.MISCELLANEOUS).doesNotBlockMovement().zeroHardnessAndResistance().setLightLevel((state) -> {return 14;}).sound(SoundType.STONE).lootFrom(TerraBlockRegistry.TORCH_GEM_YELLOW.get())));
-    public static final RegistryObject<Block> TORCH_GEM_GREEN = BLOCKS.register("torch_gem_green", () -> new TerraBlockTorch(Block.Properties.create(Material.MISCELLANEOUS).doesNotBlockMovement().zeroHardnessAndResistance().setLightLevel((state) -> {return 14;}).sound(SoundType.STONE)));
-    public static final RegistryObject<Block> TORCH_GEM_GREEN_WALL = BLOCKS.register("torch_gem_green_wall", () -> new TerraBlockTorchWall(Block.Properties.create(Material.MISCELLANEOUS).doesNotBlockMovement().zeroHardnessAndResistance().setLightLevel((state) -> {return 14;}).sound(SoundType.STONE).lootFrom(TerraBlockRegistry.TORCH_GEM_GREEN.get())));
-    public static final RegistryObject<Block> TORCH_GEM_BLUE = BLOCKS.register("torch_gem_blue", () -> new TerraBlockTorch(Block.Properties.create(Material.MISCELLANEOUS).doesNotBlockMovement().zeroHardnessAndResistance().setLightLevel((state) -> {return 14;}).sound(SoundType.STONE)));
-    public static final RegistryObject<Block> TORCH_GEM_BLUE_WALL = BLOCKS.register("torch_gem_blue_wall", () -> new TerraBlockTorchWall(Block.Properties.create(Material.MISCELLANEOUS).doesNotBlockMovement().zeroHardnessAndResistance().setLightLevel((state) -> {return 14;}).sound(SoundType.STONE).lootFrom(TerraBlockRegistry.TORCH_GEM_BLUE.get())));
-    public static final RegistryObject<Block> TORCH_GEM_PURPLE = BLOCKS.register("torch_gem_purple", () -> new TerraBlockTorch(Block.Properties.create(Material.MISCELLANEOUS).doesNotBlockMovement().zeroHardnessAndResistance().setLightLevel((state) -> {return 14;}).sound(SoundType.STONE)));
-    public static final RegistryObject<Block> TORCH_GEM_PURPLE_WALL = BLOCKS.register("torch_gem_purple_wall", () -> new TerraBlockTorchWall(Block.Properties.create(Material.MISCELLANEOUS).doesNotBlockMovement().zeroHardnessAndResistance().setLightLevel((state) -> {return 14;}).sound(SoundType.STONE).lootFrom(TerraBlockRegistry.TORCH_GEM_PURPLE.get())));
-    public static final RegistryObject<Block> TORCH_GEM_WHITE = BLOCKS.register("torch_gem_white", () -> new TerraBlockTorch(Block.Properties.create(Material.MISCELLANEOUS).doesNotBlockMovement().zeroHardnessAndResistance().setLightLevel((state) -> {return 14;}).sound(SoundType.STONE)));
-    public static final RegistryObject<Block> TORCH_GEM_WHITE_WALL = BLOCKS.register("torch_gem_white_wall", () -> new TerraBlockTorchWall(Block.Properties.create(Material.MISCELLANEOUS).doesNotBlockMovement().zeroHardnessAndResistance().setLightLevel((state) -> {return 14;}).sound(SoundType.STONE).lootFrom(TerraBlockRegistry.TORCH_GEM_WHITE.get())));
-    public static final RegistryObject<Block> TORCH_RAINBOW = BLOCKS.register("torch_rainbow", () -> new TerraBlockTorch(Block.Properties.create(Material.MISCELLANEOUS).doesNotBlockMovement().zeroHardnessAndResistance().setLightLevel((state) -> {return 14;}).sound(SoundType.STONE)));
-    public static final RegistryObject<Block> TORCH_RAINBOW_WALL = BLOCKS.register("torch_rainbow_wall", () -> new TerraBlockTorchWall(Block.Properties.create(Material.MISCELLANEOUS).doesNotBlockMovement().zeroHardnessAndResistance().setLightLevel((state) -> {return 14;}).sound(SoundType.STONE).lootFrom(TerraBlockRegistry.TORCH_RAINBOW.get())));
-    public static final RegistryObject<Block> TORCH_ICE = BLOCKS.register("torch_ice", () -> new TerraBlockTorch(Block.Properties.create(Material.MISCELLANEOUS).doesNotBlockMovement().zeroHardnessAndResistance().setLightLevel((state) -> {return 14;}).sound(SoundType.GLASS)));
-    public static final RegistryObject<Block> TORCH_ICE_WALL = BLOCKS.register("torch_ice_wall", () -> new TerraBlockTorchWall(Block.Properties.create(Material.MISCELLANEOUS).doesNotBlockMovement().zeroHardnessAndResistance().setLightLevel((state) -> {return 14;}).sound(SoundType.GLASS).lootFrom(TerraBlockRegistry.TORCH_ICE.get())));
-    public static final RegistryObject<Block> TORCH_BONE = BLOCKS.register("torch_bone", () -> new TerraBlockTorch(Block.Properties.create(Material.MISCELLANEOUS).doesNotBlockMovement().zeroHardnessAndResistance().setLightLevel((state) -> {return 14;}).sound(SoundType.STONE)));
-    public static final RegistryObject<Block> TORCH_BONE_WALL = BLOCKS.register("torch_bone_wall", () -> new TerraBlockTorchWall(Block.Properties.create(Material.MISCELLANEOUS).doesNotBlockMovement().zeroHardnessAndResistance().setLightLevel((state) -> {return 14;}).sound(SoundType.STONE).lootFrom(TerraBlockRegistry.TORCH_BONE.get())));
-    public static final RegistryObject<Block> TORCH_BRIGHT = BLOCKS.register("torch_bright", () -> new TerraBlockTorch(Block.Properties.create(Material.MISCELLANEOUS).doesNotBlockMovement().zeroHardnessAndResistance().setLightLevel((state) -> {return 14;}).sound(SoundType.WOOD)));
-    public static final RegistryObject<Block> TORCH_BRIGHT_WALL = BLOCKS.register("torch_bright_wall", () -> new TerraBlockTorchWall(Block.Properties.create(Material.MISCELLANEOUS).doesNotBlockMovement().zeroHardnessAndResistance().setLightLevel((state) -> {return 14;}).sound(SoundType.WOOD).lootFrom(TerraBlockRegistry.TORCH_BRIGHT.get())));
-    public static final RegistryObject<Block> TORCH_DEMON = BLOCKS.register("torch_demon", () -> new TerraBlockTorch(Block.Properties.create(Material.MISCELLANEOUS).doesNotBlockMovement().zeroHardnessAndResistance().setLightLevel((state) -> {return 14;}).sound(SoundType.STONE)));
-    public static final RegistryObject<Block> TORCH_DEMON_WALL = BLOCKS.register("torch_demon_wall", () -> new TerraBlockTorchWall(Block.Properties.create(Material.MISCELLANEOUS).doesNotBlockMovement().zeroHardnessAndResistance().setLightLevel((state) -> {return 14;}).sound(SoundType.STONE).lootFrom(TerraBlockRegistry.TORCH_DEMON.get())));
-    public static final RegistryObject<Block> TORCH_DESERT = BLOCKS.register("torch_desert", () -> new TerraBlockTorch(Block.Properties.create(Material.MISCELLANEOUS).doesNotBlockMovement().zeroHardnessAndResistance().setLightLevel((state) -> {return 14;}).sound(SoundType.STONE)));
-    public static final RegistryObject<Block> TORCH_DESERT_WALL = BLOCKS.register("torch_desert_wall", () -> new TerraBlockTorchWall(Block.Properties.create(Material.MISCELLANEOUS).doesNotBlockMovement().zeroHardnessAndResistance().setLightLevel((state) -> {return 14;}).sound(SoundType.STONE).lootFrom(TerraBlockRegistry.TORCH_DESERT.get())));
-    public static final RegistryObject<Block> TORCH_CORRUPT = BLOCKS.register("torch_corrupt", () -> new TerraBlockTorch(Block.Properties.create(Material.MISCELLANEOUS).doesNotBlockMovement().zeroHardnessAndResistance().setLightLevel((state) -> {return 14;}).sound(SoundType.STONE)));
-    public static final RegistryObject<Block> TORCH_CORRUPT_WALL = BLOCKS.register("torch_corrupt_wall", () -> new TerraBlockTorchWall(Block.Properties.create(Material.MISCELLANEOUS).doesNotBlockMovement().zeroHardnessAndResistance().setLightLevel((state) -> {return 14;}).sound(SoundType.STONE).lootFrom(TerraBlockRegistry.TORCH_CORRUPT.get())));
-    public static final RegistryObject<Block> TORCH_CRIMSON = BLOCKS.register("torch_crimson", () -> new TerraBlockTorch(Block.Properties.create(Material.MISCELLANEOUS).doesNotBlockMovement().zeroHardnessAndResistance().setLightLevel((state) -> {return 14;}).sound(SoundType.STONE)));
-    public static final RegistryObject<Block> TORCH_CRIMSON_WALL = BLOCKS.register("torch_crimson_wall", () -> new TerraBlockTorchWall(Block.Properties.create(Material.MISCELLANEOUS).doesNotBlockMovement().zeroHardnessAndResistance().setLightLevel((state) -> {return 14;}).sound(SoundType.STONE).lootFrom(TerraBlockRegistry.TORCH_CRIMSON.get())));
-    public static final RegistryObject<Block> TORCH_HALLOWED = BLOCKS.register("torch_hallowed", () -> new TerraBlockTorch(Block.Properties.create(Material.MISCELLANEOUS).doesNotBlockMovement().zeroHardnessAndResistance().setLightLevel((state) -> {return 14;}).sound(SoundType.STONE)));
-    public static final RegistryObject<Block> TORCH_HALLOWED_WALL = BLOCKS.register("torch_hallowed_wall", () -> new TerraBlockTorchWall(Block.Properties.create(Material.MISCELLANEOUS).doesNotBlockMovement().zeroHardnessAndResistance().setLightLevel((state) -> {return 14;}).sound(SoundType.STONE).lootFrom(TerraBlockRegistry.TORCH_HALLOWED.get())));
-    public static final RegistryObject<Block> TORCH_JUNGLE = BLOCKS.register("torch_jungle", () -> new TerraBlockTorch(Block.Properties.create(Material.MISCELLANEOUS).doesNotBlockMovement().zeroHardnessAndResistance().setLightLevel((state) -> {return 14;}).sound(SoundType.WOOD)));
-    public static final RegistryObject<Block> TORCH_JUNGLE_WALL = BLOCKS.register("torch_jungle_wall", () -> new TerraBlockTorchWall(Block.Properties.create(Material.MISCELLANEOUS).doesNotBlockMovement().zeroHardnessAndResistance().setLightLevel((state) -> {return 14;}).sound(SoundType.WOOD).lootFrom(TerraBlockRegistry.TORCH_JUNGLE.get())));
-    public static final RegistryObject<Block> TORCH_CURSED = BLOCKS.register("torch_cursed", () -> new TerraBlockTorchWaterproof(Block.Properties.create(Material.MISCELLANEOUS).doesNotBlockMovement().zeroHardnessAndResistance().setLightLevel((state) -> {return 14;}).sound(SoundType.STONE)));
-    public static final RegistryObject<Block> TORCH_CURSED_WALL = BLOCKS.register("torch_cursed_wall", () -> new TerraBlockTorchWallWaterproof(Block.Properties.create(Material.MISCELLANEOUS).doesNotBlockMovement().zeroHardnessAndResistance().setLightLevel((state) -> {return 14;}).sound(SoundType.STONE).lootFrom(TerraBlockRegistry.TORCH_CURSED.get())));
-    public static final RegistryObject<Block> TORCH_ICHOR = BLOCKS.register("torch_ichor", () -> new TerraBlockTorchWaterproof(Block.Properties.create(Material.MISCELLANEOUS).doesNotBlockMovement().zeroHardnessAndResistance().setLightLevel((state) -> {return 14;}).sound(SoundType.STONE)));
-    public static final RegistryObject<Block> TORCH_ICHOR_WALL = BLOCKS.register("torch_ichor_wall", () -> new TerraBlockTorchWallWaterproof(Block.Properties.create(Material.MISCELLANEOUS).doesNotBlockMovement().zeroHardnessAndResistance().setLightLevel((state) -> {return 14;}).sound(SoundType.STONE).lootFrom(TerraBlockRegistry.TORCH_ICHOR.get())));
-    public static final RegistryObject<Block> TORCH_CORAL = BLOCKS.register("torch_coral", () -> new TerraBlockTorchWaterproof(Block.Properties.create(Material.MISCELLANEOUS).doesNotBlockMovement().zeroHardnessAndResistance().setLightLevel((state) -> {return 14;}).sound(SoundType.CORAL)));
-    public static final RegistryObject<Block> TORCH_CORAL_WALL = BLOCKS.register("torch_coral_wall", () -> new TerraBlockTorchWallWaterproof(Block.Properties.create(Material.MISCELLANEOUS).doesNotBlockMovement().zeroHardnessAndResistance().setLightLevel((state) -> {return 14;}).sound(SoundType.CORAL).lootFrom(TerraBlockRegistry.TORCH_CORAL.get())));
+    public static final RegistryObject<Block> TORCH_GEM_RED = BLOCKS.register("torch_gem_red", () -> new TerraBlockTorch(Block.Properties.create(Material.MISCELLANEOUS).doesNotBlockMovement().zeroHardnessAndResistance().setLightLevel((state) -> {
+        return 14;
+    }).sound(SoundType.STONE)));
+    public static final RegistryObject<Block> TORCH_GEM_RED_WALL = BLOCKS.register("torch_gem_red_wall", () -> new TerraBlockTorchWall(Block.Properties.create(Material.MISCELLANEOUS).doesNotBlockMovement().zeroHardnessAndResistance().setLightLevel((state) -> {
+        return 14;
+    }).sound(SoundType.STONE).lootFrom(TerraBlockRegistry.TORCH_GEM_RED.get())));
+    public static final RegistryObject<Block> TORCH_GEM_ORANGE = BLOCKS.register("torch_gem_orange", () -> new TerraBlockTorch(Block.Properties.create(Material.MISCELLANEOUS).doesNotBlockMovement().zeroHardnessAndResistance().setLightLevel((state) -> {
+        return 14;
+    }).sound(SoundType.STONE)));
+    public static final RegistryObject<Block> TORCH_GEM_ORANGE_WALL = BLOCKS.register("torch_gem_orange_wall", () -> new TerraBlockTorchWall(Block.Properties.create(Material.MISCELLANEOUS).doesNotBlockMovement().zeroHardnessAndResistance().setLightLevel((state) -> {
+        return 14;
+    }).sound(SoundType.STONE).lootFrom(TerraBlockRegistry.TORCH_GEM_ORANGE.get())));
+    public static final RegistryObject<Block> TORCH_GEM_YELLOW = BLOCKS.register("torch_gem_yellow", () -> new TerraBlockTorch(Block.Properties.create(Material.MISCELLANEOUS).doesNotBlockMovement().zeroHardnessAndResistance().setLightLevel((state) -> {
+        return 14;
+    }).sound(SoundType.STONE)));
+    public static final RegistryObject<Block> TORCH_GEM_YELLOW_WALL = BLOCKS.register("torch_gem_yellow_wall", () -> new TerraBlockTorchWall(Block.Properties.create(Material.MISCELLANEOUS).doesNotBlockMovement().zeroHardnessAndResistance().setLightLevel((state) -> {
+        return 14;
+    }).sound(SoundType.STONE).lootFrom(TerraBlockRegistry.TORCH_GEM_YELLOW.get())));
+    public static final RegistryObject<Block> TORCH_GEM_GREEN = BLOCKS.register("torch_gem_green", () -> new TerraBlockTorch(Block.Properties.create(Material.MISCELLANEOUS).doesNotBlockMovement().zeroHardnessAndResistance().setLightLevel((state) -> {
+        return 14;
+    }).sound(SoundType.STONE)));
+    public static final RegistryObject<Block> TORCH_GEM_GREEN_WALL = BLOCKS.register("torch_gem_green_wall", () -> new TerraBlockTorchWall(Block.Properties.create(Material.MISCELLANEOUS).doesNotBlockMovement().zeroHardnessAndResistance().setLightLevel((state) -> {
+        return 14;
+    }).sound(SoundType.STONE).lootFrom(TerraBlockRegistry.TORCH_GEM_GREEN.get())));
+    public static final RegistryObject<Block> TORCH_GEM_BLUE = BLOCKS.register("torch_gem_blue", () -> new TerraBlockTorch(Block.Properties.create(Material.MISCELLANEOUS).doesNotBlockMovement().zeroHardnessAndResistance().setLightLevel((state) -> {
+        return 14;
+    }).sound(SoundType.STONE)));
+    public static final RegistryObject<Block> TORCH_GEM_BLUE_WALL = BLOCKS.register("torch_gem_blue_wall", () -> new TerraBlockTorchWall(Block.Properties.create(Material.MISCELLANEOUS).doesNotBlockMovement().zeroHardnessAndResistance().setLightLevel((state) -> {
+        return 14;
+    }).sound(SoundType.STONE).lootFrom(TerraBlockRegistry.TORCH_GEM_BLUE.get())));
+    public static final RegistryObject<Block> TORCH_GEM_PURPLE = BLOCKS.register("torch_gem_purple", () -> new TerraBlockTorch(Block.Properties.create(Material.MISCELLANEOUS).doesNotBlockMovement().zeroHardnessAndResistance().setLightLevel((state) -> {
+        return 14;
+    }).sound(SoundType.STONE)));
+    public static final RegistryObject<Block> TORCH_GEM_PURPLE_WALL = BLOCKS.register("torch_gem_purple_wall", () -> new TerraBlockTorchWall(Block.Properties.create(Material.MISCELLANEOUS).doesNotBlockMovement().zeroHardnessAndResistance().setLightLevel((state) -> {
+        return 14;
+    }).sound(SoundType.STONE).lootFrom(TerraBlockRegistry.TORCH_GEM_PURPLE.get())));
+    public static final RegistryObject<Block> TORCH_GEM_WHITE = BLOCKS.register("torch_gem_white", () -> new TerraBlockTorch(Block.Properties.create(Material.MISCELLANEOUS).doesNotBlockMovement().zeroHardnessAndResistance().setLightLevel((state) -> {
+        return 14;
+    }).sound(SoundType.STONE)));
+    public static final RegistryObject<Block> TORCH_GEM_WHITE_WALL = BLOCKS.register("torch_gem_white_wall", () -> new TerraBlockTorchWall(Block.Properties.create(Material.MISCELLANEOUS).doesNotBlockMovement().zeroHardnessAndResistance().setLightLevel((state) -> {
+        return 14;
+    }).sound(SoundType.STONE).lootFrom(TerraBlockRegistry.TORCH_GEM_WHITE.get())));
+    public static final RegistryObject<Block> TORCH_RAINBOW = BLOCKS.register("torch_rainbow", () -> new TerraBlockTorch(Block.Properties.create(Material.MISCELLANEOUS).doesNotBlockMovement().zeroHardnessAndResistance().setLightLevel((state) -> {
+        return 14;
+    }).sound(SoundType.STONE)));
+    public static final RegistryObject<Block> TORCH_RAINBOW_WALL = BLOCKS.register("torch_rainbow_wall", () -> new TerraBlockTorchWall(Block.Properties.create(Material.MISCELLANEOUS).doesNotBlockMovement().zeroHardnessAndResistance().setLightLevel((state) -> {
+        return 14;
+    }).sound(SoundType.STONE).lootFrom(TerraBlockRegistry.TORCH_RAINBOW.get())));
+    public static final RegistryObject<Block> TORCH_ICE = BLOCKS.register("torch_ice", () -> new TerraBlockTorch(Block.Properties.create(Material.MISCELLANEOUS).doesNotBlockMovement().zeroHardnessAndResistance().setLightLevel((state) -> {
+        return 14;
+    }).sound(SoundType.GLASS)));
+    public static final RegistryObject<Block> TORCH_ICE_WALL = BLOCKS.register("torch_ice_wall", () -> new TerraBlockTorchWall(Block.Properties.create(Material.MISCELLANEOUS).doesNotBlockMovement().zeroHardnessAndResistance().setLightLevel((state) -> {
+        return 14;
+    }).sound(SoundType.GLASS).lootFrom(TerraBlockRegistry.TORCH_ICE.get())));
+    public static final RegistryObject<Block> TORCH_BONE = BLOCKS.register("torch_bone", () -> new TerraBlockTorch(Block.Properties.create(Material.MISCELLANEOUS).doesNotBlockMovement().zeroHardnessAndResistance().setLightLevel((state) -> {
+        return 14;
+    }).sound(SoundType.STONE)));
+    public static final RegistryObject<Block> TORCH_BONE_WALL = BLOCKS.register("torch_bone_wall", () -> new TerraBlockTorchWall(Block.Properties.create(Material.MISCELLANEOUS).doesNotBlockMovement().zeroHardnessAndResistance().setLightLevel((state) -> {
+        return 14;
+    }).sound(SoundType.STONE).lootFrom(TerraBlockRegistry.TORCH_BONE.get())));
+    public static final RegistryObject<Block> TORCH_BRIGHT = BLOCKS.register("torch_bright", () -> new TerraBlockTorch(Block.Properties.create(Material.MISCELLANEOUS).doesNotBlockMovement().zeroHardnessAndResistance().setLightLevel((state) -> {
+        return 14;
+    }).sound(SoundType.WOOD)));
+    public static final RegistryObject<Block> TORCH_BRIGHT_WALL = BLOCKS.register("torch_bright_wall", () -> new TerraBlockTorchWall(Block.Properties.create(Material.MISCELLANEOUS).doesNotBlockMovement().zeroHardnessAndResistance().setLightLevel((state) -> {
+        return 14;
+    }).sound(SoundType.WOOD).lootFrom(TerraBlockRegistry.TORCH_BRIGHT.get())));
+    public static final RegistryObject<Block> TORCH_DEMON = BLOCKS.register("torch_demon", () -> new TerraBlockTorch(Block.Properties.create(Material.MISCELLANEOUS).doesNotBlockMovement().zeroHardnessAndResistance().setLightLevel((state) -> {
+        return 14;
+    }).sound(SoundType.STONE)));
+    public static final RegistryObject<Block> TORCH_DEMON_WALL = BLOCKS.register("torch_demon_wall", () -> new TerraBlockTorchWall(Block.Properties.create(Material.MISCELLANEOUS).doesNotBlockMovement().zeroHardnessAndResistance().setLightLevel((state) -> {
+        return 14;
+    }).sound(SoundType.STONE).lootFrom(TerraBlockRegistry.TORCH_DEMON.get())));
+    public static final RegistryObject<Block> TORCH_DESERT = BLOCKS.register("torch_desert", () -> new TerraBlockTorch(Block.Properties.create(Material.MISCELLANEOUS).doesNotBlockMovement().zeroHardnessAndResistance().setLightLevel((state) -> {
+        return 14;
+    }).sound(SoundType.STONE)));
+    public static final RegistryObject<Block> TORCH_DESERT_WALL = BLOCKS.register("torch_desert_wall", () -> new TerraBlockTorchWall(Block.Properties.create(Material.MISCELLANEOUS).doesNotBlockMovement().zeroHardnessAndResistance().setLightLevel((state) -> {
+        return 14;
+    }).sound(SoundType.STONE).lootFrom(TerraBlockRegistry.TORCH_DESERT.get())));
+    public static final RegistryObject<Block> TORCH_CORRUPT = BLOCKS.register("torch_corrupt", () -> new TerraBlockTorch(Block.Properties.create(Material.MISCELLANEOUS).doesNotBlockMovement().zeroHardnessAndResistance().setLightLevel((state) -> {
+        return 14;
+    }).sound(SoundType.STONE)));
+    public static final RegistryObject<Block> TORCH_CORRUPT_WALL = BLOCKS.register("torch_corrupt_wall", () -> new TerraBlockTorchWall(Block.Properties.create(Material.MISCELLANEOUS).doesNotBlockMovement().zeroHardnessAndResistance().setLightLevel((state) -> {
+        return 14;
+    }).sound(SoundType.STONE).lootFrom(TerraBlockRegistry.TORCH_CORRUPT.get())));
+    public static final RegistryObject<Block> TORCH_CRIMSON = BLOCKS.register("torch_crimson", () -> new TerraBlockTorch(Block.Properties.create(Material.MISCELLANEOUS).doesNotBlockMovement().zeroHardnessAndResistance().setLightLevel((state) -> {
+        return 14;
+    }).sound(SoundType.STONE)));
+    public static final RegistryObject<Block> TORCH_CRIMSON_WALL = BLOCKS.register("torch_crimson_wall", () -> new TerraBlockTorchWall(Block.Properties.create(Material.MISCELLANEOUS).doesNotBlockMovement().zeroHardnessAndResistance().setLightLevel((state) -> {
+        return 14;
+    }).sound(SoundType.STONE).lootFrom(TerraBlockRegistry.TORCH_CRIMSON.get())));
+    public static final RegistryObject<Block> TORCH_HALLOWED = BLOCKS.register("torch_hallowed", () -> new TerraBlockTorch(Block.Properties.create(Material.MISCELLANEOUS).doesNotBlockMovement().zeroHardnessAndResistance().setLightLevel((state) -> {
+        return 14;
+    }).sound(SoundType.STONE)));
+    public static final RegistryObject<Block> TORCH_HALLOWED_WALL = BLOCKS.register("torch_hallowed_wall", () -> new TerraBlockTorchWall(Block.Properties.create(Material.MISCELLANEOUS).doesNotBlockMovement().zeroHardnessAndResistance().setLightLevel((state) -> {
+        return 14;
+    }).sound(SoundType.STONE).lootFrom(TerraBlockRegistry.TORCH_HALLOWED.get())));
+    public static final RegistryObject<Block> TORCH_JUNGLE = BLOCKS.register("torch_jungle", () -> new TerraBlockTorch(Block.Properties.create(Material.MISCELLANEOUS).doesNotBlockMovement().zeroHardnessAndResistance().setLightLevel((state) -> {
+        return 14;
+    }).sound(SoundType.WOOD)));
+    public static final RegistryObject<Block> TORCH_JUNGLE_WALL = BLOCKS.register("torch_jungle_wall", () -> new TerraBlockTorchWall(Block.Properties.create(Material.MISCELLANEOUS).doesNotBlockMovement().zeroHardnessAndResistance().setLightLevel((state) -> {
+        return 14;
+    }).sound(SoundType.WOOD).lootFrom(TerraBlockRegistry.TORCH_JUNGLE.get())));
+    public static final RegistryObject<Block> TORCH_CURSED = BLOCKS.register("torch_cursed", () -> new TerraBlockTorchWaterproof(Block.Properties.create(Material.MISCELLANEOUS).doesNotBlockMovement().zeroHardnessAndResistance().setLightLevel((state) -> {
+        return 14;
+    }).sound(SoundType.STONE)));
+    public static final RegistryObject<Block> TORCH_CURSED_WALL = BLOCKS.register("torch_cursed_wall", () -> new TerraBlockTorchWallWaterproof(Block.Properties.create(Material.MISCELLANEOUS).doesNotBlockMovement().zeroHardnessAndResistance().setLightLevel((state) -> {
+        return 14;
+    }).sound(SoundType.STONE).lootFrom(TerraBlockRegistry.TORCH_CURSED.get())));
+    public static final RegistryObject<Block> TORCH_ICHOR = BLOCKS.register("torch_ichor", () -> new TerraBlockTorchWaterproof(Block.Properties.create(Material.MISCELLANEOUS).doesNotBlockMovement().zeroHardnessAndResistance().setLightLevel((state) -> {
+        return 14;
+    }).sound(SoundType.STONE)));
+    public static final RegistryObject<Block> TORCH_ICHOR_WALL = BLOCKS.register("torch_ichor_wall", () -> new TerraBlockTorchWallWaterproof(Block.Properties.create(Material.MISCELLANEOUS).doesNotBlockMovement().zeroHardnessAndResistance().setLightLevel((state) -> {
+        return 14;
+    }).sound(SoundType.STONE).lootFrom(TerraBlockRegistry.TORCH_ICHOR.get())));
+    public static final RegistryObject<Block> TORCH_CORAL = BLOCKS.register("torch_coral", () -> new TerraBlockTorchWaterproof(Block.Properties.create(Material.MISCELLANEOUS).doesNotBlockMovement().zeroHardnessAndResistance().setLightLevel((state) -> {
+        return 14;
+    }).sound(SoundType.CORAL)));
+    public static final RegistryObject<Block> TORCH_CORAL_WALL = BLOCKS.register("torch_coral_wall", () -> new TerraBlockTorchWallWaterproof(Block.Properties.create(Material.MISCELLANEOUS).doesNotBlockMovement().zeroHardnessAndResistance().setLightLevel((state) -> {
+        return 14;
+    }).sound(SoundType.CORAL).lootFrom(TerraBlockRegistry.TORCH_CORAL.get())));
 
     //Structure Dungeon
     public static final RegistryObject<Block> DUNGEON_BLUE_FLOOR_BRICK = BLOCKS.register("dungeon_blue_floor_brick", () -> new Block(Block.Properties.create(Material.ROCK).sound(SoundType.STONE).hardnessAndResistance(9.0F).harvestLevel(4).harvestTool(ToolType.PICKAXE)));
@@ -530,136 +614,162 @@ public class TerraBlockRegistry
     //    public static final RegistryObject<Block> BRICK_MARBLE = null;
 
     //Ores
-    public static final RegistryObject<Block> ORE_COPPER_PURE     = BLOCKS.register("ore_copper"         , () -> new TerraBlockOre(Block.Properties.create(Material.ROCK).harvestLevel(1).hardnessAndResistance(3.0F)));
-    public static final RegistryObject<Block> ORE_COPPER_CORRUPT  = BLOCKS.register("ore_copper_corrupt" , () -> new TerraBlockOre(Block.Properties.create(Material.ROCK).harvestLevel(1).hardnessAndResistance(3.0F)));
-    public static final RegistryObject<Block> ORE_COPPER_CRIMSON  = BLOCKS.register("ore_copper_crimson" , () -> new TerraBlockOre(Block.Properties.create(Material.ROCK).harvestLevel(1).hardnessAndResistance(3.0F)));
+    public static final RegistryObject<Block> ORE_COPPER_PURE = BLOCKS.register("ore_copper", () -> new TerraBlockOre(Block.Properties.create(Material.ROCK).harvestLevel(1).hardnessAndResistance(3.0F)));
+    public static final RegistryObject<Block> ORE_COPPER_CORRUPT = BLOCKS.register("ore_copper_corrupt", () -> new TerraBlockOre(Block.Properties.create(Material.ROCK).harvestLevel(1).hardnessAndResistance(3.0F)));
+    public static final RegistryObject<Block> ORE_COPPER_CRIMSON = BLOCKS.register("ore_copper_crimson", () -> new TerraBlockOre(Block.Properties.create(Material.ROCK).harvestLevel(1).hardnessAndResistance(3.0F)));
     public static final RegistryObject<Block> ORE_COPPER_HALLOWED = BLOCKS.register("ore_copper_hallowed", () -> new TerraBlockOre(Block.Properties.create(Material.ROCK).harvestLevel(1).hardnessAndResistance(3.0F)));
-    public static final RegistryObject<Block> ORE_TIN_PURE     = BLOCKS.register("ore_tin"         , () -> new TerraBlockOre(Block.Properties.create(Material.ROCK).harvestLevel(1).hardnessAndResistance(3.0F)));
-    public static final RegistryObject<Block> ORE_TIN_CORRUPT  = BLOCKS.register("ore_tin_corrupt" , () -> new TerraBlockOre(Block.Properties.create(Material.ROCK).harvestLevel(1).hardnessAndResistance(3.0F)));
-    public static final RegistryObject<Block> ORE_TIN_CRIMSON  = BLOCKS.register("ore_tin_crimson" , () -> new TerraBlockOre(Block.Properties.create(Material.ROCK).harvestLevel(1).hardnessAndResistance(3.0F)));
+    public static final RegistryObject<Block> ORE_COPPER_JUNGLE = BLOCKS.register("ore_copper_jungle", () -> new TerraBlockOre(Block.Properties.create(Material.ROCK).sound(SoundType.GROUND).harvestLevel(1).hardnessAndResistance(3.0F)));
+    public static final RegistryObject<Block> ORE_TIN_PURE = BLOCKS.register("ore_tin", () -> new TerraBlockOre(Block.Properties.create(Material.ROCK).harvestLevel(1).hardnessAndResistance(3.0F)));
+    public static final RegistryObject<Block> ORE_TIN_CORRUPT = BLOCKS.register("ore_tin_corrupt", () -> new TerraBlockOre(Block.Properties.create(Material.ROCK).harvestLevel(1).hardnessAndResistance(3.0F)));
+    public static final RegistryObject<Block> ORE_TIN_CRIMSON = BLOCKS.register("ore_tin_crimson", () -> new TerraBlockOre(Block.Properties.create(Material.ROCK).harvestLevel(1).hardnessAndResistance(3.0F)));
     public static final RegistryObject<Block> ORE_TIN_HALLOWED = BLOCKS.register("ore_tin_hallowed", () -> new TerraBlockOre(Block.Properties.create(Material.ROCK).harvestLevel(1).hardnessAndResistance(3.0F)));
-    public static final RegistryObject<Block> ORE_LEAD_PURE     = BLOCKS.register("ore_lead"         , () -> new TerraBlockOre(Block.Properties.create(Material.ROCK).harvestLevel(1).hardnessAndResistance(3.0F)));
-    public static final RegistryObject<Block> ORE_LEAD_CORRUPT  = BLOCKS.register("ore_lead_corrupt" , () -> new TerraBlockOre(Block.Properties.create(Material.ROCK).harvestLevel(1).hardnessAndResistance(3.0F)));
-    public static final RegistryObject<Block> ORE_LEAD_CRIMSON  = BLOCKS.register("ore_lead_crimson" , () -> new TerraBlockOre(Block.Properties.create(Material.ROCK).harvestLevel(1).hardnessAndResistance(3.0F)));
+    public static final RegistryObject<Block> ORE_TIN_JUNGLE = BLOCKS.register("ore_tin_jungle", () -> new TerraBlockOre(Block.Properties.create(Material.ROCK).sound(SoundType.GROUND).harvestLevel(1).hardnessAndResistance(3.0F)));
+    public static final RegistryObject<Block> ORE_LEAD_PURE = BLOCKS.register("ore_lead", () -> new TerraBlockOre(Block.Properties.create(Material.ROCK).harvestLevel(1).hardnessAndResistance(3.0F)));
+    public static final RegistryObject<Block> ORE_LEAD_CORRUPT = BLOCKS.register("ore_lead_corrupt", () -> new TerraBlockOre(Block.Properties.create(Material.ROCK).harvestLevel(1).hardnessAndResistance(3.0F)));
+    public static final RegistryObject<Block> ORE_LEAD_CRIMSON = BLOCKS.register("ore_lead_crimson", () -> new TerraBlockOre(Block.Properties.create(Material.ROCK).harvestLevel(1).hardnessAndResistance(3.0F)));
     public static final RegistryObject<Block> ORE_LEAD_HALLOWED = BLOCKS.register("ore_lead_hallowed", () -> new TerraBlockOre(Block.Properties.create(Material.ROCK).harvestLevel(1).hardnessAndResistance(3.0F)));
-    public static final RegistryObject<Block> ORE_IRON_CORRUPT  = BLOCKS.register("ore_iron_corrupt" , () -> new TerraBlockOre(Block.Properties.create(Material.ROCK).harvestLevel(1).hardnessAndResistance(3.0F)));
-    public static final RegistryObject<Block> ORE_IRON_CRIMSON  = BLOCKS.register("ore_iron_crimson" , () -> new TerraBlockOre(Block.Properties.create(Material.ROCK).harvestLevel(1).hardnessAndResistance(3.0F)));
+    public static final RegistryObject<Block> ORE_LEAD_JUNGLE = BLOCKS.register("ore_lead_jungle", () -> new TerraBlockOre(Block.Properties.create(Material.ROCK).sound(SoundType.GROUND).harvestLevel(1).hardnessAndResistance(3.0F)));
+    public static final RegistryObject<Block> ORE_IRON_CORRUPT = BLOCKS.register("ore_iron_corrupt", () -> new TerraBlockOre(Block.Properties.create(Material.ROCK).harvestLevel(1).hardnessAndResistance(3.0F)));
+    public static final RegistryObject<Block> ORE_IRON_CRIMSON = BLOCKS.register("ore_iron_crimson", () -> new TerraBlockOre(Block.Properties.create(Material.ROCK).harvestLevel(1).hardnessAndResistance(3.0F)));
     public static final RegistryObject<Block> ORE_IRON_HALLOWED = BLOCKS.register("ore_iron_hallowed", () -> new TerraBlockOre(Block.Properties.create(Material.ROCK).harvestLevel(1).hardnessAndResistance(3.0F)));
-    public static final RegistryObject<Block> ORE_SILVER_PURE     = BLOCKS.register("ore_silver"         , () -> new TerraBlockOre(Block.Properties.create(Material.ROCK).harvestLevel(2).hardnessAndResistance(3.5F)));
-    public static final RegistryObject<Block> ORE_SILVER_CORRUPT  = BLOCKS.register("ore_silver_corrupt" , () -> new TerraBlockOre(Block.Properties.create(Material.ROCK).harvestLevel(2).hardnessAndResistance(3.5F)));
-    public static final RegistryObject<Block> ORE_SILVER_CRIMSON  = BLOCKS.register("ore_silver_crimson" , () -> new TerraBlockOre(Block.Properties.create(Material.ROCK).harvestLevel(2).hardnessAndResistance(3.5F)));
+    public static final RegistryObject<Block> ORE_IRON_JUNGLE = BLOCKS.register("ore_iron_jungle", () -> new TerraBlockOre(Block.Properties.create(Material.ROCK).sound(SoundType.GROUND).harvestLevel(1).hardnessAndResistance(3.0F)));
+    public static final RegistryObject<Block> ORE_SILVER_PURE = BLOCKS.register("ore_silver", () -> new TerraBlockOre(Block.Properties.create(Material.ROCK).harvestLevel(2).hardnessAndResistance(3.5F)));
+    public static final RegistryObject<Block> ORE_SILVER_CORRUPT = BLOCKS.register("ore_silver_corrupt", () -> new TerraBlockOre(Block.Properties.create(Material.ROCK).harvestLevel(2).hardnessAndResistance(3.5F)));
+    public static final RegistryObject<Block> ORE_SILVER_CRIMSON = BLOCKS.register("ore_silver_crimson", () -> new TerraBlockOre(Block.Properties.create(Material.ROCK).harvestLevel(2).hardnessAndResistance(3.5F)));
     public static final RegistryObject<Block> ORE_SILVER_HALLOWED = BLOCKS.register("ore_silver_hallowed", () -> new TerraBlockOre(Block.Properties.create(Material.ROCK).harvestLevel(2).hardnessAndResistance(3.5F)));
-    public static final RegistryObject<Block> ORE_TUNGSTEN_PURE     = BLOCKS.register("ore_tungsten"         , () -> new TerraBlockOre(Block.Properties.create(Material.ROCK).harvestLevel(2).hardnessAndResistance(3.5F)));
-    public static final RegistryObject<Block> ORE_TUNGSTEN_CORRUPT  = BLOCKS.register("ore_tungsten_corrupt" , () -> new TerraBlockOre(Block.Properties.create(Material.ROCK).harvestLevel(2).hardnessAndResistance(3.5F)));
-    public static final RegistryObject<Block> ORE_TUNGSTEN_CRIMSON  = BLOCKS.register("ore_tungsten_crimson" , () -> new TerraBlockOre(Block.Properties.create(Material.ROCK).harvestLevel(2).hardnessAndResistance(3.5F)));
+    public static final RegistryObject<Block> ORE_SILVER_JUNGLE = BLOCKS.register("ore_silver_jungle", () -> new TerraBlockOre(Block.Properties.create(Material.ROCK).sound(SoundType.GROUND).harvestLevel(2).hardnessAndResistance(3.5F)));
+    public static final RegistryObject<Block> ORE_TUNGSTEN_PURE = BLOCKS.register("ore_tungsten", () -> new TerraBlockOre(Block.Properties.create(Material.ROCK).harvestLevel(2).hardnessAndResistance(3.5F)));
+    public static final RegistryObject<Block> ORE_TUNGSTEN_CORRUPT = BLOCKS.register("ore_tungsten_corrupt", () -> new TerraBlockOre(Block.Properties.create(Material.ROCK).harvestLevel(2).hardnessAndResistance(3.5F)));
+    public static final RegistryObject<Block> ORE_TUNGSTEN_CRIMSON = BLOCKS.register("ore_tungsten_crimson", () -> new TerraBlockOre(Block.Properties.create(Material.ROCK).harvestLevel(2).hardnessAndResistance(3.5F)));
     public static final RegistryObject<Block> ORE_TUNGSTEN_HALLOWED = BLOCKS.register("ore_tungsten_hallowed", () -> new TerraBlockOre(Block.Properties.create(Material.ROCK).harvestLevel(2).hardnessAndResistance(3.5F)));
-    public static final RegistryObject<Block> ORE_GOLD_CORRUPT  = BLOCKS.register("ore_gold_corrupt" , () -> new TerraBlockOre(Block.Properties.create(Material.ROCK).harvestLevel(2).hardnessAndResistance(3.5F)));
-    public static final RegistryObject<Block> ORE_GOLD_CRIMSON  = BLOCKS.register("ore_gold_crimson" , () -> new TerraBlockOre(Block.Properties.create(Material.ROCK).harvestLevel(2).hardnessAndResistance(3.5F)));
+    public static final RegistryObject<Block> ORE_TUNGSTEN_JUNGLE = BLOCKS.register("ore_tungsten_jungle", () -> new TerraBlockOre(Block.Properties.create(Material.ROCK).sound(SoundType.GROUND).harvestLevel(2).hardnessAndResistance(3.5F)));
+    public static final RegistryObject<Block> ORE_GOLD_CORRUPT = BLOCKS.register("ore_gold_corrupt", () -> new TerraBlockOre(Block.Properties.create(Material.ROCK).harvestLevel(2).hardnessAndResistance(3.5F)));
+    public static final RegistryObject<Block> ORE_GOLD_CRIMSON = BLOCKS.register("ore_gold_crimson", () -> new TerraBlockOre(Block.Properties.create(Material.ROCK).harvestLevel(2).hardnessAndResistance(3.5F)));
     public static final RegistryObject<Block> ORE_GOLD_HALLOWED = BLOCKS.register("ore_gold_hallowed", () -> new TerraBlockOre(Block.Properties.create(Material.ROCK).harvestLevel(2).hardnessAndResistance(3.5F)));
-    public static final RegistryObject<Block> ORE_PLATINUM_PURE     = BLOCKS.register("ore_platinum"         , () -> new TerraBlockOre(Block.Properties.create(Material.ROCK).harvestLevel(2).hardnessAndResistance(3.5F)));
-    public static final RegistryObject<Block> ORE_PLATINUM_CORRUPT  = BLOCKS.register("ore_platinum_corrupt" , () -> new TerraBlockOre(Block.Properties.create(Material.ROCK).harvestLevel(2).hardnessAndResistance(3.5F)));
-    public static final RegistryObject<Block> ORE_PLATINUM_CRIMSON  = BLOCKS.register("ore_platinum_crimson" , () -> new TerraBlockOre(Block.Properties.create(Material.ROCK).harvestLevel(2).hardnessAndResistance(3.5F)));
+    public static final RegistryObject<Block> ORE_GOLD_JUNGLE = BLOCKS.register("ore_gold_jungle", () -> new TerraBlockOre(Block.Properties.create(Material.ROCK).sound(SoundType.GROUND).harvestLevel(2).hardnessAndResistance(3.5F)));
+    public static final RegistryObject<Block> ORE_PLATINUM_PURE = BLOCKS.register("ore_platinum", () -> new TerraBlockOre(Block.Properties.create(Material.ROCK).harvestLevel(2).hardnessAndResistance(3.5F)));
+    public static final RegistryObject<Block> ORE_PLATINUM_CORRUPT = BLOCKS.register("ore_platinum_corrupt", () -> new TerraBlockOre(Block.Properties.create(Material.ROCK).harvestLevel(2).hardnessAndResistance(3.5F)));
+    public static final RegistryObject<Block> ORE_PLATINUM_CRIMSON = BLOCKS.register("ore_platinum_crimson", () -> new TerraBlockOre(Block.Properties.create(Material.ROCK).harvestLevel(2).hardnessAndResistance(3.5F)));
     public static final RegistryObject<Block> ORE_PLATINUM_HALLOWED = BLOCKS.register("ore_platinum_hallowed", () -> new TerraBlockOre(Block.Properties.create(Material.ROCK).harvestLevel(2).hardnessAndResistance(3.5F)));
+    public static final RegistryObject<Block> ORE_PLATINUM_JUNGLE = BLOCKS.register("ore_platinum_jungle", () -> new TerraBlockOre(Block.Properties.create(Material.ROCK).sound(SoundType.GROUND).harvestLevel(2).hardnessAndResistance(3.5F)));
     public static final RegistryObject<Block> ORE_METEORITE = BLOCKS.register("ore_meteorite", () -> new Block(Block.Properties.create(Material.ROCK).harvestLevel(2).hardnessAndResistance(3.5F)));
-    public static final RegistryObject<Block> ORE_DEMONITE_PURE     = BLOCKS.register("ore_demonite"         , () -> new TerraBlockOre(Block.Properties.create(Material.ROCK).harvestLevel(3).hardnessAndResistance(10.0F)));
-    public static final RegistryObject<Block> ORE_DEMONITE_CORRUPT  = BLOCKS.register("ore_demonite_corrupt" , () -> new TerraBlockOre(Block.Properties.create(Material.ROCK).harvestLevel(3).hardnessAndResistance(10.0F)));
-    public static final RegistryObject<Block> ORE_DEMONITE_CRIMSON  = BLOCKS.register("ore_demonite_crimson" , () -> new TerraBlockOre(Block.Properties.create(Material.ROCK).harvestLevel(3).hardnessAndResistance(10.0F)));
+    public static final RegistryObject<Block> ORE_DEMONITE_PURE = BLOCKS.register("ore_demonite", () -> new TerraBlockOre(Block.Properties.create(Material.ROCK).harvestLevel(3).hardnessAndResistance(10.0F)));
+    public static final RegistryObject<Block> ORE_DEMONITE_CORRUPT = BLOCKS.register("ore_demonite_corrupt", () -> new TerraBlockOre(Block.Properties.create(Material.ROCK).harvestLevel(3).hardnessAndResistance(10.0F)));
+    public static final RegistryObject<Block> ORE_DEMONITE_CRIMSON = BLOCKS.register("ore_demonite_crimson", () -> new TerraBlockOre(Block.Properties.create(Material.ROCK).harvestLevel(3).hardnessAndResistance(10.0F)));
     public static final RegistryObject<Block> ORE_DEMONITE_HALLOWED = BLOCKS.register("ore_demonite_hallowed", () -> new TerraBlockOre(Block.Properties.create(Material.ROCK).harvestLevel(3).hardnessAndResistance(10.0F)));
-    public static final RegistryObject<Block> ORE_CRIMTANE_PURE     = BLOCKS.register("ore_crimtane"         , () -> new TerraBlockOre(Block.Properties.create(Material.ROCK).harvestLevel(3).hardnessAndResistance(10.0F)));
-    public static final RegistryObject<Block> ORE_CRIMTANE_CORRUPT  = BLOCKS.register("ore_crimtane_corrupt" , () -> new TerraBlockOre(Block.Properties.create(Material.ROCK).harvestLevel(3).hardnessAndResistance(10.0F)));
-    public static final RegistryObject<Block> ORE_CRIMTANE_CRIMSON  = BLOCKS.register("ore_crimtane_crimson" , () -> new TerraBlockOre(Block.Properties.create(Material.ROCK).harvestLevel(3).hardnessAndResistance(10.0F)));
+    public static final RegistryObject<Block> ORE_DEMONITE_JUNGLE = BLOCKS.register("ore_demonite_jungle", () -> new TerraBlockOre(Block.Properties.create(Material.ROCK).harvestLevel(3).sound(SoundType.GROUND).hardnessAndResistance(10.0F)));
+    public static final RegistryObject<Block> ORE_CRIMTANE_PURE = BLOCKS.register("ore_crimtane", () -> new TerraBlockOre(Block.Properties.create(Material.ROCK).harvestLevel(3).hardnessAndResistance(10.0F)));
+    public static final RegistryObject<Block> ORE_CRIMTANE_CORRUPT = BLOCKS.register("ore_crimtane_corrupt", () -> new TerraBlockOre(Block.Properties.create(Material.ROCK).harvestLevel(3).hardnessAndResistance(10.0F)));
+    public static final RegistryObject<Block> ORE_CRIMTANE_CRIMSON = BLOCKS.register("ore_crimtane_crimson", () -> new TerraBlockOre(Block.Properties.create(Material.ROCK).harvestLevel(3).hardnessAndResistance(10.0F)));
     public static final RegistryObject<Block> ORE_CRIMTANE_HALLOWED = BLOCKS.register("ore_crimtane_hallowed", () -> new TerraBlockOre(Block.Properties.create(Material.ROCK).harvestLevel(3).hardnessAndResistance(10.0F)));
+    public static final RegistryObject<Block> ORE_CRIMTANE_JUNGLE = BLOCKS.register("ore_crimtane_jungle", () -> new TerraBlockOre(Block.Properties.create(Material.ROCK).harvestLevel(3).sound(SoundType.GROUND).hardnessAndResistance(10.0F)));
     public static final RegistryObject<Block> ORE_HELLSTONE = BLOCKS.register("ore_hellstone", () -> new Block(Block.Properties.create(Material.ROCK).harvestLevel(4).sound(SoundType.GROUND).hardnessAndResistance(20.0F)));
-    public static final RegistryObject<Block> ORE_COBALT_PURE     = BLOCKS.register("ore_cobalt"         , () -> new TerraBlockOre(Block.Properties.create(Material.ROCK).harvestLevel(5).hardnessAndResistance(20.0F)));
-    public static final RegistryObject<Block> ORE_COBALT_CORRUPT  = BLOCKS.register("ore_cobalt_corrupt" , () -> new TerraBlockOre(Block.Properties.create(Material.ROCK).harvestLevel(5).hardnessAndResistance(20.0F)));
-    public static final RegistryObject<Block> ORE_COBALT_CRIMSON  = BLOCKS.register("ore_cobalt_crimson" , () -> new TerraBlockOre(Block.Properties.create(Material.ROCK).harvestLevel(5).hardnessAndResistance(20.0F)));
+    public static final RegistryObject<Block> ORE_COBALT_PURE = BLOCKS.register("ore_cobalt", () -> new TerraBlockOre(Block.Properties.create(Material.ROCK).harvestLevel(5).hardnessAndResistance(20.0F)));
+    public static final RegistryObject<Block> ORE_COBALT_CORRUPT = BLOCKS.register("ore_cobalt_corrupt", () -> new TerraBlockOre(Block.Properties.create(Material.ROCK).harvestLevel(5).hardnessAndResistance(20.0F)));
+    public static final RegistryObject<Block> ORE_COBALT_CRIMSON = BLOCKS.register("ore_cobalt_crimson", () -> new TerraBlockOre(Block.Properties.create(Material.ROCK).harvestLevel(5).hardnessAndResistance(20.0F)));
     public static final RegistryObject<Block> ORE_COBALT_HALLOWED = BLOCKS.register("ore_cobalt_hallowed", () -> new TerraBlockOre(Block.Properties.create(Material.ROCK).harvestLevel(5).hardnessAndResistance(20.0F)));
-    public static final RegistryObject<Block> ORE_PALLADIUM_PURE     = BLOCKS.register("ore_palladium"         , () -> new TerraBlockOre(Block.Properties.create(Material.ROCK).harvestLevel(5).hardnessAndResistance(20.0F)));
-    public static final RegistryObject<Block> ORE_PALLADIUM_CORRUPT  = BLOCKS.register("ore_palladium_corrupt" , () -> new TerraBlockOre(Block.Properties.create(Material.ROCK).harvestLevel(5).hardnessAndResistance(20.0F)));
-    public static final RegistryObject<Block> ORE_PALLADIUM_CRIMSON  = BLOCKS.register("ore_palladium_crimson" , () -> new TerraBlockOre(Block.Properties.create(Material.ROCK).harvestLevel(5).hardnessAndResistance(20.0F)));
+    public static final RegistryObject<Block> ORE_COBALT_JUNGLE = BLOCKS.register("ore_cobalt_jungle", () -> new TerraBlockOre(Block.Properties.create(Material.ROCK).harvestLevel(5).sound(SoundType.GROUND).hardnessAndResistance(20.0F)));
+    public static final RegistryObject<Block> ORE_PALLADIUM_PURE = BLOCKS.register("ore_palladium", () -> new TerraBlockOre(Block.Properties.create(Material.ROCK).harvestLevel(5).hardnessAndResistance(20.0F)));
+    public static final RegistryObject<Block> ORE_PALLADIUM_CORRUPT = BLOCKS.register("ore_palladium_corrupt", () -> new TerraBlockOre(Block.Properties.create(Material.ROCK).harvestLevel(5).hardnessAndResistance(20.0F)));
+    public static final RegistryObject<Block> ORE_PALLADIUM_CRIMSON = BLOCKS.register("ore_palladium_crimson", () -> new TerraBlockOre(Block.Properties.create(Material.ROCK).harvestLevel(5).hardnessAndResistance(20.0F)));
     public static final RegistryObject<Block> ORE_PALLADIUM_HALLOWED = BLOCKS.register("ore_palladium_hallowed", () -> new TerraBlockOre(Block.Properties.create(Material.ROCK).harvestLevel(5).hardnessAndResistance(20.0F)));
-    public static final RegistryObject<Block> ORE_MYTHRIL_PURE     = BLOCKS.register("ore_mythril"         , () -> new TerraBlockOre(Block.Properties.create(Material.ROCK).harvestLevel(6).hardnessAndResistance(20.0F)));
-    public static final RegistryObject<Block> ORE_MYTHRIL_CORRUPT  = BLOCKS.register("ore_mythril_corrupt" , () -> new TerraBlockOre(Block.Properties.create(Material.ROCK).harvestLevel(6).hardnessAndResistance(20.0F)));
-    public static final RegistryObject<Block> ORE_MYTHRIL_CRIMSON  = BLOCKS.register("ore_mythril_crimson" , () -> new TerraBlockOre(Block.Properties.create(Material.ROCK).harvestLevel(6).hardnessAndResistance(20.0F)));
+    public static final RegistryObject<Block> ORE_PALLADIUM_JUNGLE = BLOCKS.register("ore_palladium_jungle", () -> new TerraBlockOre(Block.Properties.create(Material.ROCK).harvestLevel(5).sound(SoundType.GROUND).hardnessAndResistance(20.0F)));
+    public static final RegistryObject<Block> ORE_MYTHRIL_PURE = BLOCKS.register("ore_mythril", () -> new TerraBlockOre(Block.Properties.create(Material.ROCK).harvestLevel(6).hardnessAndResistance(20.0F)));
+    public static final RegistryObject<Block> ORE_MYTHRIL_CORRUPT = BLOCKS.register("ore_mythril_corrupt", () -> new TerraBlockOre(Block.Properties.create(Material.ROCK).harvestLevel(6).hardnessAndResistance(20.0F)));
+    public static final RegistryObject<Block> ORE_MYTHRIL_CRIMSON = BLOCKS.register("ore_mythril_crimson", () -> new TerraBlockOre(Block.Properties.create(Material.ROCK).harvestLevel(6).hardnessAndResistance(20.0F)));
     public static final RegistryObject<Block> ORE_MYTHRIL_HALLOWED = BLOCKS.register("ore_mythril_hallowed", () -> new TerraBlockOre(Block.Properties.create(Material.ROCK).harvestLevel(6).hardnessAndResistance(20.0F)));
-    public static final RegistryObject<Block> ORE_ORICHALCUM_PURE     = BLOCKS.register("ore_orichalcum"         , () -> new TerraBlockOre(Block.Properties.create(Material.ROCK).harvestLevel(6).hardnessAndResistance(20.0F)));
-    public static final RegistryObject<Block> ORE_ORICHALCUM_CORRUPT  = BLOCKS.register("ore_orichalcum_corrupt" , () -> new TerraBlockOre(Block.Properties.create(Material.ROCK).harvestLevel(6).hardnessAndResistance(20.0F)));
-    public static final RegistryObject<Block> ORE_ORICHALCUM_CRIMSON  = BLOCKS.register("ore_orichalcum_crimson" , () -> new TerraBlockOre(Block.Properties.create(Material.ROCK).harvestLevel(6).hardnessAndResistance(20.0F)));
+    public static final RegistryObject<Block> ORE_MYTHRIL_JUNGLE = BLOCKS.register("ore_mythril_jungle", () -> new TerraBlockOre(Block.Properties.create(Material.ROCK).harvestLevel(6).sound(SoundType.GROUND).hardnessAndResistance(20.0F)));
+    public static final RegistryObject<Block> ORE_ORICHALCUM_PURE = BLOCKS.register("ore_orichalcum", () -> new TerraBlockOre(Block.Properties.create(Material.ROCK).harvestLevel(6).hardnessAndResistance(20.0F)));
+    public static final RegistryObject<Block> ORE_ORICHALCUM_CORRUPT = BLOCKS.register("ore_orichalcum_corrupt", () -> new TerraBlockOre(Block.Properties.create(Material.ROCK).harvestLevel(6).hardnessAndResistance(20.0F)));
+    public static final RegistryObject<Block> ORE_ORICHALCUM_CRIMSON = BLOCKS.register("ore_orichalcum_crimson", () -> new TerraBlockOre(Block.Properties.create(Material.ROCK).harvestLevel(6).hardnessAndResistance(20.0F)));
     public static final RegistryObject<Block> ORE_ORICHALCUM_HALLOWED = BLOCKS.register("ore_orichalcum_hallowed", () -> new TerraBlockOre(Block.Properties.create(Material.ROCK).harvestLevel(6).hardnessAndResistance(20.0F)));
-    public static final RegistryObject<Block> ORE_ADAMANTITE_PURE     = BLOCKS.register("ore_adamantite"         , () -> new TerraBlockOre(Block.Properties.create(Material.ROCK).harvestLevel(7).hardnessAndResistance(20.0F)));
-    public static final RegistryObject<Block> ORE_ADAMANTITE_CORRUPT  = BLOCKS.register("ore_adamantite_corrupt" , () -> new TerraBlockOre(Block.Properties.create(Material.ROCK).harvestLevel(7).hardnessAndResistance(20.0F)));
-    public static final RegistryObject<Block> ORE_ADAMANTITE_CRIMSON  = BLOCKS.register("ore_adamantite_crimson" , () -> new TerraBlockOre(Block.Properties.create(Material.ROCK).harvestLevel(7).hardnessAndResistance(20.0F)));
+    public static final RegistryObject<Block> ORE_ORICHALCUM_JUNGLE = BLOCKS.register("ore_orichalcum_jungle", () -> new TerraBlockOre(Block.Properties.create(Material.ROCK).harvestLevel(6).sound(SoundType.GROUND).hardnessAndResistance(20.0F)));
+    public static final RegistryObject<Block> ORE_ADAMANTITE_PURE = BLOCKS.register("ore_adamantite", () -> new TerraBlockOre(Block.Properties.create(Material.ROCK).harvestLevel(7).hardnessAndResistance(20.0F)));
+    public static final RegistryObject<Block> ORE_ADAMANTITE_CORRUPT = BLOCKS.register("ore_adamantite_corrupt", () -> new TerraBlockOre(Block.Properties.create(Material.ROCK).harvestLevel(7).hardnessAndResistance(20.0F)));
+    public static final RegistryObject<Block> ORE_ADAMANTITE_CRIMSON = BLOCKS.register("ore_adamantite_crimson", () -> new TerraBlockOre(Block.Properties.create(Material.ROCK).harvestLevel(7).hardnessAndResistance(20.0F)));
     public static final RegistryObject<Block> ORE_ADAMANTITE_HALLOWED = BLOCKS.register("ore_adamantite_hallowed", () -> new TerraBlockOre(Block.Properties.create(Material.ROCK).harvestLevel(7).hardnessAndResistance(20.0F)));
-    public static final RegistryObject<Block> ORE_TITANIUM_PURE     = BLOCKS.register("ore_titanium"         , () -> new TerraBlockOre(Block.Properties.create(Material.ROCK).harvestLevel(7).hardnessAndResistance(20.0F)));
-    public static final RegistryObject<Block> ORE_TITANIUM_CORRUPT  = BLOCKS.register("ore_titanium_corrupt" , () -> new TerraBlockOre(Block.Properties.create(Material.ROCK).harvestLevel(7).hardnessAndResistance(20.0F)));
-    public static final RegistryObject<Block> ORE_TITANIUM_CRIMSON  = BLOCKS.register("ore_titanium_crimson" , () -> new TerraBlockOre(Block.Properties.create(Material.ROCK).harvestLevel(7).hardnessAndResistance(20.0F)));
+    public static final RegistryObject<Block> ORE_ADAMANTITE_JUNGLE = BLOCKS.register("ore_adamantite_jungle", () -> new TerraBlockOre(Block.Properties.create(Material.ROCK).harvestLevel(7).sound(SoundType.GROUND).hardnessAndResistance(20.0F)));
+    public static final RegistryObject<Block> ORE_TITANIUM_PURE = BLOCKS.register("ore_titanium", () -> new TerraBlockOre(Block.Properties.create(Material.ROCK).harvestLevel(7).hardnessAndResistance(20.0F)));
+    public static final RegistryObject<Block> ORE_TITANIUM_CORRUPT = BLOCKS.register("ore_titanium_corrupt", () -> new TerraBlockOre(Block.Properties.create(Material.ROCK).harvestLevel(7).hardnessAndResistance(20.0F)));
+    public static final RegistryObject<Block> ORE_TITANIUM_CRIMSON = BLOCKS.register("ore_titanium_crimson", () -> new TerraBlockOre(Block.Properties.create(Material.ROCK).harvestLevel(7).hardnessAndResistance(20.0F)));
     public static final RegistryObject<Block> ORE_TITANIUM_HALLOWED = BLOCKS.register("ore_titanium_hallowed", () -> new TerraBlockOre(Block.Properties.create(Material.ROCK).harvestLevel(7).hardnessAndResistance(20.0F)));
-    public static final RegistryObject<Block> ORE_CHLOROPHYTE = BLOCKS.register("ore_chlorophyte", () -> new Block(Block.Properties.create(Material.ROCK).harvestLevel(8).sound(SoundType.GROUND).hardnessAndResistance(30.0F)));
-    public static final RegistryObject<Block> ORE_COAL_CORRUPT  = BLOCKS.register("ore_coal_corrupt" , () -> new TerraBlockOre(Block.Properties.create(Material.ROCK).harvestLevel(1).hardnessAndResistance(3.0F)));
-    public static final RegistryObject<Block> ORE_COAL_CRIMSON  = BLOCKS.register("ore_coal_crimson" , () -> new TerraBlockOre(Block.Properties.create(Material.ROCK).harvestLevel(1).hardnessAndResistance(3.0F)));
+    public static final RegistryObject<Block> ORE_TITANIUM_JUNGLE = BLOCKS.register("ore_titanium_jungle", () -> new TerraBlockOre(Block.Properties.create(Material.ROCK).harvestLevel(7).sound(SoundType.GROUND).hardnessAndResistance(20.0F)));
+    public static final RegistryObject<Block> ORE_CHLOROPHYTE = BLOCKS.register("ore_chlorophyte", () -> new TerraBlockChlorophyteOre(Block.Properties.create(Material.ROCK).harvestLevel(8).sound(SoundType.GROUND).hardnessAndResistance(30.0F).tickRandomly()));
+    public static final RegistryObject<Block> ORE_COAL_CORRUPT = BLOCKS.register("ore_coal_corrupt", () -> new TerraBlockOre(Block.Properties.create(Material.ROCK).harvestLevel(1).hardnessAndResistance(3.0F)));
+    public static final RegistryObject<Block> ORE_COAL_CRIMSON = BLOCKS.register("ore_coal_crimson", () -> new TerraBlockOre(Block.Properties.create(Material.ROCK).harvestLevel(1).hardnessAndResistance(3.0F)));
     public static final RegistryObject<Block> ORE_COAL_HALLOWED = BLOCKS.register("ore_coal_hallowed", () -> new TerraBlockOre(Block.Properties.create(Material.ROCK).harvestLevel(1).hardnessAndResistance(3.0F)));
-    public static final RegistryObject<Block> ORE_LAPIS_CORRUPT  = BLOCKS.register("ore_lapis_corrupt" , () -> new TerraBlockOre(Block.Properties.create(Material.ROCK).harvestLevel(2).hardnessAndResistance(3.0F)));
-    public static final RegistryObject<Block> ORE_LAPIS_CRIMSON  = BLOCKS.register("ore_lapis_crimson" , () -> new TerraBlockOre(Block.Properties.create(Material.ROCK).harvestLevel(2).hardnessAndResistance(3.0F)));
+    public static final RegistryObject<Block> ORE_COAL_JUNGLE = BLOCKS.register("ore_coal_jungle", () -> new TerraBlockOre(Block.Properties.create(Material.ROCK).harvestLevel(1).sound(SoundType.GROUND).hardnessAndResistance(3.0F)));
+    public static final RegistryObject<Block> ORE_LAPIS_CORRUPT = BLOCKS.register("ore_lapis_corrupt", () -> new TerraBlockOre(Block.Properties.create(Material.ROCK).harvestLevel(2).hardnessAndResistance(3.0F)));
+    public static final RegistryObject<Block> ORE_LAPIS_CRIMSON = BLOCKS.register("ore_lapis_crimson", () -> new TerraBlockOre(Block.Properties.create(Material.ROCK).harvestLevel(2).hardnessAndResistance(3.0F)));
     public static final RegistryObject<Block> ORE_LAPIS_HALLOWED = BLOCKS.register("ore_lapis_hallowed", () -> new TerraBlockOre(Block.Properties.create(Material.ROCK).harvestLevel(2).hardnessAndResistance(3.0F)));
-    public static final RegistryObject<Block> ORE_REDSTONE_CORRUPT  = BLOCKS.register("ore_redstone_corrupt" , () -> new TerraBlockOre(Block.Properties.create(Material.ROCK).harvestLevel(2).hardnessAndResistance(3.0F)));
-    public static final RegistryObject<Block> ORE_REDSTONE_CRIMSON  = BLOCKS.register("ore_redstone_crimson" , () -> new TerraBlockOre(Block.Properties.create(Material.ROCK).harvestLevel(2).hardnessAndResistance(3.0F)));
+    public static final RegistryObject<Block> ORE_LAPIS_JUNGLE = BLOCKS.register("ore_lapis_jungle", () -> new TerraBlockOre(Block.Properties.create(Material.ROCK).harvestLevel(2).sound(SoundType.GROUND).hardnessAndResistance(3.0F)));
+    public static final RegistryObject<Block> ORE_REDSTONE_CORRUPT = BLOCKS.register("ore_redstone_corrupt", () -> new TerraBlockOre(Block.Properties.create(Material.ROCK).harvestLevel(2).hardnessAndResistance(3.0F)));
+    public static final RegistryObject<Block> ORE_REDSTONE_CRIMSON = BLOCKS.register("ore_redstone_crimson", () -> new TerraBlockOre(Block.Properties.create(Material.ROCK).harvestLevel(2).hardnessAndResistance(3.0F)));
     public static final RegistryObject<Block> ORE_REDSTONE_HALLOWED = BLOCKS.register("ore_redstone_hallowed", () -> new TerraBlockOre(Block.Properties.create(Material.ROCK).harvestLevel(2).hardnessAndResistance(3.0F)));
-    public static final RegistryObject<Block> ORE_AMBER_PURE     = BLOCKS.register("ore_amber"         , () -> new TerraBlockOre(Block.Properties.create(Material.ROCK).harvestLevel(2).hardnessAndResistance(3.0F)));
-    public static final RegistryObject<Block> ORE_AMBER_CORRUPT  = BLOCKS.register("ore_amber_corrupt" , () -> new TerraBlockOre(Block.Properties.create(Material.ROCK).harvestLevel(2).hardnessAndResistance(3.0F)));
-    public static final RegistryObject<Block> ORE_AMBER_CRIMSON  = BLOCKS.register("ore_amber_crimson" , () -> new TerraBlockOre(Block.Properties.create(Material.ROCK).harvestLevel(2).hardnessAndResistance(3.0F)));
+    public static final RegistryObject<Block> ORE_REDSTONE_JUNGLE = BLOCKS.register("ore_redstone_jungle", () -> new TerraBlockOre(Block.Properties.create(Material.ROCK).harvestLevel(2).sound(SoundType.GROUND).hardnessAndResistance(3.0F)));
+    public static final RegistryObject<Block> ORE_AMBER_PURE = BLOCKS.register("ore_amber", () -> new TerraBlockOre(Block.Properties.create(Material.ROCK).harvestLevel(2).hardnessAndResistance(3.0F)));
+    public static final RegistryObject<Block> ORE_AMBER_CORRUPT = BLOCKS.register("ore_amber_corrupt", () -> new TerraBlockOre(Block.Properties.create(Material.ROCK).harvestLevel(2).hardnessAndResistance(3.0F)));
+    public static final RegistryObject<Block> ORE_AMBER_CRIMSON = BLOCKS.register("ore_amber_crimson", () -> new TerraBlockOre(Block.Properties.create(Material.ROCK).harvestLevel(2).hardnessAndResistance(3.0F)));
     public static final RegistryObject<Block> ORE_AMBER_HALLOWED = BLOCKS.register("ore_amber_hallowed", () -> new TerraBlockOre(Block.Properties.create(Material.ROCK).harvestLevel(2).hardnessAndResistance(3.0F)));
-    public static final RegistryObject<Block> ORE_AMETHYST_PURE     = BLOCKS.register("ore_amethyst"         , () -> new TerraBlockOre(Block.Properties.create(Material.ROCK).harvestLevel(2).hardnessAndResistance(3.0F)));
-    public static final RegistryObject<Block> ORE_AMETHYST_CORRUPT  = BLOCKS.register("ore_amethyst_corrupt" , () -> new TerraBlockOre(Block.Properties.create(Material.ROCK).harvestLevel(2).hardnessAndResistance(3.0F)));
-    public static final RegistryObject<Block> ORE_AMETHYST_CRIMSON  = BLOCKS.register("ore_amethyst_crimson" , () -> new TerraBlockOre(Block.Properties.create(Material.ROCK).harvestLevel(2).hardnessAndResistance(3.0F)));
+    public static final RegistryObject<Block> ORE_AMBER_JUNGLE = BLOCKS.register("ore_amber_jungle", () -> new TerraBlockOre(Block.Properties.create(Material.ROCK).harvestLevel(2).sound(SoundType.GROUND).hardnessAndResistance(3.0F)));
+    public static final RegistryObject<Block> ORE_AMETHYST_PURE = BLOCKS.register("ore_amethyst", () -> new TerraBlockOre(Block.Properties.create(Material.ROCK).harvestLevel(2).hardnessAndResistance(3.0F)));
+    public static final RegistryObject<Block> ORE_AMETHYST_CORRUPT = BLOCKS.register("ore_amethyst_corrupt", () -> new TerraBlockOre(Block.Properties.create(Material.ROCK).harvestLevel(2).hardnessAndResistance(3.0F)));
+    public static final RegistryObject<Block> ORE_AMETHYST_CRIMSON = BLOCKS.register("ore_amethyst_crimson", () -> new TerraBlockOre(Block.Properties.create(Material.ROCK).harvestLevel(2).hardnessAndResistance(3.0F)));
     public static final RegistryObject<Block> ORE_AMETHYST_HALLOWED = BLOCKS.register("ore_amethyst_hallowed", () -> new TerraBlockOre(Block.Properties.create(Material.ROCK).harvestLevel(2).hardnessAndResistance(3.0F)));
-    public static final RegistryObject<Block> ORE_TOPAZ_PURE     = BLOCKS.register("ore_topaz"         , () -> new TerraBlockOre(Block.Properties.create(Material.ROCK).harvestLevel(2).hardnessAndResistance(3.0F)));
-    public static final RegistryObject<Block> ORE_TOPAZ_CORRUPT  = BLOCKS.register("ore_topaz_corrupt" , () -> new TerraBlockOre(Block.Properties.create(Material.ROCK).harvestLevel(2).hardnessAndResistance(3.0F)));
-    public static final RegistryObject<Block> ORE_TOPAZ_CRIMSON  = BLOCKS.register("ore_topaz_crimson" , () -> new TerraBlockOre(Block.Properties.create(Material.ROCK).harvestLevel(2).hardnessAndResistance(3.0F)));
+    public static final RegistryObject<Block> ORE_AMETHYST_JUNGLE = BLOCKS.register("ore_amethyst_jungle", () -> new TerraBlockOre(Block.Properties.create(Material.ROCK).harvestLevel(2).sound(SoundType.GROUND).hardnessAndResistance(3.0F)));
+    public static final RegistryObject<Block> ORE_TOPAZ_PURE = BLOCKS.register("ore_topaz", () -> new TerraBlockOre(Block.Properties.create(Material.ROCK).harvestLevel(2).hardnessAndResistance(3.0F)));
+    public static final RegistryObject<Block> ORE_TOPAZ_CORRUPT = BLOCKS.register("ore_topaz_corrupt", () -> new TerraBlockOre(Block.Properties.create(Material.ROCK).harvestLevel(2).hardnessAndResistance(3.0F)));
+    public static final RegistryObject<Block> ORE_TOPAZ_CRIMSON = BLOCKS.register("ore_topaz_crimson", () -> new TerraBlockOre(Block.Properties.create(Material.ROCK).harvestLevel(2).hardnessAndResistance(3.0F)));
     public static final RegistryObject<Block> ORE_TOPAZ_HALLOWED = BLOCKS.register("ore_topaz_hallowed", () -> new TerraBlockOre(Block.Properties.create(Material.ROCK).harvestLevel(2).hardnessAndResistance(3.0F)));
-    public static final RegistryObject<Block> ORE_SAPPHIRE_PURE     = BLOCKS.register("ore_sapphire"         , () -> new TerraBlockOre(Block.Properties.create(Material.ROCK).harvestLevel(2).hardnessAndResistance(3.0F)));
-    public static final RegistryObject<Block> ORE_SAPPHIRE_CORRUPT  = BLOCKS.register("ore_sapphire_corrupt" , () -> new TerraBlockOre(Block.Properties.create(Material.ROCK).harvestLevel(2).hardnessAndResistance(3.0F)));
-    public static final RegistryObject<Block> ORE_SAPPHIRE_CRIMSON  = BLOCKS.register("ore_sapphire_crimson" , () -> new TerraBlockOre(Block.Properties.create(Material.ROCK).harvestLevel(2).hardnessAndResistance(3.0F)));
+    public static final RegistryObject<Block> ORE_TOPAZ_JUNGLE = BLOCKS.register("ore_topaz_jungle", () -> new TerraBlockOre(Block.Properties.create(Material.ROCK).harvestLevel(2).sound(SoundType.GROUND).hardnessAndResistance(3.0F)));
+    public static final RegistryObject<Block> ORE_SAPPHIRE_PURE = BLOCKS.register("ore_sapphire", () -> new TerraBlockOre(Block.Properties.create(Material.ROCK).harvestLevel(2).hardnessAndResistance(3.0F)));
+    public static final RegistryObject<Block> ORE_SAPPHIRE_CORRUPT = BLOCKS.register("ore_sapphire_corrupt", () -> new TerraBlockOre(Block.Properties.create(Material.ROCK).harvestLevel(2).hardnessAndResistance(3.0F)));
+    public static final RegistryObject<Block> ORE_SAPPHIRE_CRIMSON = BLOCKS.register("ore_sapphire_crimson", () -> new TerraBlockOre(Block.Properties.create(Material.ROCK).harvestLevel(2).hardnessAndResistance(3.0F)));
     public static final RegistryObject<Block> ORE_SAPPHIRE_HALLOWED = BLOCKS.register("ore_sapphire_hallowed", () -> new TerraBlockOre(Block.Properties.create(Material.ROCK).harvestLevel(2).hardnessAndResistance(3.0F)));
-    public static final RegistryObject<Block> ORE_RUBY_PURE     = BLOCKS.register("ore_ruby"         , () -> new TerraBlockOre(Block.Properties.create(Material.ROCK).harvestLevel(2).hardnessAndResistance(3.0F)));
-    public static final RegistryObject<Block> ORE_RUBY_CORRUPT  = BLOCKS.register("ore_ruby_corrupt" , () -> new TerraBlockOre(Block.Properties.create(Material.ROCK).harvestLevel(2).hardnessAndResistance(3.0F)));
-    public static final RegistryObject<Block> ORE_RUBY_CRIMSON  = BLOCKS.register("ore_ruby_crimson" , () -> new TerraBlockOre(Block.Properties.create(Material.ROCK).harvestLevel(2).hardnessAndResistance(3.0F)));
+    public static final RegistryObject<Block> ORE_SAPPHIRE_JUNGLE = BLOCKS.register("ore_sapphire_jungle", () -> new TerraBlockOre(Block.Properties.create(Material.ROCK).harvestLevel(2).sound(SoundType.GROUND).hardnessAndResistance(3.0F)));
+    public static final RegistryObject<Block> ORE_RUBY_PURE = BLOCKS.register("ore_ruby", () -> new TerraBlockOre(Block.Properties.create(Material.ROCK).harvestLevel(2).hardnessAndResistance(3.0F)));
+    public static final RegistryObject<Block> ORE_RUBY_CORRUPT = BLOCKS.register("ore_ruby_corrupt", () -> new TerraBlockOre(Block.Properties.create(Material.ROCK).harvestLevel(2).hardnessAndResistance(3.0F)));
+    public static final RegistryObject<Block> ORE_RUBY_CRIMSON = BLOCKS.register("ore_ruby_crimson", () -> new TerraBlockOre(Block.Properties.create(Material.ROCK).harvestLevel(2).hardnessAndResistance(3.0F)));
     public static final RegistryObject<Block> ORE_RUBY_HALLOWED = BLOCKS.register("ore_ruby_hallowed", () -> new TerraBlockOre(Block.Properties.create(Material.ROCK).harvestLevel(2).hardnessAndResistance(3.0F)));
-    public static final RegistryObject<Block> ORE_EMERALD_CORRUPT  = BLOCKS.register("ore_emerald_corrupt" , () -> new TerraBlockOre(Block.Properties.create(Material.ROCK).harvestLevel(2).hardnessAndResistance(3.0F)));
-    public static final RegistryObject<Block> ORE_EMERALD_CRIMSON  = BLOCKS.register("ore_emerald_crimson" , () -> new TerraBlockOre(Block.Properties.create(Material.ROCK).harvestLevel(2).hardnessAndResistance(3.0F)));
+    public static final RegistryObject<Block> ORE_RUBY_JUNGLE = BLOCKS.register("ore_ruby_jungle", () -> new TerraBlockOre(Block.Properties.create(Material.ROCK).harvestLevel(2).sound(SoundType.GROUND).hardnessAndResistance(3.0F)));
+    public static final RegistryObject<Block> ORE_EMERALD_CORRUPT = BLOCKS.register("ore_emerald_corrupt", () -> new TerraBlockOre(Block.Properties.create(Material.ROCK).harvestLevel(2).hardnessAndResistance(3.0F)));
+    public static final RegistryObject<Block> ORE_EMERALD_CRIMSON = BLOCKS.register("ore_emerald_crimson", () -> new TerraBlockOre(Block.Properties.create(Material.ROCK).harvestLevel(2).hardnessAndResistance(3.0F)));
     public static final RegistryObject<Block> ORE_EMERALD_HALLOWED = BLOCKS.register("ore_emerald_hallowed", () -> new TerraBlockOre(Block.Properties.create(Material.ROCK).harvestLevel(2).hardnessAndResistance(3.0F)));
-    public static final RegistryObject<Block> ORE_DIAMOND_CORRUPT  = BLOCKS.register("ore_diamond_corrupt" , () -> new TerraBlockOre(Block.Properties.create(Material.ROCK).harvestLevel(2).hardnessAndResistance(3.0F)));
-    public static final RegistryObject<Block> ORE_DIAMOND_CRIMSON  = BLOCKS.register("ore_diamond_crimson" , () -> new TerraBlockOre(Block.Properties.create(Material.ROCK).harvestLevel(2).hardnessAndResistance(3.0F)));
+    public static final RegistryObject<Block> ORE_EMERALD_JUNGLE = BLOCKS.register("ore_emerald_jungle", () -> new TerraBlockOre(Block.Properties.create(Material.ROCK).harvestLevel(2).sound(SoundType.GROUND).hardnessAndResistance(3.0F)));
+    public static final RegistryObject<Block> ORE_DIAMOND_CORRUPT = BLOCKS.register("ore_diamond_corrupt", () -> new TerraBlockOre(Block.Properties.create(Material.ROCK).harvestLevel(2).hardnessAndResistance(3.0F)));
+    public static final RegistryObject<Block> ORE_DIAMOND_CRIMSON = BLOCKS.register("ore_diamond_crimson", () -> new TerraBlockOre(Block.Properties.create(Material.ROCK).harvestLevel(2).hardnessAndResistance(3.0F)));
     public static final RegistryObject<Block> ORE_DIAMOND_HALLOWED = BLOCKS.register("ore_diamond_hallowed", () -> new TerraBlockOre(Block.Properties.create(Material.ROCK).harvestLevel(2).hardnessAndResistance(3.0F)));
+    public static final RegistryObject<Block> ORE_DIAMOND_JUNGLE = BLOCKS.register("ore_diamond_jungle", () -> new TerraBlockOre(Block.Properties.create(Material.ROCK).harvestLevel(2).sound(SoundType.GROUND).hardnessAndResistance(3.0F)));
 
     //Misc
-//    public static final RegistryObject<Block> MISC_CLOUD = null;
-//    public static final RegistryObject<Block> MISC_RAINCLOUD = null;
-//    public static final RegistryObject<Block> MISC_HIVE = null;
-//    public static final RegistryObject<Block> MISC_HONEY = null;
-//    public static final RegistryObject<Block> MISC_CRISPYHONEY = null;
-//    public static final RegistryObject<Block> SLIME_ALT = null;
-//    public static final RegistryObject<Block> SLIME_FROZEN = null;
-//    public static final RegistryObject<Block> SLIME_BOUNCY = null;
-//    public static final RegistryObject<Block> MISC_ASPHALT = null;
-//    public static final RegistryObject<Block> MISC_SHINGLE_BLUE = null;
-//    public static final RegistryObject<Block> MISC_SHINGLE_RED = null;
-//    public static final RegistryObject<Block> MISC_COG = null;
+    //    public static final RegistryObject<Block> MISC_CLOUD = null;
+    //    public static final RegistryObject<Block> MISC_RAINCLOUD = null;
+    //    public static final RegistryObject<Block> MISC_HIVE = null;
+    //    public static final RegistryObject<Block> MISC_HONEY = null;
+    //    public static final RegistryObject<Block> MISC_CRISPYHONEY = null;
+    //    public static final RegistryObject<Block> SLIME_ALT = null;
+    //    public static final RegistryObject<Block> SLIME_FROZEN = null;
+    //    public static final RegistryObject<Block> SLIME_BOUNCY = null;
+    //    public static final RegistryObject<Block> MISC_ASPHALT = null;
+    //    public static final RegistryObject<Block> MISC_SHINGLE_BLUE = null;
+    //    public static final RegistryObject<Block> MISC_SHINGLE_RED = null;
+    //    public static final RegistryObject<Block> MISC_COG = null;
     public static final RegistryObject<Block> MISC_CANDY_RED = BLOCKS.register("misc_candy_red", () -> new Block(Block.Properties.create(Material.ROCK).harvestLevel(2).hardnessAndResistance(3.0F)));
     public static final RegistryObject<Block> MISC_CANDY_GREEN = BLOCKS.register("misc_candy_green", () -> new Block(Block.Properties.create(Material.ROCK).harvestLevel(2).hardnessAndResistance(3.0F)));
-//    public static final RegistryObject<Block> MISC_BONE = null;
-//    public static final RegistryObject<Block> MISC_ROPE = null;
-//    public static final RegistryObject<Block> MISC_ROPE_VINE = null;
-//    public static final RegistryObject<Block> MISC_ROPE_WEB = null;
-//    public static final RegistryObject<Block> MISC_ROPE_SILK = null;
-//    public static final RegistryObject<Block> MISC_CHAIN = null;
+    //    public static final RegistryObject<Block> MISC_BONE = null;
+    //    public static final RegistryObject<Block> MISC_ROPE = null;
+    //    public static final RegistryObject<Block> MISC_ROPE_VINE = null;
+    //    public static final RegistryObject<Block> MISC_ROPE_WEB = null;
+    //    public static final RegistryObject<Block> MISC_ROPE_SILK = null;
+    //    public static final RegistryObject<Block> MISC_CHAIN = null;
 
     //Traps
-//    public static final RegistryObject<Block> TRAP_DART = null;
-//    public static final RegistryObject<Block> TRAP_SUPERDART = null;
-//    public static final RegistryObject<Block> TRAP_BALL = null;
-//    public static final RegistryObject<Block> TRAP_SPEAR = null;
-//    public static final RegistryObject<Block> TRAP_FLAME = null;
-//    public static final RegistryObject<Block> TRAP_SPIKE = null;
-//    public static final RegistryObject<Block> TRAP_SUPERSPIKE = null;
-//    public static final RegistryObject<Block> TRAP_GEYSER = null;
+    //    public static final RegistryObject<Block> TRAP_DART = null;
+    //    public static final RegistryObject<Block> TRAP_SUPERDART = null;
+    //    public static final RegistryObject<Block> TRAP_BALL = null;
+    //    public static final RegistryObject<Block> TRAP_SPEAR = null;
+    //    public static final RegistryObject<Block> TRAP_FLAME = null;
+    //    public static final RegistryObject<Block> TRAP_SPIKE = null;
+    //    public static final RegistryObject<Block> TRAP_SUPERSPIKE = null;
+    //    public static final RegistryObject<Block> TRAP_GEYSER = null;
 }

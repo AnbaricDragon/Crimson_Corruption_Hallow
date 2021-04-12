@@ -1,6 +1,9 @@
 package com.anbaric.terra_reforged.util.init;
 
+import com.anbaric.terra_reforged.features.landscape.TerraFeatureIceAndSnow;
 import com.anbaric.terra_reforged.features.landscape.TerraFeatureLakes;
+import com.anbaric.terra_reforged.features.landscape.TerraFeatureOres;
+import com.anbaric.terra_reforged.features.landscape.TerraFeatureThinIce;
 import com.anbaric.terra_reforged.features.structures.TerraFeatureDesertWell;
 import com.anbaric.terra_reforged.features.vegetation.*;
 import com.anbaric.terra_reforged.util.Reference;
@@ -14,6 +17,7 @@ public class TerraFeatureRegistry
 {
     public static final DeferredRegister<Feature<?>> FEATURES = DeferredRegister.create(ForgeRegistries.FEATURES, Reference.MODID);
 
+    public static final RegistryObject<TerraFeatureOres> TERRA_ORES = FEATURES.register("ore", TerraFeatureOres::new);
     public static final RegistryObject<TerraFeatureTreeBoreal> BOREAL_TREE = FEATURES.register("tree_boreal", TerraFeatureTreeBoreal::new);
     public static final RegistryObject<TerraFeatureTreePalm> PALM_TREE = FEATURES.register("tree_palm", TerraFeatureTreePalm::new);
     public static final RegistryObject<TerraFeatureTreeMahogany> MAHOGANY_TREE = FEATURES.register("tree_mahogany", TerraFeatureTreeMahogany::new);
@@ -28,6 +32,11 @@ public class TerraFeatureRegistry
     public static final RegistryObject<TerraFeatureLakes> LAKE_CORRUPT = FEATURES.register("lake_corrupt", () -> new TerraFeatureLakes(SpreadingHandler.EnumBiomeType.CORRUPT));
     public static final RegistryObject<TerraFeatureLakes> LAKE_CRIMSON = FEATURES.register("lake_crimson", () -> new TerraFeatureLakes(SpreadingHandler.EnumBiomeType.CRIMSON));
     public static final RegistryObject<TerraFeatureLakes> LAKE_HALLOWED = FEATURES.register("lake_hallowed", () -> new TerraFeatureLakes(SpreadingHandler.EnumBiomeType.HALLOWED));
+    public static final RegistryObject<TerraFeatureLakes> LAKE_JUNGLE = FEATURES.register("lake_jungle", () -> new TerraFeatureLakes(SpreadingHandler.EnumBiomeType.JUNGLE));
+    public static final RegistryObject<TerraFeatureIceAndSnow> SNOW_LAYER_CORRUPT = FEATURES.register("snow_layer_corrupt", () -> new TerraFeatureIceAndSnow(SpreadingHandler.EnumBiomeType.CORRUPT));
+    public static final RegistryObject<TerraFeatureIceAndSnow> SNOW_LAYER_CRIMSON = FEATURES.register("snow_layer_crimson", () -> new TerraFeatureIceAndSnow(SpreadingHandler.EnumBiomeType.CRIMSON));
+    public static final RegistryObject<TerraFeatureIceAndSnow> SNOW_LAYER_HALLOWED = FEATURES.register("snow_layer_hallowed", () -> new TerraFeatureIceAndSnow(SpreadingHandler.EnumBiomeType.HALLOWED));
+    public static final RegistryObject<TerraFeatureThinIce> THIN_ICE = FEATURES.register("thin_ice", TerraFeatureThinIce::new);
     public static final RegistryObject<TerraFeatureDesertWell> DESERT_WELL_CORRUPT = FEATURES.register("desert_well_corrupt", () -> new TerraFeatureDesertWell(SpreadingHandler.EnumBiomeType.CORRUPT));
     public static final RegistryObject<TerraFeatureDesertWell> DESERT_WELL_CRIMSON = FEATURES.register("desert_well_crimson", () -> new TerraFeatureDesertWell(SpreadingHandler.EnumBiomeType.CRIMSON));
     public static final RegistryObject<TerraFeatureDesertWell> DESERT_WELL_HALLOWED = FEATURES.register("desert_well_hallowed", () -> new TerraFeatureDesertWell(SpreadingHandler.EnumBiomeType.HALLOWED));

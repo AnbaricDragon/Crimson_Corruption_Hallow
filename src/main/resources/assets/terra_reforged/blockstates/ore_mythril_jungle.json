@@ -1,0 +1,6 @@
+{
+    "multipart": [
+        { "apply": { "model": "terra_reforged:block/ore_mythril" }},		
+				{ "apply": { "model": "terra_reforged:block/ore_metal_jungle" }}
+    ]
+}

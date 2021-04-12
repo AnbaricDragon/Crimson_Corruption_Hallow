@@ -1,6 +1,7 @@
 {
     "replace": false,
     "values": [
+        "minecraft:grass_block",
         "minecraft:snow_block",
         "terra_reforged:snow_corrupt",
         "terra_reforged:snow_crimson",

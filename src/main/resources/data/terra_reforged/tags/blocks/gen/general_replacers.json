@@ -6,6 +6,6 @@
         "#terra_reforged:gen/corrupt_replacers",
         "#terra_reforged:gen/crimson_replacers",
         "#terra_reforged:gen/hallowed_replacers",
-        "terra_reforged:soil_mud"
+        "#terra_reforged:gen/jungle_replacers"
     ]
 }

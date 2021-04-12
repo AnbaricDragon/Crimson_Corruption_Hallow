@@ -20,9 +20,7 @@
         }
     },
     "starts": [
-        "minecraft:jungle_pyramid",
-        "minecraft:mineshaft",
-        "minecraft:stronghold"
+        "minecraft:jungle_pyramid"
     ],
     "spawners": {
         "monster": [
@@ -147,8 +145,7 @@
     "features": [
         [],
         [
-            "minecraft:lake_water",
-            "minecraft:lake_lava"
+            "terra_reforged:lake_jungle_water_gen"
         ],
         [],
         [
@@ -162,36 +159,39 @@
             "terra_reforged:ore_granite_gen",
             "terra_reforged:ore_diorite_gen",
             "terra_reforged:ore_andesite_gen",
-            "terra_reforged:ore_pure_coal_gen",
-            "terra_reforged:ore_pure_iron_gen",
-            "terra_reforged:ore_pure_gold_gen",
-            "terra_reforged:ore_pure_redstone_gen",
-            "terra_reforged:ore_pure_diamond_gen",
-            "terra_reforged:ore_pure_lapis_gen",
-            "terra_reforged:ore_pure_tin_gen",
-            "terra_reforged:ore_pure_copper_gen",
-            "terra_reforged:ore_pure_lead_gen",
-            "terra_reforged:ore_pure_silver_gen",
-            "terra_reforged:ore_pure_tungsten_gen",
-            "terra_reforged:ore_pure_platinum_gen",
-            "terra_reforged:ore_pure_cobalt_gen",
-            "terra_reforged:ore_pure_palladium_gen",
-            "terra_reforged:ore_pure_mythril_gen",
-            "terra_reforged:ore_pure_orichalcum_gen",
-            "terra_reforged:ore_pure_adamantite_gen",
-            "terra_reforged:ore_pure_titanium_gen",
+            "terra_reforged:ore_coal_gen",
+            "terra_reforged:ore_iron_gen",
+            "terra_reforged:ore_gold_gen",
+            "terra_reforged:ore_redstone_gen",
+            "terra_reforged:ore_diamond_gen",
+            "terra_reforged:ore_lapis_gen",
+            "terra_reforged:ore_tin_gen",
+            "terra_reforged:ore_copper_gen",
+            "terra_reforged:ore_lead_gen",
+            "terra_reforged:ore_silver_gen",
+            "terra_reforged:ore_tungsten_gen",
+            "terra_reforged:ore_platinum_gen",
+            "terra_reforged:ore_cobalt_gen",
+            "terra_reforged:ore_palladium_gen",
+            "terra_reforged:ore_mythril_gen",
+            "terra_reforged:ore_orichalcum_gen",
+            "terra_reforged:ore_adamantite_gen",
+            "terra_reforged:ore_titanium_gen",
             "terra_reforged:ore_chlorophyte_gen",
-            "terra_reforged:ore_pure_amber_gen",
-            "terra_reforged:ore_pure_ruby_gen",
-            "terra_reforged:ore_pure_sapphire_gen",
-            "terra_reforged:ore_pure_topaz_gen",
-            "terra_reforged:ore_pure_amethyst_gen"
+            "terra_reforged:ore_amber_gen",
+            "terra_reforged:ore_ruby_gen",
+            "terra_reforged:ore_sapphire_gen",
+            "terra_reforged:ore_topaz_gen",
+            "terra_reforged:ore_amethyst_gen"
         ],
         [],
         [
+            "terra_reforged:plant_blinkroot_gen",
+            "terra_reforged:plant_moonglow_gen",
             "minecraft:bamboo_light",
             "terra_reforged:tree_mahogany_gen",
             "minecraft:flower_warm",
+            "terra_reforged:thorn_jungle_gen",
             "minecraft:patch_grass_jungle",
             "minecraft:brown_mushroom_normal",
             "minecraft:red_mushroom_normal",

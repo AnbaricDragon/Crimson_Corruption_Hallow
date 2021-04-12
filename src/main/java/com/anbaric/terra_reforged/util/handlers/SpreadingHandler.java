@@ -12,7 +12,8 @@ public class SpreadingHandler
         PURE("pure"),
         CORRUPT("corrupt"),
         CRIMSON("crimson"),
-        HALLOWED("hallowed");
+        HALLOWED("hallowed"),
+        JUNGLE("jungle");
 
         private final String biome;
 
@@ -27,7 +28,8 @@ public class SpreadingHandler
         PURE("pure", EnumBiomeType.PURE),
         CORRUPT("corrupt", EnumBiomeType.CORRUPT),
         CRIMSON("crimson", EnumBiomeType.CRIMSON),
-        HALLOWED("hallowed", EnumBiomeType.HALLOWED);
+        HALLOWED("hallowed", EnumBiomeType.HALLOWED),
+        JUNGLE("jungle", EnumBiomeType.JUNGLE);
 
         private final String name;
         private final EnumBiomeType biome;
@@ -58,9 +60,9 @@ public class SpreadingHandler
 
     public enum EnumBiomeBlockType
     {
-        GRASS(Blocks.GRASS_BLOCK, TerraBlockRegistry.GRASS_CORRUPT.get(), TerraBlockRegistry.GRASS_CRIMSON.get(), TerraBlockRegistry.GRASS_HALLOWED.get()),
-        GRASSJUNGLE(TerraBlockRegistry.GRASS_JUNGLE.get(), TerraBlockRegistry.SOIL_MUD.get(), TerraBlockRegistry.SOIL_MUD.get(), TerraBlockRegistry.GRASS_JUNGLE.get()),
-        MUD(TerraBlockRegistry.SOIL_MUD.get(), Blocks.DIRT, Blocks.DIRT, TerraBlockRegistry.SOIL_MUD.get()),
+        GRASS(Blocks.GRASS_BLOCK, TerraBlockRegistry.GRASS_CORRUPT.get(), TerraBlockRegistry.GRASS_CRIMSON.get(), TerraBlockRegistry.GRASS_HALLOWED.get(), Blocks.GRASS_BLOCK),
+        GRASSJUNGLE(TerraBlockRegistry.GRASS_JUNGLE.get(), TerraBlockRegistry.SOIL_MUD.get(), TerraBlockRegistry.SOIL_MUD.get(), TerraBlockRegistry.GRASS_JUNGLE.get(), TerraBlockRegistry.GRASS_JUNGLE.get()),
+        MUD(TerraBlockRegistry.SOIL_MUD.get(), Blocks.DIRT, Blocks.DIRT, TerraBlockRegistry.SOIL_MUD.get(), TerraBlockRegistry.GRASS_JUNGLE.get()),
         SAND(Blocks.SAND, TerraBlockRegistry.SAND_EBON.get(), TerraBlockRegistry.SAND_CRIM.get(), TerraBlockRegistry.SAND_PEARL.get()),
         HARDSAND(TerraBlockRegistry.SAND_HARD.get(), TerraBlockRegistry.SAND_HARDEBON.get(), TerraBlockRegistry.SAND_HARDCRIM.get(), TerraBlockRegistry.SAND_HARDPEARL.get()),
         SANDSTONE(Blocks.SANDSTONE, TerraBlockRegistry.SANDSTONE_EBON.get(), TerraBlockRegistry.SANDSTONE_CRIM.get(), TerraBlockRegistry.SANDSTONE_PEARL.get()),
@@ -79,32 +81,32 @@ public class SpreadingHandler
         CHISELEDSTONEBRICK(Blocks.CHISELED_STONE_BRICKS, TerraBlockRegistry.STONEBRICK_EBON_CHISELED.get(), TerraBlockRegistry.STONEBRICK_CRIM_CHISELED.get(), TerraBlockRegistry.STONEBRICK_PEARL_CHISELED.get()),
         MOSSYSTONEBRICK(Blocks.MOSSY_STONE_BRICKS, TerraBlockRegistry.STONEBRICK_EBON_MOSSY.get(), TerraBlockRegistry.STONEBRICK_CRIM_MOSSY.get(), TerraBlockRegistry.STONEBRICK_PEARL_MOSSY.get()),
         CACTUS(Blocks.CACTUS, TerraBlockRegistry.CACTUS_EBON.get(), TerraBlockRegistry.CACTUS_CRIM.get(), TerraBlockRegistry.CACTUS_PEARL.get()),
-        ORECOPPER(TerraBlockRegistry.ORE_COPPER_PURE.get(), TerraBlockRegistry.ORE_COPPER_CORRUPT.get(), TerraBlockRegistry.ORE_COPPER_CRIMSON.get(), TerraBlockRegistry.ORE_COPPER_HALLOWED.get()),
-        ORETIN(TerraBlockRegistry.ORE_TIN_PURE.get(), TerraBlockRegistry.ORE_TIN_CORRUPT.get(), TerraBlockRegistry.ORE_TIN_CRIMSON.get(), TerraBlockRegistry.ORE_TIN_HALLOWED.get()),
-        ORELEAD(TerraBlockRegistry.ORE_LEAD_PURE.get(), TerraBlockRegistry.ORE_LEAD_CORRUPT.get(), TerraBlockRegistry.ORE_LEAD_CRIMSON.get(), TerraBlockRegistry.ORE_LEAD_HALLOWED.get()),
-        OREIRON(Blocks.IRON_ORE, TerraBlockRegistry.ORE_IRON_CORRUPT.get(), TerraBlockRegistry.ORE_IRON_CRIMSON.get(), TerraBlockRegistry.ORE_IRON_HALLOWED.get()),
-        ORESILVER(TerraBlockRegistry.ORE_SILVER_PURE.get(), TerraBlockRegistry.ORE_SILVER_CORRUPT.get(), TerraBlockRegistry.ORE_SILVER_CRIMSON.get(), TerraBlockRegistry.ORE_SILVER_HALLOWED.get()),
-        ORETUNGSTEN(TerraBlockRegistry.ORE_TUNGSTEN_PURE.get(), TerraBlockRegistry.ORE_TUNGSTEN_CORRUPT.get(), TerraBlockRegistry.ORE_TUNGSTEN_CRIMSON.get(), TerraBlockRegistry.ORE_TUNGSTEN_HALLOWED.get()),
-        OREGOLD(Blocks.GOLD_ORE, TerraBlockRegistry.ORE_GOLD_CORRUPT.get(), TerraBlockRegistry.ORE_GOLD_CRIMSON.get(), TerraBlockRegistry.ORE_GOLD_HALLOWED.get()),
-        OREPLATINUM(TerraBlockRegistry.ORE_PLATINUM_PURE.get(), TerraBlockRegistry.ORE_PLATINUM_CORRUPT.get(), TerraBlockRegistry.ORE_PLATINUM_CRIMSON.get(), TerraBlockRegistry.ORE_PLATINUM_HALLOWED.get()),
-        OREDEMONITE(TerraBlockRegistry.ORE_DEMONITE_PURE.get(), TerraBlockRegistry.ORE_DEMONITE_CORRUPT.get(), TerraBlockRegistry.ORE_DEMONITE_CRIMSON.get(), TerraBlockRegistry.ORE_DEMONITE_HALLOWED.get()),
-        ORECRIMTANE(TerraBlockRegistry.ORE_CRIMTANE_PURE.get(), TerraBlockRegistry.ORE_CRIMTANE_CORRUPT.get(), TerraBlockRegistry.ORE_CRIMTANE_CRIMSON.get(), TerraBlockRegistry.ORE_CRIMTANE_HALLOWED.get()),
-        ORECOBALT(TerraBlockRegistry.ORE_COBALT_PURE.get(), TerraBlockRegistry.ORE_COBALT_CORRUPT.get(), TerraBlockRegistry.ORE_COBALT_CRIMSON.get(), TerraBlockRegistry.ORE_COBALT_HALLOWED.get()),
-        OREPALLADIUM(TerraBlockRegistry.ORE_PALLADIUM_PURE.get(), TerraBlockRegistry.ORE_PALLADIUM_CORRUPT.get(), TerraBlockRegistry.ORE_PALLADIUM_CRIMSON.get(), TerraBlockRegistry.ORE_PALLADIUM_HALLOWED.get()),
-        OREMYTHRIL(TerraBlockRegistry.ORE_MYTHRIL_PURE.get(), TerraBlockRegistry.ORE_MYTHRIL_CORRUPT.get(), TerraBlockRegistry.ORE_MYTHRIL_CRIMSON.get(), TerraBlockRegistry.ORE_MYTHRIL_HALLOWED.get()),
-        OREORICHALCUM(TerraBlockRegistry.ORE_ORICHALCUM_PURE.get(), TerraBlockRegistry.ORE_ORICHALCUM_CORRUPT.get(), TerraBlockRegistry.ORE_ORICHALCUM_CRIMSON.get(), TerraBlockRegistry.ORE_ORICHALCUM_HALLOWED.get()),
-        OREADAMANTITE(TerraBlockRegistry.ORE_ADAMANTITE_PURE.get(), TerraBlockRegistry.ORE_ADAMANTITE_CORRUPT.get(), TerraBlockRegistry.ORE_ADAMANTITE_CRIMSON.get(), TerraBlockRegistry.ORE_ADAMANTITE_HALLOWED.get()),
-        ORETITANIUM(TerraBlockRegistry.ORE_TITANIUM_PURE.get(), TerraBlockRegistry.ORE_TITANIUM_CORRUPT.get(), TerraBlockRegistry.ORE_TITANIUM_CRIMSON.get(), TerraBlockRegistry.ORE_TITANIUM_HALLOWED.get()),
-        ORECOAL(Blocks.COAL_ORE, TerraBlockRegistry.ORE_COAL_CORRUPT.get(), TerraBlockRegistry.ORE_COAL_CRIMSON.get(), TerraBlockRegistry.ORE_COAL_HALLOWED.get()),
-        ORELAPIS(Blocks.LAPIS_ORE, TerraBlockRegistry.ORE_LAPIS_CORRUPT.get(), TerraBlockRegistry.ORE_LAPIS_CRIMSON.get(), TerraBlockRegistry.ORE_LAPIS_HALLOWED.get()),
-        OREREDSTONE(Blocks.REDSTONE_ORE, TerraBlockRegistry.ORE_REDSTONE_CORRUPT.get(), TerraBlockRegistry.ORE_REDSTONE_CRIMSON.get(), TerraBlockRegistry.ORE_REDSTONE_HALLOWED.get()),
-        OREAMBER(TerraBlockRegistry.ORE_AMBER_PURE.get(), TerraBlockRegistry.ORE_AMBER_CORRUPT.get(), TerraBlockRegistry.ORE_AMBER_CRIMSON.get(), TerraBlockRegistry.ORE_AMBER_HALLOWED.get()),
-        OREAMETHYST(TerraBlockRegistry.ORE_AMETHYST_PURE.get(), TerraBlockRegistry.ORE_AMETHYST_CORRUPT.get(), TerraBlockRegistry.ORE_AMETHYST_CRIMSON.get(), TerraBlockRegistry.ORE_AMETHYST_HALLOWED.get()),
-        ORETOPAZ(TerraBlockRegistry.ORE_TOPAZ_PURE.get(), TerraBlockRegistry.ORE_TOPAZ_CORRUPT.get(), TerraBlockRegistry.ORE_TOPAZ_CRIMSON.get(), TerraBlockRegistry.ORE_TOPAZ_HALLOWED.get()),
-        ORESAPPHIRE(TerraBlockRegistry.ORE_SAPPHIRE_PURE.get(), TerraBlockRegistry.ORE_SAPPHIRE_CORRUPT.get(), TerraBlockRegistry.ORE_SAPPHIRE_CRIMSON.get(), TerraBlockRegistry.ORE_SAPPHIRE_HALLOWED.get()),
-        ORERUBY(TerraBlockRegistry.ORE_RUBY_PURE.get(), TerraBlockRegistry.ORE_RUBY_CORRUPT.get(), TerraBlockRegistry.ORE_RUBY_CRIMSON.get(), TerraBlockRegistry.ORE_RUBY_HALLOWED.get()),
-        OREEMERALD(Blocks.EMERALD_ORE, TerraBlockRegistry.ORE_EMERALD_CORRUPT.get(), TerraBlockRegistry.ORE_EMERALD_CRIMSON.get(), TerraBlockRegistry.ORE_EMERALD_HALLOWED.get()),
-        OREDIAMOND(Blocks.DIAMOND_ORE, TerraBlockRegistry.ORE_DIAMOND_CORRUPT.get(), TerraBlockRegistry.ORE_DIAMOND_CRIMSON.get(), TerraBlockRegistry.ORE_DIAMOND_HALLOWED.get()),
+        ORECOPPER(TerraBlockRegistry.ORE_COPPER_PURE.get(), TerraBlockRegistry.ORE_COPPER_CORRUPT.get(), TerraBlockRegistry.ORE_COPPER_CRIMSON.get(), TerraBlockRegistry.ORE_COPPER_HALLOWED.get(), TerraBlockRegistry.ORE_COPPER_JUNGLE.get()),
+        ORETIN(TerraBlockRegistry.ORE_TIN_PURE.get(), TerraBlockRegistry.ORE_TIN_CORRUPT.get(), TerraBlockRegistry.ORE_TIN_CRIMSON.get(), TerraBlockRegistry.ORE_TIN_HALLOWED.get(), TerraBlockRegistry.ORE_TIN_JUNGLE.get()),
+        ORELEAD(TerraBlockRegistry.ORE_LEAD_PURE.get(), TerraBlockRegistry.ORE_LEAD_CORRUPT.get(), TerraBlockRegistry.ORE_LEAD_CRIMSON.get(), TerraBlockRegistry.ORE_LEAD_HALLOWED.get(), TerraBlockRegistry.ORE_LEAD_JUNGLE.get()),
+        OREIRON(Blocks.IRON_ORE, TerraBlockRegistry.ORE_IRON_CORRUPT.get(), TerraBlockRegistry.ORE_IRON_CRIMSON.get(), TerraBlockRegistry.ORE_IRON_HALLOWED.get(), TerraBlockRegistry.ORE_IRON_JUNGLE.get()),
+        ORESILVER(TerraBlockRegistry.ORE_SILVER_PURE.get(), TerraBlockRegistry.ORE_SILVER_CORRUPT.get(), TerraBlockRegistry.ORE_SILVER_CRIMSON.get(), TerraBlockRegistry.ORE_SILVER_HALLOWED.get(), TerraBlockRegistry.ORE_SILVER_JUNGLE.get()),
+        ORETUNGSTEN(TerraBlockRegistry.ORE_TUNGSTEN_PURE.get(), TerraBlockRegistry.ORE_TUNGSTEN_CORRUPT.get(), TerraBlockRegistry.ORE_TUNGSTEN_CRIMSON.get(), TerraBlockRegistry.ORE_TUNGSTEN_HALLOWED.get(), TerraBlockRegistry.ORE_TUNGSTEN_JUNGLE.get()),
+        OREGOLD(Blocks.GOLD_ORE, TerraBlockRegistry.ORE_GOLD_CORRUPT.get(), TerraBlockRegistry.ORE_GOLD_CRIMSON.get(), TerraBlockRegistry.ORE_GOLD_HALLOWED.get(), TerraBlockRegistry.ORE_GOLD_JUNGLE.get()),
+        OREPLATINUM(TerraBlockRegistry.ORE_PLATINUM_PURE.get(), TerraBlockRegistry.ORE_PLATINUM_CORRUPT.get(), TerraBlockRegistry.ORE_PLATINUM_CRIMSON.get(), TerraBlockRegistry.ORE_PLATINUM_HALLOWED.get(), TerraBlockRegistry.ORE_PLATINUM_JUNGLE.get()),
+        OREDEMONITE(TerraBlockRegistry.ORE_DEMONITE_PURE.get(), TerraBlockRegistry.ORE_DEMONITE_CORRUPT.get(), TerraBlockRegistry.ORE_DEMONITE_CRIMSON.get(), TerraBlockRegistry.ORE_DEMONITE_HALLOWED.get(), TerraBlockRegistry.ORE_DEMONITE_JUNGLE.get()),
+        ORECRIMTANE(TerraBlockRegistry.ORE_CRIMTANE_PURE.get(), TerraBlockRegistry.ORE_CRIMTANE_CORRUPT.get(), TerraBlockRegistry.ORE_CRIMTANE_CRIMSON.get(), TerraBlockRegistry.ORE_CRIMTANE_HALLOWED.get(), TerraBlockRegistry.ORE_CRIMTANE_JUNGLE.get()),
+        ORECOBALT(TerraBlockRegistry.ORE_COBALT_PURE.get(), TerraBlockRegistry.ORE_COBALT_CORRUPT.get(), TerraBlockRegistry.ORE_COBALT_CRIMSON.get(), TerraBlockRegistry.ORE_COBALT_HALLOWED.get(), TerraBlockRegistry.ORE_COBALT_JUNGLE.get()),
+        OREPALLADIUM(TerraBlockRegistry.ORE_PALLADIUM_PURE.get(), TerraBlockRegistry.ORE_PALLADIUM_CORRUPT.get(), TerraBlockRegistry.ORE_PALLADIUM_CRIMSON.get(), TerraBlockRegistry.ORE_PALLADIUM_HALLOWED.get(), TerraBlockRegistry.ORE_PALLADIUM_JUNGLE.get()),
+        OREMYTHRIL(TerraBlockRegistry.ORE_MYTHRIL_PURE.get(), TerraBlockRegistry.ORE_MYTHRIL_CORRUPT.get(), TerraBlockRegistry.ORE_MYTHRIL_CRIMSON.get(), TerraBlockRegistry.ORE_MYTHRIL_HALLOWED.get(), TerraBlockRegistry.ORE_MYTHRIL_JUNGLE.get()),
+        OREORICHALCUM(TerraBlockRegistry.ORE_ORICHALCUM_PURE.get(), TerraBlockRegistry.ORE_ORICHALCUM_CORRUPT.get(), TerraBlockRegistry.ORE_ORICHALCUM_CRIMSON.get(), TerraBlockRegistry.ORE_ORICHALCUM_HALLOWED.get(), TerraBlockRegistry.ORE_ORICHALCUM_JUNGLE.get()),
+        OREADAMANTITE(TerraBlockRegistry.ORE_ADAMANTITE_PURE.get(), TerraBlockRegistry.ORE_ADAMANTITE_CORRUPT.get(), TerraBlockRegistry.ORE_ADAMANTITE_CRIMSON.get(), TerraBlockRegistry.ORE_ADAMANTITE_HALLOWED.get(), TerraBlockRegistry.ORE_ADAMANTITE_JUNGLE.get()),
+        ORETITANIUM(TerraBlockRegistry.ORE_TITANIUM_PURE.get(), TerraBlockRegistry.ORE_TITANIUM_CORRUPT.get(), TerraBlockRegistry.ORE_TITANIUM_CRIMSON.get(), TerraBlockRegistry.ORE_TITANIUM_HALLOWED.get(), TerraBlockRegistry.ORE_TITANIUM_JUNGLE.get()),
+        ORECOAL(Blocks.COAL_ORE, TerraBlockRegistry.ORE_COAL_CORRUPT.get(), TerraBlockRegistry.ORE_COAL_CRIMSON.get(), TerraBlockRegistry.ORE_COAL_HALLOWED.get(), TerraBlockRegistry.ORE_COAL_JUNGLE.get()),
+        ORELAPIS(Blocks.LAPIS_ORE, TerraBlockRegistry.ORE_LAPIS_CORRUPT.get(), TerraBlockRegistry.ORE_LAPIS_CRIMSON.get(), TerraBlockRegistry.ORE_LAPIS_HALLOWED.get(), TerraBlockRegistry.ORE_LAPIS_JUNGLE.get()),
+        OREREDSTONE(Blocks.REDSTONE_ORE, TerraBlockRegistry.ORE_REDSTONE_CORRUPT.get(), TerraBlockRegistry.ORE_REDSTONE_CRIMSON.get(), TerraBlockRegistry.ORE_REDSTONE_HALLOWED.get(), TerraBlockRegistry.ORE_REDSTONE_JUNGLE.get()),
+        OREAMBER(TerraBlockRegistry.ORE_AMBER_PURE.get(), TerraBlockRegistry.ORE_AMBER_CORRUPT.get(), TerraBlockRegistry.ORE_AMBER_CRIMSON.get(), TerraBlockRegistry.ORE_AMBER_HALLOWED.get(), TerraBlockRegistry.ORE_AMBER_JUNGLE.get()),
+        OREAMETHYST(TerraBlockRegistry.ORE_AMETHYST_PURE.get(), TerraBlockRegistry.ORE_AMETHYST_CORRUPT.get(), TerraBlockRegistry.ORE_AMETHYST_CRIMSON.get(), TerraBlockRegistry.ORE_AMETHYST_HALLOWED.get(), TerraBlockRegistry.ORE_AMETHYST_JUNGLE.get()),
+        ORETOPAZ(TerraBlockRegistry.ORE_TOPAZ_PURE.get(), TerraBlockRegistry.ORE_TOPAZ_CORRUPT.get(), TerraBlockRegistry.ORE_TOPAZ_CRIMSON.get(), TerraBlockRegistry.ORE_TOPAZ_HALLOWED.get(), TerraBlockRegistry.ORE_TOPAZ_JUNGLE.get()),
+        ORESAPPHIRE(TerraBlockRegistry.ORE_SAPPHIRE_PURE.get(), TerraBlockRegistry.ORE_SAPPHIRE_CORRUPT.get(), TerraBlockRegistry.ORE_SAPPHIRE_CRIMSON.get(), TerraBlockRegistry.ORE_SAPPHIRE_HALLOWED.get(), TerraBlockRegistry.ORE_SAPPHIRE_JUNGLE.get()),
+        ORERUBY(TerraBlockRegistry.ORE_RUBY_PURE.get(), TerraBlockRegistry.ORE_RUBY_CORRUPT.get(), TerraBlockRegistry.ORE_RUBY_CRIMSON.get(), TerraBlockRegistry.ORE_RUBY_HALLOWED.get(), TerraBlockRegistry.ORE_RUBY_JUNGLE.get()),
+        OREEMERALD(Blocks.EMERALD_ORE, TerraBlockRegistry.ORE_EMERALD_CORRUPT.get(), TerraBlockRegistry.ORE_EMERALD_CRIMSON.get(), TerraBlockRegistry.ORE_EMERALD_HALLOWED.get(), TerraBlockRegistry.ORE_EMERALD_JUNGLE.get()),
+        OREDIAMOND(Blocks.DIAMOND_ORE, TerraBlockRegistry.ORE_DIAMOND_CORRUPT.get(), TerraBlockRegistry.ORE_DIAMOND_CRIMSON.get(), TerraBlockRegistry.ORE_DIAMOND_HALLOWED.get(), TerraBlockRegistry.ORE_DIAMOND_JUNGLE.get()),
         STAIRSTONE(Blocks.STONE_STAIRS, TerraBlockRegistry.STAIR_STONE_EBON.get(), TerraBlockRegistry.STAIR_STONE_CRIM.get(), TerraBlockRegistry.STAIR_STONE_PEARL.get()),
         STAIRBRICKSTONE(Blocks.STONE_BRICK_STAIRS, TerraBlockRegistry.STAIR_STONEBRICK_EBON.get(), TerraBlockRegistry.STAIR_STONEBRICK_CRIM.get(), TerraBlockRegistry.STAIR_STONEBRICK_PEARL.get()),
         STAIRBRICKMOSSYSTONE(Blocks.MOSSY_STONE_BRICK_STAIRS, TerraBlockRegistry.STAIR_STONEBRICK_EBON_MOSSY.get(), TerraBlockRegistry.STAIR_STONEBRICK_CRIM_MOSSY.get(), TerraBlockRegistry.STAIR_STONEBRICK_PEARL_MOSSY.get()),
@@ -123,7 +125,16 @@ public class SpreadingHandler
         SLABSANDSTONESMOOTH(Blocks.SMOOTH_SANDSTONE_SLAB, TerraBlockRegistry.SLAB_SANDSTONE_EBON_SMOOTH.get(), TerraBlockRegistry.SLAB_SANDSTONE_CRIM_SMOOTH.get(), TerraBlockRegistry.SLAB_SANDSTONE_PEARL_SMOOTH.get()),
         REEDS(Blocks.SUGAR_CANE, TerraBlockRegistry.REED_CORRUPT.get(), TerraBlockRegistry.REED_CRIMSON.get(), TerraBlockRegistry.REED_HALLOWED.get());
 
-        public Block pure, corrupt, crimson, hallowed;
+        public Block pure, corrupt, crimson, hallowed, jungle;
+
+        EnumBiomeBlockType(Block pure, Block corrupt, Block crimson, Block hallowed, Block jungle)
+        {
+            this.pure = pure;
+            this.corrupt = corrupt;
+            this.crimson = crimson;
+            this.hallowed = hallowed;
+            this.jungle = jungle;
+        }
 
         EnumBiomeBlockType(Block pure, Block corrupt, Block crimson, Block hallowed)
         {
@@ -131,6 +142,7 @@ public class SpreadingHandler
             this.corrupt = corrupt;
             this.crimson = crimson;
             this.hallowed = hallowed;
+            this.jungle = pure;
         }
 
         public Block getBiomeBlock(EnumBiomeType biome)
@@ -143,6 +155,8 @@ public class SpreadingHandler
                     return this.crimson;
                 case "hallowed":
                     return this.hallowed;
+                case "jungle":
+                    return this.jungle;
                 default:
                     return this.pure;
             }

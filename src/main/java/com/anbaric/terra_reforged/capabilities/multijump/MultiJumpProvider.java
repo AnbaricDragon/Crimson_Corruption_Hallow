@@ -1,5 +1,6 @@
 package com.anbaric.terra_reforged.capabilities.multijump;
 
+import com.anbaric.terra_reforged.capabilities.hardmode.TerraCapabilityWorldProgression;
 import net.minecraft.nbt.CompoundNBT;
 import net.minecraft.nbt.INBT;
 import net.minecraft.util.Direction;
@@ -29,7 +30,7 @@ public class MultiJumpProvider implements ICapabilitySerializable<INBT>
         }
         else
         {
-            return (CompoundNBT) TerraCapabilityMultiJump.MULTI_JUMP_CAPABILITY.writeNBT(defaultMultiJump, null);
+            return TerraCapabilityMultiJump.MULTI_JUMP_CAPABILITY.writeNBT(defaultMultiJump, null);
         }
     }
 

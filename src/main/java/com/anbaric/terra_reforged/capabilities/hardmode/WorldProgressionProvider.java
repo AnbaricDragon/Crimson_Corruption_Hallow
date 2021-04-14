@@ -20,17 +20,23 @@ public class WorldProgressionProvider implements ICapabilitySerializable<INBT>
     @Override
     public <T> LazyOptional<T> getCapability(Capability<T> capability, Direction side)
     {
-        return optionalWorldProgression.cast();
+        if (capability == TerraCapabilityWorldProgression.WORLD_PROGRESSION_CAPABILITY)
+        {
+            return optionalWorldProgression.cast();
+        }
+        else return LazyOptional.empty();
     }
 
     @Override
     public INBT serializeNBT()
     {
-        if (TerraCapabilityWorldProgression.WORLD_PROGRESSION_CAPABILITY == null) {
+        if (TerraCapabilityWorldProgression.WORLD_PROGRESSION_CAPABILITY == null)
+        {
             return new CompoundNBT();
         }
-        else {
-            return (CompoundNBT) TerraCapabilityWorldProgression.WORLD_PROGRESSION_CAPABILITY.writeNBT(defaultWorldProgression, null);
+        else
+        {
+            return TerraCapabilityWorldProgression.WORLD_PROGRESSION_CAPABILITY.writeNBT(defaultWorldProgression, null);
         }
     }
 

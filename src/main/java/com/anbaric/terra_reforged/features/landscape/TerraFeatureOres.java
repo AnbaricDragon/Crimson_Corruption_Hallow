@@ -44,10 +44,9 @@ public class TerraFeatureOres extends Feature<OreFeatureConfig>
     @Override
     public boolean generate(ISeedReader reader, ChunkGenerator generator, Random rand, BlockPos pos, OreFeatureConfig config)
     {
-        AtomicInteger altarsBroken = new AtomicInteger();
-        reader.getWorld().getCapability(TerraCapabilityWorldProgression.WORLD_PROGRESSION_CAPABILITY).ifPresent(cap -> altarsBroken.set(cap.getAltarsBroken())
-        );
+AtomicInteger altarsBroken = new AtomicInteger();
         Block inputBlock = config.state.getBlock();
+        reader.getWorld().getCapability(TerraCapabilityWorldProgression.WORLD_PROGRESSION_CAPABILITY).ifPresent(cap -> altarsBroken.set(cap.getAltarsBroken()));
 
         int newSize = isAltarOre(inputBlock) ? Math.min((int) (altarsBroken.get() * getDebuff(inputBlock)), config.size) : config.size;
         if (isAltarOre(inputBlock)) { System.out.println(newSize + " " + inputBlock); }

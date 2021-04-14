@@ -1,5 +1,7 @@
 package com.anbaric.terra_reforged;
 
+import com.anbaric.terra_reforged.capabilities.hardmode.TerraCapabilityWorldProgression;
+import com.anbaric.terra_reforged.capabilities.multijump.TerraCapabilityMultiJump;
 import com.anbaric.terra_reforged.util.Reference;
 import com.anbaric.terra_reforged.util.events.*;
 import com.anbaric.terra_reforged.util.handlers.*;
@@ -80,7 +82,7 @@ import java.util.stream.Collectors;
         event.enqueueWork(BiomeHandler::addBiomes);
         event.enqueueWork(CarverHandler::addCarvers);
         NetworkHandler.register();
-
+        TerraCapabilityWorldProgression.register();
         FeatureGenHandler.configureFeatures();
 
         //        TerraVanillaCompat.setupStripping();

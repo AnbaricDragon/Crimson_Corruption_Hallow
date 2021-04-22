@@ -27,9 +27,9 @@ public class TerraTileEntityHeartLantern extends TileEntity implements ITickable
     @Override
     public void tick()
     {
-        boolean powered = !this.world.isRemote && world.getRedstonePowerFromNeighbors(pos.up()) > 0;
+        boolean powered = !this.world.isRemote && world.getRedstonePowerFromNeighbors(pos) > 0;
 
-        if (powered)
+        if (powered && this.world.getGameTime() % 100 == 0)
         {
             this.addEffectsToPlayers();
         }
@@ -45,7 +45,7 @@ public class TerraTileEntityHeartLantern extends TileEntity implements ITickable
 
             for (PlayerEntity playerentity : list)
             {
-                playerentity.addPotionEffect(new EffectInstance(Effects.REGENERATION, 3, 0, true, true));
+                playerentity.addPotionEffect(new EffectInstance(Effects.REGENERATION, 200, 0, true, true));
             }
         }
     }

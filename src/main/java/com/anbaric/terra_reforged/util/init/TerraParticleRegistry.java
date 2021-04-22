@@ -22,6 +22,7 @@ public class TerraParticleRegistry
     public static final RegistryObject<BasicParticleType> TORCH_FLAME_WHITE = PARTICLES.register("torch_flame_white", () -> new BasicParticleType(true));
     public static final RegistryObject<BasicParticleType> TORCH_FLAME_RAINBOW = PARTICLES.register("torch_flame_rainbow", () -> new BasicParticleType(true));
     public static final RegistryObject<BasicParticleType> TORCH_FLAME_ICE = PARTICLES.register("torch_flame_ice", () -> new BasicParticleType(true));
+    public static final RegistryObject<BasicParticleType> TORCH_FLAME_PINK = PARTICLES.register("torch_flame_pink", () -> new BasicParticleType(true));
     public static final RegistryObject<BasicParticleType> TORCH_FLAME_BONE = PARTICLES.register("torch_flame_bone", () -> new BasicParticleType(true));
     public static final RegistryObject<BasicParticleType> TORCH_FLAME_BRIGHT = PARTICLES.register("torch_flame_bright", () -> new BasicParticleType(true));
     public static final RegistryObject<BasicParticleType> TORCH_FLAME_DEMON = PARTICLES.register("torch_flame_demon", () -> new BasicParticleType(true));

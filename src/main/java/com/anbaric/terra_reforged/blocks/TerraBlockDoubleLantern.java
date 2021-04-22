@@ -28,7 +28,7 @@ import net.minecraft.world.server.ServerWorld;
 import javax.annotation.Nullable;
 import java.util.Random;
 
-public class TerraBlockHangingTallLanternPowered extends Block
+public class TerraBlockDoubleLantern extends Block
 {
     public static int light;
 
@@ -38,7 +38,7 @@ public class TerraBlockHangingTallLanternPowered extends Block
     public static final EnumProperty<DoubleBlockHalf> HALF = BlockStateProperties.DOUBLE_BLOCK_HALF;
     public static final BooleanProperty LIT = RedstoneTorchBlock.LIT;
 
-    public TerraBlockHangingTallLanternPowered(Properties properties, double topShape, double botShape, int light)
+    public TerraBlockDoubleLantern(Properties properties, double topShape, double botShape, int light)
     {
         super(properties);
         this.setDefaultState(this.stateContainer.getBaseState().with(HALF, DoubleBlockHalf.UPPER).with(LIT, false));

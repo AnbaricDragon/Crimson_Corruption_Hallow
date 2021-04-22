@@ -1,0 +1,13 @@
+{
+    "variants": 
+		{
+        "lit=true": 
+				[
+						{ "model": "terra_reforged:block/lantern_heart" }
+				],
+        "lit=false": 
+				[
+						{ "model": "terra_reforged:block/lantern_heart" }
+				]
+    }
+}

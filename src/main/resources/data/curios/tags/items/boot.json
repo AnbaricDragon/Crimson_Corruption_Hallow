@@ -1,0 +1,21 @@
+{
+    "replace": false,
+    "values": [
+        "terra_reforged:boots_amphibian",
+        "terra_reforged:boots_dunerider",
+        "terra_reforged:boots_fairy",
+        "terra_reforged:boots_flower",
+        "terra_reforged:boots_flurry",
+        "terra_reforged:boots_frostspark",
+        "terra_reforged:boots_hellfire",
+        "terra_reforged:boots_hermes",
+        "terra_reforged:boots_ice",
+        "terra_reforged:boots_lava",
+        "terra_reforged:boots_lightning",
+        "terra_reforged:boots_obsidian",
+        "terra_reforged:boots_sailfish",
+        "terra_reforged:boots_spectre",
+        "terra_reforged:boots_terraspark",
+        "terra_reforged:boots_water"
+    ]
+}

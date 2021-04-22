@@ -13,13 +13,13 @@ public class TerraEffectLoomingDeath extends Effect
 
     public TerraEffectLoomingDeath(EffectType typeIn, int liquidColorIn)
     {
-        super(typeIn, liquidColorIn);
+        super(typeIn, 655360);
     }
 
     @Override
     public boolean isReady(int duration, int amplifier)
     {
-        return duration <= 1;
+        return duration % 10 == 0;
     }
 
     @Override
@@ -35,7 +35,7 @@ public class TerraEffectLoomingDeath extends Effect
             else
             {
                 chances--;
-                bee.addPotionEffect(new EffectInstance(TerraEffectRegistry.LOOMING_DEATH.get(), 60, 0, false, false));
+                bee.addPotionEffect(new EffectInstance(TerraEffectRegistry.LOOMING_DEATH.get(), 20, 0, false, false));
             }
         }
     }

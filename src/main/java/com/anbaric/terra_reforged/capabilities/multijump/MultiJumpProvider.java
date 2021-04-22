@@ -18,7 +18,11 @@ public class MultiJumpProvider implements ICapabilitySerializable<INBT>
     @Override
     public <T> LazyOptional<T> getCapability(Capability<T> capability, Direction side)
     {
-        return optionalMultiJump.cast();
+        if (capability == TerraCapabilityMultiJump.MULTI_JUMP_CAPABILITY)
+        {
+            return optionalMultiJump.cast();
+        }
+        else return LazyOptional.empty();
     }
 
     @Override

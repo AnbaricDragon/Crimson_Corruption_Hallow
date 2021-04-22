@@ -35,7 +35,7 @@ public class TerraBlockCactus extends Block implements net.minecraftforge.common
     public TerraBlockCactus(Block.Properties properties)
     {
         super(properties);
-        this.setDefaultState(this.stateContainer.getBaseState().with(AGE, Integer.valueOf(0)));
+        this.setDefaultState(this.stateContainer.getBaseState().with(AGE, 0));
     }
 
     @Override

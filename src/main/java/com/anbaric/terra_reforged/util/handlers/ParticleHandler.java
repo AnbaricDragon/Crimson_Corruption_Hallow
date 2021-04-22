@@ -29,6 +29,7 @@ public class ParticleHandler
         Minecraft.getInstance().particles.registerFactory(TerraParticleRegistry.TORCH_FLAME_WHITE.get(), FlameParticle.Factory::new);
         Minecraft.getInstance().particles.registerFactory(TerraParticleRegistry.TORCH_FLAME_RAINBOW.get(), FlameParticle.Factory::new);
         Minecraft.getInstance().particles.registerFactory(TerraParticleRegistry.TORCH_FLAME_ICE.get(), FlameParticle.Factory::new);
+        Minecraft.getInstance().particles.registerFactory(TerraParticleRegistry.TORCH_FLAME_PINK.get(), FlameParticle.Factory::new);
         Minecraft.getInstance().particles.registerFactory(TerraParticleRegistry.TORCH_FLAME_BONE.get(), FlameParticle.Factory::new);
         Minecraft.getInstance().particles.registerFactory(TerraParticleRegistry.TORCH_FLAME_BRIGHT.get(), FlameParticle.Factory::new);
         Minecraft.getInstance().particles.registerFactory(TerraParticleRegistry.TORCH_FLAME_DEMON.get(), FlameParticle.Factory::new);

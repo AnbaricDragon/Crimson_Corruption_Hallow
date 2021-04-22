@@ -1,7 +1,6 @@
 package com.anbaric.terra_reforged.util.init;
 
-import com.anbaric.terra_reforged.items.TerraItemLilyPad;
-import com.anbaric.terra_reforged.items.TerraProjectileSword;
+import com.anbaric.terra_reforged.items.*;
 import com.anbaric.terra_reforged.util.Reference;
 import com.anbaric.terra_reforged.util.TerraItemGroups;
 import com.anbaric.terra_reforged.util.handlers.MaterialHandler;
@@ -28,6 +27,7 @@ public final class TerraItemRegistry
     public static final RegistryObject<Item> TORCH_GEM_WHITE = ITEMS.register("torch_gem_white", () -> new WallOrFloorItem(TerraBlockRegistry.TORCH_GEM_WHITE.get(), TerraBlockRegistry.TORCH_GEM_WHITE_WALL.get(), new Item.Properties().group(TerraItemGroups.TERRA_DECORATIONS_TAB)));
     public static final RegistryObject<Item> TORCH_RAINBOW = ITEMS.register("torch_rainbow", () -> new WallOrFloorItem(TerraBlockRegistry.TORCH_RAINBOW.get(), TerraBlockRegistry.TORCH_RAINBOW_WALL.get(), new Item.Properties().group(TerraItemGroups.TERRA_DECORATIONS_TAB)));
     public static final RegistryObject<Item> TORCH_ICE = ITEMS.register("torch_ice", () -> new WallOrFloorItem(TerraBlockRegistry.TORCH_ICE.get(), TerraBlockRegistry.TORCH_ICE_WALL.get(), new Item.Properties().group(TerraItemGroups.TERRA_DECORATIONS_TAB)));
+    public static final RegistryObject<Item> TORCH_PINK = ITEMS.register("torch_pink", () -> new WallOrFloorItem(TerraBlockRegistry.TORCH_PINK.get(), TerraBlockRegistry.TORCH_PINK_WALL.get(), new Item.Properties().group(TerraItemGroups.TERRA_DECORATIONS_TAB)));
     public static final RegistryObject<Item> TORCH_BONE = ITEMS.register("torch_bone", () -> new WallOrFloorItem(TerraBlockRegistry.TORCH_BONE.get(), TerraBlockRegistry.TORCH_BONE_WALL.get(), new Item.Properties().group(TerraItemGroups.TERRA_DECORATIONS_TAB)));
     public static final RegistryObject<Item> TORCH_BRIGHT = ITEMS.register("torch_bright", () -> new WallOrFloorItem(TerraBlockRegistry.TORCH_BRIGHT.get(), TerraBlockRegistry.TORCH_BRIGHT_WALL.get(), new Item.Properties().group(TerraItemGroups.TERRA_DECORATIONS_TAB)));
     public static final RegistryObject<Item> TORCH_DEMON = ITEMS.register("torch_demon", () -> new WallOrFloorItem(TerraBlockRegistry.TORCH_DEMON.get(), TerraBlockRegistry.TORCH_DEMON_WALL.get(), new Item.Properties().group(TerraItemGroups.TERRA_DECORATIONS_TAB)));
@@ -87,35 +87,54 @@ public final class TerraItemRegistry
     //Tools
 
     //Accessories
-    public static final RegistryObject<Item> HORSESHOE_LUCKY = ITEMS.register("horseshoe_lucky", () -> new Item(new Item.Properties().group(TerraItemGroups.TERRA_TOOLS_TAB).maxStackSize(1)));
-    public static final RegistryObject<Item> HORSESHOE_OBSIDIAN = ITEMS.register("horseshoe_obsidian", () -> new Item(new Item.Properties().group(TerraItemGroups.TERRA_TOOLS_TAB).maxStackSize(1)));
-    public static final RegistryObject<Item> BOTTLE_CLOUD = ITEMS.register("bottle_cloud", () -> new Item(new Item.Properties().group(TerraItemGroups.TERRA_TOOLS_TAB).maxStackSize(1)));
-    public static final RegistryObject<Item> BOTTLE_BLIZZARD = ITEMS.register("bottle_blizzard", () -> new Item(new Item.Properties().group(TerraItemGroups.TERRA_TOOLS_TAB).maxStackSize(1)));
-    public static final RegistryObject<Item> BOTTLE_SANDSTORM = ITEMS.register("bottle_sandstorm", () -> new Item(new Item.Properties().group(TerraItemGroups.TERRA_TOOLS_TAB).maxStackSize(1)));
-    public static final RegistryObject<Item> BOTTLE_TSUNAMI = ITEMS.register("bottle_tsunami", () -> new Item(new Item.Properties().group(TerraItemGroups.TERRA_TOOLS_TAB).maxStackSize(1)));
-    public static final RegistryObject<Item> BOTTLE_FART = ITEMS.register("bottle_fart", () -> new Item(new Item.Properties().group(TerraItemGroups.TERRA_TOOLS_TAB).maxStackSize(1)));
-    public static final RegistryObject<Item> BALLOON_RED = ITEMS.register("balloon_red", () -> new Item(new Item.Properties().group(TerraItemGroups.TERRA_TOOLS_TAB).maxStackSize(1)));
-    public static final RegistryObject<Item> BALLOON_CLOUD = ITEMS.register("balloon_cloud", () -> new Item(new Item.Properties().group(TerraItemGroups.TERRA_TOOLS_TAB).maxStackSize(1)));
-    public static final RegistryObject<Item> BALLOON_BLIZZARD = ITEMS.register("balloon_blizzard", () -> new Item(new Item.Properties().group(TerraItemGroups.TERRA_TOOLS_TAB).maxStackSize(1)));
-    public static final RegistryObject<Item> BALLOON_SANDSTORM = ITEMS.register("balloon_sandstorm", () -> new Item(new Item.Properties().group(TerraItemGroups.TERRA_TOOLS_TAB).maxStackSize(1)));
-    public static final RegistryObject<Item> BALLOON_HONEY = ITEMS.register("balloon_honey", () -> new Item(new Item.Properties().group(TerraItemGroups.TERRA_TOOLS_TAB).maxStackSize(1)));
-    public static final RegistryObject<Item> BALLOON_PUFFERFISH = ITEMS.register("balloon_pufferfish", () -> new Item(new Item.Properties().group(TerraItemGroups.TERRA_TOOLS_TAB).maxStackSize(1)));
-    public static final RegistryObject<Item> BALLOON_SHARK = ITEMS.register("balloon_shark", () -> new Item(new Item.Properties().group(TerraItemGroups.TERRA_TOOLS_TAB).maxStackSize(1)));
-    public static final RegistryObject<Item> BALLOON_FART = ITEMS.register("balloon_fart", () -> new Item(new Item.Properties().group(TerraItemGroups.TERRA_TOOLS_TAB).maxStackSize(1)));
-    public static final RegistryObject<Item> BALLOON_BUNDLE = ITEMS.register("balloon_bundle", () -> new Item(new Item.Properties().group(TerraItemGroups.TERRA_TOOLS_TAB).maxStackSize(1)));
-    public static final RegistryObject<Item> HORSESHOE_BALLOON_CLOUD = ITEMS.register("horseshoe_balloon_cloud", () -> new Item(new Item.Properties().group(TerraItemGroups.TERRA_TOOLS_TAB).maxStackSize(1)));
-    public static final RegistryObject<Item> HORSESHOE_BALLOON_BLIZZARD = ITEMS.register("horseshoe_balloon_blizzard", () -> new Item(new Item.Properties().group(TerraItemGroups.TERRA_TOOLS_TAB).maxStackSize(1)));
-    public static final RegistryObject<Item> HORSESHOE_BALLOON_SANDSTORM = ITEMS.register("horseshoe_balloon_sandstorm", () -> new Item(new Item.Properties().group(TerraItemGroups.TERRA_TOOLS_TAB).maxStackSize(1)));
-    public static final RegistryObject<Item> HORSESHOE_BALLOON_SHARK = ITEMS.register("horseshoe_balloon_shark", () -> new Item(new Item.Properties().group(TerraItemGroups.TERRA_TOOLS_TAB).maxStackSize(1)));
-    public static final RegistryObject<Item> HORSESHOE_BALLOON_FART = ITEMS.register("horseshoe_balloon_fart", () -> new Item(new Item.Properties().group(TerraItemGroups.TERRA_TOOLS_TAB).maxStackSize(1)));
-    public static final RegistryObject<Item> HORSESHOE_BALLOON_HONEY = ITEMS.register("horseshoe_balloon_honey", () -> new Item(new Item.Properties().group(TerraItemGroups.TERRA_TOOLS_TAB).maxStackSize(1)));
-    public static final RegistryObject<Item> HONEYCOMB = ITEMS.register("honeycomb", () -> new Item(new Item.Properties().group(TerraItemGroups.TERRA_TOOLS_TAB).maxStackSize(1)));
-    public static final RegistryObject<Item> NECKLACE_PANIC = ITEMS.register("necklace_panic", () -> new Item(new Item.Properties().group(TerraItemGroups.TERRA_TOOLS_TAB).maxStackSize(1)));
-    public static final RegistryObject<Item> NECKLACE_SWEETHEART = ITEMS.register("necklace_sweetheart", () -> new Item(new Item.Properties().group(TerraItemGroups.TERRA_TOOLS_TAB).maxStackSize(1)));
-    public static final RegistryObject<Item> NECKLACE_SHARKTOOTH = ITEMS.register("necklace_sharktooth", () -> new Item(new Item.Properties().group(TerraItemGroups.TERRA_TOOLS_TAB).maxStackSize(1)));
-    public static final RegistryObject<Item> NECKLACE_STINGER = ITEMS.register("necklace_stinger", () -> new Item(new Item.Properties().group(TerraItemGroups.TERRA_TOOLS_TAB).maxStackSize(1)));
-    public static final RegistryObject<Item> NECKLACE_CROSS = ITEMS.register("necklace_cross", () -> new Item(new Item.Properties().group(TerraItemGroups.TERRA_TOOLS_TAB).maxStackSize(1)));
-    public static final RegistryObject<Item> NECKLACE_STARVEIL = ITEMS.register("necklace_starveil", () -> new Item(new Item.Properties().group(TerraItemGroups.TERRA_TOOLS_TAB).maxStackSize(1)));
+    public static final RegistryObject<Item> HORSESHOE_LUCKY = ITEMS.register("horseshoe_lucky", () -> new TerraItemAccessory(new Item.Properties().group(TerraItemGroups.TERRA_TOOLS_TAB).maxStackSize(1)));
+    public static final RegistryObject<Item> HORSESHOE_OBSIDIAN = ITEMS.register("horseshoe_obsidian", () -> new TerraItemAccessory(new Item.Properties().group(TerraItemGroups.TERRA_TOOLS_TAB).maxStackSize(1)));
+    public static final RegistryObject<Item> BOTTLE_CLOUD = ITEMS.register("bottle_cloud", () -> new TerraItemAccessory(new Item.Properties().group(TerraItemGroups.TERRA_TOOLS_TAB).maxStackSize(1)));
+    public static final RegistryObject<Item> BOTTLE_BLIZZARD = ITEMS.register("bottle_blizzard", () -> new TerraItemAccessory(new Item.Properties().group(TerraItemGroups.TERRA_TOOLS_TAB).maxStackSize(1)));
+    public static final RegistryObject<Item> BOTTLE_SANDSTORM = ITEMS.register("bottle_sandstorm", () -> new TerraItemAccessory(new Item.Properties().group(TerraItemGroups.TERRA_TOOLS_TAB).maxStackSize(1)));
+    public static final RegistryObject<Item> BOTTLE_TSUNAMI = ITEMS.register("bottle_tsunami", () -> new TerraItemAccessory(new Item.Properties().group(TerraItemGroups.TERRA_TOOLS_TAB).maxStackSize(1)));
+    public static final RegistryObject<Item> BOTTLE_FART = ITEMS.register("bottle_fart", () -> new TerraItemAccessory(new Item.Properties().group(TerraItemGroups.TERRA_TOOLS_TAB).maxStackSize(1)));
+    public static final RegistryObject<Item> BALLOON_RED = ITEMS.register("balloon_red", () -> new TerraItemAccessory(new Item.Properties().group(TerraItemGroups.TERRA_TOOLS_TAB).maxStackSize(1)));
+    public static final RegistryObject<Item> BALLOON_CLOUD = ITEMS.register("balloon_cloud", () -> new TerraItemAccessory(new Item.Properties().group(TerraItemGroups.TERRA_TOOLS_TAB).maxStackSize(1)));
+    public static final RegistryObject<Item> BALLOON_BLIZZARD = ITEMS.register("balloon_blizzard", () -> new TerraItemAccessory(new Item.Properties().group(TerraItemGroups.TERRA_TOOLS_TAB).maxStackSize(1)));
+    public static final RegistryObject<Item> BALLOON_SANDSTORM = ITEMS.register("balloon_sandstorm", () -> new TerraItemAccessory(new Item.Properties().group(TerraItemGroups.TERRA_TOOLS_TAB).maxStackSize(1)));
+    public static final RegistryObject<Item> BALLOON_HONEY = ITEMS.register("balloon_honey", () -> new TerraItemAccessory(new Item.Properties().group(TerraItemGroups.TERRA_TOOLS_TAB).maxStackSize(1)));
+    public static final RegistryObject<Item> BALLOON_PUFFERFISH = ITEMS.register("balloon_pufferfish", () -> new TerraItemAccessory(new Item.Properties().group(TerraItemGroups.TERRA_TOOLS_TAB).maxStackSize(1)));
+    public static final RegistryObject<Item> BALLOON_SHARK = ITEMS.register("balloon_shark", () -> new TerraItemAccessory(new Item.Properties().group(TerraItemGroups.TERRA_TOOLS_TAB).maxStackSize(1)));
+    public static final RegistryObject<Item> BALLOON_FART = ITEMS.register("balloon_fart", () -> new TerraItemAccessory(new Item.Properties().group(TerraItemGroups.TERRA_TOOLS_TAB).maxStackSize(1)));
+    public static final RegistryObject<Item> BALLOON_BUNDLE = ITEMS.register("balloon_bundle", () -> new TerraItemAccessory(new Item.Properties().group(TerraItemGroups.TERRA_TOOLS_TAB).maxStackSize(1)));
+    public static final RegistryObject<Item> HORSESHOE_BALLOON_CLOUD = ITEMS.register("horseshoe_balloon_cloud", () -> new TerraItemAccessory(new Item.Properties().group(TerraItemGroups.TERRA_TOOLS_TAB).maxStackSize(1)));
+    public static final RegistryObject<Item> HORSESHOE_BALLOON_BLIZZARD = ITEMS.register("horseshoe_balloon_blizzard", () -> new TerraItemAccessory(new Item.Properties().group(TerraItemGroups.TERRA_TOOLS_TAB).maxStackSize(1)));
+    public static final RegistryObject<Item> HORSESHOE_BALLOON_SANDSTORM = ITEMS.register("horseshoe_balloon_sandstorm", () -> new TerraItemAccessory(new Item.Properties().group(TerraItemGroups.TERRA_TOOLS_TAB).maxStackSize(1)));
+    public static final RegistryObject<Item> HORSESHOE_BALLOON_SHARK = ITEMS.register("horseshoe_balloon_shark", () -> new TerraItemAccessory(new Item.Properties().group(TerraItemGroups.TERRA_TOOLS_TAB).maxStackSize(1)));
+    public static final RegistryObject<Item> HORSESHOE_BALLOON_FART = ITEMS.register("horseshoe_balloon_fart", () -> new TerraItemAccessory(new Item.Properties().group(TerraItemGroups.TERRA_TOOLS_TAB).maxStackSize(1)));
+    public static final RegistryObject<Item> HORSESHOE_BALLOON_HONEY = ITEMS.register("horseshoe_balloon_honey", () -> new TerraItemAccessory(new Item.Properties().group(TerraItemGroups.TERRA_TOOLS_TAB).maxStackSize(1)));
+    public static final RegistryObject<Item> HONEYCOMB = ITEMS.register("honeycomb", () -> new TerraItemAccessory(new Item.Properties().group(TerraItemGroups.TERRA_TOOLS_TAB).maxStackSize(1)));
+    public static final RegistryObject<Item> NECKLACE_PANIC = ITEMS.register("necklace_panic", () -> new TerraItemAccessory(new Item.Properties().group(TerraItemGroups.TERRA_TOOLS_TAB).maxStackSize(1)));
+    public static final RegistryObject<Item> NECKLACE_SWEETHEART = ITEMS.register("necklace_sweetheart", () -> new TerraItemAccessory(new Item.Properties().group(TerraItemGroups.TERRA_TOOLS_TAB).maxStackSize(1)));
+    public static final RegistryObject<Item> NECKLACE_SHARKTOOTH = ITEMS.register("necklace_sharktooth", () -> new TerraItemAccessory(new Item.Properties().group(TerraItemGroups.TERRA_TOOLS_TAB).maxStackSize(1)));
+    public static final RegistryObject<Item> NECKLACE_STINGER = ITEMS.register("necklace_stinger", () -> new TerraItemAccessory(new Item.Properties().group(TerraItemGroups.TERRA_TOOLS_TAB).maxStackSize(1)));
+    public static final RegistryObject<Item> NECKLACE_CROSS = ITEMS.register("necklace_cross", () -> new TerraItemAccessory(new Item.Properties().group(TerraItemGroups.TERRA_TOOLS_TAB).maxStackSize(1)));
+    public static final RegistryObject<Item> NECKLACE_STARVEIL = ITEMS.register("necklace_starveil", () -> new TerraItemAccessory(new Item.Properties().group(TerraItemGroups.TERRA_TOOLS_TAB).maxStackSize(1)));
+    public static final RegistryObject<Item> AGLET = ITEMS.register("aglet", () -> new TerraItemAccessorySpeed(new Item.Properties().group(TerraItemGroups.TERRA_TOOLS_TAB).maxStackSize(1), 0.05F));
+    public static final RegistryObject<Item> ANKLET_OF_WIND = ITEMS.register("anklet_of_wind", () -> new TerraItemAccessorySpeed(new Item.Properties().group(TerraItemGroups.TERRA_TOOLS_TAB).maxStackSize(1), 0.10F));
+    public static final RegistryObject<Item> BOOTS_AMPHIBIAN = ITEMS.register("boots_amphibian", () -> new TerraItemAccessory(new Item.Properties().group(TerraItemGroups.TERRA_TOOLS_TAB).maxStackSize(1)));
+    public static final RegistryObject<Item> BOOTS_DUNERIDER = ITEMS.register("boots_dunerider", () -> new TerraItemBootsDunerider(new Item.Properties().group(TerraItemGroups.TERRA_TOOLS_TAB).maxStackSize(1)));
+    public static final RegistryObject<Item> BOOTS_FAIRY = ITEMS.register("boots_fairy", () -> new TerraItemAccessory(new Item.Properties().group(TerraItemGroups.TERRA_TOOLS_TAB).maxStackSize(1)));
+    public static final RegistryObject<Item> BOOTS_FLOWER = ITEMS.register("boots_flower", () -> new TerraItemAccessory(new Item.Properties().group(TerraItemGroups.TERRA_TOOLS_TAB).maxStackSize(1)));
+    public static final RegistryObject<Item> BOOTS_FLURRY = ITEMS.register("boots_flurry", () -> new TerraItemAccessorySpeed(new Item.Properties().group(TerraItemGroups.TERRA_TOOLS_TAB).maxStackSize(1), 0.25F));
+    public static final RegistryObject<Item> BOOTS_FROSTSPARK = ITEMS.register("boots_frostspark", () -> new TerraItemAccessory(new Item.Properties().group(TerraItemGroups.TERRA_TOOLS_TAB).maxStackSize(1)));
+    public static final RegistryObject<Item> BOOTS_HELLFIRE = ITEMS.register("boots_hellfire", () -> new TerraItemAccessory(new Item.Properties().group(TerraItemGroups.TERRA_TOOLS_TAB).maxStackSize(1)));
+    public static final RegistryObject<Item> BOOTS_HERMES = ITEMS.register("boots_hermes", () -> new TerraItemAccessorySpeed(new Item.Properties().group(TerraItemGroups.TERRA_TOOLS_TAB).maxStackSize(1), 0.25F));
+    public static final RegistryObject<Item> BOOTS_ICE = ITEMS.register("boots_ice", () -> new TerraItemAccessory(new Item.Properties().group(TerraItemGroups.TERRA_TOOLS_TAB).maxStackSize(1)));
+    public static final RegistryObject<Item> BOOTS_LAVA = ITEMS.register("boots_lava", () -> new TerraItemAccessory(new Item.Properties().group(TerraItemGroups.TERRA_TOOLS_TAB).maxStackSize(1)));
+    public static final RegistryObject<Item> BOOTS_LIGHTNING = ITEMS.register("boots_lightning", () -> new TerraItemAccessorySpeed(new Item.Properties().group(TerraItemGroups.TERRA_TOOLS_TAB).maxStackSize(1), 0.30F));
+    public static final RegistryObject<Item> BOOTS_OBSIDIAN = ITEMS.register("boots_obsidian", () -> new TerraItemAccessory(new Item.Properties().group(TerraItemGroups.TERRA_TOOLS_TAB).maxStackSize(1)));
+    public static final RegistryObject<Item> BOOTS_SAILFISH = ITEMS.register("boots_sailfish", () -> new TerraItemAccessorySpeed(new Item.Properties().group(TerraItemGroups.TERRA_TOOLS_TAB).maxStackSize(1), 0.25F));
+    public static final RegistryObject<Item> BOOTS_SPECTRE = ITEMS.register("boots_spectre", () -> new TerraItemAccessory(new Item.Properties().group(TerraItemGroups.TERRA_TOOLS_TAB).maxStackSize(1)));
+    public static final RegistryObject<Item> BOOTS_TERRASPARK = ITEMS.register("boots_terraspark", () -> new TerraItemAccessory(new Item.Properties().group(TerraItemGroups.TERRA_TOOLS_TAB).maxStackSize(1)));
+    public static final RegistryObject<Item> BOOTS_WATER = ITEMS.register("boots_water", () -> new TerraItemAccessory(new Item.Properties().group(TerraItemGroups.TERRA_TOOLS_TAB).maxStackSize(1)));
+
 
     //Pickaxes
     public static final RegistryObject<Item> PICKAXE_CACTUS = ITEMS.register("pickaxe_cactus", () -> new PickaxeItem(MaterialHandler.CACTUS, 1, -2.8F, new Item.Properties().group(TerraItemGroups.TERRA_TOOLS_TAB)));

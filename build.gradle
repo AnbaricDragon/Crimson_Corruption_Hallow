@@ -85,6 +85,12 @@ repositories {
     maven { // CTM
         url "http://maven.tterrag.com/"
     }
+    maven { //Curios
+        url = "https://maven.theillusivec4.top/"
+    }
+    maven { //Hyperlight Core
+        url = "https://maven.hypherionmc.me"
+    }
 }
 
 dependencies {
@@ -92,6 +98,12 @@ dependencies {
 
     implementation fg.deobf("team.chisel.ctm:CTM:MC1.16.1-1.1.1.5")
     implementation fg.deobf("curse.maven:jei-238222:3109181")
+
+    runtimeOnly fg.deobf("top.theillusivec4.curios:curios-forge:1.16.5-4.0.5.1")
+    compileOnly fg.deobf("top.theillusivec4.curios:curios-forge:1.16.5-4.0.5.1:api")
+
+    implementation 'net.hypherionmc:HyperLightingCore-1.16.3:1.0.3:api'
+    runtimeOnly 'net.hypherionmc:HyperLightingCore-1.16.3:1.0.3'
 }
 
 // Example for how to get properties into the manifest for reading by the runtime..

@@ -14,14 +14,7 @@ public class TerraTestEvent
         Block block = event.getState().getBlock();
         if (block == TerraBlockRegistry.ORE_CHLOROPHYTE.get())
         {
-            System.out.println("Breaking Chlorophyte");
-            event.getPlayer().world.getCapability(TerraCapabilityWorldProgression.WORLD_PROGRESSION_CAPABILITY).ifPresent
-            (
-                cap -> {
-                    cap.setAltarsBroken(cap.getAltarsBroken() + 1);
-                    System.out.println("There are " + cap.getAltarsBroken() + " altars broken");
-                }
-            );
+            event.getPlayer().world.getCapability(TerraCapabilityWorldProgression.WORLD_PROGRESSION_CAPABILITY).ifPresent(cap -> cap.setAltarsBroken(cap.getAltarsBroken() + 1));
         }
     }
 }

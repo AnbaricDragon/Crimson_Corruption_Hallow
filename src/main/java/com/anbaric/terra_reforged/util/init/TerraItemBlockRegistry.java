@@ -80,7 +80,7 @@ public class TerraItemBlockRegistry
                     block instanceof TerraBlockSnowLayer
                     ? TerraItemGroups.TERRA_DECORATIONS_TAB :
 
-                    block instanceof TerraBlockHangingTallLanternPowered
+                    block instanceof TerraBlockDoubleLantern
                     ? TerraItemGroups.TERRA_MECHANICS_TAB :
 
                     TerraItemGroups.TERRA_BLOCKS_TAB);

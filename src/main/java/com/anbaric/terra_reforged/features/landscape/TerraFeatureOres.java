@@ -35,36 +35,44 @@ public class TerraFeatureOres extends Feature<OreFeatureConfig>
     public float getDebuff(Block block)
     {
         float debuff = 0;
-        if (block == TerraBlockRegistry.ORE_COBALT_PURE.get() || block == TerraBlockRegistry.ORE_PALLADIUM_PURE.get()) { debuff = 0.74F; }
-        if (block == TerraBlockRegistry.ORE_MYTHRIL_PURE.get() || block == TerraBlockRegistry.ORE_ORICHALCUM_PURE.get()) { debuff = 0.49F; }
-        if (block == TerraBlockRegistry.ORE_ADAMANTITE_PURE.get() || block == TerraBlockRegistry.ORE_TITANIUM_PURE.get()) { debuff = 0.24F; }
+        if (block == TerraBlockRegistry.ORE_COBALT_PURE.get() || block == TerraBlockRegistry.ORE_PALLADIUM_PURE.get())
+        {
+            debuff = 0.74F;
+        }
+        if (block == TerraBlockRegistry.ORE_MYTHRIL_PURE.get() || block == TerraBlockRegistry.ORE_ORICHALCUM_PURE.get())
+        {
+            debuff = 0.49F;
+        }
+        if (block == TerraBlockRegistry.ORE_ADAMANTITE_PURE.get() || block == TerraBlockRegistry.ORE_TITANIUM_PURE.get())
+        {
+            debuff = 0.24F;
+        }
         return debuff;
     }
 
     @Override
     public boolean generate(ISeedReader reader, ChunkGenerator generator, Random rand, BlockPos pos, OreFeatureConfig config)
     {
-AtomicInteger altarsBroken = new AtomicInteger();
-        Block inputBlock = config.state.getBlock();
+        AtomicInteger altarsBroken = new AtomicInteger();
+        Block         inputBlock   = config.state.getBlock();
         reader.getWorld().getCapability(TerraCapabilityWorldProgression.WORLD_PROGRESSION_CAPABILITY).ifPresent(cap -> altarsBroken.set(cap.getAltarsBroken()));
 
         int newSize = isAltarOre(inputBlock) ? Math.min((int) (altarsBroken.get() * getDebuff(inputBlock)), config.size) : config.size;
-        if (isAltarOre(inputBlock)) { System.out.println(newSize + " " + inputBlock); }
-        float  f  = rand.nextFloat() * (float) Math.PI;
+        float  f        = rand.nextFloat() * (float) Math.PI;
         float  veinSize = (float) newSize / 8.0F;
-        int    i  = MathHelper.ceil(((float) newSize / 16.0F * 2.0F + 1.0F) / 2.0F);
-        double d0 = (double) pos.getX() + Math.sin((double) f) * (double) veinSize;
-        double d1 = (double) pos.getX() - Math.sin((double) f) * (double) veinSize;
-        double d2 = (double) pos.getZ() + Math.cos((double) f) * (double) veinSize;
-        double d3 = (double) pos.getZ() - Math.cos((double) f) * (double) veinSize;
-        int    j  = 2;
-        double d4 = (double) (pos.getY() + rand.nextInt(3) - 2);
-        double d5 = (double) (pos.getY() + rand.nextInt(3) - 2);
-        int    k  = pos.getX() - MathHelper.ceil(veinSize) - i;
-        int    l  = pos.getY() - 2 - i;
-        int    i1 = pos.getZ() - MathHelper.ceil(veinSize) - i;
-        int    j1 = 2 * (MathHelper.ceil(veinSize) + i);
-        int    k1 = 2 * (2 + i);
+        int    i        = MathHelper.ceil(((float) newSize / 16.0F * 2.0F + 1.0F) / 2.0F);
+        double d0       = (double) pos.getX() + Math.sin((double) f) * (double) veinSize;
+        double d1       = (double) pos.getX() - Math.sin((double) f) * (double) veinSize;
+        double d2       = (double) pos.getZ() + Math.cos((double) f) * (double) veinSize;
+        double d3       = (double) pos.getZ() - Math.cos((double) f) * (double) veinSize;
+        int    j        = 2;
+        double d4       = (double) (pos.getY() + rand.nextInt(3) - 2);
+        double d5       = (double) (pos.getY() + rand.nextInt(3) - 2);
+        int    k        = pos.getX() - MathHelper.ceil(veinSize) - i;
+        int    l        = pos.getY() - 2 - i;
+        int    i1       = pos.getZ() - MathHelper.ceil(veinSize) - i;
+        int    j1       = 2 * (MathHelper.ceil(veinSize) + i);
+        int    k1       = 2 * (2 + i);
 
         for (int l1 = k; l1 <= k + j1; ++l1)
         {
@@ -81,19 +89,20 @@ AtomicInteger altarsBroken = new AtomicInteger();
 
     protected boolean func_207803_a(IWorld world, Random random, OreFeatureConfig config, double p_207803_4_, double p_207803_6_, double p_207803_8_, double p_207803_10_, double p_207803_12_, double p_207803_14_, int p_207803_16_, int p_207803_17_, int p_207803_18_, int p_207803_19_, int p_207803_20_, int newSize)
     {
-        int i = 0;
-        BitSet bitset = new BitSet(p_207803_19_ * p_207803_20_ * p_207803_19_);
+        int              i                = 0;
+        BitSet           bitset           = new BitSet(p_207803_19_ * p_207803_20_ * p_207803_19_);
         BlockPos.Mutable blockpos$mutable = new BlockPos.Mutable();
-        int j = newSize;
-        double[] adouble = new double[j * 4];
+        int              j                = newSize;
+        double[]         adouble          = new double[j * 4];
 
-        for(int k = 0; k < j; ++k) {
-            float f = (float)k / (float)j;
-            double d0 = MathHelper.lerp((double)f, p_207803_4_, p_207803_6_);
-            double d2 = MathHelper.lerp((double)f, p_207803_12_, p_207803_14_);
-            double d4 = MathHelper.lerp((double)f, p_207803_8_, p_207803_10_);
-            double d6 = random.nextDouble() * (double)j / 16.0D;
-            double d7 = ((double)(MathHelper.sin((float)Math.PI * f) + 1.0F) * d6 + 1.0D) / 2.0D;
+        for (int k = 0; k < j; ++k)
+        {
+            float  f  = (float) k / (float) j;
+            double d0 = MathHelper.lerp((double) f, p_207803_4_, p_207803_6_);
+            double d2 = MathHelper.lerp((double) f, p_207803_12_, p_207803_14_);
+            double d4 = MathHelper.lerp((double) f, p_207803_8_, p_207803_10_);
+            double d6 = random.nextDouble() * (double) j / 16.0D;
+            double d7 = ((double) (MathHelper.sin((float) Math.PI * f) + 1.0F) * d6 + 1.0D) / 2.0D;
             adouble[k * 4 + 0] = d0;
             adouble[k * 4 + 1] = d2;
             adouble[k * 4 + 2] = d4;
@@ -184,11 +193,26 @@ AtomicInteger altarsBroken = new AtomicInteger();
     public EnumBiomeType getBiomeType(Biome biome)
     {
         String biomeName = biome.getRegistryName().toString();
-        if (biomeName.contains("corrupt"))       { return EnumBiomeType.CORRUPT; }
-        else if (biomeName.contains("crimson"))  { return EnumBiomeType.CRIMSON; }
-        else if (biomeName.contains("hallowed")) { return EnumBiomeType.HALLOWED; }
-        else if (biomeName.contains("mud"))   { return EnumBiomeType.JUNGLE; }
-        else { return EnumBiomeType.PURE; }
+        if (biomeName.contains("corrupt"))
+        {
+            return EnumBiomeType.CORRUPT;
+        }
+        else if (biomeName.contains("crimson"))
+        {
+            return EnumBiomeType.CRIMSON;
+        }
+        else if (biomeName.contains("hallowed"))
+        {
+            return EnumBiomeType.HALLOWED;
+        }
+        else if (biomeName.contains("mud"))
+        {
+            return EnumBiomeType.JUNGLE;
+        }
+        else
+        {
+            return EnumBiomeType.PURE;
+        }
     }
 
     public BlockState biomeBlock(Biome biome, Block target)

@@ -66,6 +66,8 @@ public class RenderHandler
         RenderTypeLookup.setRenderLayer(TerraBlockRegistry.TORCH_RAINBOW_WALL.get(), cutout);
         RenderTypeLookup.setRenderLayer(TerraBlockRegistry.TORCH_ICE.get(), cutout);
         RenderTypeLookup.setRenderLayer(TerraBlockRegistry.TORCH_ICE_WALL.get(), cutout);
+        RenderTypeLookup.setRenderLayer(TerraBlockRegistry.TORCH_PINK.get(), cutout);
+        RenderTypeLookup.setRenderLayer(TerraBlockRegistry.TORCH_PINK_WALL.get(), cutout);
         RenderTypeLookup.setRenderLayer(TerraBlockRegistry.TORCH_BONE.get(), cutout);
         RenderTypeLookup.setRenderLayer(TerraBlockRegistry.TORCH_BONE_WALL.get(), cutout);
         RenderTypeLookup.setRenderLayer(TerraBlockRegistry.TORCH_BRIGHT.get(), cutout);
@@ -90,7 +92,7 @@ public class RenderHandler
         RenderTypeLookup.setRenderLayer(TerraBlockRegistry.TORCH_JUNGLE_WALL.get(), cutout);
         RenderTypeLookup.setRenderLayer(TerraBlockRegistry.TALL_LANTERN_FIREFLY.get(), translucent);
         RenderTypeLookup.setRenderLayer(TerraBlockRegistry.TALL_LANTERN_LIGHTNINGBUG.get(), translucent);
-        RenderTypeLookup.setRenderLayer(TerraBlockRegistry.TALL_LANTERN_HEART.get(), translucent);
+        RenderTypeLookup.setRenderLayer(TerraBlockRegistry.LANTERN_HEART.get(), cutout);
 
         //Plants
         RenderTypeLookup.setRenderLayer(TerraBlockRegistry.PLANT_BLINKROOT.get(), cutoutMipped);

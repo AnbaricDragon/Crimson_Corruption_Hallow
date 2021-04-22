@@ -199,10 +199,10 @@ public class TerraBlockRegistry
     public static final RegistryObject<Block> SAPLING_PEARL = BLOCKS.register("sapling_pearl", () -> new TerraBlockSaplingPearl(AbstractBlock.Properties.create(Material.PLANTS).doesNotBlockMovement().tickRandomly().zeroHardnessAndResistance().sound(SoundType.PLANT)));
 
     //Furnature
-    public static final RegistryObject<Block> TALL_LANTERN_BONE = BLOCKS.register("tall_lantern_bone", () -> new TerraBlockHangingTallLanternPowered(Block.Properties.create(Material.ROCK).sound(SoundType.STONE), 1.0D, 4.0D, 14));
-    public static final RegistryObject<Block> TALL_LANTERN_FIREFLY = BLOCKS.register("tall_lantern_firefly", () -> new TerraBlockHangingTallLanternPowered(Block.Properties.create(Material.ROCK).sound(SoundType.GLASS), 1.0D, 6.0D, 14));
-    public static final RegistryObject<Block> TALL_LANTERN_LIGHTNINGBUG = BLOCKS.register("tall_lantern_lightningbug", () -> new TerraBlockHangingTallLanternPowered(Block.Properties.create(Material.ROCK).sound(SoundType.GLASS), 1.0D, 6.0D, 14));
-    public static final RegistryObject<Block> TALL_LANTERN_HEART = BLOCKS.register("tall_lantern_heart", () -> new TerraBlockHangingTallLanternPoweredEffect(Block.Properties.create(Material.ROCK).sound(SoundType.GLASS), 7.0D, 7.0D, 14, Effects.REGENERATION));
+    public static final RegistryObject<Block> TALL_LANTERN_BONE = BLOCKS.register("tall_lantern_bone", () -> new TerraBlockDoubleLantern(Block.Properties.create(Material.ROCK).sound(SoundType.STONE), 1.0D, 4.0D, 14));
+    public static final RegistryObject<Block> TALL_LANTERN_FIREFLY = BLOCKS.register("tall_lantern_firefly", () -> new TerraBlockDoubleLantern(Block.Properties.create(Material.ROCK).sound(SoundType.GLASS), 1.0D, 6.0D, 14));
+    public static final RegistryObject<Block> TALL_LANTERN_LIGHTNINGBUG = BLOCKS.register("tall_lantern_lightningbug", () -> new TerraBlockDoubleLantern(Block.Properties.create(Material.ROCK).sound(SoundType.GLASS), 1.0D, 6.0D, 14));
+    public static final RegistryObject<Block> LANTERN_HEART = BLOCKS.register("lantern_heart", () -> new TerraBlockHeartLantern(Block.Properties.create(Material.ROCK).sound(SoundType.GLASS)));
 
 
     //Structure Blocks
@@ -416,6 +416,12 @@ public class TerraBlockRegistry
     public static final RegistryObject<Block> TORCH_ICE_WALL = BLOCKS.register("torch_ice_wall", () -> new TerraBlockTorchWall(Block.Properties.create(Material.MISCELLANEOUS).doesNotBlockMovement().zeroHardnessAndResistance().setLightLevel((state) -> {
         return 14;
     }).sound(SoundType.GLASS).lootFrom(TerraBlockRegistry.TORCH_ICE.get())));
+    public static final RegistryObject<Block> TORCH_PINK = BLOCKS.register("torch_pink", () -> new TerraBlockTorch(Block.Properties.create(Material.MISCELLANEOUS).doesNotBlockMovement().zeroHardnessAndResistance().setLightLevel((state) -> {
+        return 14;
+    }).sound(SoundType.STONE)));
+    public static final RegistryObject<Block> TORCH_PINK_WALL = BLOCKS.register("torch_pink_wall", () -> new TerraBlockTorchWall(Block.Properties.create(Material.MISCELLANEOUS).doesNotBlockMovement().zeroHardnessAndResistance().setLightLevel((state) -> {
+        return 14;
+    }).sound(SoundType.STONE).lootFrom(TerraBlockRegistry.TORCH_PINK.get())));
     public static final RegistryObject<Block> TORCH_BONE = BLOCKS.register("torch_bone", () -> new TerraBlockTorch(Block.Properties.create(Material.MISCELLANEOUS).doesNotBlockMovement().zeroHardnessAndResistance().setLightLevel((state) -> {
         return 14;
     }).sound(SoundType.STONE)));

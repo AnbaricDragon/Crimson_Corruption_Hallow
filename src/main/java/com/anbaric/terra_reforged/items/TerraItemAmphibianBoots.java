@@ -1,31 +1,26 @@
 package com.anbaric.terra_reforged.items;
 
-import com.anbaric.terra_reforged.util.Reference;
 import com.anbaric.terra_reforged.util.handlers.CurioHandler;
-import com.google.common.collect.ImmutableMultimap;
-import com.google.common.collect.LinkedHashMultimap;
-import com.google.common.collect.Multimap;
+import net.minecraft.block.Blocks;
 import net.minecraft.entity.LivingEntity;
-import net.minecraft.entity.ai.attributes.Attribute;
-import net.minecraft.entity.ai.attributes.AttributeModifier;
 import net.minecraft.entity.ai.attributes.Attributes;
-import net.minecraft.inventory.EquipmentSlotType;
-import net.minecraft.item.Item;
+import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.CompoundNBT;
-import net.minecraft.potion.EffectInstance;
-import net.minecraft.potion.Effects;
+import net.minecraft.tags.BlockTags;
 import net.minecraft.util.SoundEvents;
+import net.minecraft.util.math.vector.Vector3d;
+import net.minecraft.world.World;
+import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.common.capabilities.ICapabilityProvider;
 import top.theillusivec4.curios.api.SlotContext;
 import top.theillusivec4.curios.api.type.capability.ICurio;
 
 import javax.annotation.Nonnull;
-import java.util.UUID;
 
-public class TerraItemAccessory extends Item implements ICurio
+public class TerraItemAmphibianBoots extends TerraItemAccessory
 {
-    public TerraItemAccessory(Properties properties)
+    public TerraItemAmphibianBoots(Properties properties)
     {
         super(properties);
     }
@@ -35,6 +30,29 @@ public class TerraItemAccessory extends Item implements ICurio
     {
         return CurioHandler.createProvider(new ICurio()
         {
+            //TODO
+            @Override
+            public void curioTick(String identifier, int index, LivingEntity livingEntity)
+            {
+                PlayerEntity player = livingEntity != null ? (PlayerEntity) livingEntity : null;
+                if (player == null)
+                {
+                    return;
+                }
+                World world = player.getEntityWorld();
+
+                if (player.isInWater() && !player.isCrouching())
+                {
+                    player.setMotion(player.getMotion().mul(1.1D, 1.1D, 1.1D));
+                }
+            }
+
+            @Override
+            public void onUnequip(SlotContext slotContext, ItemStack newStack)
+            {
+
+            }
+
             @Nonnull
             @Override
             public DropRule getDropRule(LivingEntity livingEntity)

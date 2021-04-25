@@ -1,0 +1,12 @@
+{
+  "replace": false,
+  "optional": [
+    "terra_reforged:skull_obsidian",
+    "terra_reforged:skull_magma",
+    "terra_reforged:skull_rose",
+    "terra_reforged:charm_molten",
+    "terra_reforged:horseshoe_obsidian",
+    "terra_reforged:boots_obsidian",
+    "terra_reforged:boots_lava"
+  ]
+}

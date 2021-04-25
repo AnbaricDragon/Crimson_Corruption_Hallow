@@ -51,7 +51,10 @@ public class TerraTagRegistry
     public static final ITag.INamedTag<Item> FART_HIGH_JUMPERS = ItemTags.makeWrapperTag("terra_reforged:fart_high_jumpers");
     public static final ITag.INamedTag<Item> HONEY_HIGH_JUMPERS = ItemTags.makeWrapperTag("terra_reforged:honey_high_jumpers");
     public static final ITag.INamedTag<Item> BEE_SPAWNERS = ItemTags.makeWrapperTag("terra_reforged:bee_spawners");
+    public static final ITag.INamedTag<Item> STAR_SPAWNERS = ItemTags.makeWrapperTag("terra_reforged:star_spawners");
     public static final ITag.INamedTag<Item> PANIC_GIVERS = ItemTags.makeWrapperTag("terra_reforged:panic_givers");
     public static final ITag.INamedTag<Item> ARMOR_PASSERS = ItemTags.makeWrapperTag("terra_reforged:armor_passers");
     public static final ITag.INamedTag<Item> INVULN_GIVERS = ItemTags.makeWrapperTag("terra_reforged:invuln_givers");
+    public static final ITag.INamedTag<Item> FLOWER_WALKERS = ItemTags.makeWrapperTag("terra_reforged:flower_walkers");
+    public static final ITag.INamedTag<Item> FIRE_WALKERS = ItemTags.makeWrapperTag("terra_reforged:fire_walkers");
 }

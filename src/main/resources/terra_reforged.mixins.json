@@ -1,0 +1,15 @@
+{
+    "required": true,
+    "package": "com.anbaric.terra_reforged.util.mixins",
+    "compatibilityLevel": "JAVA_8",
+    "refmap": "terra_reforged.refmap.json",
+    "mixins": [
+        "TerraAbstractBlockMixin"
+    ],
+    "client": [
+
+    ],
+    "injectors": {
+        "defaultRequire": 1
+    }
+}

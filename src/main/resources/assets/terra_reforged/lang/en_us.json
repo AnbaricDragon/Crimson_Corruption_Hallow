@@ -34,6 +34,8 @@
   "itemGroup.terra_tools_tab": "Terra Reforged Tools",
   "itemGroup.terra_weapons_tab": "Terra Reforged Weapons",
 
+  "effect.terra_reforged.invincibility": "Invincible",
+
   "block.terra_reforged.soil_mud": "Mud",
   "block.terra_reforged.soil_ash": "Ash",
   "block.terra_reforged.snow_corrupt": "Corrupt Snow",

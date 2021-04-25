@@ -1,5 +1,8 @@
 package com.anbaric.terra_reforged.util.handlers;
 
+import net.minecraft.entity.player.PlayerEntity;
+import net.minecraft.item.Item;
+import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.CompoundNBT;
 import net.minecraft.nbt.INBT;
 import net.minecraft.util.Direction;
@@ -7,8 +10,11 @@ import net.minecraftforge.common.capabilities.Capability;
 import net.minecraftforge.common.capabilities.CapabilityManager;
 import net.minecraftforge.common.capabilities.ICapabilityProvider;
 import net.minecraftforge.common.util.LazyOptional;
+import top.theillusivec4.curios.api.CuriosApi;
 import top.theillusivec4.curios.api.CuriosCapability;
 import top.theillusivec4.curios.api.type.capability.ICurio;
+import top.theillusivec4.curios.api.type.capability.ICuriosItemHandler;
+import top.theillusivec4.curios.api.type.inventory.ICurioStacksHandler;
 
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
@@ -59,4 +65,22 @@ public class CurioHandler
             return CuriosCapability.ITEM.orEmpty(cap, this.capability);
         }
     }
+
+    public static ItemStack getBauble(Item item, PlayerEntity player)
+    {
+        return CuriosApi.getCuriosHelper().getCuriosHandler(player).map(ICuriosItemHandler::getCurios).map(map -> map.get("curio")).map(ICurioStacksHandler::getStacks).map(dynamicStackHandler ->
+        {
+            for (int i = 0; i < dynamicStackHandler.getSlots(); i++)
+            {
+                ItemStack stack = dynamicStackHandler.getStackInSlot(i);
+                if (stack.getItem() == item)
+                {
+                    return stack;
+                }
+            }
+            return ItemStack.EMPTY;
+        }).orElse(ItemStack.EMPTY);
+    }
+
+
 }

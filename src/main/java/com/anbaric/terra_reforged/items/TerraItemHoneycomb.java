@@ -1,6 +1,7 @@
 package com.anbaric.terra_reforged.items;
 
 import com.anbaric.terra_reforged.util.handlers.BeeHandler;
+import com.anbaric.terra_reforged.util.init.TerraEffectRegistry;
 import com.anbaric.terra_reforged.util.init.TerraTagRegistry;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.player.PlayerEntity;
@@ -27,9 +28,9 @@ public class TerraItemHoneycomb extends TerraItemAccessory
 
         float aggroDist = event.getSource().getTrueSource() instanceof LivingEntity ? event.getSource().getTrueSource().getEntity().getDistance(player) : 10F;
 
-        CuriosApi.getCuriosHelper().findEquippedCurio(stack -> stack.getItem().isIn(TerraTagRegistry.BEE_SPAWNERS) && !player.getCooldownTracker().hasCooldown(stack.getItem()), player).ifPresent(found -> {
-            player.getCooldownTracker().setCooldown(CuriosApi.getCuriosHelper().findEquippedCurio(stack -> stack.getItem().isIn(TerraTagRegistry.BEE_SPAWNERS), player).get().right.getItem(), 100);
-            player.addPotionEffect(new EffectInstance(Effects.REGENERATION, 100));
+        CuriosApi.getCuriosHelper().findEquippedCurio(stack -> stack.getItem() == this && !player.getCooldownTracker().hasCooldown(stack.getItem()), player).ifPresent(found -> {
+            player.getCooldownTracker().setCooldown(CuriosApi.getCuriosHelper().findEquippedCurio(stack -> stack.getItem() == this, player).get().right.getItem(), 100);
+            player.addPotionEffect(new EffectInstance(TerraEffectRegistry.HONEY.get(), 100));
             BeeHandler.spawnAngryBees(world, player.getPosition(), aggroDist);
         });
     }

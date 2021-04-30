@@ -1,5 +1,6 @@
 package com.anbaric.terra_reforged.util.init;
 
+import com.anbaric.terra_reforged.effects.TerraEffectHoney;
 import com.anbaric.terra_reforged.effects.TerraEffectInvincibility;
 import com.anbaric.terra_reforged.effects.TerraEffectLoomingDeath;
 import com.anbaric.terra_reforged.util.Reference;
@@ -14,6 +15,7 @@ public class TerraEffectRegistry
 {
     public static final DeferredRegister<Effect> EFFECTS = DeferredRegister.create(ForgeRegistries.POTIONS, Reference.MODID);
 
-    public static final RegistryObject<Effect> LOOMING_DEATH = EFFECTS.register("looming_death", () -> new TerraEffectLoomingDeath(EffectType.HARMFUL, 0));
-    public static final RegistryObject<Effect> INVINCIBILITY = EFFECTS.register("invincibility", () -> new TerraEffectInvincibility(EffectType.BENEFICIAL, 0));
+    public static final RegistryObject<Effect> LOOMING_DEATH = EFFECTS.register("looming_death", () -> new TerraEffectLoomingDeath(EffectType.HARMFUL, 655360));
+    public static final RegistryObject<Effect> INVINCIBILITY = EFFECTS.register("invincibility", () -> new TerraEffectInvincibility(EffectType.BENEFICIAL, 655360));
+    public static final RegistryObject<Effect> HONEY = EFFECTS.register("honey", () -> new TerraEffectHoney(EffectType.BENEFICIAL, 16758528));
 }

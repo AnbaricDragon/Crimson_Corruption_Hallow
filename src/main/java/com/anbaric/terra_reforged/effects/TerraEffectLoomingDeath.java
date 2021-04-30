@@ -13,13 +13,13 @@ public class TerraEffectLoomingDeath extends Effect
 
     public TerraEffectLoomingDeath(EffectType typeIn, int liquidColorIn)
     {
-        super(typeIn, 655360);
+        super(typeIn, liquidColorIn);
     }
 
     @Override
     public boolean isReady(int duration, int amplifier)
     {
-        return duration % 10 == 0;
+        return duration <= 1;
     }
 
     @Override

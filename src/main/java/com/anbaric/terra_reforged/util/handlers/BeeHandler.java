@@ -23,7 +23,7 @@ public class BeeHandler
 
         Optional<LivingEntity> foundTarget = world.getEntitiesWithinAABB(LivingEntity.class, targetBox, BeeHandler::isValidBeeTarget).stream().reduce((entityA, entityB) -> world.rand.nextBoolean() ? entityB : entityA);
 
-        int bees = 2 + world.rand.nextInt(3);
+        int bees = 1 + world.rand.nextInt(3);
 
         int maxTime = 600;
 

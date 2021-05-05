@@ -9,6 +9,8 @@ import net.minecraft.world.server.ServerWorld;
 import java.util.Iterator;
 import java.util.Random;
 
+import net.minecraft.block.AbstractBlock.Properties;
+
 public class TerraBlockChlorophyteOre extends Block
 {
     public TerraBlockChlorophyteOre(Properties properties)
@@ -26,7 +28,7 @@ public class TerraBlockChlorophyteOre extends Block
             return;
         }
 
-        Iterator cubicRange = BlockPos.getAllInBoxMutable(pos.add(-pos.getX() % 16, -pos.getY(), -pos.getZ() % 16), pos.add(15 - (pos.getX() % 16), 256 - pos.getY(), 15 - (pos.getZ() % 16))).iterator();
+        Iterator cubicRange = BlockPos.betweenClosed(pos.offset(-pos.getX() % 16, -pos.getY(), -pos.getZ() % 16), pos.offset(15 - (pos.getX() % 16), 256 - pos.getY(), 15 - (pos.getZ() % 16))).iterator();
 
         while (cubicRange.hasNext())
         {
@@ -41,12 +43,12 @@ public class TerraBlockChlorophyteOre extends Block
             }
         }
 
-        BlockPos targetPos   = pos.add(random.nextInt(3) - 1, random.nextInt(3) - 1, random.nextInt(3) - 1);
+        BlockPos targetPos   = pos.offset(random.nextInt(3) - 1, random.nextInt(3) - 1, random.nextInt(3) - 1);
         Block    targetBlock = worldIn.getBlockState(targetPos).getBlock();
 
         if (targetBlock == TerraBlockRegistry.SOIL_MUD.get())
         {
-            worldIn.setBlockState(targetPos, this.getDefaultState());
+            worldIn.setBlockAndUpdate(targetPos, this.defaultBlockState());
         }
     }
 }

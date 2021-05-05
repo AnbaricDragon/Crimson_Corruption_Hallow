@@ -28,6 +28,8 @@ import net.minecraft.world.server.ServerWorld;
 import javax.annotation.Nullable;
 import java.util.Random;
 
+import net.minecraft.block.AbstractBlock.Properties;
+
 public class TerraBlockDoubleLantern extends Block
 {
     public static int light;
@@ -41,7 +43,7 @@ public class TerraBlockDoubleLantern extends Block
     public TerraBlockDoubleLantern(Properties properties, double topShape, double botShape, int light)
     {
         super(properties);
-        this.setDefaultState(this.stateContainer.getBaseState().with(HALF, DoubleBlockHalf.UPPER).with(LIT, false));
+        this.registerDefaultState(this.stateDefinition.any().setValue(HALF, DoubleBlockHalf.UPPER).setValue(LIT, false));
         this.TOP_SHAPE = buildShape(topShape);
         this.BOT_SHAPE = buildShape(botShape);
         this.light = light;
@@ -50,25 +52,25 @@ public class TerraBlockDoubleLantern extends Block
     @Override
     public int getLightValue(BlockState state, IBlockReader world, BlockPos pos)
     {
-        return state.get(LIT) ? this.light : 0;
+        return state.getValue(LIT) ? this.light : 0;
     }
 
     public void neighborChanged(BlockState state, World worldIn, BlockPos pos, Block blockIn, BlockPos fromPos, boolean isMoving)
     {
-        if (!worldIn.isRemote && state.get(HALF) == DoubleBlockHalf.UPPER)
+        if (!worldIn.isClientSide && state.getValue(HALF) == DoubleBlockHalf.UPPER)
         {
-            boolean isLit = state.get(LIT);
-            if (isLit != worldIn.isBlockPowered(state.get(HALF) == DoubleBlockHalf.UPPER ? pos : pos.up()))
+            boolean isLit = state.getValue(LIT);
+            if (isLit != worldIn.hasNeighborSignal(state.getValue(HALF) == DoubleBlockHalf.UPPER ? pos : pos.above()))
             {
                 if (isLit)
                 {
-                    worldIn.getPendingBlockTicks().scheduleTick(pos, this, 4);
-                    worldIn.getPendingBlockTicks().scheduleTick(pos.down(), this, 4);
+                    worldIn.getBlockTicks().scheduleTick(pos, this, 4);
+                    worldIn.getBlockTicks().scheduleTick(pos.below(), this, 4);
                 }
                 else
                 {
-                    worldIn.setBlockState(pos, state.with(LIT, true), 3);
-                    worldIn.setBlockState(pos.down(), state.with(LIT, true).with(HALF, DoubleBlockHalf.LOWER), 3);
+                    worldIn.setBlock(pos, state.setValue(LIT, true), 3);
+                    worldIn.setBlock(pos.below(), state.setValue(LIT, true).setValue(HALF, DoubleBlockHalf.LOWER), 3);
                 }
             }
         }
@@ -76,97 +78,97 @@ public class TerraBlockDoubleLantern extends Block
 
     public void tick(BlockState state, ServerWorld worldIn, BlockPos pos, Random rand)
     {
-        if (state.get(LIT) && state.get(HALF) == DoubleBlockHalf.UPPER && !worldIn.isBlockPowered(pos))
+        if (state.getValue(LIT) && state.getValue(HALF) == DoubleBlockHalf.UPPER && !worldIn.hasNeighborSignal(pos))
         {
-            worldIn.setBlockState(pos, state.with(LIT, false), 3);
-            worldIn.setBlockState(pos.down(), state.with(LIT, false).with(HALF, DoubleBlockHalf.LOWER), 3);
+            worldIn.setBlock(pos, state.setValue(LIT, false), 3);
+            worldIn.setBlock(pos.below(), state.setValue(LIT, false).setValue(HALF, DoubleBlockHalf.LOWER), 3);
         }
     }
 
     public VoxelShape getShape(BlockState state, IBlockReader worldIn, BlockPos pos, ISelectionContext context)
     {
-        return state.get(HALF) == DoubleBlockHalf.UPPER ? TOP_SHAPE : BOT_SHAPE;
+        return state.getValue(HALF) == DoubleBlockHalf.UPPER ? TOP_SHAPE : BOT_SHAPE;
     }
 
     public static VoxelShape buildShape(double radius)
     {
-        return Block.makeCuboidShape(8.0D - radius, 0.0D, 8.0D - radius, 8.0D + radius, 16.0D, 8.0D + radius);
+        return Block.box(8.0D - radius, 0.0D, 8.0D - radius, 8.0D + radius, 16.0D, 8.0D + radius);
     }
 
     @Override
-    public BlockState updatePostPlacement(BlockState stateIn, Direction facing, BlockState facingState, IWorld worldIn, BlockPos currentPos, BlockPos facingPos)
+    public BlockState updateShape(BlockState stateIn, Direction facing, BlockState facingState, IWorld worldIn, BlockPos currentPos, BlockPos facingPos)
     {
-        DoubleBlockHalf doubleblockhalf = stateIn.get(HALF);
-        if (facing.getAxis() != Direction.Axis.Y || doubleblockhalf == DoubleBlockHalf.UPPER != (facing == Direction.DOWN) || facingState.getBlock() == this && facingState.get(HALF) != doubleblockhalf)
+        DoubleBlockHalf doubleblockhalf = stateIn.getValue(HALF);
+        if (facing.getAxis() != Direction.Axis.Y || doubleblockhalf == DoubleBlockHalf.UPPER != (facing == Direction.DOWN) || facingState.getBlock() == this && facingState.getValue(HALF) != doubleblockhalf)
         {
-            return doubleblockhalf == DoubleBlockHalf.UPPER && facing == Direction.UP && !stateIn.isValidPosition(worldIn, currentPos) ? Blocks.AIR.getDefaultState() : super.updatePostPlacement(stateIn, facing, facingState, worldIn, currentPos, facingPos);
+            return doubleblockhalf == DoubleBlockHalf.UPPER && facing == Direction.UP && !stateIn.canSurvive(worldIn, currentPos) ? Blocks.AIR.defaultBlockState() : super.updateShape(stateIn, facing, facingState, worldIn, currentPos, facingPos);
         }
         else
         {
-            return Blocks.AIR.getDefaultState();
+            return Blocks.AIR.defaultBlockState();
         }
     }
 
     @Nullable
     public BlockState getStateForPlacement(BlockItemUseContext context)
     {
-        BlockPos blockpos = context.getPos();
-        return blockpos.getY() > 0 && context.getWorld().getBlockState(blockpos.down()).isReplaceable(context) ? super.getStateForPlacement(context) : null;
+        BlockPos blockpos = context.getClickedPos();
+        return blockpos.getY() > 0 && context.getLevel().getBlockState(blockpos.below()).canBeReplaced(context) ? super.getStateForPlacement(context) : null;
     }
 
-    public void onBlockPlacedBy(World worldIn, BlockPos pos, BlockState state, LivingEntity placer, ItemStack stack)
+    public void setPlacedBy(World worldIn, BlockPos pos, BlockState state, LivingEntity placer, ItemStack stack)
     {
-        worldIn.setBlockState(pos.down(), this.getDefaultState().with(HALF, DoubleBlockHalf.LOWER), 3);
+        worldIn.setBlock(pos.below(), this.defaultBlockState().setValue(HALF, DoubleBlockHalf.LOWER), 3);
     }
 
     public boolean isValidAnchor(BlockState state, IWorldReader worldIn, BlockPos pos)
     {
-        BlockPos blockpos = pos.up();
+        BlockPos blockpos = pos.above();
         if (state.getBlock() == this) //Forge: This function is called during world gen and placement, before this block is set, so if we are not 'here' then assume it's the pre-check.
         {
-            return worldIn.getBlockState(pos.up()).isSolid();
+            return worldIn.getBlockState(pos.above()).canOcclude();
         }
-        return worldIn.getBlockState(pos.up()).isSolid();
+        return worldIn.getBlockState(pos.above()).canOcclude();
     }
 
     @Override
-    public boolean isValidPosition(BlockState state, IWorldReader worldIn, BlockPos pos)
+    public boolean canSurvive(BlockState state, IWorldReader worldIn, BlockPos pos)
     {
-        if (state.get(HALF) != DoubleBlockHalf.LOWER)
+        if (state.getValue(HALF) != DoubleBlockHalf.LOWER)
         {
             return isValidAnchor(state, worldIn, pos);
         }
         else
         {
-            BlockState blockstate = worldIn.getBlockState(pos.up());
-            return blockstate.getBlock() == this && blockstate.get(HALF) == DoubleBlockHalf.UPPER;
+            BlockState blockstate = worldIn.getBlockState(pos.above());
+            return blockstate.getBlock() == this && blockstate.getValue(HALF) == DoubleBlockHalf.UPPER;
         }
     }
 
-    public void harvestBlock(World worldIn, PlayerEntity player, BlockPos pos, BlockState state, @Nullable TileEntity te, ItemStack stack)
+    public void playerDestroy(World worldIn, PlayerEntity player, BlockPos pos, BlockState state, @Nullable TileEntity te, ItemStack stack)
     {
-        super.harvestBlock(worldIn, player, pos, Blocks.AIR.getDefaultState(), te, stack);
+        super.playerDestroy(worldIn, player, pos, Blocks.AIR.defaultBlockState(), te, stack);
     }
 
-    public void onBlockHarvested(World worldIn, BlockPos pos, BlockState state, PlayerEntity player)
+    public void playerWillDestroy(World worldIn, BlockPos pos, BlockState state, PlayerEntity player)
     {
-        DoubleBlockHalf doubleblockhalf = state.get(HALF);
-        BlockPos        blockpos        = doubleblockhalf == DoubleBlockHalf.UPPER ? pos.down() : pos.up();
+        DoubleBlockHalf doubleblockhalf = state.getValue(HALF);
+        BlockPos        blockpos        = doubleblockhalf == DoubleBlockHalf.UPPER ? pos.below() : pos.above();
         BlockState      blockstate      = worldIn.getBlockState(blockpos);
-        if (blockstate.getBlock() == this && blockstate.get(HALF) != doubleblockhalf)
+        if (blockstate.getBlock() == this && blockstate.getValue(HALF) != doubleblockhalf)
         {
-            worldIn.setBlockState(blockpos, Blocks.AIR.getDefaultState(), 35);
-            worldIn.playEvent(player, 2001, blockpos, Block.getStateId(blockstate));
-            if (!worldIn.isRemote && !player.isCreative())
+            worldIn.setBlock(blockpos, Blocks.AIR.defaultBlockState(), 35);
+            worldIn.levelEvent(player, 2001, blockpos, Block.getId(blockstate));
+            if (!worldIn.isClientSide && !player.isCreative())
             {
-                spawnDrops(state, worldIn, pos, null, player, player.getHeldItemMainhand());
-                spawnDrops(blockstate, worldIn, blockpos, null, player, player.getHeldItemMainhand());
+                dropResources(state, worldIn, pos, null, player, player.getMainHandItem());
+                dropResources(blockstate, worldIn, blockpos, null, player, player.getMainHandItem());
             }
         }
-        super.onBlockHarvested(worldIn, pos, state, player);
+        super.playerWillDestroy(worldIn, pos, state, player);
     }
 
-    protected void fillStateContainer(StateContainer.Builder<Block, BlockState> builder)
+    protected void createBlockStateDefinition(StateContainer.Builder<Block, BlockState> builder)
     {
         builder.add(HALF, LIT);
     }

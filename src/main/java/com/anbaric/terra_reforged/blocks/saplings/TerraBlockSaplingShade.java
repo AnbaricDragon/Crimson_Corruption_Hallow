@@ -18,15 +18,17 @@ import net.minecraft.world.server.ServerWorld;
 
 import java.util.Random;
 
+import net.minecraft.block.AbstractBlock.Properties;
+
 public class TerraBlockSaplingShade extends BushBlock implements IGrowable
 {
-    public static final IntegerProperty STAGE = BlockStateProperties.STAGE_0_1;
-    protected static final VoxelShape SHAPE = Block.makeCuboidShape(2.0D, 0.0D, 2.0D, 14.0D, 12.0D, 14.0D);
+    public static final IntegerProperty STAGE = BlockStateProperties.STAGE;
+    protected static final VoxelShape SHAPE = Block.box(2.0D, 0.0D, 2.0D, 14.0D, 12.0D, 14.0D);
 
     public TerraBlockSaplingShade(Properties properties)
     {
         super(properties);
-        this.setDefaultState(this.stateContainer.getBaseState().with(STAGE, Integer.valueOf(0)));
+        this.registerDefaultState(this.stateDefinition.any().setValue(STAGE, Integer.valueOf(0)));
     }
 
     public VoxelShape getShape(BlockState state, IBlockReader worldIn, BlockPos pos, ISelectionContext context)
@@ -36,7 +38,7 @@ public class TerraBlockSaplingShade extends BushBlock implements IGrowable
 
     public void randomTick(BlockState state, ServerWorld worldIn, BlockPos pos, Random random)
     {
-        if (worldIn.getLight(pos.up()) >= 9 && random.nextInt(7) == 0)
+        if (worldIn.getMaxLocalRawBrightness(pos.above()) >= 9 && random.nextInt(7) == 0)
         {
             if (!worldIn.isAreaLoaded(pos, 1))
             {
@@ -48,9 +50,9 @@ public class TerraBlockSaplingShade extends BushBlock implements IGrowable
 
     public void placeTree(ServerWorld world, BlockPos pos, BlockState state, Random rand)
     {
-        if (state.get(STAGE) == 0)
+        if (state.getValue(STAGE) == 0)
         {
-            world.setBlockState(pos, state.cycleValue(STAGE), 4);
+            world.setBlock(pos, state.cycle(STAGE), 4);
         }
         else
         {
@@ -58,26 +60,26 @@ public class TerraBlockSaplingShade extends BushBlock implements IGrowable
             {
                 return;
             }
-            TerraFeatureRegistry.SHADE_TREE.get().generate(world, world.getChunkProvider().getChunkGenerator(), rand, pos, NoFeatureConfig.NO_FEATURE_CONFIG);
+            TerraFeatureRegistry.SHADE_TREE.get().place(world, world.getChunkSource().getGenerator(), rand, pos, NoFeatureConfig.NONE);
         }
     }
 
-    public boolean canGrow(IBlockReader worldIn, BlockPos pos, BlockState state, boolean isClient)
+    public boolean isValidBonemealTarget(IBlockReader worldIn, BlockPos pos, BlockState state, boolean isClient)
     {
         return true;
     }
 
-    public boolean canUseBonemeal(World worldIn, Random rand, BlockPos pos, BlockState state)
+    public boolean isBonemealSuccess(World worldIn, Random rand, BlockPos pos, BlockState state)
     {
-        return (double) worldIn.rand.nextFloat() < 0.45D;
+        return (double) worldIn.random.nextFloat() < 0.45D;
     }
 
-    public void grow(ServerWorld worldIn, Random rand, BlockPos pos, BlockState state)
+    public void performBonemeal(ServerWorld worldIn, Random rand, BlockPos pos, BlockState state)
     {
         this.placeTree(worldIn, pos, state, rand);
     }
 
-    protected void fillStateContainer(StateContainer.Builder<Block, BlockState> builder)
+    protected void createBlockStateDefinition(StateContainer.Builder<Block, BlockState> builder)
     {
         builder.add(STAGE);
     }

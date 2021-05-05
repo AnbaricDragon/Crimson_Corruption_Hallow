@@ -39,6 +39,10 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
+import net.minecraft.item.Item.Properties;
+import top.theillusivec4.curios.api.type.capability.ICurio.DropRule;
+import top.theillusivec4.curios.api.type.capability.ICurio.SoundInfo;
+
 public class TerraItemBootsDunerider extends TerraItemAccessory
 {
     AttributeModifier duneriderAttribute = new AttributeModifier(UUID.fromString("f3da7a13-d2ab-48c7-9c3f-68da0608f172"), Reference.MODID + ":duneriderBonus", 1.33D, AttributeModifier.Operation.MULTIPLY_BASE);
@@ -49,10 +53,10 @@ public class TerraItemBootsDunerider extends TerraItemAccessory
     }
 
     @Override
-    public void addInformation(ItemStack stack, World worldIn, List<ITextComponent> tooltip, ITooltipFlag flagIn)
+    public void appendHoverText(ItemStack stack, World worldIn, List<ITextComponent> tooltip, ITooltipFlag flagIn)
     {
         tooltip.add(new StringTextComponent("+33% speed on sand"));
-        super.addInformation(stack, worldIn, tooltip, flagIn);
+        super.appendHoverText(stack, worldIn, tooltip, flagIn);
     }
 
     @Override
@@ -68,15 +72,15 @@ public class TerraItemBootsDunerider extends TerraItemAccessory
                 {
                     return;
                 }
-                World world = player.getEntityWorld();
-                player.stepHeight = 0.6F;
+                World world = player.getCommandSenderWorld();
+                player.maxUpStep = 0.6F;
 
-                if (world.getBlockState(player.getPosition().down()).isIn(BlockTags.SAND) || (world.getBlockState(player.getPosition().down()).getBlock() == Blocks.AIR && world.getBlockState(player.getPosition().down(2)).isIn(BlockTags.SAND)))
+                if (world.getBlockState(player.blockPosition().below()).is(BlockTags.SAND) || (world.getBlockState(player.blockPosition().below()).getBlock() == Blocks.AIR && world.getBlockState(player.blockPosition().below(2)).is(BlockTags.SAND)))
                 {
-                    player.stepHeight = 1.25F;
+                    player.maxUpStep = 1.25F;
                     if (!player.getAttribute(Attributes.MOVEMENT_SPEED).hasModifier(duneriderAttribute))
                     {
-                        player.getAttribute(Attributes.MOVEMENT_SPEED).applyNonPersistentModifier(duneriderAttribute);
+                        player.getAttribute(Attributes.MOVEMENT_SPEED).addTransientModifier(duneriderAttribute);
                     }
                 }
                 else
@@ -91,7 +95,7 @@ public class TerraItemBootsDunerider extends TerraItemAccessory
             @Override
             public void onUnequip(SlotContext slotContext, ItemStack newStack)
             {
-                slotContext.getWearer().stepHeight = 0.6F;
+                slotContext.getWearer().maxUpStep = 0.6F;
                 if (slotContext.getWearer().getAttribute(Attributes.MOVEMENT_SPEED).hasModifier(duneriderAttribute))
                 {
                     slotContext.getWearer().getAttribute(Attributes.MOVEMENT_SPEED).removeModifier(duneriderAttribute);
@@ -109,7 +113,7 @@ public class TerraItemBootsDunerider extends TerraItemAccessory
             @Override
             public SoundInfo getEquipSound(SlotContext slotContext)
             {
-                return new SoundInfo(SoundEvents.ITEM_ARMOR_EQUIP_GENERIC, 1.0f, 1.0f);
+                return new SoundInfo(SoundEvents.ARMOR_EQUIP_GENERIC, 1.0f, 1.0f);
             }
 
             @Override

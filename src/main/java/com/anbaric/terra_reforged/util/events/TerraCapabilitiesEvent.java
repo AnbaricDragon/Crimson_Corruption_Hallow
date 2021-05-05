@@ -29,7 +29,7 @@ public class TerraCapabilitiesEvent
     @SubscribeEvent
     public static void onAttachCapabilitiesWorld(AttachCapabilitiesEvent<World> event)
     {
-        if (event.getObject().getDimensionKey() == World.OVERWORLD)
+        if (event.getObject().dimension() == World.OVERWORLD)
         {
             WorldProgressionProvider provider = new WorldProgressionProvider();
             event.addCapability(new ResourceLocation(Reference.MODID, "world_progression"), provider);

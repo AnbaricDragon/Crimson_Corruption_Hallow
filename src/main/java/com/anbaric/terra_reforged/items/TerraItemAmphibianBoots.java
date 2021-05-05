@@ -13,6 +13,10 @@ import top.theillusivec4.curios.api.type.capability.ICurio;
 
 import javax.annotation.Nonnull;
 
+import net.minecraft.item.Item.Properties;
+import top.theillusivec4.curios.api.type.capability.ICurio.DropRule;
+import top.theillusivec4.curios.api.type.capability.ICurio.SoundInfo;
+
 public class TerraItemAmphibianBoots extends TerraItemAccessory
 {
     public TerraItemAmphibianBoots(Properties properties)
@@ -34,11 +38,11 @@ public class TerraItemAmphibianBoots extends TerraItemAccessory
                 {
                     return;
                 }
-                World world = player.getEntityWorld();
+                World world = player.getCommandSenderWorld();
 
                 if (player.isInWater() && !player.isCrouching())
                 {
-                    player.setMotion(player.getMotion().mul(1.1D, 1.1D, 1.1D));
+                    player.setDeltaMovement(player.getDeltaMovement().multiply(1.1D, 1.1D, 1.1D));
                 }
             }
 
@@ -59,7 +63,7 @@ public class TerraItemAmphibianBoots extends TerraItemAccessory
             @Override
             public SoundInfo getEquipSound(SlotContext slotContext)
             {
-                return new SoundInfo(SoundEvents.ITEM_ARMOR_EQUIP_GENERIC, 1.0f, 1.0f);
+                return new SoundInfo(SoundEvents.ARMOR_EQUIP_GENERIC, 1.0f, 1.0f);
             }
 
             @Override

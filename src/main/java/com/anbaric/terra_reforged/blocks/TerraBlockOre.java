@@ -15,6 +15,8 @@ import net.minecraft.world.IBlockReader;
 
 import java.util.Random;
 
+import net.minecraft.block.AbstractBlock.Properties;
+
 public class TerraBlockOre extends Block
 {
     public TerraBlockOre(Properties properties)
@@ -65,13 +67,13 @@ public class TerraBlockOre extends Block
     @Override
     public ItemStack getPickBlock(BlockState state, RayTraceResult target, IBlockReader world, BlockPos pos, PlayerEntity player)
     {
-        ItemStack result = new ItemStack(Item.getItemFromBlock(Blocks.AIR));
+        ItemStack result = new ItemStack(Item.byBlock(Blocks.AIR));
 
         for (EnumBiomeBlockType block : EnumBiomeBlockType.values())
         {
             if (block.pure == state.getBlock() || block.corrupt == state.getBlock() || block.crimson == state.getBlock() || block.hallowed == state.getBlock() || block.jungle == state.getBlock())
             {
-                result = new ItemStack(Item.getItemFromBlock(block.pure));
+                result = new ItemStack(Item.byBlock(block.pure));
             }
         }
         return result;

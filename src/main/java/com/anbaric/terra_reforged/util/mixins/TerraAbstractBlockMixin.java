@@ -24,7 +24,7 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 @Mixin(AbstractBlock.AbstractBlockState.class)
 public class TerraAbstractBlockMixin
 {
-    private static VoxelShape liquidShape = Block.makeCuboidShape(0, 0, 0, 16, 14.3, 16);
+    private static VoxelShape liquidShape = Block.box(0, 0, 0, 16, 14.3, 16);
 
     @Inject(method = "getCollisionShape(Lnet/minecraft/world/IBlockReader;Lnet/minecraft/util/math/BlockPos;Lnet/minecraft/util/math/shapes/ISelectionContext;)Lnet/minecraft/util/math/shapes/VoxelShape;", at = @At("HEAD"), cancellable = true)
     private void waterWalk(IBlockReader worldIn, BlockPos pos, ISelectionContext context, CallbackInfoReturnable<VoxelShape> cir)
@@ -43,7 +43,7 @@ public class TerraAbstractBlockMixin
             PlayerEntity player         = (PlayerEntity) entity;
             boolean      wet            = player.isInWater() || player.isInLava();
             boolean      applyCollision = !wet;
-            applyCollision &= world.getBlockState(pos.up()).isAir(world, pos.up());
+            applyCollision &= world.getBlockState(pos.above()).isAir(world, pos.above());
             ItemStack boots = getBaubles(player);
             applyCollision &= !boots.isEmpty() && (state.getMaterial() == Material.WATER || state.hasProperty(BlockStateProperties.WATERLOGGED) || (state.getMaterial() == Material.LAVA && boots.getItem() == TerraItemRegistry.BOOTS_LAVA.get()));
             return applyCollision;

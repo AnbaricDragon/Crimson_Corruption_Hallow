@@ -12,6 +12,8 @@ import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.entity.living.LivingDamageEvent;
 import top.theillusivec4.curios.api.CuriosApi;
 
+import net.minecraft.item.Item.Properties;
+
 public class TerraItemHoneycomb extends TerraItemAccessory
 {
     public TerraItemHoneycomb(Properties properties)
@@ -24,14 +26,14 @@ public class TerraItemHoneycomb extends TerraItemAccessory
     {
         PlayerEntity player = event.getEntityLiving() instanceof PlayerEntity ? (PlayerEntity) event.getEntityLiving() : null;
         if (player == null) { return; }
-        ServerWorld world = (ServerWorld) event.getEntity().getEntityWorld();
+        ServerWorld world = (ServerWorld) event.getEntity().getCommandSenderWorld();
 
-        float aggroDist = event.getSource().getTrueSource() instanceof LivingEntity ? event.getSource().getTrueSource().getEntity().getDistance(player) : 10F;
+        float aggroDist = event.getSource().getEntity() instanceof LivingEntity ? event.getSource().getEntity().getEntity().distanceTo(player) : 10F;
 
-        CuriosApi.getCuriosHelper().findEquippedCurio(stack -> stack.getItem() == this && !player.getCooldownTracker().hasCooldown(stack.getItem()), player).ifPresent(found -> {
-            player.getCooldownTracker().setCooldown(CuriosApi.getCuriosHelper().findEquippedCurio(stack -> stack.getItem() == this, player).get().right.getItem(), 100);
-            player.addPotionEffect(new EffectInstance(TerraEffectRegistry.HONEY.get(), 100));
-            BeeHandler.spawnAngryBees(world, player.getPosition(), aggroDist);
+        CuriosApi.getCuriosHelper().findEquippedCurio(stack -> stack.getItem() == this && !player.getCooldowns().isOnCooldown(stack.getItem()), player).ifPresent(found -> {
+            player.getCooldowns().addCooldown(CuriosApi.getCuriosHelper().findEquippedCurio(stack -> stack.getItem() == this, player).get().right.getItem(), 100);
+            player.addEffect(new EffectInstance(TerraEffectRegistry.HONEY.get(), 100));
+            BeeHandler.spawnAngryBees(world, player.blockPosition(), aggroDist);
         });
     }
 }

@@ -28,6 +28,8 @@ import top.theillusivec4.curios.api.CuriosApi;
 
 import java.util.Random;
 
+import net.minecraft.item.Item.Properties;
+
 public class TerraItemStarveil extends TerraItemAccessory
 {
     public TerraItemStarveil(Properties properties)
@@ -40,18 +42,18 @@ public class TerraItemStarveil extends TerraItemAccessory
     {
         PlayerEntity player = event.getEntityLiving() instanceof PlayerEntity ? (PlayerEntity) event.getEntityLiving() : null;
         if (player == null) { return; }
-        World world = player.getEntityWorld();
+        World world = player.getCommandSenderWorld();
 
         CuriosApi.getCuriosHelper().findEquippedCurio(this, player).ifPresent(found ->
         {
-            if (!player.isPotionActive(TerraEffectRegistry.INVINCIBILITY.get()))
+            if (!player.hasEffect(TerraEffectRegistry.INVINCIBILITY.get()))
             {
-                if (!player.getCooldownTracker().hasCooldown(this) && event.getSource().getImmediateSource() instanceof LivingEntity && world instanceof ServerWorld)
+                if (!player.getCooldowns().isOnCooldown(this) && event.getSource().getDirectEntity() instanceof LivingEntity && world instanceof ServerWorld)
                 {
                     ServerWorld server = (ServerWorld) world;
-                    spawnArrows(server, player.getPosition(), player.getRNG());
+                    spawnArrows(server, player.blockPosition(), player.getRandom());
                 }
-                player.addPotionEffect(new EffectInstance(TerraEffectRegistry.INVINCIBILITY.get(), 40, 0, false, false));
+                player.addEffect(new EffectInstance(TerraEffectRegistry.INVINCIBILITY.get(), 40, 0, false, false));
             }
             else
             {
@@ -73,7 +75,7 @@ public class TerraItemStarveil extends TerraItemAccessory
             double d3 = pos.getZ() - arrowPos.getZ();
             float f = MathHelper.sqrt(d1 * d1 + d3 * d3) * 0.2F;
             arrowEntity.shoot(d1, d2 + f, d3, 3.0F, 0.0F);
-            world.addEntity(arrowEntity);
+            world.addFreshEntity(arrowEntity);
         }
     }
 }

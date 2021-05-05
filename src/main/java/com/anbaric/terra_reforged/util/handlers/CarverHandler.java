@@ -9,7 +9,7 @@ public class CarverHandler
 {
     public static void addCarvers()
     {
-        WorldGenRegistries.register(WorldGenRegistries.CONFIGURED_CARVER, Reference.path("carver_cave_general"), TerraCarverRegistry.CARVER_CAVE_GENERAL.get().func_242761_a(new ProbabilityConfig(0.15F)));
-        WorldGenRegistries.register(WorldGenRegistries.CONFIGURED_CARVER, Reference.path("carver_ravine_general"), TerraCarverRegistry.CARVER_RAVINE_GENERAL.get().func_242761_a(new ProbabilityConfig(0.02F)));
+        WorldGenRegistries.register(WorldGenRegistries.CONFIGURED_CARVER, Reference.path("carver_cave_general"), TerraCarverRegistry.CARVER_CAVE_GENERAL.get().configured(new ProbabilityConfig(0.15F)));
+        WorldGenRegistries.register(WorldGenRegistries.CONFIGURED_CARVER, Reference.path("carver_ravine_general"), TerraCarverRegistry.CARVER_RAVINE_GENERAL.get().configured(new ProbabilityConfig(0.02F)));
     }
 }

@@ -16,6 +16,8 @@ import top.theillusivec4.curios.api.type.capability.ICurio;
 
 import javax.annotation.Nonnull;
 
+import net.minecraft.item.Item.Properties;
+
 public class TerraItemFrogLeg extends TerraItemAccessory
 {
     public TerraItemFrogLeg(Properties properties)

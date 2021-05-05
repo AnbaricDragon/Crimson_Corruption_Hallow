@@ -23,6 +23,10 @@ import top.theillusivec4.curios.api.type.capability.ICurio;
 import javax.annotation.Nonnull;
 import java.util.UUID;
 
+import net.minecraft.item.Item.Properties;
+import top.theillusivec4.curios.api.type.capability.ICurio.DropRule;
+import top.theillusivec4.curios.api.type.capability.ICurio.SoundInfo;
+
 public class TerraItemAccessory extends Item implements ICurio
 {
     public TerraItemAccessory(Properties properties)
@@ -46,7 +50,7 @@ public class TerraItemAccessory extends Item implements ICurio
             @Override
             public SoundInfo getEquipSound(SlotContext slotContext)
             {
-                return new SoundInfo(SoundEvents.ITEM_ARMOR_EQUIP_GENERIC, 1.0f, 1.0f);
+                return new SoundInfo(SoundEvents.ARMOR_EQUIP_GENERIC, 1.0f, 1.0f);
             }
 
             @Override

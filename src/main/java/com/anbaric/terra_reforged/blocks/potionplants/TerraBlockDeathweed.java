@@ -14,6 +14,8 @@ import net.minecraft.world.server.ServerWorld;
 
 import java.util.Random;
 
+import net.minecraft.block.AbstractBlock.Properties;
+
 public class TerraBlockDeathweed extends TerraBlockPotionPlant
 {
     public TerraBlockDeathweed(Properties builder, ITag<Block> tag)
@@ -24,20 +26,20 @@ public class TerraBlockDeathweed extends TerraBlockPotionPlant
     @Override
     public void tick(BlockState state, ServerWorld worldIn, BlockPos pos, Random random)
     {
-        if (!worldIn.isRemote)
+        if (!worldIn.isClientSide)
         {
             if (!worldIn.isAreaLoaded(pos, 3))
             {
                 return; // Forge: prevent loading unloaded chunks when checking neighbor's light and spreading
             }
-            if (state.get(AGE) == 0 && random.nextFloat() < 0.01F)
+            if (state.getValue(AGE) == 0 && random.nextFloat() < 0.01F)
             {
-                worldIn.setBlockState(pos, state.with(AGE, 1));
+                worldIn.setBlockAndUpdate(pos, state.setValue(AGE, 1));
             }
             else
             {
-                if (worldIn.getMoonFactor() == 1.0f && !worldIn.isDaytime() && state.get(AGE) == 1) {worldIn.setBlockState(pos, this.getDefaultState().with(AGE, 2));}
-                if (worldIn.getMoonFactor() != 1.0f && state.get(AGE) == 2) {worldIn.setBlockState(pos, this.getDefaultState().with(AGE, 1));}
+                if (worldIn.getMoonBrightness() == 1.0f && !worldIn.isDay() && state.getValue(AGE) == 1) {worldIn.setBlockAndUpdate(pos, this.defaultBlockState().setValue(AGE, 2));}
+                if (worldIn.getMoonBrightness() != 1.0f && state.getValue(AGE) == 2) {worldIn.setBlockAndUpdate(pos, this.defaultBlockState().setValue(AGE, 1));}
             }
         }
     }

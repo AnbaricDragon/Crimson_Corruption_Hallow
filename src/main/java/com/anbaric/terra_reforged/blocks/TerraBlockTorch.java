@@ -20,14 +20,16 @@ import net.minecraftforge.api.distmarker.OnlyIn;
 
 import java.util.Random;
 
+import net.minecraft.block.AbstractBlock;
+
 public class TerraBlockTorch extends Block
 {
-    protected static final VoxelShape SHAPE = Block.makeCuboidShape(6.0D, 0.0D, 6.0D, 10.0D, 10.0D, 10.0D);
+    protected static final VoxelShape SHAPE = Block.box(6.0D, 0.0D, 6.0D, 10.0D, 10.0D, 10.0D);
 
-    public TerraBlockTorch(Block.Properties properties)
+    public TerraBlockTorch(AbstractBlock.Properties properties)
     {
         super(properties);
-        this.setDefaultState(this.stateContainer.getBaseState());
+        this.registerDefaultState(this.stateDefinition.any());
     }
 
     public IParticleData getParticle()
@@ -57,14 +59,14 @@ public class TerraBlockTorch extends Block
         return SHAPE;
     }
 
-    public BlockState updatePostPlacement(BlockState stateIn, Direction facing, BlockState facingState, IWorld worldIn, BlockPos currentPos, BlockPos facingPos)
+    public BlockState updateShape(BlockState stateIn, Direction facing, BlockState facingState, IWorld worldIn, BlockPos currentPos, BlockPos facingPos)
     {
-        return facing == Direction.DOWN && !this.isValidPosition(stateIn, worldIn, currentPos) ? Blocks.AIR.getDefaultState() : super.updatePostPlacement(stateIn, facing, facingState, worldIn, currentPos, facingPos);
+        return facing == Direction.DOWN && !this.canSurvive(stateIn, worldIn, currentPos) ? Blocks.AIR.defaultBlockState() : super.updateShape(stateIn, facing, facingState, worldIn, currentPos, facingPos);
     }
 
-    public boolean isValidPosition(BlockState state, IWorldReader worldIn, BlockPos pos)
+    public boolean canSurvive(BlockState state, IWorldReader worldIn, BlockPos pos)
     {
-        return hasEnoughSolidSide(worldIn, pos.down(), Direction.UP);
+        return canSupportCenter(worldIn, pos.below(), Direction.UP);
     }
 
     @OnlyIn(Dist.CLIENT)

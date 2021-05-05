@@ -7,6 +7,8 @@ import net.minecraftforge.event.entity.living.LivingDamageEvent;
 import net.minecraftforge.event.entity.living.LivingFallEvent;
 import top.theillusivec4.curios.api.CuriosApi;
 
+import net.minecraft.item.Item.Properties;
+
 public class TerraItemObsidianSkull extends TerraItemAccessory
 {
     public TerraItemObsidianSkull(Properties properties)
@@ -19,9 +21,9 @@ public class TerraItemObsidianSkull extends TerraItemAccessory
     {
         CuriosApi.getCuriosHelper().findEquippedCurio(this, event.getEntityLiving()).ifPresent(found -> {
             DamageSource source = event.getSource();
-            if (source.isFireDamage() && source != DamageSource.LAVA)
+            if (source.isFire() && source != DamageSource.LAVA)
             {
-                event.getEntityLiving().extinguish();
+                event.getEntityLiving().clearFire();
                 event.setCanceled(true);
             }
         });

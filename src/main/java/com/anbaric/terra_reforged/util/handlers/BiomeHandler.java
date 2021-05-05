@@ -11,25 +11,25 @@ import net.minecraftforge.common.BiomeManager;
 
 public class BiomeHandler
 {
-    public static RegistryKey<Biome> MUD_JUNGLE = RegistryKey.getOrCreateKey(Registry.BIOME_KEY, new ResourceLocation(Reference.MODID, "mud_jungle"));
+    public static RegistryKey<Biome> MUD_JUNGLE = RegistryKey.create(Registry.BIOME_REGISTRY, new ResourceLocation(Reference.MODID, "mud_jungle"));
 
-    public static RegistryKey<Biome> CORRUPT_PLAINS = RegistryKey.getOrCreateKey(Registry.BIOME_KEY, new ResourceLocation(Reference.MODID,"corrupt_plains"));
-    public static RegistryKey<Biome> CORRUPT_DESERT = RegistryKey.getOrCreateKey(Registry.BIOME_KEY, new ResourceLocation(Reference.MODID,"corrupt_desert"));
-    public static RegistryKey<Biome> CORRUPT_FOREST = RegistryKey.getOrCreateKey(Registry.BIOME_KEY, new ResourceLocation(Reference.MODID,"corrupt_forest"));
-    public static RegistryKey<Biome> CORRUPT_TAIGA = RegistryKey.getOrCreateKey(Registry.BIOME_KEY, new ResourceLocation(Reference.MODID,"corrupt_taiga"));
-    public static RegistryKey<Biome> CORRUPT_MOUNTAIN = RegistryKey.getOrCreateKey(Registry.BIOME_KEY, new ResourceLocation(Reference.MODID,"corrupt_mountain"));
+    public static RegistryKey<Biome> CORRUPT_PLAINS = RegistryKey.create(Registry.BIOME_REGISTRY, new ResourceLocation(Reference.MODID,"corrupt_plains"));
+    public static RegistryKey<Biome> CORRUPT_DESERT = RegistryKey.create(Registry.BIOME_REGISTRY, new ResourceLocation(Reference.MODID,"corrupt_desert"));
+    public static RegistryKey<Biome> CORRUPT_FOREST = RegistryKey.create(Registry.BIOME_REGISTRY, new ResourceLocation(Reference.MODID,"corrupt_forest"));
+    public static RegistryKey<Biome> CORRUPT_TAIGA = RegistryKey.create(Registry.BIOME_REGISTRY, new ResourceLocation(Reference.MODID,"corrupt_taiga"));
+    public static RegistryKey<Biome> CORRUPT_MOUNTAIN = RegistryKey.create(Registry.BIOME_REGISTRY, new ResourceLocation(Reference.MODID,"corrupt_mountain"));
 
-    public static RegistryKey<Biome> CRIMSON_PLAINS = RegistryKey.getOrCreateKey(Registry.BIOME_KEY, new ResourceLocation(Reference.MODID,"crimson_plains"));
-    public static RegistryKey<Biome> CRIMSON_DESERT = RegistryKey.getOrCreateKey(Registry.BIOME_KEY, new ResourceLocation(Reference.MODID,"crimson_desert"));
-    public static RegistryKey<Biome> CRIMSON_FOREST = RegistryKey.getOrCreateKey(Registry.BIOME_KEY, new ResourceLocation(Reference.MODID,"crimson_forest"));
-    public static RegistryKey<Biome> CRIMSON_TAIGA = RegistryKey.getOrCreateKey(Registry.BIOME_KEY, new ResourceLocation(Reference.MODID,"crimson_taiga"));
-    public static RegistryKey<Biome> CRIMSON_MOUNTAIN = RegistryKey.getOrCreateKey(Registry.BIOME_KEY, new ResourceLocation(Reference.MODID,"crimson_mountain"));
+    public static RegistryKey<Biome> CRIMSON_PLAINS = RegistryKey.create(Registry.BIOME_REGISTRY, new ResourceLocation(Reference.MODID,"crimson_plains"));
+    public static RegistryKey<Biome> CRIMSON_DESERT = RegistryKey.create(Registry.BIOME_REGISTRY, new ResourceLocation(Reference.MODID,"crimson_desert"));
+    public static RegistryKey<Biome> CRIMSON_FOREST = RegistryKey.create(Registry.BIOME_REGISTRY, new ResourceLocation(Reference.MODID,"crimson_forest"));
+    public static RegistryKey<Biome> CRIMSON_TAIGA = RegistryKey.create(Registry.BIOME_REGISTRY, new ResourceLocation(Reference.MODID,"crimson_taiga"));
+    public static RegistryKey<Biome> CRIMSON_MOUNTAIN = RegistryKey.create(Registry.BIOME_REGISTRY, new ResourceLocation(Reference.MODID,"crimson_mountain"));
 
-    public static RegistryKey<Biome> HALLOWED_PLAINS = RegistryKey.getOrCreateKey(Registry.BIOME_KEY, new ResourceLocation(Reference.MODID,"hallowed_plains"));
-    public static RegistryKey<Biome> HALLOWED_DESERT = RegistryKey.getOrCreateKey(Registry.BIOME_KEY, new ResourceLocation(Reference.MODID,"hallowed_desert"));
-    public static RegistryKey<Biome> HALLOWED_FOREST = RegistryKey.getOrCreateKey(Registry.BIOME_KEY, new ResourceLocation(Reference.MODID,"hallowed_forest"));
-    public static RegistryKey<Biome> HALLOWED_TAIGA = RegistryKey.getOrCreateKey(Registry.BIOME_KEY, new ResourceLocation(Reference.MODID,"hallowed_taiga"));
-    public static RegistryKey<Biome> HALLOWED_MOUNTAIN = RegistryKey.getOrCreateKey(Registry.BIOME_KEY, new ResourceLocation(Reference.MODID,"hallowed_mountain"));
+    public static RegistryKey<Biome> HALLOWED_PLAINS = RegistryKey.create(Registry.BIOME_REGISTRY, new ResourceLocation(Reference.MODID,"hallowed_plains"));
+    public static RegistryKey<Biome> HALLOWED_DESERT = RegistryKey.create(Registry.BIOME_REGISTRY, new ResourceLocation(Reference.MODID,"hallowed_desert"));
+    public static RegistryKey<Biome> HALLOWED_FOREST = RegistryKey.create(Registry.BIOME_REGISTRY, new ResourceLocation(Reference.MODID,"hallowed_forest"));
+    public static RegistryKey<Biome> HALLOWED_TAIGA = RegistryKey.create(Registry.BIOME_REGISTRY, new ResourceLocation(Reference.MODID,"hallowed_taiga"));
+    public static RegistryKey<Biome> HALLOWED_MOUNTAIN = RegistryKey.create(Registry.BIOME_REGISTRY, new ResourceLocation(Reference.MODID,"hallowed_mountain"));
 
     public static void addBiomes()
     {

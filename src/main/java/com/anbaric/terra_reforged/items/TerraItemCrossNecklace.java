@@ -8,6 +8,8 @@ import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.entity.living.LivingAttackEvent;
 import top.theillusivec4.curios.api.CuriosApi;
 
+import net.minecraft.item.Item.Properties;
+
 public class TerraItemCrossNecklace extends TerraItemAccessory
 {
     public TerraItemCrossNecklace(Properties properties)
@@ -23,9 +25,9 @@ public class TerraItemCrossNecklace extends TerraItemAccessory
 
         CuriosApi.getCuriosHelper().findEquippedCurio(this, player).ifPresent(found ->
         {
-            if (!player.isPotionActive(TerraEffectRegistry.INVINCIBILITY.get()))
+            if (!player.hasEffect(TerraEffectRegistry.INVINCIBILITY.get()))
             {
-                player.addPotionEffect(new EffectInstance(TerraEffectRegistry.INVINCIBILITY.get(), 40, 0, false, false));
+                player.addEffect(new EffectInstance(TerraEffectRegistry.INVINCIBILITY.get(), 40, 0, false, false));
             }
             else
             {

@@ -26,16 +26,18 @@ import net.minecraftforge.common.PlantType;
 
 import java.util.Random;
 
+import net.minecraft.block.AbstractBlock;
+
 public class TerraBlockCactus extends Block implements net.minecraftforge.common.IPlantable
 {
-    public static final IntegerProperty AGE = BlockStateProperties.AGE_0_15;
-    protected static final VoxelShape field_196400_b = Block.makeCuboidShape(1.0D, 0.0D, 1.0D, 15.0D, 15.0D, 15.0D);
-    protected static final VoxelShape field_196401_c = Block.makeCuboidShape(1.0D, 0.0D, 1.0D, 15.0D, 16.0D, 15.0D);
+    public static final IntegerProperty AGE = BlockStateProperties.AGE_15;
+    protected static final VoxelShape COLLISION_SHAPE = Block.box(1.0D, 0.0D, 1.0D, 15.0D, 15.0D, 15.0D);
+    protected static final VoxelShape OUTLINE_SHAPE = Block.box(1.0D, 0.0D, 1.0D, 15.0D, 16.0D, 15.0D);
 
-    public TerraBlockCactus(Block.Properties properties)
+    public TerraBlockCactus(AbstractBlock.Properties properties)
     {
         super(properties);
-        this.setDefaultState(this.stateContainer.getBaseState().with(AGE, 0));
+        this.registerDefaultState(this.stateDefinition.any().setValue(AGE, 0));
     }
 
     @Override
@@ -45,42 +47,42 @@ public class TerraBlockCactus extends Block implements net.minecraftforge.common
         {
             return; // Forge: prevent growing cactus from loading unloaded chunks with block update
         }
-        if (!state.isValidPosition(worldIn, pos))
+        if (!state.canSurvive(worldIn, pos))
         {
             worldIn.destroyBlock(pos, true);
         }
 
         else
         {
-            if (worldIn.getBlockState(pos.up()).getBlock() == Blocks.CACTUS)
+            if (worldIn.getBlockState(pos.above()).getBlock() == Blocks.CACTUS)
             {
-                worldIn.setBlockState(pos.up(), this.getDefaultState());
+                worldIn.setBlockAndUpdate(pos.above(), this.defaultBlockState());
             }
 
-            BlockPos blockpos = pos.up();
-            if (worldIn.isAirBlock(blockpos))
+            BlockPos blockpos = pos.above();
+            if (worldIn.isEmptyBlock(blockpos))
             {
                 int i;
-                for (i = 1; worldIn.getBlockState(pos.down(i)).getBlock() == this; ++i)
+                for (i = 1; worldIn.getBlockState(pos.below(i)).getBlock() == this; ++i)
                 {
                     ;
                 }
 
                 if (i < 3)
                 {
-                    int j = state.get(AGE);
+                    int j = state.getValue(AGE);
                     if (net.minecraftforge.common.ForgeHooks.onCropsGrowPre(worldIn, blockpos, state, true))
                     {
                         if (j == 15)
                         {
-                            worldIn.setBlockState(blockpos, this.getDefaultState());
-                            BlockState blockstate = state.with(AGE, Integer.valueOf(0));
-                            worldIn.setBlockState(pos, blockstate, 4);
+                            worldIn.setBlockAndUpdate(blockpos, this.defaultBlockState());
+                            BlockState blockstate = state.setValue(AGE, Integer.valueOf(0));
+                            worldIn.setBlock(pos, blockstate, 4);
                             blockstate.neighborChanged(worldIn, blockpos, this, pos, false);
                         }
                         else
                         {
-                            worldIn.setBlockState(pos, state.with(AGE, Integer.valueOf(j + 1)), 4);
+                            worldIn.setBlock(pos, state.setValue(AGE, Integer.valueOf(j + 1)), 4);
                         }
                         net.minecraftforge.common.ForgeHooks.onCropsGrowPost(worldIn, pos, state);
                     }
@@ -91,12 +93,12 @@ public class TerraBlockCactus extends Block implements net.minecraftforge.common
 
     public VoxelShape getCollisionShape(BlockState state, IBlockReader worldIn, BlockPos pos, ISelectionContext context)
     {
-        return field_196400_b;
+        return COLLISION_SHAPE;
     }
 
     public VoxelShape getShape(BlockState state, IBlockReader worldIn, BlockPos pos, ISelectionContext context)
     {
-        return field_196401_c;
+        return OUTLINE_SHAPE;
     }
 
      /**
@@ -105,14 +107,14 @@ public class TerraBlockCactus extends Block implements net.minecraftforge.common
      * returns its solidified counterpart.
      * Note that this method should ideally consider only the specific face passed in.
      */
-    public BlockState updatePostPlacement(BlockState stateIn, Direction facing, BlockState facingState, IWorld worldIn, BlockPos currentPos, BlockPos facingPos)
+    public BlockState updateShape(BlockState stateIn, Direction facing, BlockState facingState, IWorld worldIn, BlockPos currentPos, BlockPos facingPos)
     {
-        if (!stateIn.isValidPosition(worldIn, currentPos))
+        if (!stateIn.canSurvive(worldIn, currentPos))
         {
-            worldIn.getPendingBlockTicks().scheduleTick(currentPos, this, 1);
+            worldIn.getBlockTicks().scheduleTick(currentPos, this, 1);
         }
 
-        return super.updatePostPlacement(stateIn, facing, facingState, worldIn, currentPos, facingPos);
+        return super.updateShape(stateIn, facing, facingState, worldIn, currentPos, facingPos);
     }
 
     @Override
@@ -121,33 +123,33 @@ public class TerraBlockCactus extends Block implements net.minecraftforge.common
         return plantable.getPlantType(world, pos) == PlantType.DESERT;
     }
 
-    public boolean isValidPosition(BlockState state, IWorldReader worldIn, BlockPos pos)
+    public boolean canSurvive(BlockState state, IWorldReader worldIn, BlockPos pos)
     {
         for (Direction direction : Direction.Plane.HORIZONTAL)
         {
-            BlockState blockstate = worldIn.getBlockState(pos.offset(direction));
+            BlockState blockstate = worldIn.getBlockState(pos.relative(direction));
             Material   material   = blockstate.getMaterial();
-            if (material.isSolid() || worldIn.getFluidState(pos.offset(direction)).isTagged(FluidTags.LAVA))
+            if (material.isSolid() || worldIn.getFluidState(pos.relative(direction)).is(FluidTags.LAVA))
             {
                 return false;
             }
         }
 
-        BlockState soil = worldIn.getBlockState(pos.down());
-        return soil.canSustainPlant(worldIn, pos.down(), Direction.UP, this) || soil.getBlock() instanceof CactusBlock && !worldIn.getBlockState(pos.up()).getMaterial().isLiquid();
+        BlockState soil = worldIn.getBlockState(pos.below());
+        return soil.canSustainPlant(worldIn, pos.below(), Direction.UP, this) || soil.getBlock() instanceof CactusBlock && !worldIn.getBlockState(pos.above()).getMaterial().isLiquid();
     }
 
-    public void onEntityCollision(BlockState state, World worldIn, BlockPos pos, Entity entityIn)
+    public void entityInside(BlockState state, World worldIn, BlockPos pos, Entity entityIn)
     {
-        entityIn.attackEntityFrom(DamageSource.CACTUS, 1.0F);
+        entityIn.hurt(DamageSource.CACTUS, 1.0F);
     }
 
-    protected void fillStateContainer(StateContainer.Builder<Block, BlockState> builder)
+    protected void createBlockStateDefinition(StateContainer.Builder<Block, BlockState> builder)
     {
         builder.add(AGE);
     }
 
-    public boolean allowsMovement(BlockState state, IBlockReader worldIn, BlockPos pos, PathType type)
+    public boolean isPathfindable(BlockState state, IBlockReader worldIn, BlockPos pos, PathType type)
     {
         return false;
     }
@@ -161,6 +163,6 @@ public class TerraBlockCactus extends Block implements net.minecraftforge.common
     @Override
     public BlockState getPlant(IBlockReader world, BlockPos pos)
     {
-        return getDefaultState();
+        return defaultBlockState();
     }
 }

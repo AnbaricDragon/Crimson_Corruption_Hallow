@@ -9,6 +9,8 @@ import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.entity.living.LivingHurtEvent;
 import top.theillusivec4.curios.api.CuriosApi;
 
+import net.minecraft.item.Item.Properties;
+
 public class TerraItemSharktoothNecklace extends TerraItemAccessory
 {
     public TerraItemSharktoothNecklace(Properties properties)
@@ -20,10 +22,10 @@ public class TerraItemSharktoothNecklace extends TerraItemAccessory
     public void ignoreArmor(LivingHurtEvent event)
     {
         LivingEntity victim = event.getEntityLiving();
-        PlayerEntity player = event.getSource().getTrueSource() instanceof PlayerEntity ? (PlayerEntity) event.getSource().getTrueSource() : null;
+        PlayerEntity player = event.getSource().getEntity() instanceof PlayerEntity ? (PlayerEntity) event.getSource().getEntity() : null;
         if (player == null) { return; }
-        CuriosApi.getCuriosHelper().findEquippedCurio(stack -> stack.getItem().isIn(TerraTagRegistry.ARMOR_PASSERS), player).ifPresent(found -> {
-            event.setAmount(CombatRules.getDamageAfterAbsorb(event.getAmount(), victim.getTotalArmorValue() - 1, (float) victim.getAttributeValue(Attributes.ARMOR_TOUGHNESS)));
+        CuriosApi.getCuriosHelper().findEquippedCurio(stack -> stack.getItem().is(TerraTagRegistry.ARMOR_PASSERS), player).ifPresent(found -> {
+            event.setAmount(CombatRules.getDamageAfterAbsorb(event.getAmount(), victim.getArmorValue() - 1, (float) victim.getAttributeValue(Attributes.ARMOR_TOUGHNESS)));
         });
     }
 }

@@ -16,6 +16,8 @@ import net.minecraftforge.server.permission.context.IContext;
 
 import java.util.Random;
 
+import net.minecraft.block.AbstractBlock.Properties;
+
 public class TerraBlockMoss extends Block
 {
     public Block moss;
@@ -31,12 +33,12 @@ public class TerraBlockMoss extends Block
     {
         Block plant = plantable.getPlant(world, pos).getBlock();
 
-        return plant.isIn(TerraTagRegistry.MOSS) || plant == getMoss();
+        return plant.is(TerraTagRegistry.MOSS) || plant == getMoss();
     }
 
     public boolean canSpread(World worldIn, BlockPos pos)
     {
-        return worldIn.getBlockState(pos.up()).isAir(worldIn, pos) || worldIn.getBlockState(pos.up()).getBlock() instanceof BushBlock;
+        return worldIn.getBlockState(pos.above()).isAir(worldIn, pos) || worldIn.getBlockState(pos.above()).getBlock() instanceof BushBlock;
     }
 
     public Block getMoss()
@@ -52,7 +54,7 @@ public class TerraBlockMoss extends Block
     @Override
     public void tick(BlockState state, ServerWorld worldIn, BlockPos pos, Random random)
     {
-        if (!worldIn.isRemote)
+        if (!worldIn.isClientSide)
         {
             if (!worldIn.isAreaLoaded(pos, 3))
             {
@@ -60,33 +62,33 @@ public class TerraBlockMoss extends Block
             }
             if (!canSpread(worldIn, pos))
             {
-                worldIn.setBlockState(pos, Blocks.STONE.getDefaultState());
+                worldIn.setBlockAndUpdate(pos, Blocks.STONE.defaultBlockState());
             }
-            if (worldIn.getBlockState(pos.up()).isAir(worldIn, pos.up()))
+            if (worldIn.getBlockState(pos.above()).isAir(worldIn, pos.above()))
             {
-                worldIn.setBlockState(pos.up(), getMoss().getDefaultState());
+                worldIn.setBlockAndUpdate(pos.above(), getMoss().defaultBlockState());
             }
             for (int i = 0; i < 4; ++i)
             {
-                BlockPos targetPos = pos.add(random.nextInt(3) - 1, random.nextInt(3) - 1, random.nextInt(3) - 1);
+                BlockPos targetPos = pos.offset(random.nextInt(3) - 1, random.nextInt(3) - 1, random.nextInt(3) - 1);
                 Block targetBlock = worldIn.getBlockState(targetPos).getBlock();
 
                 if (canSpread(worldIn, targetPos) && targetBlock == Blocks.STONE || targetBlock == Blocks.DIORITE || targetBlock == Blocks.GRANITE || targetBlock == Blocks.ANDESITE)
                 {
-                    worldIn.setBlockState(targetPos, this.getDefaultState());
+                    worldIn.setBlockAndUpdate(targetPos, this.defaultBlockState());
                 }
             }
         }
     }
 
     @Override
-    public void onPlayerDestroy(IWorld worldIn, BlockPos pos, BlockState state)
+    public void destroy(IWorld worldIn, BlockPos pos, BlockState state)
     {
-        if (worldIn.getBlockState(pos.up()).getBlock() == this.moss)
+        if (worldIn.getBlockState(pos.above()).getBlock() == this.moss)
         {
-            worldIn.setBlockState(pos, Blocks.AIR.getDefaultState(), 3);
+            worldIn.setBlock(pos, Blocks.AIR.defaultBlockState(), 3);
         }
-        worldIn.setBlockState(pos, Blocks.STONE.getDefaultState(), 0);
+        worldIn.setBlock(pos, Blocks.STONE.defaultBlockState(), 0);
     }
 }
 

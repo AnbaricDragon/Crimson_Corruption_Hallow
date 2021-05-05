@@ -27,6 +27,9 @@ import top.theillusivec4.curios.api.type.capability.ICurio;
 import javax.annotation.Nonnull;
 import java.util.UUID;
 
+import top.theillusivec4.curios.api.type.capability.ICurio.DropRule;
+import top.theillusivec4.curios.api.type.capability.ICurio.SoundInfo;
+
 public class TerraItemAccessorySpeed extends TerraItemAccessory
 {
     private float moveSpeed;
@@ -57,7 +60,7 @@ public class TerraItemAccessorySpeed extends TerraItemAccessory
             @Nonnull
             public SoundInfo getEquipSound(SlotContext slotContext)
             {
-                return new SoundInfo(SoundEvents.ITEM_ARMOR_EQUIP_GENERIC, 1.0F, 1.0F);
+                return new SoundInfo(SoundEvents.ARMOR_EQUIP_GENERIC, 1.0F, 1.0F);
             }
 
             public boolean canEquipFromUse(SlotContext slot)

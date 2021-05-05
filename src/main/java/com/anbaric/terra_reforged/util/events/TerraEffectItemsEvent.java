@@ -57,10 +57,10 @@ public class TerraEffectItemsEvent
         //Jump Boost Effects
         if (player != null)
         {
-            World world = player.getEntityWorld();
+            World world = player.getCommandSenderWorld();
             //Tick Effects
             //Flower Boots
-            CuriosApi.getCuriosHelper().findEquippedCurio(stack -> stack.getItem().isIn(TerraTagRegistry.FLOWER_WALKERS), player).ifPresent(found -> {if (world.getBlockState(player.getPosition().down()).isIn(Tags.Blocks.DIRT) && world.getBlockState(player.getPosition()).isAir(world, player.getPosition())) { Block flowers = BlockTags.FLOWERS.getRandomElement(world.getRandom()); if (flowers.matchesBlock(Blocks.WITHER_ROSE)) { return; }world.setBlockState(player.getPosition(), flowers.getDefaultState());if (flowers.isIn(BlockTags.TALL_FLOWERS)) { world.setBlockState(player.getPosition().up(), flowers.getDefaultState().with(DoublePlantBlock.HALF, DoubleBlockHalf.UPPER));}}});
+            CuriosApi.getCuriosHelper().findEquippedCurio(stack -> stack.getItem().is(TerraTagRegistry.FLOWER_WALKERS), player).ifPresent(found -> {if (world.getBlockState(player.blockPosition().below()).is(Tags.Blocks.DIRT) && world.getBlockState(player.blockPosition()).isAir(world, player.blockPosition())) { Block flowers = BlockTags.FLOWERS.getRandomElement(world.getRandom()); if (flowers.is(Blocks.WITHER_ROSE)) { return; }world.setBlockAndUpdate(player.blockPosition(), flowers.defaultBlockState());if (flowers.is(BlockTags.TALL_FLOWERS)) { world.setBlockAndUpdate(player.blockPosition().above(), flowers.defaultBlockState().setValue(DoublePlantBlock.HALF, DoubleBlockHalf.UPPER));}}});
         }
     }
 
@@ -80,18 +80,18 @@ public class TerraEffectItemsEvent
     {
         PlayerEntity player = event.getEntityLiving() instanceof PlayerEntity ? (PlayerEntity) event.getEntityLiving() : null;
         if (player == null) { return; }
-        ServerWorld world  = (ServerWorld) event.getEntity().getEntityWorld();
+        ServerWorld world  = (ServerWorld) event.getEntity().getCommandSenderWorld();
 
-        float aggroDist = event.getSource().getTrueSource() instanceof LivingEntity ? event.getSource().getTrueSource().getEntity().getDistance(player) : 10F;
+        float aggroDist = event.getSource().getEntity() instanceof LivingEntity ? event.getSource().getEntity().getEntity().distanceTo(player) : 10F;
 
-        CuriosApi.getCuriosHelper().findEquippedCurio(stack -> stack.getItem().isIn(TerraTagRegistry.BEE_SPAWNERS) && !player.getCooldownTracker().hasCooldown(stack.getItem()), player).ifPresent(found -> {
-            player.getCooldownTracker().setCooldown(CuriosApi.getCuriosHelper().findEquippedCurio(stack -> stack.getItem().isIn(TerraTagRegistry.BEE_SPAWNERS), player).get().right.getItem(), 100);
-            player.addPotionEffect(new EffectInstance(Effects.REGENERATION, 100));
-            BeeHandler.spawnAngryBees(world, player.getPosition(), aggroDist);
+        CuriosApi.getCuriosHelper().findEquippedCurio(stack -> stack.getItem().is(TerraTagRegistry.BEE_SPAWNERS) && !player.getCooldowns().isOnCooldown(stack.getItem()), player).ifPresent(found -> {
+            player.getCooldowns().addCooldown(CuriosApi.getCuriosHelper().findEquippedCurio(stack -> stack.getItem().is(TerraTagRegistry.BEE_SPAWNERS), player).get().right.getItem(), 100);
+            player.addEffect(new EffectInstance(Effects.REGENERATION, 100));
+            BeeHandler.spawnAngryBees(world, player.blockPosition(), aggroDist);
         });
-        CuriosApi.getCuriosHelper().findEquippedCurio(stack -> stack.getItem().isIn(TerraTagRegistry.PANIC_GIVERS) && !player.getCooldownTracker().hasCooldown(stack.getItem()), player).ifPresent(found -> {
-            player.getCooldownTracker().setCooldown(CuriosApi.getCuriosHelper().findEquippedCurio(stack -> stack.getItem().isIn(TerraTagRegistry.PANIC_GIVERS), player).get().right.getItem(), 100);
-            player.addPotionEffect(new EffectInstance(Effects.SPEED, 100));
+        CuriosApi.getCuriosHelper().findEquippedCurio(stack -> stack.getItem().is(TerraTagRegistry.PANIC_GIVERS) && !player.getCooldowns().isOnCooldown(stack.getItem()), player).ifPresent(found -> {
+            player.getCooldowns().addCooldown(CuriosApi.getCuriosHelper().findEquippedCurio(stack -> stack.getItem().is(TerraTagRegistry.PANIC_GIVERS), player).get().right.getItem(), 100);
+            player.addEffect(new EffectInstance(Effects.MOVEMENT_SPEED, 100));
         });
     }
 
@@ -99,11 +99,11 @@ public class TerraEffectItemsEvent
     static void onPlayerAttack(LivingHurtEvent event)
     {
         LivingEntity victim = event.getEntityLiving();
-        PlayerEntity player = event.getSource().getTrueSource() instanceof PlayerEntity ? (PlayerEntity) event.getSource().getTrueSource() : null;
+        PlayerEntity player = event.getSource().getEntity() instanceof PlayerEntity ? (PlayerEntity) event.getSource().getEntity() : null;
         if (player == null) { return; }
 
-        CuriosApi.getCuriosHelper().findEquippedCurio(stack -> stack.getItem().isIn(TerraTagRegistry.ARMOR_PASSERS), player).ifPresent(found ->
-            event.setAmount(CombatRules.getDamageAfterAbsorb(event.getAmount(), victim.getTotalArmorValue() - 1, (float) victim.getAttributeValue(Attributes.ARMOR_TOUGHNESS)))
+        CuriosApi.getCuriosHelper().findEquippedCurio(stack -> stack.getItem().is(TerraTagRegistry.ARMOR_PASSERS), player).ifPresent(found ->
+            event.setAmount(CombatRules.getDamageAfterAbsorb(event.getAmount(), victim.getArmorValue() - 1, (float) victim.getAttributeValue(Attributes.ARMOR_TOUGHNESS)))
         );
     }
 }

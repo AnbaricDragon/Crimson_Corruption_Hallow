@@ -36,7 +36,7 @@ import java.util.stream.Collectors;
 
     public static PlantType BOREAL = PlantType.get("boreal");
     public static PlantType MUSHROOM = PlantType.get("mushroom");
-    public static DamageSource THORNS = new DamageSource("thorns").setDamageBypassesArmor();
+    public static DamageSource THORNS = new DamageSource("thorns").bypassArmor();
 
     public TerraReforged()
     {

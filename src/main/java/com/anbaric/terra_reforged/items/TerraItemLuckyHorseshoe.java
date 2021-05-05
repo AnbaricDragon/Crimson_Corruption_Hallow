@@ -4,6 +4,8 @@ import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.entity.living.LivingFallEvent;
 import top.theillusivec4.curios.api.CuriosApi;
 
+import net.minecraft.item.Item.Properties;
+
 public class TerraItemLuckyHorseshoe extends TerraItemAccessory
 {
     public TerraItemLuckyHorseshoe(Properties properties)

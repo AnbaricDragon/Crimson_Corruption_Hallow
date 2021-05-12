@@ -13,10 +13,13 @@ public class NetworkHandler
 
     public static void register()
     {
-        INSTANCE.registerMessage(0, CloudJumpPacket.class, CloudJumpPacket::encode, CloudJumpPacket::new, CloudJumpPacket::handle);
-        INSTANCE.registerMessage(0, BlizzardJumpPacket.class, BlizzardJumpPacket::encode, BlizzardJumpPacket::new, BlizzardJumpPacket::handle);
-        INSTANCE.registerMessage(0, SandstormJumpPacket.class, SandstormJumpPacket::encode, SandstormJumpPacket::new, SandstormJumpPacket::handle);
-        INSTANCE.registerMessage(0, TsunamiJumpPacket.class, TsunamiJumpPacket::encode, TsunamiJumpPacket::new, TsunamiJumpPacket::handle);
-        INSTANCE.registerMessage(0, FartJumpPacket.class, FartJumpPacket::encode, FartJumpPacket::new, FartJumpPacket::handle);
+        int index = 0;
+        INSTANCE.registerMessage(index++, CloudJumpPacket.class, CloudJumpPacket::encode, CloudJumpPacket::new, CloudJumpPacket::handle);
+        INSTANCE.registerMessage(index++, BlizzardJumpPacket.class, BlizzardJumpPacket::encode, BlizzardJumpPacket::new, BlizzardJumpPacket::handle);
+        INSTANCE.registerMessage(index++, SandstormJumpPacket.class, SandstormJumpPacket::encode, SandstormJumpPacket::new, SandstormJumpPacket::handle);
+        INSTANCE.registerMessage(index++, TsunamiJumpPacket.class, TsunamiJumpPacket::encode, TsunamiJumpPacket::new, TsunamiJumpPacket::handle);
+        INSTANCE.registerMessage(index++, FartJumpPacket.class, FartJumpPacket::encode, FartJumpPacket::new, FartJumpPacket::handle);
+        INSTANCE.registerMessage(index++, RocketJumpPacket.class, RocketJumpPacket::encode, RocketJumpPacket::new, RocketJumpPacket::handle);
+        INSTANCE.registerMessage(index++, CorruptBiomePacket.class, CorruptBiomePacket::encode, CorruptBiomePacket::decode, CorruptBiomePacket::handle);
     }
 }

@@ -14,7 +14,7 @@ public class TerraTestEvent
         Block block = event.getState().getBlock();
         if (block == TerraBlockRegistry.ORE_CHLOROPHYTE.get())
         {
-            event.getPlayer().level.getCapability(TerraCapabilityWorldProgression.WORLD_PROGRESSION_CAPABILITY).ifPresent(cap -> cap.setAltarsBroken(cap.getAltarsBroken() + 1));
+            event.getPlayer().world.getCapability(TerraCapabilityWorldProgression.WORLD_PROGRESSION_CAPABILITY).ifPresent(cap -> cap.setAltarsBroken(cap.getAltarsBroken() + 1));
         }
     }
 }

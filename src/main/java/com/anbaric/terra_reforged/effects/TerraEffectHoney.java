@@ -12,7 +12,7 @@ public class TerraEffectHoney extends Effect
     }
 
     @Override
-    public boolean isDurationEffectTick(int duration, int amplifier)
+    public boolean isReady(int duration, int amplifier)
     {
         int k = 50 >> amplifier;
         if (k > 0)
@@ -26,7 +26,7 @@ public class TerraEffectHoney extends Effect
     }
 
     @Override
-    public void applyEffectTick(LivingEntity entity, int amplifier)
+    public void performEffect(LivingEntity entity, int amplifier)
     {
         if (entity.getHealth() < entity.getMaxHealth())
         {

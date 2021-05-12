@@ -33,7 +33,7 @@ public final class TerraItemGroups
 
         @Override
         @Nonnull
-        public ItemStack makeIcon()
+        public ItemStack createIcon()
         {
             return iconSupplier.get();
         }

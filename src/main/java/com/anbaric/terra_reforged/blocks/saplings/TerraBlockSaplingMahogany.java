@@ -23,13 +23,13 @@ import net.minecraft.block.AbstractBlock.Properties;
 
 public class TerraBlockSaplingMahogany extends BushBlock implements IGrowable
 {
-    public static final IntegerProperty STAGE = BlockStateProperties.STAGE;
-    protected static final VoxelShape SHAPE = Block.box(2.0D, 0.0D, 2.0D, 14.0D, 12.0D, 14.0D);
+    public static final IntegerProperty STAGE = BlockStateProperties.STAGE_0_1;
+    protected static final VoxelShape SHAPE = Block.makeCuboidShape(2.0D, 0.0D, 2.0D, 14.0D, 12.0D, 14.0D);
 
     public TerraBlockSaplingMahogany(Properties properties)
     {
         super(properties);
-        this.registerDefaultState(this.stateDefinition.any().setValue(STAGE, Integer.valueOf(0)));
+        this.setDefaultState(this.stateContainer.getBaseState().with(STAGE, Integer.valueOf(0)));
     }
 
     public VoxelShape getShape(BlockState state, IBlockReader worldIn, BlockPos pos, ISelectionContext context)
@@ -39,7 +39,7 @@ public class TerraBlockSaplingMahogany extends BushBlock implements IGrowable
 
     public void randomTick(BlockState state, ServerWorld worldIn, BlockPos pos, Random random)
     {
-        if (worldIn.getMaxLocalRawBrightness(pos.above()) >= 9 && random.nextInt(7) == 0)
+        if (worldIn.getLight(pos.up()) >= 9 && random.nextInt(7) == 0)
         {
             if (!worldIn.isAreaLoaded(pos, 1))
             {
@@ -53,9 +53,9 @@ public class TerraBlockSaplingMahogany extends BushBlock implements IGrowable
     {
         boolean is2x2 = false;
         BlockPos growthPos = pos;
-        if (state.getValue(STAGE) == 0)
+        if (state.get(STAGE) == 0)
         {
-            world.setBlock(pos, state.cycle(STAGE), 4);
+            world.setBlockState(pos, state.cycleValue(STAGE), 4);
         }
         else
         {
@@ -66,9 +66,9 @@ public class TerraBlockSaplingMahogany extends BushBlock implements IGrowable
             for (int i = 0; i < 4; i++)
             {
                 BlockPos A = pos;
-                BlockPos B = A.relative(Direction.from2DDataValue(i));
-                BlockPos C = B.relative(Direction.from2DDataValue((i+1)%4));
-                BlockPos D = C.relative(Direction.from2DDataValue((i+2)%4));
+                BlockPos B = A.offset(Direction.byHorizontalIndex(i));
+                BlockPos C = B.offset(Direction.byHorizontalIndex((i+1)%4));
+                BlockPos D = C.offset(Direction.byHorizontalIndex((i+2)%4));
 
                 Block blockA = world.getBlockState(A).getBlock();
                 Block blockB = world.getBlockState(B).getBlock();
@@ -89,31 +89,31 @@ public class TerraBlockSaplingMahogany extends BushBlock implements IGrowable
             }
             if (is2x2)
             {
-                TerraFeatureRegistry.MAHOGANY_TREE_LARGE.get().place(world, world.getChunkSource().getGenerator(), rand, pos, NoFeatureConfig.NONE);
+                TerraFeatureRegistry.MAHOGANY_TREE_LARGE.get().generate(world, world.getChunkProvider().getChunkGenerator(), rand, pos, NoFeatureConfig.NO_FEATURE_CONFIG);
             }
             else
             {
-                TerraFeatureRegistry.MAHOGANY_TREE.get().place(world, world.getChunkSource().getGenerator(), rand, pos, NoFeatureConfig.NONE);
+                TerraFeatureRegistry.MAHOGANY_TREE.get().generate(world, world.getChunkProvider().getChunkGenerator(), rand, pos, NoFeatureConfig.NO_FEATURE_CONFIG);
             }
         }
     }
 
-    public boolean isValidBonemealTarget(IBlockReader worldIn, BlockPos pos, BlockState state, boolean isClient)
+    public boolean canGrow(IBlockReader worldIn, BlockPos pos, BlockState state, boolean isClient)
     {
         return true;
     }
 
-    public boolean isBonemealSuccess(World worldIn, Random rand, BlockPos pos, BlockState state)
+    public boolean canUseBonemeal(World worldIn, Random rand, BlockPos pos, BlockState state)
     {
-        return (double) worldIn.random.nextFloat() < 0.45D;
+        return (double) worldIn.rand.nextFloat() < 0.45D;
     }
 
-    public void performBonemeal(ServerWorld worldIn, Random rand, BlockPos pos, BlockState state)
+    public void grow(ServerWorld worldIn, Random rand, BlockPos pos, BlockState state)
     {
         this.placeTree(worldIn, pos, state, rand);
     }
 
-    protected void createBlockStateDefinition(StateContainer.Builder<Block, BlockState> builder)
+    protected void fillStateContainer(StateContainer.Builder<Block, BlockState> builder)
     {
         builder.add(STAGE);
     }

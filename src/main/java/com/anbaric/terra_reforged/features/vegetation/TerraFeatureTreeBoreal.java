@@ -21,9 +21,9 @@ public class TerraFeatureTreeBoreal extends Feature<NoFeatureConfig>
     }
 
     @Override
-    public boolean place(ISeedReader world, ChunkGenerator generator, Random rand, BlockPos pos, NoFeatureConfig config)
+    public boolean generate(ISeedReader world, ChunkGenerator generator, Random rand, BlockPos pos, NoFeatureConfig config)
     {
-        if (world.getBlockState(pos.below()).getBlock().is(TerraTagRegistry.BOREAL_PLANTERS))
+        if (world.getBlockState(pos.down()).getBlock().isIn(TerraTagRegistry.BOREAL_PLANTERS))
         {
             generateTree(world, pos, rand);
             return true;
@@ -31,8 +31,8 @@ public class TerraFeatureTreeBoreal extends Feature<NoFeatureConfig>
         return false;
     }
 
-    public static final BlockState LOG_BOREAL = TerraBlockRegistry.LOG_BOREAL.get().defaultBlockState();
-    public static final BlockState LEAF_BOREAL = TerraBlockRegistry.LEAF_BOREAL.get().defaultBlockState();
+    public static final BlockState LOG_BOREAL = TerraBlockRegistry.LOG_BOREAL.get().getDefaultState();
+    public static final BlockState LEAF_BOREAL = TerraBlockRegistry.LEAF_BOREAL.get().getDefaultState();
 
     public static final char[][][] BOREAL_ARRAY =
     {{{'O', 'O', 'O', 'O', 'O'},
@@ -144,7 +144,7 @@ public class TerraFeatureTreeBoreal extends Feature<NoFeatureConfig>
 
         for (int i = 0; i <= trunkHeight; i++)
         {
-            if (!world.getBlockState(pos.above(i)).canBeReplacedByLogs(world, pos))
+            if (!world.getBlockState(pos.up(i)).canBeReplacedByLogs(world, pos))
             {
                 canGrow = false;
             }
@@ -155,7 +155,7 @@ public class TerraFeatureTreeBoreal extends Feature<NoFeatureConfig>
             {
                 for (int z = pos.getZ() - radius; z <= pos.getZ() + radius; z++)
                 {
-                    target.set(x, y, z);
+                    target.setPos(x, y, z);
                     char targetChar = template[arrayY][arrayX][arrayZ];
                     if (targetChar == 'W')
                     {
@@ -195,7 +195,7 @@ public class TerraFeatureTreeBoreal extends Feature<NoFeatureConfig>
             BlockPos.Mutable target = new BlockPos.Mutable();
             for (int i = 0; i < trunkHeight; i++)
             {
-                world.setBlock(pos.above(i), LOG_BOREAL, 3);
+                world.setBlockState(pos.up(i), LOG_BOREAL, 3);
             }
             for (int y = pos.getY() + trunkHeight; y < pos.getY() + treeHeight + trunkHeight; y++)
             {
@@ -203,15 +203,15 @@ public class TerraFeatureTreeBoreal extends Feature<NoFeatureConfig>
                 {
                     for (int z = pos.getZ() - 2; z <= pos.getZ() + 2; z++)
                     {
-                        target.set(x, y, z);
+                        target.setPos(x, y, z);
                         char inputChar = template[arrayY][arrayX][arrayZ];
                         switch (inputChar)
                         {
                             case 'L':
-                                world.setBlock(target, LEAF_BOREAL, 3);
+                                world.setBlockState(target, LEAF_BOREAL, 3);
                                 break;
                             case 'W':
-                                world.setBlock(target, LOG_BOREAL, 3);
+                                world.setBlockState(target, LOG_BOREAL, 3);
 
                         }
                         arrayZ++;

@@ -23,16 +23,16 @@ import java.util.Random;
 
 public class TerraFeatureLakes extends Feature<BlockStateFeatureConfig>
 {
-    private static final BlockState AIR = Blocks.CAVE_AIR.defaultBlockState();
+    private static final BlockState AIR = Blocks.CAVE_AIR.getDefaultState();
 
     private BlockState stone, ice, grass;
 
     public TerraFeatureLakes(EnumBiomeType biomeType)
     {
         super(BlockStateFeatureConfig.CODEC);
-        this.stone = biomeType == EnumBiomeType.JUNGLE ? TerraBlockRegistry.SOIL_MUD.get().defaultBlockState() : biomeBlock(biomeType, Blocks.STONE);
+        this.stone = biomeType == EnumBiomeType.JUNGLE ? TerraBlockRegistry.SOIL_MUD.get().getDefaultState() : biomeBlock(biomeType, Blocks.STONE);
         this.ice = biomeBlock(biomeType, Blocks.ICE);
-        this.grass = biomeType == EnumBiomeType.JUNGLE ? TerraBlockRegistry.GRASS_JUNGLE.get().defaultBlockState() : biomeBlock(biomeType, Blocks.GRASS_BLOCK);
+        this.grass = biomeType == EnumBiomeType.JUNGLE ? TerraBlockRegistry.GRASS_JUNGLE.get().getDefaultState() : biomeBlock(biomeType, Blocks.GRASS_BLOCK);
     }
 
     public BlockState biomeBlock(EnumBiomeType type, Block target)
@@ -45,14 +45,14 @@ public class TerraFeatureLakes extends Feature<BlockStateFeatureConfig>
                 result = block.getBiomeBlock(type);
             }
         }
-        return result.defaultBlockState();
+        return result.getDefaultState();
     }
 
-    public boolean place(ISeedReader reader, ChunkGenerator generator, Random rand, BlockPos pos, BlockStateFeatureConfig config)
+    public boolean generate(ISeedReader reader, ChunkGenerator generator, Random rand, BlockPos pos, BlockStateFeatureConfig config)
     {
-        while (pos.getY() > 5 && reader.isEmptyBlock(pos))
+        while (pos.getY() > 5 && reader.isAirBlock(pos))
         {
-            pos = pos.below();
+            pos = pos.down();
         }
 
         if (pos.getY() <= 4)
@@ -61,8 +61,8 @@ public class TerraFeatureLakes extends Feature<BlockStateFeatureConfig>
         }
         else
         {
-            pos = pos.below(4);
-            if (reader.startsForFeature(SectionPos.of(pos), Structure.VILLAGE).findAny().isPresent())
+            pos = pos.down(4);
+            if (reader.func_241827_a(SectionPos.from(pos), Structure.VILLAGE).findAny().isPresent())
             {
                 return false;
             }
@@ -108,13 +108,13 @@ public class TerraFeatureLakes extends Feature<BlockStateFeatureConfig>
                             boolean flag = !aboolean[(k1 * 16 + l2) * 8 + k] && (k1 < 15 && aboolean[((k1 + 1) * 16 + l2) * 8 + k] || k1 > 0 && aboolean[((k1 - 1) * 16 + l2) * 8 + k] || l2 < 15 && aboolean[(k1 * 16 + l2 + 1) * 8 + k] || l2 > 0 && aboolean[(k1 * 16 + (l2 - 1)) * 8 + k] || k < 7 && aboolean[(k1 * 16 + l2) * 8 + k + 1] || k > 0 && aboolean[(k1 * 16 + l2) * 8 + (k - 1)]);
                             if (flag)
                             {
-                                Material material = reader.getBlockState(pos.offset(k1, k, l2)).getMaterial();
+                                Material material = reader.getBlockState(pos.add(k1, k, l2)).getMaterial();
                                 if (k >= 4 && material.isLiquid())
                                 {
                                     return false;
                                 }
 
-                                if (k < 4 && !material.isSolid() && reader.getBlockState(pos.offset(k1, k, l2)) != config.state)
+                                if (k < 4 && !material.isSolid() && reader.getBlockState(pos.add(k1, k, l2)) != config.state)
                                 {
                                     return false;
                                 }
@@ -131,7 +131,7 @@ public class TerraFeatureLakes extends Feature<BlockStateFeatureConfig>
                         {
                             if (aboolean[(l1 * 16 + i3) * 8 + i4])
                             {
-                                reader.setBlock(pos.offset(l1, i4, i3), i4 >= 4 ? AIR : config.state, 2);
+                                reader.setBlockState(pos.add(l1, i4, i3), i4 >= 4 ? AIR : config.state, 2);
                             }
                         }
                     }
@@ -145,17 +145,17 @@ public class TerraFeatureLakes extends Feature<BlockStateFeatureConfig>
                         {
                             if (aboolean[(i2 * 16 + j3) * 8 + j4])
                             {
-                                BlockPos blockpos = pos.offset(i2, j4 - 1, j3);
-                                if (isDirt(reader.getBlockState(blockpos).getBlock()) && reader.getBrightness(LightType.SKY, pos.offset(i2, j4, j3)) > 0)
+                                BlockPos blockpos = pos.add(i2, j4 - 1, j3);
+                                if (isDirt(reader.getBlockState(blockpos).getBlock()) && reader.getLightFor(LightType.SKY, pos.add(i2, j4, j3)) > 0)
                                 {
                                     Biome biome = reader.getBiome(blockpos);
-                                    if (biome.getGenerationSettings().getSurfaceBuilderConfig().getTopMaterial().is(Blocks.MYCELIUM))
+                                    if (biome.getGenerationSettings().getSurfaceBuilderConfig().getTop().matchesBlock(Blocks.MYCELIUM))
                                     {
-                                        reader.setBlock(blockpos, Blocks.MYCELIUM.defaultBlockState(), 2);
+                                        reader.setBlockState(blockpos, Blocks.MYCELIUM.getDefaultState(), 2);
                                     }
                                     else
                                     {
-                                        reader.setBlock(blockpos, grass, 2);
+                                        reader.setBlockState(blockpos, grass, 2);
                                     }
                                 }
                             }
@@ -172,9 +172,9 @@ public class TerraFeatureLakes extends Feature<BlockStateFeatureConfig>
                             for (int k4 = 0; k4 < 8; ++k4)
                             {
                                 boolean flag1 = !aboolean[(j2 * 16 + k3) * 8 + k4] && (j2 < 15 && aboolean[((j2 + 1) * 16 + k3) * 8 + k4] || j2 > 0 && aboolean[((j2 - 1) * 16 + k3) * 8 + k4] || k3 < 15 && aboolean[(j2 * 16 + k3 + 1) * 8 + k4] || k3 > 0 && aboolean[(j2 * 16 + (k3 - 1)) * 8 + k4] || k4 < 7 && aboolean[(j2 * 16 + k3) * 8 + k4 + 1] || k4 > 0 && aboolean[(j2 * 16 + k3) * 8 + (k4 - 1)]);
-                                if (flag1 && (k4 < 4 || rand.nextInt(2) != 0) && reader.getBlockState(pos.offset(j2, k4, k3)).getMaterial().isSolid())
+                                if (flag1 && (k4 < 4 || rand.nextInt(2) != 0) && reader.getBlockState(pos.add(j2, k4, k3)).getMaterial().isSolid())
                                 {
-                                    reader.setBlock(pos.offset(j2, k4, k3), stone, 2);
+                                    reader.setBlockState(pos.add(j2, k4, k3), stone, 2);
                                 }
                             }
                         }
@@ -188,10 +188,10 @@ public class TerraFeatureLakes extends Feature<BlockStateFeatureConfig>
                         for (int l3 = 0; l3 < 16; ++l3)
                         {
                             int      l4        = 4;
-                            BlockPos blockpos1 = pos.offset(k2, 4, l3);
-                            if (reader.getBiome(blockpos1).shouldFreeze(reader, blockpos1, false))
+                            BlockPos blockpos1 = pos.add(k2, 4, l3);
+                            if (reader.getBiome(blockpos1).doesWaterFreeze(reader, blockpos1, false))
                             {
-                                reader.setBlock(blockpos1, ice, 2);
+                                reader.setBlockState(blockpos1, ice, 2);
                             }
                         }
                     }

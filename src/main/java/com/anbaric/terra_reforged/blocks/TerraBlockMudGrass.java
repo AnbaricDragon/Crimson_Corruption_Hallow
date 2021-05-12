@@ -45,29 +45,29 @@ public class TerraBlockMudGrass extends Block implements IGrowable
 
     private static boolean canSpread(BlockState state, IWorldReader world, BlockPos pos)
     {
-        BlockPos   topPos   = pos.above();
+        BlockPos   topPos   = pos.up();
         BlockState topState = world.getBlockState(topPos);
-        if (topState.getBlock() == Blocks.SNOW && topState.getValue(SnowBlock.LAYERS) == 1)
+        if (topState.getBlock() == Blocks.SNOW && topState.get(SnowBlock.LAYERS) == 1)
         {
             return true;
         }
         else
         {
-            int i = LightEngine.getLightBlockInto(world, state, pos, topState, topPos, Direction.UP, topState.getLightBlock(world, topPos));
+            int i = LightEngine.func_215613_a(world, state, pos, topState, topPos, Direction.UP, topState.getOpacity(world, topPos));
             return i < world.getMaxLightLevel();
         }
     }
 
     private static boolean noWater(BlockState state, IWorldReader world, BlockPos pos)
     {
-        BlockPos blockpos = pos.above();
-        return canSpread(state, world, pos) && !world.getFluidState(blockpos).is(FluidTags.WATER);
+        BlockPos blockpos = pos.up();
+        return canSpread(state, world, pos) && !world.getFluidState(blockpos).isTagged(FluidTags.WATER);
     }
 
     private static boolean noLava(BlockState state, IWorldReader world, BlockPos pos)
     {
-        BlockPos blockpos = pos.above();
-        return canSpread(state, world, pos) && !world.getFluidState(blockpos).is(FluidTags.LAVA);
+        BlockPos blockpos = pos.up();
+        return canSpread(state, world, pos) && !world.getFluidState(blockpos).isTagged(FluidTags.LAVA);
     }
 
     @Override
@@ -75,7 +75,7 @@ public class TerraBlockMudGrass extends Block implements IGrowable
     {
         int maxShrooms = 10;
 
-        if (!worldIn.isClientSide)
+        if (!worldIn.isRemote)
         {
             if (!worldIn.isAreaLoaded(pos, 3))
             {
@@ -83,31 +83,31 @@ public class TerraBlockMudGrass extends Block implements IGrowable
             }
             if (!canSpread(state, worldIn, pos))
             {
-                worldIn.setBlockAndUpdate(pos, TerraBlockRegistry.SOIL_MUD.get().defaultBlockState());
+                worldIn.setBlockState(pos, TerraBlockRegistry.SOIL_MUD.get().getDefaultState());
             }
             else
             {
-                if (worldIn.getMaxLocalRawBrightness(pos.above()) >= 9)
+                if (worldIn.getLight(pos.up()) >= 9)
                 {
                     for (int i = 0; i < 4; ++i)
                     {
-                        BlockPos   targetPos   = pos.offset(random.nextInt(3) - 1, random.nextInt(3) - 1, random.nextInt(3) - 1);
+                        BlockPos   targetPos   = pos.add(random.nextInt(3) - 1, random.nextInt(3) - 1, random.nextInt(3) - 1);
                         BlockState targetState = worldIn.getBlockState(targetPos);
                         Block      targetBlock = worldIn.getBlockState(targetPos).getBlock();
 
                         if (targetBlock == TerraBlockRegistry.SOIL_MUD.get())
                         {
-                            if (noWater(targetState, worldIn, targetPos) && noLava(targetState, worldIn, targetPos) && canSpread(targetState, worldIn, targetPos) && !worldIn.getBlockState(targetPos.above()).isSolidRender(worldIn, targetPos))
+                            if (noWater(targetState, worldIn, targetPos) && noLava(targetState, worldIn, targetPos) && canSpread(targetState, worldIn, targetPos) && !worldIn.getBlockState(targetPos.up()).isOpaqueCube(worldIn, targetPos))
                             {
-                                worldIn.setBlockAndUpdate(targetPos, this.defaultBlockState());
+                                worldIn.setBlockState(targetPos, this.getDefaultState());
                             }
                         }
                     }
                 }
             }
-            if (random.nextInt(250) == 0 && this == TerraBlockRegistry.GRASS_MUSHROOM.get() && worldIn.getBlockState(pos.above()).isAir(worldIn, pos))
+            if (random.nextInt(250) == 0 && this == TerraBlockRegistry.GRASS_MUSHROOM.get() && worldIn.getBlockState(pos.up()).isAir(worldIn, pos))
             {
-                Iterator cubicRange = BlockPos.betweenClosed(pos.offset(-8, -1, -8), pos.offset(8, 1, 8)).iterator();
+                Iterator cubicRange = BlockPos.getAllInBoxMutable(pos.add(-8, -1, -8), pos.add(8, 1, 8)).iterator();
 
                 while (cubicRange.hasNext())
                 {
@@ -123,7 +123,7 @@ public class TerraBlockMudGrass extends Block implements IGrowable
                 }
                 if (maxShrooms > 0)
                 {
-                    worldIn.setBlockAndUpdate(pos.above(), TerraBlockRegistry.PLANT_MUSHROOM_GLOWING.get().defaultBlockState());
+                    worldIn.setBlockState(pos.up(), TerraBlockRegistry.PLANT_MUSHROOM_GLOWING.get().getDefaultState());
                 }
             }
         }
@@ -140,16 +140,16 @@ public class TerraBlockMudGrass extends Block implements IGrowable
         }
     }
 
-    public boolean isValidBonemealTarget(IBlockReader worldIn, BlockPos pos, BlockState state, boolean isClient)
+    public boolean canGrow(IBlockReader worldIn, BlockPos pos, BlockState state, boolean isClient)
     {
-        return worldIn.getBlockState(pos.above()).isAir();
+        return worldIn.getBlockState(pos.up()).isAir();
     }
 
-    public boolean isBonemealSuccess(World worldIn, Random rand, BlockPos pos, BlockState state)
+    public boolean canUseBonemeal(World worldIn, Random rand, BlockPos pos, BlockState state)
     {
         return false;
     }
 
     @Override
-    public void performBonemeal(ServerWorld p_225535_1_, Random p_225535_2_, BlockPos p_225535_3_, BlockState p_225535_4_) { }
+    public void grow(ServerWorld worldIn, Random rand, BlockPos pos, BlockState state) { }
 }

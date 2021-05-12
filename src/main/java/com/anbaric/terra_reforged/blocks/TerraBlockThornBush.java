@@ -60,18 +60,18 @@ public class TerraBlockThornBush extends Block
         this.damage = damage;
 
         this.renderShapes = this.makeShapes();
-        this.registerDefaultState(this.stateDefinition.any().setValue(UP, false).setValue(DOWN, false).setValue(NORTH, false).setValue(EAST, false).setValue(SOUTH, false).setValue(WEST, false).setValue(GROWTH, 0));
+        this.setDefaultState(this.stateContainer.getBaseState().with(UP, false).with(DOWN, false).with(NORTH, false).with(EAST, false).with(SOUTH, false).with(WEST, false).with(GROWTH, 0));
     }
 
     protected VoxelShape[] makeShapes()
     {
-        VoxelShape base = Block.box(3.0D, 3.0D, 3.0D, 13.0D, 13.0D, 13.0D);
-        VoxelShape D    = Block.box(3.0D, 0.0D, 3.0D, 13.0D, 3.0D, 13.0D);
-        VoxelShape U    = Block.box(3.0D, 13.0D, 3.0D, 13.0D, 16.0D, 13.0D);
-        VoxelShape N    = Block.box(3.0D, 3.0D, 0.0D, 13.0D, 13.0D, 3.0D);
-        VoxelShape S    = Block.box(3.0D, 3.0D, 13.0D, 13.0D, 13.0D, 16.0D);
-        VoxelShape W    = Block.box(0.0D, 3.0D, 3.0D, 3.0D, 13.0D, 13.0D);
-        VoxelShape E    = Block.box(13.0D, 3.0D, 3.0D, 16.0D, 13.0D, 13.0D);
+        VoxelShape base = Block.makeCuboidShape(3.0D, 3.0D, 3.0D, 13.0D, 13.0D, 13.0D);
+        VoxelShape D    = Block.makeCuboidShape(3.0D, 0.0D, 3.0D, 13.0D, 3.0D, 13.0D);
+        VoxelShape U    = Block.makeCuboidShape(3.0D, 13.0D, 3.0D, 13.0D, 16.0D, 13.0D);
+        VoxelShape N    = Block.makeCuboidShape(3.0D, 3.0D, 0.0D, 13.0D, 13.0D, 3.0D);
+        VoxelShape S    = Block.makeCuboidShape(3.0D, 3.0D, 13.0D, 13.0D, 13.0D, 16.0D);
+        VoxelShape W    = Block.makeCuboidShape(0.0D, 3.0D, 3.0D, 3.0D, 13.0D, 13.0D);
+        VoxelShape E    = Block.makeCuboidShape(13.0D, 3.0D, 3.0D, 16.0D, 13.0D, 13.0D);
 
         VoxelShape X = VoxelShapes.or(E, W);
         VoxelShape Y = VoxelShapes.or(U, D);
@@ -88,40 +88,40 @@ public class TerraBlockThornBush extends Block
 
     private static int getMask(Direction facing)
     {
-        return 1 << facing.get3DDataValue();
+        return 1 << facing.getIndex();
     }
 
     protected int getIndex(BlockState state)
     {
         int i = 0;
-        if (state.getValue(DOWN))
+        if (state.get(DOWN))
         {
             i |= getMask(Direction.DOWN);
         }
-        if (state.getValue(UP))
+        if (state.get(UP))
         {
             i |= getMask(Direction.UP);
         }
-        if (state.getValue(NORTH))
+        if (state.get(NORTH))
         {
             i |= getMask(Direction.NORTH);
         }
-        if (state.getValue(SOUTH))
+        if (state.get(SOUTH))
         {
             i |= getMask(Direction.SOUTH);
         }
-        if (state.getValue(WEST))
+        if (state.get(WEST))
         {
             i |= getMask(Direction.WEST);
         }
-        if (state.getValue(EAST))
+        if (state.get(EAST))
         {
             i |= getMask(Direction.EAST);
         }
         return i;
     }
 
-    public boolean isPathfindable(BlockState state, IBlockReader worldIn, BlockPos pos, PathType type)
+    public boolean allowsMovement(BlockState state, IBlockReader worldIn, BlockPos pos, PathType type)
     {
         return true;
     }
@@ -135,9 +135,9 @@ public class TerraBlockThornBush extends Block
     public boolean canAttach(BlockState state, boolean solidSide)
     {
         Block   block = state.getBlock();
-        boolean flag  = state.canOcclude();
+        boolean flag  = state.isSolid();
         boolean flag1 = block instanceof TerraBlockThornBush;
-        return !isExceptionForConnection(block) && solidSide || flag || flag1;
+        return !cannotAttach(block) && solidSide || flag || flag1;
     }
 
     public Block getGrass()
@@ -159,7 +159,7 @@ public class TerraBlockThornBush extends Block
 
         for (int dirIndex = 0; dirIndex < 6; dirIndex++)
         {
-            BlockState targetState = worldIn.getBlockState(pos.relative(Direction.from3DDataValue(dirIndex)));
+            BlockState targetState = worldIn.getBlockState(pos.offset(Direction.byIndex(dirIndex)));
             if (dirIndex == 0 && targetState.getBlock() == this.getGrass())
             {
                 return 0;
@@ -168,11 +168,11 @@ public class TerraBlockThornBush extends Block
             {
                 if (checked)
                 {
-                    lowNei = Math.min(lowNei, targetState.getValue(GROWTH));
+                    lowNei = Math.min(lowNei, targetState.get(GROWTH));
                 }
                 else
                 {
-                    lowNei = targetState.getValue(GROWTH);
+                    lowNei = targetState.get(GROWTH);
                     checked = true;
                 }
             }
@@ -186,16 +186,16 @@ public class TerraBlockThornBush extends Block
         boolean checked = false;
         for (int dirIndex = 0; dirIndex < 6; dirIndex++)
         {
-            BlockState targetState = worldIn.getBlockState(pos.relative(Direction.from3DDataValue(dirIndex)));
+            BlockState targetState = worldIn.getBlockState(pos.offset(Direction.byIndex(dirIndex)));
             if (targetState.getBlock() instanceof TerraBlockThornBush)
             {
                 if (checked)
                 {
-                    lowNei = Math.min(lowNei, targetState.getValue(GROWTH));
+                    lowNei = Math.min(lowNei, targetState.get(GROWTH));
                 }
                 else
                 {
-                    lowNei = targetState.getValue(GROWTH);
+                    lowNei = targetState.get(GROWTH);
                     checked = true;
                 }
             }
@@ -208,7 +208,7 @@ public class TerraBlockThornBush extends Block
         int countNei = 0;
         for (int dirIndex = 0; dirIndex < 6; dirIndex++)
         {
-            BlockState targetState = worldIn.getBlockState(pos.relative(Direction.from3DDataValue(dirIndex)));
+            BlockState targetState = worldIn.getBlockState(pos.offset(Direction.byIndex(dirIndex)));
             if (targetState.getBlock() instanceof TerraBlockThornBush)
             {
                 countNei++;
@@ -226,14 +226,14 @@ public class TerraBlockThornBush extends Block
 
     public BlockState getStateForPlacement(BlockItemUseContext context)
     {
-        IBlockReader world     = context.getLevel();
-        BlockPos     blockpos  = context.getClickedPos();
+        IBlockReader world     = context.getWorld();
+        BlockPos     blockpos  = context.getPos();
         BlockPos     blockposN = blockpos.north();
         BlockPos     blockposE = blockpos.east();
         BlockPos     blockposS = blockpos.south();
         BlockPos     blockposW = blockpos.west();
-        BlockPos     blockposU = blockpos.above();
-        BlockPos     blockposD = blockpos.below();
+        BlockPos     blockposU = blockpos.up();
+        BlockPos     blockposD = blockpos.down();
         BlockState   stateN    = world.getBlockState(blockposN);
         BlockState   stateE    = world.getBlockState(blockposE);
         BlockState   stateS    = world.getBlockState(blockposS);
@@ -241,31 +241,31 @@ public class TerraBlockThornBush extends Block
         BlockState   stateU    = world.getBlockState(blockposU);
         BlockState   stateD    = world.getBlockState(blockposD);
         return super.getStateForPlacement(context)
-                .setValue(NORTH, this.canAttach(stateN, stateN.isFaceSturdy(world, blockposN, Direction.SOUTH)))
-                .setValue(EAST, this.canAttach(stateE, stateE.isFaceSturdy(world, blockposE, Direction.WEST)))
-                .setValue(SOUTH, this.canAttach(stateS, stateS.isFaceSturdy(world, blockposS, Direction.NORTH)))
-                .setValue(WEST, this.canAttach(stateW, stateW.isFaceSturdy(world, blockposW, Direction.EAST)))
-                .setValue(UP, this.canAttach(stateU, stateU.isFaceSturdy(world, blockposU, Direction.DOWN)))
-                .setValue(DOWN, this.canAttach(stateD, stateD.isFaceSturdy(world, blockposD, Direction.UP)))
-                .setValue(GROWTH, this.getProperGrowth(world, blockpos));
+                .with(NORTH, this.canAttach(stateN, stateN.isSolidSide(world, blockposN, Direction.SOUTH)))
+                .with(EAST, this.canAttach(stateE, stateE.isSolidSide(world, blockposE, Direction.WEST)))
+                .with(SOUTH, this.canAttach(stateS, stateS.isSolidSide(world, blockposS, Direction.NORTH)))
+                .with(WEST, this.canAttach(stateW, stateW.isSolidSide(world, blockposW, Direction.EAST)))
+                .with(UP, this.canAttach(stateU, stateU.isSolidSide(world, blockposU, Direction.DOWN)))
+                .with(DOWN, this.canAttach(stateD, stateD.isSolidSide(world, blockposD, Direction.UP)))
+                .with(GROWTH, this.getProperGrowth(world, blockpos));
     }
 
-    public BlockState updateShape(BlockState state, Direction facing, BlockState facingState, IWorld worldIn, BlockPos currentPos, BlockPos facingPos)
+    public BlockState updatePostPlacement(BlockState state, Direction facing, BlockState facingState, IWorld worldIn, BlockPos currentPos, BlockPos facingPos)
     {
-        return state.setValue(FACING_TO_PROPERTY_MAP.get(facing), this.canAttach(facingState, facingState.isFaceSturdy(worldIn, facingPos, facing.getOpposite())));
+        return state.with(FACING_TO_PROPERTY_MAP.get(facing), this.canAttach(facingState, facingState.isSolidSide(worldIn, facingPos, facing.getOpposite())));
     }
 
     @Override
-    public void entityInside(BlockState state, World worldIn, BlockPos pos, Entity entityIn)
+    public void onEntityCollision(BlockState state, World worldIn, BlockPos pos, Entity entityIn)
     {
-        entityIn.hurt(TerraReforged.THORNS, this.damage);
+        entityIn.attackEntityFrom(TerraReforged.THORNS, this.damage);
         worldIn.destroyBlock(pos, false);
     }
 
     @Override
     public void neighborChanged(BlockState state, World worldIn, BlockPos pos, Block blockIn, BlockPos fromPos, boolean isMoving)
     {
-        if (!canSurvive(state, worldIn, pos))
+        if (!isValidPosition(state, worldIn, pos))
         {
             worldIn.destroyBlock(pos, false);
         }
@@ -273,44 +273,44 @@ public class TerraBlockThornBush extends Block
 
     //for placing block
     @Override
-    public boolean canSurvive(BlockState state, IWorldReader worldIn, BlockPos pos)
+    public boolean isValidPosition(BlockState state, IWorldReader worldIn, BlockPos pos)
     {
-        if (state.getValue(GROWTH) == 0)
+        if (state.get(GROWTH) == 0)
         {
-            return worldIn.getBlockState(pos.below()).getBlock() == this.getGrass();
+            return worldIn.getBlockState(pos.down()).getBlock() == this.getGrass();
         }
         boolean thornNeighbor = false;
         for (int dirIndex = 0; dirIndex < 6; dirIndex++)
         {
-            BlockState targetState = worldIn.getBlockState(pos.relative(Direction.from3DDataValue(dirIndex)));
+            BlockState targetState = worldIn.getBlockState(pos.offset(Direction.byIndex(dirIndex)));
             if (targetState.getBlock() instanceof TerraBlockThornBush)
             {
                 thornNeighbor = true;
             }
         }
-        return thornNeighbor && getLowestNeighbor(worldIn, pos) < state.getValue(GROWTH);
+        return thornNeighbor && getLowestNeighbor(worldIn, pos) < state.get(GROWTH);
     }
 
     @Override
     public void randomTick(BlockState state, ServerWorld worldIn, BlockPos pos, Random random)
     {
-        int growth = state.getValue(GROWTH);
-        if (!canSurvive(state, worldIn, pos))
+        int growth = state.get(GROWTH);
+        if (!isValidPosition(state, worldIn, pos))
         {
             worldIn.destroyBlock(pos, false);
         }
         else if (growth < 9)
         {
             int      dirIndex = random.nextInt(6);
-            BlockPos dirPos   = pos.relative(Direction.from3DDataValue(dirIndex));
+            BlockPos dirPos   = pos.offset(Direction.byIndex(dirIndex));
             if (worldIn.getBlockState(dirPos).getBlock() == Blocks.AIR && getNeighborCount(worldIn, dirPos) < 2 && worldIn.getBiome(dirPos).getRegistryName().toString().contains(this.getBiome()))
             {
-                worldIn.setBlockAndUpdate(dirPos, this.defaultBlockState().setValue(GROWTH, growth + 1));
+                worldIn.setBlockState(dirPos, this.getDefaultState().with(GROWTH, growth + 1));
             }
         }
     }
 
-    protected void createBlockStateDefinition(StateContainer.Builder<Block, BlockState> builder)
+    protected void fillStateContainer(StateContainer.Builder<Block, BlockState> builder)
     {
         builder.add(UP, DOWN, NORTH, EAST, SOUTH, WEST, GROWTH);
     }

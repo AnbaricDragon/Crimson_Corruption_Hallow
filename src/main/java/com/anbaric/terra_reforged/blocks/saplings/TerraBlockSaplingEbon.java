@@ -18,13 +18,13 @@ import java.util.Random;
 
 public class TerraBlockSaplingEbon extends BushBlock implements IGrowable
 {
-    public static final IntegerProperty STAGE = BlockStateProperties.STAGE;
-    protected static final VoxelShape SHAPE = Block.box(2.0D, 0.0D, 2.0D, 14.0D, 12.0D, 14.0D);
+    public static final IntegerProperty STAGE = BlockStateProperties.STAGE_0_1;
+    protected static final VoxelShape SHAPE = Block.makeCuboidShape(2.0D, 0.0D, 2.0D, 14.0D, 12.0D, 14.0D);
 
     public TerraBlockSaplingEbon(AbstractBlock.Properties properties)
     {
         super(properties);
-        this.registerDefaultState(this.stateDefinition.any().setValue(STAGE, Integer.valueOf(0)));
+        this.setDefaultState(this.stateContainer.getBaseState().with(STAGE, Integer.valueOf(0)));
     }
 
     public VoxelShape getShape(BlockState state, IBlockReader worldIn, BlockPos pos, ISelectionContext context)
@@ -34,7 +34,7 @@ public class TerraBlockSaplingEbon extends BushBlock implements IGrowable
 
     public void randomTick(BlockState state, ServerWorld worldIn, BlockPos pos, Random random)
     {
-        if (worldIn.getMaxLocalRawBrightness(pos.above()) >= 9 && random.nextInt(7) == 0)
+        if (worldIn.getLight(pos.up()) >= 9 && random.nextInt(7) == 0)
         {
             if (!worldIn.isAreaLoaded(pos, 1))
             {
@@ -46,9 +46,9 @@ public class TerraBlockSaplingEbon extends BushBlock implements IGrowable
 
     public void placeTree(ServerWorld world, BlockPos pos, BlockState state, Random rand)
     {
-        if (state.getValue(STAGE) == 0)
+        if (state.get(STAGE) == 0)
         {
-            world.setBlock(pos, state.cycle(STAGE), 4);
+            world.setBlockState(pos, state.cycleValue(STAGE), 4);
         }
         else
         {
@@ -56,26 +56,26 @@ public class TerraBlockSaplingEbon extends BushBlock implements IGrowable
             {
                 return;
             }
-            TerraFeatureRegistry.EBON_TREE.get().place(world, world.getChunkSource().getGenerator(), rand, pos, NoFeatureConfig.NONE);
+            TerraFeatureRegistry.EBON_TREE.get().generate(world, world.getChunkProvider().getChunkGenerator(), rand, pos, NoFeatureConfig.NO_FEATURE_CONFIG);
         }
     }
 
-    public boolean isValidBonemealTarget(IBlockReader worldIn, BlockPos pos, BlockState state, boolean isClient)
+    public boolean canGrow(IBlockReader worldIn, BlockPos pos, BlockState state, boolean isClient)
     {
         return true;
     }
 
-    public boolean isBonemealSuccess(World worldIn, Random rand, BlockPos pos, BlockState state)
+    public boolean canUseBonemeal(World worldIn, Random rand, BlockPos pos, BlockState state)
     {
-        return (double) worldIn.random.nextFloat() < 0.45D;
+        return (double) worldIn.rand.nextFloat() < 0.45D;
     }
 
-    public void performBonemeal(ServerWorld worldIn, Random rand, BlockPos pos, BlockState state)
+    public void grow(ServerWorld worldIn, Random rand, BlockPos pos, BlockState state)
     {
         this.placeTree(worldIn, pos, state, rand);
     }
 
-    protected void createBlockStateDefinition(StateContainer.Builder<Block, BlockState> builder)
+    protected void fillStateContainer(StateContainer.Builder<Block, BlockState> builder)
     {
         builder.add(STAGE);
     }

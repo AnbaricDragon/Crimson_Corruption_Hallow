@@ -22,23 +22,23 @@ import net.minecraft.block.AbstractBlock;
 
 public class TerraBlockSnowLayer extends Block
 {
-    public static final IntegerProperty LAYERS = BlockStateProperties.LAYERS;
+    public static final IntegerProperty LAYERS = BlockStateProperties.LAYERS_1_8;
     protected static final VoxelShape[]
             SHAPES =
-            new VoxelShape[]{VoxelShapes.empty(), Block.box(0.0D, 0.0D, 0.0D, 16.0D, 2.0D, 16.0D), Block.box(0.0D, 0.0D, 0.0D, 16.0D, 4.0D, 16.0D), Block.box(0.0D, 0.0D, 0.0D, 16.0D, 6.0D, 16.0D), Block.box(0.0D, 0.0D, 0.0D, 16.0D, 8.0D, 16.0D), Block.box(0.0D, 0.0D, 0.0D, 16.0D, 10.0D, 16.0D), Block.box(0.0D, 0.0D, 0.0D, 16.0D, 12.0D, 16.0D), Block.box(0.0D, 0.0D, 0.0D, 16.0D, 14.0D, 16.0D), Block.box(0.0D, 0.0D, 0.0D, 16.0D, 16.0D, 16.0D)};
+            new VoxelShape[]{VoxelShapes.empty(), Block.makeCuboidShape(0.0D, 0.0D, 0.0D, 16.0D, 2.0D, 16.0D), Block.makeCuboidShape(0.0D, 0.0D, 0.0D, 16.0D, 4.0D, 16.0D), Block.makeCuboidShape(0.0D, 0.0D, 0.0D, 16.0D, 6.0D, 16.0D), Block.makeCuboidShape(0.0D, 0.0D, 0.0D, 16.0D, 8.0D, 16.0D), Block.makeCuboidShape(0.0D, 0.0D, 0.0D, 16.0D, 10.0D, 16.0D), Block.makeCuboidShape(0.0D, 0.0D, 0.0D, 16.0D, 12.0D, 16.0D), Block.makeCuboidShape(0.0D, 0.0D, 0.0D, 16.0D, 14.0D, 16.0D), Block.makeCuboidShape(0.0D, 0.0D, 0.0D, 16.0D, 16.0D, 16.0D)};
 
     public TerraBlockSnowLayer(AbstractBlock.Properties properties)
     {
         super(properties);
-        this.registerDefaultState(this.stateDefinition.any().setValue(LAYERS, Integer.valueOf(1)));
+        this.setDefaultState(this.stateContainer.getBaseState().with(LAYERS, Integer.valueOf(1)));
     }
 
-    public boolean isPathfindable(BlockState state, IBlockReader worldIn, BlockPos pos, PathType type)
+    public boolean allowsMovement(BlockState state, IBlockReader worldIn, BlockPos pos, PathType type)
     {
         switch (type)
         {
             case LAND:
-                return state.getValue(LAYERS) < 5;
+                return state.get(LAYERS) < 5;
             case WATER:
                 return false;
             case AIR:
@@ -50,27 +50,27 @@ public class TerraBlockSnowLayer extends Block
 
     public VoxelShape getShape(BlockState state, IBlockReader worldIn, BlockPos pos, ISelectionContext context)
     {
-        return SHAPES[state.getValue(LAYERS)];
+        return SHAPES[state.get(LAYERS)];
     }
 
     public VoxelShape getCollisionShape(BlockState state, IBlockReader worldIn, BlockPos pos, ISelectionContext context)
     {
-        return SHAPES[state.getValue(LAYERS) - 1];
+        return SHAPES[state.get(LAYERS) - 1];
     }
 
-    public boolean useShapeForLightOcclusion(BlockState state)
+    public boolean isTransparent(BlockState state)
     {
         return true;
     }
 
-    public boolean canSurvive(BlockState state, IWorldReader worldIn, BlockPos pos)
+    public boolean isValidPosition(BlockState state, IWorldReader worldIn, BlockPos pos)
     {
-        BlockState blockstate = worldIn.getBlockState(pos.below());
-        if (!blockstate.is(Blocks.ICE) && !blockstate.is(Blocks.PACKED_ICE) && !blockstate.is(Blocks.BARRIER))
+        BlockState blockstate = worldIn.getBlockState(pos.down());
+        if (!blockstate.matchesBlock(Blocks.ICE) && !blockstate.matchesBlock(Blocks.PACKED_ICE) && !blockstate.matchesBlock(Blocks.BARRIER))
         {
-            if (!blockstate.is(Blocks.HONEY_BLOCK) && !blockstate.is(Blocks.SOUL_SAND))
+            if (!blockstate.matchesBlock(Blocks.HONEY_BLOCK) && !blockstate.matchesBlock(Blocks.SOUL_SAND))
             {
-                return Block.isFaceFull(blockstate.getCollisionShape(worldIn, pos.below()), Direction.UP) || blockstate.getBlock() == this && blockstate.getValue(LAYERS) == 8;
+                return Block.doesSideFillSquare(blockstate.getCollisionShapeUncached(worldIn, pos.down()), Direction.UP) || blockstate.getBlock() == this && blockstate.get(LAYERS) == 8;
             }
             else
             {
@@ -83,37 +83,37 @@ public class TerraBlockSnowLayer extends Block
         }
     }
 
-    public BlockState updateShape(BlockState stateIn, Direction facing, BlockState facingState, IWorld worldIn, BlockPos currentPos, BlockPos facingPos)
+    public BlockState updatePostPlacement(BlockState stateIn, Direction facing, BlockState facingState, IWorld worldIn, BlockPos currentPos, BlockPos facingPos)
     {
-        return !stateIn.canSurvive(worldIn, currentPos) ? Blocks.AIR.defaultBlockState() : super.updateShape(stateIn, facing, facingState, worldIn, currentPos, facingPos);
+        return !stateIn.isValidPosition(worldIn, currentPos) ? Blocks.AIR.getDefaultState() : super.updatePostPlacement(stateIn, facing, facingState, worldIn, currentPos, facingPos);
     }
 
     public void tick(BlockState state, World worldIn, BlockPos pos, Random random)
     {
-        int i = state.getValue(LAYERS);
-        if (worldIn.getBrightness(LightType.BLOCK, pos) > 11)
+        int i = state.get(LAYERS);
+        if (worldIn.getLightFor(LightType.BLOCK, pos) > 11)
         {
             if (i == 1)
             {
-                dropResources(state, worldIn, pos);
+                spawnDrops(state, worldIn, pos);
                 worldIn.removeBlock(pos, false);
             }
             else
             {
-                worldIn.setBlockAndUpdate(pos, this.defaultBlockState().setValue(LAYERS, i - 1));
+                worldIn.setBlockState(pos, this.getDefaultState().with(LAYERS, i - 1));
             }
         }
 
     }
 
-    public boolean canBeReplaced(BlockState state, BlockItemUseContext useContext)
+    public boolean isReplaceable(BlockState state, BlockItemUseContext useContext)
     {
-        int i = state.getValue(LAYERS);
-        if (useContext.getItemInHand().getItem() == this.asItem() && i < 8)
+        int i = state.get(LAYERS);
+        if (useContext.getItem().getItem() == this.asItem() && i < 8)
         {
             if (useContext.replacingClickedOnBlock())
             {
-                return useContext.getClickedFace() == Direction.UP;
+                return useContext.getFace() == Direction.UP;
             }
             else
             {
@@ -129,11 +129,11 @@ public class TerraBlockSnowLayer extends Block
     @Nullable
     public BlockState getStateForPlacement(BlockItemUseContext context)
     {
-        BlockState blockstate = context.getLevel().getBlockState(context.getClickedPos());
+        BlockState blockstate = context.getWorld().getBlockState(context.getPos());
         if (blockstate.getBlock() == this)
         {
-            int i = blockstate.getValue(LAYERS);
-            return blockstate.setValue(LAYERS, Integer.valueOf(Math.min(8, i + 1)));
+            int i = blockstate.get(LAYERS);
+            return blockstate.with(LAYERS, Integer.valueOf(Math.min(8, i + 1)));
         }
         else
         {
@@ -141,7 +141,7 @@ public class TerraBlockSnowLayer extends Block
         }
     }
 
-    protected void createBlockStateDefinition(StateContainer.Builder<Block, BlockState> builder)
+    protected void fillStateContainer(StateContainer.Builder<Block, BlockState> builder)
     {
         builder.add(LAYERS);
     }

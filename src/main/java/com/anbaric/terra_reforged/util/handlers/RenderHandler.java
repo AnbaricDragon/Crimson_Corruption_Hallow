@@ -23,9 +23,9 @@ public class RenderHandler
     @SubscribeEvent
     public static void setRenderLayer(FMLClientSetupEvent event)
     {
-        RenderType translucent  = RenderType.translucent();
-        RenderType cutoutMipped = RenderType.cutoutMipped();
-        RenderType cutout       = RenderType.cutout();
+        RenderType translucent  = RenderType.getTranslucent();
+        RenderType cutoutMipped = RenderType.getCutoutMipped();
+        RenderType cutout       = RenderType.getCutout();
 
         //Blocks
         RenderTypeLookup.setRenderLayer(TerraBlockRegistry.GRASS_JUNGLE.get(), cutout);

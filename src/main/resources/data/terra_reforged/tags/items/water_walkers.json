@@ -1,0 +1,8 @@
+{
+    "replace": false,
+    "values": [
+        "terra_reforged:boots_water",
+        "terra_reforged:boots_obsidian",
+        "#terra_reforged:lava_walkers"
+    ]
+}

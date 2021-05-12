@@ -52,7 +52,7 @@ public class SpreadingHandler
         }
 
         @Override
-        public String getSerializedName()
+        public String getString()
         {
             return this.getName().toString();
         }

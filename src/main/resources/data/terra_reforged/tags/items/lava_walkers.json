@@ -1,0 +1,8 @@
+{
+    "replace": false,
+    "values": [
+        "terra_reforged:boots_lava",
+        "terra_reforged:boots_hellfire",
+        "terra_reforged:boots_terraspark"
+    ]
+}

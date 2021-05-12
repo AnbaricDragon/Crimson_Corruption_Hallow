@@ -24,9 +24,9 @@ public class TerraFeatureTreePearl extends Feature<NoFeatureConfig>
     }
 
     @Override
-    public boolean place(ISeedReader world, ChunkGenerator generator, Random rand, BlockPos pos, NoFeatureConfig config)
+    public boolean generate(ISeedReader world, ChunkGenerator generator, Random rand, BlockPos pos, NoFeatureConfig config)
     {
-        if (world.getBlockState(pos.below()).getBlock().is(TerraTagRegistry.PEARL_PLANTERS))
+        if (world.getBlockState(pos.down()).getBlock().isIn(TerraTagRegistry.PEARL_PLANTERS))
         {
             generateTree(world, pos, rand);
             return true;
@@ -34,17 +34,17 @@ public class TerraFeatureTreePearl extends Feature<NoFeatureConfig>
         return false;
     }
 
-    public static final BlockState LOG_PEARL = TerraBlockRegistry.LOG_PEARL.get().defaultBlockState();
+    public static final BlockState LOG_PEARL = TerraBlockRegistry.LOG_PEARL.get().getDefaultState();
     private static List<BlockState> LEAF_ARRAY = Arrays.asList
     (
-        TerraBlockRegistry.LEAF_PEARL_RED.get().defaultBlockState(),
-        TerraBlockRegistry.LEAF_PEARL_YELLOW.get().defaultBlockState(),
-        TerraBlockRegistry.LEAF_PEARL_PINK.get().defaultBlockState(),
-        TerraBlockRegistry.LEAF_PEARL_MAGENTA.get().defaultBlockState(),
-        TerraBlockRegistry.LEAF_PEARL_CYAN.get().defaultBlockState(),
-        TerraBlockRegistry.LEAF_PEARL_BLUE.get().defaultBlockState(),
-        TerraBlockRegistry.LEAF_PEARL_GREEN.get().defaultBlockState(),
-        TerraBlockRegistry.LEAF_PEARL_PURPLE.get().defaultBlockState()
+        TerraBlockRegistry.LEAF_PEARL_RED.get().getDefaultState(),
+        TerraBlockRegistry.LEAF_PEARL_YELLOW.get().getDefaultState(),
+        TerraBlockRegistry.LEAF_PEARL_PINK.get().getDefaultState(),
+        TerraBlockRegistry.LEAF_PEARL_MAGENTA.get().getDefaultState(),
+        TerraBlockRegistry.LEAF_PEARL_CYAN.get().getDefaultState(),
+        TerraBlockRegistry.LEAF_PEARL_BLUE.get().getDefaultState(),
+        TerraBlockRegistry.LEAF_PEARL_GREEN.get().getDefaultState(),
+        TerraBlockRegistry.LEAF_PEARL_PURPLE.get().getDefaultState()
     );
 
     public static final char[][][] PEARL_ARRAY =
@@ -190,7 +190,7 @@ public class TerraFeatureTreePearl extends Feature<NoFeatureConfig>
 
         for (int i = 0; i <= trunkHeight; i++)
         {
-            if (!world.getBlockState(pos.above(i)).canBeReplacedByLogs(world, pos))
+            if (!world.getBlockState(pos.up(i)).canBeReplacedByLogs(world, pos))
             {
                 canGrow = false;
             }
@@ -201,7 +201,7 @@ public class TerraFeatureTreePearl extends Feature<NoFeatureConfig>
             {
                 for (int z = pos.getZ() - radius; z <= pos.getZ() + radius; z++)
                 {
-                    target.set(x, y, z);
+                    target.setPos(x, y, z);
                     char targetChar = template[arrayY][arrayX][arrayZ];
                     if (targetChar == 'X' || targetChar == 'Y' || targetChar == 'Z')
                     {
@@ -248,21 +248,21 @@ public class TerraFeatureTreePearl extends Feature<NoFeatureConfig>
                 {
                     for (int z = pos.getZ() - radius; z <= pos.getZ() + radius; z++)
                     {
-                        target.set(x, y, z);
+                        target.setPos(x, y, z);
                         char inputChar = template[arrayY][arrayX][arrayZ];
                         switch (inputChar)
                         {
                             case 'L':
-                                world.setBlock(target, LEAF_ARRAY.get(leafColor), 3);
+                                world.setBlockState(target, LEAF_ARRAY.get(leafColor), 3);
                                 break;
                             case 'Y':
-                                world.setBlock(target, LOG_PEARL, 3);
+                                world.setBlockState(target, LOG_PEARL, 3);
                                 break;
                             case 'X':
-                                world.setBlock(target, LOG_PEARL.setValue(RotatedPillarBlock.AXIS, Direction.Axis.X), 3);
+                                world.setBlockState(target, LOG_PEARL.with(RotatedPillarBlock.AXIS, Direction.Axis.X), 3);
                                 break;
                             case 'Z':
-                                world.setBlock(target, LOG_PEARL.setValue(RotatedPillarBlock.AXIS, Direction.Axis.Z), 3);
+                                world.setBlockState(target, LOG_PEARL.with(RotatedPillarBlock.AXIS, Direction.Axis.Z), 3);
                                 break;
                         }
                         arrayZ++;
@@ -275,7 +275,7 @@ public class TerraFeatureTreePearl extends Feature<NoFeatureConfig>
             }
             for (int i = 0; i < trunkHeight; i++)
             {
-                world.setBlock(pos.above(i), LOG_PEARL, 3);
+                world.setBlockState(pos.up(i), LOG_PEARL, 3);
             }
         }
     }

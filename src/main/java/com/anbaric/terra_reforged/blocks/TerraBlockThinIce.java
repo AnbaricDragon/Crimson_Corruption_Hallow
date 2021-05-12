@@ -1,6 +1,8 @@
 package com.anbaric.terra_reforged.blocks;
 
+import com.anbaric.terra_reforged.util.handlers.CurioHandler;
 import com.anbaric.terra_reforged.util.init.TerraBlockRegistry;
+import com.anbaric.terra_reforged.util.init.TerraItemRegistry;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
@@ -26,16 +28,16 @@ public class TerraBlockThinIce extends Block
     public void destroyNotIce(World worldIn, BlockPos pos)
     {
         int i;
-        for (i = 0; worldIn.getBlockState(pos.below(i)).getBlock() == TerraBlockRegistry.ICE_THIN.get(); i++)
+        for (i = 0; worldIn.getBlockState(pos.down(i)).getBlock() == TerraBlockRegistry.ICE_THIN.get(); i++)
         {
-            worldIn.playSound(null, pos.below(i), SoundEvents.GLASS_BREAK, SoundCategory.BLOCKS, 1.0F, 1.0F);
-            worldIn.setBlockAndUpdate(pos.below(i), Blocks.AIR.defaultBlockState());
+            worldIn.playSound(null, pos.down(i), SoundEvents.BLOCK_GLASS_BREAK, SoundCategory.BLOCKS, 1.0F, 1.0F);
+            worldIn.setBlockState(pos.down(i), Blocks.AIR.getDefaultState());
         }
     }
 
-    public void fallOn(World worldIn, BlockPos pos, Entity entityIn, float fallDistance)
+    public void onFallenUpon(World worldIn, BlockPos pos, Entity entityIn, float fallDistance)
     {
-        Vector3d entityPos = entityIn.position();
+        Vector3d entityPos = entityIn.getPositionVec();
 
         double x = entityPos.x;
         double z = entityPos.z;
@@ -46,6 +48,10 @@ public class TerraBlockThinIce extends Block
 
         if (entityIn instanceof PlayerEntity)
         {
+            if (CurioHandler.hasBauble((PlayerEntity) entityIn, TerraItemRegistry.BOOTS_FROSTSPARK.get(), TerraItemRegistry.BOOTS_ICE.get()))
+            {
+                return;
+            }
             if (fallDistance >= 0.25)
             {
                 destroyNotIce(worldIn, pos);
@@ -55,7 +61,7 @@ public class TerraBlockThinIce extends Block
                     destroyNotIce(worldIn, pos.north());
                     if (dotX <= 0.300)
                     {
-                        destroyNotIce(worldIn, pos.offset( -1, 0, -1));
+                        destroyNotIce(worldIn, pos.add( -1, 0, -1));
                     }
                 }
                 if (dotX >= 0.700)
@@ -63,7 +69,7 @@ public class TerraBlockThinIce extends Block
                     destroyNotIce(worldIn, pos.east());
                     if (dotZ <= 0.300)
                     {
-                        destroyNotIce(worldIn, pos.offset( 1, 0, -1));
+                        destroyNotIce(worldIn, pos.add( 1, 0, -1));
                     }
                 }
                 if (dotZ >= 0.700)
@@ -71,7 +77,7 @@ public class TerraBlockThinIce extends Block
                     destroyNotIce(worldIn, pos.south());
                     if (dotX >= 0.700)
                     {
-                        destroyNotIce(worldIn, pos.offset( 1, 0, 1));
+                        destroyNotIce(worldIn, pos.add( 1, 0, 1));
                     }
                 }
                 if (dotX <= 0.300)
@@ -79,18 +85,18 @@ public class TerraBlockThinIce extends Block
                     destroyNotIce(worldIn, pos.west());
                     if (dotZ >= 0.700)
                     {
-                        destroyNotIce(worldIn, pos.offset( -1, 0, 1));
+                        destroyNotIce(worldIn, pos.add( -1, 0, 1));
                     }
                 }
             }
         }
-        entityIn.push(0, -0.25D, 0);
-        super.fallOn(worldIn, pos, entityIn, fallDistance);
+        entityIn.addVelocity(0, -0.25D, 0);
+        super.onFallenUpon(worldIn, pos, entityIn, fallDistance);
     }
 
     @OnlyIn(Dist.CLIENT)
-    public boolean skipRendering(BlockState state, BlockState adjacentBlockState, Direction side)
+    public boolean isSideInvisible(BlockState state, BlockState adjacentBlockState, Direction side)
     {
-        return adjacentBlockState.getBlock() == this ? true : super.skipRendering(state, adjacentBlockState, side);
+        return adjacentBlockState.getBlock() == this ? true : super.isSideInvisible(state, adjacentBlockState, side);
     }
 }

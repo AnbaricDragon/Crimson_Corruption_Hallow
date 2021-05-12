@@ -15,13 +15,13 @@ public class TerraEffectInvincibility extends Effect
     }
 
     @Override
-    public boolean isDurationEffectTick(int duration, int amplifier)
+    public boolean isReady(int duration, int amplifier)
     {
         return true;
     }
 
     @Override
-    public void applyEffectTick(LivingEntity entity, int amplifier)
+    public void performEffect(LivingEntity entity, int amplifier)
     {
 
     }

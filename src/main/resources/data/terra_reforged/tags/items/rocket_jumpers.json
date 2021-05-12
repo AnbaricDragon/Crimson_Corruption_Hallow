@@ -1,0 +1,10 @@
+{
+  "replace": false,
+  "values": [
+    "terra_reforged:boots_rocket",
+    "terra_reforged:boots_spectre",
+    "terra_reforged:boots_lightning",
+    "terra_reforged:boots_frostspark",
+    "terra_reforged:boots_terraspark"
+  ]
+}

@@ -17,13 +17,13 @@ public class TerraEffectLoomingDeath extends Effect
     }
 
     @Override
-    public boolean isDurationEffectTick(int duration, int amplifier)
+    public boolean isReady(int duration, int amplifier)
     {
         return duration <= 1;
     }
 
     @Override
-    public void applyEffectTick(LivingEntity entity, int amplifier)
+    public void performEffect(LivingEntity entity, int amplifier)
     {
         if (entity instanceof BeeEntity)
         {
@@ -35,7 +35,7 @@ public class TerraEffectLoomingDeath extends Effect
             else
             {
                 chances--;
-                bee.addEffect(new EffectInstance(TerraEffectRegistry.LOOMING_DEATH.get(), 20, 0, false, false));
+                bee.addPotionEffect(new EffectInstance(TerraEffectRegistry.LOOMING_DEATH.get(), 20, 0, false, false));
             }
         }
     }

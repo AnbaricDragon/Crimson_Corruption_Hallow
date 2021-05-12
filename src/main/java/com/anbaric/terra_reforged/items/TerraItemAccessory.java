@@ -50,7 +50,7 @@ public class TerraItemAccessory extends Item implements ICurio
             @Override
             public SoundInfo getEquipSound(SlotContext slotContext)
             {
-                return new SoundInfo(SoundEvents.ARMOR_EQUIP_GENERIC, 1.0f, 1.0f);
+                return new SoundInfo(SoundEvents.ITEM_ARMOR_EQUIP_GENERIC, 1.0f, 1.0f);
             }
 
             @Override

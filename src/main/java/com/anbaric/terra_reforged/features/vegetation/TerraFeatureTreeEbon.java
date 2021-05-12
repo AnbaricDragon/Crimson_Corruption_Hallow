@@ -22,9 +22,9 @@ public class TerraFeatureTreeEbon extends Feature<NoFeatureConfig>
     }
 
     @Override
-    public boolean place(ISeedReader world, ChunkGenerator generator, Random rand, BlockPos pos, NoFeatureConfig config)
+    public boolean generate(ISeedReader world, ChunkGenerator generator, Random rand, BlockPos pos, NoFeatureConfig config)
     {
-        if (world.getBlockState(pos.below()).getBlock().is(TerraTagRegistry.EBON_PLANTERS))
+        if (world.getBlockState(pos.down()).getBlock().isIn(TerraTagRegistry.EBON_PLANTERS))
         {
             generateTree(world, pos, rand);
             return true;
@@ -32,8 +32,8 @@ public class TerraFeatureTreeEbon extends Feature<NoFeatureConfig>
         return false;
     }
 
-    public static final BlockState LOG_EBON = TerraBlockRegistry.LOG_EBON.get().defaultBlockState();
-    public static final BlockState LEAF_EBON = TerraBlockRegistry.LEAF_EBON.get().defaultBlockState();
+    public static final BlockState LOG_EBON = TerraBlockRegistry.LOG_EBON.get().getDefaultState();
+    public static final BlockState LEAF_EBON = TerraBlockRegistry.LEAF_EBON.get().getDefaultState();
 
     public static final char[][][] EBON_ARRAY =
     {{{'2', 'L', 'a', 'L', '2'},
@@ -132,7 +132,7 @@ public class TerraFeatureTreeEbon extends Feature<NoFeatureConfig>
 
         for (int i = 0; i <= trunkHeight; i++)
         {
-            if (!world.getBlockState(pos.above(i)).canBeReplacedByLogs(world, pos))
+            if (!world.getBlockState(pos.up(i)).canBeReplacedByLogs(world, pos))
             {
                 canGrow = false;
             }
@@ -143,7 +143,7 @@ public class TerraFeatureTreeEbon extends Feature<NoFeatureConfig>
             {
                 for (int z = pos.getZ() - radius; z <= pos.getZ() + radius; z++)
                 {
-                    target.set(x, y, z);
+                    target.setPos(x, y, z);
                     char targetChar = template[arrayY][arrayX][arrayZ];
                     if (targetChar == 'W' || targetChar == 'h' || targetChar == 'v')
                     {
@@ -187,21 +187,21 @@ public class TerraFeatureTreeEbon extends Feature<NoFeatureConfig>
                 {
                     for (int z = pos.getZ() - 2; z <= pos.getZ() + 2; z++)
                     {
-                        target.set(x, y, z);
+                        target.setPos(x, y, z);
                         char inputChar = template[arrayY][arrayX][arrayZ];
                         switch (inputChar)
                         {
                             case 'L':
-                                world.setBlock(target, LEAF_EBON, 3);
+                                world.setBlockState(target, LEAF_EBON, 3);
                                 break;
                             case 'W':
-                                world.setBlock(target, LOG_EBON, 3);
+                                world.setBlockState(target, LOG_EBON, 3);
                                 break;
                             case 'v':
-                                world.setBlock(target, LOG_EBON.setValue(RotatedPillarBlock.AXIS, Direction.Axis.X), 3);
+                                world.setBlockState(target, LOG_EBON.with(RotatedPillarBlock.AXIS, Direction.Axis.X), 3);
                                 break;
                             case 'h':
-                                world.setBlock(target, LOG_EBON.setValue(RotatedPillarBlock.AXIS, Direction.Axis.Z), 3);
+                                world.setBlockState(target, LOG_EBON.with(RotatedPillarBlock.AXIS, Direction.Axis.Z), 3);
                                 break;
                         }
                         arrayZ++;
@@ -214,7 +214,7 @@ public class TerraFeatureTreeEbon extends Feature<NoFeatureConfig>
             }
             for (int i = 0; i < trunkHeight; i++)
             {
-                world.setBlock(pos.above(i), LOG_EBON, 3);
+                world.setBlockState(pos.up(i), LOG_EBON, 3);
             }
         }
     }

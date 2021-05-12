@@ -30,13 +30,13 @@ import java.util.stream.Collectors;
 
 @Mod(Reference.MODID) public class TerraReforged
 {
-    private static final Logger LOGGER = LogManager.getLogger(Reference.MODID);
+    public static final Logger LOGGER = LogManager.getLogger(Reference.MODID);
 
     public static final boolean debugSpreading = false;
 
     public static PlantType BOREAL = PlantType.get("boreal");
     public static PlantType MUSHROOM = PlantType.get("mushroom");
-    public static DamageSource THORNS = new DamageSource("thorns").bypassArmor();
+    public static DamageSource THORNS = new DamageSource("thorns").setDamageBypassesArmor();
 
     public TerraReforged()
     {
@@ -69,8 +69,9 @@ import java.util.stream.Collectors;
         MinecraftForge.EVENT_BUS.register(TerraTestEvent.class);
         MinecraftForge.EVENT_BUS.register(TerraStructureProtectEvent.class);
         MinecraftForge.EVENT_BUS.register(TerraCapabilitiesEvent.class);
-        MinecraftForge.EVENT_BUS.register(TerraEffectItemsEvent.class);
         MinecraftForge.EVENT_BUS.register(TerraDefaultBiomeAdditionsEvent.class);
+        MinecraftForge.EVENT_BUS.register(TerraGuiRenderEvent.class);
+        MinecraftForge.EVENT_BUS.register(TerraTooltipEvent.class);
         MinecraftForge.EVENT_BUS.register(new TerraJumpEvent());
 
         MinecraftForge.EVENT_BUS.register(FeatureGenHandler.class);
@@ -95,10 +96,7 @@ import java.util.stream.Collectors;
 
     private void enqueueIMC(final InterModEnqueueEvent event)
     {
-        InterModComms.sendTo(CuriosApi.MODID, SlotTypeMessage.REGISTER_TYPE, () -> new SlotTypeMessage.Builder("boot").build());
-        InterModComms.sendTo(CuriosApi.MODID, SlotTypeMessage.REGISTER_TYPE, () -> SlotTypePreset.BACK.getMessageBuilder().build());
-        InterModComms.sendTo(CuriosApi.MODID, SlotTypeMessage.REGISTER_TYPE, () -> SlotTypePreset.CHARM.getMessageBuilder().size(3).build());
-        InterModComms.sendTo(CuriosApi.MODID, SlotTypeMessage.REGISTER_TYPE, () -> SlotTypePreset.CURIO.getMessageBuilder().size(3).build());
+        InterModComms.sendTo(CuriosApi.MODID, SlotTypeMessage.REGISTER_TYPE, () -> SlotTypePreset.CURIO.getMessageBuilder().size(6).build());
         // some example code to dispatch IMC to another mod
         InterModComms.sendTo("terra_reforged", "helloworld", () -> {
             LOGGER.info("Hello world from the MDK");

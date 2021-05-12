@@ -4,7 +4,8 @@
     "compatibilityLevel": "JAVA_8",
     "refmap": "terra_reforged.refmap.json",
     "mixins": [
-        "TerraAbstractBlockMixin"
+        "TerraAbstractBlockMixin",
+        "TerraLivingEntityMixin"
     ],
     "client": [
 

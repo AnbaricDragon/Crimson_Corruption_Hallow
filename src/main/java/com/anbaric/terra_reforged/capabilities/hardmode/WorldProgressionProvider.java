@@ -1,8 +1,5 @@
 package com.anbaric.terra_reforged.capabilities.hardmode;
 
-import com.anbaric.terra_reforged.capabilities.multijump.IMultiJump;
-import com.anbaric.terra_reforged.capabilities.multijump.MultiJump;
-import com.anbaric.terra_reforged.capabilities.multijump.TerraCapabilityMultiJump;
 import net.minecraft.nbt.CompoundNBT;
 import net.minecraft.nbt.INBT;
 import net.minecraft.util.Direction;

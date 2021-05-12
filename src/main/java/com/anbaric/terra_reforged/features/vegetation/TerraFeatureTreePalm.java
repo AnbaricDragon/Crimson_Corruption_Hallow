@@ -23,9 +23,9 @@ public class TerraFeatureTreePalm extends Feature<NoFeatureConfig>
     }
 
     @Override
-    public boolean place(ISeedReader world, ChunkGenerator generator, Random rand, BlockPos pos, NoFeatureConfig config)
+    public boolean generate(ISeedReader world, ChunkGenerator generator, Random rand, BlockPos pos, NoFeatureConfig config)
     {
-        if (world.getBlockState(pos.below()).getBlock().is(TerraTagRegistry.PALM_PLANTERS))
+        if (world.getBlockState(pos.down()).getBlock().isIn(TerraTagRegistry.PALM_PLANTERS))
         {
             generateTree(world, pos, rand);
             return true;
@@ -33,8 +33,8 @@ public class TerraFeatureTreePalm extends Feature<NoFeatureConfig>
         return false;
     }
 
-    public static final BlockState LOG_PALM = TerraBlockRegistry.LOG_PALM.get().defaultBlockState();
-    public static final BlockState LEAF_PALM = TerraBlockRegistry.LEAF_PALM.get().defaultBlockState();
+    public static final BlockState LOG_PALM = TerraBlockRegistry.LOG_PALM.get().getDefaultState();
+    public static final BlockState LEAF_PALM = TerraBlockRegistry.LEAF_PALM.get().getDefaultState();
 
     public static final char[][][] PALM_ARRAY =
     {{{'O', 'O', 'O', 'O', 'O', 'O', 'O'},
@@ -184,7 +184,7 @@ public class TerraFeatureTreePalm extends Feature<NoFeatureConfig>
             {
                 for (int z = pos.getZ() - radius; z <= pos.getZ() + radius; z++)
                 {
-                    target.set(x, y, z);
+                    target.setPos(x, y, z);
                     char targetChar = template[arrayY][arrayX][arrayZ];
                     if (targetChar == 'W' || targetChar == 'H' || targetChar == 'V')
                     {
@@ -221,7 +221,7 @@ public class TerraFeatureTreePalm extends Feature<NoFeatureConfig>
 
         if (hasSpace)
         {
-            world.setBlock(pos, Blocks.AIR.defaultBlockState(), 3);
+            world.setBlockState(pos, Blocks.AIR.getDefaultState(), 3);
 
             BlockPos.Mutable target = new BlockPos.Mutable();
             for (int y = pos.getY(); y < pos.getY() + treeHeight; y++)
@@ -230,21 +230,21 @@ public class TerraFeatureTreePalm extends Feature<NoFeatureConfig>
                 {
                     for (int z = pos.getZ() - 3; z <= pos.getZ() + 3; z++)
                     {
-                        target.set(x, y, z);
+                        target.setPos(x, y, z);
                         char inputChar = template[arrayY][arrayX][arrayZ];
                         switch (inputChar)
                         {
                             case 'L':
-                                world.setBlock(target, LEAF_PALM, 3);
+                                world.setBlockState(target, LEAF_PALM, 3);
                                 break;
                             case 'W':
-                                world.setBlock(target, LOG_PALM, 3);
+                                world.setBlockState(target, LOG_PALM, 3);
                                 break;
                             case 'V':
-                                world.setBlock(target, LOG_PALM.setValue(RotatedPillarBlock.AXIS, Direction.Axis.X), 3);
+                                world.setBlockState(target, LOG_PALM.with(RotatedPillarBlock.AXIS, Direction.Axis.X), 3);
                                 break;
                             case 'H':
-                                world.setBlock(target, LOG_PALM.setValue(RotatedPillarBlock.AXIS, Direction.Axis.Z), 3);
+                                world.setBlockState(target, LOG_PALM.with(RotatedPillarBlock.AXIS, Direction.Axis.Z), 3);
                                 break;
                         }
                         arrayZ++;

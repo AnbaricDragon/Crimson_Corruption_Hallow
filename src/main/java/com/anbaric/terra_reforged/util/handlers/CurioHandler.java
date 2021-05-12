@@ -1,15 +1,19 @@
 package com.anbaric.terra_reforged.util.handlers;
 
+import net.minecraft.block.Block;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.CompoundNBT;
 import net.minecraft.nbt.INBT;
+import net.minecraft.tags.ITag;
 import net.minecraft.util.Direction;
 import net.minecraftforge.common.capabilities.Capability;
 import net.minecraftforge.common.capabilities.CapabilityManager;
 import net.minecraftforge.common.capabilities.ICapabilityProvider;
 import net.minecraftforge.common.util.LazyOptional;
+import net.minecraftforge.event.TickEvent;
+import net.minecraftforge.event.world.ChunkEvent;
 import top.theillusivec4.curios.api.CuriosApi;
 import top.theillusivec4.curios.api.CuriosCapability;
 import top.theillusivec4.curios.api.type.capability.ICurio;
@@ -18,9 +22,12 @@ import top.theillusivec4.curios.api.type.inventory.ICurioStacksHandler;
 
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
+import java.util.concurrent.atomic.AtomicBoolean;
 
 public class CurioHandler
 {
+
+
     public static void register()
     {
         CapabilityManager.INSTANCE.register(ICurio.class, new Capability.IStorage<ICurio>()
@@ -66,9 +73,47 @@ public class CurioHandler
         }
     }
 
-    public static ItemStack getBauble(Item item, PlayerEntity player)
+    public static boolean hasBauble(PlayerEntity player, Item... item)
     {
-        return CuriosApi.getCuriosHelper().getCuriosHandler(player).map(ICuriosItemHandler::getCurios).map(map -> map.get("curio")).map(ICurioStacksHandler::getStacks).map(dynamicStackHandler ->
+        AtomicBoolean foundItem = new AtomicBoolean(false);
+        for (Item curioItem : item)
+        {
+            CuriosApi.getCuriosHelper().findEquippedCurio(curioItem, player).ifPresent(found ->
+            {
+                foundItem.set(true);
+            });
+        }
+        return foundItem.get();
+    }
+
+    public static boolean hasBauble(PlayerEntity player, ITag<Item> tag)
+    {
+        AtomicBoolean foundItem = new AtomicBoolean(false);
+        for (Item curioItem : tag.getAllElements())
+        {
+            CuriosApi.getCuriosHelper().findEquippedCurio(curioItem, player).ifPresent(found ->
+            {
+                foundItem.set(true);
+            });
+        }
+        return foundItem.get();
+    }
+
+    public static ItemStack getBaubles(PlayerEntity player, Item... item)
+    {
+        for (Item curioItem : item)
+        {
+            if (!getBauble(player, curioItem).isEmpty())
+            {
+                return getBauble(player, curioItem);
+            }
+        }
+        return ItemStack.EMPTY;
+    }
+
+    public static ItemStack getBauble(PlayerEntity player, Item item)
+    {
+        return CuriosApi.getCuriosHelper().getCuriosHandler(player).map(ICuriosItemHandler::getCurios).map(map -> map.get("charm")).map(ICurioStacksHandler::getStacks).map(dynamicStackHandler ->
         {
             for (int i = 0; i < dynamicStackHandler.getSlots(); i++)
             {
@@ -81,6 +126,4 @@ public class CurioHandler
             return ItemStack.EMPTY;
         }).orElse(ItemStack.EMPTY);
     }
-
-
 }

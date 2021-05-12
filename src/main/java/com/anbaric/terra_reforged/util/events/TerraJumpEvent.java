@@ -1,6 +1,6 @@
 package com.anbaric.terra_reforged.util.events;
 
-import com.anbaric.terra_reforged.capabilities.multijump.TerraCapabilityMultiJump;
+import com.anbaric.terra_reforged.util.handlers.CurioHandler;
 import com.anbaric.terra_reforged.util.handlers.NetworkHandler;
 import com.anbaric.terra_reforged.util.init.TerraItemRegistry;
 import com.anbaric.terra_reforged.util.init.TerraTagRegistry;
@@ -11,20 +11,18 @@ import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.potion.Effects;
 import net.minecraft.stats.Stats;
 import net.minecraft.util.SoundEvents;
-import net.minecraft.util.math.MathHelper;
 import net.minecraft.util.math.vector.Vector3d;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 import net.minecraftforge.event.TickEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
-import top.theillusivec4.curios.api.CuriosApi;
-
-import java.util.concurrent.atomic.AtomicInteger;
 
 public class TerraJumpEvent
 {
     @OnlyIn(Dist.CLIENT)
     private boolean jumpState;
+    @OnlyIn(Dist.CLIENT)
+    private int rocketState;
 
     @OnlyIn(Dist.CLIENT)
     private boolean lastJumpState;
@@ -56,39 +54,79 @@ public class TerraJumpEvent
                 if (player.isOnGround())
                 {
                     hasfirstJump = true;
+                    rocketState = CurioHandler.hasBauble(player, TerraTagRegistry.ROCKET_JUMPERS) ? 32 : 0;
                     hasFartJump = true;
                     hasTsunamiJump = true;
                     hasSandstormJump = true;
                     hasBlizzardJump = true;
                     hasCloudJump = true;
                 }
-                jumpState = player.input.jumping;
+                jumpState = player.movementInput.jump;
                 if (jumpState != lastJumpState)
                 {
                     if (jumpState && !player.isInWater())
                     {
-                        AtomicInteger jumpModifier = new AtomicInteger(0);
-                        CuriosApi.getCuriosHelper().findEquippedCurio(stack -> stack.getItem() == TerraItemRegistry.BALLOON_RED.get(), player).ifPresent(found -> jumpModifier.getAndIncrement());
-                        CuriosApi.getCuriosHelper().findEquippedCurio(stack -> stack.getItem().is(TerraTagRegistry.FROG_HIGH_JUMPERS), player).ifPresent(found -> jumpModifier.getAndIncrement());
-                        CuriosApi.getCuriosHelper().findEquippedCurio(stack -> stack.getItem().is(TerraTagRegistry.CLOUD_HIGH_JUMPERS), player).ifPresent(found -> jumpModifier.getAndIncrement());
-                        CuriosApi.getCuriosHelper().findEquippedCurio(stack -> stack.getItem().is(TerraTagRegistry.BLIZZARD_HIGH_JUMPERS), player).ifPresent(found -> jumpModifier.getAndIncrement());
-                        CuriosApi.getCuriosHelper().findEquippedCurio(stack -> stack.getItem().is(TerraTagRegistry.SANDSTORM_HIGH_JUMPERS), player).ifPresent(found -> jumpModifier.getAndIncrement());
-                        CuriosApi.getCuriosHelper().findEquippedCurio(stack -> stack.getItem().is(TerraTagRegistry.HONEY_HIGH_JUMPERS), player).ifPresent(found -> jumpModifier.getAndIncrement());
-                        CuriosApi.getCuriosHelper().findEquippedCurio(stack -> stack.getItem().is(TerraTagRegistry.TSUNAMI_HIGH_JUMPERS), player).ifPresent(found -> jumpModifier.getAndIncrement());
-                        CuriosApi.getCuriosHelper().findEquippedCurio(stack -> stack.getItem().is(TerraTagRegistry.FART_HIGH_JUMPERS), player).ifPresent(found -> jumpModifier.getAndIncrement());
+                        int jumpModifier = 0;
+                        if (CurioHandler.hasBauble(player, TerraItemRegistry.BALLOON_RED.get())) { jumpModifier++; }
+                        if (CurioHandler.hasBauble(player, TerraTagRegistry.FROG_HIGH_JUMPERS)) { jumpModifier++; }
+                        if (CurioHandler.hasBauble(player, TerraTagRegistry.CLOUD_HIGH_JUMPERS)) { jumpModifier++; }
+                        if (CurioHandler.hasBauble(player, TerraTagRegistry.BLIZZARD_HIGH_JUMPERS)) { jumpModifier++; }
+                        if (CurioHandler.hasBauble(player, TerraTagRegistry.SANDSTORM_HIGH_JUMPERS)) { jumpModifier++; }
+                        if (CurioHandler.hasBauble(player, TerraTagRegistry.HONEY_HIGH_JUMPERS)) { jumpModifier++; }
+                        if (CurioHandler.hasBauble(player, TerraTagRegistry.TSUNAMI_HIGH_JUMPERS)) { jumpModifier++; }
+                        if (CurioHandler.hasBauble(player, TerraTagRegistry.FART_HIGH_JUMPERS)) { jumpModifier++; }
 
                         if (hasfirstJump)
                         {
-                            float upwardsMotion = 0.1F * jumpModifier.get();
-                            Vector3d playerMotion = player.getDeltaMovement();
-                            player.setDeltaMovement(playerMotion.x, playerMotion.y + upwardsMotion, playerMotion.z);
+                            float upwardsMotion = 0.1F * jumpModifier;
+                            Vector3d playerMotion = player.getMotion();
+                            player.setMotion(playerMotion.x, playerMotion.y + upwardsMotion, playerMotion.z);
                             hasfirstJump = false;
                         }
-                        else if (!player.isOnGround() && hasFartJump && CuriosApi.getCuriosHelper().findEquippedCurio(stack -> stack.getItem().is(TerraTagRegistry.FART_JUMPERS), player).isPresent()) { NetworkHandler.INSTANCE.sendToServer(new FartJumpPacket()); player.playSound(SoundEvents.PLAYER_HURT_DROWN, 1, 0.9F + player.getRandom().nextFloat() * 0.2F); jump(player, jumpModifier.get()); hasFartJump = false; }
-                        else if (!player.isOnGround() && hasTsunamiJump && CuriosApi.getCuriosHelper().findEquippedCurio(stack -> stack.getItem().is(TerraTagRegistry.TSUNAMI_JUMPERS), player).isPresent()) { NetworkHandler.INSTANCE.sendToServer(new TsunamiJumpPacket()); player.playSound(SoundEvents.AMBIENT_UNDERWATER_EXIT, 1, 0.9F + player.getRandom().nextFloat() * 0.2F); jump(player, jumpModifier.get()); hasTsunamiJump = false; }
-                        else if (!player.isOnGround() && hasSandstormJump && CuriosApi.getCuriosHelper().findEquippedCurio(stack -> stack.getItem().is(TerraTagRegistry.SANDSTORM_JUMPERS), player).isPresent()) { NetworkHandler.INSTANCE.sendToServer(new SandstormJumpPacket()); player.playSound(SoundEvents.SAND_FALL, 1, 0.9F + player.getRandom().nextFloat() * 0.2F); jump(player, jumpModifier.get()); hasSandstormJump = false; }
-                        else if (!player.isOnGround() && hasBlizzardJump && CuriosApi.getCuriosHelper().findEquippedCurio(stack -> stack.getItem().is(TerraTagRegistry.BLIZZARD_JUMPERS), player).isPresent()) { NetworkHandler.INSTANCE.sendToServer(new BlizzardJumpPacket()); player.playSound(SoundEvents.SNOW_FALL, 1, 0.9F + player.getRandom().nextFloat() * 0.2F); jump(player, jumpModifier.get()); hasBlizzardJump = false; }
-                        else if (!player.isOnGround() && hasCloudJump && CuriosApi.getCuriosHelper().findEquippedCurio(stack -> stack.getItem().is(TerraTagRegistry.CLOUD_JUMPERS), player).isPresent()) { NetworkHandler.INSTANCE.sendToServer(new CloudJumpPacket()); player.playSound(SoundEvents.WOOL_FALL, 1, 0.9F + player.getRandom().nextFloat() * 0.2F); jump(player, jumpModifier.get()); hasCloudJump = false; }
+                        else if (!player.isOnGround() && rocketState > 0 && !hasfirstJump && CurioHandler.hasBauble(player, TerraTagRegistry.ROCKET_JUMPERS))
+                        {
+                            NetworkHandler.INSTANCE.sendToServer(new RocketJumpPacket());
+                            player.playSound(SoundEvents.BLOCK_WOOL_STEP, 1, 0.9F + player.getRNG().nextFloat() * 0.2F);
+                            rocket(player, jumpModifier);
+                            rocketState--;
+                            if (rocketState == 0) { lastJumpState = jumpState; }
+                            return;
+                        }
+                        else if (!player.isOnGround() && hasFartJump && CurioHandler.hasBauble(player, TerraTagRegistry.FART_JUMPERS))
+                        {
+                            NetworkHandler.INSTANCE.sendToServer(new FartJumpPacket());
+                            player.playSound(SoundEvents.ENTITY_PLAYER_HURT_DROWN, 1, 0.9F + player.getRNG().nextFloat() * 0.2F);
+                            jump(player, jumpModifier);
+                            hasFartJump = false;
+                        }
+                        else if (!player.isOnGround() && hasTsunamiJump && CurioHandler.hasBauble(player, TerraTagRegistry.TSUNAMI_JUMPERS))
+                        {
+                            NetworkHandler.INSTANCE.sendToServer(new TsunamiJumpPacket());
+                            player.playSound(SoundEvents.AMBIENT_UNDERWATER_EXIT, 1, 0.9F + player.getRNG().nextFloat() * 0.2F);
+                            jump(player, jumpModifier);
+                            hasTsunamiJump = false;
+                        }
+                        else if (!player.isOnGround() && hasSandstormJump && CurioHandler.hasBauble(player, TerraTagRegistry.SANDSTORM_JUMPERS))
+                        {
+                            NetworkHandler.INSTANCE.sendToServer(new SandstormJumpPacket());
+                            player.playSound(SoundEvents.BLOCK_SAND_STEP, 1, 0.9F + player.getRNG().nextFloat() * 0.2F);
+                            jump(player, jumpModifier);
+                            hasSandstormJump = false;
+                        }
+                        else if (!player.isOnGround() && hasBlizzardJump && CurioHandler.hasBauble(player, TerraTagRegistry.BLIZZARD_JUMPERS))
+                        {
+                            NetworkHandler.INSTANCE.sendToServer(new BlizzardJumpPacket());
+                            player.playSound(SoundEvents.BLOCK_SNOW_STEP, 1, 0.9F + player.getRNG().nextFloat() * 0.2F);
+                            jump(player, jumpModifier);
+                            hasBlizzardJump = false;
+                        }
+                        else if (!player.isOnGround() && hasCloudJump && CurioHandler.hasBauble(player, TerraTagRegistry.CLOUD_JUMPERS))
+                        {
+                            NetworkHandler.INSTANCE.sendToServer(new CloudJumpPacket());
+                            player.playSound(SoundEvents.BLOCK_WOOL_STEP, 1, 0.9F + player.getRNG().nextFloat() * 0.2F);
+                            jump(player, jumpModifier);
+                            hasCloudJump = false;
+                        }
                     }
                 }
                 lastJumpState = jumpState;
@@ -100,18 +138,28 @@ public class TerraJumpEvent
     {
         double upwardsMotion = 0.46;
         upwardsMotion += 0.1 * jumpModifier;
-        if (player.hasEffect(Effects.JUMP))
+        if (player.isPotionActive(Effects.JUMP_BOOST))
         {
-            upwardsMotion += 0.1 * (player.getEffect(Effects.JUMP).getAmplifier() + 1);
+            upwardsMotion += 0.1 * (player.getActivePotionEffect(Effects.JUMP_BOOST).getAmplifier() + 1);
         }
-        Vector3d motion = player.getDeltaMovement();
+        Vector3d motion = player.getMotion();
 
-        player.setDeltaMovement(player.getDeltaMovement().add(0, upwardsMotion - motion.y, 0));
+        player.setMotion(player.getMotion().add(0, upwardsMotion - motion.y, 0));
 
-        player.hasImpulse = true;
+        player.isAirBorne = true;
         net.minecraftforge.common.ForgeHooks.onLivingJump(player);
 
-        player.awardStat(Stats.JUMP);
-        player.causeFoodExhaustion(player.isSprinting() ? 0.2F : 0.05F);
+        player.addStat(Stats.JUMP);
+        player.addExhaustion(player.isSprinting() ? 0.2F : 0.05F);
+    }
+
+    public static void rocket(PlayerEntity player, int jumpModifier)
+    {
+        double upwardsMotion = Math.max(jumpModifier / 10.0, 0.2);
+        Vector3d motion = player.getMotion();
+
+        player.setMotion(player.getMotion().add(0, upwardsMotion - motion.y, 0));
+
+        player.isAirBorne = true;
     }
 }

@@ -18,47 +18,47 @@ public class BeeItemGoal extends NearestAttackableTargetGoal<LivingEntity>
         return (ent.getType() != EntityType.BEE && ent.getType() != EntityType.PLAYER);
     }
 
-    public BeeItemGoal(BeeEntity p_i225719_1_)
+    public BeeItemGoal(BeeEntity beeIn)
     {
-        super(p_i225719_1_, LivingEntity.class, 10, true, false, BeeItemGoal::isThingAttackable);
+        super(beeIn, LivingEntity.class, 10, true, false, BeeItemGoal::isThingAttackable);
     }
 
     /**
      * Returns whether the EntityAIBase should begin execution.
      */
     @Override
-    public boolean canUse()
+    public boolean shouldExecute()
     {
-        return this.canSting() && super.canUse();
+        return this.canSting() && super.shouldExecute();
     }
 
     @Override
-    protected void findTarget()
+    protected void findNearestTarget()
     {
-        this.target = this.mob.level.getNearestEntity(this.targetType, this.targetConditions, this.mob, this.mob.getX(), this.mob.getY(), this.mob.getZ(), this.getTargetSearchArea(this.getFollowDistance()));
+        this.nearestTarget = this.goalOwner.world.getClosestEntityWithinAABB(this.targetClass, this.targetEntitySelector, this.goalOwner, this.goalOwner.getPosX(), this.goalOwner.getPosY(), this.goalOwner.getPosZ(), this.getTargetableArea(this.getTargetDistance()));
     }
 
     /**
      * Returns whether an in-progress EntityAIBase should continue executing
      */
     @Override
-    public boolean canContinueToUse()
+    public boolean shouldContinueExecuting()
     {
         boolean canSting = this.canSting();
-        if (canSting && this.mob.getTarget() != null)
+        if (canSting && this.goalOwner.getAttackTarget() != null)
         {
-            return super.canContinueToUse();
+            return super.shouldContinueExecuting();
         }
         else
         {
-            this.targetMob = null;
+            this.target = null;
             return false;
         }
     }
 
     private boolean canSting()
     {
-        BeeEntity beeentity = (BeeEntity) this.mob;
+        BeeEntity beeentity = (BeeEntity) this.goalOwner;
         return beeentity.isAggressive() && !beeentity.hasStung();
     }
 }

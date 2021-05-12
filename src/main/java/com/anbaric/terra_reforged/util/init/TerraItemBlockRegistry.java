@@ -72,7 +72,7 @@ public class TerraItemBlockRegistry
         // Register the BlockItem for the block
         .forEach(block -> {
             // Make the properties, and make it so that the item will be on our ItemGroup (CreativeTab)
-            final Item.Properties properties = new Item.Properties().tab(
+            final Item.Properties properties = new Item.Properties().group(
                     block instanceof LeavesBlock ||
                     block instanceof DoublePlantBlock ||
                     block instanceof TerraBlockWall ||

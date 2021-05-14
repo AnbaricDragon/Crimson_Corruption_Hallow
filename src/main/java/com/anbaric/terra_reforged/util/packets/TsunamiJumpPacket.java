@@ -34,7 +34,6 @@ public class TsunamiJumpPacket
         if (player != null)
         {
             context.get().enqueueWork(() -> {
-                player.fallDistance = 0;
                 int jumpModifier = 0;
                 if (CurioHandler.hasBauble(player, TerraItemRegistry.BALLOON_RED.get())) { jumpModifier++; }
                 if (CurioHandler.hasBauble(player, TerraTagRegistry.FROG_HIGH_JUMPERS)) { jumpModifier++; }
@@ -49,9 +48,9 @@ public class TsunamiJumpPacket
                 player.playSound(SoundEvents.AMBIENT_UNDERWATER_EXIT, 1, 0.9F + player.getRNG().nextFloat() * 0.2F);
                 for (int i = 0; i < 160; ++i)
                 {
-                    double motionX = player.getRNG().nextGaussian() * 0.6;
+                    double motionX = player.getRNG().nextGaussian() * 0.4;
                     double motionY = player.getRNG().nextGaussian() * 0.2 + 0.20;
-                    double motionZ = player.getRNG().nextGaussian() * 0.6;
+                    double motionZ = player.getRNG().nextGaussian() * 0.4;
                     player.getServerWorld().spawnParticle(ParticleTypes.FALLING_WATER, player.getPosX(), player.getPosY(), player.getPosZ(), 1, motionX, motionY, motionZ, 0.15);
                 }
             });

@@ -19,7 +19,8 @@ public class NetworkHandler
         INSTANCE.registerMessage(index++, SandstormJumpPacket.class, SandstormJumpPacket::encode, SandstormJumpPacket::new, SandstormJumpPacket::handle);
         INSTANCE.registerMessage(index++, TsunamiJumpPacket.class, TsunamiJumpPacket::encode, TsunamiJumpPacket::new, TsunamiJumpPacket::handle);
         INSTANCE.registerMessage(index++, FartJumpPacket.class, FartJumpPacket::encode, FartJumpPacket::new, FartJumpPacket::handle);
+        INSTANCE.registerMessage(index++, WallJumpPacket.class, WallJumpPacket::encode, WallJumpPacket::new, WallJumpPacket::handle);
         INSTANCE.registerMessage(index++, RocketJumpPacket.class, RocketJumpPacket::encode, RocketJumpPacket::new, RocketJumpPacket::handle);
-        INSTANCE.registerMessage(index++, CorruptBiomePacket.class, CorruptBiomePacket::encode, CorruptBiomePacket::decode, CorruptBiomePacket::handle);
+//        INSTANCE.registerMessage(index++, CorruptBiomePacket.class, CorruptBiomePacket::encode, CorruptBiomePacket::decode, CorruptBiomePacket::handle);
     }
 }

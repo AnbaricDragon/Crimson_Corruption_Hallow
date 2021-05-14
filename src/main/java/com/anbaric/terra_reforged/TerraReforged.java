@@ -28,7 +28,8 @@ import java.util.stream.Collectors;
 
 //import com.anbaric.terra_reforged.util.TerraVanillaCompat;
 
-@Mod(Reference.MODID) public class TerraReforged
+@Mod(Reference.MODID)
+public class TerraReforged
 {
     public static final Logger LOGGER = LogManager.getLogger(Reference.MODID);
 
@@ -43,7 +44,6 @@ import java.util.stream.Collectors;
         LOGGER.debug("Hello from Terra Reforged!");
 
         final IEventBus modEventBus = FMLJavaModLoadingContext.get().getModEventBus();
-        IEventBus modForgebus = MinecraftForge.EVENT_BUS;
         // Register the setup method for modloading
         modEventBus.addListener(this::setup);
         // Register the enqueueIMC method for modloading
@@ -71,7 +71,6 @@ import java.util.stream.Collectors;
         MinecraftForge.EVENT_BUS.register(TerraCapabilitiesEvent.class);
         MinecraftForge.EVENT_BUS.register(TerraDefaultBiomeAdditionsEvent.class);
         MinecraftForge.EVENT_BUS.register(TerraGuiRenderEvent.class);
-        MinecraftForge.EVENT_BUS.register(TerraTooltipEvent.class);
         MinecraftForge.EVENT_BUS.register(new TerraJumpEvent());
 
         MinecraftForge.EVENT_BUS.register(FeatureGenHandler.class);

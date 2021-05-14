@@ -18,6 +18,8 @@ import net.minecraft.util.SoundEvents;
 import net.minecraft.util.text.ITextComponent;
 import net.minecraft.util.text.StringTextComponent;
 import net.minecraft.world.World;
+import net.minecraftforge.api.distmarker.Dist;
+import net.minecraftforge.api.distmarker.OnlyIn;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.common.capabilities.ICapabilityProvider;
 import net.minecraftforge.event.entity.living.LivingFallEvent;
@@ -92,7 +94,8 @@ public class TerraItemBootsAmphibian extends TerraItemAccessory
     private void slowFallDamage(LivingFallEvent event)
     {
         PlayerEntity player = event.getEntityLiving() instanceof PlayerEntity ? (PlayerEntity) event.getEntityLiving() : null;
-        if (player == null) { return; }
+        if (player == null || player.getEntityWorld().isRemote()) { return; }
+
 
         CuriosApi.getCuriosHelper().getCuriosHandler(player).map(ICuriosItemHandler::getCurios).map(map -> map.get("curio")).map(ICurioStacksHandler::getStacks).map(dynamicStackHandler ->
         {
@@ -101,7 +104,7 @@ public class TerraItemBootsAmphibian extends TerraItemAccessory
                 ItemStack stack = dynamicStackHandler.getStackInSlot(i);
                 if (stack.getItem().isIn(TerraTagRegistry.FROG_BREAKERS))
                 {
-                    event.setDistance(event.getDistance() - 3);
+                    event.setDistance(event.getDistance() - 2.0F);
                 }
             }
             return null;

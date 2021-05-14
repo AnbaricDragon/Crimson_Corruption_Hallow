@@ -4,33 +4,30 @@ import com.anbaric.terra_reforged.util.handlers.CurioHandler;
 import com.anbaric.terra_reforged.util.init.TerraItemRegistry;
 import net.minecraft.client.resources.I18n;
 import net.minecraft.client.util.ITooltipFlag;
-import net.minecraft.entity.Entity;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.CompoundNBT;
-import net.minecraft.util.DamageSource;
+import net.minecraft.util.Direction;
 import net.minecraft.util.SoundEvents;
+import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.math.MathHelper;
+import net.minecraft.util.math.vector.Vector3d;
 import net.minecraft.util.text.ITextComponent;
 import net.minecraft.util.text.StringTextComponent;
 import net.minecraft.world.World;
-import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.common.capabilities.ICapabilityProvider;
-import net.minecraftforge.event.entity.living.LivingAttackEvent;
-
-import net.minecraft.item.Item.Properties;
 import top.theillusivec4.curios.api.SlotContext;
 import top.theillusivec4.curios.api.type.capability.ICurio;
 
 import javax.annotation.Nonnull;
 import java.util.List;
 
-public class TerraItemLavaCharm extends TerraItemAccessory
+public class TerraItemClimbingGear extends TerraItemAccessory
 {
-    public TerraItemLavaCharm(Properties properties)
+    public TerraItemClimbingGear(Properties properties)
     {
         super(properties);
-        MinecraftForge.EVENT_BUS.addListener(this::onLavaSwim);
     }
 
     @Override
@@ -39,7 +36,7 @@ public class TerraItemLavaCharm extends TerraItemAccessory
         super.addInformation(stack, worldIn, tooltip, flagIn);
         tooltip.add(new StringTextComponent(""));
         tooltip.add(new StringTextComponent("\u00A76" + I18n.format("curios.modifiers.charm") + "\u00A76"));
-        tooltip.add(new StringTextComponent("\u00A79" + "Gives 7 Seconds Of Lava Immunity"));
+        tooltip.add(new StringTextComponent("\u00A79" + "Grants Wall Gripping"));
     }
 
     @Override
@@ -48,24 +45,43 @@ public class TerraItemLavaCharm extends TerraItemAccessory
         return CurioHandler.createProvider(new ICurio()
         {
             @Override
+            public boolean showAttributesTooltip(String identifier)
+            {
+                return false;
+            }
+
+            @Override
             public void curioTick(String identifier, int index, LivingEntity livingEntity)
             {
-                if (livingEntity instanceof PlayerEntity)
-                {
-                    CompoundNBT compound = stack.getOrCreateTag();
-                    boolean isWet = livingEntity.isInWater();
+                PlayerEntity player = livingEntity instanceof PlayerEntity ? (PlayerEntity) livingEntity : null;
+                World world = player != null ? player.getEntityWorld() : null;
+                if (world == null) { return; }
 
-                    int chargeCooldown = compound.getInt("chargeCooldown");
-                    if (chargeCooldown > 0)
+                Vector3d vecPos = player.getPositionVec();
+                BlockPos pos = player.getPosition();
+                double x = vecPos.getX();
+                double z = vecPos.getZ();
+                double xi = MathHelper.floor(x);
+                double zi = MathHelper.floor(z);
+                double dotX = MathHelper.abs((float) (x - xi));
+                double dotZ = MathHelper.abs((float) (z - zi));
+                boolean shouldStick = (world.getBlockState(pos.offset(Direction.NORTH)).isSolid() && dotZ <= 0.31) ||
+                                     (world.getBlockState(pos.offset(Direction.EAST)).isSolid() && dotX >= 0.69) ||
+                                     (world.getBlockState(pos.offset(Direction.SOUTH)).isSolid() && dotZ >= 0.69) ||
+                                     (world.getBlockState(pos.offset(Direction.WEST)).isSolid() && dotX <= 0.31);
+
+                if (shouldStick && !player.isWet())
+                {
+                    Vector3d motion = player.getMotion();
+                    if (motion.y <= 0)
                     {
-                        compound.putInt("chargeCooldown", isWet ? 0 : --chargeCooldown);
-                    }
-                    else
-                    {
-                        int charge = compound.getInt("charge");
-                        if (charge < 140)
+                        if (player.isCrouching())
                         {
-                            compound.putInt("charge", isWet ? 140 : charge + 2);
+                            player.setMotion(motion.x, 0, motion.z);
+                        }
+                        else
+                        {
+                            player.setMotion(motion.add(0, -motion.y - 0.05, 0));
                         }
                     }
                 }
@@ -91,28 +107,5 @@ public class TerraItemLavaCharm extends TerraItemAccessory
                 return true;
             }
         });
-    }
-
-    public void onLavaSwim(LivingAttackEvent event)
-    {
-        PlayerEntity player = event.getEntityLiving() instanceof PlayerEntity ? (PlayerEntity) event.getEntityLiving() : null;
-        if (player == null) { return; }
-
-        ItemStack lavaCharm = CurioHandler.getBauble(player, this);
-        if (!lavaCharm.isEmpty())
-        {
-            CompoundNBT compound = lavaCharm.getOrCreateTag();
-            int         charge   = compound.getInt("charge");
-            if (charge > 0)
-            {
-                if (event.getSource() == DamageSource.LAVA)
-                {
-                    compound.putInt("charge", --charge);
-                    compound.putInt("chargeCooldown", 40);
-                }
-                player.extinguish();
-                event.setCanceled(event.getSource() == DamageSource.LAVA && charge > 0);
-            }
-        }
     }
 }

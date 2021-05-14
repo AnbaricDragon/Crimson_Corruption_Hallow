@@ -15,6 +15,7 @@ import net.minecraft.world.World;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.common.capabilities.ICapabilityProvider;
 import net.minecraftforge.event.entity.living.LivingAttackEvent;
+import top.theillusivec4.curios.api.CuriosApi;
 import top.theillusivec4.curios.api.SlotContext;
 import top.theillusivec4.curios.api.type.capability.ICurio;
 
@@ -27,6 +28,7 @@ public class TerraItemMoltenCharm extends TerraItemAccessory
     {
         super(properties);
         MinecraftForge.EVENT_BUS.addListener(this::onLavaSwim);
+        MinecraftForge.EVENT_BUS.addListener(this::cancelFireDamage);
     }
 
     @Override
@@ -94,6 +96,19 @@ public class TerraItemMoltenCharm extends TerraItemAccessory
             public boolean canEquipFromUse(SlotContext slot)
             {
                 return true;
+            }
+        });
+    }
+
+    private void cancelFireDamage(LivingAttackEvent event)
+    {
+        CuriosApi.getCuriosHelper().findEquippedCurio(this, event.getEntityLiving()).ifPresent(found ->
+        {
+            DamageSource source = event.getSource();
+            if (source.isFireDamage() && source != DamageSource.LAVA)
+            {
+                event.getEntityLiving().extinguish();
+                event.setCanceled(true);
             }
         });
     }

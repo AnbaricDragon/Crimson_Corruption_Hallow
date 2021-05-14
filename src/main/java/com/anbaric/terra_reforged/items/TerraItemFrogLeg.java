@@ -18,6 +18,8 @@ import net.minecraft.util.SoundEvents;
 import net.minecraft.util.text.ITextComponent;
 import net.minecraft.util.text.StringTextComponent;
 import net.minecraft.world.World;
+import net.minecraftforge.api.distmarker.Dist;
+import net.minecraftforge.api.distmarker.OnlyIn;
 import net.minecraftforge.common.ForgeMod;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.common.capabilities.ICapabilityProvider;
@@ -64,7 +66,7 @@ public class TerraItemFrogLeg extends TerraItemAccessory
                 ItemStack stack = dynamicStackHandler.getStackInSlot(i);
                 if (stack.getItem().isIn(TerraTagRegistry.FROG_BREAKERS))
                 {
-                    event.setDistance(event.getDistance() - 3);
+                    event.setDistance(event.getDistance() - 2);
                 }
             }
             return null;

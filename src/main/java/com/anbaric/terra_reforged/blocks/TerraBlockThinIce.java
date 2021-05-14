@@ -90,7 +90,6 @@ public class TerraBlockThinIce extends Block
                 }
             }
         }
-        entityIn.addVelocity(0, -0.25D, 0);
         super.onFallenUpon(worldIn, pos, entityIn, fallDistance);
     }
 

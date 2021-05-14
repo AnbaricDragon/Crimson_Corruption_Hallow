@@ -45,7 +45,7 @@ public class TerraTileEntityHeartLantern extends TileEntity implements ITickable
 
             for (PlayerEntity playerentity : list)
             {
-                playerentity.addPotionEffect(new EffectInstance(Effects.REGENERATION, 200, 0, true, true));
+                playerentity.addPotionEffect(new EffectInstance(Effects.REGENERATION, 200, 0, true, false));
             }
         }
     }

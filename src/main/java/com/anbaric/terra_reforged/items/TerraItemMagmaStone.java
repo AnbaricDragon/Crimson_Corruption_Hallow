@@ -41,7 +41,7 @@ public class TerraItemMagmaStone extends TerraItemAccessory
         {
             return;
         }
-        CuriosApi.getCuriosHelper().findEquippedCurio(this, event.getEntityLiving()).ifPresent(found -> {
+        CuriosApi.getCuriosHelper().findEquippedCurio(this, player).ifPresent(found -> {
             victim.setFire(rand.nextInt(5) + 2);
         });
     }

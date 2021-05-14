@@ -142,10 +142,16 @@ public final class TerraItemRegistry
     public static final RegistryObject<Item> SKULL_MAGMA = ITEMS.register("skull_magma", () -> new TerraItemMagmaSkull(new Item.Properties().group(TerraItemGroups.TERRA_TOOLS_TAB).maxStackSize(1)));
     public static final RegistryObject<Item> SKULL_MOLTEN = ITEMS.register("skull_molten", () -> new TerraItemMoltenSkull(new Item.Properties().group(TerraItemGroups.TERRA_TOOLS_TAB).maxStackSize(1)));
     public static final RegistryObject<Item> FLIPPER = ITEMS.register("flipper", () -> new TerraItemFlipper(new Item.Properties().group(TerraItemGroups.TERRA_TOOLS_TAB).maxStackSize(1)));
+    public static final RegistryObject<Item> FROG_FLIPPER = ITEMS.register("frog_flipper", () -> new TerraItemFrogFlipper(new Item.Properties().group(TerraItemGroups.TERRA_TOOLS_TAB).maxStackSize(1)));
     public static final RegistryObject<Item> GEAR_DIVING_ARCTIC = ITEMS.register("gear_diving_arctic", () -> new TerraItemDivingGearArctic(new Item.Properties().group(TerraItemGroups.TERRA_TOOLS_TAB).maxStackSize(1)));
     public static final RegistryObject<Item> GEAR_DIVING_JELLYFISH = ITEMS.register("gear_diving_jellyfish", () -> new TerraItemDivingGearJellyfish(new Item.Properties().group(TerraItemGroups.TERRA_TOOLS_TAB).maxStackSize(1)));
     public static final RegistryObject<Item> GEAR_DIVING = ITEMS.register("gear_diving", () -> new TerraItemDivingGear(new Item.Properties().group(TerraItemGroups.TERRA_TOOLS_TAB).maxStackSize(1)));
     public static final RegistryObject<Item> NECKLACE_JELLYFISH = ITEMS.register("necklace_jellyfish", () -> new TerraItemJellyfishNecklace(new Item.Properties().group(TerraItemGroups.TERRA_TOOLS_TAB).maxStackSize(1)));
+    public static final RegistryObject<Item> CLIMBING_CLAWS = ITEMS.register("climbing_claws", () -> new TerraItemClimbingGripper(new Item.Properties().group(TerraItemGroups.TERRA_TOOLS_TAB).maxStackSize(1)));
+    public static final RegistryObject<Item> CLIMBING_SPIKES = ITEMS.register("climbing_spikes", () -> new TerraItemClimbingGripper(new Item.Properties().group(TerraItemGroups.TERRA_TOOLS_TAB).maxStackSize(1)));
+    public static final RegistryObject<Item> CLIMBING_GEAR = ITEMS.register("climbing_gear", () -> new TerraItemClimbingGear(new Item.Properties().group(TerraItemGroups.TERRA_TOOLS_TAB).maxStackSize(1)));
+
+
 
     //Pickaxes
     public static final RegistryObject<Item> PICKAXE_CACTUS = ITEMS.register("pickaxe_cactus", () -> new PickaxeItem(MaterialHandler.CACTUS, 1, -2.8F, new Item.Properties().group(TerraItemGroups.TERRA_TOOLS_TAB)));

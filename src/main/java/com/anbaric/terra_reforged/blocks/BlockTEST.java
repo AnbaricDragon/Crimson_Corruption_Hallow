@@ -25,29 +25,29 @@ public class BlockTEST extends Block
         super(properties);
     }
 
-    @Override
-    public ActionResultType onBlockActivated(BlockState state, World world, BlockPos pos, PlayerEntity player, Hand handIn, BlockRayTraceResult hit)
-    {
-        if (!world.isRemote())
-        {
-            System.out.println("Biome at " + pos + " before change is " + world.getBiome(pos).getRegistryName());
-            BiomeChangeHandler.setBiome(world, pos, Biomes.DESERT);
-            System.out.println("Biome at " + pos + " after change is " + world.getBiome(pos).getRegistryName());
-            return ActionResultType.PASS;
-        }
-        NetworkHandler.INSTANCE.send(PacketDistributor.ALL.noArg(), new CorruptBiomePacket(pos, Biomes.DESERT.getLocation()));
-        return ActionResultType.FAIL;
-    }
-
-    @Override
-    public void onBlockAdded(BlockState state, World world, BlockPos pos, BlockState oldState, boolean isMoving)
-    {
-        if (!world.isRemote())
-        {
-            System.out.println("Biome at " + pos + " is " + world.getBiome(pos));
-            BiomeChangeHandler.setBiome(world, pos, Biomes.DESERT);
-            System.out.println("Biome at " + pos + " is " + world.getBiome(pos));
-        }
-        NetworkHandler.INSTANCE.send(PacketDistributor.ALL.noArg(), new CorruptBiomePacket(pos, Biomes.DESERT.getLocation()));
-    }
+//    @Override
+//    public ActionResultType onBlockActivated(BlockState state, World world, BlockPos pos, PlayerEntity player, Hand handIn, BlockRayTraceResult hit)
+//    {
+//        if (!world.isRemote())
+//        {
+//            System.out.println("Biome at " + pos + " before change is " + world.getBiome(pos).getRegistryName());
+//            BiomeChangeHandler.setBiome(world, pos, Biomes.DESERT);
+//            System.out.println("Biome at " + pos + " after change is " + world.getBiome(pos).getRegistryName());
+//            return ActionResultType.PASS;
+//        }
+//        NetworkHandler.INSTANCE.send(PacketDistributor.ALL.noArg(), new CorruptBiomePacket(pos, Biomes.DESERT.getLocation()));
+//        return ActionResultType.FAIL;
+//    }
+//
+//    @Override
+//    public void onBlockAdded(BlockState state, World world, BlockPos pos, BlockState oldState, boolean isMoving)
+//    {
+//        if (!world.isRemote())
+//        {
+//            System.out.println("Biome at " + pos + " is " + world.getBiome(pos));
+//            BiomeChangeHandler.setBiome(world, pos, Biomes.DESERT);
+//            System.out.println("Biome at " + pos + " is " + world.getBiome(pos));
+//        }
+//        NetworkHandler.INSTANCE.send(PacketDistributor.ALL.noArg(), new CorruptBiomePacket(pos, Biomes.DESERT.getLocation()));
+//    }
 }

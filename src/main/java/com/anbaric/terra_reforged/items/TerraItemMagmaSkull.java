@@ -38,9 +38,10 @@ public class TerraItemMagmaSkull extends TerraItemAccessory
 
     private void cancelFireDamage(LivingAttackEvent event)
     {
-        CuriosApi.getCuriosHelper().findEquippedCurio(this, event.getEntityLiving()).ifPresent(found -> {
+        CuriosApi.getCuriosHelper().findEquippedCurio(this, event.getEntityLiving()).ifPresent(found ->
+        {
             DamageSource source = event.getSource();
-            if (source == DamageSource.HOT_FLOOR || (source.isFireDamage() && source != DamageSource.LAVA))
+            if (source.isFireDamage() && source != DamageSource.LAVA)
             {
                 event.getEntityLiving().extinguish();
                 event.setCanceled(true);
@@ -56,7 +57,7 @@ public class TerraItemMagmaSkull extends TerraItemAccessory
         if (player == null) { return; }
         CuriosApi.getCuriosHelper().findEquippedCurio(this, event.getEntityLiving()).ifPresent(found ->
         {
-            victim.setFire(rand.nextInt(5) + 2);
+            victim.setFire(rand.nextInt(3) + rand.nextInt(3) + 2);
         });
     }
 }

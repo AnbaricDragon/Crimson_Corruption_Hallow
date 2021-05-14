@@ -86,6 +86,19 @@ public class CurioHandler
         return foundItem.get();
     }
 
+    public static boolean hasAllBaubles(PlayerEntity player, Item... item)
+    {
+        boolean hasAllItems = true;
+        for (Item curioItem : item)
+        {
+            if (!hasBauble(player, curioItem))
+            {
+                hasAllItems = false;
+            }
+        }
+        return hasAllItems;
+    }
+
     public static boolean hasBauble(PlayerEntity player, ITag<Item> tag)
     {
         AtomicBoolean foundItem = new AtomicBoolean(false);
@@ -113,7 +126,7 @@ public class CurioHandler
 
     public static ItemStack getBauble(PlayerEntity player, Item item)
     {
-        return CuriosApi.getCuriosHelper().getCuriosHandler(player).map(ICuriosItemHandler::getCurios).map(map -> map.get("charm")).map(ICurioStacksHandler::getStacks).map(dynamicStackHandler ->
+        return CuriosApi.getCuriosHelper().getCuriosHandler(player).map(ICuriosItemHandler::getCurios).map(map -> map.get("curio")).map(ICurioStacksHandler::getStacks).map(dynamicStackHandler ->
         {
             for (int i = 0; i < dynamicStackHandler.getSlots(); i++)
             {

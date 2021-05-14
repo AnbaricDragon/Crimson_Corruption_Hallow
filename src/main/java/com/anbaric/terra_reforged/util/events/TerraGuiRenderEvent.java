@@ -13,10 +13,14 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.CompoundNBT;
 import net.minecraft.util.DamageSource;
 import net.minecraft.util.ResourceLocation;
+import net.minecraftforge.api.distmarker.Dist;
+import net.minecraftforge.api.distmarker.OnlyIn;
 import net.minecraftforge.client.event.RenderGameOverlayEvent;
 import net.minecraftforge.client.gui.ForgeIngameGui;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
+import net.minecraftforge.fml.common.Mod;
 
+@OnlyIn(Dist.CLIENT)
 public class TerraGuiRenderEvent
 {
     private static final Minecraft mc = Minecraft.getInstance();
@@ -25,14 +29,17 @@ public class TerraGuiRenderEvent
     @SubscribeEvent(receiveCanceled = true)
     public static void renderGameOverlay(RenderGameOverlayEvent.Post event)
     {
-        if (event.getType() == RenderGameOverlayEvent.ElementType.ARMOR) {
-            ClientPlayerEntity player = mc.player;
-            ItemStack lavaProtector = CurioHandler.getBaubles(player, TerraItemRegistry.BOOTS_LAVA.get(), TerraItemRegistry.CHARM_LAVA.get(), TerraItemRegistry.BOOTS_HELLFIRE.get());
+        if (event.getType() == RenderGameOverlayEvent.ElementType.ARMOR)
+        {
+            ClientPlayerEntity player        = mc.player;
+            ItemStack          lavaProtector = CurioHandler.getBaubles(player, TerraItemRegistry.CHARM_LAVA.get(), TerraItemRegistry.BOOTS_LAVA.get(), TerraItemRegistry.BOOTS_HELLFIRE.get(), TerraItemRegistry.BOOTS_TERRASPARK.get());
 
-            if (!lavaProtector.isEmpty()) {
+            if (!lavaProtector.isEmpty())
+            {
                 CompoundNBT compound = lavaProtector.getTag();
-                if (compound != null) {
-                    float charge = compound.getInt("charge");
+                if (compound != null)
+                {
+                    float charge   = compound.getInt("charge");
                     float cooldown = compound.getInt("chargeCooldown");
 
                     if (charge < 140 || cooldown > 0)
@@ -45,9 +52,8 @@ public class TerraGuiRenderEvent
 
                         int count = (int) Math.floor(charge / 14F);
 
-                        int right = 8;
-                        int top = height - (ForgeIngameGui.right_height + 11);
-
+                        int right = 80;
+                        int top   = height - (ForgeIngameGui.right_height + 11);
 
                         RenderSystem.enableBlend();
                         for (int i = 0; i < count + 1; i++)
@@ -59,9 +65,10 @@ public class TerraGuiRenderEvent
                             }
 
                             ingameGui.blit(event.getMatrixStack(), width / 2 + right, top, 0, 0, 10, 10);
-                            right += 8;
+                            right -= 8;
                             RenderSystem.color4f(1, 1, 1, 1);
                         }
+                        ForgeIngameGui.left_height += 10;
                         mc.getTextureManager().bindTexture(AbstractGui.GUI_ICONS_LOCATION);
                         RenderSystem.disableBlend();
                     }

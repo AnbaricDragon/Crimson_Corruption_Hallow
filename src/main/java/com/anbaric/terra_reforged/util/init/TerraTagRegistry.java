@@ -61,4 +61,5 @@ public class TerraTagRegistry
     public static final ITag.INamedTag<Item> FLOWER_WALKERS = ItemTags.makeWrapperTag("terra_reforged:flower_walkers");
     public static final ITag.INamedTag<Item> WATER_WALKERS = ItemTags.makeWrapperTag("terra_reforged:water_walkers");
     public static final ITag.INamedTag<Item> LAVA_WALKERS = ItemTags.makeWrapperTag("terra_reforged:lava_walkers");
+    public static final ITag.INamedTag<Item> WALL_CRAWLERS = ItemTags.makeWrapperTag("terra_reforged:wall_crawlers");
 }

@@ -35,9 +35,10 @@ public class TerraItemBootsObsidian extends TerraItemAccessory
 
     private void cancelFireDamage(LivingAttackEvent event)
     {
-        CuriosApi.getCuriosHelper().findEquippedCurio(this, event.getEntityLiving()).ifPresent(found -> {
+        CuriosApi.getCuriosHelper().findEquippedCurio(this, event.getEntityLiving()).ifPresent(found ->
+        {
             DamageSource source = event.getSource();
-            if (source == DamageSource.HOT_FLOOR || (source.isFireDamage() && source != DamageSource.LAVA))
+            if (source.isFireDamage() && source != DamageSource.LAVA)
             {
                 event.getEntityLiving().extinguish();
                 event.setCanceled(true);

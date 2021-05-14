@@ -67,6 +67,7 @@ public class TerraItemBlockRegistry
                 block != TerraBlockRegistry.ORE_SAPPHIRE_CORRUPT.get() && block != TerraBlockRegistry.ORE_SAPPHIRE_CRIMSON.get() && block != TerraBlockRegistry.ORE_SAPPHIRE_HALLOWED.get() && block != TerraBlockRegistry.ORE_SAPPHIRE_JUNGLE.get() &&
                 block != TerraBlockRegistry.ORE_RUBY_CORRUPT.get() && block != TerraBlockRegistry.ORE_RUBY_CRIMSON.get() && block != TerraBlockRegistry.ORE_RUBY_HALLOWED.get() && block != TerraBlockRegistry.ORE_RUBY_JUNGLE.get() &&
                 block != TerraBlockRegistry.ORE_AMETHYST_CORRUPT.get() && block != TerraBlockRegistry.ORE_AMETHYST_CRIMSON.get() && block != TerraBlockRegistry.ORE_AMETHYST_HALLOWED.get() && block != TerraBlockRegistry.ORE_AMETHYST_JUNGLE.get() &&
+                block != TerraBlockRegistry.ORE_AMBER_CORRUPT.get() && block != TerraBlockRegistry.ORE_AMBER_CRIMSON.get() && block != TerraBlockRegistry.ORE_AMBER_HALLOWED.get() && block != TerraBlockRegistry.ORE_AMBER_JUNGLE.get() &&
                 block != TerraBlockRegistry.ORE_DIAMOND_CORRUPT.get() && block != TerraBlockRegistry.ORE_DIAMOND_CRIMSON.get() && block != TerraBlockRegistry.ORE_DIAMOND_HALLOWED.get() && block != TerraBlockRegistry.ORE_DIAMOND_JUNGLE.get() &&
                 block != TerraBlockRegistry.ORE_EMERALD_CORRUPT.get() && block != TerraBlockRegistry.ORE_EMERALD_CRIMSON.get() && block != TerraBlockRegistry.ORE_EMERALD_HALLOWED.get() && block != TerraBlockRegistry.ORE_EMERALD_JUNGLE.get())
         // Register the BlockItem for the block

@@ -9,18 +9,16 @@ import net.minecraft.network.PacketBuffer;
 import net.minecraft.particles.ParticleTypes;
 import net.minecraft.util.SoundEvents;
 import net.minecraftforge.fml.network.NetworkEvent;
-import top.theillusivec4.curios.api.CuriosApi;
 
-import java.util.concurrent.atomic.AtomicInteger;
 import java.util.function.Supplier;
 
-public class RocketJumpPacket
+public class WallJumpPacket
 {
-    public RocketJumpPacket(PacketBuffer buffer)
+    public WallJumpPacket(PacketBuffer buffer)
     {
     }
 
-    public RocketJumpPacket()
+    public WallJumpPacket()
     {
     }
 
@@ -44,15 +42,7 @@ public class RocketJumpPacket
                 if (CurioHandler.hasBauble(player, TerraTagRegistry.TSUNAMI_HIGH_JUMPERS)) { jumpModifier++; }
                 if (CurioHandler.hasBauble(player, TerraTagRegistry.FART_HIGH_JUMPERS)) { jumpModifier++; }
 
-                TerraJumpEvent.jump(player, jumpModifier);
-                player.playSound(SoundEvents.BLOCK_WOOL_STEP, 1, 0.9F + player.getRNG().nextFloat() * 0.2F);
-                for (int i = 0; i < 20; ++i)
-                {
-                    double motionX = player.getRNG().nextGaussian() * 0.02;
-                    double motionY = player.getRNG().nextGaussian() * 0.02 + 0.20;
-                    double motionZ = player.getRNG().nextGaussian() * 0.02;
-                    player.getServerWorld().spawnParticle(ParticleTypes.POOF, player.getPosX(), player.getPosY(), player.getPosZ(), 1, motionX, motionY, motionZ, 0.15);
-                }
+                TerraJumpEvent.wallJump(player, jumpModifier);
             });
         }
         context.get().setPacketHandled(true);

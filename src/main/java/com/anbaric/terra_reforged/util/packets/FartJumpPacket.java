@@ -34,7 +34,6 @@ public class FartJumpPacket
         if (player != null)
         {
             context.get().enqueueWork(() -> {
-                player.fallDistance = 0;
                 int jumpModifier = 0;
                 if (CurioHandler.hasBauble(player, TerraItemRegistry.BALLOON_RED.get())) { jumpModifier++; }
                 if (CurioHandler.hasBauble(player, TerraTagRegistry.FROG_HIGH_JUMPERS)) { jumpModifier++; }

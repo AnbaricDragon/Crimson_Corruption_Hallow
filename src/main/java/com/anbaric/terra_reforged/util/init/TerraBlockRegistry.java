@@ -21,7 +21,7 @@ public class TerraBlockRegistry
     public static final DeferredRegister<Block> BLOCKS = DeferredRegister.create(ForgeRegistries.BLOCKS, Reference.MODID);
 
     //TEST
-    public static final RegistryObject<Block> TEST_BLOCK = BLOCKS.register("test_block", () -> new BlockTEST(AbstractBlock.Properties.create(Material.ROCK).sound(SoundType.STONE).hardnessAndResistance(1.0F)));
+//    public static final RegistryObject<Block> TEST_BLOCK = BLOCKS.register("test_block", () -> new BlockTEST(AbstractBlock.Properties.create(Material.ROCK).sound(SoundType.STONE).hardnessAndResistance(1.0F)));
 
     //Soils
     public static final RegistryObject<Block> SOIL_MUD = BLOCKS.register("soil_mud", () -> new Block(AbstractBlock.Properties.create(Material.EARTH).sound(SoundType.GROUND).hardnessAndResistance(0.7F)));

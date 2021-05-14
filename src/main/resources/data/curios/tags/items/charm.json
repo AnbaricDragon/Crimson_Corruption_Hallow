@@ -62,6 +62,9 @@
         "terra_reforged:gear_diving_arctic",
         "terra_reforged:gear_diving_jellyfish",
         "terra_reforged:gear_diving",
-        "terra_reforged:necklace_jellyfish"
+        "terra_reforged:necklace_jellyfish",
+        "terra_reforged:climbing_claws",
+        "terra_reforged:climbing_spikes",
+        "terra_reforged:climbing_gear"
     ]
 }

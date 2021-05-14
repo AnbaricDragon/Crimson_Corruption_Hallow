@@ -38,8 +38,8 @@ public class TerraItemBootsLava extends TerraItemAccessory
     public TerraItemBootsLava(Properties properties)
     {
         super(properties);
-        MinecraftForge.EVENT_BUS.addListener(this::halveLavaDamage);
         MinecraftForge.EVENT_BUS.addListener(this::cancelFireDamage);
+        MinecraftForge.EVENT_BUS.addListener(this::halveLavaDamage);
         MinecraftForge.EVENT_BUS.addListener(this::onLavaSwim);
     }
 
@@ -49,7 +49,7 @@ public class TerraItemBootsLava extends TerraItemAccessory
         super.addInformation(stack, worldIn, tooltip, flagIn);
         tooltip.add(new StringTextComponent(""));
         tooltip.add(new StringTextComponent("\u00A76" + I18n.format("curios.modifiers.charm") + "\u00A76"));
-        tooltip.add(new StringTextComponent("\u00A79" + "Allows Walking On Lava"));
+        tooltip.add(new StringTextComponent("\u00A79" + "Allows Walking On Fluids"));
         tooltip.add(new StringTextComponent("\u00A79" + "Gives 7 Seconds Of Lava Immunity"));
         tooltip.add(new StringTextComponent("\u00A79" + "-50% Lava Damage"));
         tooltip.add(new StringTextComponent("\u00A79" + "-100% Fire Damage"));
@@ -65,28 +65,20 @@ public class TerraItemBootsLava extends TerraItemAccessory
             {
                 if (livingEntity instanceof PlayerEntity)
                 {
-                    PlayerEntity player = (PlayerEntity) livingEntity;
-                    if (!player.getEntityWorld().isRemote())
-                    {
-                        CompoundNBT compound = stack.getOrCreateTag();
+                    CompoundNBT compound = stack.getOrCreateTag();
+                    boolean isWet = livingEntity.isInWater();
 
-                        int chargeCooldown = compound.getInt("chargeCooldown");
-                        if (player.isInWater())
+                    int chargeCooldown = compound.getInt("chargeCooldown");
+                    if (chargeCooldown > 0)
+                    {
+                        compound.putInt("chargeCooldown", isWet ? 0 : --chargeCooldown);
+                    }
+                    else
+                    {
+                        int charge = compound.getInt("charge");
+                        if (charge < 140)
                         {
-                            compound.putInt("chargeCooldown", 0);
-                            compound.putInt("charge", 140);
-                        }
-                        if (chargeCooldown > 0)
-                        {
-                            compound.putInt("chargeCooldown", --chargeCooldown);
-                        }
-                        else
-                        {
-                            int charge = compound.getInt("charge");
-                            if (charge < 140)
-                            {
-                                compound.putInt("charge", charge + 2);
-                            }
+                            compound.putInt("charge", isWet ? 140 : charge + 2);
                         }
                     }
                 }
@@ -114,6 +106,19 @@ public class TerraItemBootsLava extends TerraItemAccessory
         });
     }
 
+    private void cancelFireDamage(LivingAttackEvent event)
+    {
+        CuriosApi.getCuriosHelper().findEquippedCurio(this, event.getEntityLiving()).ifPresent(found ->
+        {
+            DamageSource source = event.getSource();
+            if (source.isFireDamage() && source != DamageSource.LAVA)
+            {
+                event.getEntityLiving().extinguish();
+                event.setCanceled(true);
+            }
+        });
+    }
+
     public void halveLavaDamage(LivingDamageEvent event)
     {
         PlayerEntity player = event.getEntityLiving() instanceof PlayerEntity ? (PlayerEntity) event.getEntityLiving() : null;
@@ -126,17 +131,6 @@ public class TerraItemBootsLava extends TerraItemAccessory
             if (event.getSource() == DamageSource.LAVA)
             {
                 event.setAmount(2.0F);
-            }
-        });
-    }
-
-    private void cancelFireDamage(LivingAttackEvent event)
-    {
-        CuriosApi.getCuriosHelper().findEquippedCurio(this, event.getEntityLiving()).ifPresent(found -> {
-            DamageSource source = event.getSource();
-            if (source == DamageSource.HOT_FLOOR || (source.isFireDamage() && source != DamageSource.LAVA))
-            {
-                event.setCanceled(true);
             }
         });
     }
@@ -156,13 +150,9 @@ public class TerraItemBootsLava extends TerraItemAccessory
             {
                 if (source == DamageSource.LAVA)
                 {
+                    player.extinguish();
                     compound.putInt("charge", --charge);
                     compound.putInt("chargeCooldown", 40);
-                }
-                else if (source == DamageSource.HOT_FLOOR || (source.isFireDamage() && source != DamageSource.LAVA))
-                {
-                    event.setCanceled(true);
-                    player.extinguish();
                 }
                 event.setCanceled(event.getSource() == DamageSource.LAVA && charge > 0);
             }

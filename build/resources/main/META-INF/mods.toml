@@ -5,7 +5,7 @@ issueTrackerURL="http://my.issue.tracker/" #optional
 
 [[mods]] #mandatory
 modId="terra_reforged" #mandatory
-version="1.6.4-0.0.1" #mandatory
+version="1.16.5-0.1.2" #mandatory
 displayName="Terra Reforged" #mandatory
 updateJSONURL="http://myurl.me/" #optional
 displayURL="http://example.com/" #optional
@@ -34,6 +34,6 @@ Attempting to blend the depth of gameplay from Terraria with the depth dimension
 [[dependencies.terra_reforged]]
     modId="minecraft"
     mandatory=true
-    versionRange="[1.16.4,1.17)"
+    versionRange="[1.16.5,1.17)"
     ordering="NONE"
     side="BOTH"

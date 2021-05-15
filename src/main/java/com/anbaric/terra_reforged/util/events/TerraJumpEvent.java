@@ -10,6 +10,8 @@ import net.minecraft.client.Minecraft;
 import net.minecraft.client.entity.player.ClientPlayerEntity;
 import net.minecraft.client.world.ClientWorld;
 import net.minecraft.entity.player.PlayerEntity;
+import net.minecraft.potion.Effect;
+import net.minecraft.potion.EffectInstance;
 import net.minecraft.potion.Effects;
 import net.minecraft.stats.Stats;
 import net.minecraft.util.Direction;
@@ -19,10 +21,12 @@ import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.util.math.vector.Vector3d;
+import net.minecraft.world.World;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 import net.minecraftforge.event.TickEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
+import team.chisel.ctm.client.util.Dir;
 
 import java.util.HashSet;
 import java.util.Set;
@@ -91,10 +95,11 @@ public class TerraJumpEvent
                         player.setMotion(player.getMotion().add(0, upwardsMotion, 0));
                         hasFirstJump = false;
                     }
-                    else if (isPressed(player, world))
+                    else if (!player.isOnGround() && isPressed(player, world) && (rocketState == 0 || rocketState == 32))
                     {
                         NetworkHandler.INSTANCE.sendToServer(new WallJumpPacket());
                         wallJump(player, jumpModifier);
+                        player.setOnGround(true);
                     }
                     else if (!player.isOnGround() && !player.isCrouching() && rocketState > 0 && CurioHandler.hasBauble(player, TerraTagRegistry.ROCKET_JUMPERS))
                     {
@@ -146,7 +151,7 @@ public class TerraJumpEvent
         }
     }
 
-    private boolean isPressed(ClientPlayerEntity player, ClientWorld world)
+    private boolean isPressed(PlayerEntity player, World world)
     {
         Vector3d vecPos = player.getPositionVec();
         BlockPos pos    = player.getPosition();
@@ -156,11 +161,31 @@ public class TerraJumpEvent
         double   zi     = MathHelper.floor(z);
         double   dotX   = MathHelper.abs((float) (x - xi));
         double   dotZ   = MathHelper.abs((float) (z - zi));
-        return CurioHandler.hasBauble(player, TerraTagRegistry.WALL_CRAWLERS) &&
-               ((world.getBlockState(pos.offset(Direction.NORTH)).isSolid() && dotZ <= 0.31) ||
-               (world.getBlockState(pos.offset(Direction.EAST)).isSolid() && dotX >= 0.69) ||
-               (world.getBlockState(pos.offset(Direction.SOUTH)).isSolid() && dotZ >= 0.69) ||
-               (world.getBlockState(pos.offset(Direction.WEST)).isSolid() && dotX <= 0.31));
+        return CurioHandler.hasBauble(player, TerraTagRegistry.WALL_CRAWLERS) && player.isCrouching() &&
+            (((world.getBlockState(pos.offset(Direction.NORTH)).isSolid() || world.getBlockState(pos.up().offset(Direction.NORTH)).isSolid()) && dotZ <= 0.301) ||
+             ((world.getBlockState(pos.offset(Direction.EAST)).isSolid()  || world.getBlockState(pos.up().offset(Direction.EAST)).isSolid() ) && dotX >= 0.699) ||
+             ((world.getBlockState(pos.offset(Direction.SOUTH)).isSolid() || world.getBlockState(pos.up().offset(Direction.SOUTH)).isSolid()) && dotZ >= 0.699) ||
+             ((world.getBlockState(pos.offset(Direction.WEST)).isSolid()  || world.getBlockState(pos.up().offset(Direction.WEST)).isSolid() ) && dotX <= 0.301));
+    }
+
+    private static Vector3d jumpDirection(PlayerEntity player, World world, double upwardsMotion)
+    {
+        Vector3d vecPos = player.getPositionVec();
+        BlockPos pos    = player.getPosition();
+        double   x      = vecPos.getX();
+        double   z      = vecPos.getZ();
+        double   xi     = MathHelper.floor(x);
+        double   zi     = MathHelper.floor(z);
+        double   dotX   = MathHelper.abs((float) (x - xi));
+        double   dotZ   = MathHelper.abs((float) (z - zi));
+
+        boolean northWall = (world.getBlockState(pos.offset(Direction.NORTH)).isSolid()|| world.getBlockState(pos.up().offset(Direction.NORTH)).isSolid()) && dotZ <= 0.31;
+        boolean eastWall  = (world.getBlockState(pos.offset(Direction.EAST)).isSolid() || world.getBlockState(pos.up().offset(Direction.EAST)).isSolid() ) && dotX >= 0.69;
+        boolean southWall = (world.getBlockState(pos.offset(Direction.SOUTH)).isSolid()|| world.getBlockState(pos.up().offset(Direction.SOUTH)).isSolid()) && dotZ >= 0.69;
+        boolean westWall  = (world.getBlockState(pos.offset(Direction.WEST)).isSolid() || world.getBlockState(pos.up().offset(Direction.WEST)).isSolid() ) && dotX <= 0.31;
+
+        Vector3d finalDir = new Vector3d(eastWall ? -0.75 : (westWall ? 0.75 : 0), upwardsMotion, southWall ? -0.75 : (northWall ? 0.75 : 0));
+        return finalDir;
     }
 
     public static void wallJump(PlayerEntity player, int jumpModifier)
@@ -171,14 +196,14 @@ public class TerraJumpEvent
         {
             upwardsMotion += 0.1 * (player.getActivePotionEffect(Effects.JUMP_BOOST).getAmplifier() + 1);
         }
-        float lookQuad = Math.abs(player.rotationYaw);
-        player.rotationYaw = lookQuad <= 45.0F || lookQuad >= 135.0F ? player.getMirroredYaw(Mirror.LEFT_RIGHT) : player.getMirroredYaw(Mirror.FRONT_BACK);
-        Vector3d motion = player.getMotion();
-        Vector3d leapMotion = new Vector3d(Math.cos(player.rotationYaw) + 0.1, upwardsMotion, Math.sin(player.rotationYaw) + 0.1);
-        player.setMotion(motion.add(leapMotion));
+        double RAD2DEG = 57.29577951308232;
+        Vector3d direction = jumpDirection(player, player.world, upwardsMotion);
+        player.rotationYaw = (float) MathHelper.wrapDegrees(MathHelper.atan2(-direction.x, direction.z) * RAD2DEG);
+        player.setMotion(direction);
 
         player.isAirBorne = true;
         net.minecraftforge.common.ForgeHooks.onLivingJump(player);
+        player.fallDistance = 0;
 
         player.addStat(Stats.JUMP);
         player.addExhaustion(player.isSprinting() ? 0.2F : 0.05F);

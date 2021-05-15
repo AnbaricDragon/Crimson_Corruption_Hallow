@@ -54,23 +54,27 @@ public class TerraItemClimbingGear extends TerraItemAccessory
             public void curioTick(String identifier, int index, LivingEntity livingEntity)
             {
                 PlayerEntity player = livingEntity instanceof PlayerEntity ? (PlayerEntity) livingEntity : null;
-                World world = player != null ? player.getEntityWorld() : null;
-                if (world == null) { return; }
+                World        world  = player != null ? player.getEntityWorld() : null;
+                if (world == null)
+                {
+                    return;
+                }
 
                 Vector3d vecPos = player.getPositionVec();
-                BlockPos pos = player.getPosition();
-                double x = vecPos.getX();
-                double z = vecPos.getZ();
-                double xi = MathHelper.floor(x);
-                double zi = MathHelper.floor(z);
-                double dotX = MathHelper.abs((float) (x - xi));
-                double dotZ = MathHelper.abs((float) (z - zi));
-                boolean shouldStick = (world.getBlockState(pos.offset(Direction.NORTH)).isSolid() && dotZ <= 0.31) ||
-                                     (world.getBlockState(pos.offset(Direction.EAST)).isSolid() && dotX >= 0.69) ||
-                                     (world.getBlockState(pos.offset(Direction.SOUTH)).isSolid() && dotZ >= 0.69) ||
-                                     (world.getBlockState(pos.offset(Direction.WEST)).isSolid() && dotX <= 0.31);
+                BlockPos pos    = player.getPosition();
+                double   x      = vecPos.getX();
+                double   z      = vecPos.getZ();
+                double   xi     = MathHelper.floor(x);
+                double   zi     = MathHelper.floor(z);
+                double   dotX   = MathHelper.abs((float) (x - xi));
+                double   dotZ   = MathHelper.abs((float) (z - zi));
+                boolean shouldStick =
+                        ((world.getBlockState(pos.offset(Direction.NORTH)).isSolid() || world.getBlockState(pos.up().offset(Direction.NORTH)).isSolid()) && dotZ <= 0.301) ||
+                        ((world.getBlockState(pos.offset(Direction.EAST)).isSolid()  || world.getBlockState(pos.up().offset(Direction.EAST)).isSolid() ) && dotX >= 0.699) ||
+                        ((world.getBlockState(pos.offset(Direction.SOUTH)).isSolid() || world.getBlockState(pos.up().offset(Direction.SOUTH)).isSolid()) && dotZ >= 0.699) ||
+                        ((world.getBlockState(pos.offset(Direction.WEST)).isSolid()  || world.getBlockState(pos.up().offset(Direction.WEST)).isSolid() ) && dotX <= 0.301);
 
-                if (shouldStick && !player.isWet())
+                if (!player.isOnGround() && !player.isCreative() && shouldStick && !player.isWet())
                 {
                     Vector3d motion = player.getMotion();
                     if (motion.y <= 0)
@@ -78,10 +82,6 @@ public class TerraItemClimbingGear extends TerraItemAccessory
                         if (player.isCrouching())
                         {
                             player.setMotion(motion.x, 0, motion.z);
-                        }
-                        else
-                        {
-                            player.setMotion(motion.add(0, -motion.y - 0.05, 0));
                         }
                     }
                 }

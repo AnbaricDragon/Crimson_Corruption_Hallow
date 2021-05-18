@@ -37,9 +37,9 @@ import top.theillusivec4.curios.api.type.capability.ICurio.SoundInfo;
 
 public class TerraItemBootsFlower extends TerraItemAccessory
 {
-    public TerraItemBootsFlower(Properties properties)
+    public TerraItemBootsFlower()
     {
-        super(properties);
+        super();
     }
 
     @Override

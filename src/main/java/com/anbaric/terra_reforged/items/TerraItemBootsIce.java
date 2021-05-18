@@ -27,9 +27,9 @@ import java.util.List;
 
 public class TerraItemBootsIce extends TerraItemAccessory
 {
-    public TerraItemBootsIce(Properties properties)
+    public TerraItemBootsIce()
     {
-        super(properties);
+        super();
     }
 
     @Override

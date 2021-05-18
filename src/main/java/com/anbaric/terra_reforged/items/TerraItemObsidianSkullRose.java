@@ -17,9 +17,9 @@ import java.util.List;
 
 public class TerraItemObsidianSkullRose extends TerraItemAccessory
 {
-    public TerraItemObsidianSkullRose(Properties properties)
+    public TerraItemObsidianSkullRose()
     {
-        super(properties);
+        super();
         MinecraftForge.EVENT_BUS.addListener(this::halveLavaDamage);
         MinecraftForge.EVENT_BUS.addListener(this::cancelFireDamage);
     }

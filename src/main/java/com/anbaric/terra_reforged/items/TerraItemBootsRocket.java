@@ -11,9 +11,9 @@ import java.util.List;
 
 public class TerraItemBootsRocket extends TerraItemAccessory
 {
-    public TerraItemBootsRocket(Properties properties)
+    public TerraItemBootsRocket()
     {
-        super(properties);
+        super();
     }
 
     @Override

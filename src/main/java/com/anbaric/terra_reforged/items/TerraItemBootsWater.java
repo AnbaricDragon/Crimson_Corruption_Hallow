@@ -15,9 +15,9 @@ import java.util.List;
 
 public class TerraItemBootsWater extends TerraItemAccessory
 {
-    public TerraItemBootsWater(Properties properties)
+    public TerraItemBootsWater()
     {
-        super(properties);
+        super();
     }
 
     @Override

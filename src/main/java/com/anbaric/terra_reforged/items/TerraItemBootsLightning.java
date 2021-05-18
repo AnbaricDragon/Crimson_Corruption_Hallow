@@ -27,9 +27,9 @@ import java.util.UUID;
 
 public class TerraItemBootsLightning extends TerraItemAccessory
 {
-    public TerraItemBootsLightning(Properties properties)
+    public TerraItemBootsLightning()
     {
-        super(properties);
+        super();
     }
 
     @Override

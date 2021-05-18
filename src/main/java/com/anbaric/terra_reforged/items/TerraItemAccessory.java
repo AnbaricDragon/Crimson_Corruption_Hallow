@@ -1,6 +1,7 @@
 package com.anbaric.terra_reforged.items;
 
 import com.anbaric.terra_reforged.util.Reference;
+import com.anbaric.terra_reforged.util.TerraItemGroups;
 import com.anbaric.terra_reforged.util.handlers.CurioHandler;
 import com.google.common.collect.ImmutableMultimap;
 import com.google.common.collect.LinkedHashMultimap;
@@ -29,9 +30,9 @@ import top.theillusivec4.curios.api.type.capability.ICurio.SoundInfo;
 
 public class TerraItemAccessory extends Item implements ICurio
 {
-    public TerraItemAccessory(Properties properties)
+    public TerraItemAccessory()
     {
-        super(properties);
+        super(new Item.Properties().group(TerraItemGroups.TERRA_TOOLS_TAB).maxStackSize(1));
     }
 
     @Override

@@ -28,9 +28,9 @@ import java.util.List;
 
 public class TerraItemPanicNecklace extends TerraItemAccessory
 {
-    public TerraItemPanicNecklace(Properties properties)
+    public TerraItemPanicNecklace()
     {
-        super(properties);
+        super();
         MinecraftForge.EVENT_BUS.addListener(this::fleeInPanic);
     }
 

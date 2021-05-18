@@ -21,9 +21,9 @@ import java.util.List;
 
 public class TerraItemSharktoothNecklace extends TerraItemAccessory
 {
-    public TerraItemSharktoothNecklace(Properties properties)
+    public TerraItemSharktoothNecklace()
     {
-        super(properties);
+        super();
         MinecraftForge.EVENT_BUS.addListener(this::ignoreArmor);
     }
 

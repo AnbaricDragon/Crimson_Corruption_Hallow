@@ -27,9 +27,9 @@ import java.util.List;
 
 public class TerraItemLavaCharm extends TerraItemAccessory
 {
-    public TerraItemLavaCharm(Properties properties)
+    public TerraItemLavaCharm()
     {
-        super(properties);
+        super();
         MinecraftForge.EVENT_BUS.addListener(this::onLavaSwim);
     }
 

@@ -17,9 +17,9 @@ import java.util.List;
 
 public class TerraItemBootsObsidian extends TerraItemAccessory
 {
-    public TerraItemBootsObsidian(Properties properties)
+    public TerraItemBootsObsidian()
     {
-        super(properties);
+        super();
         MinecraftForge.EVENT_BUS.addListener(this::cancelFireDamage);
     }
 

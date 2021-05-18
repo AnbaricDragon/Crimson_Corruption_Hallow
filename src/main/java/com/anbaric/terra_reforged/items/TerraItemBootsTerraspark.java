@@ -32,9 +32,9 @@ import java.util.UUID;
 
 public class TerraItemBootsTerraspark extends TerraItemAccessory
 {
-    public TerraItemBootsTerraspark(Properties properties)
+    public TerraItemBootsTerraspark()
     {
-        super(properties);
+        super();
         MinecraftForge.EVENT_BUS.addListener(this::halveLavaDamage);
         MinecraftForge.EVENT_BUS.addListener(this::cancelFireDamage);
         MinecraftForge.EVENT_BUS.addListener(this::onLavaSwim);

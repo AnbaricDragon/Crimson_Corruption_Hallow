@@ -11,9 +11,9 @@ import java.util.List;
 
 public class TerraItemBottle extends TerraItemAccessory
 {
-    public TerraItemBottle(Properties properties)
+    public TerraItemBottle()
     {
-        super(properties);
+        super();
     }
 
     @Override

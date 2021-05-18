@@ -50,9 +50,9 @@ public class TerraItemBootsDunerider extends TerraItemAccessory
 {
     AttributeModifier duneriderAttribute = new AttributeModifier(UUID.fromString("f3da7a13-d2ab-48c7-9c3f-68da0608f172"), Reference.MODID + ":duneriderBonus", 0.5D, AttributeModifier.Operation.MULTIPLY_BASE);
 
-    public TerraItemBootsDunerider(Properties properties)
+    public TerraItemBootsDunerider()
     {
-        super(properties);
+        super();
     }
 
     @Override

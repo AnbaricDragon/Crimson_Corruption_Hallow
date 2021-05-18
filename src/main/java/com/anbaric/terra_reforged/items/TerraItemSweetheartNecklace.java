@@ -26,9 +26,9 @@ import java.util.List;
 
 public class TerraItemSweetheartNecklace extends TerraItemAccessory
 {
-    public TerraItemSweetheartNecklace(Properties properties)
+    public TerraItemSweetheartNecklace()
     {
-        super(properties);
+        super();
         MinecraftForge.EVENT_BUS.addListener(this::beeInPanic);
     }
 

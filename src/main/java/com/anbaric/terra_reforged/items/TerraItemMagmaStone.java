@@ -17,9 +17,9 @@ import java.util.Random;
 
 public class TerraItemMagmaStone extends TerraItemAccessory
 {
-    public TerraItemMagmaStone(Properties properties)
+    public TerraItemMagmaStone()
     {
-        super(properties);
+        super();
         MinecraftForge.EVENT_BUS.addListener(this::setMeleeFire);
     }
 

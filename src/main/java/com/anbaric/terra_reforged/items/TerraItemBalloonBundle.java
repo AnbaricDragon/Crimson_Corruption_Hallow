@@ -11,9 +11,9 @@ import java.util.List;
 
 public class TerraItemBalloonBundle extends TerraItemAccessory
 {
-    public TerraItemBalloonBundle(Properties properties)
+    public TerraItemBalloonBundle()
     {
-        super(properties);
+        super();
     }
 
     @Override

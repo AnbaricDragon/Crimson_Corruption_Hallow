@@ -16,9 +16,9 @@ import java.util.List;
 
 public class TerraItemLuckyHorseshoe extends TerraItemAccessory
 {
-    public TerraItemLuckyHorseshoe(Properties properties)
+    public TerraItemLuckyHorseshoe()
     {
-        super(properties);
+        super();
         MinecraftForge.EVENT_BUS.addListener(this::cancelFallDamage);
     }
 

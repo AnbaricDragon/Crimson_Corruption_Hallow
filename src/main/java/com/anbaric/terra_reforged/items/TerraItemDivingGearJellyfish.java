@@ -32,9 +32,9 @@ import java.util.UUID;
 
 public class TerraItemDivingGearJellyfish extends TerraItemAccessory
 {
-    public TerraItemDivingGearJellyfish(Properties properties)
+    public TerraItemDivingGearJellyfish()
     {
-        super(properties);
+        super();
         if (ModList.get().isLoaded("hypcore"))
         {
             ColoredLightManager.registerProvider(this, this::shine);

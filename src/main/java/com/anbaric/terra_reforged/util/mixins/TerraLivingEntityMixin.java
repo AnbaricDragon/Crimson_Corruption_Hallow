@@ -39,7 +39,7 @@ public abstract class TerraLivingEntityMixin extends Entity
         super(entityTypeIn, worldIn);
     }
 
-    //    @ModifyVariable(method = "travel(Lnet/minecraft/util/math/vector/Vector3d;)V", at = @At("HEAD"))
+//    @ModifyVariable(method = "travel(Lnet/minecraft/util/math/vector/Vector3d;)V", at = @At("HEAD"))
 //    private void reduceSlippage(IWorldReader world, BlockPos pos, Entity entity, CallbackInfoReturnable<Float> cir)
 //    {
 //        float f3 = this.world.getBlockState(this.getPositionUnderneath()).getSlipperiness(world, this.getPositionUnderneath(), this);

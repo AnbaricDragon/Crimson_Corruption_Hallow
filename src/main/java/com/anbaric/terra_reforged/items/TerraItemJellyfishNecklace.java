@@ -18,9 +18,9 @@ import java.util.List;
 
 public class TerraItemJellyfishNecklace extends TerraItemAccessory
 {
-    public TerraItemJellyfishNecklace(Properties properties)
+    public TerraItemJellyfishNecklace()
     {
-        super(properties);
+        super();
         if (ModList.get().isLoaded("hypcore"))
         {
             ColoredLightManager.registerProvider(this, this::shine);

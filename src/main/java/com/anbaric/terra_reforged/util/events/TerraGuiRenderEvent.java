@@ -24,15 +24,16 @@ import net.minecraftforge.fml.common.Mod;
 public class TerraGuiRenderEvent
 {
     private static final Minecraft mc = Minecraft.getInstance();
-    private static final ResourceLocation ICON_LAVA = new ResourceLocation("terra_reforged:textures/gui/lava_icon.png");
+    private static final ResourceLocation ICON_LAVA = new ResourceLocation("terra_reforged:textures/gui/gui_icon.png");
 
     @SubscribeEvent(receiveCanceled = true)
     public static void renderGameOverlay(RenderGameOverlayEvent.Post event)
     {
         if (event.getType() == RenderGameOverlayEvent.ElementType.ARMOR)
         {
-            ClientPlayerEntity player        = mc.player;
-            ItemStack          lavaProtector = CurioHandler.getBaubles(player, TerraItemRegistry.CHARM_LAVA.get(), TerraItemRegistry.BOOTS_LAVA.get(), TerraItemRegistry.BOOTS_HELLFIRE.get(), TerraItemRegistry.BOOTS_TERRASPARK.get());
+            ClientPlayerEntity player = mc.player;
+            ItemStack lavaProtector = CurioHandler.getBaubles(player, TerraItemRegistry.CHARM_LAVA.get(), TerraItemRegistry.BOOTS_LAVA.get(), TerraItemRegistry.BOOTS_HELLFIRE.get(), TerraItemRegistry.BOOTS_TERRASPARK.get());
+            ItemStack tabiDasher = CurioHandler.getBaubles(player, TerraItemRegistry.NINJA_TABI.get());
 
             if (!lavaProtector.isEmpty())
             {
@@ -68,6 +69,35 @@ public class TerraGuiRenderEvent
                             right -= 8;
                             RenderSystem.color4f(1, 1, 1, 1);
                         }
+                        ForgeIngameGui.left_height += 10;
+                        mc.getTextureManager().bindTexture(AbstractGui.GUI_ICONS_LOCATION);
+                        RenderSystem.disableBlend();
+                    }
+                }
+            }
+            if (!tabiDasher.isEmpty())
+            {
+                CompoundNBT compound = tabiDasher.getTag();
+                if (compound != null)
+                {
+                    float cooldown = compound.getInt("tabiCooldown");
+
+                    if (cooldown == 0)
+                    {
+                        mc.getRenderManager().textureManager.bindTexture(ICON_LAVA);
+                        IngameGui ingameGui = mc.ingameGUI;
+
+                        int width  = mc.getMainWindow().getScaledWidth();
+                        int height = mc.getMainWindow().getScaledHeight();
+
+                        int count = 0;
+
+                        int left = 80;
+                        int top   = height - (ForgeIngameGui.right_height + 11);
+
+                        RenderSystem.enableBlend();
+                        ingameGui.blit(event.getMatrixStack(), width / 2 - left, top, 0, 0, 10, 10);
+                        RenderSystem.color4f(1, 1, 1, 1);
                         ForgeIngameGui.left_height += 10;
                         mc.getTextureManager().bindTexture(AbstractGui.GUI_ICONS_LOCATION);
                         RenderSystem.disableBlend();

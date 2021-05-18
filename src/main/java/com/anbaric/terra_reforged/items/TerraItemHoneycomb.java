@@ -26,9 +26,9 @@ import java.util.List;
 
 public class TerraItemHoneycomb extends TerraItemAccessory
 {
-    public TerraItemHoneycomb(Properties properties)
+    public TerraItemHoneycomb()
     {
-        super(properties);
+        super();
         MinecraftForge.EVENT_BUS.addListener(this::spawnBees);
     }
 

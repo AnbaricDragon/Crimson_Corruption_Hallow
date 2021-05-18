@@ -19,9 +19,9 @@ import java.util.Random;
 
 public class TerraItemMoltenSkull extends TerraItemAccessory
 {
-    public TerraItemMoltenSkull(Properties properties)
+    public TerraItemMoltenSkull()
     {
-        super(properties);
+        super();
         MinecraftForge.EVENT_BUS.addListener(this::setMeleeFire);
         MinecraftForge.EVENT_BUS.addListener(this::cancelFireDamage);
     }

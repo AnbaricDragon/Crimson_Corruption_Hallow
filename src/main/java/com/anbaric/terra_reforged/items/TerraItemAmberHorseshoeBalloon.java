@@ -26,9 +26,9 @@ import java.util.List;
 
 public class TerraItemAmberHorseshoeBalloon extends TerraItemAccessory
 {
-    public TerraItemAmberHorseshoeBalloon(Properties properties)
+    public TerraItemAmberHorseshoeBalloon()
     {
-        super(properties);
+        super();
         MinecraftForge.EVENT_BUS.addListener(this::spawnBees);
         MinecraftForge.EVENT_BUS.addListener(this::cancelFallDamage);
     }

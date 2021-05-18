@@ -38,9 +38,9 @@ import java.util.UUID;
 
 public class TerraItemClimbingGripper extends TerraItemAccessory
 {
-    public TerraItemClimbingGripper(Properties properties)
+    public TerraItemClimbingGripper()
     {
-        super(properties);
+        super();
     }
 
     @Override

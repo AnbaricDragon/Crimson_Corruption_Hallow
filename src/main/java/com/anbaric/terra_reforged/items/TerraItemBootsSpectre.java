@@ -26,9 +26,9 @@ import java.util.UUID;
 
 public class TerraItemBootsSpectre extends TerraItemAccessory
 {
-    public TerraItemBootsSpectre(Properties properties)
+    public TerraItemBootsSpectre()
     {
-        super(properties);
+        super();
     }
 
     @Override

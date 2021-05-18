@@ -35,9 +35,9 @@ import java.util.UUID;
 
 public class TerraItemFrogFlipper extends TerraItemAccessory
 {
-    public TerraItemFrogFlipper(Properties properties)
+    public TerraItemFrogFlipper()
     {
-        super(properties);
+        super();
         MinecraftForge.EVENT_BUS.addListener(this::cancelFallDamage);
     }
 

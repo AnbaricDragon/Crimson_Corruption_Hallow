@@ -34,9 +34,9 @@ public class TerraItemAccessorySpeed extends TerraItemAccessory
 {
     private float moveSpeed;
 
-    public TerraItemAccessorySpeed(Item.Properties properties, float moveSpeed)
+    public TerraItemAccessorySpeed(float moveSpeed)
     {
-        super(properties);
+        super();
         this.moveSpeed = moveSpeed;
     }
 

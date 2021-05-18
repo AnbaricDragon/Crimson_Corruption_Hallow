@@ -33,9 +33,9 @@ import java.util.List;
 
 public class TerraItemCrossNecklace extends TerraItemAccessory
 {
-    public TerraItemCrossNecklace(Properties properties)
+    public TerraItemCrossNecklace()
     {
-        super(properties);
+        super();
 //        MinecraftForge.EVENT_BUS.addListener(this::onPlayerAttacked);
     }
 

@@ -1,8 +1,7 @@
 {
   "generator.Terran": "Terrarian",
 
-  "curios.identifier.boot": "Boots",
-  "curios.modifiers.boot": "When equipped:",
+  "terra_reforged.key.grappling_hook": "Grappling Hook",
 
   "biome.terra_reforged.mud_jungle": "Mud Jungle",
   "biome.terra_reforged.snow_pure": "Icy Tundra",

@@ -3,6 +3,8 @@
     "values": [
         "terra_reforged:climbing_claws",
         "terra_reforged:climbing_spikes",
-        "terra_reforged:climbing_gear"
+        "terra_reforged:climbing_gear",
+        "terra_reforged:frog_webbing",
+        "terra_reforged:frog_gear"
     ]
 }

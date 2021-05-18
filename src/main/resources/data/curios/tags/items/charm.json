@@ -65,6 +65,10 @@
         "terra_reforged:necklace_jellyfish",
         "terra_reforged:climbing_claws",
         "terra_reforged:climbing_spikes",
-        "terra_reforged:climbing_gear"
+        "terra_reforged:climbing_gear",
+        "terra_reforged:ninja_tabi",
+        "terra_reforged:frog_flipper",
+        "terra_reforged:frog_gear",
+        "terra_reforged:frog_webbing"
     ]
 }

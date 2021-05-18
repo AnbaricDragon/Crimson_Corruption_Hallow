@@ -19,9 +19,9 @@ import java.util.List;
 
 public class TerraItemObsidianHorseshoe extends TerraItemAccessory
 {
-    public TerraItemObsidianHorseshoe(Properties properties)
+    public TerraItemObsidianHorseshoe()
     {
-        super(properties);
+        super();
         MinecraftForge.EVENT_BUS.addListener(this::cancelFallDamage);
         MinecraftForge.EVENT_BUS.addListener(this::cancelFireDamage);
     }

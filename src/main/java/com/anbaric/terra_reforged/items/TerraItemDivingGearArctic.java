@@ -33,9 +33,9 @@ import java.util.UUID;
 
 public class TerraItemDivingGearArctic extends TerraItemAccessory
 {
-    public TerraItemDivingGearArctic(Properties properties)
+    public TerraItemDivingGearArctic()
     {
-        super(properties);
+        super();
         if (ModList.get().isLoaded("hypcore"))
         {
             ColoredLightManager.registerProvider(this, this::shine);

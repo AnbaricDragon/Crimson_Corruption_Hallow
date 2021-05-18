@@ -57,7 +57,6 @@ public class TerraTagRegistry
     public static final ITag.INamedTag<Item> STAR_SPAWNERS = ItemTags.makeWrapperTag("terra_reforged:star_spawners");
     public static final ITag.INamedTag<Item> PANIC_GIVERS = ItemTags.makeWrapperTag("terra_reforged:panic_givers");
     public static final ITag.INamedTag<Item> ARMOR_PASSERS = ItemTags.makeWrapperTag("terra_reforged:armor_passers");
-    public static final ITag.INamedTag<Item> INVULN_GIVERS = ItemTags.makeWrapperTag("terra_reforged:invuln_givers");
     public static final ITag.INamedTag<Item> FLOWER_WALKERS = ItemTags.makeWrapperTag("terra_reforged:flower_walkers");
     public static final ITag.INamedTag<Item> WATER_WALKERS = ItemTags.makeWrapperTag("terra_reforged:water_walkers");
     public static final ITag.INamedTag<Item> LAVA_WALKERS = ItemTags.makeWrapperTag("terra_reforged:lava_walkers");

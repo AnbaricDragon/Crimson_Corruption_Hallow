@@ -39,9 +39,9 @@ import top.theillusivec4.curios.api.type.capability.ICurio.SoundInfo;
 
 public class TerraItemBootsAmphibian extends TerraItemAccessory
 {
-    public TerraItemBootsAmphibian(Properties properties)
+    public TerraItemBootsAmphibian()
     {
-        super(properties);
+        super();
         MinecraftForge.EVENT_BUS.addListener(this::slowFallDamage);
     }
 

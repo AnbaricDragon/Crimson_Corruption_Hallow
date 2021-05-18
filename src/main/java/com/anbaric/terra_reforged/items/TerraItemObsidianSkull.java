@@ -19,9 +19,9 @@ import java.util.List;
 
 public class TerraItemObsidianSkull extends TerraItemAccessory
 {
-    public TerraItemObsidianSkull(Properties properties)
+    public TerraItemObsidianSkull()
     {
-        super(properties);
+        super();
         MinecraftForge.EVENT_BUS.addListener(this::cancelFireDamage);
     }
 

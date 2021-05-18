@@ -14,9 +14,9 @@ import java.util.List;
 
 public class TerraItemHorseshoeBalloon extends TerraItemAccessory
 {
-    public TerraItemHorseshoeBalloon(Properties properties)
+    public TerraItemHorseshoeBalloon()
     {
-        super(properties);
+        super();
         MinecraftForge.EVENT_BUS.addListener(this::cancelFallDamage);
     }
 

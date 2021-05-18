@@ -30,9 +30,9 @@ import java.util.List;
 
 public class TerraItemStingerNecklace extends TerraItemAccessory
 {
-    public TerraItemStingerNecklace(Properties properties)
+    public TerraItemStingerNecklace()
     {
-        super(properties);
+        super();
         MinecraftForge.EVENT_BUS.addListener(this::spawnBees);
         MinecraftForge.EVENT_BUS.addListener(this::ignoreArmor);
     }

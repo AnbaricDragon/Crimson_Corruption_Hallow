@@ -27,9 +27,9 @@ import java.util.UUID;
 
 public class TerraItemFlipper extends TerraItemAccessory
 {
-    public TerraItemFlipper(Properties properties)
+    public TerraItemFlipper()
     {
-        super(properties);
+        super();
     }
 
     @Override

@@ -35,9 +35,9 @@ import java.util.List;
 
 public class TerraItemBootsLava extends TerraItemAccessory
 {
-    public TerraItemBootsLava(Properties properties)
+    public TerraItemBootsLava()
     {
-        super(properties);
+        super();
         MinecraftForge.EVENT_BUS.addListener(this::cancelFireDamage);
         MinecraftForge.EVENT_BUS.addListener(this::halveLavaDamage);
         MinecraftForge.EVENT_BUS.addListener(this::onLavaSwim);

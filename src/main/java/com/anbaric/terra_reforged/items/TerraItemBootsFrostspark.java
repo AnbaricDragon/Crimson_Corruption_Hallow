@@ -27,9 +27,9 @@ import java.util.UUID;
 
 public class TerraItemBootsFrostspark extends TerraItemAccessory
 {
-    public TerraItemBootsFrostspark(Properties properties)
+    public TerraItemBootsFrostspark()
     {
-        super(properties);
+        super();
     }
 
     @Override

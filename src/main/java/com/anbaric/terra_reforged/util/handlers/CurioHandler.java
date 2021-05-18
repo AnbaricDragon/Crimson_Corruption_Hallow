@@ -101,15 +101,15 @@ public class CurioHandler
 
     public static boolean hasBauble(PlayerEntity player, ITag<Item> tag)
     {
-        AtomicBoolean foundItem = new AtomicBoolean(false);
+        boolean foundItem = false;
         for (Item curioItem : tag.getAllElements())
         {
-            CuriosApi.getCuriosHelper().findEquippedCurio(curioItem, player).ifPresent(found ->
+            if (hasBauble(player, curioItem))
             {
-                foundItem.set(true);
-            });
+                foundItem = true;
+            }
         }
-        return foundItem.get();
+        return foundItem;
     }
 
     public static ItemStack getBaubles(PlayerEntity player, Item... item)

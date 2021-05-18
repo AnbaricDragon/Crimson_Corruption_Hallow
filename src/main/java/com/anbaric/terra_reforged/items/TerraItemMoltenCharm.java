@@ -24,9 +24,9 @@ import java.util.List;
 
 public class TerraItemMoltenCharm extends TerraItemAccessory
 {
-    public TerraItemMoltenCharm(Properties properties)
+    public TerraItemMoltenCharm()
     {
-        super(properties);
+        super();
         MinecraftForge.EVENT_BUS.addListener(this::onLavaSwim);
         MinecraftForge.EVENT_BUS.addListener(this::cancelFireDamage);
     }

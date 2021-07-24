@@ -11,7 +11,7 @@ import net.minecraftforge.common.capabilities.CapabilityManager;
 public class TerraCapabilityWorldProgression
 {
     @CapabilityInject(IWorldProgression.class)
-    public static final Capability<IWorldProgression> WORLD_PROGRESSION_CAPABILITY = null;
+    public static final Capability<IWorldProgression> WORLD_PROGRESSION = null;
 
     public static void register()
     {

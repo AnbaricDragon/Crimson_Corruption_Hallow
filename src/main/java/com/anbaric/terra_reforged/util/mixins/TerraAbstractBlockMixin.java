@@ -1,7 +1,6 @@
 package com.anbaric.terra_reforged.util.mixins;
 
 import com.anbaric.terra_reforged.util.handlers.CurioHandler;
-import com.anbaric.terra_reforged.util.init.TerraItemRegistry;
 import com.anbaric.terra_reforged.util.init.TerraTagRegistry;
 import net.minecraft.block.AbstractBlock;
 import net.minecraft.block.Block;
@@ -10,8 +9,6 @@ import net.minecraft.block.material.Material;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.Pose;
 import net.minecraft.entity.player.PlayerEntity;
-import net.minecraft.item.ItemStack;
-import net.minecraft.state.properties.BlockStateProperties;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.shapes.ISelectionContext;
 import net.minecraft.util.math.shapes.VoxelShape;

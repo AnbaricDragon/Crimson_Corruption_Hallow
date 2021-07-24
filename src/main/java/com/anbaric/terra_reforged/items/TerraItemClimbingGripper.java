@@ -1,20 +1,10 @@
 package com.anbaric.terra_reforged.items;
 
-import com.anbaric.terra_reforged.util.Reference;
 import com.anbaric.terra_reforged.util.handlers.CurioHandler;
-import com.anbaric.terra_reforged.util.init.TerraEffectRegistry;
 import com.anbaric.terra_reforged.util.init.TerraItemRegistry;
-import com.google.common.collect.LinkedHashMultimap;
-import com.google.common.collect.Multimap;
-import net.hypherionmc.hypcore.api.APIUtils;
-import net.hypherionmc.hypcore.api.ColoredLightManager;
-import net.hypherionmc.hypcore.api.Light;
 import net.minecraft.client.resources.I18n;
 import net.minecraft.client.util.ITooltipFlag;
-import net.minecraft.entity.Entity;
 import net.minecraft.entity.LivingEntity;
-import net.minecraft.entity.ai.attributes.Attribute;
-import net.minecraft.entity.ai.attributes.AttributeModifier;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.CompoundNBT;
@@ -26,15 +16,12 @@ import net.minecraft.util.math.vector.Vector3d;
 import net.minecraft.util.text.ITextComponent;
 import net.minecraft.util.text.StringTextComponent;
 import net.minecraft.world.World;
-import net.minecraftforge.common.ForgeMod;
 import net.minecraftforge.common.capabilities.ICapabilityProvider;
-import net.minecraftforge.fml.ModList;
 import top.theillusivec4.curios.api.SlotContext;
 import top.theillusivec4.curios.api.type.capability.ICurio;
 
 import javax.annotation.Nonnull;
 import java.util.List;
-import java.util.UUID;
 
 public class TerraItemClimbingGripper extends TerraItemAccessory
 {

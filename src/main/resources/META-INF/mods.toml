@@ -18,13 +18,6 @@ Attempting to blend the depth of gameplay from Terraria with the depth dimension
 
 # A dependency - use the . to indicate dependency for a specific modid. Dependencies are optional.
 [[dependencies.terra_reforged]] #optional
-    modId="ctm" #mandatory
-    mandatory=false #mandatory
-    versionRange="[35,)" #mandatory
-    ordering="NONE"
-    side="CLIENT"
-
-[[dependencies.terra_reforged]] #optional
     modId="forge" #mandatory
     mandatory=true #mandatory
     versionRange="[35,)" #mandatory

@@ -110,7 +110,7 @@ public class TerraItemDivingGearArctic extends TerraItemAccessory
 
         if (CurioHandler.hasBauble(player, this))
         {
-            return Light.builder().pos(APIUtils.entityPos(entity)).color(0f, 0.85f, 1.0f, player.isInWater() ? 1.0F : 5.0F).radius(player.isInWater() ? 20 : 5).build();
+            return (Light) Light.builder().pos(APIUtils.entityPos(entity)).color(0f, 0.85f, 1.0f, player.isInWater() ? 1.0F : 5.0F).radius(player.isInWater() ? 20 : 5).build();
         }
         else return null;
     }

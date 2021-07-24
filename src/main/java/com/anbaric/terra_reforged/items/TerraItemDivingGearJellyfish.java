@@ -4,9 +4,9 @@ import com.anbaric.terra_reforged.util.Reference;
 import com.anbaric.terra_reforged.util.handlers.CurioHandler;
 import com.google.common.collect.LinkedHashMultimap;
 import com.google.common.collect.Multimap;
+import me.hypherionmc.rgblib.api.ColoredLightManager;
+import me.hypherionmc.rgblib.api.RGBLight;
 import net.hypherionmc.hypcore.api.APIUtils;
-import net.hypherionmc.hypcore.api.ColoredLightManager;
-import net.hypherionmc.hypcore.api.Light;
 import net.minecraft.client.resources.I18n;
 import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.entity.Entity;
@@ -92,14 +92,14 @@ public class TerraItemDivingGearJellyfish extends TerraItemAccessory
         });
     }
 
-    public Light shine(Entity entity, ItemStack stack)
+    public RGBLight shine(Entity entity, ItemStack stack)
     {
         PlayerEntity player = entity instanceof PlayerEntity ? (PlayerEntity) entity : null;
         if (player == null) { return null; }
 
         if (CurioHandler.hasBauble(player, this))
         {
-            return Light.builder().pos(APIUtils.entityPos(entity)).color(0.5f, 0f, 0.5f, player.isInWater() ? 1.0F : 5.0F).radius(player.isInWater() ? 15 : 5).build();
+            return RGBLight.builder().pos(APIUtils.entityPos(entity)).color(0.5f, 0f, 0.5f, player.isInWater() ? 1.0F : 5.0F).radius(player.isInWater() ? 15 : 5).build();
         }
         else return null;
     }

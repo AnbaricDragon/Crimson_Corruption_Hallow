@@ -50,7 +50,7 @@ public class TerraItemPanicNecklace extends TerraItemAccessory
 
         CuriosApi.getCuriosHelper().findEquippedCurio(stack -> stack.getItem() == this && !player.getCooldownTracker().hasCooldown(stack.getItem()), player).ifPresent(found ->
         {
-            if (!player.isPotionActive(TerraEffectRegistry.INVINCIBILITY.get()) && event.getSource().getImmediateSource() instanceof LivingEntity)
+            if (event.getSource().getImmediateSource() instanceof LivingEntity)
             {
                 player.addPotionEffect(new EffectInstance(Effects.SPEED, 60));
                 CuriosApi.getCuriosHelper().getCuriosHandler(player).map(ICuriosItemHandler::getCurios).map(map -> map.get("curio")).map(ICurioStacksHandler::getStacks).map(dynamicStackHandler -> {

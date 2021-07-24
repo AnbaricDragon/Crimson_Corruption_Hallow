@@ -52,7 +52,7 @@ public class TerraItemSweetheartNecklace extends TerraItemAccessory
 
         CuriosApi.getCuriosHelper().findEquippedCurio(stack -> stack.getItem() == this && !player.getCooldownTracker().hasCooldown(this), player).ifPresent(found ->
         {
-            if (!player.isPotionActive(TerraEffectRegistry.INVINCIBILITY.get()) && event.getSource().getImmediateSource() instanceof LivingEntity)
+            if (event.getSource().getImmediateSource() instanceof LivingEntity)
             {
                 player.addPotionEffect(new EffectInstance(Effects.SPEED, 60));
                 player.addPotionEffect(new EffectInstance(TerraEffectRegistry.HONEY.get(), 100));

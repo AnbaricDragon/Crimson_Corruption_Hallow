@@ -12,12 +12,15 @@ public class WorldProgressionProvider implements ICapabilitySerializable<INBT>
     private final WorldProgression defaultWorldProgression = new WorldProgression();
     private final LazyOptional<IWorldProgression> optionalWorldProgression = LazyOptional.of(() -> defaultWorldProgression);
 
-    public void invalidate() {optionalWorldProgression.invalidate();}
+    public void invalidate()
+    {
+        optionalWorldProgression.invalidate();
+    }
 
     @Override
     public <T> LazyOptional<T> getCapability(Capability<T> capability, Direction side)
     {
-        if (capability == TerraCapabilityWorldProgression.WORLD_PROGRESSION_CAPABILITY)
+        if (capability == TerraCapabilityWorldProgression.WORLD_PROGRESSION)
         {
             return optionalWorldProgression.cast();
         }
@@ -27,22 +30,22 @@ public class WorldProgressionProvider implements ICapabilitySerializable<INBT>
     @Override
     public INBT serializeNBT()
     {
-        if (TerraCapabilityWorldProgression.WORLD_PROGRESSION_CAPABILITY == null)
+        if (TerraCapabilityWorldProgression.WORLD_PROGRESSION == null)
         {
             return new CompoundNBT();
         }
         else
         {
-            return TerraCapabilityWorldProgression.WORLD_PROGRESSION_CAPABILITY.writeNBT(defaultWorldProgression, null);
+            return TerraCapabilityWorldProgression.WORLD_PROGRESSION.writeNBT(defaultWorldProgression, null);
         }
     }
 
     @Override
     public void deserializeNBT(INBT nbt)
     {
-        if (TerraCapabilityWorldProgression.WORLD_PROGRESSION_CAPABILITY != null)
+        if (TerraCapabilityWorldProgression.WORLD_PROGRESSION != null)
         {
-            TerraCapabilityWorldProgression.WORLD_PROGRESSION_CAPABILITY.readNBT(defaultWorldProgression, null, nbt);
+            TerraCapabilityWorldProgression.WORLD_PROGRESSION.readNBT(defaultWorldProgression, null, nbt);
         }
     }
 }

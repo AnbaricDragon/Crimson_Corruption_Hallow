@@ -6,15 +6,19 @@ import net.minecraft.block.Block;
 import net.minecraftforge.event.world.BlockEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 
-public class TerraTestEvent
+public class TerraWorldProgressionEvent
 {
     @SubscribeEvent
     static void onBreakAltar(BlockEvent.BreakEvent event)
     {
         Block block = event.getState().getBlock();
+        //TODO make Demon Alter
         if (block == TerraBlockRegistry.ORE_CHLOROPHYTE.get())
         {
-            event.getPlayer().world.getCapability(TerraCapabilityWorldProgression.WORLD_PROGRESSION_CAPABILITY).ifPresent(cap -> cap.setAltarsBroken(cap.getAltarsBroken() + 1));
+            event.getPlayer().world.getCapability(TerraCapabilityWorldProgression.WORLD_PROGRESSION).ifPresent(cap -> {
+                cap.setAltarsBroken(cap.getAltarsBroken() + 1);
+                System.out.println(cap.getAltarsBroken());
+            });
         }
     }
 }

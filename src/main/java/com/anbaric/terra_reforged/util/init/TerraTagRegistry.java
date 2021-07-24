@@ -38,7 +38,6 @@ public class TerraTagRegistry
     public static final ITag.INamedTag<Item> INGOT_MYTHRIL = ItemTags.makeWrapperTag("forge:ingots/mythril");
     public static final ITag.INamedTag<Item> INGOT_TITANIUM = ItemTags.makeWrapperTag("forge:ingots/titanium");
 
-    public static final ITag.INamedTag<Item> FALL_BREAKERS = ItemTags.makeWrapperTag("terra_reforged:fall_breakers");
     public static final ITag.INamedTag<Item> FROG_BREAKERS = ItemTags.makeWrapperTag("terra_reforged:frog_breakers");
     public static final ITag.INamedTag<Item> CLOUD_JUMPERS = ItemTags.makeWrapperTag("terra_reforged:cloud_jumpers");
     public static final ITag.INamedTag<Item> BLIZZARD_JUMPERS = ItemTags.makeWrapperTag("terra_reforged:blizzard_jumpers");
@@ -57,7 +56,6 @@ public class TerraTagRegistry
     public static final ITag.INamedTag<Item> STAR_SPAWNERS = ItemTags.makeWrapperTag("terra_reforged:star_spawners");
     public static final ITag.INamedTag<Item> PANIC_GIVERS = ItemTags.makeWrapperTag("terra_reforged:panic_givers");
     public static final ITag.INamedTag<Item> ARMOR_PASSERS = ItemTags.makeWrapperTag("terra_reforged:armor_passers");
-    public static final ITag.INamedTag<Item> FLOWER_WALKERS = ItemTags.makeWrapperTag("terra_reforged:flower_walkers");
     public static final ITag.INamedTag<Item> WATER_WALKERS = ItemTags.makeWrapperTag("terra_reforged:water_walkers");
     public static final ITag.INamedTag<Item> LAVA_WALKERS = ItemTags.makeWrapperTag("terra_reforged:lava_walkers");
     public static final ITag.INamedTag<Item> WALL_CRAWLERS = ItemTags.makeWrapperTag("terra_reforged:wall_crawlers");

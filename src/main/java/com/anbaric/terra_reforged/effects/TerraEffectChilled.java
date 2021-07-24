@@ -1,42 +1,24 @@
 package com.anbaric.terra_reforged.effects;
 
-import com.anbaric.terra_reforged.util.init.TerraEffectRegistry;
-import net.minecraft.entity.LivingEntity;
-import net.minecraft.entity.passive.BeeEntity;
+import net.minecraft.entity.ai.attributes.Attribute;
+import net.minecraft.entity.ai.attributes.AttributeModifier;
 import net.minecraft.potion.Effect;
-import net.minecraft.potion.EffectInstance;
 import net.minecraft.potion.EffectType;
+
+import java.util.UUID;
 
 public class TerraEffectChilled extends Effect
 {
-    int chances = 3;
-
     public TerraEffectChilled(EffectType typeIn, int liquidColorIn)
     {
         super(typeIn, liquidColorIn);
     }
 
     @Override
-    public boolean isReady(int duration, int amplifier)
+    public Effect addAttributesModifier(Attribute attributeIn, String uuid, double amount, AttributeModifier.Operation operation)
     {
-        return duration <= 1;
-    }
-
-    @Override
-    public void performEffect(LivingEntity entity, int amplifier)
-    {
-        if (entity instanceof BeeEntity)
-        {
-            BeeEntity bee = (BeeEntity) entity;
-            if (bee.hasStung() || chances == 0)
-            {
-                bee.remove();
-            }
-            else
-            {
-                chances--;
-                bee.addPotionEffect(new EffectInstance(TerraEffectRegistry.LOOMING_DEATH.get(), 20, 0, false, false));
-            }
-        }
+        AttributeModifier attributemodifier = new AttributeModifier(UUID.fromString(uuid), this::getName, amount, operation);
+        super.attributeModifierMap.put(attributeIn, attributemodifier);
+        return this;
     }
 }

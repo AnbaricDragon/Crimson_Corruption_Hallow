@@ -2,9 +2,14 @@ package com.anbaric.terra_reforged.util.handlers;
 
 import com.anbaric.terra_reforged.util.Reference;
 import com.anbaric.terra_reforged.util.packets.*;
+import net.minecraft.entity.player.ServerPlayerEntity;
+import net.minecraft.network.PacketBuffer;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.fml.network.NetworkRegistry;
+import net.minecraftforge.fml.network.PacketDistributor;
 import net.minecraftforge.fml.network.simple.SimpleChannel;
+
+import java.util.function.Function;
 
 public class NetworkHandler
 {
@@ -21,7 +26,8 @@ public class NetworkHandler
         INSTANCE.registerMessage(index++, FartJumpPacket.class, FartJumpPacket::encode, FartJumpPacket::new, FartJumpPacket::handle);
         INSTANCE.registerMessage(index++, WallJumpPacket.class, WallJumpPacket::encode, WallJumpPacket::new, WallJumpPacket::handle);
         INSTANCE.registerMessage(index++, RocketJumpPacket.class, RocketJumpPacket::encode, RocketJumpPacket::new, RocketJumpPacket::handle);
+        INSTANCE.registerMessage(index++, CarpetJumpPacket.class, CarpetJumpPacket::encode, CarpetJumpPacket::decode, CarpetJumpPacket::handle);
         INSTANCE.registerMessage(index++, TabiDashPacket.class, TabiDashPacket::encode, TabiDashPacket::new, TabiDashPacket::handle);
-//        INSTANCE.registerMessage(index++, CorruptBiomePacket.class, CorruptBiomePacket::encode, CorruptBiomePacket::decode, CorruptBiomePacket::handle);
+        INSTANCE.registerMessage(index++, ChangeBiomePacket.class, ChangeBiomePacket::encode, ChangeBiomePacket::decode, ChangeBiomePacket::handle);
     }
 }

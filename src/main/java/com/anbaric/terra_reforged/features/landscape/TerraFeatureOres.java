@@ -55,7 +55,7 @@ public class TerraFeatureOres extends Feature<OreFeatureConfig>
     {
         AtomicInteger altarsBroken = new AtomicInteger();
         Block         inputBlock   = config.state.getBlock();
-        reader.getWorld().getCapability(TerraCapabilityWorldProgression.WORLD_PROGRESSION_CAPABILITY).ifPresent(cap -> altarsBroken.set(cap.getAltarsBroken()));
+        reader.getWorld().getCapability(TerraCapabilityWorldProgression.WORLD_PROGRESSION).ifPresent(cap -> altarsBroken.set(cap.getAltarsBroken()));
 
         int newSize = isAltarOre(inputBlock) ? Math.min((int) (altarsBroken.get() * getDebuff(inputBlock)), config.size) : config.size;
         float  f        = rand.nextFloat() * (float) Math.PI;

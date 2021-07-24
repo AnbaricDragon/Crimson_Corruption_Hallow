@@ -6,6 +6,8 @@ import com.anbaric.terra_reforged.util.TerraItemGroups;
 import com.anbaric.terra_reforged.util.handlers.MaterialHandler;
 import net.minecraft.inventory.EquipmentSlotType;
 import net.minecraft.item.*;
+import net.minecraft.potion.Effect;
+import net.minecraft.potion.Effects;
 import net.minecraftforge.fml.RegistryObject;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
@@ -15,28 +17,27 @@ public final class TerraItemRegistry
     public static final DeferredRegister<Item> ITEMS = DeferredRegister.create(ForgeRegistries.ITEMS, Reference.MODID);
 
     //Blocks
-    public static final RegistryObject<Item> TORCH_GEM_RED = ITEMS.register("torch_gem_red", () -> new WallOrFloorItem(TerraBlockRegistry.TORCH_GEM_RED.get(), TerraBlockRegistry.TORCH_GEM_RED_WALL.get(), new Item.Properties().group(TerraItemGroups.TERRA_DECORATIONS_TAB)));
-    public static final RegistryObject<Item> TORCH_GEM_ORANGE = ITEMS.register("torch_gem_orange", () -> new WallOrFloorItem(TerraBlockRegistry.TORCH_GEM_ORANGE.get(), TerraBlockRegistry.TORCH_GEM_ORANGE_WALL.get(), new Item.Properties().group(TerraItemGroups.TERRA_DECORATIONS_TAB)));
-    public static final RegistryObject<Item> TORCH_GEM_YELLOW = ITEMS.register("torch_gem_yellow", () -> new WallOrFloorItem(TerraBlockRegistry.TORCH_GEM_YELLOW.get(), TerraBlockRegistry.TORCH_GEM_YELLOW_WALL.get(), new Item.Properties().group(TerraItemGroups.TERRA_DECORATIONS_TAB)));
-    public static final RegistryObject<Item> TORCH_GEM_GREEN = ITEMS.register("torch_gem_green", () -> new WallOrFloorItem(TerraBlockRegistry.TORCH_GEM_GREEN.get(), TerraBlockRegistry.TORCH_GEM_GREEN_WALL.get(), new Item.Properties().group(TerraItemGroups.TERRA_DECORATIONS_TAB)));
-    public static final RegistryObject<Item> TORCH_GEM_BLUE = ITEMS.register("torch_gem_blue", () -> new WallOrFloorItem(TerraBlockRegistry.TORCH_GEM_BLUE.get(), TerraBlockRegistry.TORCH_GEM_BLUE_WALL.get(), new Item.Properties().group(TerraItemGroups.TERRA_DECORATIONS_TAB)));
-    public static final RegistryObject<Item> TORCH_GEM_PURPLE = ITEMS.register("torch_gem_purple", () -> new WallOrFloorItem(TerraBlockRegistry.TORCH_GEM_PURPLE.get(), TerraBlockRegistry.TORCH_GEM_PURPLE_WALL.get(), new Item.Properties().group(TerraItemGroups.TERRA_DECORATIONS_TAB)));
-    public static final RegistryObject<Item> TORCH_GEM_WHITE = ITEMS.register("torch_gem_white", () -> new WallOrFloorItem(TerraBlockRegistry.TORCH_GEM_WHITE.get(), TerraBlockRegistry.TORCH_GEM_WHITE_WALL.get(), new Item.Properties().group(TerraItemGroups.TERRA_DECORATIONS_TAB)));
-    public static final RegistryObject<Item> TORCH_RAINBOW = ITEMS.register("torch_rainbow", () -> new WallOrFloorItem(TerraBlockRegistry.TORCH_RAINBOW.get(), TerraBlockRegistry.TORCH_RAINBOW_WALL.get(), new Item.Properties().group(TerraItemGroups.TERRA_DECORATIONS_TAB)));
-    public static final RegistryObject<Item> TORCH_ICE = ITEMS.register("torch_ice", () -> new WallOrFloorItem(TerraBlockRegistry.TORCH_ICE.get(), TerraBlockRegistry.TORCH_ICE_WALL.get(), new Item.Properties().group(TerraItemGroups.TERRA_DECORATIONS_TAB)));
-    public static final RegistryObject<Item> TORCH_PINK = ITEMS.register("torch_pink", () -> new WallOrFloorItem(TerraBlockRegistry.TORCH_PINK.get(), TerraBlockRegistry.TORCH_PINK_WALL.get(), new Item.Properties().group(TerraItemGroups.TERRA_DECORATIONS_TAB)));
     public static final RegistryObject<Item> TORCH_BONE = ITEMS.register("torch_bone", () -> new WallOrFloorItem(TerraBlockRegistry.TORCH_BONE.get(), TerraBlockRegistry.TORCH_BONE_WALL.get(), new Item.Properties().group(TerraItemGroups.TERRA_DECORATIONS_TAB)));
     public static final RegistryObject<Item> TORCH_BRIGHT = ITEMS.register("torch_bright", () -> new WallOrFloorItem(TerraBlockRegistry.TORCH_BRIGHT.get(), TerraBlockRegistry.TORCH_BRIGHT_WALL.get(), new Item.Properties().group(TerraItemGroups.TERRA_DECORATIONS_TAB)));
-    public static final RegistryObject<Item> TORCH_DEMON = ITEMS.register("torch_demon", () -> new WallOrFloorItem(TerraBlockRegistry.TORCH_DEMON.get(), TerraBlockRegistry.TORCH_DEMON_WALL.get(), new Item.Properties().group(TerraItemGroups.TERRA_DECORATIONS_TAB)));
-    public static final RegistryObject<Item> TORCH_CURSED = ITEMS.register("torch_cursed", () -> new WallOrFloorItem(TerraBlockRegistry.TORCH_CURSED.get(), TerraBlockRegistry.TORCH_CURSED_WALL.get(), new Item.Properties().group(TerraItemGroups.TERRA_DECORATIONS_TAB)));
-    public static final RegistryObject<Item> TORCH_ICHOR = ITEMS.register("torch_ichor", () -> new WallOrFloorItem(TerraBlockRegistry.TORCH_ICHOR.get(), TerraBlockRegistry.TORCH_ICHOR_WALL.get(), new Item.Properties().group(TerraItemGroups.TERRA_DECORATIONS_TAB)));
-    public static final RegistryObject<Item> TORCH_DESERT = ITEMS.register("torch_desert", () -> new WallOrFloorItem(TerraBlockRegistry.TORCH_DESERT.get(), TerraBlockRegistry.TORCH_DESERT_WALL.get(), new Item.Properties().group(TerraItemGroups.TERRA_DECORATIONS_TAB)));
     public static final RegistryObject<Item> TORCH_CORAL = ITEMS.register("torch_coral", () -> new WallOrFloorItem(TerraBlockRegistry.TORCH_CORAL.get(), TerraBlockRegistry.TORCH_CORAL_WALL.get(), new Item.Properties().group(TerraItemGroups.TERRA_DECORATIONS_TAB)));
     public static final RegistryObject<Item> TORCH_CORRUPT = ITEMS.register("torch_corrupt", () -> new WallOrFloorItem(TerraBlockRegistry.TORCH_CORRUPT.get(), TerraBlockRegistry.TORCH_CORRUPT_WALL.get(), new Item.Properties().group(TerraItemGroups.TERRA_DECORATIONS_TAB)));
     public static final RegistryObject<Item> TORCH_CRIMSON = ITEMS.register("torch_crimson", () -> new WallOrFloorItem(TerraBlockRegistry.TORCH_CRIMSON.get(), TerraBlockRegistry.TORCH_CRIMSON_WALL.get(), new Item.Properties().group(TerraItemGroups.TERRA_DECORATIONS_TAB)));
+    public static final RegistryObject<Item> TORCH_CURSED = ITEMS.register("torch_cursed", () -> new WallOrFloorItem(TerraBlockRegistry.TORCH_CURSED.get(), TerraBlockRegistry.TORCH_CURSED_WALL.get(), new Item.Properties().group(TerraItemGroups.TERRA_DECORATIONS_TAB)));
+    public static final RegistryObject<Item> TORCH_DEMON = ITEMS.register("torch_demon", () -> new WallOrFloorItem(TerraBlockRegistry.TORCH_DEMON.get(), TerraBlockRegistry.TORCH_DEMON_WALL.get(), new Item.Properties().group(TerraItemGroups.TERRA_DECORATIONS_TAB)));
+    public static final RegistryObject<Item> TORCH_DESERT = ITEMS.register("torch_desert", () -> new WallOrFloorItem(TerraBlockRegistry.TORCH_DESERT.get(), TerraBlockRegistry.TORCH_DESERT_WALL.get(), new Item.Properties().group(TerraItemGroups.TERRA_DECORATIONS_TAB)));
+    public static final RegistryObject<Item> TORCH_GEM_BLUE = ITEMS.register("torch_gem_blue", () -> new WallOrFloorItem(TerraBlockRegistry.TORCH_GEM_BLUE.get(), TerraBlockRegistry.TORCH_GEM_BLUE_WALL.get(), new Item.Properties().group(TerraItemGroups.TERRA_DECORATIONS_TAB)));
+    public static final RegistryObject<Item> TORCH_GEM_GREEN = ITEMS.register("torch_gem_green", () -> new WallOrFloorItem(TerraBlockRegistry.TORCH_GEM_GREEN.get(), TerraBlockRegistry.TORCH_GEM_GREEN_WALL.get(), new Item.Properties().group(TerraItemGroups.TERRA_DECORATIONS_TAB)));
+    public static final RegistryObject<Item> TORCH_GEM_ORANGE = ITEMS.register("torch_gem_orange", () -> new WallOrFloorItem(TerraBlockRegistry.TORCH_GEM_ORANGE.get(), TerraBlockRegistry.TORCH_GEM_ORANGE_WALL.get(), new Item.Properties().group(TerraItemGroups.TERRA_DECORATIONS_TAB)));
+    public static final RegistryObject<Item> TORCH_GEM_PURPLE = ITEMS.register("torch_gem_purple", () -> new WallOrFloorItem(TerraBlockRegistry.TORCH_GEM_PURPLE.get(), TerraBlockRegistry.TORCH_GEM_PURPLE_WALL.get(), new Item.Properties().group(TerraItemGroups.TERRA_DECORATIONS_TAB)));
+    public static final RegistryObject<Item> TORCH_GEM_RED = ITEMS.register("torch_gem_red", () -> new WallOrFloorItem(TerraBlockRegistry.TORCH_GEM_RED.get(), TerraBlockRegistry.TORCH_GEM_RED_WALL.get(), new Item.Properties().group(TerraItemGroups.TERRA_DECORATIONS_TAB)));
+    public static final RegistryObject<Item> TORCH_GEM_WHITE = ITEMS.register("torch_gem_white", () -> new WallOrFloorItem(TerraBlockRegistry.TORCH_GEM_WHITE.get(), TerraBlockRegistry.TORCH_GEM_WHITE_WALL.get(), new Item.Properties().group(TerraItemGroups.TERRA_DECORATIONS_TAB)));
+    public static final RegistryObject<Item> TORCH_GEM_YELLOW = ITEMS.register("torch_gem_yellow", () -> new WallOrFloorItem(TerraBlockRegistry.TORCH_GEM_YELLOW.get(), TerraBlockRegistry.TORCH_GEM_YELLOW_WALL.get(), new Item.Properties().group(TerraItemGroups.TERRA_DECORATIONS_TAB)));
     public static final RegistryObject<Item> TORCH_HALLOWED = ITEMS.register("torch_hallowed", () -> new WallOrFloorItem(TerraBlockRegistry.TORCH_HALLOWED.get(), TerraBlockRegistry.TORCH_HALLOWED_WALL.get(), new Item.Properties().group(TerraItemGroups.TERRA_DECORATIONS_TAB)));
+    public static final RegistryObject<Item> TORCH_ICE = ITEMS.register("torch_ice", () -> new WallOrFloorItem(TerraBlockRegistry.TORCH_ICE.get(), TerraBlockRegistry.TORCH_ICE_WALL.get(), new Item.Properties().group(TerraItemGroups.TERRA_DECORATIONS_TAB)));
+    public static final RegistryObject<Item> TORCH_ICHOR = ITEMS.register("torch_ichor", () -> new WallOrFloorItem(TerraBlockRegistry.TORCH_ICHOR.get(), TerraBlockRegistry.TORCH_ICHOR_WALL.get(), new Item.Properties().group(TerraItemGroups.TERRA_DECORATIONS_TAB)));
     public static final RegistryObject<Item> TORCH_JUNGLE = ITEMS.register("torch_jungle", () -> new WallOrFloorItem(TerraBlockRegistry.TORCH_JUNGLE.get(), TerraBlockRegistry.TORCH_JUNGLE_WALL.get(), new Item.Properties().group(TerraItemGroups.TERRA_DECORATIONS_TAB)));
-
+    public static final RegistryObject<Item> TORCH_PINK = ITEMS.register("torch_pink", () -> new WallOrFloorItem(TerraBlockRegistry.TORCH_PINK.get(), TerraBlockRegistry.TORCH_PINK_WALL.get(), new Item.Properties().group(TerraItemGroups.TERRA_DECORATIONS_TAB)));
+    public static final RegistryObject<Item> TORCH_RAINBOW = ITEMS.register("torch_rainbow", () -> new WallOrFloorItem(TerraBlockRegistry.TORCH_RAINBOW.get(), TerraBlockRegistry.TORCH_RAINBOW_WALL.get(), new Item.Properties().group(TerraItemGroups.TERRA_DECORATIONS_TAB)));
     //Materials
     public static final RegistryObject<Item> INGOT_COPPER = ITEMS.register("ingot_copper", () -> new Item(new Item.Properties().group(TerraItemGroups.TERRA_MATERIALS_TAB)));
     public static final RegistryObject<Item> INGOT_TIN = ITEMS.register("ingot_tin", () -> new Item(new Item.Properties().group(TerraItemGroups.TERRA_MATERIALS_TAB)));
@@ -69,6 +70,7 @@ public final class TerraItemRegistry
     public static final RegistryObject<Item> PLANT_WATERLEAF = ITEMS.register("plant_waterleaf", () -> new Item(new Item.Properties().group(TerraItemGroups.TERRA_MATERIALS_TAB)));
 
     //Misc
+    public static final RegistryObject<Item> MANA_CRYSTAL = ITEMS.register("mana_crystal", () -> new TerraItemManaCrystal(new Item.Properties().group(TerraItemGroups.TERRA_TOOLS_TAB)));
     public static final RegistryObject<Item> FRUIT_LIFEFRUIT = ITEMS.register("fruit_lifefruit", () -> new Item(new Item.Properties().group(TerraItemGroups.TERRA_TOOLS_TAB)));
     public static final RegistryObject<Item> SEED_BLINKROOT = ITEMS.register("seed_blinkroot", () -> new BlockNamedItem(TerraBlockRegistry.PLANT_BLINKROOT.get(), new Item.Properties().group(TerraItemGroups.TERRA_DECORATIONS_TAB)));
     public static final RegistryObject<Item> SEED_DAYBLOOM = ITEMS.register("seed_daybloom", () -> new BlockNamedItem(TerraBlockRegistry.PLANT_DAYBLOOM.get(), new Item.Properties().group(TerraItemGroups.TERRA_DECORATIONS_TAB)));
@@ -95,6 +97,7 @@ public final class TerraItemRegistry
     public static final RegistryObject<Item> BALLOON_RED = ITEMS.register("balloon_red", () -> new TerraItemBalloon());
     public static final RegistryObject<Item> BALLOON_SANDSTORM = ITEMS.register("balloon_sandstorm", () -> new TerraItemExtraJumpBalloon());
     public static final RegistryObject<Item> BALLOON_SHARK = ITEMS.register("balloon_shark", () -> new TerraItemExtraJumpBalloon());
+    public static final RegistryObject<Item> BELT_BLACK = ITEMS.register("belt_black", () -> new TerraItemBlackBelt());
     public static final RegistryObject<Item> BOOTS_AMPHIBIAN = ITEMS.register("boots_amphibian", () -> new TerraItemBootsAmphibian());
     public static final RegistryObject<Item> BOOTS_DUNERIDER = ITEMS.register("boots_dunerider", () -> new TerraItemBootsDunerider());
     public static final RegistryObject<Item> BOOTS_FAIRY = ITEMS.register("boots_fairy", () -> new TerraItemBootsFairy());
@@ -119,6 +122,18 @@ public final class TerraItemRegistry
     public static final RegistryObject<Item> BOTTLE_TSUNAMI = ITEMS.register("bottle_tsunami", () -> new TerraItemBottle());
     public static final RegistryObject<Item> CHARM_LAVA = ITEMS.register("charm_lava", () -> new TerraItemLavaCharm());
     public static final RegistryObject<Item> CHARM_MOLTEN = ITEMS.register("charm_molten", () -> new TerraItemMoltenCharm());
+    public static final RegistryObject<Item> CLIMBING_CLAWS = ITEMS.register("climbing_claws", () -> new TerraItemClimbingGripper());
+    public static final RegistryObject<Item> CLIMBING_GEAR = ITEMS.register("climbing_gear", () -> new TerraItemClimbingGear());
+    public static final RegistryObject<Item> CLIMBING_SPIKES = ITEMS.register("climbing_spikes", () -> new TerraItemClimbingGripper());
+    public static final RegistryObject<Item> FLIPPER = ITEMS.register("flipper", () -> new TerraItemFlipper());
+    public static final RegistryObject<Item> FLYING_CARPET = ITEMS.register("flying_carpet", () -> new TerraItemFlyingCarpet());
+    public static final RegistryObject<Item> FROG_FLIPPER = ITEMS.register("frog_flipper", () -> new TerraItemFrogFlipper());
+    public static final RegistryObject<Item> FROG_GEAR = ITEMS.register("frog_gear", () -> new TerraItemFrogGear());
+    public static final RegistryObject<Item> FROG_WEBBING = ITEMS.register("frog_webbing", () -> new TerraItemFrogWebbing());
+    public static final RegistryObject<Item> GEAR_DIVING = ITEMS.register("gear_diving", () -> new TerraItemDivingGear());
+    public static final RegistryObject<Item> GEAR_DIVING_ARCTIC = ITEMS.register("gear_diving_arctic", () -> new TerraItemDivingGearArctic());
+    public static final RegistryObject<Item> GEAR_DIVING_JELLYFISH = ITEMS.register("gear_diving_jellyfish", () -> new TerraItemDivingGearJellyfish());
+    public static final RegistryObject<Item> GEAR_NINJA = ITEMS.register("gear_ninja", () -> new TerraItemNinjaGear());
     public static final RegistryObject<Item> HONEYCOMB = ITEMS.register("honeycomb", () -> new TerraItemHoneycomb());
     public static final RegistryObject<Item> HORSESHOE_BALLOON_BLIZZARD = ITEMS.register("horseshoe_balloon_blizzard", () -> new TerraItemHorseshoeBalloon());
     public static final RegistryObject<Item> HORSESHOE_BALLOON_CLOUD = ITEMS.register("horseshoe_balloon_cloud", () -> new TerraItemHorseshoeBalloon());
@@ -130,32 +145,34 @@ public final class TerraItemRegistry
     public static final RegistryObject<Item> HORSESHOE_OBSIDIAN = ITEMS.register("horseshoe_obsidian", () -> new TerraItemObsidianHorseshoe());
     public static final RegistryObject<Item> LEG_FROG = ITEMS.register("leg_frog", () -> new TerraItemFrogLeg());
     public static final RegistryObject<Item> NECKLACE_CROSS = ITEMS.register("necklace_cross", () -> new TerraItemCrossNecklace());
+    public static final RegistryObject<Item> NECKLACE_JELLYFISH = ITEMS.register("necklace_jellyfish", () -> new TerraItemJellyfishNecklace());
     public static final RegistryObject<Item> NECKLACE_PANIC = ITEMS.register("necklace_panic", () -> new TerraItemPanicNecklace());
     public static final RegistryObject<Item> NECKLACE_SHARKTOOTH = ITEMS.register("necklace_sharktooth", () -> new TerraItemSharktoothNecklace());
     public static final RegistryObject<Item> NECKLACE_STARVEIL = ITEMS.register("necklace_starveil", () -> new TerraItemStarveil());
     public static final RegistryObject<Item> NECKLACE_STINGER = ITEMS.register("necklace_stinger", () -> new TerraItemStingerNecklace());
     public static final RegistryObject<Item> NECKLACE_SWEETHEART = ITEMS.register("necklace_sweetheart", () -> new TerraItemSweetheartNecklace());
+    public static final RegistryObject<Item> NINJA_TABI = ITEMS.register("ninja_tabi", () -> new TerraItemNinjaTabi());
     public static final RegistryObject<Item> ROSE_OBSIDIAN = ITEMS.register("rose_obsidian", () -> new TerraItemObsidianRose());
-    public static final RegistryObject<Item> STONE_MAGMA = ITEMS.register("stone_magma", () -> new TerraItemMagmaStone());
-    public static final RegistryObject<Item> SKULL_OBSIDIAN = ITEMS.register("skull_obsidian", () -> new TerraItemObsidianSkull());
-    public static final RegistryObject<Item> SKULL_ROSE = ITEMS.register("skull_rose", () -> new TerraItemObsidianSkullRose());
     public static final RegistryObject<Item> SKULL_MAGMA = ITEMS.register("skull_magma", () -> new TerraItemMagmaSkull());
     public static final RegistryObject<Item> SKULL_MOLTEN = ITEMS.register("skull_molten", () -> new TerraItemMoltenSkull());
-    public static final RegistryObject<Item> NINJA_TABI = ITEMS.register("ninja_tabi", () -> new TerraItemNinjaTabi());
-    public static final RegistryObject<Item> FLIPPER = ITEMS.register("flipper", () -> new TerraItemFlipper());
-    public static final RegistryObject<Item> FROG_FLIPPER = ITEMS.register("frog_flipper", () -> new TerraItemFrogFlipper());
-    public static final RegistryObject<Item> FROG_GEAR = ITEMS.register("frog_gear", () -> new TerraItemFrogGear());
-    public static final RegistryObject<Item> FROG_WEBBING = ITEMS.register("frog_webbing", () -> new TerraItemFrogWebbing());
-    public static final RegistryObject<Item> GEAR_DIVING_ARCTIC = ITEMS.register("gear_diving_arctic", () -> new TerraItemDivingGearArctic());
-    public static final RegistryObject<Item> GEAR_DIVING_JELLYFISH = ITEMS.register("gear_diving_jellyfish", () -> new TerraItemDivingGearJellyfish());
-    public static final RegistryObject<Item> GEAR_DIVING = ITEMS.register("gear_diving", () -> new TerraItemDivingGear());
-    public static final RegistryObject<Item> NECKLACE_JELLYFISH = ITEMS.register("necklace_jellyfish", () -> new TerraItemJellyfishNecklace());
-    public static final RegistryObject<Item> CLIMBING_CLAWS = ITEMS.register("climbing_claws", () -> new TerraItemClimbingGripper());
-    public static final RegistryObject<Item> CLIMBING_SPIKES = ITEMS.register("climbing_spikes", () -> new TerraItemClimbingGripper());
-    public static final RegistryObject<Item> CLIMBING_GEAR = ITEMS.register("climbing_gear", () -> new TerraItemClimbingGear());
-    public static final RegistryObject<Item> BELT_BLACK = ITEMS.register("belt_black", () -> new TerraItemBlackBelt());
-    public static final RegistryObject<Item> GEAR_NINJA = ITEMS.register("gear_ninja", () -> new TerraItemNinjaGear());
+    public static final RegistryObject<Item> SKULL_OBSIDIAN = ITEMS.register("skull_obsidian", () -> new TerraItemObsidianSkull());
+    public static final RegistryObject<Item> SKULL_ROSE = ITEMS.register("skull_rose", () -> new TerraItemObsidianSkullRose());
+    public static final RegistryObject<Item> STONE_MAGMA = ITEMS.register("stone_magma", () -> new TerraItemMagmaStone());
 
+    public static final RegistryObject<Item> VITAMINS = ITEMS.register("vitamins", () -> new TerraItemVitamins());
+    public static final RegistryObject<Item> BANDAGE = ITEMS.register("bandage", () -> new TerraItemBandage());
+    public static final RegistryObject<Item> NAZAR = ITEMS.register("nazar", () -> new TerraItemNazar());
+    public static final RegistryObject<Item> TRIFOLD_MAP = ITEMS.register("trifold_map", () -> new TerraItemTrifoldMap());
+    public static final RegistryObject<Item> ARMOR_POLISH = ITEMS.register("armor_polish", () -> new TerraItemArmorPolish());
+    public static final RegistryObject<Item> BEZOAR = ITEMS.register("bezoar", () -> new TerraItemBezoar());
+    public static final RegistryObject<Item> MEGAPHONE = ITEMS.register("megaphone", () -> new TerraItemMegaphone());
+    public static final RegistryObject<Item> FAST_CLOCK = ITEMS.register("fast_clock", () -> new TerraItemFastClock());
+    public static final RegistryObject<Item> BLINDFOLD = ITEMS.register("blindfold", () -> new TerraItemBlindfold());
+    public static final RegistryObject<Item> ARMOR_BRACING = ITEMS.register("armor_bracing", () -> new TerraItemArmorBracing());
+    public static final RegistryObject<Item> MEDICATED_BANDAGE = ITEMS.register("medicated_bandage", () -> new TerraItemMedicatedBandage());
+    public static final RegistryObject<Item> COUNTERCURSE_MANTRA = ITEMS.register("countercurse_mantra", () -> new TerraItemCountercurseMantra());
+    public static final RegistryObject<Item> THE_PLAN = ITEMS.register("the_plan", () -> new TerraItemPlan());
+    public static final RegistryObject<Item> ANKH_CHARM = ITEMS.register("ankh_charm", () -> new TerraItemAnkhCharm());
 
 
     //Pickaxes

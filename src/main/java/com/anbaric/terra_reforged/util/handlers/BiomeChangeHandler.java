@@ -1,8 +1,10 @@
 package com.anbaric.terra_reforged.util.handlers;
 
 import com.anbaric.terra_reforged.TerraReforged;
+import com.anbaric.terra_reforged.util.packets.ChangeBiomePacket;
 import net.minecraft.util.FastRandom;
 import net.minecraft.util.RegistryKey;
+import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.util.registry.MutableRegistry;
@@ -11,28 +13,27 @@ import net.minecraft.world.World;
 import net.minecraft.world.biome.Biome;
 import net.minecraft.world.biome.BiomeContainer;
 import net.minecraft.world.chunk.IChunk;
+import net.minecraftforge.fml.network.PacketDistributor;
 
 import java.util.Optional;
 
 public class BiomeChangeHandler
 {
-    public static void setBiome(World world, BlockPos pos, RegistryKey<Biome> biomeKey)
+    public static void setBiomeAtPos(World world, BlockPos pos, ResourceLocation biome)
     {
-        System.out.println("Preworked biome check --- " + world.getBiome(pos).getRegistryName());
-        Optional<MutableRegistry<Biome>> biomeRegistry = world.func_241828_r().func_230521_a_(Registry.BIOME_KEY);
-        if (!biomeRegistry.isPresent())
-        {
-            return;
-        }
+        if (world.isRemote()) { return; }
+        RegistryKey<net.minecraft.world.biome.Biome> biomeKey = RegistryKey.getOrCreateKey(Registry.BIOME_KEY, biome);
+        setBiomeKeyAtPos(world, pos, biomeKey);
+        NetworkHandler.INSTANCE.send(PacketDistributor.ALL.noArg(), new ChangeBiomePacket(pos, biome));
+    }
+
+    public static void setBiomeKeyAtPos(World world, BlockPos pos, RegistryKey<Biome> biomeKey)
+    {
+        Optional<MutableRegistry<net.minecraft.world.biome.Biome>> biomeRegistry = world.func_241828_r().func_230521_a_(Registry.BIOME_KEY);
+        if (!biomeRegistry.isPresent()) { return; }
         Biome biome = biomeRegistry.get().getValueForKey(biomeKey);
-        if (biome == null)
-        {
-            return;
-        }
-        else
-        {
-            System.out.println("Biome to be placed is " + biome.getRegistryName());
-        }
+        if (biome == null) { return; }
+
         BiomeContainer biomeCollection = world.getChunk(pos).getBiomes();
         IChunk chunk = world.getChunk(pos);
         if (biomeCollection != null && biomeCollection.biomes != null)
@@ -41,56 +42,51 @@ public class BiomeChangeHandler
             int     biomeIndex = getBiomeIndex(pos.getX(), pos.getY(), pos.getZ(), 0L);
             if (biomeIndex < biomeArray.length)
             {
-                System.out.println("BiomeArray is first " + biomeArray[biomeIndex].getRegistryName());
+                System.out.println("Before changing Biome in Worldside: " + (world.isRemote ? "Client" : "Server") + ", biomeArray is: " + biomeArray[biomeIndex].getRegistryName());
                 //TODO Figure out why this isn't saving the biome
                 biomeArray[biomeIndex] = biome;
-                System.out.println("BiomeArray is now " + biomeArray[biomeIndex].getRegistryName());
+                System.out.println("After changing Biome in Worldside: " + (world.isRemote ? "Client" : "Server") + ", biomeArray is: " + biomeArray[biomeIndex].getRegistryName());
             }
             else
             {
-                TerraReforged.LOGGER.error(String.format("Failed to set biome at pos: %s; to biome: %s", pos, biome));
+                TerraReforged.LOGGER.error(String.format("Failed to set the biome at pos: %s; to: %s", pos, biome));
             }
         }
         chunk.setModified(true);
-        System.out.println("Postworked biome check --- " + world.getBiome(pos).getRegistryName());
     }
 
     private static final int WIDTH_BITS = (int) Math.round(Math.log(16.0D) / Math.log(2.0D)) - 2;
 
-    public static int getBiomeIndex(int x, int y, int z, long seed)
-    {
-        int      i       = x - 2;
-        int      j       = y - 2;
-        int      k       = z - 2;
-        int      l       = i >> 2;
-        int      i1      = j >> 2;
-        int      j1      = k >> 2;
-        double   d0      = (double) (i & 3) / 4.0D;
-        double   d1      = (double) (j & 3) / 4.0D;
-        double   d2      = (double) (k & 3) / 4.0D;
+    private static int getBiomeIndex(int x, int y, int z, long seed) {
+        int i = x - 2;
+        int j = y - 2;
+        int k = z - 2;
+        int l = i >> 2;
+        int i1 = j >> 2;
+        int j1 = k >> 2;
+        double d0 = (double) (i & 3) / 4.0D;
+        double d1 = (double) (j & 3) / 4.0D;
+        double d2 = (double) (k & 3) / 4.0D;
         double[] adouble = new double[8];
 
-        for (int k1 = 0; k1 < 8; ++k1)
-        {
-            boolean flag  = (k1 & 4) == 0;
+        for (int k1 = 0; k1 < 8; ++k1) {
+            boolean flag = (k1 & 4) == 0;
             boolean flag1 = (k1 & 2) == 0;
             boolean flag2 = (k1 & 1) == 0;
-            int     l1    = flag ? l : l + 1;
-            int     i2    = flag1 ? i1 : i1 + 1;
-            int     j2    = flag2 ? j1 : j1 + 1;
-            double  d3    = flag ? d0 : d0 - 1.0D;
-            double  d4    = flag1 ? d1 : d1 - 1.0D;
-            double  d5    = flag2 ? d2 : d2 - 1.0D;
+            int l1 = flag ? l : l + 1;
+            int i2 = flag1 ? i1 : i1 + 1;
+            int j2 = flag2 ? j1 : j1 + 1;
+            double d3 = flag ? d0 : d0 - 1.0D;
+            double d4 = flag1 ? d1 : d1 - 1.0D;
+            double d5 = flag2 ? d2 : d2 - 1.0D;
             adouble[k1] = distanceToCorner(seed, l1, i2, j2, d3, d4, d5);
         }
 
-        int    k2 = 0;
+        int k2 = 0;
         double d6 = adouble[0];
 
-        for (int l2 = 1; l2 < 8; ++l2)
-        {
-            if (d6 > adouble[l2])
-            {
+        for (int l2 = 1; l2 < 8; ++l2) {
+            if (d6 > adouble[l2]) {
                 k2 = l2;
                 d6 = adouble[l2];
             }

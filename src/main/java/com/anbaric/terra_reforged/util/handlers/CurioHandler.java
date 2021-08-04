@@ -27,7 +27,6 @@ import java.util.concurrent.atomic.AtomicBoolean;
 public class CurioHandler
 {
 
-
     public static void register()
     {
         CapabilityManager.INSTANCE.register(ICurio.class, new Capability.IStorage<ICurio>()

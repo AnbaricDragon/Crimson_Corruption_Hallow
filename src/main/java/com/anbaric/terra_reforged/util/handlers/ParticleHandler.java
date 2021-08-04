@@ -18,7 +18,7 @@ public class ParticleHandler
     @SubscribeEvent(priority = EventPriority.LOWEST)
     public static void registerParticles(ParticleFactoryRegisterEvent event)
     {
-        Minecraft.getInstance().particles.registerFactory(TerraParticleRegistry.SPORE_MUSHROOM.get(), SuspendedTownParticle.Factory::new);
+        Minecraft.getInstance().particles.registerFactory(TerraParticleRegistry.MUSHROOM_SPORE_GLOWING.get(), SuspendedTownParticle.Factory::new);
 
         Minecraft.getInstance().particles.registerFactory(TerraParticleRegistry.TORCH_FLAME_RED.get(), FlameParticle.Factory::new);
         Minecraft.getInstance().particles.registerFactory(TerraParticleRegistry.TORCH_FLAME_ORANGE.get(), FlameParticle.Factory::new);

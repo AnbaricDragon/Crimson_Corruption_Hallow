@@ -45,4 +45,20 @@ public class TerraAbstractBlockMixin
         }
         return false;
     }
+
+    private static final VoxelShape[] liquidShape =
+    {
+        Block.makeCuboidShape(0, 0, 0, 16, 14.3, 16),
+        Block.makeCuboidShape(0, 0, 0, 16, 14.3, 16),
+        Block.makeCuboidShape(0, 0, 0, 16, 14.3, 16),
+        Block.makeCuboidShape(0, 0, 0, 16, 14.3, 16),
+        Block.makeCuboidShape(0, 0, 0, 16, 14.3, 16),
+        Block.makeCuboidShape(0, 0, 0, 16, 14.3, 16),
+        Block.makeCuboidShape(0, 0, 0, 16, 14.3, 16)
+    };
+
+    public VoxelShape getLiquidShape(int fluidLevel)
+    {
+        return liquidShape[fluidLevel];
+    }
 }

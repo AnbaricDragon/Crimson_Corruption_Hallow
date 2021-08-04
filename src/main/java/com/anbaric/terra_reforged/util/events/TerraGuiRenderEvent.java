@@ -112,7 +112,7 @@ public class TerraGuiRenderEvent
                 currentMana.set(cap.getCurrentMana());
             });
 
-            maxMana = player.getAttribute(TerraAttributeRegistry.MANA_MAX.get()).getValue();
+            maxMana = 200;//player.getAttribute(TerraAttributeRegistry.MANA_MAX.get()).getValue();
 
             double mana = currentMana.get();
             int storage = (int) (maxMana / 20);

@@ -72,9 +72,9 @@ repositories {
     maven { //Curios
         url = "https://maven.theillusivec4.top/"
     }
-    maven {
-        url = "https://maven.hypherionmc.me"
-    }
+//    maven {
+//        url = "https://maven.hypherionmc.me"
+//    }
     removeIf { it instanceof MavenArtifactRepository && it.url.host == 'files.minecraftforge.net' }
 }
 
@@ -87,8 +87,8 @@ dependencies {
     runtimeOnly fg.deobf("top.theillusivec4.curios:curios-forge:1.16.5-4.0.5.1")
     compileOnly fg.deobf("top.theillusivec4.curios:curios-forge:1.16.5-4.0.5.1:api")
 
-    implementation 'me.hypherionmc:RGBLib:1.0:api'
-    runtimeOnly    'me.hypherionmc:RGBLib:1.0'
+//    implementation 'me.hypherionmc:RGBLib:1.0:api'
+//    runtimeOnly    'me.hypherionmc:RGBLib:1.0'
 }
 
 // Example for how to get properties into the manifest for reading by the runtime..

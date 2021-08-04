@@ -5,9 +5,9 @@ import com.anbaric.terra_reforged.util.handlers.CurioHandler;
 import com.anbaric.terra_reforged.util.init.TerraEffectRegistry;
 import com.google.common.collect.LinkedHashMultimap;
 import com.google.common.collect.Multimap;
-import net.hypherionmc.hypcore.api.APIUtils;
-import net.hypherionmc.hypcore.api.ColoredLightManager;
-import net.hypherionmc.hypcore.api.Light;
+//import net.hypherionmc.hypcore.api.APIUtils;
+//import net.hypherionmc.hypcore.api.ColoredLightManager;
+//import net.hypherionmc.hypcore.api.Light;
 import net.minecraft.client.resources.I18n;
 import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.entity.Entity;
@@ -38,7 +38,7 @@ public class TerraItemDivingGearArctic extends TerraItemAccessory
         super();
         if (ModList.get().isLoaded("hypcore"))
         {
-            ColoredLightManager.registerProvider(this, this::shine);
+//            ColoredLightManager.registerProvider(this, this::shine);
         }
     }
 
@@ -103,15 +103,15 @@ public class TerraItemDivingGearArctic extends TerraItemAccessory
         });
     }
 
-    public Light shine(Entity entity, ItemStack stack)
-    {
-        PlayerEntity player = entity instanceof PlayerEntity ? (PlayerEntity) entity : null;
-        if (player == null) { return null; }
-
-        if (CurioHandler.hasBauble(player, this))
-        {
-            return (Light) Light.builder().pos(APIUtils.entityPos(entity)).color(0f, 0.85f, 1.0f, player.isInWater() ? 1.0F : 5.0F).radius(player.isInWater() ? 20 : 5).build();
-        }
-        else return null;
-    }
+//    public Light shine(Entity entity, ItemStack stack)
+//    {
+//        PlayerEntity player = entity instanceof PlayerEntity ? (PlayerEntity) entity : null;
+//        if (player == null) { return null; }
+//
+//        if (CurioHandler.hasBauble(player, this))
+//        {
+//            return (Light) Light.builder().pos(APIUtils.entityPos(entity)).color(0f, 0.85f, 1.0f, player.isInWater() ? 1.0F : 5.0F).radius(player.isInWater() ? 20 : 5).build();
+//        }
+//        else return null;
+//    }
 }

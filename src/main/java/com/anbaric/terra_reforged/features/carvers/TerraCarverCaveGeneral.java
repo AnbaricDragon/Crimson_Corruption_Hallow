@@ -22,19 +22,19 @@ public class TerraCarverCaveGeneral extends WorldCarver<ProbabilityConfig>
     }
 
     @Override
-    protected boolean isCarvable(BlockState target)
+    protected boolean canReplaceBlock(BlockState target)
     {
-        return target.getBlock().isIn(TerraTagRegistry.GENERAL_REPLACERS);
+        return target.getBlock().is(TerraTagRegistry.GENERAL_REPLACERS);
     }
 
-    public boolean shouldCarve(Random rand, int chunkX, int chunkZ, ProbabilityConfig config)
+    public boolean isStartChunk(Random rand, int chunkX, int chunkZ, ProbabilityConfig config)
     {
         return rand.nextFloat() <= config.probability;
     }
 
-    public boolean carveRegion(IChunk chunk, Function<BlockPos, Biome> biomePos, Random rand, int seaLevel, int chunkXOffset, int chunkZOffset, int chunkX, int chunkZ, BitSet carvingMask, ProbabilityConfig config)
+    public boolean carve(IChunk chunk, Function<BlockPos, Biome> biomePos, Random rand, int seaLevel, int chunkXOffset, int chunkZOffset, int chunkX, int chunkZ, BitSet carvingMask, ProbabilityConfig config)
     {
-        int i = (this.func_222704_c() * 2 - 1) * 16;
+        int i = (this.getRange() * 2 - 1) * 16;
         int j = rand.nextInt(rand.nextInt(rand.nextInt(this.getCaveBound()) + 1) + 1);
 
         for (int k = 0; k < j; ++k)
@@ -95,7 +95,7 @@ public class TerraCarverCaveGeneral extends WorldCarver<ProbabilityConfig>
     {
         double d0 = 1.5D + (double) (MathHelper.sin(((float) Math.PI / 2F)) * p_227205_14_);
         double d1 = d0 * p_227205_15_;
-        this.func_227208_a_(p_227205_1_, p_227205_2_, p_227205_3_, seaLevel, chunkX, chunkZ, randOffsetXCoord + 1.0D, startY, randOffsetZCoord, d0, d1, carvingMask);
+        this.carveSphere(p_227205_1_, p_227205_2_, p_227205_3_, seaLevel, chunkX, chunkZ, randOffsetXCoord + 1.0D, startY, randOffsetZCoord, d0, d1, carvingMask);
     }
 
     protected void genTunnel(IChunk chunk, Function<BlockPos, Biome> biomePos, long seed, int seaLevel, int chunkX, int chunkZ, double randOffsetXCoord, double startY, double randOffsetZCoord, float caveRadius, float pitch, float p_227206_16_, int p_227206_17_, int p_227206_18_, double p_227206_19_, BitSet p_227206_21_)
@@ -130,18 +130,18 @@ public class TerraCarverCaveGeneral extends WorldCarver<ProbabilityConfig>
 
             if (random.nextInt(4) != 0)
             {
-                if (!this.func_222702_a(chunkX, chunkZ, randOffsetXCoord, randOffsetZCoord, j, p_227206_18_, caveRadius))
+                if (!this.canReach(chunkX, chunkZ, randOffsetXCoord, randOffsetZCoord, j, p_227206_18_, caveRadius))
                 {
                     return;
                 }
 
-                this.func_227208_a_(chunk, biomePos, seed, seaLevel, chunkX, chunkZ, randOffsetXCoord, startY, randOffsetZCoord, d0, d1, p_227206_21_);
+                this.carveSphere(chunk, biomePos, seed, seaLevel, chunkX, chunkZ, randOffsetXCoord, startY, randOffsetZCoord, d0, d1, p_227206_21_);
             }
         }
 
     }
 
-    protected boolean func_222708_a(double p_222708_1_, double p_222708_3_, double p_222708_5_, int p_222708_7_)
+    protected boolean skip(double p_222708_1_, double p_222708_3_, double p_222708_5_, int p_222708_7_)
     {
         return p_222708_3_ <= -0.7D || p_222708_1_ * p_222708_1_ + p_222708_3_ * p_222708_3_ + p_222708_5_ * p_222708_5_ >= 1.0D;
     }

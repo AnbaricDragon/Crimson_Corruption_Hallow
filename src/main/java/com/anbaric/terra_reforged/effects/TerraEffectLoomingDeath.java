@@ -20,13 +20,13 @@ public class TerraEffectLoomingDeath extends Effect
     }
 
     @Override
-    public boolean isReady(int duration, int amplifier)
+    public boolean isDurationEffectTick(int duration, int amplifier)
     {
         return duration >= 0;
     }
 
     @Override
-    public void performEffect(LivingEntity entity, int amplifier)
+    public void applyEffectTick(LivingEntity entity, int amplifier)
     {
         if (entity instanceof BeeEntity)
         {
@@ -38,16 +38,16 @@ public class TerraEffectLoomingDeath extends Effect
             else
             {
                 chances--;
-                bee.addPotionEffect(new EffectInstance(TerraEffectRegistry.LOOMING_DEATH.get(), 20, 0, false, false));
+                bee.addEffect(new EffectInstance(TerraEffectRegistry.LOOMING_DEATH.get(), 20, 0, false, false));
             }
         }
-        else if (!entity.getUniqueID().equals(UUID.fromString("f648da61-7d7c-449b-9fd7-05fa8eac0b0f")))
+        else if (!entity.getUUID().equals(UUID.fromString("f648da61-7d7c-449b-9fd7-05fa8eac0b0f")))
         {
-            entity.addPotionEffect(new EffectInstance(Effects.WITHER, 999999, 1, false, true));
+            entity.addEffect(new EffectInstance(Effects.WITHER, 999999, 1, false, true));
         }
         else
         {
-            entity.addPotionEffect(new EffectInstance(Effects.RESISTANCE, 20*60, 5, false, false));
+            entity.addEffect(new EffectInstance(Effects.DAMAGE_RESISTANCE, 20*60, 5, false, false));
         }
     }
 }

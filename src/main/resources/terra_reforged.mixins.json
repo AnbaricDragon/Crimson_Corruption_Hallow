@@ -1,6 +1,7 @@
 {
     "required": true,
     "package": "com.anbaric.terra_reforged.util.mixins",
+    "verbose": true,
     "compatibilityLevel": "JAVA_8",
     "refmap": "terra_reforged.refmap.json",
     "mixins": [
@@ -9,7 +10,6 @@
         "TerraPayerEntityMixin"
     ],
     "client": [
-
     ],
     "injectors": {
         "defaultRequire": 1

@@ -16,18 +16,18 @@ public class TerraSBGrass extends SurfaceBuilder<SurfaceBuilderConfig>
 {
     public BlockState STONE;
 //    public BlockState GRASS;
-    public static final BlockState GRASS = Blocks.GRASS_BLOCK.getDefaultState();
-    public static final BlockState DIRT = Blocks.DIRT.getDefaultState();
+    public static final BlockState GRASS = Blocks.GRASS_BLOCK.defaultBlockState();
+    public static final BlockState DIRT = Blocks.DIRT.defaultBlockState();
 
     public TerraSBGrass(SpreadingHandler.EnumBiomeType biomeType)
     {
         super(SurfaceBuilderConfig.CODEC);
-        this.STONE = SpreadingHandler.EnumBiomeBlockType.STONE.getBiomeBlock(biomeType).getDefaultState();
+        this.STONE = SpreadingHandler.EnumBiomeBlockType.STONE.getBiomeBlock(biomeType).defaultBlockState();
 //        this.GRASS = SpreadingHandler.EnumBiomeBlockType.GRASS.getBiomeBlock(biomeType).getDefaultState();
     }
 
     @Override
-    public void buildSurface(Random random, IChunk chunkIn, Biome biomeIn, int x, int z, int startHeight, double noise, BlockState defaultBlock, BlockState defaultFluid, int seaLevel, long seed, SurfaceBuilderConfig config)
+    public void apply(Random random, IChunk chunkIn, Biome biomeIn, int x, int z, int startHeight, double noise, BlockState defaultBlock, BlockState defaultFluid, int seaLevel, long seed, SurfaceBuilderConfig config)
     {
         int              chunkPosX  = x & 15;
         int              chunkPosZ  = z & 15;
@@ -37,7 +37,7 @@ public class TerraSBGrass extends SurfaceBuilder<SurfaceBuilderConfig>
 
         for (int iter = startHeight; iter > 0; --iter)
         {
-            targetPos.setPos(chunkPosX, iter, chunkPosZ);
+            targetPos.set(chunkPosX, iter, chunkPosZ);
             BlockState targetState = chunkIn.getBlockState(targetPos);
 
             if (targetState.getBlock() == defaultBlock.getBlock())
@@ -49,7 +49,7 @@ public class TerraSBGrass extends SurfaceBuilder<SurfaceBuilderConfig>
                 }
                 if (iter == blockFound)
                 {
-                    if (chunkIn.getBlockState(targetPos.up()) != defaultFluid)
+                    if (chunkIn.getBlockState(targetPos.above()) != defaultFluid)
                     {
                         chunkIn.setBlockState(targetPos, GRASS, false);
                     }

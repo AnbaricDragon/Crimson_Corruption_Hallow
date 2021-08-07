@@ -19,11 +19,11 @@ public class BeeHandler
 {
     public static void spawnAngryBees(ServerWorld world, BlockPos pos, float distance)
     {
-        AxisAlignedBB targetBox = new AxisAlignedBB(pos.add(1, 1, 1), pos.add(-1,-1,-1)).grow(distance);
+        AxisAlignedBB targetBox = new AxisAlignedBB(pos.offset(1, 1, 1), pos.offset(-1,-1,-1)).inflate(distance);
 
-        Optional<LivingEntity> foundTarget = world.getEntitiesWithinAABB(LivingEntity.class, targetBox, BeeHandler::isValidBeeTarget).stream().reduce((entityA, entityB) -> world.rand.nextBoolean() ? entityB : entityA);
+        Optional<LivingEntity> foundTarget = world.getEntitiesOfClass(LivingEntity.class, targetBox, BeeHandler::isValidBeeTarget).stream().reduce((entityA, entityB) -> world.random.nextBoolean() ? entityB : entityA);
 
-        int bees = 1 + world.rand.nextInt(3);
+        int bees = 1 + world.random.nextInt(3);
 
         int maxTime = 600;
 
@@ -33,12 +33,12 @@ public class BeeHandler
             if (ent instanceof BeeEntity)
             {
                 BeeEntity bee = (BeeEntity) ent;
-                bee.setPosition(pos.getX(), pos.getY(), pos.getZ());
-                bee.addPotionEffect(new EffectInstance(Effects.SPEED, maxTime, 1, false, false));
-                bee.addPotionEffect(new EffectInstance(TerraEffectRegistry.LOOMING_DEATH.get(), maxTime, 0, false, false));
+                bee.setPos(pos.getX(), pos.getY(), pos.getZ());
+                bee.addEffect(new EffectInstance(Effects.MOVEMENT_SPEED, maxTime, 1, false, false));
+                bee.addEffect(new EffectInstance(TerraEffectRegistry.LOOMING_DEATH.get(), maxTime, 0, false, false));
                 foundTarget.ifPresent(target ->
                 { // make bee angry at target
-                    bee.setAttackTarget(target);
+                    bee.setTarget(target);
                     bee.targetSelector.addGoal(0, new BeeItemGoal(bee));
                 });
             }

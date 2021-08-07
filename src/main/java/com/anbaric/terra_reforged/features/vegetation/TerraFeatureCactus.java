@@ -23,16 +23,16 @@ public class TerraFeatureCactus extends Feature<NoFeatureConfig>
     }
 
     @Override
-    public boolean generate(ISeedReader world, ChunkGenerator generator, Random rand, BlockPos pos, NoFeatureConfig config)
+    public boolean place(ISeedReader world, ChunkGenerator generator, Random rand, BlockPos pos, NoFeatureConfig config)
     {
         pos = topBlock(world, pos);
 
-        if (world.getBlockState(pos.down()).getBlock().isIn(Tags.Blocks.SAND) )
+        if (world.getBlockState(pos.below()).getBlock().is(Tags.Blocks.SAND) )
         {
             int height = rand.nextInt(2) + 1;
             for (int i = 0; i < height; i++)
             {
-                world.setBlockState(pos.up(i), cactus.getDefaultState(), 4);
+                world.setBlock(pos.above(i), cactus.defaultBlockState(), 4);
             }
             return true;
         }
@@ -45,7 +45,7 @@ public class TerraFeatureCactus extends Feature<NoFeatureConfig>
 
         for (int i = 0; i <= 3; i++)
         {
-            if (world.getBlockState(pos.offset(Direction.byHorizontalIndex(i))).getBlock() != Blocks.AIR)
+            if (world.getBlockState(pos.relative(Direction.from2DDataValue(i))).getBlock() != Blocks.AIR)
             {
                 adjCheck = false;
             }
@@ -58,7 +58,7 @@ public class TerraFeatureCactus extends Feature<NoFeatureConfig>
         BlockPos targetPos = pos;
         while (!adjCheck(world, targetPos))
         {
-            targetPos = targetPos.up();
+            targetPos = targetPos.above();
         }
         return targetPos;
     }

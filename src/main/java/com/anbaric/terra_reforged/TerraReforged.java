@@ -37,7 +37,7 @@ public class TerraReforged
 
     public static PlantType BOREAL = PlantType.get("boreal");
     public static PlantType MUSHROOM = PlantType.get("mushroom");
-    public static DamageSource THORNS = new DamageSource("thorns").setDamageBypassesArmor();
+    public static DamageSource THORNS = new DamageSource("thorns").bypassArmor();
 
     public TerraReforged()
     {
@@ -57,6 +57,7 @@ public class TerraReforged
         TerraBlockRegistry.BLOCKS.register(modEventBus);
         TerraItemRegistry.ITEMS.register(modEventBus);
         TerraEffectRegistry.EFFECTS.register(modEventBus);
+        TerraAttributeRegistry.ATTRIBUTES.register(modEventBus);
         TerraEntityRegistry.ENTITIES.register(modEventBus);
         TerraTileEntityRegistry.TILE_ENTITIES.register(modEventBus);
         TerraFeatureRegistry.FEATURES.register(modEventBus);

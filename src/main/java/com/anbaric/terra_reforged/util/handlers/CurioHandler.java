@@ -101,7 +101,7 @@ public class CurioHandler
     public static boolean hasBauble(PlayerEntity player, ITag<Item> tag)
     {
         boolean foundItem = false;
-        for (Item curioItem : tag.getAllElements())
+        for (Item curioItem : tag.getValues())
         {
             if (hasBauble(player, curioItem))
             {

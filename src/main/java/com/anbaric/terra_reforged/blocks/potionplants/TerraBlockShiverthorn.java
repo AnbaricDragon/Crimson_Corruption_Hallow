@@ -33,15 +33,15 @@ public class TerraBlockShiverthorn extends TerraBlockPotionPlant
     @Override
     public void tick(BlockState state, ServerWorld worldIn, BlockPos pos, Random random)
     {
-        if (!worldIn.isRemote)
+        if (!worldIn.isClientSide)
         {
             if (!worldIn.isAreaLoaded(pos, 3))
             {
                 return; // Forge: prevent loading unloaded chunks when checking neighbor's light and spreading
             }
-            if (random.nextFloat() < 0.05F && state.get(AGE) != 2)
+            if (random.nextFloat() < 0.05F && state.getValue(AGE) != 2)
             {
-                worldIn.setBlockState(pos, state.with(AGE, state.get(AGE) + 1));
+                worldIn.setBlockAndUpdate(pos, state.setValue(AGE, state.getValue(AGE) + 1));
             }
         }
     }

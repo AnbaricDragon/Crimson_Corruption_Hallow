@@ -43,11 +43,11 @@ public class TerraItemBootsFlower extends TerraItemAccessory
     }
 
     @Override
-    public void addInformation(ItemStack stack, World worldIn, List<ITextComponent> tooltip, ITooltipFlag flagIn)
+    public void appendHoverText(ItemStack stack, World worldIn, List<ITextComponent> tooltip, ITooltipFlag flagIn)
     {
-        super.addInformation(stack, worldIn, tooltip, flagIn);
+        super.appendHoverText(stack, worldIn, tooltip, flagIn);
         tooltip.add(new StringTextComponent(""));
-        tooltip.add(new StringTextComponent("\u00A76" + I18n.format("curios.modifiers.charm") + "\u00A76"));
+        tooltip.add(new StringTextComponent("\u00A76" + I18n.get("curios.modifiers.charm") + "\u00A76"));
         tooltip.add(new StringTextComponent("\u00A79" + "Spawns Flowers On Grass"));
     }
 
@@ -60,19 +60,19 @@ public class TerraItemBootsFlower extends TerraItemAccessory
             {
                 PlayerEntity player = livingEntity instanceof PlayerEntity ? (PlayerEntity) livingEntity : null;
                 if (player == null) { return; }
-                World world = player.getEntityWorld();
+                World world = player.getCommandSenderWorld();
 
-                if (world.getBlockState(player.getPosition().down()).isIn(Tags.Blocks.DIRT) && world.getBlockState(player.getPosition()).isAir(world, player.getPosition()))
+                if (world.getBlockState(player.blockPosition().below()).is(Tags.Blocks.DIRT) && world.getBlockState(player.blockPosition()).isAir(world, player.blockPosition()))
                 {
                     Block flowers = BlockTags.FLOWERS.getRandomElement(world.getRandom());
-                    if (flowers.matchesBlock(Blocks.WITHER_ROSE))
+                    if (flowers.is(Blocks.WITHER_ROSE))
                     {
                         return;
                     }
-                    world.setBlockState(player.getPosition(), flowers.getDefaultState());
-                    if (flowers.isIn(BlockTags.TALL_FLOWERS))
+                    world.setBlockAndUpdate(player.blockPosition(), flowers.defaultBlockState());
+                    if (flowers.is(BlockTags.TALL_FLOWERS))
                     {
-                        world.setBlockState(player.getPosition().up(), flowers.getDefaultState().with(DoublePlantBlock.HALF, DoubleBlockHalf.UPPER));
+                        world.setBlockAndUpdate(player.blockPosition().above(), flowers.defaultBlockState().setValue(DoublePlantBlock.HALF, DoubleBlockHalf.UPPER));
                     }
                 }
             }
@@ -86,7 +86,7 @@ public class TerraItemBootsFlower extends TerraItemAccessory
             @Nonnull
             public SoundInfo getEquipSound(SlotContext slotContext)
             {
-                return new SoundInfo(SoundEvents.ITEM_ARMOR_EQUIP_GENERIC, 1.0F, 1.0F);
+                return new SoundInfo(SoundEvents.ARMOR_EQUIP_GENERIC, 1.0F, 1.0F);
             }
 
             public boolean canEquipFromUse(SlotContext slot)

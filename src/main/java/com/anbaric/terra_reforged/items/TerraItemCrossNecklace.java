@@ -31,6 +31,9 @@ import top.theillusivec4.curios.api.type.inventory.ICurioStacksHandler;
 import javax.annotation.Nonnull;
 import java.util.List;
 
+import top.theillusivec4.curios.api.type.capability.ICurio.DropRule;
+import top.theillusivec4.curios.api.type.capability.ICurio.SoundInfo;
+
 public class TerraItemCrossNecklace extends TerraItemAccessory
 {
     public TerraItemCrossNecklace()
@@ -40,11 +43,11 @@ public class TerraItemCrossNecklace extends TerraItemAccessory
     }
 
     @Override
-    public void addInformation(ItemStack stack, World worldIn, List<ITextComponent> tooltip, ITooltipFlag flagIn)
+    public void appendHoverText(ItemStack stack, World worldIn, List<ITextComponent> tooltip, ITooltipFlag flagIn)
     {
-        super.addInformation(stack, worldIn, tooltip, flagIn);
+        super.appendHoverText(stack, worldIn, tooltip, flagIn);
         tooltip.add(new StringTextComponent(""));
-        tooltip.add(new StringTextComponent("\u00A76" + I18n.format("curios.modifiers.charm") + "\u00A76"));
+        tooltip.add(new StringTextComponent("\u00A76" + I18n.get("curios.modifiers.charm") + "\u00A76"));
         tooltip.add(new StringTextComponent("\u00A79" + "+100% Invincibility Duration"));
     }
 
@@ -58,7 +61,7 @@ public class TerraItemCrossNecklace extends TerraItemAccessory
             {
                 CompoundNBT compound = stack.getOrCreateTag();
 
-                if (livingEntity.hurtResistantTime <= 10)
+                if (livingEntity.invulnerableTime <= 10)
                 {
                     compound.putBoolean("canApplyInvuln", true);
                 }
@@ -66,7 +69,7 @@ public class TerraItemCrossNecklace extends TerraItemAccessory
                 {
                     if (compound.getBoolean("canApplyInvuln"))
                     {
-                        livingEntity.hurtResistantTime += 20;
+                        livingEntity.invulnerableTime += 20;
                         compound.putBoolean("canApplyInvuln", false);
                     }
                 }
@@ -83,7 +86,7 @@ public class TerraItemCrossNecklace extends TerraItemAccessory
             @Override
             public SoundInfo getEquipSound(SlotContext slotContext)
             {
-                return new SoundInfo(SoundEvents.ITEM_ARMOR_EQUIP_GENERIC, 1.0f, 1.0f);
+                return new SoundInfo(SoundEvents.ARMOR_EQUIP_GENERIC, 1.0f, 1.0f);
             }
 
             @Override

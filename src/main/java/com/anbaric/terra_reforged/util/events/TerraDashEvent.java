@@ -67,10 +67,10 @@ public class TerraDashEvent
                 hasFirstClick = dashTimer == 0;
                 hasTabiDash = tabiCooldown == 0;
 
-                forwardState = player.movementInput.forwardKeyDown;
-                leftState = player.movementInput.leftKeyDown;
-                backState = player.movementInput.backKeyDown;
-                rightState = player.movementInput.rightKeyDown;
+                forwardState = player.input.up;
+                leftState = player.input.left;
+                backState = player.input.down;
+                rightState = player.input.right;
 
                 if ((forwardState != lastForwardState && forwardState) ||
                     (leftState != lastLeftState && leftState) ||
@@ -85,7 +85,7 @@ public class TerraDashEvent
                     else if (player.isOnGround() && !player.isCrouching() && hasTabiDash && dashTimer > 0)
                     {
                         NetworkHandler.INSTANCE.sendToServer(new TabiDashPacket());
-                        player.playSound(SoundEvents.BLOCK_WOOL_STEP, 1, 0.9F + player.getRNG().nextFloat() * 0.2F);
+                        player.playSound(SoundEvents.WOOL_STEP, 1, 0.9F + player.getRandom().nextFloat() * 0.2F);
                         tabiStack.getTag().putInt("tabiCooldown", 40);
                         tabiDash(player);
                         dashTimer = 0;
@@ -102,6 +102,6 @@ public class TerraDashEvent
 
     public static void tabiDash(PlayerEntity player)
     {
-        player.setMotion(player.getMotion().normalize().mul(5, 0, 5));
+        player.setDeltaMovement(player.getDeltaMovement().normalize().multiply(5, 0, 5));
     }
 }

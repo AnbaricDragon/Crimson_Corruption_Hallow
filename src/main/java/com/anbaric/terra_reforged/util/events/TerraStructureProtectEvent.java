@@ -29,7 +29,7 @@ public class TerraStructureProtectEvent
     {
         BlockState target = event.getState();
         boolean unbreakable = UNBREAKABLE.contains(target.getBlock());
-        boolean canBreak = event.getPlayer().getHeldItemMainhand().canHarvestBlock(target);
+        boolean canBreak = event.getPlayer().getMainHandItem().isCorrectToolForDrops(target);
         boolean isCreative = event.getPlayer().isCreative();
 
         if (unbreakable && !canBreak && !isCreative && event.isCancelable())

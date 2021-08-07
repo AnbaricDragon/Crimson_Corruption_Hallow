@@ -18,28 +18,28 @@ public class ParticleHandler
     @SubscribeEvent(priority = EventPriority.LOWEST)
     public static void registerParticles(ParticleFactoryRegisterEvent event)
     {
-        Minecraft.getInstance().particles.registerFactory(TerraParticleRegistry.MUSHROOM_SPORE_GLOWING.get(), SuspendedTownParticle.Factory::new);
+        Minecraft.getInstance().particleEngine.register(TerraParticleRegistry.MUSHROOM_SPORE_GLOWING.get(), SuspendedTownParticle.Factory::new);
 
-        Minecraft.getInstance().particles.registerFactory(TerraParticleRegistry.TORCH_FLAME_RED.get(), FlameParticle.Factory::new);
-        Minecraft.getInstance().particles.registerFactory(TerraParticleRegistry.TORCH_FLAME_ORANGE.get(), FlameParticle.Factory::new);
-        Minecraft.getInstance().particles.registerFactory(TerraParticleRegistry.TORCH_FLAME_YELLOW .get(), FlameParticle.Factory::new);
-        Minecraft.getInstance().particles.registerFactory(TerraParticleRegistry.TORCH_FLAME_GREEN.get(), FlameParticle.Factory::new);
-        Minecraft.getInstance().particles.registerFactory(TerraParticleRegistry.TORCH_FLAME_BLUE.get(), FlameParticle.Factory::new);
-        Minecraft.getInstance().particles.registerFactory(TerraParticleRegistry.TORCH_FLAME_PURPLE.get(), FlameParticle.Factory::new);
-        Minecraft.getInstance().particles.registerFactory(TerraParticleRegistry.TORCH_FLAME_WHITE.get(), FlameParticle.Factory::new);
-        Minecraft.getInstance().particles.registerFactory(TerraParticleRegistry.TORCH_FLAME_RAINBOW.get(), FlameParticle.Factory::new);
-        Minecraft.getInstance().particles.registerFactory(TerraParticleRegistry.TORCH_FLAME_ICE.get(), FlameParticle.Factory::new);
-        Minecraft.getInstance().particles.registerFactory(TerraParticleRegistry.TORCH_FLAME_PINK.get(), FlameParticle.Factory::new);
-        Minecraft.getInstance().particles.registerFactory(TerraParticleRegistry.TORCH_FLAME_BONE.get(), FlameParticle.Factory::new);
-        Minecraft.getInstance().particles.registerFactory(TerraParticleRegistry.TORCH_FLAME_BRIGHT.get(), FlameParticle.Factory::new);
-        Minecraft.getInstance().particles.registerFactory(TerraParticleRegistry.TORCH_FLAME_DEMON.get(), FlameParticle.Factory::new);
-        Minecraft.getInstance().particles.registerFactory(TerraParticleRegistry.TORCH_FLAME_CURSED.get(), FlameParticle.Factory::new);
-        Minecraft.getInstance().particles.registerFactory(TerraParticleRegistry.TORCH_FLAME_ICHOR.get(), FlameParticle.Factory::new);
-        Minecraft.getInstance().particles.registerFactory(TerraParticleRegistry.TORCH_FLAME_DESERT.get(), FlameParticle.Factory::new);
-        Minecraft.getInstance().particles.registerFactory(TerraParticleRegistry.TORCH_FLAME_CORAL.get(), FlameParticle.Factory::new);
-        Minecraft.getInstance().particles.registerFactory(TerraParticleRegistry.TORCH_FLAME_CORRUPT.get(), FlameParticle.Factory::new);
-        Minecraft.getInstance().particles.registerFactory(TerraParticleRegistry.TORCH_FLAME_CRIMSON.get(), FlameParticle.Factory::new);
-        Minecraft.getInstance().particles.registerFactory(TerraParticleRegistry.TORCH_FLAME_HALLOWED.get(), FlameParticle.Factory::new);
-        Minecraft.getInstance().particles.registerFactory(TerraParticleRegistry.TORCH_FLAME_JUNGLE.get(), FlameParticle.Factory::new);
+        Minecraft.getInstance().particleEngine.register(TerraParticleRegistry.TORCH_FLAME_RED.get(), FlameParticle.Factory::new);
+        Minecraft.getInstance().particleEngine.register(TerraParticleRegistry.TORCH_FLAME_ORANGE.get(), FlameParticle.Factory::new);
+        Minecraft.getInstance().particleEngine.register(TerraParticleRegistry.TORCH_FLAME_YELLOW .get(), FlameParticle.Factory::new);
+        Minecraft.getInstance().particleEngine.register(TerraParticleRegistry.TORCH_FLAME_GREEN.get(), FlameParticle.Factory::new);
+        Minecraft.getInstance().particleEngine.register(TerraParticleRegistry.TORCH_FLAME_BLUE.get(), FlameParticle.Factory::new);
+        Minecraft.getInstance().particleEngine.register(TerraParticleRegistry.TORCH_FLAME_PURPLE.get(), FlameParticle.Factory::new);
+        Minecraft.getInstance().particleEngine.register(TerraParticleRegistry.TORCH_FLAME_WHITE.get(), FlameParticle.Factory::new);
+        Minecraft.getInstance().particleEngine.register(TerraParticleRegistry.TORCH_FLAME_RAINBOW.get(), FlameParticle.Factory::new);
+        Minecraft.getInstance().particleEngine.register(TerraParticleRegistry.TORCH_FLAME_ICE.get(), FlameParticle.Factory::new);
+        Minecraft.getInstance().particleEngine.register(TerraParticleRegistry.TORCH_FLAME_PINK.get(), FlameParticle.Factory::new);
+        Minecraft.getInstance().particleEngine.register(TerraParticleRegistry.TORCH_FLAME_BONE.get(), FlameParticle.Factory::new);
+        Minecraft.getInstance().particleEngine.register(TerraParticleRegistry.TORCH_FLAME_BRIGHT.get(), FlameParticle.Factory::new);
+        Minecraft.getInstance().particleEngine.register(TerraParticleRegistry.TORCH_FLAME_DEMON.get(), FlameParticle.Factory::new);
+        Minecraft.getInstance().particleEngine.register(TerraParticleRegistry.TORCH_FLAME_CURSED.get(), FlameParticle.Factory::new);
+        Minecraft.getInstance().particleEngine.register(TerraParticleRegistry.TORCH_FLAME_ICHOR.get(), FlameParticle.Factory::new);
+        Minecraft.getInstance().particleEngine.register(TerraParticleRegistry.TORCH_FLAME_DESERT.get(), FlameParticle.Factory::new);
+        Minecraft.getInstance().particleEngine.register(TerraParticleRegistry.TORCH_FLAME_CORAL.get(), FlameParticle.Factory::new);
+        Minecraft.getInstance().particleEngine.register(TerraParticleRegistry.TORCH_FLAME_CORRUPT.get(), FlameParticle.Factory::new);
+        Minecraft.getInstance().particleEngine.register(TerraParticleRegistry.TORCH_FLAME_CRIMSON.get(), FlameParticle.Factory::new);
+        Minecraft.getInstance().particleEngine.register(TerraParticleRegistry.TORCH_FLAME_HALLOWED.get(), FlameParticle.Factory::new);
+        Minecraft.getInstance().particleEngine.register(TerraParticleRegistry.TORCH_FLAME_JUNGLE.get(), FlameParticle.Factory::new);
     }
 }

@@ -33,6 +33,9 @@ import top.theillusivec4.curios.api.type.inventory.ICurioStacksHandler;
 
 import javax.annotation.Nonnull;
 
+import top.theillusivec4.curios.api.type.capability.ICurio.DropRule;
+import top.theillusivec4.curios.api.type.capability.ICurio.SoundInfo;
+
 public class TerraItemStarveil extends TerraItemAccessory
 {
     public TerraItemStarveil()
@@ -42,11 +45,11 @@ public class TerraItemStarveil extends TerraItemAccessory
     }
 
     @Override
-    public void addInformation(ItemStack stack, World worldIn, List<ITextComponent> tooltip, ITooltipFlag flagIn)
+    public void appendHoverText(ItemStack stack, World worldIn, List<ITextComponent> tooltip, ITooltipFlag flagIn)
     {
-        super.addInformation(stack, worldIn, tooltip, flagIn);
+        super.appendHoverText(stack, worldIn, tooltip, flagIn);
         tooltip.add(new StringTextComponent(""));
-        tooltip.add(new StringTextComponent("\u00A76" + I18n.format("curios.modifiers.charm") + "\u00A76"));
+        tooltip.add(new StringTextComponent("\u00A76" + I18n.get("curios.modifiers.charm") + "\u00A76"));
         tooltip.add(new StringTextComponent("\u00A79" + "Shoots Stars When Damaged By Enemies"));
         tooltip.add(new StringTextComponent("\u00A79" + "+100% Invincibility When Damaged By Enemies"));
     }
@@ -61,7 +64,7 @@ public class TerraItemStarveil extends TerraItemAccessory
             {
                 CompoundNBT compound = stack.getOrCreateTag();
 
-                if (livingEntity.hurtResistantTime <= 10)
+                if (livingEntity.invulnerableTime <= 10)
                 {
                     compound.putBoolean("canApplyInvuln", true);
                 }
@@ -69,7 +72,7 @@ public class TerraItemStarveil extends TerraItemAccessory
                 {
                     if (compound.getBoolean("canApplyInvuln"))
                     {
-                        livingEntity.hurtResistantTime += 20;
+                        livingEntity.invulnerableTime += 20;
                         compound.putBoolean("canApplyInvuln", false);
                     }
                 }
@@ -86,7 +89,7 @@ public class TerraItemStarveil extends TerraItemAccessory
             @Override
             public SoundInfo getEquipSound(SlotContext slotContext)
             {
-                return new SoundInfo(SoundEvents.ITEM_ARMOR_EQUIP_GENERIC, 1.0f, 1.0f);
+                return new SoundInfo(SoundEvents.ARMOR_EQUIP_GENERIC, 1.0f, 1.0f);
             }
 
             @Override
@@ -101,23 +104,23 @@ public class TerraItemStarveil extends TerraItemAccessory
     {
         PlayerEntity player = event.getEntityLiving() instanceof PlayerEntity ? (PlayerEntity) event.getEntityLiving() : null;
         if (player == null) { return; }
-        World world = player.getEntityWorld();
+        World world = player.getCommandSenderWorld();
 
         CuriosApi.getCuriosHelper().findEquippedCurio(this, player).ifPresent(found ->
         {
-            if (!player.getCooldownTracker().hasCooldown(this) && event.getSource().getImmediateSource() instanceof LivingEntity)
+            if (!player.getCooldowns().isOnCooldown(this) && event.getSource().getDirectEntity() instanceof LivingEntity)
             {
                 ServerWorld server = (ServerWorld) world;
-                spawnArrows(server, player.getPosition(), player.getRNG());
+                spawnArrows(server, player.blockPosition(), player.getRandom());
 
                 CuriosApi.getCuriosHelper().getCuriosHandler(player).map(ICuriosItemHandler::getCurios).map(map -> map.get("curio")).map(ICurioStacksHandler::getStacks).map(dynamicStackHandler ->
                 {
                     for (int i = 0; i < dynamicStackHandler.getSlots(); i++)
                     {
                         ItemStack stack = dynamicStackHandler.getStackInSlot(i);
-                        if (stack.getItem().isIn(TerraTagRegistry.STAR_SPAWNERS))
+                        if (stack.getItem().is(TerraTagRegistry.STAR_SPAWNERS))
                         {
-                            player.getCooldownTracker().setCooldown(stack.getItem(), 100);
+                            player.getCooldowns().addCooldown(stack.getItem(), 100);
                         }
                     }
                     return null;
@@ -139,7 +142,7 @@ public class TerraItemStarveil extends TerraItemAccessory
             double d3 = pos.getZ() - arrowPos.getZ();
             float f = MathHelper.sqrt(d1 * d1 + d3 * d3) * 0.2F;
             arrowEntity.shoot(d1, d2 + f, d3, 3.0F, 0.0F);
-            world.addEntity(arrowEntity);
+            world.addFreshEntity(arrowEntity);
         }
     }
 }

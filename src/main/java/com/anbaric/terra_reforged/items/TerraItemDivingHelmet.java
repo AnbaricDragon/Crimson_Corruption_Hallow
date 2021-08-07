@@ -11,6 +11,8 @@ import net.minecraft.world.World;
 
 import java.util.List;
 
+import net.minecraft.item.Item.Properties;
+
 public class TerraItemDivingHelmet extends ArmorItem
 {
     public TerraItemDivingHelmet(IArmorMaterial materialIn, EquipmentSlotType slot, Properties builderIn)
@@ -19,7 +21,7 @@ public class TerraItemDivingHelmet extends ArmorItem
     }
 
     @Override
-    public void addInformation(ItemStack stack, World worldIn, List<ITextComponent> tooltip, ITooltipFlag flagIn)
+    public void appendHoverText(ItemStack stack, World worldIn, List<ITextComponent> tooltip, ITooltipFlag flagIn)
     {
         tooltip.clear();
 

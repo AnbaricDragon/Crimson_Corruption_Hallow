@@ -19,6 +19,9 @@ import top.theillusivec4.curios.api.type.capability.ICurio;
 import javax.annotation.Nonnull;
 import java.util.List;
 
+import top.theillusivec4.curios.api.type.capability.ICurio.DropRule;
+import top.theillusivec4.curios.api.type.capability.ICurio.SoundInfo;
+
 public class TerraItemAnkhCharm extends TerraItemAccessory
 {
     public TerraItemAnkhCharm()
@@ -27,11 +30,11 @@ public class TerraItemAnkhCharm extends TerraItemAccessory
     }
 
     @Override
-    public void addInformation(ItemStack stack, World worldIn, List<ITextComponent> tooltip, ITooltipFlag flagIn)
+    public void appendHoverText(ItemStack stack, World worldIn, List<ITextComponent> tooltip, ITooltipFlag flagIn)
     {
-        super.addInformation(stack, worldIn, tooltip, flagIn);
+        super.appendHoverText(stack, worldIn, tooltip, flagIn);
         tooltip.add(new StringTextComponent(""));
-        tooltip.add(new StringTextComponent("\u00A76" + I18n.format("curios.modifiers.charm") + "\u00A76"));
+        tooltip.add(new StringTextComponent("\u00A76" + I18n.get("curios.modifiers.charm") + "\u00A76"));
         tooltip.add(new StringTextComponent("\u00A79" + "Grants Immunity To:"));
         tooltip.add(new StringTextComponent("\u00A74" + "Confusion"));
         tooltip.add(new StringTextComponent("\u00A74" + "Slowness"));
@@ -53,41 +56,41 @@ public class TerraItemAnkhCharm extends TerraItemAccessory
             @Override
             public void curioTick(String identifier, int index, LivingEntity livingEntity)
             {
-                if (livingEntity.isPotionActive(Effects.SLOWNESS))
+                if (livingEntity.hasEffect(Effects.MOVEMENT_SLOWDOWN))
                 {
-                    livingEntity.removePotionEffect(Effects.SLOWNESS);
+                    livingEntity.removeEffect(Effects.MOVEMENT_SLOWDOWN);
                 }
-                if (livingEntity.isPotionActive(TerraEffectRegistry.CONFUSION.get()))
+                if (livingEntity.hasEffect(TerraEffectRegistry.CONFUSION.get()))
                 {
-                    livingEntity.removePotionEffect(TerraEffectRegistry.CONFUSION.get());
+                    livingEntity.removeEffect(TerraEffectRegistry.CONFUSION.get());
                 }
-                if (livingEntity.isPotionActive(Effects.BLINDNESS))
+                if (livingEntity.hasEffect(Effects.BLINDNESS))
                 {
-                    livingEntity.removePotionEffect(Effects.BLINDNESS);
+                    livingEntity.removeEffect(Effects.BLINDNESS);
                 }
-                if (livingEntity.isPotionActive(Effects.WEAKNESS))
+                if (livingEntity.hasEffect(Effects.WEAKNESS))
                 {
-                    livingEntity.removePotionEffect(Effects.WEAKNESS);
+                    livingEntity.removeEffect(Effects.WEAKNESS);
                 }
-                if (livingEntity.isPotionActive(TerraEffectRegistry.BROKEN_ARMOR.get()))
+                if (livingEntity.hasEffect(TerraEffectRegistry.BROKEN_ARMOR.get()))
                 {
-                    livingEntity.removePotionEffect(TerraEffectRegistry.BROKEN_ARMOR.get());
+                    livingEntity.removeEffect(TerraEffectRegistry.BROKEN_ARMOR.get());
                 }
-                if (livingEntity.isPotionActive(TerraEffectRegistry.BLEEDING.get()))
+                if (livingEntity.hasEffect(TerraEffectRegistry.BLEEDING.get()))
                 {
-                    livingEntity.removePotionEffect(TerraEffectRegistry.BLEEDING.get());
+                    livingEntity.removeEffect(TerraEffectRegistry.BLEEDING.get());
                 }
-                if (livingEntity.isPotionActive(Effects.POISON))
+                if (livingEntity.hasEffect(Effects.POISON))
                 {
-                    livingEntity.removePotionEffect(Effects.POISON);
+                    livingEntity.removeEffect(Effects.POISON);
                 }
-                if (livingEntity.isPotionActive(TerraEffectRegistry.CURSED.get()))
+                if (livingEntity.hasEffect(TerraEffectRegistry.CURSED.get()))
                 {
-                    livingEntity.removePotionEffect(TerraEffectRegistry.CURSED.get());
+                    livingEntity.removeEffect(TerraEffectRegistry.CURSED.get());
                 }
-                if (livingEntity.isPotionActive(TerraEffectRegistry.SILENCED.get()))
+                if (livingEntity.hasEffect(TerraEffectRegistry.SILENCED.get()))
                 {
-                    livingEntity.removePotionEffect(TerraEffectRegistry.SILENCED.get());
+                    livingEntity.removeEffect(TerraEffectRegistry.SILENCED.get());
                 }
             }
 
@@ -102,7 +105,7 @@ public class TerraItemAnkhCharm extends TerraItemAccessory
             @Override
             public SoundInfo getEquipSound(SlotContext slotContext)
             {
-                return new SoundInfo(SoundEvents.ITEM_ARMOR_EQUIP_GENERIC, 1.0f, 1.0f);
+                return new SoundInfo(SoundEvents.ARMOR_EQUIP_GENERIC, 1.0f, 1.0f);
             }
 
             @Override

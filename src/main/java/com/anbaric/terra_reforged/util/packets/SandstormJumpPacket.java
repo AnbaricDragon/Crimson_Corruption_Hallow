@@ -47,13 +47,13 @@ public class SandstormJumpPacket
                 if (CurioHandler.hasBauble(player, TerraTagRegistry.FART_HIGH_JUMPERS)) { jumpModifier++; }
 
                 TerraJumpEvent.jump(player, jumpModifier);
-                player.playSound(SoundEvents.BLOCK_SAND_STEP, 1, 0.9F + player.getRNG().nextFloat() * 0.2F);
+                player.playSound(SoundEvents.SAND_STEP, 1, 0.9F + player.getRandom().nextFloat() * 0.2F);
                 for (int i = 0; i < 20; ++i)
                 {
-                    double motionX = player.getRNG().nextGaussian() * 0.02;
-                    double motionY = player.getRNG().nextGaussian() * 0.02 + 0.20;
-                    double motionZ = player.getRNG().nextGaussian() * 0.02;
-                    player.getServerWorld().spawnParticle(new BlockParticleData(ParticleTypes.FALLING_DUST, Blocks.SAND.getDefaultState()),player.getPosX() + (player.getRNG().nextFloat() - 0.5), player.getPosY(), player.getPosZ() + (player.getRNG().nextFloat() - 0.5), 1, motionX, motionY, motionZ, 0.15);
+                    double motionX = player.getRandom().nextGaussian() * 0.02;
+                    double motionY = player.getRandom().nextGaussian() * 0.02 + 0.20;
+                    double motionZ = player.getRandom().nextGaussian() * 0.02;
+                    player.getLevel().sendParticles(new BlockParticleData(ParticleTypes.FALLING_DUST, Blocks.SAND.defaultBlockState()),player.getX() + (player.getRandom().nextFloat() - 0.5), player.getY(), player.getZ() + (player.getRandom().nextFloat() - 0.5), 1, motionX, motionY, motionZ, 0.15);
                 }
             });
         }

@@ -38,11 +38,11 @@ public class TerraItemStingerNecklace extends TerraItemAccessory
     }
 
     @Override
-    public void addInformation(ItemStack stack, World worldIn, List<ITextComponent> tooltip, ITooltipFlag flagIn)
+    public void appendHoverText(ItemStack stack, World worldIn, List<ITextComponent> tooltip, ITooltipFlag flagIn)
     {
-        super.addInformation(stack, worldIn, tooltip, flagIn);
+        super.appendHoverText(stack, worldIn, tooltip, flagIn);
         tooltip.add(new StringTextComponent(""));
-        tooltip.add(new StringTextComponent("\u00A76" + I18n.format("curios.modifiers.charm") + "\u00A76"));
+        tooltip.add(new StringTextComponent("\u00A76" + I18n.get("curios.modifiers.charm") + "\u00A76"));
         tooltip.add(new StringTextComponent("\u00A79" + "Spawns Bees When Hit"));
         tooltip.add(new StringTextComponent("\u00A79" + "+4% Piercing Damage"));
     }
@@ -51,22 +51,22 @@ public class TerraItemStingerNecklace extends TerraItemAccessory
     {
         PlayerEntity player = event.getEntityLiving() instanceof PlayerEntity ? (PlayerEntity) event.getEntityLiving() : null;
         if (player == null) { return; }
-        ServerWorld world = (ServerWorld) event.getEntity().getEntityWorld();
+        ServerWorld world = (ServerWorld) event.getEntity().getCommandSenderWorld();
 
         float aggroDist = 10F;
 
-        CuriosApi.getCuriosHelper().findEquippedCurio(stack -> stack.getItem() == this && !player.getCooldownTracker().hasCooldown(stack.getItem()), player).ifPresent(found ->
+        CuriosApi.getCuriosHelper().findEquippedCurio(stack -> stack.getItem() == this && !player.getCooldowns().isOnCooldown(stack.getItem()), player).ifPresent(found ->
         {
-            player.addPotionEffect(new EffectInstance(TerraEffectRegistry.HONEY.get(), 100));
-            BeeHandler.spawnAngryBees(world, player.getPosition(), aggroDist);
+            player.addEffect(new EffectInstance(TerraEffectRegistry.HONEY.get(), 100));
+            BeeHandler.spawnAngryBees(world, player.blockPosition(), aggroDist);
             CuriosApi.getCuriosHelper().getCuriosHandler(player).map(ICuriosItemHandler::getCurios).map(map -> map.get("curio")).map(ICurioStacksHandler::getStacks).map(dynamicStackHandler ->
             {
                 for (int i = 0; i < dynamicStackHandler.getSlots(); i++)
                 {
                     ItemStack stack = dynamicStackHandler.getStackInSlot(i);
-                    if (stack.getItem().isIn(TerraTagRegistry.BEE_SPAWNERS))
+                    if (stack.getItem().is(TerraTagRegistry.BEE_SPAWNERS))
                     {
-                        player.getCooldownTracker().setCooldown(stack.getItem(), 100);
+                        player.getCooldowns().addCooldown(stack.getItem(), 100);
                     }
                 }
                 return null;
@@ -77,10 +77,10 @@ public class TerraItemStingerNecklace extends TerraItemAccessory
     public void ignoreArmor(LivingHurtEvent event)
     {
         LivingEntity victim = event.getEntityLiving();
-        PlayerEntity player = event.getSource().getTrueSource() instanceof PlayerEntity ? (PlayerEntity) event.getSource().getTrueSource() : null;
+        PlayerEntity player = event.getSource().getEntity() instanceof PlayerEntity ? (PlayerEntity) event.getSource().getEntity() : null;
         if (player == null) { return; }
         CuriosApi.getCuriosHelper().findEquippedCurio(this, player).ifPresent(found -> {
-            event.setAmount(CombatRules.getDamageAfterAbsorb(event.getAmount(), victim.getTotalArmorValue() - 1, (float) victim.getAttributeValue(Attributes.ARMOR_TOUGHNESS)));
+            event.setAmount(CombatRules.getDamageAfterAbsorb(event.getAmount(), victim.getArmorValue() - 1, (float) victim.getAttributeValue(Attributes.ARMOR_TOUGHNESS)));
         });
     }
 }

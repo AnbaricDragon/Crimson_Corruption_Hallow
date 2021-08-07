@@ -25,6 +25,9 @@ import javax.annotation.Nonnull;
 import java.util.List;
 import java.util.UUID;
 
+import top.theillusivec4.curios.api.type.capability.ICurio.DropRule;
+import top.theillusivec4.curios.api.type.capability.ICurio.SoundInfo;
+
 public class TerraItemFlipper extends TerraItemAccessory
 {
     public TerraItemFlipper()
@@ -55,7 +58,7 @@ public class TerraItemFlipper extends TerraItemAccessory
             @Override
             public SoundInfo getEquipSound(SlotContext slotContext)
             {
-                return new SoundInfo(SoundEvents.ITEM_ARMOR_EQUIP_GENERIC, 1.0f, 1.0f);
+                return new SoundInfo(SoundEvents.ARMOR_EQUIP_GENERIC, 1.0f, 1.0f);
             }
 
             @Override

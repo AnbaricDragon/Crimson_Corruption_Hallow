@@ -11,6 +11,6 @@ public class TerraAttributeRegistry
 {
     public static final DeferredRegister<Attribute> ATTRIBUTES = DeferredRegister.create(ForgeRegistries.ATTRIBUTES, Reference.MODID);
 
-    public static final RegistryObject<Attribute> MANA_MAX = ATTRIBUTES.register("mana_max", () -> new RangedAttribute("terra_reforged.mana_max", 20.0D, 20.0D, 400.0D).setShouldWatch(true));
-    public static final RegistryObject<Attribute> MANA_DISCOUNT = ATTRIBUTES.register("mana_discount", () -> new RangedAttribute("terra_reforged.mana_discount", 0.0D, 0.0D, 1.0D).setShouldWatch(true));
+    public static final RegistryObject<Attribute> MANA_MAX = ATTRIBUTES.register("mana_max", () -> new RangedAttribute("attribute.name.terra_reforged.max_mana", 20.0D, 20.0D, 400.0D).setSyncable(true));
+    public static final RegistryObject<Attribute> MANA_DISCOUNT = ATTRIBUTES.register("mana_discount", () -> new RangedAttribute("attribute.name.terra_reforged.mana_discount", 0.0D, 0.0D, 1.0D).setSyncable(true));
 }

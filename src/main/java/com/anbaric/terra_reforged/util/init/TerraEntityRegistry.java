@@ -13,5 +13,5 @@ public class TerraEntityRegistry
     public static final DeferredRegister<EntityType<?>> ENTITIES = DeferredRegister.create(ForgeRegistries.ENTITIES, Reference.MODID);
 
     public static final RegistryObject<EntityType<TerraProjectileSwordTerra>> PROJECTILE_SWORD_TERRA = ENTITIES.register("projectile_sword_terra",
-            () -> EntityType.Builder.<TerraProjectileSwordTerra>create(TerraProjectileSwordTerra::new, EntityClassification.MISC).size(0.5F, 0.5F).build("projectile_sword_terra"));
+            () -> EntityType.Builder.<TerraProjectileSwordTerra>of(TerraProjectileSwordTerra::new, EntityClassification.MISC).sized(0.5F, 0.5F).build("projectile_sword_terra"));
 }

@@ -38,20 +38,20 @@ public class TerraProjectileSwordTerra extends ProjectileItemEntity
     }
 
     @Override
-    public IPacket<?> createSpawnPacket()
+    public IPacket<?> getAddEntityPacket()
     {
         return NetworkHooks.getEntitySpawningPacket(this);
     }
 
     @Override
-    protected void onImpact(RayTraceResult result)
+    protected void onHit(RayTraceResult result)
     {
         RayTraceResult.Type target = result.getType();
         if (target == RayTraceResult.Type.ENTITY)
         {
             if (this.pierceCount > 0)
             {
-                this.onEntityHit((EntityRayTraceResult) result);
+                this.onHitEntity((EntityRayTraceResult) result);
                 pierceCount--;
             }
             else

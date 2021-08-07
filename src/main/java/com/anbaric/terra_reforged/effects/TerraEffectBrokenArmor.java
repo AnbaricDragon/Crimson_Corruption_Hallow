@@ -12,7 +12,7 @@ public class TerraEffectBrokenArmor extends Effect
     }
 
     @Override
-    public double getAttributeModifierAmount(int amplifier, AttributeModifier modifier)
+    public double getAttributeModifierValue(int amplifier, AttributeModifier modifier)
     {
         return modifier.getAmount() + ((amplifier + 1) / modifier.getAmount());
     }

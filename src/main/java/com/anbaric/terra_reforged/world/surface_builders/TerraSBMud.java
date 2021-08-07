@@ -14,8 +14,8 @@ import java.util.Random;
 
 public class TerraSBMud extends SurfaceBuilder<SurfaceBuilderConfig>
 {
-    public static final BlockState GRASS = TerraBlockRegistry.GRASS_JUNGLE.get().getDefaultState();
-    public static final BlockState MUD = TerraBlockRegistry.SOIL_MUD.get().getDefaultState();
+    public static final BlockState GRASS = TerraBlockRegistry.GRASS_JUNGLE.get().defaultBlockState();
+    public static final BlockState MUD = TerraBlockRegistry.SOIL_MUD.get().defaultBlockState();
 
     public TerraSBMud()
     {
@@ -23,7 +23,7 @@ public class TerraSBMud extends SurfaceBuilder<SurfaceBuilderConfig>
     }
 
     @Override
-    public void buildSurface(Random random, IChunk chunkIn, Biome biomeIn, int x, int z, int startHeight, double noise, BlockState defaultBlock, BlockState defaultFluid, int seaLevel, long seed, SurfaceBuilderConfig config)
+    public void apply(Random random, IChunk chunkIn, Biome biomeIn, int x, int z, int startHeight, double noise, BlockState defaultBlock, BlockState defaultFluid, int seaLevel, long seed, SurfaceBuilderConfig config)
     {
         int              chunkPosX  = x & 15;
         int              chunkPosZ  = z & 15;
@@ -33,7 +33,7 @@ public class TerraSBMud extends SurfaceBuilder<SurfaceBuilderConfig>
 
         for (int iter = startHeight; iter > 0; --iter)
         {
-            targetPos.setPos(chunkPosX, iter, chunkPosZ);
+            targetPos.set(chunkPosX, iter, chunkPosZ);
             BlockState targetState = chunkIn.getBlockState(targetPos);
 
             if (targetState.getBlock() == defaultBlock.getBlock())
@@ -45,7 +45,7 @@ public class TerraSBMud extends SurfaceBuilder<SurfaceBuilderConfig>
                 }
                 if (iter == blockFound)
                 {
-                    if (chunkIn.getBlockState(targetPos.up()) != defaultFluid)
+                    if (chunkIn.getBlockState(targetPos.above()) != defaultFluid)
                     {
                         chunkIn.setBlockState(targetPos, GRASS, false);
                     }

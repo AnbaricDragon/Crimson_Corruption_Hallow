@@ -26,11 +26,11 @@ public class TerraItemObsidianSkull extends TerraItemAccessory
     }
 
     @Override
-    public void addInformation(ItemStack stack, World worldIn, List<ITextComponent> tooltip, ITooltipFlag flagIn)
+    public void appendHoverText(ItemStack stack, World worldIn, List<ITextComponent> tooltip, ITooltipFlag flagIn)
     {
-        super.addInformation(stack, worldIn, tooltip, flagIn);
+        super.appendHoverText(stack, worldIn, tooltip, flagIn);
         tooltip.add(new StringTextComponent(""));
-        tooltip.add(new StringTextComponent("\u00A76" + I18n.format("curios.modifiers.charm") + "\u00A76"));
+        tooltip.add(new StringTextComponent("\u00A76" + I18n.get("curios.modifiers.charm") + "\u00A76"));
         tooltip.add(new StringTextComponent("\u00A79" + "-100% Fire Damage"));
     }
 
@@ -38,9 +38,9 @@ public class TerraItemObsidianSkull extends TerraItemAccessory
     {
         CuriosApi.getCuriosHelper().findEquippedCurio(this, event.getEntityLiving()).ifPresent(found -> {
             DamageSource source = event.getSource();
-            if (source == DamageSource.HOT_FLOOR || (source.isFireDamage() && source != DamageSource.LAVA))
+            if (source == DamageSource.HOT_FLOOR || (source.isFire() && source != DamageSource.LAVA))
             {
-                event.getEntityLiving().extinguish();
+                event.getEntityLiving().clearFire();
                 event.setCanceled(true);
             }
         });

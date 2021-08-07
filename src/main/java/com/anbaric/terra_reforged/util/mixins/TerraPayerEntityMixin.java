@@ -11,9 +11,10 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 @Mixin(PlayerEntity.class)
 public class TerraPayerEntityMixin
 {
-    @Inject(at = @At("RETURN"), method = "func_234570_el_")
+    @Inject(at = @At("RETURN"), method = "createAttributes")
     private static void addManaAttribute(CallbackInfoReturnable<AttributeModifierMap.MutableAttribute> cir)
     {
-        cir.getReturnValue().createMutableAttribute(TerraAttributeRegistry.MANA_MAX.get(), 0);
+        System.out.println("Added Attribute to Player");
+        cir.getReturnValue().add(TerraAttributeRegistry.MANA_MAX.get(), 20);
     }
 }

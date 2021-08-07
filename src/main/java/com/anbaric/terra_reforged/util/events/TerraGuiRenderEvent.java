@@ -44,11 +44,11 @@ public class TerraGuiRenderEvent
 
                     if (charge < 140 || cooldown > 0)
                     {
-                        mc.getRenderManager().textureManager.bindTexture(ICON_GUI);
-                        IngameGui ingameGui = mc.ingameGUI;
+                        mc.getEntityRenderDispatcher().textureManager.bind(ICON_GUI);
+                        IngameGui ingameGui = mc.gui;
 
-                        int width  = mc.getMainWindow().getScaledWidth();
-                        int height = mc.getMainWindow().getScaledHeight();
+                        int width  = mc.getWindow().getGuiScaledWidth();
+                        int height = mc.getWindow().getGuiScaledHeight();
 
                         int count = (int) Math.floor(charge / 14F);
 
@@ -69,7 +69,7 @@ public class TerraGuiRenderEvent
                             RenderSystem.color4f(1, 1, 1, 1);
                         }
                         ForgeIngameGui.left_height += 10;
-                        mc.getTextureManager().bindTexture(AbstractGui.GUI_ICONS_LOCATION);
+                        mc.getTextureManager().bind(AbstractGui.GUI_ICONS_LOCATION);
                         RenderSystem.disableBlend();
                     }
                 }
@@ -83,11 +83,11 @@ public class TerraGuiRenderEvent
 
                     if (cooldown == 0)
                     {
-                        mc.getRenderManager().textureManager.bindTexture(ICON_GUI);
-                        IngameGui ingameGui = mc.ingameGUI;
+                        mc.getEntityRenderDispatcher().textureManager.bind(ICON_GUI);
+                        IngameGui ingameGui = mc.gui;
 
-                        int width  = mc.getMainWindow().getScaledWidth();
-                        int height = mc.getMainWindow().getScaledHeight();
+                        int width  = mc.getWindow().getGuiScaledWidth();
+                        int height = mc.getWindow().getGuiScaledHeight();
 
                         int count = 0;
 
@@ -98,7 +98,7 @@ public class TerraGuiRenderEvent
                         ingameGui.blit(event.getMatrixStack(), width / 2 - left, top, 0, 0, 10, 10);
                         RenderSystem.color4f(1, 1, 1, 1);
                         ForgeIngameGui.left_height += 10;
-                        mc.getTextureManager().bindTexture(AbstractGui.GUI_ICONS_LOCATION);
+                        mc.getTextureManager().bind(AbstractGui.GUI_ICONS_LOCATION);
                         RenderSystem.disableBlend();
                     }
                 }
@@ -119,11 +119,11 @@ public class TerraGuiRenderEvent
 //            System.out.println("Player has " + mana + " in " + storage + " slots");
             if (mana > 0)
             {
-                mc.getRenderManager().textureManager.bindTexture(ICON_GUI);
-                IngameGui ingameGui = mc.ingameGUI;
+                mc.getEntityRenderDispatcher().textureManager.bind(ICON_GUI);
+                IngameGui ingameGui = mc.gui;
 
-                int width  = mc.getMainWindow().getScaledWidth();
-                int height = mc.getMainWindow().getScaledHeight();
+                int width  = mc.getWindow().getGuiScaledWidth();
+                int height = mc.getWindow().getGuiScaledHeight();
                 int right = 8;
                 int top   = height - (ForgeIngameGui.right_height + 11);
 
@@ -148,7 +148,7 @@ public class TerraGuiRenderEvent
                     }
                     right += 8;
                 }
-                mc.getTextureManager().bindTexture(AbstractGui.GUI_ICONS_LOCATION);
+                mc.getTextureManager().bind(AbstractGui.GUI_ICONS_LOCATION);
                 RenderSystem.disableBlend();
             }
         }

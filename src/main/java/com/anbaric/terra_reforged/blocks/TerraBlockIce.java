@@ -31,9 +31,9 @@ public class TerraBlockIce extends Block
     }
 
     @OnlyIn(Dist.CLIENT)
-    public boolean isSideInvisible(BlockState state, BlockState adjacentBlockState, Direction side)
+    public boolean skipRendering(BlockState state, BlockState adjacentBlockState, Direction side)
     {
-        return adjacentBlockState.getBlock() == this || super.isSideInvisible(state, adjacentBlockState, side);
+        return adjacentBlockState.getBlock() == this || super.skipRendering(state, adjacentBlockState, side);
     }
 
     @Override
@@ -45,7 +45,7 @@ public class TerraBlockIce extends Block
     @Override
     public void tick(BlockState state, ServerWorld worldIn, BlockPos pos, Random random)
     {
-        if (!worldIn.isRemote)
+        if (!worldIn.isClientSide)
         {
              if (!worldIn.isAreaLoaded(pos, 3))
             {
@@ -56,29 +56,29 @@ public class TerraBlockIce extends Block
             {
                 for (int i = 0; i < 4; ++i)
                 {
-                    BlockPos targetPos   = pos.add(random.nextInt(3) - 1, random.nextInt(3) - 1, random.nextInt(3) - 1);
+                    BlockPos targetPos   = pos.offset(random.nextInt(3) - 1, random.nextInt(3) - 1, random.nextInt(3) - 1);
                     Block    targetBlock = worldIn.getBlockState(targetPos).getBlock();
 
                     if (checkTransformable(targetBlock) && i == 0)
                     {
                         if (targetBlock instanceof StairsBlock)
                         {
-                            worldIn.setBlockState(targetPos, transformedState(biome, targetBlock).getDefaultState()
-                                    .with(StairsBlock.FACING, worldIn.getBlockState(targetPos).get(StairsBlock.FACING))
-                                    .with(StairsBlock.HALF, worldIn.getBlockState(targetPos).get(StairsBlock.HALF))
-                                    .with(StairsBlock.SHAPE, worldIn.getBlockState(targetPos).get(StairsBlock.SHAPE))
-                                    .with(StairsBlock.WATERLOGGED, worldIn.getBlockState(targetPos).get(StairsBlock.WATERLOGGED)));
+                            worldIn.setBlockAndUpdate(targetPos, transformedState(biome, targetBlock).defaultBlockState()
+                                    .setValue(StairsBlock.FACING, worldIn.getBlockState(targetPos).getValue(StairsBlock.FACING))
+                                    .setValue(StairsBlock.HALF, worldIn.getBlockState(targetPos).getValue(StairsBlock.HALF))
+                                    .setValue(StairsBlock.SHAPE, worldIn.getBlockState(targetPos).getValue(StairsBlock.SHAPE))
+                                    .setValue(StairsBlock.WATERLOGGED, worldIn.getBlockState(targetPos).getValue(StairsBlock.WATERLOGGED)));
                             return;
                         }
                         if (targetBlock instanceof SlabBlock)
                         {
-                            worldIn.setBlockState(targetPos, transformedState(biome, targetBlock).getDefaultState()
-                                    .with(SlabBlock.TYPE, worldIn.getBlockState(targetPos).get(SlabBlock.TYPE))
-                                    .with(SlabBlock.WATERLOGGED, worldIn.getBlockState(targetPos).get(SlabBlock.WATERLOGGED)));
+                            worldIn.setBlockAndUpdate(targetPos, transformedState(biome, targetBlock).defaultBlockState()
+                                    .setValue(SlabBlock.TYPE, worldIn.getBlockState(targetPos).getValue(SlabBlock.TYPE))
+                                    .setValue(SlabBlock.WATERLOGGED, worldIn.getBlockState(targetPos).getValue(SlabBlock.WATERLOGGED)));
                             return;
                         }
 
-                        worldIn.setBlockState(targetPos, transformedState(biome, targetBlock).getDefaultState());
+                        worldIn.setBlockAndUpdate(targetPos, transformedState(biome, targetBlock).defaultBlockState());
                     }
                 }
             }

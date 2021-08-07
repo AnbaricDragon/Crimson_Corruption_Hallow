@@ -21,17 +21,17 @@ public class BiomeChangeHandler
 {
     public static void setBiomeAtPos(World world, BlockPos pos, ResourceLocation biome)
     {
-        if (world.isRemote()) { return; }
-        RegistryKey<net.minecraft.world.biome.Biome> biomeKey = RegistryKey.getOrCreateKey(Registry.BIOME_KEY, biome);
+        if (world.isClientSide()) { return; }
+        RegistryKey<net.minecraft.world.biome.Biome> biomeKey = RegistryKey.create(Registry.BIOME_REGISTRY, biome);
         setBiomeKeyAtPos(world, pos, biomeKey);
         NetworkHandler.INSTANCE.send(PacketDistributor.ALL.noArg(), new ChangeBiomePacket(pos, biome));
     }
 
     public static void setBiomeKeyAtPos(World world, BlockPos pos, RegistryKey<Biome> biomeKey)
     {
-        Optional<MutableRegistry<net.minecraft.world.biome.Biome>> biomeRegistry = world.func_241828_r().func_230521_a_(Registry.BIOME_KEY);
+        Optional<MutableRegistry<net.minecraft.world.biome.Biome>> biomeRegistry = world.registryAccess().registry(Registry.BIOME_REGISTRY);
         if (!biomeRegistry.isPresent()) { return; }
-        Biome biome = biomeRegistry.get().getValueForKey(biomeKey);
+        Biome biome = biomeRegistry.get().get(biomeKey);
         if (biome == null) { return; }
 
         BiomeContainer biomeCollection = world.getChunk(pos).getBiomes();
@@ -42,17 +42,17 @@ public class BiomeChangeHandler
             int     biomeIndex = getBiomeIndex(pos.getX(), pos.getY(), pos.getZ(), 0L);
             if (biomeIndex < biomeArray.length)
             {
-                System.out.println("Before changing Biome in Worldside: " + (world.isRemote ? "Client" : "Server") + ", biomeArray is: " + biomeArray[biomeIndex].getRegistryName());
+                System.out.println("Before changing Biome in Worldside: " + (world.isClientSide ? "Client" : "Server") + ", biomeArray is: " + biomeArray[biomeIndex].getRegistryName());
                 //TODO Figure out why this isn't saving the biome
                 biomeArray[biomeIndex] = biome;
-                System.out.println("After changing Biome in Worldside: " + (world.isRemote ? "Client" : "Server") + ", biomeArray is: " + biomeArray[biomeIndex].getRegistryName());
+                System.out.println("After changing Biome in Worldside: " + (world.isClientSide ? "Client" : "Server") + ", biomeArray is: " + biomeArray[biomeIndex].getRegistryName());
             }
             else
             {
                 TerraReforged.LOGGER.error(String.format("Failed to set the biome at pos: %s; to: %s", pos, biome));
             }
         }
-        chunk.setModified(true);
+        chunk.setUnsaved(true);
     }
 
     private static final int WIDTH_BITS = (int) Math.round(Math.log(16.0D) / Math.log(2.0D)) - 2;
@@ -103,16 +103,16 @@ public class BiomeChangeHandler
 
     private static double distanceToCorner(long seed, int x, int y, int z, double scaleX, double scaleY, double scaleZ)
     {
-        long lvt_11_1_ = FastRandom.mix(seed, x);
-        lvt_11_1_ = FastRandom.mix(lvt_11_1_, y);
-        lvt_11_1_ = FastRandom.mix(lvt_11_1_, z);
-        lvt_11_1_ = FastRandom.mix(lvt_11_1_, x);
-        lvt_11_1_ = FastRandom.mix(lvt_11_1_, y);
-        lvt_11_1_ = FastRandom.mix(lvt_11_1_, z);
+        long lvt_11_1_ = FastRandom.next(seed, x);
+        lvt_11_1_ = FastRandom.next(lvt_11_1_, y);
+        lvt_11_1_ = FastRandom.next(lvt_11_1_, z);
+        lvt_11_1_ = FastRandom.next(lvt_11_1_, x);
+        lvt_11_1_ = FastRandom.next(lvt_11_1_, y);
+        lvt_11_1_ = FastRandom.next(lvt_11_1_, z);
         double d0 = randomDouble(lvt_11_1_);
-        lvt_11_1_ = FastRandom.mix(lvt_11_1_, seed);
+        lvt_11_1_ = FastRandom.next(lvt_11_1_, seed);
         double d1 = randomDouble(lvt_11_1_);
-        lvt_11_1_ = FastRandom.mix(lvt_11_1_, seed);
+        lvt_11_1_ = FastRandom.next(lvt_11_1_, seed);
         double d2 = randomDouble(lvt_11_1_);
         return square(scaleZ + d2) + square(scaleY + d1) + square(scaleX + d0);
     }

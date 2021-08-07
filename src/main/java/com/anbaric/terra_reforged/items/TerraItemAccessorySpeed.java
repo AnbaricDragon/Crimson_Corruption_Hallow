@@ -61,7 +61,7 @@ public class TerraItemAccessorySpeed extends TerraItemAccessory
             @Nonnull
             public SoundInfo getEquipSound(SlotContext slotContext)
             {
-                return new SoundInfo(SoundEvents.ITEM_ARMOR_EQUIP_GENERIC, 1.0F, 1.0F);
+                return new SoundInfo(SoundEvents.ARMOR_EQUIP_GENERIC, 1.0F, 1.0F);
             }
 
             public boolean canEquipFromUse(SlotContext slot)

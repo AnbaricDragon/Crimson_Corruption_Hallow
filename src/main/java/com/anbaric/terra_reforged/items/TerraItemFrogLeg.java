@@ -25,10 +25,10 @@ public class TerraItemFrogLeg extends TerraItemAccessory
     }
 
     @Override
-    public void addInformation(ItemStack stack, World worldIn, List<ITextComponent> tooltip, ITooltipFlag flagIn)
+    public void appendHoverText(ItemStack stack, World worldIn, List<ITextComponent> tooltip, ITooltipFlag flagIn)
     {
         tooltip.add(new StringTextComponent(""));
-        tooltip.add(new StringTextComponent("\u00A76" + I18n.format("curios.modifiers.charm") + "\u00A76"));
+        tooltip.add(new StringTextComponent("\u00A76" + I18n.get("curios.modifiers.charm") + "\u00A76"));
         tooltip.add(new StringTextComponent("\u00A79" + "-3 Block Fall Damage"));
         tooltip.add(new StringTextComponent("\u00A79" + "+50% Jump Height"));
     }
@@ -43,7 +43,7 @@ public class TerraItemFrogLeg extends TerraItemAccessory
             for (int i = 0; i < dynamicStackHandler.getSlots(); i++)
             {
                 ItemStack stack = dynamicStackHandler.getStackInSlot(i);
-                if (stack.getItem().isIn(TerraTagRegistry.FROG_BREAKERS))
+                if (stack.getItem().is(TerraTagRegistry.FROG_BREAKERS))
                 {
                     event.setDistance(event.getDistance() - 2);
                 }

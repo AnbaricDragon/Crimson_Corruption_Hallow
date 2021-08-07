@@ -33,11 +33,11 @@ public class TerraItemSweetheartNecklace extends TerraItemAccessory
     }
 
     @Override
-    public void addInformation(ItemStack stack, World worldIn, List<ITextComponent> tooltip, ITooltipFlag flagIn)
+    public void appendHoverText(ItemStack stack, World worldIn, List<ITextComponent> tooltip, ITooltipFlag flagIn)
     {
-        super.addInformation(stack, worldIn, tooltip, flagIn);
+        super.appendHoverText(stack, worldIn, tooltip, flagIn);
         tooltip.add(new StringTextComponent(""));
-        tooltip.add(new StringTextComponent("\u00A76" + I18n.format("curios.modifiers.charm") + "\u00A76"));
+        tooltip.add(new StringTextComponent("\u00A76" + I18n.get("curios.modifiers.charm") + "\u00A76"));
         tooltip.add(new StringTextComponent("\u00A79" + "Spawns Bees When Damaged By Enemies"));
         tooltip.add(new StringTextComponent("\u00A79" + "+20% Speed When Damaged By Enemies"));
     }
@@ -46,24 +46,24 @@ public class TerraItemSweetheartNecklace extends TerraItemAccessory
     {
         PlayerEntity player = event.getEntityLiving() instanceof PlayerEntity ? (PlayerEntity) event.getEntityLiving() : null;
         if (player == null) { return; }
-        ServerWorld world = (ServerWorld) event.getEntity().getEntityWorld();
+        ServerWorld world = (ServerWorld) event.getEntity().getCommandSenderWorld();
 
         float aggroDist = 10F;
 
-        CuriosApi.getCuriosHelper().findEquippedCurio(stack -> stack.getItem() == this && !player.getCooldownTracker().hasCooldown(this), player).ifPresent(found ->
+        CuriosApi.getCuriosHelper().findEquippedCurio(stack -> stack.getItem() == this && !player.getCooldowns().isOnCooldown(this), player).ifPresent(found ->
         {
-            if (event.getSource().getImmediateSource() instanceof LivingEntity)
+            if (event.getSource().getDirectEntity() instanceof LivingEntity)
             {
-                player.addPotionEffect(new EffectInstance(Effects.SPEED, 60));
-                player.addPotionEffect(new EffectInstance(TerraEffectRegistry.HONEY.get(), 100));
-                BeeHandler.spawnAngryBees(world, player.getPosition(), aggroDist);
+                player.addEffect(new EffectInstance(Effects.MOVEMENT_SPEED, 60));
+                player.addEffect(new EffectInstance(TerraEffectRegistry.HONEY.get(), 100));
+                BeeHandler.spawnAngryBees(world, player.blockPosition(), aggroDist);
                 CuriosApi.getCuriosHelper().getCuriosHandler(player).map(ICuriosItemHandler::getCurios).map(map -> map.get("curio")).map(ICurioStacksHandler::getStacks).map(dynamicStackHandler -> {
                     for (int i = 0; i < dynamicStackHandler.getSlots(); i++)
                     {
                         ItemStack stack = dynamicStackHandler.getStackInSlot(i);
-                        if (stack.getItem().isIn(TerraTagRegistry.PANIC_GIVERS) || stack.getItem().isIn(TerraTagRegistry.BEE_SPAWNERS))
+                        if (stack.getItem().is(TerraTagRegistry.PANIC_GIVERS) || stack.getItem().is(TerraTagRegistry.BEE_SPAWNERS))
                         {
-                            player.getCooldownTracker().setCooldown(stack.getItem(), 100);
+                            player.getCooldowns().addCooldown(stack.getItem(), 100);
                         }
                     }
                     return null;

@@ -11,6 +11,8 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.item.SwordItem;
 import net.minecraftforge.common.ForgeMod;
 
+import net.minecraft.item.Item.Properties;
+
 public class TerraProjectileSword extends SwordItem
 {
     private  Multimap<Attribute, AttributeModifier> spearAttributes;
@@ -25,8 +27,8 @@ public class TerraProjectileSword extends SwordItem
     {
         if (spearAttributes == null) {
             ImmutableMultimap.Builder<Attribute, AttributeModifier> builder = ImmutableMultimap.builder();
-            builder.put(Attributes.ATTACK_DAMAGE, new AttributeModifier(ATTACK_DAMAGE_MODIFIER, "Tool modifier", this.getAttackDamage(), AttributeModifier.Operation.ADDITION));
-            builder.put(ForgeMod.REACH_DISTANCE.get(), new AttributeModifier(ATTACK_SPEED_MODIFIER, "Tool modifier", 3.0D, AttributeModifier.Operation.ADDITION));
+            builder.put(Attributes.ATTACK_DAMAGE, new AttributeModifier(BASE_ATTACK_DAMAGE_UUID, "Tool modifier", this.getDamage(), AttributeModifier.Operation.ADDITION));
+            builder.put(ForgeMod.REACH_DISTANCE.get(), new AttributeModifier(BASE_ATTACK_SPEED_UUID, "Tool modifier", 3.0D, AttributeModifier.Operation.ADDITION));
 
             spearAttributes = builder.build();
         }

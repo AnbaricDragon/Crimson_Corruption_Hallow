@@ -33,6 +33,9 @@ import javax.annotation.Nonnull;
 import java.util.List;
 import java.util.UUID;
 
+import top.theillusivec4.curios.api.type.capability.ICurio.DropRule;
+import top.theillusivec4.curios.api.type.capability.ICurio.SoundInfo;
+
 public class TerraItemFrogFlipper extends TerraItemAccessory
 {
     public TerraItemFrogFlipper()
@@ -42,10 +45,10 @@ public class TerraItemFrogFlipper extends TerraItemAccessory
     }
 
     @Override
-    public void addInformation(ItemStack stack, World worldIn, List<ITextComponent> tooltip, ITooltipFlag flagIn)
+    public void appendHoverText(ItemStack stack, World worldIn, List<ITextComponent> tooltip, ITooltipFlag flagIn)
     {
         tooltip.add(new StringTextComponent(""));
-        tooltip.add(new StringTextComponent("\u00A76" + I18n.format("curios.modifiers.charm") + "\u00A76"));
+        tooltip.add(new StringTextComponent("\u00A76" + I18n.get("curios.modifiers.charm") + "\u00A76"));
         tooltip.add(new StringTextComponent("\u00A79" + "-3 Block Fall Damage"));
         tooltip.add(new StringTextComponent("\u00A79" + "+30% Swimming Speed"));
         tooltip.add(new StringTextComponent("\u00A79" + "+50% Jump Height"));
@@ -80,7 +83,7 @@ public class TerraItemFrogFlipper extends TerraItemAccessory
             @Override
             public SoundInfo getEquipSound(SlotContext slotContext)
             {
-                return new SoundInfo(SoundEvents.ITEM_ARMOR_EQUIP_GENERIC, 1.0f, 1.0f);
+                return new SoundInfo(SoundEvents.ARMOR_EQUIP_GENERIC, 1.0f, 1.0f);
             }
 
             @Override
@@ -101,7 +104,7 @@ public class TerraItemFrogFlipper extends TerraItemAccessory
             for (int i = 0; i < dynamicStackHandler.getSlots(); i++)
             {
                 ItemStack stack = dynamicStackHandler.getStackInSlot(i);
-                if (stack.getItem().isIn(TerraTagRegistry.FROG_BREAKERS))
+                if (stack.getItem().is(TerraTagRegistry.FROG_BREAKERS))
                 {
                     event.setDistance(event.getDistance() - 2);
                 }

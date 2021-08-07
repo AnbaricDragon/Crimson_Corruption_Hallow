@@ -18,6 +18,9 @@ import top.theillusivec4.curios.api.type.capability.ICurio;
 import javax.annotation.Nonnull;
 import java.util.List;
 
+import top.theillusivec4.curios.api.type.capability.ICurio.DropRule;
+import top.theillusivec4.curios.api.type.capability.ICurio.SoundInfo;
+
 public class TerraItemCountercurseMantra extends TerraItemAccessory
 {
     public TerraItemCountercurseMantra()
@@ -26,11 +29,11 @@ public class TerraItemCountercurseMantra extends TerraItemAccessory
     }
 
     @Override
-    public void addInformation(ItemStack stack, World worldIn, List<ITextComponent> tooltip, ITooltipFlag flagIn)
+    public void appendHoverText(ItemStack stack, World worldIn, List<ITextComponent> tooltip, ITooltipFlag flagIn)
     {
-        super.addInformation(stack, worldIn, tooltip, flagIn);
+        super.appendHoverText(stack, worldIn, tooltip, flagIn);
         tooltip.add(new StringTextComponent(""));
-        tooltip.add(new StringTextComponent("\u00A76" + I18n.format("curios.modifiers.charm") + "\u00A76"));
+        tooltip.add(new StringTextComponent("\u00A76" + I18n.get("curios.modifiers.charm") + "\u00A76"));
         tooltip.add(new StringTextComponent("\u00A79" + "Grants Immunity To:"));
         tooltip.add(new StringTextComponent("\u00A74" + "Curse"));
         tooltip.add(new StringTextComponent("\u00A74" + "Silence"));
@@ -45,13 +48,13 @@ public class TerraItemCountercurseMantra extends TerraItemAccessory
             @Override
             public void curioTick(String identifier, int index, LivingEntity livingEntity)
             {
-                if (livingEntity.isPotionActive(TerraEffectRegistry.CURSED.get()))
+                if (livingEntity.hasEffect(TerraEffectRegistry.CURSED.get()))
                 {
-                    livingEntity.removePotionEffect(TerraEffectRegistry.CURSED.get());
+                    livingEntity.removeEffect(TerraEffectRegistry.CURSED.get());
                 }
-                if (livingEntity.isPotionActive(TerraEffectRegistry.SILENCED.get()))
+                if (livingEntity.hasEffect(TerraEffectRegistry.SILENCED.get()))
                 {
-                    livingEntity.removePotionEffect(TerraEffectRegistry.SILENCED.get());
+                    livingEntity.removeEffect(TerraEffectRegistry.SILENCED.get());
                 }
             }
 
@@ -66,7 +69,7 @@ public class TerraItemCountercurseMantra extends TerraItemAccessory
             @Override
             public SoundInfo getEquipSound(SlotContext slotContext)
             {
-                return new SoundInfo(SoundEvents.ITEM_ARMOR_EQUIP_GENERIC, 1.0f, 1.0f);
+                return new SoundInfo(SoundEvents.ARMOR_EQUIP_GENERIC, 1.0f, 1.0f);
             }
 
             @Override

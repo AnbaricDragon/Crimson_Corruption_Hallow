@@ -44,11 +44,11 @@ public class TerraItemBootsLava extends TerraItemAccessory
     }
 
     @Override
-    public void addInformation(ItemStack stack, World worldIn, List<ITextComponent> tooltip, ITooltipFlag flagIn)
+    public void appendHoverText(ItemStack stack, World worldIn, List<ITextComponent> tooltip, ITooltipFlag flagIn)
     {
-        super.addInformation(stack, worldIn, tooltip, flagIn);
+        super.appendHoverText(stack, worldIn, tooltip, flagIn);
         tooltip.add(new StringTextComponent(""));
-        tooltip.add(new StringTextComponent("\u00A76" + I18n.format("curios.modifiers.charm") + "\u00A76"));
+        tooltip.add(new StringTextComponent("\u00A76" + I18n.get("curios.modifiers.charm") + "\u00A76"));
         tooltip.add(new StringTextComponent("\u00A79" + "Allows Walking On Fluids"));
         tooltip.add(new StringTextComponent("\u00A79" + "Gives 7 Seconds Of Lava Immunity"));
         tooltip.add(new StringTextComponent("\u00A79" + "-50% Lava Damage"));
@@ -95,7 +95,7 @@ public class TerraItemBootsLava extends TerraItemAccessory
             @Override
             public SoundInfo getEquipSound(SlotContext slotContext)
             {
-                return new SoundInfo(SoundEvents.ITEM_ARMOR_EQUIP_GENERIC, 1.0f, 1.0f);
+                return new SoundInfo(SoundEvents.ARMOR_EQUIP_GENERIC, 1.0f, 1.0f);
             }
 
             @Override
@@ -111,9 +111,9 @@ public class TerraItemBootsLava extends TerraItemAccessory
         CuriosApi.getCuriosHelper().findEquippedCurio(this, event.getEntityLiving()).ifPresent(found ->
         {
             DamageSource source = event.getSource();
-            if (source.isFireDamage() && source != DamageSource.LAVA)
+            if (source.isFire() && source != DamageSource.LAVA)
             {
-                event.getEntityLiving().extinguish();
+                event.getEntityLiving().clearFire();
                 event.setCanceled(true);
             }
         });
@@ -150,7 +150,7 @@ public class TerraItemBootsLava extends TerraItemAccessory
             {
                 if (source == DamageSource.LAVA)
                 {
-                    player.extinguish();
+                    player.clearFire();
                     compound.putInt("charge", --charge);
                     compound.putInt("chargeCooldown", 40);
                 }

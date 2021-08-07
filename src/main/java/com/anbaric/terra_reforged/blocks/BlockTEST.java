@@ -16,6 +16,8 @@ import net.minecraft.world.World;
 import net.minecraft.world.biome.Biomes;
 import net.minecraftforge.fml.network.PacketDistributor;
 
+import net.minecraft.block.AbstractBlock.Properties;
+
 public class BlockTEST extends Block
 {
     public BlockTEST(Properties properties)
@@ -24,13 +26,13 @@ public class BlockTEST extends Block
     }
 
     @Override
-    public ActionResultType onBlockActivated(BlockState state, World world, BlockPos pos, PlayerEntity player, Hand handIn, BlockRayTraceResult hit)
+    public ActionResultType use(BlockState state, World world, BlockPos pos, PlayerEntity player, Hand handIn, BlockRayTraceResult hit)
     {
-        if (!world.isRemote())
+        if (!world.isClientSide())
         {
             System.out.println("Setting biome when Block clicked: Biome at " + pos + " before change is " + world.getBiome(pos).getRegistryName());
             BiomeChangeHandler.setBiomeKeyAtPos(world, pos, Biomes.DESERT);
-            NetworkHandler.INSTANCE.send(PacketDistributor.ALL.noArg(), new ChangeBiomePacket(pos, Biomes.DESERT.getLocation()));
+            NetworkHandler.INSTANCE.send(PacketDistributor.ALL.noArg(), new ChangeBiomePacket(pos, Biomes.DESERT.location()));
             System.out.println("Setting biome when Block clicked: Biome at " + pos + " after change is " + world.getBiome(pos).getRegistryName());
             return ActionResultType.PASS;
         }
@@ -38,13 +40,13 @@ public class BlockTEST extends Block
     }
 
     @Override
-    public void onBlockAdded(BlockState state, World world, BlockPos pos, BlockState oldState, boolean isMoving)
+    public void onPlace(BlockState state, World world, BlockPos pos, BlockState oldState, boolean isMoving)
     {
-        if (!world.isRemote())
+        if (!world.isClientSide())
         {
             System.out.println("Setting biome when Block added: Biome at " + pos + " before change is " + world.getBiome(pos).getRegistryName());
             BiomeChangeHandler.setBiomeKeyAtPos(world, pos, Biomes.DESERT);
-            NetworkHandler.INSTANCE.send(PacketDistributor.ALL.noArg(), new ChangeBiomePacket(pos, Biomes.DESERT.getLocation()));
+            NetworkHandler.INSTANCE.send(PacketDistributor.ALL.noArg(), new ChangeBiomePacket(pos, Biomes.DESERT.location()));
             System.out.println("Setting biome when Block added: Biome at " + pos + " after change is " + world.getBiome(pos).getRegistryName());
         }
     }

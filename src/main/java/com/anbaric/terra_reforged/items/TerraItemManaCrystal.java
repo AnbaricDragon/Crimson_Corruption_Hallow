@@ -2,6 +2,8 @@ package com.anbaric.terra_reforged.items;
 
 import net.minecraft.item.Item;
 
+import net.minecraft.item.Item.Properties;
+
 public class TerraItemManaCrystal extends Item
 {
     public TerraItemManaCrystal(Properties properties)

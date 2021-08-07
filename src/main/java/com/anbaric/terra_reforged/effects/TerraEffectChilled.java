@@ -15,10 +15,10 @@ public class TerraEffectChilled extends Effect
     }
 
     @Override
-    public Effect addAttributesModifier(Attribute attributeIn, String uuid, double amount, AttributeModifier.Operation operation)
+    public Effect addAttributeModifier(Attribute attributeIn, String uuid, double amount, AttributeModifier.Operation operation)
     {
-        AttributeModifier attributemodifier = new AttributeModifier(UUID.fromString(uuid), this::getName, amount, operation);
-        super.attributeModifierMap.put(attributeIn, attributemodifier);
+        AttributeModifier attributemodifier = new AttributeModifier(UUID.fromString(uuid), this::getDescriptionId, amount, operation);
+        super.attributeModifiers.put(attributeIn, attributemodifier);
         return this;
     }
 }

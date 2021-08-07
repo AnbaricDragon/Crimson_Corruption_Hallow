@@ -27,11 +27,11 @@ public class TerraItemMagmaSkull extends TerraItemAccessory
     }
 
     @Override
-    public void addInformation(ItemStack stack, World worldIn, List<ITextComponent> tooltip, ITooltipFlag flagIn)
+    public void appendHoverText(ItemStack stack, World worldIn, List<ITextComponent> tooltip, ITooltipFlag flagIn)
     {
-        super.addInformation(stack, worldIn, tooltip, flagIn);
+        super.appendHoverText(stack, worldIn, tooltip, flagIn);
         tooltip.add(new StringTextComponent(""));
-        tooltip.add(new StringTextComponent("\u00A76" + I18n.format("curios.modifiers.charm") + "\u00A76"));
+        tooltip.add(new StringTextComponent("\u00A76" + I18n.get("curios.modifiers.charm") + "\u00A76"));
         tooltip.add(new StringTextComponent("\u00A79" + "Sets Melee Targets On Fire"));
         tooltip.add(new StringTextComponent("\u00A79" + "-100% Fire Damage"));
     }
@@ -41,9 +41,9 @@ public class TerraItemMagmaSkull extends TerraItemAccessory
         CuriosApi.getCuriosHelper().findEquippedCurio(this, event.getEntityLiving()).ifPresent(found ->
         {
             DamageSource source = event.getSource();
-            if (source.isFireDamage() && source != DamageSource.LAVA)
+            if (source.isFire() && source != DamageSource.LAVA)
             {
-                event.getEntityLiving().extinguish();
+                event.getEntityLiving().clearFire();
                 event.setCanceled(true);
             }
         });
@@ -51,13 +51,13 @@ public class TerraItemMagmaSkull extends TerraItemAccessory
 
     private void setMeleeFire(LivingDamageEvent event)
     {
-        Random       rand   = event.getEntityLiving().world.rand;
+        Random       rand   = event.getEntityLiving().level.random;
         LivingEntity victim = event.getEntityLiving();
-        PlayerEntity player = event.getSource().getImmediateSource() instanceof PlayerEntity ? (PlayerEntity) event.getSource().getImmediateSource() : null;
+        PlayerEntity player = event.getSource().getDirectEntity() instanceof PlayerEntity ? (PlayerEntity) event.getSource().getDirectEntity() : null;
         if (player == null) { return; }
         CuriosApi.getCuriosHelper().findEquippedCurio(this, event.getEntityLiving()).ifPresent(found ->
         {
-            victim.setFire(rand.nextInt(3) + rand.nextInt(3) + 2);
+            victim.setSecondsOnFire(rand.nextInt(3) + rand.nextInt(3) + 2);
         });
     }
 }

@@ -52,9 +52,9 @@ public abstract class TerraLivingEntityMixin extends Entity
     @Inject(method = "decreaseAirSupply(I)I", at = @At("HEAD"), cancellable = true)
     private void increaseAir(int air, CallbackInfoReturnable<Integer> cir)
     {
-        int i = EnchantmentHelper.getRespirationModifier((LivingEntity) (Object) this);
+        int i = EnchantmentHelper.getRespiration((LivingEntity) (Object) this);
         i += extraAir((LivingEntity) (Object) this);
-        cir.setReturnValue(i > 0 && this.rand.nextInt(i + 1) > 0 ? air : air - 1);
+        cir.setReturnValue(i > 0 && this.random.nextInt(i + 1) > 0 ? air : air - 1);
     }
 
     private int extraAir(Entity entity)
@@ -63,7 +63,7 @@ public abstract class TerraLivingEntityMixin extends Entity
         PlayerEntity player = entity instanceof PlayerEntity ? (PlayerEntity) entity : null;
         if (player != null)
         {
-            if (player.getItemStackFromSlot(EquipmentSlotType.HEAD).getItem() == TerraItemRegistry.HELMET_DIVING.get()) { result = 1; }
+            if (player.getItemBySlot(EquipmentSlotType.HEAD).getItem() == TerraItemRegistry.HELMET_DIVING.get()) { result = 1; }
             if (CurioHandler.hasBauble(player, TerraItemRegistry.GEAR_DIVING.get())) { result = 2; }
             if (CurioHandler.hasBauble(player, TerraItemRegistry.GEAR_DIVING_JELLYFISH.get())) { result = 2; }
             if (CurioHandler.hasBauble(player, TerraItemRegistry.GEAR_DIVING_ARCTIC.get())) { result = 3; }

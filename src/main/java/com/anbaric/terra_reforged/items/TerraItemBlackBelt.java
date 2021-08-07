@@ -26,11 +26,11 @@ public class TerraItemBlackBelt extends TerraItemAccessory
     }
 
     @Override
-    public void addInformation(ItemStack stack, World worldIn, List<ITextComponent> tooltip, ITooltipFlag flagIn)
+    public void appendHoverText(ItemStack stack, World worldIn, List<ITextComponent> tooltip, ITooltipFlag flagIn)
     {
-        super.addInformation(stack, worldIn, tooltip, flagIn);
+        super.appendHoverText(stack, worldIn, tooltip, flagIn);
         tooltip.add(new StringTextComponent(""));
-        tooltip.add(new StringTextComponent("\u00A76" + I18n.format("curios.modifiers.charm") + "\u00A76"));
+        tooltip.add(new StringTextComponent("\u00A76" + I18n.get("curios.modifiers.charm") + "\u00A76"));
         tooltip.add(new StringTextComponent("\u00A79" + "+10% Dodge Chance"));
     }
 
@@ -38,7 +38,7 @@ public class TerraItemBlackBelt extends TerraItemAccessory
     {
         CuriosApi.getCuriosHelper().findEquippedCurio(this, event.getEntityLiving()).ifPresent(found ->
         {
-            if (event.getEntityLiving().world.rand.nextFloat() < 0.1F)
+            if (event.getEntityLiving().level.random.nextFloat() < 0.1F)
             {
                 event.setCanceled(true);
             }

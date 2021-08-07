@@ -12,19 +12,19 @@ import net.minecraft.world.IWorldReader;
 
 public class TerraBlockFoliage extends BushBlock
 {
-    protected static final VoxelShape MUSHROOM_SHAPE = Block.makeCuboidShape(5.0D, 0.0D, 5.0D, 11.0D, 6.0D, 11.0D);
-    protected static final VoxelShape MOSS_SHAPE = Block.makeCuboidShape(0.0D, 0.0D, 0.0D, 16.0D, 1.0D, 16.0D);
+    protected static final VoxelShape MUSHROOM_SHAPE = Block.box(5.0D, 0.0D, 5.0D, 11.0D, 6.0D, 11.0D);
+    protected static final VoxelShape MOSS_SHAPE = Block.box(0.0D, 0.0D, 0.0D, 16.0D, 1.0D, 16.0D);
 
     public TerraBlockFoliage(AbstractBlock.Properties builder)
     {
-        super(builder.notSolid());
+        super(builder.noOcclusion());
     }
 
     @Override
-    public boolean isValidPosition(BlockState state, IWorldReader worldIn, BlockPos pos)
+    public boolean canSurvive(BlockState state, IWorldReader worldIn, BlockPos pos)
     {
-        BlockState soilState = worldIn.getBlockState(pos.down());
-        Block soil = worldIn.getBlockState(pos.down()).getBlock();
+        BlockState soilState = worldIn.getBlockState(pos.below());
+        Block soil = worldIn.getBlockState(pos.below()).getBlock();
 
         if (this == TerraBlockRegistry.PLANT_MOSS_RED.get())
         {
@@ -63,7 +63,7 @@ public class TerraBlockFoliage extends BushBlock
                    soil == Blocks.DIRT;
         }
 
-        return soilState.canSustainPlant(worldIn, pos.down(), Direction.UP, this);
+        return soilState.canSustainPlant(worldIn, pos.below(), Direction.UP, this);
     }
 
     @Override

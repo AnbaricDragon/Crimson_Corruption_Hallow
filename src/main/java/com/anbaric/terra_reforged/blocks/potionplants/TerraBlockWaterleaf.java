@@ -24,20 +24,20 @@ public class TerraBlockWaterleaf extends TerraBlockPotionPlant
     @Override
     public void tick(BlockState state, ServerWorld worldIn, BlockPos pos, Random random)
     {
-        if (!worldIn.isRemote)
+        if (!worldIn.isClientSide)
         {
             if (!worldIn.isAreaLoaded(pos, 3))
             {
                 return; // Forge: prevent loading unloaded chunks when checking neighbor's light and spreading
             }
-            if (state.get(AGE) == 0 && random.nextFloat() < 0.01F)
+            if (state.getValue(AGE) == 0 && random.nextFloat() < 0.01F)
             {
-                worldIn.setBlockState(pos, state.with(AGE, 1));
+                worldIn.setBlockAndUpdate(pos, state.setValue(AGE, 1));
             }
             else
             {
-                if (worldIn.isRaining() == true && state.get(AGE) == 1) {worldIn.setBlockState(pos, this.getDefaultState().with(AGE, 2));}
-                if (worldIn.isRaining() == false && state.get(AGE) == 2) {worldIn.setBlockState(pos, this.getDefaultState().with(AGE, 1));}
+                if (worldIn.isRaining() == true && state.getValue(AGE) == 1) {worldIn.setBlockAndUpdate(pos, this.defaultBlockState().setValue(AGE, 2));}
+                if (worldIn.isRaining() == false && state.getValue(AGE) == 2) {worldIn.setBlockAndUpdate(pos, this.defaultBlockState().setValue(AGE, 1));}
             }
         }
     }

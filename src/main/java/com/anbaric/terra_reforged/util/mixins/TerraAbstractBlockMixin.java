@@ -21,7 +21,7 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 @Mixin(AbstractBlock.AbstractBlockState.class)
 public class TerraAbstractBlockMixin
 {
-    private static VoxelShape fullLiquidShape = Block.makeCuboidShape(0, 0, 0, 16, 14.3, 16);
+    private static VoxelShape fullLiquidShape = Block.box(0, 0, 0, 16, 14.3, 16);
 
     @Inject(method = "getCollisionShape(Lnet/minecraft/world/IBlockReader;Lnet/minecraft/util/math/BlockPos;Lnet/minecraft/util/math/shapes/ISelectionContext;)Lnet/minecraft/util/math/shapes/VoxelShape;", at = @At("HEAD"), cancellable = true)
     private void waterWalk(IBlockReader worldIn, BlockPos pos, ISelectionContext context, CallbackInfoReturnable<VoxelShape> cir)
@@ -38,7 +38,7 @@ public class TerraAbstractBlockMixin
         if (entity instanceof PlayerEntity && state.getBlock() instanceof FlowingFluidBlock && entity.getPose() != Pose.CROUCHING)
         {
             PlayerEntity player = (PlayerEntity) entity;
-            boolean isSpace = world.getBlockState(pos.up()).isAir(world, pos.up());
+            boolean isSpace = world.getBlockState(pos.above()).isAir(world, pos.above());
             boolean canWaterWalk = !player.isInWater() && state.getMaterial() == Material.WATER && CurioHandler.hasBauble(player, TerraTagRegistry.WATER_WALKERS);
             boolean canLavaWalk = !player.isInLava() && state.getMaterial() == Material.LAVA && CurioHandler.hasBauble(player, TerraTagRegistry.LAVA_WALKERS);
             return isSpace && (canLavaWalk || canWaterWalk);
@@ -48,13 +48,13 @@ public class TerraAbstractBlockMixin
 
     private static final VoxelShape[] liquidShape =
     {
-        Block.makeCuboidShape(0, 0, 0, 16, 14.3, 16),
-        Block.makeCuboidShape(0, 0, 0, 16, 14.3, 16),
-        Block.makeCuboidShape(0, 0, 0, 16, 14.3, 16),
-        Block.makeCuboidShape(0, 0, 0, 16, 14.3, 16),
-        Block.makeCuboidShape(0, 0, 0, 16, 14.3, 16),
-        Block.makeCuboidShape(0, 0, 0, 16, 14.3, 16),
-        Block.makeCuboidShape(0, 0, 0, 16, 14.3, 16)
+        Block.box(0, 0, 0, 16, 14.3, 16),
+        Block.box(0, 0, 0, 16, 14.3, 16),
+        Block.box(0, 0, 0, 16, 14.3, 16),
+        Block.box(0, 0, 0, 16, 14.3, 16),
+        Block.box(0, 0, 0, 16, 14.3, 16),
+        Block.box(0, 0, 0, 16, 14.3, 16),
+        Block.box(0, 0, 0, 16, 14.3, 16)
     };
 
     public VoxelShape getLiquidShape(int fluidLevel)

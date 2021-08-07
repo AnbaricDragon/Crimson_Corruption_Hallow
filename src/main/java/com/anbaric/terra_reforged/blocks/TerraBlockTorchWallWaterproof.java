@@ -39,7 +39,7 @@ public class TerraBlockTorchWallWaterproof extends TerraBlockTorchWaterproof imp
     public TerraBlockTorchWallWaterproof(Properties properties)
     {
         super(properties);
-        this.setDefaultState(this.stateContainer.getBaseState().with(HORIZONTAL_FACING, Direction.NORTH).with(WATERLOGGED, false));
+        this.registerDefaultState(this.stateDefinition.any().setValue(HORIZONTAL_FACING, Direction.NORTH).setValue(WATERLOGGED, false));
     }
 
     @Override
@@ -57,28 +57,28 @@ public class TerraBlockTorchWallWaterproof extends TerraBlockTorchWaterproof imp
 
     public static VoxelShape directionShape(BlockState state)
     {
-        return SHAPES.get(state.get(HORIZONTAL_FACING));
+        return SHAPES.get(state.getValue(HORIZONTAL_FACING));
     }
 
-    public boolean isValidPosition(BlockState state, IWorldReader world, BlockPos pos)
+    public boolean canSurvive(BlockState state, IWorldReader world, BlockPos pos)
     {
-        Direction  facing = state.get(HORIZONTAL_FACING);
-        BlockPos   oppositePos = pos.offset(facing.getOpposite());
+        Direction  facing = state.getValue(HORIZONTAL_FACING);
+        BlockPos   oppositePos = pos.relative(facing.getOpposite());
         BlockState oppositeState = world.getBlockState(oppositePos);
-        return oppositeState.isSolidSide(world, oppositePos, facing);
+        return oppositeState.isFaceSturdy(world, oppositePos, facing);
     }
 
     @Nullable
     public BlockState getStateForPlacement(BlockItemUseContext context)
     {
-        BlockState   state = this.getDefaultState();
-        IWorldReader world = context.getWorld();
-        BlockPos     pos = context.getPos();
+        BlockState   state = this.defaultBlockState();
+        IWorldReader world = context.getLevel();
+        BlockPos     pos = context.getClickedPos();
         Direction[]  lvt_5_1_ = context.getNearestLookingDirections();
         Direction[]  var6     = lvt_5_1_;
         int          var7     = lvt_5_1_.length;
 
-        FluidState waterlogged = context.getWorld().getFluidState(context.getPos());
+        FluidState waterlogged = context.getLevel().getFluidState(context.getClickedPos());
 
         for (int var8 = 0; var8 < var7; ++var8)
         {
@@ -86,10 +86,10 @@ public class TerraBlockTorchWallWaterproof extends TerraBlockTorchWaterproof imp
             if (lvt_9_1_.getAxis().isHorizontal())
             {
                 Direction lvt_10_1_ = lvt_9_1_.getOpposite();
-                state = (BlockState) state.with(HORIZONTAL_FACING, lvt_10_1_);
-                if (state.isValidPosition(world, pos))
+                state = (BlockState) state.setValue(HORIZONTAL_FACING, lvt_10_1_);
+                if (state.canSurvive(world, pos))
                 {
-                    return state.with(WATERLOGGED, waterlogged.getFluid() == Fluids.WATER);
+                    return state.setValue(WATERLOGGED, waterlogged.getType() == Fluids.WATER);
                 }
             }
         }
@@ -97,47 +97,47 @@ public class TerraBlockTorchWallWaterproof extends TerraBlockTorchWaterproof imp
         return null;
     }
 
-    public BlockState updatePostPlacement(BlockState stateIn, Direction facing, BlockState facingState, IWorld worldIn, BlockPos currentPos, BlockPos facingPos)
+    public BlockState updateShape(BlockState stateIn, Direction facing, BlockState facingState, IWorld worldIn, BlockPos currentPos, BlockPos facingPos)
     {
-        worldIn.getPendingFluidTicks().scheduleTick(currentPos, Fluids.WATER, Fluids.WATER.getTickRate(worldIn));
-        return facing.getOpposite() == stateIn.get(HORIZONTAL_FACING) && !stateIn.isValidPosition(worldIn, currentPos) ? Blocks.AIR.getDefaultState() : stateIn;
+        worldIn.getLiquidTicks().scheduleTick(currentPos, Fluids.WATER, Fluids.WATER.getTickDelay(worldIn));
+        return facing.getOpposite() == stateIn.getValue(HORIZONTAL_FACING) && !stateIn.canSurvive(worldIn, currentPos) ? Blocks.AIR.defaultBlockState() : stateIn;
     }
 
     @OnlyIn(Dist.CLIENT)
     public void animateTick(BlockState state, World world, BlockPos pos, Random rand)
     {
-        Direction facing  = (Direction) state.get(HORIZONTAL_FACING);
+        Direction facing  = (Direction) state.getValue(HORIZONTAL_FACING);
         double    lvt_6_1_  = (double) pos.getX() + 0.5D;
         double    lvt_8_1_  = (double) pos.getY() + 0.7D;
         double    lvt_10_1_ = (double) pos.getZ() + 0.5D;
         double    lvt_12_1_ = 0.22D;
         double    lvt_14_1_ = 0.27D;
         Direction lvt_16_1_ = facing.getOpposite();
-        if (!state.get(WATERLOGGED))
+        if (!state.getValue(WATERLOGGED))
         {
-            world.addParticle(ParticleTypes.SMOKE, lvt_6_1_ + 0.27D * (double) lvt_16_1_.getXOffset(), lvt_8_1_ + 0.22D, lvt_10_1_ + 0.27D * (double) lvt_16_1_.getZOffset(), 0.0D, 0.0D, 0.0D);
-            world.addParticle(this.getParticle(), lvt_6_1_ + 0.27D * (double) lvt_16_1_.getXOffset(), lvt_8_1_ + 0.22D, lvt_10_1_ + 0.27D * (double) lvt_16_1_.getZOffset(), 0.0D, 0.0D, 0.0D);
+            world.addParticle(ParticleTypes.SMOKE, lvt_6_1_ + 0.27D * (double) lvt_16_1_.getStepX(), lvt_8_1_ + 0.22D, lvt_10_1_ + 0.27D * (double) lvt_16_1_.getStepZ(), 0.0D, 0.0D, 0.0D);
+            world.addParticle(this.getParticle(), lvt_6_1_ + 0.27D * (double) lvt_16_1_.getStepX(), lvt_8_1_ + 0.22D, lvt_10_1_ + 0.27D * (double) lvt_16_1_.getStepZ(), 0.0D, 0.0D, 0.0D);
         }
     }
 
     public BlockState rotate(BlockState state, Rotation rot)
     {
-        return (BlockState) state.with(HORIZONTAL_FACING, rot.rotate((Direction) state.get(HORIZONTAL_FACING)));
+        return (BlockState) state.setValue(HORIZONTAL_FACING, rot.rotate((Direction) state.getValue(HORIZONTAL_FACING)));
     }
 
     public BlockState mirror(BlockState state, Mirror mirrorIn)
     {
-        return state.rotate(mirrorIn.toRotation((Direction) state.get(HORIZONTAL_FACING)));
+        return state.rotate(mirrorIn.getRotation((Direction) state.getValue(HORIZONTAL_FACING)));
     }
 
-    protected void fillStateContainer(StateContainer.Builder<Block, BlockState> builder)
+    protected void createBlockStateDefinition(StateContainer.Builder<Block, BlockState> builder)
     {
         builder.add(HORIZONTAL_FACING, WATERLOGGED);
     }
 
     static
     {
-        HORIZONTAL_FACING = HorizontalBlock.HORIZONTAL_FACING;
-        SHAPES = Maps.newEnumMap(ImmutableMap.of(Direction.NORTH, Block.makeCuboidShape(5.5D, 3.0D, 11.0D, 10.5D, 13.0D, 16.0D), Direction.SOUTH, Block.makeCuboidShape(5.5D, 3.0D, 0.0D, 10.5D, 13.0D, 5.0D), Direction.WEST, Block.makeCuboidShape(11.0D, 3.0D, 5.5D, 16.0D, 13.0D, 10.5D), Direction.EAST, Block.makeCuboidShape(0.0D, 3.0D, 5.5D, 5.0D, 13.0D, 10.5D)));
+        HORIZONTAL_FACING = HorizontalBlock.FACING;
+        SHAPES = Maps.newEnumMap(ImmutableMap.of(Direction.NORTH, Block.box(5.5D, 3.0D, 11.0D, 10.5D, 13.0D, 16.0D), Direction.SOUTH, Block.box(5.5D, 3.0D, 0.0D, 10.5D, 13.0D, 5.0D), Direction.WEST, Block.box(11.0D, 3.0D, 5.5D, 16.0D, 13.0D, 10.5D), Direction.EAST, Block.box(0.0D, 3.0D, 5.5D, 5.0D, 13.0D, 10.5D)));
     }
 }

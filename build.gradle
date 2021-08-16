@@ -14,6 +14,7 @@ apply plugin: 'net.minecraftforge.gradle'
 // Only edit below this line, the above code adds and enables the necessary things for Forge to be setup.
 apply plugin: 'eclipse'
 apply plugin: 'maven-publish'
+apply plugin: 'org.spongepowered.mixin'
 
 version = '0.1.2'
 group = 'com.anbaric.terra_reforged' // http://maven.apache.org/guides/mini/guide-naming-conventions.html
@@ -30,7 +31,7 @@ minecraft {
     runs {
         client {
             workingDirectory project.file('run')
-
+            arg "-mixin.config=" + archivesBaseName + ".mixins.json"
             // Recommended logging data for a userdev environment
             // The markers can be changed as needed.
             // "SCAN": For mods scan.
@@ -44,7 +45,7 @@ minecraft {
             property 'forge.logging.console.level', 'debug'
 
             mods {
-                examplemod {
+                terra_reforged {
                     source sourceSets.main
                 }
             }
@@ -52,7 +53,7 @@ minecraft {
 
         server {
             workingDirectory project.file('run')
-
+            arg "-mixin.config=" + archivesBaseName + ".mixins.json"
             // Recommended logging data for a userdev environment
             // The markers can be changed as needed.
             // "SCAN": For mods scan.
@@ -66,7 +67,7 @@ minecraft {
             property 'forge.logging.console.level', 'debug'
 
             mods {
-                examplemod {
+                terra_reforged {
                     source sourceSets.main
                 }
             }
@@ -74,7 +75,7 @@ minecraft {
 
         data {
             workingDirectory project.file('run')
-
+            arg "-mixin.config=" + archivesBaseName + ".mixins.json"
             // Recommended logging data for a userdev environment
             // The markers can be changed as needed.
             // "SCAN": For mods scan.
@@ -91,7 +92,7 @@ minecraft {
             args '--mod', 'examplemod', '--all', '--output', file('src/generated/resources/'), '--existing', file('src/main/resources/')
 
             mods {
-                examplemod {
+                terra_reforged {
                     source sourceSets.main
                 }
             }
@@ -139,7 +140,7 @@ jar {
                 "Implementation-Version"  : "${version}",
                 "Implementation-Vendor"   : "aetherial_labs",
                 "Implementation-Timestamp": new Date().format("yyyy-MM-dd'T'HH:mm:ssZ"),
-                "MixinConfigs": "terra_reforged.mixins.json"
+                "MixinConfigs"            : "terra_reforged.mixins.json"
         ])
     }
 }

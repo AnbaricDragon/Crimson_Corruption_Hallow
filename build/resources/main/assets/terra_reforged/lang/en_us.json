@@ -40,7 +40,10 @@
   "effect.terra_reforged.confusion": "Confusion",
   "effect.terra_reforged.broken_armor": "Broken Armor",
   "effect.terra_reforged.silenced": "Silence",
+
   "effect.terra_reforged.honey": "Honey",
+  "effect.terra_reforged.mana_regen": "Mana Regen",
+  "effect.terra_reforged.water_walking": "Water Walking",
 
   "block.terra_reforged.soil_mud": "Mud",
   "block.terra_reforged.soil_ash": "Ash",
@@ -624,6 +627,11 @@
   "item.terra_reforged.skull_obsidian": "Obsidian Skull",
   "item.terra_reforged.skull_rose": "Obsidian Skull Rose",
   "item.terra_reforged.stone_magma": "Magma Stone",
+  "item.terra_reforged.band_starpower": "Band Of Starpower",
+  "item.terra_reforged.band_manaregen": "Mana Regeneration Band",
+  "item.terra_reforged.band_healthregen": "Band of Regeneration",
+  "item.terra_reforged.shackle": "Shackle",
+  "item.terra_reforged.cuffs_magic": "Magic Cuffs",
 
   "item.terra_reforged.vitamins": "Vitamins",
   "item.terra_reforged.bandage": "Bandage",
@@ -648,6 +656,10 @@
   "item.terra_reforged.seed_moonglow": "Moonglow Seed",
   "item.terra_reforged.seed_shiverthorn": "Shiverthorn Seed",
   "item.terra_reforged.seed_waterleaf": "Waterleaf Seed",
+  "item.minecraft.potion.effect.water_walking": "Potion of Water Walking",
+  "item.minecraft.splash_potion.effect.water_walking": "Splash Potion of Water Walking",
+  "item.minecraft.lingering_potion.effect.water_walking": "Lingering Potion of Water Walking",
+  "item.minecraft.tipped_arrow.effect.water_walking": "Arrow of Water Walking",
 
   "item.terra_reforged.pickaxe_cactus": "Cactus Pickaxe",
   "item.terra_reforged.pickaxe_copper": "Copper Pickaxe",

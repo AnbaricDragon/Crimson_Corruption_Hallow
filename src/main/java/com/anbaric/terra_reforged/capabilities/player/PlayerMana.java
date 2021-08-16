@@ -3,6 +3,7 @@ package com.anbaric.terra_reforged.capabilities.player;
 public class PlayerMana implements IPlayerMana
 {
     private int mana;
+    private int manaCrystalsUsed;
 
     @Override
     public int getCurrentMana()
@@ -14,6 +15,18 @@ public class PlayerMana implements IPlayerMana
     public void setCurrentMana(int mana)
     {
         this.mana = mana;
+    }
+
+    @Override
+    public int getManaCrystalsUsed()
+    {
+        return this.manaCrystalsUsed;
+    }
+
+    @Override
+    public void setManaCrystalsUsed(int manaCrystalsUsed)
+    {
+        this.manaCrystalsUsed = manaCrystalsUsed;
     }
 
     @Override

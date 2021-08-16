@@ -57,6 +57,7 @@ public class TerraReforged
         TerraBlockRegistry.BLOCKS.register(modEventBus);
         TerraItemRegistry.ITEMS.register(modEventBus);
         TerraEffectRegistry.EFFECTS.register(modEventBus);
+        TerraPotionRegistry.POTIONS.register(modEventBus);
         TerraAttributeRegistry.ATTRIBUTES.register(modEventBus);
         TerraEntityRegistry.ENTITIES.register(modEventBus);
         TerraTileEntityRegistry.TILE_ENTITIES.register(modEventBus);
@@ -72,6 +73,8 @@ public class TerraReforged
         MinecraftForge.EVENT_BUS.register(TerraManaTickEvent.class);
         MinecraftForge.EVENT_BUS.register(TerraStructureProtectEvent.class);
         MinecraftForge.EVENT_BUS.register(TerraCapabilitiesEvent.class);
+        modEventBus.register(TerraAttributeAdditionEvent.class);
+        MinecraftForge.EVENT_BUS.register(TerraPlayerChangedEvent.class);
         MinecraftForge.EVENT_BUS.register(TerraDefaultBiomeAdditionsEvent.class);
         MinecraftForge.EVENT_BUS.register(TerraGuiRenderEvent.class);
         MinecraftForge.EVENT_BUS.register(new TerraJumpEvent());

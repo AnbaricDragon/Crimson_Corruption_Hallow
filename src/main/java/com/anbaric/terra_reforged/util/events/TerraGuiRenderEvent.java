@@ -53,7 +53,7 @@ public class TerraGuiRenderEvent
                         int count = (int) Math.floor(charge / 14F);
 
                         int right = 80;
-                        int top   = height - (ForgeIngameGui.right_height + 11);
+                        int top   = height - (ForgeIngameGui.right_height + 3);
 
                         RenderSystem.enableBlend();
                         for (int i = 0; i < count + 1; i++)
@@ -112,11 +112,11 @@ public class TerraGuiRenderEvent
                 currentMana.set(cap.getCurrentMana());
             });
 
-            maxMana = 200;//player.getAttribute(TerraAttributeRegistry.MANA_MAX.get()).getValue();
+            maxMana = player.getAttribute(TerraAttributeRegistry.MANA_MAX.get()).getValue();
 
             double mana = currentMana.get();
             int storage = (int) (maxMana / 20);
-//            System.out.println("Player has " + mana + " in " + storage + " slots");
+            //            System.out.println("Player has " + mana + " in " + storage + " slots");
             if (mana > 0)
             {
                 mc.getEntityRenderDispatcher().textureManager.bind(ICON_GUI);

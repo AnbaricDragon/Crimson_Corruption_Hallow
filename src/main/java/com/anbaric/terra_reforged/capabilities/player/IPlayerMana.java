@@ -9,5 +9,8 @@ public interface IPlayerMana
     int getCurrentMana();
     void setCurrentMana(int mana);
 
+    int getManaCrystalsUsed();
+    void setManaCrystalsUsed(int crystalsUsed);
+
     boolean spendMana(int maxMana, double discount, int cost);
 }

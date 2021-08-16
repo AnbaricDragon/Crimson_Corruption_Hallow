@@ -59,16 +59,15 @@ public abstract class TerraLivingEntityMixin extends Entity
 
     private int extraAir(Entity entity)
     {
-        int result = 0;
         PlayerEntity player = entity instanceof PlayerEntity ? (PlayerEntity) entity : null;
         if (player != null)
         {
-            if (player.getItemBySlot(EquipmentSlotType.HEAD).getItem() == TerraItemRegistry.HELMET_DIVING.get()) { result = 1; }
-            if (CurioHandler.hasBauble(player, TerraItemRegistry.GEAR_DIVING.get())) { result = 2; }
-            if (CurioHandler.hasBauble(player, TerraItemRegistry.GEAR_DIVING_JELLYFISH.get())) { result = 2; }
-            if (CurioHandler.hasBauble(player, TerraItemRegistry.GEAR_DIVING_ARCTIC.get())) { result = 3; }
+            if (player.getItemBySlot(EquipmentSlotType.HEAD).getItem() == TerraItemRegistry.HELMET_DIVING.get()) { return 1; }
+            if (CurioHandler.hasBauble(player, TerraItemRegistry.GEAR_DIVING.get())) { return 2; }
+            if (CurioHandler.hasBauble(player, TerraItemRegistry.GEAR_DIVING_JELLYFISH.get())) { return 2; }
+            if (CurioHandler.hasBauble(player, TerraItemRegistry.GEAR_DIVING_ARCTIC.get())) { return 3; }
         }
-        return result;
+        return 0;
     }
 
     private boolean iceWalk(Entity entity)

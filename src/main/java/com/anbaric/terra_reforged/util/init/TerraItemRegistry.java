@@ -70,6 +70,7 @@ public final class TerraItemRegistry
     public static final RegistryObject<Item> PLANT_WATERLEAF = ITEMS.register("plant_waterleaf", () -> new Item(new Item.Properties().tab(TerraItemGroups.TERRA_MATERIALS_TAB)));
 
     //Misc
+    public static final RegistryObject<Item> CONSUMEABLE_MANA = ITEMS.register("consumeable_mana", () -> new TerraItemConsumeableMana());
     public static final RegistryObject<Item> MANA_CRYSTAL = ITEMS.register("mana_crystal", () -> new TerraItemManaCrystal(new Item.Properties().tab(TerraItemGroups.TERRA_TOOLS_TAB)));
     public static final RegistryObject<Item> FRUIT_LIFEFRUIT = ITEMS.register("fruit_lifefruit", () -> new Item(new Item.Properties().tab(TerraItemGroups.TERRA_TOOLS_TAB)));
     public static final RegistryObject<Item> SEED_BLINKROOT = ITEMS.register("seed_blinkroot", () -> new BlockNamedItem(TerraBlockRegistry.PLANT_BLINKROOT.get(), new Item.Properties().tab(TerraItemGroups.TERRA_DECORATIONS_TAB)));
@@ -158,6 +159,12 @@ public final class TerraItemRegistry
     public static final RegistryObject<Item> SKULL_OBSIDIAN = ITEMS.register("skull_obsidian", () -> new TerraItemObsidianSkull());
     public static final RegistryObject<Item> SKULL_ROSE = ITEMS.register("skull_rose", () -> new TerraItemObsidianSkullRose());
     public static final RegistryObject<Item> STONE_MAGMA = ITEMS.register("stone_magma", () -> new TerraItemMagmaStone());
+    public static final RegistryObject<Item> BAND_STARPOWER = ITEMS.register("band_starpower", () -> new TerraItemBandStarpower());
+    public static final RegistryObject<Item> BAND_MANAREGEN = ITEMS.register("band_manaregen", () -> new TerraItemBandManaRegeneration());
+    public static final RegistryObject<Item> BAND_HEALTHREGEN = ITEMS.register("band_healthregen", () -> new TerraItemBandHealthRegeneration());
+    public static final RegistryObject<Item> SHACKLE = ITEMS.register("shackle", () -> new TerraItemShackle());
+    public static final RegistryObject<Item> CUFFS_MAGIC = ITEMS.register("cuffs_magic", () -> new TerraItemMagicCuffs());
+
 
     public static final RegistryObject<Item> VITAMINS = ITEMS.register("vitamins", () -> new TerraItemVitamins());
     public static final RegistryObject<Item> BANDAGE = ITEMS.register("bandage", () -> new TerraItemBandage());

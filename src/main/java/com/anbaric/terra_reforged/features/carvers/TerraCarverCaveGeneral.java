@@ -70,12 +70,12 @@ public class TerraCarverCaveGeneral extends WorldCarver<ProbabilityConfig>
         return 15;
     }
 
-    protected float getThickness(Random p_230359_1_)
+    protected float getThickness(Random rand)
     {
-        float f = p_230359_1_.nextFloat() * 2.0F + p_230359_1_.nextFloat();
-        if (p_230359_1_.nextInt(10) == 0)
+        float f = rand.nextFloat() * 2.0F + rand.nextFloat();
+        if (rand.nextInt(10) == 0)
         {
-            f *= p_230359_1_.nextFloat() * p_230359_1_.nextFloat() * 3.0F + 1.0F;
+            f *= rand.nextFloat() * rand.nextFloat() * 3.0F + 1.0F;
         }
 
         return f;
@@ -86,9 +86,9 @@ public class TerraCarverCaveGeneral extends WorldCarver<ProbabilityConfig>
         return 1.0D;
     }
 
-    protected int getCaveY(Random p_230361_1_)
+    protected int getCaveY(Random rand)
     {
-        return p_230361_1_.nextInt(p_230361_1_.nextInt(120) + 8);
+        return rand.nextInt(rand.nextInt(120) + 8);
     }
 
     protected void genRoom(IChunk p_227205_1_, Function<BlockPos, Biome> p_227205_2_, long p_227205_3_, int seaLevel, int chunkX, int chunkZ, double randOffsetXCoord, double startY, double randOffsetZCoord, float p_227205_14_, double p_227205_15_, BitSet carvingMask)

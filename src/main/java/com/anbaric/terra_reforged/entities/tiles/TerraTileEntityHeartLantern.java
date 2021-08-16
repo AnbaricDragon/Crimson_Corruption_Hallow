@@ -1,5 +1,6 @@
 package com.anbaric.terra_reforged.entities.tiles;
 
+import com.anbaric.terra_reforged.util.init.TerraEffectRegistry;
 import com.anbaric.terra_reforged.util.init.TerraTileEntityRegistry;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.potion.EffectInstance;
@@ -29,7 +30,7 @@ public class TerraTileEntityHeartLantern extends TileEntity implements ITickable
     {
         boolean powered = !this.level.isClientSide && level.getBestNeighborSignal(worldPosition) > 0;
 
-        if (powered && this.level.getGameTime() % 100 == 0)
+        if (powered /*&& this.level.getGameTime() % 100 == 0*/)
         {
             this.addEffectsToPlayers();
         }
@@ -45,7 +46,7 @@ public class TerraTileEntityHeartLantern extends TileEntity implements ITickable
 
             for (PlayerEntity playerentity : list)
             {
-                playerentity.addEffect(new EffectInstance(Effects.REGENERATION, 200, 0, true, false));
+                playerentity.addEffect(new EffectInstance(TerraEffectRegistry.WATER_WALKING.get(), -1, 0, true, false));
             }
         }
     }

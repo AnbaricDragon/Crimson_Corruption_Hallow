@@ -15,7 +15,7 @@ import net.minecraft.item.Item.Properties;
 
 public class TerraProjectileSword extends SwordItem
 {
-    private  Multimap<Attribute, AttributeModifier> spearAttributes;
+    private Multimap<Attribute, AttributeModifier> spearAttributes;
 
     public TerraProjectileSword(IItemTier tier, int attackDamageIn, float attackSpeedIn, Properties builderIn)
     {

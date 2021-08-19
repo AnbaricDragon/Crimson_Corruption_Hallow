@@ -1,13 +1,7 @@
-package com.anbaric.terra_reforged.util.packets;
+package com.anbaric.terra_reforged.util.packets.movement;
 
-import com.anbaric.terra_reforged.util.events.TerraJumpEvent;
-import com.anbaric.terra_reforged.util.handlers.CurioHandler;
-import com.anbaric.terra_reforged.util.init.TerraItemRegistry;
-import com.anbaric.terra_reforged.util.init.TerraTagRegistry;
 import net.minecraft.entity.player.ServerPlayerEntity;
 import net.minecraft.network.PacketBuffer;
-import net.minecraft.particles.ParticleTypes;
-import net.minecraft.util.SoundEvents;
 import net.minecraftforge.fml.network.NetworkEvent;
 
 import java.util.function.Supplier;

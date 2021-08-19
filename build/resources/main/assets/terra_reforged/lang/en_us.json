@@ -657,9 +657,9 @@
   "item.terra_reforged.seed_shiverthorn": "Shiverthorn Seed",
   "item.terra_reforged.seed_waterleaf": "Waterleaf Seed",
   "item.minecraft.potion.effect.water_walking": "Potion of Water Walking",
+  "item.minecraft.tipped_arrow.effect.water_walking": "Arrow of Water Walking",
   "item.minecraft.splash_potion.effect.water_walking": "Splash Potion of Water Walking",
   "item.minecraft.lingering_potion.effect.water_walking": "Lingering Potion of Water Walking",
-  "item.minecraft.tipped_arrow.effect.water_walking": "Arrow of Water Walking",
 
   "item.terra_reforged.pickaxe_cactus": "Cactus Pickaxe",
   "item.terra_reforged.pickaxe_copper": "Copper Pickaxe",

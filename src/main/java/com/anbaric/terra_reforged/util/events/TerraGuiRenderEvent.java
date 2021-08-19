@@ -1,6 +1,6 @@
 package com.anbaric.terra_reforged.util.events;
 
-import com.anbaric.terra_reforged.capabilities.player.TerraCapabilityPlayerMana;
+import com.anbaric.terra_reforged.capabilities.mana.TerraCapabilityPlayerMana;
 import com.anbaric.terra_reforged.util.handlers.CurioHandler;
 import com.anbaric.terra_reforged.util.init.TerraAttributeRegistry;
 import com.anbaric.terra_reforged.util.init.TerraItemRegistry;
@@ -107,7 +107,7 @@ public class TerraGuiRenderEvent
             AtomicDouble currentMana = new AtomicDouble(0);
             double maxMana = 0;
 
-            player.getCapability(TerraCapabilityPlayerMana.PLAYER_MANA).ifPresent(cap ->
+            player.getCapability(TerraCapabilityPlayerMana.PLAYER_MANA_CAPABILITY).ifPresent(cap ->
             {
                 currentMana.set(cap.getCurrentMana());
             });

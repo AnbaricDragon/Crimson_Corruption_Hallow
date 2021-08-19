@@ -1,13 +1,11 @@
-package com.anbaric.terra_reforged.util.packets;
+package com.anbaric.terra_reforged.util.packets.movement;
 
 import com.anbaric.terra_reforged.util.events.TerraJumpEvent;
 import com.anbaric.terra_reforged.util.handlers.CurioHandler;
 import com.anbaric.terra_reforged.util.init.TerraItemRegistry;
 import com.anbaric.terra_reforged.util.init.TerraTagRegistry;
-import net.minecraft.block.Blocks;
 import net.minecraft.entity.player.ServerPlayerEntity;
 import net.minecraft.network.PacketBuffer;
-import net.minecraft.particles.BlockParticleData;
 import net.minecraft.particles.ParticleTypes;
 import net.minecraft.util.SoundEvents;
 import net.minecraftforge.fml.network.NetworkEvent;
@@ -16,13 +14,13 @@ import top.theillusivec4.curios.api.CuriosApi;
 import java.util.concurrent.atomic.AtomicInteger;
 import java.util.function.Supplier;
 
-public class SandstormJumpPacket
+public class FartJumpPacket
 {
-    public SandstormJumpPacket(PacketBuffer buffer)
+    public FartJumpPacket(PacketBuffer buffer)
     {
     }
 
-    public SandstormJumpPacket()
+    public FartJumpPacket()
     {
     }
 
@@ -47,13 +45,13 @@ public class SandstormJumpPacket
                 if (CurioHandler.hasBauble(player, TerraTagRegistry.FART_HIGH_JUMPERS)) { jumpModifier++; }
 
                 TerraJumpEvent.jump(player, jumpModifier);
-                player.playSound(SoundEvents.SAND_STEP, 1, 0.9F + player.getRandom().nextFloat() * 0.2F);
+                player.playSound(SoundEvents.DONKEY_HURT, 1, 0.9F + player.getRandom().nextFloat() * 0.2F);
                 for (int i = 0; i < 20; ++i)
                 {
                     double motionX = player.getRandom().nextGaussian() * 0.02;
                     double motionY = player.getRandom().nextGaussian() * 0.02 + 0.20;
                     double motionZ = player.getRandom().nextGaussian() * 0.02;
-                    player.getLevel().sendParticles(new BlockParticleData(ParticleTypes.FALLING_DUST, Blocks.SAND.defaultBlockState()),player.getX() + (player.getRandom().nextFloat() - 0.5), player.getY(), player.getZ() + (player.getRandom().nextFloat() - 0.5), 1, motionX, motionY, motionZ, 0.15);
+                    player.getLevel().sendParticles(ParticleTypes.POOF, player.getX(), player.getY(), player.getZ(), 1, motionX, motionY, motionZ, 0.15);
                 }
             });
         }

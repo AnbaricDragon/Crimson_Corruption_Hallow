@@ -34,4 +34,5 @@ public class TerraProjectileSword extends SwordItem
         }
         return slot == EquipmentSlotType.MAINHAND ? spearAttributes : super.getAttributeModifiers(slot,stack);
     }
+
 }

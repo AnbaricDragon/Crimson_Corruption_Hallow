@@ -1,4 +1,4 @@
-package com.anbaric.terra_reforged.util.packets;
+package com.anbaric.terra_reforged.util.packets.movement;
 
 import com.anbaric.terra_reforged.util.events.TerraDashEvent;
 import net.minecraft.entity.player.ServerPlayerEntity;

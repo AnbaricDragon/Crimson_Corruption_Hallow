@@ -1,4 +1,4 @@
-package com.anbaric.terra_reforged.util.packets;
+package com.anbaric.terra_reforged.util.packets.movement;
 
 import com.anbaric.terra_reforged.util.events.TerraJumpEvent;
 import com.anbaric.terra_reforged.util.handlers.CurioHandler;
@@ -9,18 +9,16 @@ import net.minecraft.network.PacketBuffer;
 import net.minecraft.particles.ParticleTypes;
 import net.minecraft.util.SoundEvents;
 import net.minecraftforge.fml.network.NetworkEvent;
-import top.theillusivec4.curios.api.CuriosApi;
 
-import java.util.concurrent.atomic.AtomicInteger;
 import java.util.function.Supplier;
 
-public class FartJumpPacket
+public class WallJumpPacket
 {
-    public FartJumpPacket(PacketBuffer buffer)
+    public WallJumpPacket(PacketBuffer buffer)
     {
     }
 
-    public FartJumpPacket()
+    public WallJumpPacket()
     {
     }
 
@@ -44,15 +42,7 @@ public class FartJumpPacket
                 if (CurioHandler.hasBauble(player, TerraTagRegistry.TSUNAMI_HIGH_JUMPERS)) { jumpModifier++; }
                 if (CurioHandler.hasBauble(player, TerraTagRegistry.FART_HIGH_JUMPERS)) { jumpModifier++; }
 
-                TerraJumpEvent.jump(player, jumpModifier);
-                player.playSound(SoundEvents.DONKEY_HURT, 1, 0.9F + player.getRandom().nextFloat() * 0.2F);
-                for (int i = 0; i < 20; ++i)
-                {
-                    double motionX = player.getRandom().nextGaussian() * 0.02;
-                    double motionY = player.getRandom().nextGaussian() * 0.02 + 0.20;
-                    double motionZ = player.getRandom().nextGaussian() * 0.02;
-                    player.getLevel().sendParticles(ParticleTypes.POOF, player.getX(), player.getY(), player.getZ(), 1, motionX, motionY, motionZ, 0.15);
-                }
+                TerraJumpEvent.wallJump(player, jumpModifier);
             });
         }
         context.get().setPacketHandled(true);

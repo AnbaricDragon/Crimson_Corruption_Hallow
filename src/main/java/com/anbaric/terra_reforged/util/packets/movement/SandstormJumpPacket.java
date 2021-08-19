@@ -1,24 +1,28 @@
-package com.anbaric.terra_reforged.util.packets;
+package com.anbaric.terra_reforged.util.packets.movement;
 
 import com.anbaric.terra_reforged.util.events.TerraJumpEvent;
 import com.anbaric.terra_reforged.util.handlers.CurioHandler;
 import com.anbaric.terra_reforged.util.init.TerraItemRegistry;
 import com.anbaric.terra_reforged.util.init.TerraTagRegistry;
+import net.minecraft.block.Blocks;
 import net.minecraft.entity.player.ServerPlayerEntity;
 import net.minecraft.network.PacketBuffer;
+import net.minecraft.particles.BlockParticleData;
 import net.minecraft.particles.ParticleTypes;
 import net.minecraft.util.SoundEvents;
 import net.minecraftforge.fml.network.NetworkEvent;
+import top.theillusivec4.curios.api.CuriosApi;
 
+import java.util.concurrent.atomic.AtomicInteger;
 import java.util.function.Supplier;
 
-public class WallJumpPacket
+public class SandstormJumpPacket
 {
-    public WallJumpPacket(PacketBuffer buffer)
+    public SandstormJumpPacket(PacketBuffer buffer)
     {
     }
 
-    public WallJumpPacket()
+    public SandstormJumpPacket()
     {
     }
 
@@ -42,7 +46,15 @@ public class WallJumpPacket
                 if (CurioHandler.hasBauble(player, TerraTagRegistry.TSUNAMI_HIGH_JUMPERS)) { jumpModifier++; }
                 if (CurioHandler.hasBauble(player, TerraTagRegistry.FART_HIGH_JUMPERS)) { jumpModifier++; }
 
-                TerraJumpEvent.wallJump(player, jumpModifier);
+                TerraJumpEvent.jump(player, jumpModifier);
+                player.playSound(SoundEvents.SAND_STEP, 1, 0.9F + player.getRandom().nextFloat() * 0.2F);
+                for (int i = 0; i < 20; ++i)
+                {
+                    double motionX = player.getRandom().nextGaussian() * 0.02;
+                    double motionY = player.getRandom().nextGaussian() * 0.02 + 0.20;
+                    double motionZ = player.getRandom().nextGaussian() * 0.02;
+                    player.getLevel().sendParticles(new BlockParticleData(ParticleTypes.FALLING_DUST, Blocks.SAND.defaultBlockState()),player.getX() + (player.getRandom().nextFloat() - 0.5), player.getY(), player.getZ() + (player.getRandom().nextFloat() - 0.5), 1, motionX, motionY, motionZ, 0.15);
+                }
             });
         }
         context.get().setPacketHandled(true);

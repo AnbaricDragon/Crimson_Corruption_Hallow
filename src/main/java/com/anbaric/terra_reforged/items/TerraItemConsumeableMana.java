@@ -1,27 +1,14 @@
 package com.anbaric.terra_reforged.items;
 
-import com.anbaric.terra_reforged.capabilities.player.TerraCapabilityPlayerMana;
+import com.anbaric.terra_reforged.capabilities.mana.TerraCapabilityPlayerMana;
 import com.anbaric.terra_reforged.util.TerraItemGroups;
-import com.anbaric.terra_reforged.util.init.TerraAttributeRegistry;
-import net.minecraft.client.resources.I18n;
-import net.minecraft.client.util.ITooltipFlag;
-import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.ItemUseContext;
 import net.minecraft.util.ActionResultType;
-import net.minecraft.util.DamageSource;
-import net.minecraft.util.text.ITextComponent;
-import net.minecraft.util.text.StringTextComponent;
-import net.minecraft.world.World;
 import net.minecraftforge.common.MinecraftForge;
-import net.minecraftforge.event.entity.item.ItemEvent;
-import net.minecraftforge.event.entity.living.LivingHurtEvent;
-import net.minecraftforge.event.entity.player.PlayerEvent;
-import net.minecraftforge.event.entity.player.PlayerXpEvent;
-
-import java.util.List;
+import net.minecraftforge.event.entity.player.EntityItemPickupEvent;
 
 public class TerraItemConsumeableMana extends Item
 {
@@ -34,33 +21,28 @@ public class TerraItemConsumeableMana extends Item
     @Override
     public ActionResultType onItemUseFirst(ItemStack stack, ItemUseContext context)
     {
-        context.getPlayer().getCapability(TerraCapabilityPlayerMana.PLAYER_MANA).ifPresent(cap -> cap.setCurrentMana(0));
+        context.getPlayer().getCapability(TerraCapabilityPlayerMana.PLAYER_MANA_CAPABILITY).ifPresent(cap -> cap.setCurrentMana(0));
         return ActionResultType.SUCCESS;
     }
 
-    public void onPickUpItem(PlayerEvent.ItemPickupEvent event)
+    private void onPickUpItem(EntityItemPickupEvent event)
     {
-        System.out.println("Found Pick Up Item Event");
-        PlayerEntity player = event.getPlayer();
-        ItemStack stack = event.getStack();
-        if (stack.getItem() == this)
+        if (event.getEntityLiving() instanceof PlayerEntity )
         {
-            player.getCapability(TerraCapabilityPlayerMana.PLAYER_MANA).ifPresent(cap ->
+            PlayerEntity player = (PlayerEntity)event.getEntityLiving();
+            System.out.println(player.getDisplayName() + " picked up Item " + event.getItem().getItem().getItem());
+            player.getCapability(TerraCapabilityPlayerMana.PLAYER_MANA_CAPABILITY).ifPresent(cap ->
             {
-                int manaRecovered = stack.getCount() * 20;
-                int maxMana = (int) player.getAttribute(TerraAttributeRegistry.MANA_MAX.get()).getValue();
-                int currentMana = cap.getCurrentMana();
-                if (currentMana + manaRecovered > maxMana)
+                ItemStack stack = event.getItem().getItem();
+                if (!stack.isEmpty() && stack.getItem() instanceof TerraItemConsumeableMana)
                 {
-                    cap.setCurrentMana(currentMana + manaRecovered);
+                    int newMana = cap.getCurrentMana() + (20 * stack.getCount());
+                    System.out.println("Player has " + cap.getCurrentMana() + " mana, and should soon have " + newMana + " mana");
+
+                    cap.setCurrentMana(newMana);
+                    stack.shrink(stack.getCount());
                 }
-                else
-                {
-                    cap.setCurrentMana(maxMana);
-                }
-                stack.shrink(stack.getCount());
             });
         }
-
     }
 }

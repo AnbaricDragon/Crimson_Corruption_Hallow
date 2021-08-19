@@ -1,6 +1,6 @@
 package com.anbaric.terra_reforged.items;
 
-import com.anbaric.terra_reforged.capabilities.player.TerraCapabilityPlayerMana;
+import com.anbaric.terra_reforged.capabilities.mana.TerraCapabilityPlayerMana;
 import com.anbaric.terra_reforged.util.init.TerraAttributeRegistry;
 import net.minecraft.entity.ai.attributes.AttributeModifier;
 import net.minecraft.entity.player.PlayerEntity;
@@ -38,7 +38,7 @@ public class TerraItemManaCrystal extends Item
     {
         ItemStack     itemstack = playerIn.getItemInHand(handIn);
         AtomicBoolean itemUsed  = new AtomicBoolean(false);
-        playerIn.getCapability(TerraCapabilityPlayerMana.PLAYER_MANA).ifPresent(cap ->
+        playerIn.getCapability(TerraCapabilityPlayerMana.PLAYER_MANA_CAPABILITY).ifPresent(cap ->
         {
             int crystalsUsed = cap.getManaCrystalsUsed();
             if (crystalsUsed < 9)
@@ -58,7 +58,7 @@ public class TerraItemManaCrystal extends Item
         }
         else
         {
-            playerIn.getCapability(TerraCapabilityPlayerMana.PLAYER_MANA).ifPresent(cap ->
+            playerIn.getCapability(TerraCapabilityPlayerMana.PLAYER_MANA_CAPABILITY).ifPresent(cap ->
             {
                 cap.setManaCrystalsUsed(0);
                 cap.setCurrentMana(0);

@@ -1,33 +1,24 @@
 package com.anbaric.terra_reforged.util.events;
 
 import com.anbaric.terra_reforged.capabilities.hardmode.WorldProgressionProvider;
-import com.anbaric.terra_reforged.capabilities.player.PlayerManaProvider;
 import com.anbaric.terra_reforged.util.Reference;
-import com.anbaric.terra_reforged.util.init.TerraAttributeRegistry;
-import net.minecraft.entity.Entity;
-import net.minecraft.entity.EntityType;
-import net.minecraft.entity.LivingEntity;
-import net.minecraft.entity.ai.attributes.Attribute;
-import net.minecraft.entity.ai.attributes.AttributeModifierMap;
-import net.minecraft.entity.ai.attributes.Attributes;
-import net.minecraft.entity.player.PlayerEntity;
+import com.anbaric.terra_reforged.util.handlers.PlayerManaHandler;
+import net.minecraft.entity.player.ServerPlayerEntity;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.world.World;
 import net.minecraftforge.event.AttachCapabilitiesEvent;
-import net.minecraftforge.event.entity.EntityAttributeCreationEvent;
-import net.minecraftforge.event.entity.EntityAttributeModificationEvent;
+import net.minecraftforge.event.entity.EntityJoinWorldEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 
 public class TerraCapabilitiesEvent
 {
     @SubscribeEvent
-    public static void onAttachCapabilitiesEntity(AttachCapabilitiesEvent<Entity> event)
+    public static void onEntityJoinWorld(EntityJoinWorldEvent event)
     {
-        if (event.getObject() instanceof PlayerEntity)
+        if (event.getEntity() instanceof ServerPlayerEntity)
         {
-            PlayerManaProvider provider = new PlayerManaProvider();
-            event.addCapability(new ResourceLocation(Reference.MODID, "player_mana"), provider);
-            event.addListener(provider::invalidate);
+            ServerPlayerEntity serverPlayer = (ServerPlayerEntity) event.getEntity();
+            PlayerManaHandler.getManaHolder(serverPlayer).sendPlayerUpdatePacket(serverPlayer);
         }
     }
 

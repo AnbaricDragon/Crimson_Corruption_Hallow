@@ -1,21 +1,13 @@
 package com.anbaric.terra_reforged.util.handlers;
 
-import com.anbaric.terra_reforged.blocks.TerraBlockOre;
 import com.anbaric.terra_reforged.util.Reference;
 import com.anbaric.terra_reforged.util.init.TerraBlockRegistry;
-import net.minecraft.block.Block;
-import net.minecraft.block.SoundType;
-import net.minecraft.block.material.Material;
-import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.RenderType;
 import net.minecraft.client.renderer.RenderTypeLookup;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
-import net.minecraftforge.fml.RegistryObject;
 import net.minecraftforge.fml.common.Mod.EventBusSubscriber;
 import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
-
-import java.util.function.Supplier;
 
 @EventBusSubscriber(value = {Dist.CLIENT}, modid = Reference.MODID, bus = EventBusSubscriber.Bus.MOD)
 public class RenderHandler

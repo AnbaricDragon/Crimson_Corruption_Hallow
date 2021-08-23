@@ -6,7 +6,8 @@
     "refmap": "terra_reforged.refmap.json",
     "mixins": [
         "TerraAbstractBlockMixin",
-        "TerraLivingEntityMixin"
+        "TerraLivingEntityMixin",
+        "TerraItemEntityMixin"
     ],
     "client": [
     ],

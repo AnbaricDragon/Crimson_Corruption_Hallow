@@ -47,7 +47,7 @@ public class TerraCapabilityPlayerMana
     }
 
     @SubscribeEvent
-    public static void onAttachGravityHolderCap(AttachCapabilitiesEvent<Entity> event)
+    public static void onAttachManaHolderCap(AttachCapabilitiesEvent<Entity> event)
     {
         if (event.getObject() instanceof PlayerEntity)
         {
@@ -60,5 +60,4 @@ public class TerraCapabilityPlayerMana
     {
         CapabilityAttacher.registerCapability(IPlayerMana.class);
     }
-
 }

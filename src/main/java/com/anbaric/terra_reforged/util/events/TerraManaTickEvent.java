@@ -20,7 +20,7 @@ public class TerraManaTickEvent
     @SubscribeEvent
     static void onPlayerTick(TickEvent.PlayerTickEvent event)
     {
-        if (event.phase == TickEvent.Phase.START)
+        if (event.phase == TickEvent.Phase.START && !event.player.getCommandSenderWorld().isClientSide())
         {
             PlayerEntity player = event.player;
             double maxMana = player.getAttributeValue(TerraAttributeRegistry.MANA_MAX.get());
@@ -36,19 +36,22 @@ public class TerraManaTickEvent
             player.getCapability(TerraCapabilityPlayerMana.PLAYER_MANA_CAPABILITY).ifPresent(cap ->
             {
                 currentMana = cap.getCurrentMana();
-                if (currentMana < maxMana && manaCount >= 120)
+                while (manaCount >= 120)
                 {
-                    cap.setCurrentMana(currentMana + 1);
                     manaCount -= hasManaRegenBuff ? 100 : 120;
+                    if (currentMana < maxMana)
+                    {
+                        cap.setCurrentMana(currentMana + 1);
+                    }
                 }
-                else if (currentMana > maxMana)
+                if (currentMana > maxMana)
                 {
                     cap.setCurrentMana((int) maxMana);
                 }
             });
             //Underlying equation...
             //(((maxMana/7) + hasMRB + isMoving) * hasManaRegenBuff * 1.15)
-            if (manaCount < 120)
+            if (manaCount < 1000)
             {
                 manaCount += (int) (((maxMana/7) + (hasManaRegenBand ? 26 : 1) + (hasManaRegenBand ? maxMana / 2 : isMoving ? 0 : maxMana / 2)) * (hasManaRegenBuff ? 1 : (currentMana / maxMana * 0.8) + 0.2) * 1.15);
             }

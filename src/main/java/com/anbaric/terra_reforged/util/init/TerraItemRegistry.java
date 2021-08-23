@@ -85,6 +85,7 @@ public final class TerraItemRegistry
     public static final RegistryObject<Item> LILYPAD_HALLOWED = ITEMS.register("lilypad_hallowed", () -> new TerraItemLilyPad(TerraBlockRegistry.LILYPAD_HALLOWED.get(), new Item.Properties().tab(TerraItemGroups.TERRA_DECORATIONS_TAB)));
 
     //Tools
+    public static final RegistryObject<Item> MANA_DEV = ITEMS.register("mana_dev", () -> new TerraItemMANADEV());
 
     //Accessories
     public static final RegistryObject<Item> AGLET = ITEMS.register("aglet", () -> new TerraItemAccessorySpeed(0.05F));
@@ -164,6 +165,7 @@ public final class TerraItemRegistry
     public static final RegistryObject<Item> BAND_HEALTHREGEN = ITEMS.register("band_healthregen", () -> new TerraItemBandHealthRegeneration());
     public static final RegistryObject<Item> SHACKLE = ITEMS.register("shackle", () -> new TerraItemShackle());
     public static final RegistryObject<Item> CUFFS_MAGIC = ITEMS.register("cuffs_magic", () -> new TerraItemMagicCuffs());
+    public static final RegistryObject<Item> MAGNET_CELESTIAL = ITEMS.register("magnet_celestial", () -> new TerraItemCelestialMagnet());
 
 
     public static final RegistryObject<Item> VITAMINS = ITEMS.register("vitamins", () -> new TerraItemVitamins());

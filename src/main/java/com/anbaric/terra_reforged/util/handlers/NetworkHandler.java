@@ -4,6 +4,7 @@ import com.anbaric.terra_reforged.util.Reference;
 import com.anbaric.terra_reforged.util.packets.*;
 import com.anbaric.terra_reforged.util.packets.movement.*;
 import net.minecraft.util.ResourceLocation;
+import net.minecraftforge.fml.network.NetworkDirection;
 import net.minecraftforge.fml.network.NetworkRegistry;
 import net.minecraftforge.fml.network.simple.SimpleChannel;
 
@@ -25,5 +26,6 @@ public class NetworkHandler
         INSTANCE.registerMessage(index++, CarpetJumpPacket.class, CarpetJumpPacket::encode, CarpetJumpPacket::decode, CarpetJumpPacket::handle);
         INSTANCE.registerMessage(index++, TabiDashPacket.class, TabiDashPacket::encode, TabiDashPacket::new, TabiDashPacket::handle);
         INSTANCE.registerMessage(index++, ChangeBiomePacket.class, ChangeBiomePacket::encode, ChangeBiomePacket::decode, ChangeBiomePacket::handle);
+        INSTANCE.messageBuilder(ManaUpdatePacket.class, index++, NetworkDirection.PLAY_TO_CLIENT).encoder(ManaUpdatePacket::write).decoder(ManaUpdatePacket::read).consumer(ManaUpdatePacket::handle).add();
     }
 }

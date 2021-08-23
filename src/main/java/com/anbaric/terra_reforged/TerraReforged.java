@@ -1,6 +1,7 @@
 package com.anbaric.terra_reforged;
 
 import com.anbaric.terra_reforged.capabilities.hardmode.TerraCapabilityWorldProgression;
+import com.anbaric.terra_reforged.capabilities.mana.TerraCapabilityPlayerMana;
 import com.anbaric.terra_reforged.util.Reference;
 import com.anbaric.terra_reforged.util.events.*;
 import com.anbaric.terra_reforged.util.handlers.*;
@@ -89,6 +90,7 @@ public class TerraReforged
         event.enqueueWork(CarverHandler::addCarvers);
         NetworkHandler.register();
         TerraCapabilityWorldProgression.register();
+        TerraCapabilityPlayerMana.register();
         FeatureGenHandler.configureFeatures();
 
         //        TerraVanillaCompat.setupStripping();

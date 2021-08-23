@@ -1,6 +1,7 @@
 {
     "replace": false,
     "values": [
+        "terra_reforged:mana_dev",
         "minecraft:clock",
         "minecraft:compass",
 
@@ -81,6 +82,7 @@
         "terra_reforged:band_healthregen",
         "terra_reforged:shackle",
         "terra_reforged:cuffs_magic",
+        "terra_reforged:magnet_celestial",
 
         "terra_reforged:vitamins",
         "terra_reforged:bandage",

@@ -30,15 +30,12 @@ public class TerraItemConsumeableMana extends Item
         if (event.getEntityLiving() instanceof PlayerEntity )
         {
             PlayerEntity player = (PlayerEntity)event.getEntityLiving();
-            System.out.println(player.getDisplayName() + " picked up Item " + event.getItem().getItem().getItem());
             player.getCapability(TerraCapabilityPlayerMana.PLAYER_MANA_CAPABILITY).ifPresent(cap ->
             {
                 ItemStack stack = event.getItem().getItem();
                 if (!stack.isEmpty() && stack.getItem() instanceof TerraItemConsumeableMana)
                 {
                     int newMana = cap.getCurrentMana() + (20 * stack.getCount());
-                    System.out.println("Player has " + cap.getCurrentMana() + " mana, and should soon have " + newMana + " mana");
-
                     cap.setCurrentMana(newMana);
                     stack.shrink(stack.getCount());
                 }

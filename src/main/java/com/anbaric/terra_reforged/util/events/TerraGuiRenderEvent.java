@@ -3,6 +3,7 @@ package com.anbaric.terra_reforged.util.events;
 import com.anbaric.terra_reforged.capabilities.mana.TerraCapabilityPlayerMana;
 import com.anbaric.terra_reforged.util.handlers.CurioHandler;
 import com.anbaric.terra_reforged.util.init.TerraAttributeRegistry;
+import com.anbaric.terra_reforged.util.init.TerraEffectRegistry;
 import com.anbaric.terra_reforged.util.init.TerraItemRegistry;
 import com.google.common.util.concurrent.AtomicDouble;
 import com.mojang.blaze3d.systems.RenderSystem;
@@ -19,8 +20,9 @@ import net.minecraftforge.client.event.RenderGameOverlayEvent;
 import net.minecraftforge.client.gui.ForgeIngameGui;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 
-@OnlyIn(Dist.CLIENT)
-public class TerraGuiRenderEvent
+import java.util.function.Predicate;
+
+@OnlyIn(Dist.CLIENT) public class TerraGuiRenderEvent
 {
     private static final Minecraft mc = Minecraft.getInstance();
     private static final ResourceLocation ICON_GUI = new ResourceLocation("terra_reforged:textures/gui/gui_icon.png");
@@ -30,10 +32,58 @@ public class TerraGuiRenderEvent
     {
         if (event.getType() == RenderGameOverlayEvent.ElementType.ARMOR)
         {
-            ClientPlayerEntity player = mc.player;
-            ItemStack lavaProtector = CurioHandler.getBaubles(player, TerraItemRegistry.CHARM_LAVA.get(), TerraItemRegistry.BOOTS_LAVA.get(), TerraItemRegistry.BOOTS_HELLFIRE.get(), TerraItemRegistry.BOOTS_TERRASPARK.get());
-            ItemStack tabiDasher = CurioHandler.getBaubles(player, TerraItemRegistry.NINJA_TABI.get());
+            ClientPlayerEntity player        = mc.player;
+            ItemStack          lavaProtector = CurioHandler.getBaubles(player, TerraItemRegistry.CHARM_LAVA.get(), TerraItemRegistry.BOOTS_LAVA.get(), TerraItemRegistry.BOOTS_HELLFIRE.get(), TerraItemRegistry.BOOTS_TERRASPARK.get());
+            ItemStack          tabiDasher    = CurioHandler.getBaubles(player, TerraItemRegistry.NINJA_TABI.get());
 
+
+            AtomicDouble currentMana = new AtomicDouble(0);
+            double maxMana = player.getAttribute(TerraAttributeRegistry.MANA_MAX.get()).getValue();
+
+            player.getCapability(TerraCapabilityPlayerMana.PLAYER_MANA_CAPABILITY).ifPresent(cap -> {
+                currentMana.set(cap.getCurrentMana());
+            });
+
+            double mana = currentMana.get();
+            int storage = (int) Math.floor(maxMana / 10);
+            //            System.out.println("Player has " + mana + " in " + storage + " slots");
+            if (mana >= 0)
+            {
+                mc.getEntityRenderDispatcher().textureManager.bind(ICON_GUI);
+                IngameGui ingameGui = mc.gui;
+                int manaPoisoned = player.getActiveEffects().contains(TerraEffectRegistry.SILENCED.get()) ? 22 : 0;
+                int width  = mc.getWindow().getGuiScaledWidth();
+                int height = mc.getWindow().getGuiScaledHeight();
+                int right = 8;
+                int top = height - (ForgeIngameGui.right_height + 11);
+
+                RenderSystem.enableBlend();
+                int underLay = 11 * (int) Math.floor(mana / 100);
+                for (int crystal = 0; crystal < Math.min(storage, 10); crystal ++)
+                {
+                    ingameGui.blit(event.getMatrixStack(), width / 2 + right, top, underLay, 0, 10, 10);
+                    right += 8;
+                }
+                right = 8;
+
+                for (int crystal = 0; crystal < Math.min(storage, 10); crystal ++)
+                {
+                    int layerMana = (int) (mana % 100);
+                    int crystalMana = crystal * 10;
+                    if (layerMana > (crystalMana) + 10)
+                    {
+                        ingameGui.blit(event.getMatrixStack(), width / 2 + right, top, underLay + 11, 0, 10, 10);
+                    }
+                    else if (layerMana > crystalMana)
+                    {
+                        ingameGui.blit(event.getMatrixStack(), width / 2 + right, top, underLay + 11, 0, layerMana - crystalMana, 10);
+                    }
+                    right += 8;
+                }
+                mc.getTextureManager().bind(AbstractGui.GUI_ICONS_LOCATION);
+//                ingameGui.blit(event.getMatrixStack(), width / 2 + right, top, 0, 0, 10, 10);
+                RenderSystem.disableBlend();
+            }
             if (!lavaProtector.isEmpty())
             {
                 CompoundNBT compound = lavaProtector.getTag();
@@ -64,7 +114,7 @@ public class TerraGuiRenderEvent
                                 RenderSystem.color4f(1, 1, 1, (countFloat) % ((int) (countFloat)));
                             }
 
-                            ingameGui.blit(event.getMatrixStack(), width / 2 + right, top, 11, 0, 10, 10);
+                            ingameGui.blit(event.getMatrixStack(), width / 2 + right, top, 0, 22, 10, 10);
                             right -= 8;
                             RenderSystem.color4f(1, 1, 1, 1);
                         }
@@ -92,7 +142,7 @@ public class TerraGuiRenderEvent
                         int count = 0;
 
                         int left = 80;
-                        int top   = height - (ForgeIngameGui.right_height + 11);
+                        int top  = height - (ForgeIngameGui.right_height + 11);
 
                         RenderSystem.enableBlend();
                         ingameGui.blit(event.getMatrixStack(), width / 2 - left, top, 0, 0, 10, 10);
@@ -102,54 +152,6 @@ public class TerraGuiRenderEvent
                         RenderSystem.disableBlend();
                     }
                 }
-            }
-
-            AtomicDouble currentMana = new AtomicDouble(0);
-            double maxMana = 0;
-
-            player.getCapability(TerraCapabilityPlayerMana.PLAYER_MANA_CAPABILITY).ifPresent(cap ->
-            {
-                currentMana.set(cap.getCurrentMana());
-            });
-
-            maxMana = player.getAttribute(TerraAttributeRegistry.MANA_MAX.get()).getValue();
-
-            double mana = currentMana.get();
-            int storage = (int) (maxMana / 20);
-            //            System.out.println("Player has " + mana + " in " + storage + " slots");
-            if (mana > 0)
-            {
-                mc.getEntityRenderDispatcher().textureManager.bind(ICON_GUI);
-                IngameGui ingameGui = mc.gui;
-
-                int width  = mc.getWindow().getGuiScaledWidth();
-                int height = mc.getWindow().getGuiScaledHeight();
-                int right = 8;
-                int top   = height - (ForgeIngameGui.right_height + 11);
-
-                RenderSystem.enableBlend();
-                for (int i = 0; i < storage; i++)
-                {
-                    if (mana >= ((i+1) * 20))
-                    {
-                        ingameGui.blit(event.getMatrixStack(), width / 2 + right, top, 0, 11, 10, 10);
-                    }
-                    else if (mana < ((i + 1) * 20) - 20)
-                    {
-                        ingameGui.blit(event.getMatrixStack(), width / 2 + right, top, 0, 0, 10, 10);
-                    }
-                    else
-                    {
-                        float fadePercent = (float) ((mana % 20) / 20);
-                        ingameGui.blit(event.getMatrixStack(), width / 2 + right, top, 0, 0, 10, 10);
-                        RenderSystem.color4f(1, 1, 1, fadePercent);
-                        ingameGui.blit(event.getMatrixStack(), width / 2 + right, top, 0, 11, 10, 10);
-                        RenderSystem.color4f(1, 1, 1, 1);
-                    }
-                    right += 8;
-                }
-                mc.getTextureManager().bind(AbstractGui.GUI_ICONS_LOCATION);
-                RenderSystem.disableBlend();
             }
         }
     }

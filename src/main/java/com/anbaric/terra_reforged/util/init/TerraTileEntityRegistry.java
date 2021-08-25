@@ -15,5 +15,5 @@ public class TerraTileEntityRegistry
 {
     public static final DeferredRegister<TileEntityType<?>> TILE_ENTITIES = DeferredRegister.create(ForgeRegistries.TILE_ENTITIES, Reference.MODID);
 
-    public static final RegistryObject<TileEntityType<TerraTileEntityHeartLantern>> LANTERN_HEART = TILE_ENTITIES.register("lantern_heart", () -> TileEntityType.Builder.of(TerraTileEntityHeartLantern::new, TerraBlockRegistry.LANTERN_HEART.get()).build(null));
+    public static final RegistryObject<TileEntityType<TerraTileEntityHeartLantern>> LANTERN_HEART = TILE_ENTITIES.register("lantern_heart", () -> TileEntityType.Builder.create(TerraTileEntityHeartLantern::new, TerraBlockRegistry.LANTERN_HEART.get()).build(null));
 }

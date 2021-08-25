@@ -23,16 +23,16 @@ import java.util.Random;
 
 public class TerraFeatureThinIce extends Feature<NoFeatureConfig>
 {
-    private static final BlockState THIN_ICE = TerraBlockRegistry.ICE_THIN.get().defaultBlockState();
+    private static final BlockState THIN_ICE = TerraBlockRegistry.ICE_THIN.get().getDefaultState();
 
     public TerraFeatureThinIce()
     {
         super(NoFeatureConfig.CODEC);
     }
 
-    public boolean place(ISeedReader reader, ChunkGenerator generator, Random rand, BlockPos pos, NoFeatureConfig config)
+    public boolean generate(ISeedReader reader, ChunkGenerator generator, Random rand, BlockPos pos, NoFeatureConfig config)
     {
-        int topBlockPos = generator.getSpawnHeight();
+        int topBlockPos = generator.getGroundHeight();
         BlockPos locationPos = new BlockPos(pos.getX(), topBlockPos, pos.getZ());
         int height = rand.nextInt(18) + 10;
         int radius = 4;
@@ -41,27 +41,27 @@ public class TerraFeatureThinIce extends Feature<NoFeatureConfig>
         {
             if (locationPos.getY() > 0)
             {
-                locationPos = locationPos.below();
+                locationPos = locationPos.down();
             }
         }
-        while (!reader.getBlockState(locationPos).canOcclude())
+        while (!reader.getBlockState(locationPos).isSolid())
         {
             if (locationPos.getY() > 0)
             {
-                locationPos = locationPos.below();
+                locationPos = locationPos.down();
             }
         }
 
-        BlockPos.Mutable workingPos = locationPos.mutable();
+        BlockPos.Mutable workingPos = locationPos.toMutable();
 
-        reader.setBlock(pos.above(50), THIN_ICE, 3);
+        reader.setBlockState(pos.up(50), THIN_ICE, 3);
 
         for (int yPos = locationPos.getY() + 1; yPos >= locationPos.getY() - height; yPos--)
         {
-            workingPos.set(locationPos.getX(), yPos, locationPos.getZ());
+            workingPos.setPos(locationPos.getX(), yPos, locationPos.getZ());
             if (!reader.getBlockState(workingPos).isAir(reader, workingPos) && reader.getBlockState(workingPos).getBlock() != Blocks.BEDROCK && reader.getBlockState(workingPos).getBlock() != Blocks.WATER)
             {
-                reader.setBlock(workingPos, THIN_ICE, 3);
+                reader.setBlockState(workingPos, THIN_ICE, 3);
             }
 //            for (int xPos = locationPos.getX() - radius; xPos <= locationPos.getX() + radius; xPos++)
 //            {

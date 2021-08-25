@@ -23,9 +23,9 @@ public class TerraFeatureMushroomGlowing extends Feature<NoFeatureConfig>
     }
 
     @Override
-    public boolean place(ISeedReader world, ChunkGenerator generator, Random rand, BlockPos pos, NoFeatureConfig config)
+    public boolean generate(ISeedReader world, ChunkGenerator generator, Random rand, BlockPos pos, NoFeatureConfig config)
     {
-        if (world.getBlockState(pos.below()).getBlock().is(TerraTagRegistry.MUSHROOM_PLANTERS))
+        if (world.getBlockState(pos.down()).getBlock().isIn(TerraTagRegistry.MUSHROOM_PLANTERS))
         {
             generateMushroom(world, pos, rand);
             return true;
@@ -33,16 +33,16 @@ public class TerraFeatureMushroomGlowing extends Feature<NoFeatureConfig>
         return false;
     }
 
-    public static final BlockState LOG_MUSHROOM = TerraBlockRegistry.LOG_MUSHROOM.get().defaultBlockState();
-    public static final BlockState CAP_MUSHROOM_NORTH_WEST = TerraBlockRegistry.MUSHROOM_CAP.get().defaultBlockState().setValue(HugeMushroomBlock.DOWN, false).setValue(HugeMushroomBlock.SOUTH, false).setValue(HugeMushroomBlock.EAST, false);
-    public static final BlockState CAP_MUSHROOM_NORTH = TerraBlockRegistry.MUSHROOM_CAP.get().defaultBlockState().setValue(HugeMushroomBlock.DOWN, false).setValue(HugeMushroomBlock.SOUTH, false).setValue(HugeMushroomBlock.EAST, false).setValue(HugeMushroomBlock.WEST, false);
-    public static final BlockState CAP_MUSHROOM_NORTH_EAST = TerraBlockRegistry.MUSHROOM_CAP.get().defaultBlockState().setValue(HugeMushroomBlock.DOWN, false).setValue(HugeMushroomBlock.SOUTH, false).setValue(HugeMushroomBlock.WEST, false);
-    public static final BlockState CAP_MUSHROOM_EAST = TerraBlockRegistry.MUSHROOM_CAP.get().defaultBlockState().setValue(HugeMushroomBlock.DOWN, false).setValue(HugeMushroomBlock.SOUTH, false).setValue(HugeMushroomBlock.WEST, false).setValue(HugeMushroomBlock.NORTH, false);
-    public static final BlockState CAP_MUSHROOM_SOUTH_EAST = TerraBlockRegistry.MUSHROOM_CAP.get().defaultBlockState().setValue(HugeMushroomBlock.DOWN, false).setValue(HugeMushroomBlock.NORTH, false).setValue(HugeMushroomBlock.WEST, false);
-    public static final BlockState CAP_MUSHROOM_SOUTH = TerraBlockRegistry.MUSHROOM_CAP.get().defaultBlockState().setValue(HugeMushroomBlock.DOWN, false).setValue(HugeMushroomBlock.NORTH, false).setValue(HugeMushroomBlock.EAST, false).setValue(HugeMushroomBlock.WEST, false);
-    public static final BlockState CAP_MUSHROOM_SOUTH_WEST = TerraBlockRegistry.MUSHROOM_CAP.get().defaultBlockState().setValue(HugeMushroomBlock.DOWN, false).setValue(HugeMushroomBlock.NORTH, false).setValue(HugeMushroomBlock.EAST, false);
-    public static final BlockState CAP_MUSHROOM_WEST = TerraBlockRegistry.MUSHROOM_CAP.get().defaultBlockState().setValue(HugeMushroomBlock.DOWN, false).setValue(HugeMushroomBlock.SOUTH, false).setValue(HugeMushroomBlock.EAST, false).setValue(HugeMushroomBlock.NORTH, false);
-    public static final BlockState CAP_MUSHROOM_UP = TerraBlockRegistry.MUSHROOM_CAP.get().defaultBlockState().setValue(HugeMushroomBlock.DOWN, false).setValue(HugeMushroomBlock.SOUTH, false).setValue(HugeMushroomBlock.EAST, false).setValue(HugeMushroomBlock.WEST, false).setValue(HugeMushroomBlock.NORTH, false);
+    public static final BlockState LOG_MUSHROOM = TerraBlockRegistry.LOG_MUSHROOM.get().getDefaultState();
+    public static final BlockState CAP_MUSHROOM_NORTH_WEST = TerraBlockRegistry.MUSHROOM_CAP.get().getDefaultState().with(HugeMushroomBlock.DOWN, false).with(HugeMushroomBlock.SOUTH, false).with(HugeMushroomBlock.EAST, false);
+    public static final BlockState CAP_MUSHROOM_NORTH = TerraBlockRegistry.MUSHROOM_CAP.get().getDefaultState().with(HugeMushroomBlock.DOWN, false).with(HugeMushroomBlock.SOUTH, false).with(HugeMushroomBlock.EAST, false).with(HugeMushroomBlock.WEST, false);
+    public static final BlockState CAP_MUSHROOM_NORTH_EAST = TerraBlockRegistry.MUSHROOM_CAP.get().getDefaultState().with(HugeMushroomBlock.DOWN, false).with(HugeMushroomBlock.SOUTH, false).with(HugeMushroomBlock.WEST, false);
+    public static final BlockState CAP_MUSHROOM_EAST = TerraBlockRegistry.MUSHROOM_CAP.get().getDefaultState().with(HugeMushroomBlock.DOWN, false).with(HugeMushroomBlock.SOUTH, false).with(HugeMushroomBlock.WEST, false).with(HugeMushroomBlock.NORTH, false);
+    public static final BlockState CAP_MUSHROOM_SOUTH_EAST = TerraBlockRegistry.MUSHROOM_CAP.get().getDefaultState().with(HugeMushroomBlock.DOWN, false).with(HugeMushroomBlock.NORTH, false).with(HugeMushroomBlock.WEST, false);
+    public static final BlockState CAP_MUSHROOM_SOUTH = TerraBlockRegistry.MUSHROOM_CAP.get().getDefaultState().with(HugeMushroomBlock.DOWN, false).with(HugeMushroomBlock.NORTH, false).with(HugeMushroomBlock.EAST, false).with(HugeMushroomBlock.WEST, false);
+    public static final BlockState CAP_MUSHROOM_SOUTH_WEST = TerraBlockRegistry.MUSHROOM_CAP.get().getDefaultState().with(HugeMushroomBlock.DOWN, false).with(HugeMushroomBlock.NORTH, false).with(HugeMushroomBlock.EAST, false);
+    public static final BlockState CAP_MUSHROOM_WEST = TerraBlockRegistry.MUSHROOM_CAP.get().getDefaultState().with(HugeMushroomBlock.DOWN, false).with(HugeMushroomBlock.SOUTH, false).with(HugeMushroomBlock.EAST, false).with(HugeMushroomBlock.NORTH, false);
+    public static final BlockState CAP_MUSHROOM_UP = TerraBlockRegistry.MUSHROOM_CAP.get().getDefaultState().with(HugeMushroomBlock.DOWN, false).with(HugeMushroomBlock.SOUTH, false).with(HugeMushroomBlock.EAST, false).with(HugeMushroomBlock.WEST, false).with(HugeMushroomBlock.NORTH, false);
 
     public static final char[][][] MUSHROOM_ARRAY =
     {{{'O', 'O', 'O', 'O', 'O'},
@@ -97,7 +97,7 @@ public class TerraFeatureMushroomGlowing extends Feature<NoFeatureConfig>
             {
                 for (int z = pos.getZ() - radius; z <= pos.getZ() + radius; z++)
                 {
-                    target.set(x, y, z);
+                    target.setPos(x, y, z);
                     char targetChar = template[arrayY][arrayX][arrayZ];
                     if (targetChar == 'W' || targetChar == 'h' || targetChar == 'v')
                     {
@@ -128,7 +128,7 @@ public class TerraFeatureMushroomGlowing extends Feature<NoFeatureConfig>
     {
         if (world.getBlockState(pos).getBlock() != LOG_MUSHROOM.getBlock())
         {
-            world.setBlock(pos, block, 3);
+            world.setBlockState(pos, block, 3);
         }
     }
 
@@ -154,7 +154,7 @@ public class TerraFeatureMushroomGlowing extends Feature<NoFeatureConfig>
                 {
                     for (int z = pos.getZ() - 2; z <= pos.getZ() + 2; z++)
                     {
-                        target.set(x, y, z);
+                        target.setPos(x, y, z);
                         char inputChar = template[arrayY][arrayX][arrayZ];
                         switch (inputChar)
                         {
@@ -186,13 +186,13 @@ public class TerraFeatureMushroomGlowing extends Feature<NoFeatureConfig>
                                 placeBlock(world, target, CAP_MUSHROOM_UP);
                                 break;
                             case 'W':
-                                world.setBlock(target, LOG_MUSHROOM, 3);
+                                world.setBlockState(target, LOG_MUSHROOM, 3);
                                 break;
                             case 'v':
-                                world.setBlock(target, LOG_MUSHROOM.setValue(RotatedPillarBlock.AXIS, Direction.Axis.X), 3);
+                                world.setBlockState(target, LOG_MUSHROOM.with(RotatedPillarBlock.AXIS, Direction.Axis.X), 3);
                                 break;
                             case 'h':
-                                world.setBlock(target, LOG_MUSHROOM.setValue(RotatedPillarBlock.AXIS, Direction.Axis.Z), 3);
+                                world.setBlockState(target, LOG_MUSHROOM.with(RotatedPillarBlock.AXIS, Direction.Axis.Z), 3);
                                 break;
                         }
                         arrayZ++;
@@ -211,45 +211,45 @@ public class TerraFeatureMushroomGlowing extends Feature<NoFeatureConfig>
     public static boolean generateMushroom(IWorld world, BlockPos pos, Random rand)
     {
         BlockPos.Mutable target = new BlockPos.Mutable();
-        target.set(pos);
+        target.setPos(pos);
         int trunkHeight = rand.nextInt(8);
         boolean canSpawn = true;
-        boolean canSeeSky = world.canSeeSkyFromBelowWater(pos);
+        boolean canSeeSky = world.canBlockSeeSky(pos);
 
         for (int trunk = 0; trunk < trunkHeight; trunk++)
         {
-            if (!world.getBlockState(pos.above(trunk)).canBeReplacedByLogs(world, pos))
+            if (!world.getBlockState(pos.up(trunk)).canBeReplacedByLogs(world, pos))
             {
                 canSpawn = false;
             }
         }
 
-        if (canSpawn && checkCapSpace(world, pos.above(trunkHeight), rand, 1))
+        if (canSpawn && checkCapSpace(world, pos.up(trunkHeight), rand, 1))
         {
             for (int trunk = 0; trunk < trunkHeight; trunk++)
             {
-                world.setBlock(pos.above(trunk), LOG_MUSHROOM, 3);
+                world.setBlockState(pos.up(trunk), LOG_MUSHROOM, 3);
             }
-            generateCap(world, pos.above(trunkHeight), rand, 1);
+            generateCap(world, pos.up(trunkHeight), rand, 1);
 
             if (canSeeSky && trunkHeight > 2)
             {
-                Direction branchDir = Direction.from2DDataValue(rand.nextInt(4));
+                Direction branchDir = Direction.byHorizontalIndex(rand.nextInt(4));
                 int branchHeight = getRandomNumberInRange(1, Math.max(1, trunkHeight - 2));
                 int branchLength = rand.nextInt(2) + 1;
 
-                BlockPos branchPos = pos.above(branchHeight).relative(branchDir, branchLength);
+                BlockPos branchPos = pos.up(branchHeight).offset(branchDir, branchLength);
 
                 if (checkCapSpace(world, branchPos, rand, 4))
                 {
                     generateCap(world, branchPos, rand, 4);
                     for (int branch = 1; branch <= branchLength; branch++)
                     {
-                        BlockPos branchTarget = pos.above(branchHeight > 2 ? branchHeight - 1 : branchHeight).relative(branchDir, branch);
+                        BlockPos branchTarget = pos.up(branchHeight > 2 ? branchHeight - 1 : branchHeight).offset(branchDir, branch);
 
                         if (world.getBlockState(branchTarget).canBeReplacedByLogs(world, pos) || world.getBlockState(branchTarget).getBlock() == LOG_MUSHROOM.getBlock())
                         {
-                            world.setBlock(branchTarget, LOG_MUSHROOM.setValue(RotatedPillarBlock.AXIS, branchDir.getAxis()), 3);
+                            world.setBlockState(branchTarget, LOG_MUSHROOM.with(RotatedPillarBlock.AXIS, branchDir.getAxis()), 3);
                         }
                     }
                 }

@@ -45,13 +45,13 @@ public class TsunamiJumpPacket
                 if (CurioHandler.hasBauble(player, TerraTagRegistry.FART_HIGH_JUMPERS)) { jumpModifier++; }
 
                 TerraJumpEvent.jump(player, jumpModifier);
-                player.playSound(SoundEvents.AMBIENT_UNDERWATER_EXIT, 1, 0.9F + player.getRandom().nextFloat() * 0.2F);
+                player.playSound(SoundEvents.AMBIENT_UNDERWATER_EXIT, 1, 0.9F + player.getRNG().nextFloat() * 0.2F);
                 for (int i = 0; i < 160; ++i)
                 {
-                    double motionX = player.getRandom().nextGaussian() * 0.4;
-                    double motionY = player.getRandom().nextGaussian() * 0.2 + 0.20;
-                    double motionZ = player.getRandom().nextGaussian() * 0.4;
-                    player.getLevel().sendParticles(ParticleTypes.FALLING_WATER, player.getX(), player.getY(), player.getZ(), 1, motionX, motionY, motionZ, 0.15);
+                    double motionX = player.getRNG().nextGaussian() * 0.4;
+                    double motionY = player.getRNG().nextGaussian() * 0.2 + 0.20;
+                    double motionZ = player.getRNG().nextGaussian() * 0.4;
+                    player.getServerWorld().spawnParticle(ParticleTypes.FALLING_WATER, player.getPosX(), player.getPosY(), player.getPosZ(), 1, motionX, motionY, motionZ, 0.15);
                 }
             });
         }

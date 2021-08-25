@@ -33,12 +33,12 @@ public class TerraBlockMoss extends Block
     {
         Block plant = plantable.getPlant(world, pos).getBlock();
 
-        return plant.is(TerraTagRegistry.MOSS) || plant == getMoss();
+        return plant.isIn(TerraTagRegistry.MOSS) || plant == getMoss();
     }
 
     public boolean canSpread(World worldIn, BlockPos pos)
     {
-        return worldIn.getBlockState(pos.above()).isAir(worldIn, pos) || worldIn.getBlockState(pos.above()).getBlock() instanceof BushBlock;
+        return worldIn.getBlockState(pos.up()).isAir(worldIn, pos) || worldIn.getBlockState(pos.up()).getBlock() instanceof BushBlock;
     }
 
     public Block getMoss()
@@ -54,7 +54,7 @@ public class TerraBlockMoss extends Block
     @Override
     public void tick(BlockState state, ServerWorld worldIn, BlockPos pos, Random random)
     {
-        if (!worldIn.isClientSide)
+        if (!worldIn.isRemote)
         {
             if (!worldIn.isAreaLoaded(pos, 3))
             {
@@ -62,33 +62,33 @@ public class TerraBlockMoss extends Block
             }
             if (!canSpread(worldIn, pos))
             {
-                worldIn.setBlockAndUpdate(pos, Blocks.STONE.defaultBlockState());
+                worldIn.setBlockState(pos, Blocks.STONE.getDefaultState());
             }
-            if (worldIn.getBlockState(pos.above()).isAir(worldIn, pos.above()))
+            if (worldIn.getBlockState(pos.up()).isAir(worldIn, pos.up()))
             {
-                worldIn.setBlockAndUpdate(pos.above(), getMoss().defaultBlockState());
+                worldIn.setBlockState(pos.up(), getMoss().getDefaultState());
             }
             for (int i = 0; i < 4; ++i)
             {
-                BlockPos targetPos = pos.offset(random.nextInt(3) - 1, random.nextInt(3) - 1, random.nextInt(3) - 1);
+                BlockPos targetPos = pos.add(random.nextInt(3) - 1, random.nextInt(3) - 1, random.nextInt(3) - 1);
                 Block targetBlock = worldIn.getBlockState(targetPos).getBlock();
 
                 if (canSpread(worldIn, targetPos) && targetBlock == Blocks.STONE || targetBlock == Blocks.DIORITE || targetBlock == Blocks.GRANITE || targetBlock == Blocks.ANDESITE)
                 {
-                    worldIn.setBlockAndUpdate(targetPos, this.defaultBlockState());
+                    worldIn.setBlockState(targetPos, this.getDefaultState());
                 }
             }
         }
     }
 
     @Override
-    public void destroy(IWorld worldIn, BlockPos pos, BlockState state)
+    public void onPlayerDestroy(IWorld worldIn, BlockPos pos, BlockState state)
     {
-        if (worldIn.getBlockState(pos.above()).getBlock() == this.moss)
+        if (worldIn.getBlockState(pos.up()).getBlock() == this.moss)
         {
-            worldIn.setBlock(pos, Blocks.AIR.defaultBlockState(), 3);
+            worldIn.setBlockState(pos, Blocks.AIR.getDefaultState(), 3);
         }
-        worldIn.setBlock(pos, Blocks.STONE.defaultBlockState(), 0);
+        worldIn.setBlockState(pos, Blocks.STONE.getDefaultState(), 0);
     }
 }
 

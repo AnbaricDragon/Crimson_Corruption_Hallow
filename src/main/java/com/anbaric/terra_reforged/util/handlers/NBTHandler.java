@@ -17,4 +17,14 @@ public class NBTHandler
     public static void setInt(ItemStack stack, String tag, int i) {
         stack.getOrCreateTag().putInt(tag, i);
     }
+
+    public static int getCooldown(ItemStack stack)
+    {
+        return NBTHandler.getInt(stack, "cooldown", 0);
+    }
+
+    public static void setCooldown(ItemStack stack, int cooldown)
+    {
+        NBTHandler.setInt(stack, "cooldown", cooldown);
+    }
 }

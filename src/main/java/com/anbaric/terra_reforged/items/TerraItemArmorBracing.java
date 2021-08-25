@@ -30,11 +30,11 @@ public class TerraItemArmorBracing extends TerraItemAccessory
     }
 
     @Override
-    public void appendHoverText(ItemStack stack, World worldIn, List<ITextComponent> tooltip, ITooltipFlag flagIn)
+    public void addInformation(ItemStack stack, World worldIn, List<ITextComponent> tooltip, ITooltipFlag flagIn)
     {
-        super.appendHoverText(stack, worldIn, tooltip, flagIn);
+        super.addInformation(stack, worldIn, tooltip, flagIn);
         tooltip.add(new StringTextComponent(""));
-        tooltip.add(new StringTextComponent("\u00A76" + I18n.get("curios.modifiers.charm") + "\u00A76"));
+        tooltip.add(new StringTextComponent("\u00A76" + I18n.format("curios.modifiers.charm") + "\u00A76"));
         tooltip.add(new StringTextComponent("\u00A79" + "Grants Immunity To:"));
         tooltip.add(new StringTextComponent("\u00A74" + "Weakness"));
         tooltip.add(new StringTextComponent("\u00A74" + "Broken Armor"));
@@ -49,13 +49,13 @@ public class TerraItemArmorBracing extends TerraItemAccessory
             @Override
             public void curioTick(String identifier, int index, LivingEntity livingEntity)
             {
-                if (livingEntity.hasEffect(Effects.WEAKNESS))
+                if (livingEntity.isPotionActive(Effects.WEAKNESS))
                 {
-                    livingEntity.removeEffect(Effects.WEAKNESS);
+                    livingEntity.removePotionEffect(Effects.WEAKNESS);
                 }
-                if (livingEntity.hasEffect(TerraEffectRegistry.BROKEN_ARMOR.get()))
+                if (livingEntity.isPotionActive(TerraEffectRegistry.BROKEN_ARMOR.get()))
                 {
-                    livingEntity.removeEffect(TerraEffectRegistry.BROKEN_ARMOR.get());
+                    livingEntity.removePotionEffect(TerraEffectRegistry.BROKEN_ARMOR.get());
                 }
             }
 
@@ -70,7 +70,7 @@ public class TerraItemArmorBracing extends TerraItemAccessory
             @Override
             public SoundInfo getEquipSound(SlotContext slotContext)
             {
-                return new SoundInfo(SoundEvents.ARMOR_EQUIP_GENERIC, 1.0f, 1.0f);
+                return new SoundInfo(SoundEvents.ITEM_ARMOR_EQUIP_GENERIC, 1.0f, 1.0f);
             }
 
             @Override

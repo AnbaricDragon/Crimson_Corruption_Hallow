@@ -17,7 +17,7 @@ public class TerraEffectBleeding extends Effect
     public void preventRegen(LivingHealEvent event)
     {
         LivingEntity entity = event.getEntityLiving();
-        if (entity.hasEffect(this) && event.getAmount() <= 1.0F)
+        if (entity.isPotionActive(this) && event.getAmount() <= 1.0F)
         {
             event.setCanceled(true);
         }

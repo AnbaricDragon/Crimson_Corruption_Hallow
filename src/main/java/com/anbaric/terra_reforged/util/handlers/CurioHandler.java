@@ -22,6 +22,8 @@ import top.theillusivec4.curios.api.type.inventory.ICurioStacksHandler;
 
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.concurrent.atomic.AtomicBoolean;
 
 public class CurioHandler
@@ -85,7 +87,7 @@ public class CurioHandler
         return foundItem.get();
     }
 
-    public static boolean hasAllBaubles(PlayerEntity player, Item... item)
+    public static boolean hasAnyBauble(PlayerEntity player, Item... item)
     {
         boolean hasAllItems = true;
         for (Item curioItem : item)
@@ -98,10 +100,36 @@ public class CurioHandler
         return hasAllItems;
     }
 
+    public static List<Item> getAllBaubles(PlayerEntity player, Item... item)
+    {
+        List<Item> allMatchingItems = new ArrayList<>();
+        for (Item curioItem : item)
+        {
+            if (!getBaubleStack(player, curioItem).isEmpty())
+            {
+                allMatchingItems.add(curioItem);
+            }
+        }
+        return allMatchingItems;
+    }
+
+    public static List<ItemStack> getAllBaubles(PlayerEntity player, ITag<Item> tag)
+    {
+        List<ItemStack> allMatchingItems = new ArrayList<>();
+        for (Item curioItem : tag.getAllElements())
+        {
+            if (!getFromBaubles(player, curioItem).isEmpty())
+            {
+                allMatchingItems.add(getFromBaubles(player, curioItem));
+            }
+        }
+        return allMatchingItems;
+    }
+
     public static boolean hasBauble(PlayerEntity player, ITag<Item> tag)
     {
         boolean foundItem = false;
-        for (Item curioItem : tag.getValues())
+        for (Item curioItem : tag.getAllElements())
         {
             if (hasBauble(player, curioItem))
             {
@@ -111,19 +139,19 @@ public class CurioHandler
         return foundItem;
     }
 
-    public static ItemStack getBaubles(PlayerEntity player, Item... item)
+    public static ItemStack getFromBaubles(PlayerEntity player, Item... item)
     {
         for (Item curioItem : item)
         {
-            if (!getBauble(player, curioItem).isEmpty())
+            if (!getBaubleStack(player, curioItem).isEmpty())
             {
-                return getBauble(player, curioItem);
+                return getBaubleStack(player, curioItem);
             }
         }
         return ItemStack.EMPTY;
     }
 
-    public static ItemStack getBauble(PlayerEntity player, Item item)
+    public static ItemStack getBaubleStack(PlayerEntity player, Item item)
     {
         return CuriosApi.getCuriosHelper().getCuriosHandler(player).map(ICuriosItemHandler::getCurios).map(map -> map.get("curio")).map(ICurioStacksHandler::getStacks).map(dynamicStackHandler ->
         {

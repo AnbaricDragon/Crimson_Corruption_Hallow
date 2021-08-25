@@ -34,7 +34,7 @@ public class CarpetJumpPacket
             {
                 if (setGravity)
                 {
-                    player.setDeltaMovement(player.getDeltaMovement().x() * 1.1, 0, player.getDeltaMovement().z() * 1.1);
+                    player.setMotion(player.getMotion().getX() * 1.1, 0, player.getMotion().getZ() * 1.1);
                     player.setNoGravity(setGravity);
                 }
                 else

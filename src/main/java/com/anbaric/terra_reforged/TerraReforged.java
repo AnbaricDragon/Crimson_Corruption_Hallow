@@ -38,7 +38,8 @@ public class TerraReforged
 
     public static PlantType BOREAL = PlantType.get("boreal");
     public static PlantType MUSHROOM = PlantType.get("mushroom");
-    public static DamageSource THORNS = new DamageSource("thorns").bypassArmor();
+    public static DamageSource THORNS = new DamageSource("thorns").setDamageBypassesArmor();
+    public static DamageSource MINION = new DamageSource("minion");
 
     public TerraReforged()
     {

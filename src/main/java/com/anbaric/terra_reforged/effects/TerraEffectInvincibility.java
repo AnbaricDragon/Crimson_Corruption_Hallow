@@ -21,19 +21,19 @@ public class TerraEffectInvincibility extends Effect
     }
 
     @Override
-    public boolean isDurationEffectTick(int duration, int amplifier)
+    public boolean isReady(int duration, int amplifier)
     {
         return true;
     }
 
     @Override
-    public void applyEffectTick(LivingEntity entity, int amplifier)
+    public void performEffect(LivingEntity entity, int amplifier)
     {
         if (entity instanceof PlayerEntity)
         {
             PlayerEntity player = (PlayerEntity) entity;
-            float duration = player.getEffect(this).getDuration();
-            player.abilities.mayfly = duration > 0;
+            float duration = player.getActivePotionEffect(this).getDuration();
+            player.abilities.allowFlying = duration > 0;
         }
     }
 }

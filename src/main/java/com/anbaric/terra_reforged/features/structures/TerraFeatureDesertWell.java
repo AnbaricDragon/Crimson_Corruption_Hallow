@@ -20,7 +20,7 @@ import java.util.Random;
 public class TerraFeatureDesertWell extends Feature<NoFeatureConfig>
 {
     private BlockState sand, sandSlab, sandstone;
-    private BlockState water = Blocks.WATER.defaultBlockState();
+    private BlockState water = Blocks.WATER.getDefaultState();
 
     public TerraFeatureDesertWell(EnumBiomeType biomeType)
     {
@@ -40,12 +40,12 @@ public class TerraFeatureDesertWell extends Feature<NoFeatureConfig>
                 result = block.getBiomeBlock(type);
             }
         }
-        return result.defaultBlockState();
+        return result.getDefaultState();
     }
 
-    public boolean place(ISeedReader reader, ChunkGenerator generator, Random rand, BlockPos pos, NoFeatureConfig config)
+    public boolean generate(ISeedReader reader, ChunkGenerator generator, Random rand, BlockPos pos, NoFeatureConfig config)
     {
-        for (pos = pos.above(); reader.isEmptyBlock(pos) && pos.getY() > 2; pos = pos.below())
+        for (pos = pos.up(); reader.isAirBlock(pos) && pos.getY() > 2; pos = pos.down())
         {
         }
 
@@ -59,7 +59,7 @@ public class TerraFeatureDesertWell extends Feature<NoFeatureConfig>
             {
                 for (int j = -2; j <= 2; ++j)
                 {
-                    if (reader.isEmptyBlock(pos.offset(i, -1, j)) && reader.isEmptyBlock(pos.offset(i, -2, j)))
+                    if (reader.isAirBlock(pos.add(i, -1, j)) && reader.isAirBlock(pos.add(i, -2, j)))
                     {
                         return false;
                     }
@@ -72,16 +72,16 @@ public class TerraFeatureDesertWell extends Feature<NoFeatureConfig>
                 {
                     for (int k = -2; k <= 2; ++k)
                     {
-                        reader.setBlock(pos.offset(l1, l, k), this.sandstone, 2);
+                        reader.setBlockState(pos.add(l1, l, k), this.sandstone, 2);
                     }
                 }
             }
 
-            reader.setBlock(pos, this.water, 2);
+            reader.setBlockState(pos, this.water, 2);
 
             for (Direction direction : Direction.Plane.HORIZONTAL)
             {
-                reader.setBlock(pos.relative(direction), this.water, 2);
+                reader.setBlockState(pos.offset(direction), this.water, 2);
             }
 
             for (int i1 = -2; i1 <= 2; ++i1)
@@ -90,15 +90,15 @@ public class TerraFeatureDesertWell extends Feature<NoFeatureConfig>
                 {
                     if (i1 == -2 || i1 == 2 || i2 == -2 || i2 == 2)
                     {
-                        reader.setBlock(pos.offset(i1, 1, i2), this.sandstone, 2);
+                        reader.setBlockState(pos.add(i1, 1, i2), this.sandstone, 2);
                     }
                 }
             }
 
-            reader.setBlock(pos.offset(2, 1, 0), this.sandSlab, 2);
-            reader.setBlock(pos.offset(-2, 1, 0), this.sandSlab, 2);
-            reader.setBlock(pos.offset(0, 1, 2), this.sandSlab, 2);
-            reader.setBlock(pos.offset(0, 1, -2), this.sandSlab, 2);
+            reader.setBlockState(pos.add(2, 1, 0), this.sandSlab, 2);
+            reader.setBlockState(pos.add(-2, 1, 0), this.sandSlab, 2);
+            reader.setBlockState(pos.add(0, 1, 2), this.sandSlab, 2);
+            reader.setBlockState(pos.add(0, 1, -2), this.sandSlab, 2);
 
             for (int j1 = -1; j1 <= 1; ++j1)
             {
@@ -106,21 +106,21 @@ public class TerraFeatureDesertWell extends Feature<NoFeatureConfig>
                 {
                     if (j1 == 0 && j2 == 0)
                     {
-                        reader.setBlock(pos.offset(j1, 4, j2), this.sandstone, 2);
+                        reader.setBlockState(pos.add(j1, 4, j2), this.sandstone, 2);
                     }
                     else
                     {
-                        reader.setBlock(pos.offset(j1, 4, j2), this.sandSlab, 2);
+                        reader.setBlockState(pos.add(j1, 4, j2), this.sandSlab, 2);
                     }
                 }
             }
 
             for (int k1 = 1; k1 <= 3; ++k1)
             {
-                reader.setBlock(pos.offset(-1, k1, -1), this.sandstone, 2);
-                reader.setBlock(pos.offset(-1, k1, 1), this.sandstone, 2);
-                reader.setBlock(pos.offset(1, k1, -1), this.sandstone, 2);
-                reader.setBlock(pos.offset(1, k1, 1), this.sandstone, 2);
+                reader.setBlockState(pos.add(-1, k1, -1), this.sandstone, 2);
+                reader.setBlockState(pos.add(-1, k1, 1), this.sandstone, 2);
+                reader.setBlockState(pos.add(1, k1, -1), this.sandstone, 2);
+                reader.setBlockState(pos.add(1, k1, 1), this.sandstone, 2);
             }
 
             return true;

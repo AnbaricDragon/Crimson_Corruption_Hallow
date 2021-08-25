@@ -23,20 +23,20 @@ public class TerraBlockMoonglow extends TerraBlockPotionPlant
     @Override
     public void tick(BlockState state, ServerWorld worldIn, BlockPos pos, Random random)
     {
-        if (!worldIn.isClientSide)
+        if (!worldIn.isRemote)
         {
             if (!worldIn.isAreaLoaded(pos, 3))
             {
                 return; // Forge: prevent loading unloaded chunks when checking neighbor's light and spreading
             }
-            if (state.getValue(AGE) == 0 && random.nextFloat() < 0.01F)
+            if (state.get(AGE) == 0 && random.nextFloat() < 0.01F)
             {
-                worldIn.setBlockAndUpdate(pos, state.setValue(AGE, 1));
+                worldIn.setBlockState(pos, state.with(AGE, 1));
             }
             else
             {
-                if (!worldIn.isDay() && state.getValue(AGE) == 1) {worldIn.setBlockAndUpdate(pos, this.defaultBlockState().setValue(AGE, 2));}
-                if (worldIn.isDay() && state.getValue(AGE) == 2) {worldIn.setBlockAndUpdate(pos, this.defaultBlockState().setValue(AGE, 1));}
+                if (!worldIn.isDaytime() && state.get(AGE) == 1) {worldIn.setBlockState(pos, this.getDefaultState().with(AGE, 2));}
+                if (worldIn.isDaytime() && state.get(AGE) == 2) {worldIn.setBlockState(pos, this.getDefaultState().with(AGE, 1));}
             }
         }
     }

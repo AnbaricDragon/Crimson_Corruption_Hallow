@@ -43,12 +43,12 @@ public class V3Handler
 
     public static V3Handler fromEntityCenter(Entity e)
     {
-        return new V3Handler(e.getX(), e.getY() - e.getMyRidingOffset() + e.getBbHeight() / 2, e.getZ());
+        return new V3Handler(e.getPosX(), e.getPosY() - e.getYOffset() + e.getHeight() / 2, e.getPosZ());
     }
 
     public static V3Handler fromTileEntity(TileEntity e)
     {
-        return fromBlockPos(e.getBlockPos());
+        return fromBlockPos(e.getPos());
     }
 
     public static V3Handler fromTileEntityCenter(TileEntity e)
@@ -196,7 +196,7 @@ public class V3Handler
     @OnlyIn(Dist.CLIENT)
     public void vertex(Matrix4f mat, IVertexBuilder buffer)
     {
-        buffer.vertex(mat, (float) x, (float) y, (float) z);
+        buffer.pos(mat, (float) x, (float) y, (float) z);
     }
 
     public V3Handler negate()

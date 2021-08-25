@@ -30,12 +30,12 @@ import net.minecraft.block.AbstractBlock.Properties;
 public class TerraBlockHeartLantern extends Block
 {
     public static final BooleanProperty LIT = RedstoneTorchBlock.LIT;
-    public static final VoxelShape SHAPE = Block.box(1, 1, 6, 14, 16, 10);
+    public static final VoxelShape SHAPE = Block.makeCuboidShape(1, 1, 6, 14, 16, 10);
 
     public TerraBlockHeartLantern(Properties properties)
     {
         super(properties);
-        this.registerDefaultState(this.stateDefinition.any());
+        this.setDefaultState(this.stateContainer.getBaseState());
     }
 
     @Override
@@ -53,7 +53,7 @@ public class TerraBlockHeartLantern extends Block
     @Override
     public int getLightValue(BlockState state, IBlockReader world, BlockPos pos)
     {
-        return state.getValue(LIT) ? 14 : 0;
+        return state.get(LIT) ? 14 : 0;
     }
 
     public VoxelShape getShape(BlockState state, IBlockReader worldIn, BlockPos pos, ISelectionContext context)
@@ -64,22 +64,22 @@ public class TerraBlockHeartLantern extends Block
     @Override
     public void neighborChanged(BlockState state, World worldIn, BlockPos pos, Block blockIn, BlockPos fromPos, boolean isMoving)
     {
-        if (!worldIn.isClientSide)
+        if (!worldIn.isRemote)
         {
-            if (!canSurvive(state,worldIn,pos))
+            if (!isValidPosition(state,worldIn,pos))
             {
                 worldIn.destroyBlock(pos, true);
             }
-            boolean isLit = state.getValue(LIT);
-            if (isLit != worldIn.hasNeighborSignal(pos))
+            boolean isLit = state.get(LIT);
+            if (isLit != worldIn.isBlockPowered(pos))
             {
                 if (isLit)
                 {
-                    worldIn.getBlockTicks().scheduleTick(pos, this, 2);
+                    worldIn.getPendingBlockTicks().scheduleTick(pos, this, 2);
                 }
                 else
                 {
-                    worldIn.setBlock(pos, state.cycle(LIT), 2);
+                    worldIn.setBlockState(pos, state.cycleValue(LIT), 2);
                 }
             }
         }
@@ -87,20 +87,20 @@ public class TerraBlockHeartLantern extends Block
 
     public void tick(BlockState state, ServerWorld worldIn, BlockPos pos, Random rand)
     {
-        if (state.getValue(LIT) && !worldIn.hasNeighborSignal(pos))
+        if (state.get(LIT) && !worldIn.isBlockPowered(pos))
         {
-            worldIn.setBlock(pos, state.cycle(LIT), 2);
+            worldIn.setBlockState(pos, state.cycleValue(LIT), 2);
         }
     }
 
     @Override
-    public boolean canSurvive(BlockState state, IWorldReader worldIn, BlockPos pos)
+    public boolean isValidPosition(BlockState state, IWorldReader worldIn, BlockPos pos)
     {
-        return worldIn.getBlockState(pos.above()).canOcclude();
+        return worldIn.getBlockState(pos.up()).isSolid();
     }
 
     @Override
-    protected void createBlockStateDefinition(StateContainer.Builder<Block, BlockState> builder)
+    protected void fillStateContainer(StateContainer.Builder<Block, BlockState> builder)
     {
         builder.add(LIT);
     }

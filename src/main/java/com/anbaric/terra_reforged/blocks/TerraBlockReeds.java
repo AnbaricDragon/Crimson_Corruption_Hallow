@@ -26,13 +26,13 @@ import net.minecraft.block.AbstractBlock;
 
 public class TerraBlockReeds extends Block implements net.minecraftforge.common.IPlantable
 {
-    public static final IntegerProperty AGE = BlockStateProperties.AGE_15;
-    protected static final VoxelShape SHAPE = Block.box(2.0D, 0.0D, 2.0D, 14.0D, 16.0D, 14.0D);
+    public static final IntegerProperty AGE = BlockStateProperties.AGE_0_15;
+    protected static final VoxelShape SHAPE = Block.makeCuboidShape(2.0D, 0.0D, 2.0D, 14.0D, 16.0D, 14.0D);
 
     public TerraBlockReeds(AbstractBlock.Properties properties)
     {
         super(properties);
-        this.registerDefaultState(this.stateDefinition.any().setValue(AGE, Integer.valueOf(0)));
+        this.setDefaultState(this.stateContainer.getBaseState().with(AGE, Integer.valueOf(0)));
     }
 
     @Override
@@ -49,61 +49,61 @@ public class TerraBlockReeds extends Block implements net.minecraftforge.common.
     @Override
     public void tick(BlockState state, ServerWorld worldIn, BlockPos pos, Random random)
     {
-        if (!state.canSurvive(worldIn, pos))
+        if (!state.isValidPosition(worldIn, pos))
         {
             worldIn.destroyBlock(pos, true);
         }
-        else if (worldIn.isEmptyBlock(pos.above()))
+        else if (worldIn.isAirBlock(pos.up()))
         {
             int i;
-            for (i = 1; worldIn.getBlockState(pos.below(i)).getBlock() == this; ++i)
+            for (i = 1; worldIn.getBlockState(pos.down(i)).getBlock() == this; ++i)
             {
                 ;
             }
 
             if (i < 3)
             {
-                int j = state.getValue(AGE);
+                int j = state.get(AGE);
                 if (net.minecraftforge.common.ForgeHooks.onCropsGrowPre(worldIn, pos, state, true))
                 {
                     if (j == 15)
                     {
-                        worldIn.setBlockAndUpdate(pos.above(), this.defaultBlockState());
-                        worldIn.setBlock(pos, state.setValue(AGE, Integer.valueOf(0)), 4);
+                        worldIn.setBlockState(pos.up(), this.getDefaultState());
+                        worldIn.setBlockState(pos, state.with(AGE, Integer.valueOf(0)), 4);
                     }
                     else
                     {
-                        worldIn.setBlock(pos, state.setValue(AGE, Integer.valueOf(j + 1)), 4);
+                        worldIn.setBlockState(pos, state.with(AGE, Integer.valueOf(j + 1)), 4);
                     }
                     net.minecraftforge.common.ForgeHooks.onCropsGrowPost(worldIn, pos, state);
                 }
             }
         }
-        if (worldIn.getBlockState(pos.above()).getBlock() == Blocks.SUGAR_CANE)
+        if (worldIn.getBlockState(pos.up()).getBlock() == Blocks.SUGAR_CANE)
         {
-            worldIn.setBlockAndUpdate(pos.above(), this.defaultBlockState());
+            worldIn.setBlockState(pos.up(), this.getDefaultState());
         }
 
     }
 
-    public BlockState updateShape(BlockState stateIn, Direction facing, BlockState facingState, IWorld worldIn, BlockPos currentPos, BlockPos facingPos)
+    public BlockState updatePostPlacement(BlockState stateIn, Direction facing, BlockState facingState, IWorld worldIn, BlockPos currentPos, BlockPos facingPos)
     {
-        if (!stateIn.canSurvive(worldIn, currentPos))
+        if (!stateIn.isValidPosition(worldIn, currentPos))
         {
-            worldIn.getBlockTicks().scheduleTick(currentPos, this, 1);
+            worldIn.getPendingBlockTicks().scheduleTick(currentPos, this, 1);
         }
 
-        return super.updateShape(stateIn, facing, facingState, worldIn, currentPos, facingPos);
+        return super.updatePostPlacement(stateIn, facing, facingState, worldIn, currentPos, facingPos);
     }
 
-    public boolean canSurvive(BlockState state, IWorldReader worldIn, BlockPos pos)
+    public boolean isValidPosition(BlockState state, IWorldReader worldIn, BlockPos pos)
     {
-        BlockState soil = worldIn.getBlockState(pos.below());
-        if (soil.canSustainPlant(worldIn, pos.below(), Direction.UP, this))
+        BlockState soil = worldIn.getBlockState(pos.down());
+        if (soil.canSustainPlant(worldIn, pos.down(), Direction.UP, this))
         {
             return true;
         }
-        Block block = worldIn.getBlockState(pos.below()).getBlock();
+        Block block = worldIn.getBlockState(pos.down()).getBlock();
         if (block == this)
         {
             return true;
@@ -112,13 +112,13 @@ public class TerraBlockReeds extends Block implements net.minecraftforge.common.
         {
             if (block == Blocks.GRASS_BLOCK || block == Blocks.DIRT || block == Blocks.COARSE_DIRT || block == Blocks.PODZOL || block == Blocks.SAND || block == Blocks.RED_SAND)
             {
-                BlockPos blockpos = pos.below();
+                BlockPos blockpos = pos.down();
 
                 for (Direction direction : Direction.Plane.HORIZONTAL)
                 {
-                    BlockState  blockstate  = worldIn.getBlockState(blockpos.relative(direction));
-                    FluidState fluidstate = worldIn.getFluidState(blockpos.relative(direction));
-                    if (fluidstate.is(FluidTags.WATER) || blockstate.getBlock() == Blocks.FROSTED_ICE)
+                    BlockState  blockstate  = worldIn.getBlockState(blockpos.offset(direction));
+                    FluidState fluidstate = worldIn.getFluidState(blockpos.offset(direction));
+                    if (fluidstate.isTagged(FluidTags.WATER) || blockstate.getBlock() == Blocks.FROSTED_ICE)
                     {
                         return true;
                     }
@@ -129,7 +129,7 @@ public class TerraBlockReeds extends Block implements net.minecraftforge.common.
         }
     }
 
-    protected void createBlockStateDefinition(StateContainer.Builder<Block, BlockState> builder)
+    protected void fillStateContainer(StateContainer.Builder<Block, BlockState> builder)
     {
         builder.add(AGE);
     }
@@ -143,6 +143,6 @@ public class TerraBlockReeds extends Block implements net.minecraftforge.common.
     @Override
     public BlockState getPlant(IBlockReader world, BlockPos pos)
     {
-        return defaultBlockState();
+        return getDefaultState();
     }
 }

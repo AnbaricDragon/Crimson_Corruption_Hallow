@@ -15,7 +15,7 @@ public class TerraWorldProgressionEvent
         //TODO make Demon Alter
         if (block == TerraBlockRegistry.ORE_CHLOROPHYTE.get())
         {
-            event.getPlayer().level.getCapability(TerraCapabilityWorldProgression.WORLD_PROGRESSION).ifPresent(cap -> {
+            event.getPlayer().world.getCapability(TerraCapabilityWorldProgression.WORLD_PROGRESSION).ifPresent(cap -> {
                 cap.setAltarsBroken(cap.getAltarsBroken() + 1);
                 System.out.println(cap.getAltarsBroken());
             });

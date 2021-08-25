@@ -43,7 +43,7 @@ public class TerraPlayerChangedEvent
                 if (oldPlayer.getAttribute(TerraAttributeRegistry.MANA_MAX.get()).hasModifier(mods))
                 {
                     newCrystals++;
-                    newPlayer.getAttribute(TerraAttributeRegistry.MANA_MAX.get()).addPermanentModifier(mods);
+                    newPlayer.getAttribute(TerraAttributeRegistry.MANA_MAX.get()).applyPersistentModifier(mods);
                 }
             }
             AtomicInteger atomicCrystals = new AtomicInteger(newCrystals);

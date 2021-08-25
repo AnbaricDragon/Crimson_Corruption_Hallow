@@ -41,19 +41,19 @@ public class TerraBlockWall extends Block implements IWaterLoggable
         super(properties);
         this.renderShapes = this.makeShapes(14.0D);
         this.collideShapes = this.makeShapes(22.0D);
-        this.registerDefaultState(this.stateDefinition.any().setValue(NORTH, WallSide.NONE).setValue(EAST, WallSide.NONE).setValue(SOUTH, WallSide.NONE).setValue(WEST, WallSide.NONE).setValue(UP, WallColumn.PILLAR).setValue(WATERLOGGED, false));
+        this.setDefaultState(this.stateContainer.getBaseState().with(NORTH, WallSide.NONE).with(EAST, WallSide.NONE).with(SOUTH, WallSide.NONE).with(WEST, WallSide.NONE).with(UP, WallColumn.PILLAR).with(WATERLOGGED, false));
     }
 
     public FluidState getFluidState(BlockState state)
     {
-        return state.getValue(WATERLOGGED) ? Fluids.WATER.getSource(false) : super.getFluidState(state);
+        return state.get(WATERLOGGED) ? Fluids.WATER.getStillFluidState(false) : super.getFluidState(state);
     }
 
     @Override
     public BlockState getStateForPlacement(BlockItemUseContext context)
     {
-        IBlockReader world = context.getLevel();
-        BlockPos     pos   = context.getClickedPos();
+        IBlockReader world = context.getWorld();
+        BlockPos     pos   = context.getPos();
 
         WallSide northSide = this.getSide(world, pos, Direction.NORTH);
         WallSide eastSide  = this.getSide(world, pos, Direction.EAST);
@@ -62,42 +62,42 @@ public class TerraBlockWall extends Block implements IWaterLoggable
 
         WallColumn pillar = this.getTop(world, pos);
 
-        FluidState waterlogged = context.getLevel().getFluidState(context.getClickedPos());
+        FluidState waterlogged = context.getWorld().getFluidState(context.getPos());
 
-        return super.getStateForPlacement(context).setValue(NORTH, northSide).setValue(EAST, eastSide).setValue(SOUTH, southSide).setValue(WEST, westSide).setValue(UP, pillar).setValue(WATERLOGGED, waterlogged.getType() == Fluids.WATER);
+        return super.getStateForPlacement(context).with(NORTH, northSide).with(EAST, eastSide).with(SOUTH, southSide).with(WEST, westSide).with(UP, pillar).with(WATERLOGGED, waterlogged.getFluid() == Fluids.WATER);
     }
 
-    public BlockState updateShape(BlockState stateIn, Direction facing, BlockState facingState, IWorld world, BlockPos pos, BlockPos facingPos)
+    public BlockState updatePostPlacement(BlockState stateIn, Direction facing, BlockState facingState, IWorld world, BlockPos pos, BlockPos facingPos)
     {
-        if (stateIn.getValue(WATERLOGGED))
+        if (stateIn.get(WATERLOGGED))
         {
-            world.getLiquidTicks().scheduleTick(pos, Fluids.WATER, Fluids.WATER.getTickDelay(world));
+            world.getPendingFluidTicks().scheduleTick(pos, Fluids.WATER, Fluids.WATER.getTickRate(world));
         }
 
-        WallSide   northSide = facing == Direction.NORTH || facing == Direction.UP || facing == Direction.DOWN ? this.getSide(world, pos, Direction.NORTH) : stateIn.getValue(NORTH);
-        WallSide   eastSide  = facing == Direction.EAST || facing == Direction.UP || facing == Direction.DOWN ? this.getSide(world, pos, Direction.EAST) : stateIn.getValue(EAST);
-        WallSide   southSide = facing == Direction.SOUTH || facing == Direction.UP || facing == Direction.DOWN ? this.getSide(world, pos, Direction.SOUTH) : stateIn.getValue(SOUTH);
-        WallSide   westSide  = facing == Direction.WEST || facing == Direction.UP || facing == Direction.DOWN ? this.getSide(world, pos, Direction.WEST) : stateIn.getValue(WEST);
+        WallSide   northSide = facing == Direction.NORTH || facing == Direction.UP || facing == Direction.DOWN ? this.getSide(world, pos, Direction.NORTH) : stateIn.get(NORTH);
+        WallSide   eastSide  = facing == Direction.EAST || facing == Direction.UP || facing == Direction.DOWN ? this.getSide(world, pos, Direction.EAST) : stateIn.get(EAST);
+        WallSide   southSide = facing == Direction.SOUTH || facing == Direction.UP || facing == Direction.DOWN ? this.getSide(world, pos, Direction.SOUTH) : stateIn.get(SOUTH);
+        WallSide   westSide  = facing == Direction.WEST || facing == Direction.UP || facing == Direction.DOWN ? this.getSide(world, pos, Direction.WEST) : stateIn.get(WEST);
         WallColumn pillar    = this.getTop(world, pos);
         ;
 
-        return stateIn.setValue(NORTH, northSide).setValue(EAST, eastSide).setValue(SOUTH, southSide).setValue(WEST, westSide).setValue(UP, pillar);
+        return stateIn.with(NORTH, northSide).with(EAST, eastSide).with(SOUTH, southSide).with(WEST, westSide).with(UP, pillar);
     }
 
     public WallSide getSide(IBlockReader world, BlockPos pos, Direction facing)
     {
-        BlockState sideState    = world.getBlockState(pos.relative(facing));
-        Boolean    sideIsWall   = sideState.getBlock().is(BlockTags.WALLS);
-        boolean    sideIsOpaque = sideState.isSolidRender(world, pos.relative(facing));
-        Boolean    sideIsGate   = sideState.getBlock() instanceof FenceGateBlock && FenceGateBlock.connectsToDirection(sideState, facing);
+        BlockState sideState    = world.getBlockState(pos.offset(facing));
+        Boolean    sideIsWall   = sideState.getBlock().isIn(BlockTags.WALLS);
+        boolean    sideIsOpaque = sideState.isOpaqueCube(world, pos.offset(facing));
+        Boolean    sideIsGate   = sideState.getBlock() instanceof FenceGateBlock && FenceGateBlock.isParallel(sideState, facing);
 
-        BlockState topState    = world.getBlockState(pos.above());
-        boolean    topIsWall   = topState.getBlock().is(BlockTags.WALLS);
-        boolean    topIsOpaque = topState.isSolidRender(world, pos.above());
+        BlockState topState    = world.getBlockState(pos.up());
+        boolean    topIsWall   = topState.getBlock().isIn(BlockTags.WALLS);
+        boolean    topIsOpaque = topState.isOpaqueCube(world, pos.up());
 
-        BlockState diaState    = world.getBlockState(pos.relative(facing).above());
-        Boolean    diaIsWall   = diaState.getBlock().is(BlockTags.WALLS);
-        Boolean    diaIsOpaque = diaState.isSolidRender(world, pos.relative(facing).above());
+        BlockState diaState    = world.getBlockState(pos.offset(facing).up());
+        Boolean    diaIsWall   = diaState.getBlock().isIn(BlockTags.WALLS);
+        Boolean    diaIsOpaque = diaState.isOpaqueCube(world, pos.offset(facing).up());
 
         if (sideIsWall || sideIsGate)
         {
@@ -120,8 +120,8 @@ public class TerraBlockWall extends Block implements IWaterLoggable
 
     public WallColumn getTop(IBlockReader world, BlockPos pos)
     {
-        boolean    topIsWall = world.getBlockState(pos.above()).getBlock().is(BlockTags.WALLS);
-        BlockState topState  = world.getBlockState(pos.above());
+        boolean    topIsWall = world.getBlockState(pos.up()).getBlock().isIn(BlockTags.WALLS);
+        BlockState topState  = world.getBlockState(pos.up());
         Block      topBlock  = topState.getBlock();
 
         boolean N = getSide(world, pos, Direction.NORTH) != WallSide.NONE;
@@ -140,19 +140,19 @@ public class TerraBlockWall extends Block implements IWaterLoggable
         {
             if (topBlock instanceof WallBlock)
             {
-                return topState.getValue(WallBlock.UP) ? WallColumn.PILLAR : WallColumn.UP;
+                return topState.get(WallBlock.UP) ? WallColumn.PILLAR : WallColumn.UP;
             }
             else
             {
-                return topState.getValue(TerraBlockWall.UP) == WallColumn.PILLAR ? WallColumn.PILLAR : WallColumn.UP;
+                return topState.get(TerraBlockWall.UP) == WallColumn.PILLAR ? WallColumn.PILLAR : WallColumn.UP;
             }
         }
-        else if (topState.isSolidRender(world, pos.above()))
+        else if (topState.isOpaqueCube(world, pos.up()))
         {
-            boolean n = getSide(world, pos.above(), Direction.NORTH) != WallSide.NONE;
-            boolean e = getSide(world, pos.above(), Direction.EAST) != WallSide.NONE;
-            boolean s = getSide(world, pos.above(), Direction.SOUTH) != WallSide.NONE;
-            boolean w = getSide(world, pos.above(), Direction.WEST) != WallSide.NONE;
+            boolean n = getSide(world, pos.up(), Direction.NORTH) != WallSide.NONE;
+            boolean e = getSide(world, pos.up(), Direction.EAST) != WallSide.NONE;
+            boolean s = getSide(world, pos.up(), Direction.SOUTH) != WallSide.NONE;
+            boolean w = getSide(world, pos.up(), Direction.WEST) != WallSide.NONE;
 
             boolean nsFlag = n & !e & s & !w;
             boolean ewFlag = !n & e & !s & w;
@@ -170,13 +170,13 @@ public class TerraBlockWall extends Block implements IWaterLoggable
                 return WallColumn.NONE;
             }
         }
-        else if (topState.getMaterial() == Material.DECORATION)
+        else if (topState.getMaterial() == Material.MISCELLANEOUS)
         {
             if (topBlock instanceof ScaffoldingBlock)
             {
                 return WallColumn.NONE;
             }
-            else if (!topBlock.is(BlockTags.RAILS))
+            else if (!topBlock.isIn(BlockTags.RAILS))
             {
                 return WallColumn.PILLAR;
             }
@@ -191,27 +191,27 @@ public class TerraBlockWall extends Block implements IWaterLoggable
         }
     }
 
-    protected void createBlockStateDefinition(StateContainer.Builder<Block, BlockState> builder)
+    protected void fillStateContainer(StateContainer.Builder<Block, BlockState> builder)
     {
         builder.add(UP, NORTH, EAST, SOUTH, WEST, WATERLOGGED);
     }
 
     protected VoxelShape[] makeShapes(Double height)
     {
-        VoxelShape n = Block.box(5.0D, 0.0D, 0.0D, 11.0D, height, 5.0D);
-        VoxelShape e = Block.box(11.0D, 0.0D, 5.0D, 16.0D, height, 11.0D);
-        VoxelShape s = Block.box(5.0D, 0.0D, 11.0D, 11.0D, height, 16.0D);
-        VoxelShape w = Block.box(0.0D, 0.0D, 5.0D, 5.0D, height, 11.0D);
+        VoxelShape n = Block.makeCuboidShape(5.0D, 0.0D, 0.0D, 11.0D, height, 5.0D);
+        VoxelShape e = Block.makeCuboidShape(11.0D, 0.0D, 5.0D, 16.0D, height, 11.0D);
+        VoxelShape s = Block.makeCuboidShape(5.0D, 0.0D, 11.0D, 11.0D, height, 16.0D);
+        VoxelShape w = Block.makeCuboidShape(0.0D, 0.0D, 5.0D, 5.0D, height, 11.0D);
 
-        VoxelShape N = Block.box(5.0D, 0.0D, 0.0D, 11.0D, height + 2.0D, 5.0D);
-        VoxelShape E = Block.box(11.0D, 0.0D, 5.0D, 16.0D, height + 2.0D, 11.0D);
-        VoxelShape S = Block.box(5.0D, 0.0D, 11.0D, 11.0D, height + 2.0D, 16.0D);
-        VoxelShape W = Block.box(0.0D, 0.0D, 5.0D, 5.0D, height + 2.0D, 11.0D);
+        VoxelShape N = Block.makeCuboidShape(5.0D, 0.0D, 0.0D, 11.0D, height + 2.0D, 5.0D);
+        VoxelShape E = Block.makeCuboidShape(11.0D, 0.0D, 5.0D, 16.0D, height + 2.0D, 11.0D);
+        VoxelShape S = Block.makeCuboidShape(5.0D, 0.0D, 11.0D, 11.0D, height + 2.0D, 16.0D);
+        VoxelShape W = Block.makeCuboidShape(0.0D, 0.0D, 5.0D, 5.0D, height + 2.0D, 11.0D);
 
-        VoxelShape u = Block.box(5.0D, 0.0D, 5.0D, 11.0D, height + 2.0D, 11.0D);
-        VoxelShape U = Block.box(4.0D, 0.0D, 4.0D, 12.0D, height + 2.0D, 12.0D);
+        VoxelShape u = Block.makeCuboidShape(5.0D, 0.0D, 5.0D, 11.0D, height + 2.0D, 11.0D);
+        VoxelShape U = Block.makeCuboidShape(4.0D, 0.0D, 4.0D, 12.0D, height + 2.0D, 12.0D);
 
-        VoxelShape base = Block.box(5.0D, 0.0D, 5.0D, 11.0D, height, 11.0D);
+        VoxelShape base = Block.makeCuboidShape(5.0D, 0.0D, 5.0D, 11.0D, height, 11.0D);
 
         VoxelShape[]
                 avoxelshape =
@@ -240,43 +240,43 @@ public class TerraBlockWall extends Block implements IWaterLoggable
     protected int getIndex(BlockState state)
     {
         int i = 0;
-        if (state.getValue(UP) == WallColumn.PILLAR)
+        if (state.get(UP) == WallColumn.PILLAR)
         {
             i += 162;
         }
-        else if (state.getValue(UP) == WallColumn.UP)
+        else if (state.get(UP) == WallColumn.UP)
         {
             i += 81;
         }
-        if (state.getValue(WEST) == WallSide.UP)
+        if (state.get(WEST) == WallSide.UP)
         {
             i += 54;
         }
-        else if (state.getValue(WEST) == WallSide.SIDE)
+        else if (state.get(WEST) == WallSide.SIDE)
         {
             i += 27;
         }
-        if (state.getValue(SOUTH) == WallSide.UP)
+        if (state.get(SOUTH) == WallSide.UP)
         {
             i += 18;
         }
-        else if (state.getValue(SOUTH) == WallSide.SIDE)
+        else if (state.get(SOUTH) == WallSide.SIDE)
         {
             i += 9;
         }
-        if (state.getValue(EAST) == WallSide.UP)
+        if (state.get(EAST) == WallSide.UP)
         {
             i += 6;
         }
-        else if (state.getValue(EAST) == WallSide.SIDE)
+        else if (state.get(EAST) == WallSide.SIDE)
         {
             i += 3;
         }
-        if (state.getValue(NORTH) == WallSide.UP)
+        if (state.get(NORTH) == WallSide.UP)
         {
             i += 2;
         }
-        else if (state.getValue(NORTH) == WallSide.SIDE)
+        else if (state.get(NORTH) == WallSide.SIDE)
         {
             i += 1;
         }
@@ -285,10 +285,10 @@ public class TerraBlockWall extends Block implements IWaterLoggable
 
     public boolean propagatesSkylightDown(BlockState state, IBlockReader reader, BlockPos pos)
     {
-        return !state.getValue(WATERLOGGED);
+        return !state.get(WATERLOGGED);
     }
 
-    public boolean isPathfindable(BlockState state, IBlockReader worldIn, BlockPos pos, PathType type)
+    public boolean allowsMovement(BlockState state, IBlockReader worldIn, BlockPos pos, PathType type)
     {
         return false;
     }
@@ -315,7 +315,7 @@ public class TerraBlockWall extends Block implements IWaterLoggable
         }
 
         @Override
-        public String getSerializedName()
+        public String getString()
         {
             return this.name;
         }
@@ -343,7 +343,7 @@ public class TerraBlockWall extends Block implements IWaterLoggable
         }
 
         @Override
-        public String getSerializedName()
+        public String getString()
         {
             return this.name;
         }

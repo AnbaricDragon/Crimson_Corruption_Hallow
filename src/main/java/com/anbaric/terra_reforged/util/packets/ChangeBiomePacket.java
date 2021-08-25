@@ -40,9 +40,9 @@ public class ChangeBiomePacket
     {
         context.get().enqueueWork(() ->
         {
-            ClientWorld world = Minecraft.getInstance().level;
+            ClientWorld world = Minecraft.getInstance().world;
             if (world == null) { return; }
-            RegistryKey<Biome> biomeKey = RegistryKey.create(Registry.BIOME_REGISTRY, biome);
+            RegistryKey<Biome> biomeKey = RegistryKey.getOrCreateKey(Registry.BIOME_KEY, biome);
             BiomeChangeHandler.setBiomeKeyAtPos(world, pos, biomeKey);
         });
         context.get().setPacketHandled(true);

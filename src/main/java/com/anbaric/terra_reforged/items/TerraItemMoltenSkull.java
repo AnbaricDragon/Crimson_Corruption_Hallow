@@ -27,11 +27,11 @@ public class TerraItemMoltenSkull extends TerraItemAccessory
     }
 
     @Override
-    public void appendHoverText(ItemStack stack, World worldIn, List<ITextComponent> tooltip, ITooltipFlag flagIn)
+    public void addInformation(ItemStack stack, World worldIn, List<ITextComponent> tooltip, ITooltipFlag flagIn)
     {
-        super.appendHoverText(stack, worldIn, tooltip, flagIn);
+        super.addInformation(stack, worldIn, tooltip, flagIn);
         tooltip.add(new StringTextComponent(""));
-        tooltip.add(new StringTextComponent("\u00A76" + I18n.get("curios.modifiers.charm") + "\u00A76"));
+        tooltip.add(new StringTextComponent("\u00A76" + I18n.format("curios.modifiers.charm") + "\u00A76"));
         tooltip.add(new StringTextComponent("\u00A79" + "Sets Melee Targets On Fire"));
         tooltip.add(new StringTextComponent("\u00A79" + "-50% Lava Damage"));
         tooltip.add(new StringTextComponent("\u00A79" + "-100% Fire Damage"));
@@ -41,9 +41,9 @@ public class TerraItemMoltenSkull extends TerraItemAccessory
     {
         CuriosApi.getCuriosHelper().findEquippedCurio(this, event.getEntityLiving()).ifPresent(found -> {
             DamageSource source = event.getSource();
-            if (source == DamageSource.HOT_FLOOR || (source.isFire() && source != DamageSource.LAVA))
+            if (source == DamageSource.HOT_FLOOR || (source.isFireDamage() && source != DamageSource.LAVA))
             {
-                event.getEntityLiving().clearFire();
+                event.getEntityLiving().extinguish();
                 event.setCanceled(true);
             }
         });
@@ -51,13 +51,13 @@ public class TerraItemMoltenSkull extends TerraItemAccessory
 
     private void setMeleeFire(LivingDamageEvent event)
     {
-        Random       rand   = event.getEntityLiving().level.random;
+        Random       rand   = event.getEntityLiving().world.rand;
         LivingEntity victim = event.getEntityLiving();
-        PlayerEntity player = event.getSource().getDirectEntity() instanceof PlayerEntity ? (PlayerEntity) event.getSource().getDirectEntity() : null;
+        PlayerEntity player = event.getSource().getImmediateSource() instanceof PlayerEntity ? (PlayerEntity) event.getSource().getImmediateSource() : null;
         if (player == null) { return; }
         CuriosApi.getCuriosHelper().findEquippedCurio(this, player).ifPresent(found ->
         {
-            victim.setSecondsOnFire(rand.nextInt(5) + 2);
+            victim.setFire(rand.nextInt(5) + 2);
             if (event.getSource() == DamageSource.LAVA && victim instanceof PlayerEntity)
             {
                 event.setAmount(2.0F);

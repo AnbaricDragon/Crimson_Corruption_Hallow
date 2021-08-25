@@ -25,14 +25,14 @@ import net.minecraft.block.AbstractBlock.Properties;
 
 public class TerraBlockGlowingMushroom extends BushBlock implements IGrowable, IPlantable
 {
-    public static final IntegerProperty STAGE = BlockStateProperties.STAGE;
-    protected static final VoxelShape MUSHROOM_SHAPE = Block.box(5.0D, 0.0D, 5.0D, 11.0D, 6.0D, 11.0D);
+    public static final IntegerProperty STAGE = BlockStateProperties.STAGE_0_1;
+    protected static final VoxelShape MUSHROOM_SHAPE = Block.makeCuboidShape(5.0D, 0.0D, 5.0D, 11.0D, 6.0D, 11.0D);
 
 
     public TerraBlockGlowingMushroom(Properties properties)
     {
         super(properties);
-        this.registerDefaultState(this.stateDefinition.any().setValue(STAGE, 0));
+        this.setDefaultState(this.stateContainer.getBaseState().with(STAGE, 0));
     }
 
     @Override
@@ -48,9 +48,9 @@ public class TerraBlockGlowingMushroom extends BushBlock implements IGrowable, I
     }
 
     @Override
-    public boolean canSurvive(BlockState state, IWorldReader worldIn, BlockPos pos)
+    public boolean isValidPosition(BlockState state, IWorldReader worldIn, BlockPos pos)
     {
-        BlockPos blockpos = pos.below();
+        BlockPos blockpos = pos.down();
         if (state.getBlock() == this) //Forge: This function is called during world gen and placement, before this block is set, so if we are not 'here' then assume it's the pre-check.
         {
             return worldIn.getBlockState(blockpos).canSustainPlant(worldIn, pos, Direction.UP, this);
@@ -68,16 +68,16 @@ public class TerraBlockGlowingMushroom extends BushBlock implements IGrowable, I
         }
         if (rand.nextInt(7) == 0)
         {
-            this.performBonemeal(worldIn, rand, pos, state);
+            this.grow(worldIn, rand, pos, state);
         }
     }
 
     @Override
-    public void performBonemeal(ServerWorld worldIn, Random rand, BlockPos pos, BlockState state)
+    public void grow(ServerWorld worldIn, Random rand, BlockPos pos, BlockState state)
     {
-        if (state.getValue(STAGE) == 0)
+        if (state.get(STAGE) == 0)
         {
-            worldIn.setBlock(pos, state.setValue(STAGE, 1), 4);
+            worldIn.setBlockState(pos, state.with(STAGE, 1), 4);
         }
         else
         {
@@ -96,19 +96,19 @@ public class TerraBlockGlowingMushroom extends BushBlock implements IGrowable, I
     }
 
     @Override
-    public boolean isValidBonemealTarget(IBlockReader worldIn, BlockPos pos, BlockState state, boolean isClient)
+    public boolean canGrow(IBlockReader worldIn, BlockPos pos, BlockState state, boolean isClient)
     {
         return true;
     }
 
     @Override
-    public boolean isBonemealSuccess(World worldIn, Random rand, BlockPos pos, BlockState state)
+    public boolean canUseBonemeal(World worldIn, Random rand, BlockPos pos, BlockState state)
     {
-        return (double) worldIn.random.nextFloat() < 0.45D;
+        return (double) worldIn.rand.nextFloat() < 0.45D;
     }
 
     @Override
-    protected void createBlockStateDefinition(StateContainer.Builder<Block, BlockState> builder)
+    protected void fillStateContainer(StateContainer.Builder<Block, BlockState> builder)
     {
         builder.add(STAGE);
     }

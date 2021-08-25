@@ -20,8 +20,6 @@ import net.minecraftforge.client.event.RenderGameOverlayEvent;
 import net.minecraftforge.client.gui.ForgeIngameGui;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 
-import java.util.function.Predicate;
-
 @OnlyIn(Dist.CLIENT) public class TerraGuiRenderEvent
 {
     private static final Minecraft mc = Minecraft.getInstance();
@@ -33,8 +31,8 @@ import java.util.function.Predicate;
         if (event.getType() == RenderGameOverlayEvent.ElementType.ARMOR)
         {
             ClientPlayerEntity player        = mc.player;
-            ItemStack          lavaProtector = CurioHandler.getBaubles(player, TerraItemRegistry.CHARM_LAVA.get(), TerraItemRegistry.BOOTS_LAVA.get(), TerraItemRegistry.BOOTS_HELLFIRE.get(), TerraItemRegistry.BOOTS_TERRASPARK.get());
-            ItemStack          tabiDasher    = CurioHandler.getBaubles(player, TerraItemRegistry.NINJA_TABI.get());
+            ItemStack          lavaProtector = CurioHandler.getFromBaubles(player, TerraItemRegistry.CHARM_LAVA.get(), TerraItemRegistry.BOOTS_LAVA.get(), TerraItemRegistry.BOOTS_HELLFIRE.get(), TerraItemRegistry.BOOTS_TERRASPARK.get());
+            ItemStack          tabiDasher    = CurioHandler.getFromBaubles(player, TerraItemRegistry.NINJA_TABI.get());
 
 
             AtomicDouble currentMana = new AtomicDouble(0);
@@ -49,11 +47,11 @@ import java.util.function.Predicate;
             //            System.out.println("Player has " + mana + " in " + storage + " slots");
             if (mana >= 0)
             {
-                mc.getEntityRenderDispatcher().textureManager.bind(ICON_GUI);
-                IngameGui ingameGui = mc.gui;
-                int manaPoisoned = player.getActiveEffects().contains(TerraEffectRegistry.SILENCED.get()) ? 22 : 0;
-                int width  = mc.getWindow().getGuiScaledWidth();
-                int height = mc.getWindow().getGuiScaledHeight();
+                mc.getRenderManager().textureManager.bindTexture(ICON_GUI);
+                IngameGui ingameGui = mc.ingameGUI;
+                int manaPoisoned = player.getActivePotionEffects().contains(TerraEffectRegistry.SILENCED.get()) ? 22 : 0;
+                int width  = mc.getMainWindow().getScaledWidth();
+                int height = mc.getMainWindow().getScaledHeight();
                 int right = 8;
                 int top = height - (ForgeIngameGui.right_height + 11);
 
@@ -80,7 +78,7 @@ import java.util.function.Predicate;
                     }
                     right += 8;
                 }
-                mc.getTextureManager().bind(AbstractGui.GUI_ICONS_LOCATION);
+                mc.getTextureManager().bindTexture(AbstractGui.GUI_ICONS_LOCATION);
 //                ingameGui.blit(event.getMatrixStack(), width / 2 + right, top, 0, 0, 10, 10);
                 RenderSystem.disableBlend();
             }
@@ -94,11 +92,11 @@ import java.util.function.Predicate;
 
                     if (charge < 140 || cooldown > 0)
                     {
-                        mc.getEntityRenderDispatcher().textureManager.bind(ICON_GUI);
-                        IngameGui ingameGui = mc.gui;
+                        mc.getRenderManager().textureManager.bindTexture(ICON_GUI);
+                        IngameGui ingameGui = mc.ingameGUI;
 
-                        int width  = mc.getWindow().getGuiScaledWidth();
-                        int height = mc.getWindow().getGuiScaledHeight();
+                        int width  = mc.getMainWindow().getScaledWidth();
+                        int height = mc.getMainWindow().getScaledHeight();
 
                         int count = (int) Math.floor(charge / 14F);
 
@@ -119,7 +117,7 @@ import java.util.function.Predicate;
                             RenderSystem.color4f(1, 1, 1, 1);
                         }
                         ForgeIngameGui.left_height += 10;
-                        mc.getTextureManager().bind(AbstractGui.GUI_ICONS_LOCATION);
+                        mc.getTextureManager().bindTexture(AbstractGui.GUI_ICONS_LOCATION);
                         RenderSystem.disableBlend();
                     }
                 }
@@ -133,11 +131,11 @@ import java.util.function.Predicate;
 
                     if (cooldown == 0)
                     {
-                        mc.getEntityRenderDispatcher().textureManager.bind(ICON_GUI);
-                        IngameGui ingameGui = mc.gui;
+                        mc.getRenderManager().textureManager.bindTexture(ICON_GUI);
+                        IngameGui ingameGui = mc.ingameGUI;
 
-                        int width  = mc.getWindow().getGuiScaledWidth();
-                        int height = mc.getWindow().getGuiScaledHeight();
+                        int width  = mc.getMainWindow().getScaledWidth();
+                        int height = mc.getMainWindow().getScaledHeight();
 
                         int count = 0;
 
@@ -148,7 +146,7 @@ import java.util.function.Predicate;
                         ingameGui.blit(event.getMatrixStack(), width / 2 - left, top, 0, 0, 10, 10);
                         RenderSystem.color4f(1, 1, 1, 1);
                         ForgeIngameGui.left_height += 10;
-                        mc.getTextureManager().bind(AbstractGui.GUI_ICONS_LOCATION);
+                        mc.getTextureManager().bindTexture(AbstractGui.GUI_ICONS_LOCATION);
                         RenderSystem.disableBlend();
                     }
                 }

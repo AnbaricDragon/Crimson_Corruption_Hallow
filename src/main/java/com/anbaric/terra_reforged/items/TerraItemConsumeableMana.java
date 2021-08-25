@@ -14,7 +14,7 @@ public class TerraItemConsumeableMana extends Item
 {
     public TerraItemConsumeableMana()
     {
-        super(new Item.Properties().tab(TerraItemGroups.TERRA_TOOLS_TAB).stacksTo(64));
+        super(new Item.Properties().group(TerraItemGroups.TERRA_TOOLS_TAB).maxStackSize(64));
         MinecraftForge.EVENT_BUS.addListener(this::onPickUpItem);
     }
 

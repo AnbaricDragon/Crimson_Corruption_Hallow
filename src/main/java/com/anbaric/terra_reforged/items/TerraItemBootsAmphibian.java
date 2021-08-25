@@ -46,10 +46,10 @@ public class TerraItemBootsAmphibian extends TerraItemAccessory
     }
 
     @Override
-    public void appendHoverText(ItemStack stack, World worldIn, List<ITextComponent> tooltip, ITooltipFlag flagIn)
+    public void addInformation(ItemStack stack, World worldIn, List<ITextComponent> tooltip, ITooltipFlag flagIn)
     {
         tooltip.add(new StringTextComponent(""));
-        tooltip.add(new StringTextComponent("\u00A76" + I18n.get("curios.modifiers.charm") + "\u00A76"));
+        tooltip.add(new StringTextComponent("\u00A76" + I18n.format("curios.modifiers.charm") + "\u00A76"));
         tooltip.add(new StringTextComponent("\u00A79" + "-3 Block Fall Damage"));
         tooltip.add(new StringTextComponent("\u00A79" + "+20% Speed"));
         tooltip.add(new StringTextComponent("\u00A79" + "+50% Jump Height"));
@@ -81,7 +81,7 @@ public class TerraItemBootsAmphibian extends TerraItemAccessory
             @Nonnull
             public SoundInfo getEquipSound(SlotContext slotContext)
             {
-                return new SoundInfo(SoundEvents.ARMOR_EQUIP_GENERIC, 1.0F, 1.0F);
+                return new SoundInfo(SoundEvents.ITEM_ARMOR_EQUIP_GENERIC, 1.0F, 1.0F);
             }
 
             public boolean canEquipFromUse(SlotContext slot)
@@ -94,7 +94,7 @@ public class TerraItemBootsAmphibian extends TerraItemAccessory
     private void slowFallDamage(LivingFallEvent event)
     {
         PlayerEntity player = event.getEntityLiving() instanceof PlayerEntity ? (PlayerEntity) event.getEntityLiving() : null;
-        if (player == null || player.getCommandSenderWorld().isClientSide()) { return; }
+        if (player == null || player.getEntityWorld().isRemote()) { return; }
 
 
         CuriosApi.getCuriosHelper().getCuriosHandler(player).map(ICuriosItemHandler::getCurios).map(map -> map.get("curio")).map(ICurioStacksHandler::getStacks).map(dynamicStackHandler ->
@@ -102,7 +102,7 @@ public class TerraItemBootsAmphibian extends TerraItemAccessory
             for (int i = 0; i < dynamicStackHandler.getSlots(); i++)
             {
                 ItemStack stack = dynamicStackHandler.getStackInSlot(i);
-                if (stack.getItem().is(TerraTagRegistry.FROG_BREAKERS))
+                if (stack.getItem().isIn(TerraTagRegistry.FROG_BREAKERS))
                 {
                     event.setDistance(event.getDistance() - 2.0F);
                 }

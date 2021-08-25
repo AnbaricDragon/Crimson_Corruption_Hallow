@@ -27,12 +27,12 @@ public class ManaUpdatePacket
     public void write(PacketBuffer buf)
     {
         buf.writeInt(entityId);
-        buf.writeNbt(tag);
+        buf.writeCompoundTag(tag);
     }
 
     public static ManaUpdatePacket read(PacketBuffer buf)
     {
-        return new ManaUpdatePacket(buf.readInt(), buf.readNbt());
+        return new ManaUpdatePacket(buf.readInt(), buf.readCompoundTag());
     }
 
     public void handle(Supplier<NetworkEvent.Context> ctx)

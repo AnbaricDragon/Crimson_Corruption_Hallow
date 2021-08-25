@@ -27,11 +27,11 @@ public class TerraItemObsidianHorseshoe extends TerraItemAccessory
     }
 
     @Override
-    public void appendHoverText(ItemStack stack, World worldIn, List<ITextComponent> tooltip, ITooltipFlag flagIn)
+    public void addInformation(ItemStack stack, World worldIn, List<ITextComponent> tooltip, ITooltipFlag flagIn)
     {
-        super.appendHoverText(stack, worldIn, tooltip, flagIn);
+        super.addInformation(stack, worldIn, tooltip, flagIn);
         tooltip.add(new StringTextComponent(""));
-        tooltip.add(new StringTextComponent("\u00A76" + I18n.get("curios.modifiers.charm") + "\u00A76"));
+        tooltip.add(new StringTextComponent("\u00A76" + I18n.format("curios.modifiers.charm") + "\u00A76"));
         tooltip.add(new StringTextComponent("\u00A79" + "-100% Fall Damage"));
         tooltip.add(new StringTextComponent("\u00A79" + "-100% Fire Damage"));
     }
@@ -46,9 +46,9 @@ public class TerraItemObsidianHorseshoe extends TerraItemAccessory
         CuriosApi.getCuriosHelper().findEquippedCurio(this, event.getEntityLiving()).ifPresent(found ->
         {
             DamageSource source = event.getSource();
-            if (source.isFire() && source != DamageSource.LAVA)
+            if (source.isFireDamage() && source != DamageSource.LAVA)
             {
-                event.getEntityLiving().clearFire();
+                event.getEntityLiving().extinguish();
                 event.setCanceled(true);
             }
         });

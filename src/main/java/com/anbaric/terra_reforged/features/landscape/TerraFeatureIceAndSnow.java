@@ -44,10 +44,10 @@ public class TerraFeatureIceAndSnow extends Feature<NoFeatureConfig>
                 result = block.getBiomeBlock(type);
             }
         }
-        return result.defaultBlockState();
+        return result.getDefaultState();
     }
 
-    public boolean place(ISeedReader reader, ChunkGenerator generator, Random rand, BlockPos pos, NoFeatureConfig config)
+    public boolean generate(ISeedReader reader, ChunkGenerator generator, Random rand, BlockPos pos, NoFeatureConfig config)
     {
         BlockPos.Mutable blockpos$mutable  = new BlockPos.Mutable();
         BlockPos.Mutable blockpos$mutable1 = new BlockPos.Mutable();
@@ -59,21 +59,21 @@ public class TerraFeatureIceAndSnow extends Feature<NoFeatureConfig>
                 int k  = pos.getX() + i;
                 int l  = pos.getZ() + j;
                 int i1 = reader.getHeight(Heightmap.Type.MOTION_BLOCKING, k, l);
-                blockpos$mutable.set(k, i1, l);
-                blockpos$mutable1.set(blockpos$mutable).move(Direction.DOWN, 1);
+                blockpos$mutable.setPos(k, i1, l);
+                blockpos$mutable1.setPos(blockpos$mutable).move(Direction.DOWN, 1);
                 Biome biome = reader.getBiome(blockpos$mutable);
-                if (biome.shouldFreeze(reader, blockpos$mutable1, false))
+                if (biome.doesWaterFreeze(reader, blockpos$mutable1, false))
                 {
-                    reader.setBlock(blockpos$mutable1, ice, 2);
+                    reader.setBlockState(blockpos$mutable1, ice, 2);
                 }
 
-                if (biome.shouldSnow(reader, blockpos$mutable))
+                if (biome.doesSnowGenerate(reader, blockpos$mutable))
                 {
-                    reader.setBlock(blockpos$mutable, snow, 2);
+                    reader.setBlockState(blockpos$mutable, snow, 2);
                     BlockState blockstate = reader.getBlockState(blockpos$mutable1);
                     if (blockstate.hasProperty(SnowyDirtBlock.SNOWY))
                     {
-                        reader.setBlock(blockpos$mutable1, blockstate.setValue(SnowyDirtBlock.SNOWY, true), 2);
+                        reader.setBlockState(blockpos$mutable1, blockstate.with(SnowyDirtBlock.SNOWY, true), 2);
                     }
                 }
             }

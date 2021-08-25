@@ -9,7 +9,7 @@ public class ClientPacketHandler
 {
     public static void handleManaStatus(ManaUpdatePacket packet)
     {
-        Entity entity = Minecraft.getInstance().level.getEntity(packet.entityId);
+        Entity entity = Minecraft.getInstance().world.getEntityByID(packet.entityId);
         if (entity == null)
         {
             return;

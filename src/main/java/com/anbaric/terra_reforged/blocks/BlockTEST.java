@@ -26,13 +26,13 @@ public class BlockTEST extends Block
     }
 
     @Override
-    public ActionResultType use(BlockState state, World world, BlockPos pos, PlayerEntity player, Hand handIn, BlockRayTraceResult hit)
+    public ActionResultType onBlockActivated(BlockState state, World world, BlockPos pos, PlayerEntity player, Hand handIn, BlockRayTraceResult hit)
     {
-        if (!world.isClientSide())
+        if (!world.isRemote())
         {
             System.out.println("Setting biome when Block clicked: Biome at " + pos + " before change is " + world.getBiome(pos).getRegistryName());
             BiomeChangeHandler.setBiomeKeyAtPos(world, pos, Biomes.DESERT);
-            NetworkHandler.INSTANCE.send(PacketDistributor.ALL.noArg(), new ChangeBiomePacket(pos, Biomes.DESERT.location()));
+            NetworkHandler.INSTANCE.send(PacketDistributor.ALL.noArg(), new ChangeBiomePacket(pos, Biomes.DESERT.getLocation()));
             System.out.println("Setting biome when Block clicked: Biome at " + pos + " after change is " + world.getBiome(pos).getRegistryName());
             return ActionResultType.PASS;
         }
@@ -40,13 +40,13 @@ public class BlockTEST extends Block
     }
 
     @Override
-    public void onPlace(BlockState state, World world, BlockPos pos, BlockState oldState, boolean isMoving)
+    public void onBlockAdded(BlockState state, World world, BlockPos pos, BlockState oldState, boolean isMoving)
     {
-        if (!world.isClientSide())
+        if (!world.isRemote())
         {
             System.out.println("Setting biome when Block added: Biome at " + pos + " before change is " + world.getBiome(pos).getRegistryName());
             BiomeChangeHandler.setBiomeKeyAtPos(world, pos, Biomes.DESERT);
-            NetworkHandler.INSTANCE.send(PacketDistributor.ALL.noArg(), new ChangeBiomePacket(pos, Biomes.DESERT.location()));
+            NetworkHandler.INSTANCE.send(PacketDistributor.ALL.noArg(), new ChangeBiomePacket(pos, Biomes.DESERT.getLocation()));
             System.out.println("Setting biome when Block added: Biome at " + pos + " after change is " + world.getBiome(pos).getRegistryName());
         }
     }

@@ -26,6 +26,9 @@ import javax.annotation.Nonnull;
 import java.util.List;
 import java.util.UUID;
 
+import top.theillusivec4.curios.api.type.capability.ICurio.DropRule;
+import top.theillusivec4.curios.api.type.capability.ICurio.SoundInfo;
+
 public class TerraItemBandHealthRegeneration extends TerraItemAccessory
 {
     public TerraItemBandHealthRegeneration()
@@ -34,11 +37,11 @@ public class TerraItemBandHealthRegeneration extends TerraItemAccessory
     }
 
     @Override
-    public void appendHoverText(ItemStack stack, World worldIn, List<ITextComponent> tooltip, ITooltipFlag flagIn)
+    public void addInformation(ItemStack stack, World worldIn, List<ITextComponent> tooltip, ITooltipFlag flagIn)
     {
-        super.appendHoverText(stack, worldIn, tooltip, flagIn);
+        super.addInformation(stack, worldIn, tooltip, flagIn);
         tooltip.add(new StringTextComponent(""));
-        tooltip.add(new StringTextComponent("\u00A76" + I18n.get("curios.modifiers.charm") + "\u00A76"));
+        tooltip.add(new StringTextComponent("\u00A76" + I18n.format("curios.modifiers.charm") + "\u00A76"));
         tooltip.add(new StringTextComponent("\u00A79" + "Faster Health Regeneration"));
     }
 
@@ -51,7 +54,7 @@ public class TerraItemBandHealthRegeneration extends TerraItemAccessory
             {
                 PlayerEntity player = livingEntity instanceof PlayerEntity? (PlayerEntity) livingEntity : null;
                 if (player == null) { return; }
-                if (player.tickCount % 100 == 0 && player.getHealth() < player.getMaxHealth())
+                if (player.ticksExisted % 100 == 0 && player.getHealth() < player.getMaxHealth())
                 {
                     player.heal(1);
                 }
@@ -66,7 +69,7 @@ public class TerraItemBandHealthRegeneration extends TerraItemAccessory
             @Nonnull
             public SoundInfo getEquipSound(SlotContext slotContext)
             {
-                return new SoundInfo(SoundEvents.ARMOR_EQUIP_GENERIC, 1.0F, 1.0F);
+                return new SoundInfo(SoundEvents.ITEM_ARMOR_EQUIP_GENERIC, 1.0F, 1.0F);
             }
 
             public boolean canEquipFromUse(SlotContext slot)

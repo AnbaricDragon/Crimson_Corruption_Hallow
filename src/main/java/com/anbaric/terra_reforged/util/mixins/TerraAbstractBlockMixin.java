@@ -22,7 +22,7 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 @Mixin(AbstractBlock.AbstractBlockState.class)
 public class TerraAbstractBlockMixin
 {
-    private static VoxelShape fullLiquidShape = Block.box(0, 0, 0, 16, 14.3, 16);
+    private static VoxelShape fullLiquidShape = Block.makeCuboidShape(0, 0, 0, 16, 14.3, 16);
 
     @Inject(method = "getCollisionShape(Lnet/minecraft/world/IBlockReader;Lnet/minecraft/util/math/BlockPos;Lnet/minecraft/util/math/shapes/ISelectionContext;)Lnet/minecraft/util/math/shapes/VoxelShape;", at = @At("HEAD"), cancellable = true)
     private void waterWalk(IBlockReader worldIn, BlockPos pos, ISelectionContext context, CallbackInfoReturnable<VoxelShape> cir)
@@ -39,9 +39,9 @@ public class TerraAbstractBlockMixin
         if (entity instanceof PlayerEntity && state.getBlock() instanceof FlowingFluidBlock && entity.getPose() != Pose.CROUCHING)
         {
             PlayerEntity player = (PlayerEntity) entity;
-            boolean isSpace = world.getBlockState(pos.above()).isAir(world, pos.above());
-            boolean canWaterWalk = !player.isInWater() && state.getMaterial() == Material.WATER && (CurioHandler.hasBauble(player, TerraTagRegistry.WATER_WALKERS) || player.hasEffect(TerraEffectRegistry.WATER_WALKING.get()));
-            boolean canLavaWalk = !player.isInLava() && state.getMaterial() == Material.LAVA && (CurioHandler.hasBauble(player, TerraTagRegistry.LAVA_WALKERS) || player.getActiveEffects().stream().anyMatch(potion -> potion.getEffect() == TerraEffectRegistry.WATER_WALKING.get() && potion.getAmplifier() == 1));
+            boolean isSpace = world.getBlockState(pos.up()).isAir(world, pos.up());
+            boolean canWaterWalk = !player.isInWater() && state.getMaterial() == Material.WATER && (CurioHandler.hasBauble(player, TerraTagRegistry.WATER_WALKERS) || player.isPotionActive(TerraEffectRegistry.WATER_WALKING.get()));
+            boolean canLavaWalk = !player.isInLava() && state.getMaterial() == Material.LAVA && (CurioHandler.hasBauble(player, TerraTagRegistry.LAVA_WALKERS) || player.getActivePotionEffects().stream().anyMatch(potion -> potion.getPotion() == TerraEffectRegistry.WATER_WALKING.get() && potion.getAmplifier() == 1));
             return isSpace && (canLavaWalk || canWaterWalk);
         }
         return false;
@@ -49,13 +49,13 @@ public class TerraAbstractBlockMixin
 
     private static final VoxelShape[] liquidShape =
     {
-        Block.box(0, 0, 0, 16, 2.0, 16),
-        Block.box(0, 0, 0, 16, 4.0, 16),
-        Block.box(0, 0, 0, 16, 6.0, 16),
-        Block.box(0, 0, 0, 16, 8.0, 16),
-        Block.box(0, 0, 0, 16, 10.0, 16),
-        Block.box(0, 0, 0, 16, 12.0, 16),
-        Block.box(0, 0, 0, 16, 14.3, 16)
+        Block.makeCuboidShape(0, 0, 0, 16, 2.0, 16),
+        Block.makeCuboidShape(0, 0, 0, 16, 4.0, 16),
+        Block.makeCuboidShape(0, 0, 0, 16, 6.0, 16),
+        Block.makeCuboidShape(0, 0, 0, 16, 8.0, 16),
+        Block.makeCuboidShape(0, 0, 0, 16, 10.0, 16),
+        Block.makeCuboidShape(0, 0, 0, 16, 12.0, 16),
+        Block.makeCuboidShape(0, 0, 0, 16, 14.3, 16)
     };
 
     public VoxelShape getLiquidShape(int fluidLevel)

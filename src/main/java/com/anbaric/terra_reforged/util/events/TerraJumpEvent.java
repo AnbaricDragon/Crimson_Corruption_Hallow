@@ -56,7 +56,7 @@ public class TerraJumpEvent
 
             if (player != null)
             {
-                ClientWorld world = player.clientLevel;
+                ClientWorld world = player.worldClient;
 
                 int jumpModifier = 0;
                 if (CurioHandler.hasBauble(player, TerraItemRegistry.BALLOON_RED.get())) { jumpModifier++; }
@@ -80,7 +80,7 @@ public class TerraJumpEvent
                     hasCloudJump = CurioHandler.hasBauble(player, TerraTagRegistry.CLOUD_JUMPERS);
                 }
 
-                jumpState = player.input.jumping;
+                jumpState = player.movementInput.jump;
                 if (jumpState != lastJumpState && jumpState && !player.isInWater() && !player.isCreative())
                 {
                     if (hasFirstJump)
@@ -88,7 +88,7 @@ public class TerraJumpEvent
                         if (player.isOnGround())
                         {
                             float upwardsMotion = 0.1F * jumpModifier;
-                            player.setDeltaMovement(player.getDeltaMovement().add(0, upwardsMotion, 0));
+                            player.setMotion(player.getMotion().add(0, upwardsMotion, 0));
                         }
                         hasFirstJump = false;
                     }
@@ -101,7 +101,7 @@ public class TerraJumpEvent
                     else if (rocketState > 0 && !player.isOnGround())
                     {
                         NetworkHandler.INSTANCE.sendToServer(new RocketJumpPacket());
-                        player.playSound(SoundEvents.WOOL_STEP, 1, 0.9F + player.getRandom().nextFloat() * 0.2F);
+                        player.playSound(SoundEvents.BLOCK_WOOL_STEP, 1, 0.9F + player.getRNG().nextFloat() * 0.2F);
                         rocket(player, jumpModifier);
                         rocketState--;
                         if (rocketState == 0) { lastJumpState = jumpState; }
@@ -110,42 +110,42 @@ public class TerraJumpEvent
                     else if (hasFartJump && !player.isOnGround())
                     {
                         NetworkHandler.INSTANCE.sendToServer(new FartJumpPacket());
-                        player.playSound(SoundEvents.PLAYER_HURT_DROWN, 1, 0.9F + player.getRandom().nextFloat() * 0.2F);
+                        player.playSound(SoundEvents.ENTITY_PLAYER_HURT_DROWN, 1, 0.9F + player.getRNG().nextFloat() * 0.2F);
                         jump(player, jumpModifier);
                         hasFartJump = false;
                     }
                     else if (hasTsunamiJump && !player.isOnGround())
                     {
                         NetworkHandler.INSTANCE.sendToServer(new TsunamiJumpPacket());
-                        player.playSound(SoundEvents.AMBIENT_UNDERWATER_EXIT, 1, 0.9F + player.getRandom().nextFloat() * 0.2F);
+                        player.playSound(SoundEvents.AMBIENT_UNDERWATER_EXIT, 1, 0.9F + player.getRNG().nextFloat() * 0.2F);
                         jump(player, jumpModifier);
                         hasTsunamiJump = false;
                     }
                     else if (hasSandstormJump && !player.isOnGround())
                     {
                         NetworkHandler.INSTANCE.sendToServer(new SandstormJumpPacket());
-                        player.playSound(SoundEvents.SAND_STEP, 1, 0.9F + player.getRandom().nextFloat() * 0.2F);
+                        player.playSound(SoundEvents.BLOCK_SAND_STEP, 1, 0.9F + player.getRNG().nextFloat() * 0.2F);
                         jump(player, jumpModifier);
                         hasSandstormJump = false;
                     }
                     else if (hasBlizzardJump && !player.isOnGround())
                     {
                         NetworkHandler.INSTANCE.sendToServer(new BlizzardJumpPacket());
-                        player.playSound(SoundEvents.SNOW_STEP, 1, 0.9F + player.getRandom().nextFloat() * 0.2F);
+                        player.playSound(SoundEvents.BLOCK_SNOW_STEP, 1, 0.9F + player.getRNG().nextFloat() * 0.2F);
                         jump(player, jumpModifier);
                         hasBlizzardJump = false;
                     }
                     else if (hasCloudJump && !player.isOnGround())
                     {
                         NetworkHandler.INSTANCE.sendToServer(new CloudJumpPacket());
-                        player.playSound(SoundEvents.WOOL_STEP, 1, 0.9F + player.getRandom().nextFloat() * 0.2F);
+                        player.playSound(SoundEvents.BLOCK_WOOL_STEP, 1, 0.9F + player.getRNG().nextFloat() * 0.2F);
                         jump(player, jumpModifier);
                         hasCloudJump = false;
                     }
                     else if (carpetState > 0 && !player.isOnGround())
                     {
                         NetworkHandler.INSTANCE.sendToServer(new CarpetJumpPacket(true));
-                        player.setDeltaMovement(player.getDeltaMovement().x() * 1.1, 0, player.getDeltaMovement().z() * 1.1);
+                        player.setMotion(player.getMotion().getX() * 1.1, 0, player.getMotion().getZ() * 1.1);
                         player.setNoGravity(true);
                         player.fallDistance = 0;
                         carpetState--;
@@ -161,36 +161,36 @@ public class TerraJumpEvent
 
     private boolean isPressed(PlayerEntity player, World world)
     {
-        Vector3d vecPos = player.position();
-        BlockPos pos    = player.blockPosition();
-        double   x      = vecPos.x();
-        double   z      = vecPos.z();
+        Vector3d vecPos = player.getPositionVec();
+        BlockPos pos    = player.getPosition();
+        double   x      = vecPos.getX();
+        double   z      = vecPos.getZ();
         double   xi     = MathHelper.floor(x);
         double   zi     = MathHelper.floor(z);
         double   dotX   = MathHelper.abs((float) (x - xi));
         double   dotZ   = MathHelper.abs((float) (z - zi));
         return CurioHandler.hasBauble(player, TerraTagRegistry.WALL_CRAWLERS) && player.isCrouching() &&
-            (((world.getBlockState(pos.relative(Direction.NORTH)).canOcclude() || world.getBlockState(pos.above().relative(Direction.NORTH)).canOcclude()) && dotZ <= 0.301) ||
-             ((world.getBlockState(pos.relative(Direction.EAST)).canOcclude()  || world.getBlockState(pos.above().relative(Direction.EAST)).canOcclude() ) && dotX >= 0.699) ||
-             ((world.getBlockState(pos.relative(Direction.SOUTH)).canOcclude() || world.getBlockState(pos.above().relative(Direction.SOUTH)).canOcclude()) && dotZ >= 0.699) ||
-             ((world.getBlockState(pos.relative(Direction.WEST)).canOcclude()  || world.getBlockState(pos.above().relative(Direction.WEST)).canOcclude() ) && dotX <= 0.301));
+            (((world.getBlockState(pos.offset(Direction.NORTH)).isSolid() || world.getBlockState(pos.up().offset(Direction.NORTH)).isSolid()) && dotZ <= 0.301) ||
+             ((world.getBlockState(pos.offset(Direction.EAST)).isSolid()  || world.getBlockState(pos.up().offset(Direction.EAST)).isSolid() ) && dotX >= 0.699) ||
+             ((world.getBlockState(pos.offset(Direction.SOUTH)).isSolid() || world.getBlockState(pos.up().offset(Direction.SOUTH)).isSolid()) && dotZ >= 0.699) ||
+             ((world.getBlockState(pos.offset(Direction.WEST)).isSolid()  || world.getBlockState(pos.up().offset(Direction.WEST)).isSolid() ) && dotX <= 0.301));
     }
 
     private static Vector3d jumpDirection(PlayerEntity player, World world, double upwardsMotion)
     {
-        Vector3d vecPos = player.position();
-        BlockPos pos    = player.blockPosition();
-        double   x      = vecPos.x();
-        double   z      = vecPos.z();
+        Vector3d vecPos = player.getPositionVec();
+        BlockPos pos    = player.getPosition();
+        double   x      = vecPos.getX();
+        double   z      = vecPos.getZ();
         double   xi     = MathHelper.floor(x);
         double   zi     = MathHelper.floor(z);
         double   dotX   = MathHelper.abs((float) (x - xi));
         double   dotZ   = MathHelper.abs((float) (z - zi));
 
-        boolean northWall = (world.getBlockState(pos.relative(Direction.NORTH)).canOcclude()|| world.getBlockState(pos.above().relative(Direction.NORTH)).canOcclude()) && dotZ <= 0.31;
-        boolean eastWall  = (world.getBlockState(pos.relative(Direction.EAST)).canOcclude() || world.getBlockState(pos.above().relative(Direction.EAST)).canOcclude() ) && dotX >= 0.69;
-        boolean southWall = (world.getBlockState(pos.relative(Direction.SOUTH)).canOcclude()|| world.getBlockState(pos.above().relative(Direction.SOUTH)).canOcclude()) && dotZ >= 0.69;
-        boolean westWall  = (world.getBlockState(pos.relative(Direction.WEST)).canOcclude() || world.getBlockState(pos.above().relative(Direction.WEST)).canOcclude() ) && dotX <= 0.31;
+        boolean northWall = (world.getBlockState(pos.offset(Direction.NORTH)).isSolid()|| world.getBlockState(pos.up().offset(Direction.NORTH)).isSolid()) && dotZ <= 0.31;
+        boolean eastWall  = (world.getBlockState(pos.offset(Direction.EAST)).isSolid() || world.getBlockState(pos.up().offset(Direction.EAST)).isSolid() ) && dotX >= 0.69;
+        boolean southWall = (world.getBlockState(pos.offset(Direction.SOUTH)).isSolid()|| world.getBlockState(pos.up().offset(Direction.SOUTH)).isSolid()) && dotZ >= 0.69;
+        boolean westWall  = (world.getBlockState(pos.offset(Direction.WEST)).isSolid() || world.getBlockState(pos.up().offset(Direction.WEST)).isSolid() ) && dotX <= 0.31;
 
         Vector3d finalDir = new Vector3d(eastWall ? -0.75 : (westWall ? 0.75 : 0), upwardsMotion, southWall ? -0.75 : (northWall ? 0.75 : 0));
         return finalDir;
@@ -200,48 +200,48 @@ public class TerraJumpEvent
     {
         double upwardsMotion = 0.46;
         upwardsMotion += 0.1 * jumpModifier;
-        if (player.hasEffect(Effects.JUMP))
+        if (player.isPotionActive(Effects.JUMP_BOOST))
         {
-            upwardsMotion += 0.1 * (player.getEffect(Effects.JUMP).getAmplifier() + 1);
+            upwardsMotion += 0.1 * (player.getActivePotionEffect(Effects.JUMP_BOOST).getAmplifier() + 1);
         }
         double RAD2DEG = 57.29577951308232;
-        Vector3d direction = jumpDirection(player, player.level, upwardsMotion);
-        player.yRot = (float) MathHelper.wrapDegrees(MathHelper.atan2(-direction.x, direction.z) * RAD2DEG);
-        player.setDeltaMovement(direction);
+        Vector3d direction = jumpDirection(player, player.world, upwardsMotion);
+        player.rotationYaw = (float) MathHelper.wrapDegrees(MathHelper.atan2(-direction.x, direction.z) * RAD2DEG);
+        player.setMotion(direction);
 
-        player.hasImpulse = true;
+        player.isAirBorne = true;
         net.minecraftforge.common.ForgeHooks.onLivingJump(player);
         player.fallDistance = 0;
 
-        player.awardStat(Stats.JUMP);
-        player.causeFoodExhaustion(player.isSprinting() ? 0.2F : 0.05F);
+        player.addStat(Stats.JUMP);
+        player.addExhaustion(player.isSprinting() ? 0.2F : 0.05F);
     }
 
     public static void jump(PlayerEntity player, int jumpModifier)
     {
         double upwardsMotion = 0.46;
         upwardsMotion += 0.1 * jumpModifier;
-        if (player.hasEffect(Effects.JUMP))
+        if (player.isPotionActive(Effects.JUMP_BOOST))
         {
-            upwardsMotion += 0.1 * (player.getEffect(Effects.JUMP).getAmplifier() + 1);
+            upwardsMotion += 0.1 * (player.getActivePotionEffect(Effects.JUMP_BOOST).getAmplifier() + 1);
         }
-        Vector3d motion = player.getDeltaMovement();
-        player.setDeltaMovement(player.getDeltaMovement().add(0, upwardsMotion - motion.y, 0));
+        Vector3d motion = player.getMotion();
+        player.setMotion(player.getMotion().add(0, upwardsMotion - motion.y, 0));
 
-        player.hasImpulse = true;
+        player.isAirBorne = true;
         net.minecraftforge.common.ForgeHooks.onLivingJump(player);
         player.fallDistance = 0;
 
-        player.awardStat(Stats.JUMP);
-        player.causeFoodExhaustion(player.isSprinting() ? 0.2F : 0.05F);
+        player.addStat(Stats.JUMP);
+        player.addExhaustion(player.isSprinting() ? 0.2F : 0.05F);
     }
 
     public static void rocket(PlayerEntity player, int jumpModifier)
     {
         double upwardsMotion = Math.max(jumpModifier / 10.0, 0.2);
-        Vector3d motion = player.getDeltaMovement();
+        Vector3d motion = player.getMotion();
         player.fallDistance = 0;
-        player.setDeltaMovement(player.getDeltaMovement().add(0, upwardsMotion - motion.y, 0));
-        player.hasImpulse = true;
+        player.setMotion(player.getMotion().add(0, upwardsMotion - motion.y, 0));
+        player.isAirBorne = true;
     }
 }

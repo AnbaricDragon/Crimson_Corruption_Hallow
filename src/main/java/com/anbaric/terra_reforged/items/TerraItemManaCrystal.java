@@ -13,6 +13,8 @@ import net.minecraft.world.World;
 import java.util.UUID;
 import java.util.concurrent.atomic.AtomicBoolean;
 
+import net.minecraft.item.Item.Properties;
+
 public class TerraItemManaCrystal extends Item
 {
     public TerraItemManaCrystal(Properties properties)
@@ -34,9 +36,9 @@ public class TerraItemManaCrystal extends Item
     };
 
     @Override
-    public ActionResult<ItemStack> use(World worldIn, PlayerEntity playerIn, Hand handIn)
+    public ActionResult<ItemStack> onItemRightClick(World worldIn, PlayerEntity playerIn, Hand handIn)
     {
-        ItemStack     itemstack = playerIn.getItemInHand(handIn);
+        ItemStack     itemstack = playerIn.getHeldItem(handIn);
         AtomicBoolean itemUsed  = new AtomicBoolean(false);
         playerIn.getCapability(TerraCapabilityPlayerMana.PLAYER_MANA_CAPABILITY).ifPresent(cap ->
         {
@@ -46,7 +48,7 @@ public class TerraItemManaCrystal extends Item
                 cap.setManaCrystalsUsed(crystalsUsed + 1);
                 if (!playerIn.getAttribute(TerraAttributeRegistry.MANA_MAX.get()).hasModifier(CRYSTAL_UUIDS[crystalsUsed]))
                 {
-                    playerIn.getAttribute(TerraAttributeRegistry.MANA_MAX.get()).addPermanentModifier(CRYSTAL_UUIDS[crystalsUsed]);
+                    playerIn.getAttribute(TerraAttributeRegistry.MANA_MAX.get()).applyPersistentModifier(CRYSTAL_UUIDS[crystalsUsed]);
                 }
                 itemUsed.set(true);
             }
@@ -54,7 +56,7 @@ public class TerraItemManaCrystal extends Item
         if (itemUsed.get())
         {
             itemstack.shrink(1);
-            return ActionResult.consume(itemstack);
+            return ActionResult.resultConsume(itemstack);
         }
         else
         {
@@ -68,7 +70,7 @@ public class TerraItemManaCrystal extends Item
                 }
             });
             itemstack.setCount(10);
-            return ActionResult.pass(itemstack);
+            return ActionResult.resultPass(itemstack);
         }
     }
 }

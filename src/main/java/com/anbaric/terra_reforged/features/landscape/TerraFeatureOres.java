@@ -51,11 +51,11 @@ public class TerraFeatureOres extends Feature<OreFeatureConfig>
     }
 
     @Override
-    public boolean place(ISeedReader reader, ChunkGenerator generator, Random rand, BlockPos pos, OreFeatureConfig config)
+    public boolean generate(ISeedReader reader, ChunkGenerator generator, Random rand, BlockPos pos, OreFeatureConfig config)
     {
         AtomicInteger altarsBroken = new AtomicInteger();
         Block         inputBlock   = config.state.getBlock();
-        reader.getLevel().getCapability(TerraCapabilityWorldProgression.WORLD_PROGRESSION).ifPresent(cap -> altarsBroken.set(cap.getAltarsBroken()));
+        reader.getWorld().getCapability(TerraCapabilityWorldProgression.WORLD_PROGRESSION).ifPresent(cap -> altarsBroken.set(cap.getAltarsBroken()));
 
         int newSize = isAltarOre(inputBlock) ? Math.min((int) (altarsBroken.get() * getDebuff(inputBlock)), config.size) : config.size;
         float  f        = rand.nextFloat() * (float) Math.PI;
@@ -171,10 +171,10 @@ public class TerraFeatureOres extends Feature<OreFeatureConfig>
                                         if (!bitset.get(l2))
                                         {
                                             bitset.set(l2);
-                                            blockpos$mutable.set(i2, j2, k2);
+                                            blockpos$mutable.setPos(i2, j2, k2);
                                             if (config.target.test(world.getBlockState(blockpos$mutable), random))
                                             {
-                                                world.setBlock(blockpos$mutable, biomeBlock(world.getBiome(blockpos$mutable), config.state.getBlock()), 2);
+                                                world.setBlockState(blockpos$mutable, biomeBlock(world.getBiome(blockpos$mutable), config.state.getBlock()), 2);
                                                 ++i;
                                             }
                                         }
@@ -225,6 +225,6 @@ public class TerraFeatureOres extends Feature<OreFeatureConfig>
                 result = block.getBiomeBlock(getBiomeType(biome));
             }
         }
-        return result.defaultBlockState();
+        return result.getDefaultState();
     }
 }

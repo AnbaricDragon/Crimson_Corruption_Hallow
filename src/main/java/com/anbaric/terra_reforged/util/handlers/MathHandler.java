@@ -7,7 +7,7 @@ public class MathHandler
 {
     public static double angleBetween(Vector3d a, Vector3d b)
     {
-        double projection = a.normalize().dot(b.normalize());
+        double projection = a.normalize().dotProduct(b.normalize());
         return Math.acos(net.minecraft.util.math.MathHelper.clamp(projection, -1, 1));
     }
 
@@ -31,7 +31,7 @@ public class MathHandler
             finalVector = finalVector.normalize();
         }
 
-        entity.setDeltaMovement(finalVector.multiply(modifier).toVector3d());
+        entity.setMotion(finalVector.multiply(modifier).toVector3d());
     }
 
     public static int multiplyColor(int c1, int c2)

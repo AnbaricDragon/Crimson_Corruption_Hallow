@@ -20,23 +20,27 @@ public class TerraManaTickEvent
     @SubscribeEvent
     static void onPlayerTick(TickEvent.PlayerTickEvent event)
     {
-        if (event.phase == TickEvent.Phase.START && !event.player.getCommandSenderWorld().isClientSide())
+        if (event.phase == TickEvent.Phase.START && !event.player.getEntityWorld().isRemote())
         {
             PlayerEntity player = event.player;
+            if (player.isCreative() || player.isSpectator())
+            {
+                return;
+            }
             double maxMana = player.getAttributeValue(TerraAttributeRegistry.MANA_MAX.get());
-            boolean hasManaRegenBuff = player.hasEffect(TerraEffectRegistry.MANA_REGEN.get());
+            boolean hasManaRegenBuff = player.isPotionActive(TerraEffectRegistry.MANA_REGEN.get());
             boolean hasManaRegenBand = CurioHandler.hasBauble(player, TerraItemRegistry.BAND_MANAREGEN.get());
-            boolean isMoving = player.position() != playerPos;
+            boolean isMoving = player.getPositionVec() != playerPos;
 
             if (tickSlower == 5)
             {
                 tickSlower = 0;
-                playerPos = player.position();
+                playerPos = player.getPositionVec();
             }
             player.getCapability(TerraCapabilityPlayerMana.PLAYER_MANA_CAPABILITY).ifPresent(cap ->
             {
                 currentMana = cap.getCurrentMana();
-                while (manaCount >= 120)
+                while (manaCount >= (hasManaRegenBuff ? 100 : 120))
                 {
                     manaCount -= hasManaRegenBuff ? 100 : 120;
                     if (currentMana < maxMana)
@@ -55,6 +59,7 @@ public class TerraManaTickEvent
             {
                 manaCount += (int) (((maxMana/7) + (hasManaRegenBand ? 26 : 1) + (hasManaRegenBand ? maxMana / 2 : isMoving ? 0 : maxMana / 2)) * (hasManaRegenBuff ? 1 : (currentMana / maxMana * 0.8) + 0.2) * 1.15);
             }
+            System.out.println("Manacount is " + manaCount);
             tickSlower++;
         }
     }

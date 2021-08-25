@@ -26,57 +26,57 @@ public class TerraDefaultBiomeAdditionsEvent
     {
         if (category == Biome.Category.ICY)
         {
-            settings.addFeature(GenerationStage.Decoration.UNDERGROUND_ORES, FeatureGenHandler.ORE_SNOW_GEN);
-            settings.addFeature(GenerationStage.Decoration.UNDERGROUND_ORES, FeatureGenHandler.ORE_SLUSH_GEN);
-            settings.addFeature(GenerationStage.Decoration.UNDERGROUND_ORES, FeatureGenHandler.ORE_ICE_GEN);
-            settings.addFeature(GenerationStage.Decoration.UNDERGROUND_STRUCTURES, FeatureGenHandler.TRAP_ICE_THIN);
+            settings.withFeature(GenerationStage.Decoration.UNDERGROUND_ORES, FeatureGenHandler.ORE_SNOW_GEN);
+            settings.withFeature(GenerationStage.Decoration.UNDERGROUND_ORES, FeatureGenHandler.ORE_SLUSH_GEN);
+            settings.withFeature(GenerationStage.Decoration.UNDERGROUND_ORES, FeatureGenHandler.ORE_ICE_GEN);
+            settings.withFeature(GenerationStage.Decoration.UNDERGROUND_STRUCTURES, FeatureGenHandler.TRAP_ICE_THIN);
         }
         else if (category == Biome.Category.TAIGA)
         {
-            settings.addFeature(GenerationStage.Decoration.UNDERGROUND_ORES, FeatureGenHandler.ORE_SNOW_GEN);
-            settings.addFeature(GenerationStage.Decoration.UNDERGROUND_ORES, FeatureGenHandler.ORE_SLUSH_GEN);
+            settings.withFeature(GenerationStage.Decoration.UNDERGROUND_ORES, FeatureGenHandler.ORE_SNOW_GEN);
+            settings.withFeature(GenerationStage.Decoration.UNDERGROUND_ORES, FeatureGenHandler.ORE_SLUSH_GEN);
         }
         else
         {
-            settings.addFeature(GenerationStage.Decoration.UNDERGROUND_ORES, FeatureGenHandler.ORE_SILT_GEN);
+            settings.withFeature(GenerationStage.Decoration.UNDERGROUND_ORES, FeatureGenHandler.ORE_SILT_GEN);
         }
     }
 
     private static void generateTrees(BiomeGenerationSettingsBuilder settings, double boreal, boolean palm)
     {
-        if (boreal < 0.0D || boreal == 0.25D) { settings.addFeature(GenerationStage.Decoration.VEGETAL_DECORATION, FeatureGenHandler.BOREAL_TREE_TAIGA_GEN); }
-        else if (boreal == 0.0D) { settings.addFeature(GenerationStage.Decoration.VEGETAL_DECORATION, FeatureGenHandler.BOREAL_TREE_TUNDRA_GEN); }
-        if (palm) { settings.addFeature(GenerationStage.Decoration.VEGETAL_DECORATION, FeatureGenHandler.PALM_TREE_GEN); }
+        if (boreal < 0.0D || boreal == 0.25D) { settings.withFeature(GenerationStage.Decoration.VEGETAL_DECORATION, FeatureGenHandler.BOREAL_TREE_TAIGA_GEN); }
+        else if (boreal == 0.0D) { settings.withFeature(GenerationStage.Decoration.VEGETAL_DECORATION, FeatureGenHandler.BOREAL_TREE_TUNDRA_GEN); }
+        if (palm) { settings.withFeature(GenerationStage.Decoration.VEGETAL_DECORATION, FeatureGenHandler.PALM_TREE_GEN); }
     }
 
     private static void generatePlants(BiomeGenerationSettingsBuilder settings, boolean daybloom, boolean shiverthorn, boolean waterleaf)
     {
-        settings.addFeature(GenerationStage.Decoration.VEGETAL_DECORATION, FeatureGenHandler.PLANT_BLINKROOT_GEN);
-        if (daybloom) { settings.addFeature(GenerationStage.Decoration.VEGETAL_DECORATION, FeatureGenHandler.PLANT_DAYBLOOM_GEN); }
-        if (shiverthorn) { settings.addFeature(GenerationStage.Decoration.VEGETAL_DECORATION, FeatureGenHandler.PLANT_SHIVERTHORN_GEN); }
-        if (waterleaf) { settings.addFeature(GenerationStage.Decoration.VEGETAL_DECORATION, FeatureGenHandler.PLANT_WATERLEAF_GEN); }
+        settings.withFeature(GenerationStage.Decoration.VEGETAL_DECORATION, FeatureGenHandler.PLANT_BLINKROOT_GEN);
+        if (daybloom) { settings.withFeature(GenerationStage.Decoration.VEGETAL_DECORATION, FeatureGenHandler.PLANT_DAYBLOOM_GEN); }
+        if (shiverthorn) { settings.withFeature(GenerationStage.Decoration.VEGETAL_DECORATION, FeatureGenHandler.PLANT_SHIVERTHORN_GEN); }
+        if (waterleaf) { settings.withFeature(GenerationStage.Decoration.VEGETAL_DECORATION, FeatureGenHandler.PLANT_WATERLEAF_GEN); }
     }
 
     private static void generateOres(BiomeGenerationSettingsBuilder settings)
     {
-        settings.addFeature(GenerationStage.Decoration.UNDERGROUND_ORES, FeatureGenHandler.ORE_COPPER_GEN);
-        settings.addFeature(GenerationStage.Decoration.UNDERGROUND_ORES, FeatureGenHandler.ORE_TIN_GEN);
-        settings.addFeature(GenerationStage.Decoration.UNDERGROUND_ORES, FeatureGenHandler.ORE_IRON_GEN);
-        settings.addFeature(GenerationStage.Decoration.UNDERGROUND_ORES, FeatureGenHandler.ORE_LEAD_GEN);
-        settings.addFeature(GenerationStage.Decoration.UNDERGROUND_ORES, FeatureGenHandler.ORE_SILVER_GEN);
-        settings.addFeature(GenerationStage.Decoration.UNDERGROUND_ORES, FeatureGenHandler.ORE_TUNGSTEN_GEN);
-        settings.addFeature(GenerationStage.Decoration.UNDERGROUND_ORES, FeatureGenHandler.ORE_GOLD_GEN);
-        settings.addFeature(GenerationStage.Decoration.UNDERGROUND_ORES, FeatureGenHandler.ORE_PLATINUM_GEN);
-        settings.addFeature(GenerationStage.Decoration.UNDERGROUND_ORES, FeatureGenHandler.ORE_COBALT_GEN);
-        settings.addFeature(GenerationStage.Decoration.UNDERGROUND_ORES, FeatureGenHandler.ORE_PALLADIUM_GEN);
-        settings.addFeature(GenerationStage.Decoration.UNDERGROUND_ORES, FeatureGenHandler.ORE_MYTHRIL_GEN);
-        settings.addFeature(GenerationStage.Decoration.UNDERGROUND_ORES, FeatureGenHandler.ORE_ORICHALCUM_GEN);
-        settings.addFeature(GenerationStage.Decoration.UNDERGROUND_ORES, FeatureGenHandler.ORE_ADAMANTITE_GEN);
-        settings.addFeature(GenerationStage.Decoration.UNDERGROUND_ORES, FeatureGenHandler.ORE_TITANIUM_GEN);
-        settings.addFeature(GenerationStage.Decoration.UNDERGROUND_ORES, FeatureGenHandler.ORE_AMBER_GEN);
-        settings.addFeature(GenerationStage.Decoration.UNDERGROUND_ORES, FeatureGenHandler.ORE_RUBY_GEN);
-        settings.addFeature(GenerationStage.Decoration.UNDERGROUND_ORES, FeatureGenHandler.ORE_SAPPHIRE_GEN);
-        settings.addFeature(GenerationStage.Decoration.UNDERGROUND_ORES, FeatureGenHandler.ORE_TOPAZ_GEN);
-        settings.addFeature(GenerationStage.Decoration.UNDERGROUND_ORES, FeatureGenHandler.ORE_AMETHYST_GEN);
+        settings.withFeature(GenerationStage.Decoration.UNDERGROUND_ORES, FeatureGenHandler.ORE_COPPER_GEN);
+        settings.withFeature(GenerationStage.Decoration.UNDERGROUND_ORES, FeatureGenHandler.ORE_TIN_GEN);
+        settings.withFeature(GenerationStage.Decoration.UNDERGROUND_ORES, FeatureGenHandler.ORE_IRON_GEN);
+        settings.withFeature(GenerationStage.Decoration.UNDERGROUND_ORES, FeatureGenHandler.ORE_LEAD_GEN);
+        settings.withFeature(GenerationStage.Decoration.UNDERGROUND_ORES, FeatureGenHandler.ORE_SILVER_GEN);
+        settings.withFeature(GenerationStage.Decoration.UNDERGROUND_ORES, FeatureGenHandler.ORE_TUNGSTEN_GEN);
+        settings.withFeature(GenerationStage.Decoration.UNDERGROUND_ORES, FeatureGenHandler.ORE_GOLD_GEN);
+        settings.withFeature(GenerationStage.Decoration.UNDERGROUND_ORES, FeatureGenHandler.ORE_PLATINUM_GEN);
+        settings.withFeature(GenerationStage.Decoration.UNDERGROUND_ORES, FeatureGenHandler.ORE_COBALT_GEN);
+        settings.withFeature(GenerationStage.Decoration.UNDERGROUND_ORES, FeatureGenHandler.ORE_PALLADIUM_GEN);
+        settings.withFeature(GenerationStage.Decoration.UNDERGROUND_ORES, FeatureGenHandler.ORE_MYTHRIL_GEN);
+        settings.withFeature(GenerationStage.Decoration.UNDERGROUND_ORES, FeatureGenHandler.ORE_ORICHALCUM_GEN);
+        settings.withFeature(GenerationStage.Decoration.UNDERGROUND_ORES, FeatureGenHandler.ORE_ADAMANTITE_GEN);
+        settings.withFeature(GenerationStage.Decoration.UNDERGROUND_ORES, FeatureGenHandler.ORE_TITANIUM_GEN);
+        settings.withFeature(GenerationStage.Decoration.UNDERGROUND_ORES, FeatureGenHandler.ORE_AMBER_GEN);
+        settings.withFeature(GenerationStage.Decoration.UNDERGROUND_ORES, FeatureGenHandler.ORE_RUBY_GEN);
+        settings.withFeature(GenerationStage.Decoration.UNDERGROUND_ORES, FeatureGenHandler.ORE_SAPPHIRE_GEN);
+        settings.withFeature(GenerationStage.Decoration.UNDERGROUND_ORES, FeatureGenHandler.ORE_TOPAZ_GEN);
+        settings.withFeature(GenerationStage.Decoration.UNDERGROUND_ORES, FeatureGenHandler.ORE_AMETHYST_GEN);
     }
 }

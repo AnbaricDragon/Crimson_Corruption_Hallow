@@ -30,11 +30,11 @@ public class TerraItemFastClock extends TerraItemAccessory
     }
 
     @Override
-    public void appendHoverText(ItemStack stack, World worldIn, List<ITextComponent> tooltip, ITooltipFlag flagIn)
+    public void addInformation(ItemStack stack, World worldIn, List<ITextComponent> tooltip, ITooltipFlag flagIn)
     {
-        super.appendHoverText(stack, worldIn, tooltip, flagIn);
+        super.addInformation(stack, worldIn, tooltip, flagIn);
         tooltip.add(new StringTextComponent(""));
-        tooltip.add(new StringTextComponent("\u00A76" + I18n.get("curios.modifiers.charm") + "\u00A76"));
+        tooltip.add(new StringTextComponent("\u00A76" + I18n.format("curios.modifiers.charm") + "\u00A76"));
         tooltip.add(new StringTextComponent("\u00A79" + "Grants Immunity To:"));
         tooltip.add(new StringTextComponent("\u00A74" + "Slowness"));
 
@@ -48,9 +48,9 @@ public class TerraItemFastClock extends TerraItemAccessory
             @Override
             public void curioTick(String identifier, int index, LivingEntity livingEntity)
             {
-                if (livingEntity.hasEffect(Effects.MOVEMENT_SLOWDOWN))
+                if (livingEntity.isPotionActive(Effects.SLOWNESS))
                 {
-                    livingEntity.removeEffect(Effects.MOVEMENT_SLOWDOWN);
+                    livingEntity.removePotionEffect(Effects.SLOWNESS);
                 }
             }
 
@@ -65,7 +65,7 @@ public class TerraItemFastClock extends TerraItemAccessory
             @Override
             public SoundInfo getEquipSound(SlotContext slotContext)
             {
-                return new SoundInfo(SoundEvents.ARMOR_EQUIP_GENERIC, 1.0f, 1.0f);
+                return new SoundInfo(SoundEvents.ITEM_ARMOR_EQUIP_GENERIC, 1.0f, 1.0f);
             }
 
             @Override

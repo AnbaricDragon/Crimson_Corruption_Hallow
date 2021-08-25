@@ -30,14 +30,14 @@ public class TerraBlockSand extends FallingBlock
     public boolean canSustainPlant(BlockState state, IBlockReader world, BlockPos pos, Direction facing, net.minecraftforge.common.IPlantable plantable)
     {
         Boolean reed  = false;
-        Block   plant = plantable.getPlant(world, pos.above()).getBlock();
+        Block   plant = plantable.getPlant(world, pos.up()).getBlock();
         if (plant == Blocks.SUGAR_CANE || plant instanceof TerraBlockReeds)
         {
             for (Direction direction : Direction.Plane.HORIZONTAL)
             {
-                BlockState  blockstate  = world.getBlockState(pos.relative(direction));
-                FluidState fluidstate = world.getFluidState(pos.relative(direction));
-                if (fluidstate.is(FluidTags.WATER) || blockstate.getBlock() == Blocks.FROSTED_ICE)
+                BlockState  blockstate  = world.getBlockState(pos.offset(direction));
+                FluidState fluidstate = world.getFluidState(pos.offset(direction));
+                if (fluidstate.isTagged(FluidTags.WATER) || blockstate.getBlock() == Blocks.FROSTED_ICE)
                 {
                     reed = true;
                 }
@@ -49,7 +49,7 @@ public class TerraBlockSand extends FallingBlock
     @Override
     public void tick(BlockState state, ServerWorld worldIn, BlockPos pos, Random random)
     {
-        if (!worldIn.isClientSide)
+        if (!worldIn.isRemote)
         {
             this.checkFallable(worldIn, pos);
             if (!worldIn.isAreaLoaded(pos, 3))
@@ -61,29 +61,29 @@ public class TerraBlockSand extends FallingBlock
             {
                 for (int i = 0; i < 4; ++i)
                 {
-                    BlockPos targetPos   = pos.offset(random.nextInt(3) - 1, random.nextInt(3) - 1, random.nextInt(3) - 1);
+                    BlockPos targetPos   = pos.add(random.nextInt(3) - 1, random.nextInt(3) - 1, random.nextInt(3) - 1);
                     Block    targetBlock = worldIn.getBlockState(targetPos).getBlock();
 
                     if (checkTransformable(targetBlock) && i == 0)
                     {
                         if (targetBlock instanceof StairsBlock)
                         {
-                            worldIn.setBlockAndUpdate(targetPos, transformedState(biome, targetBlock).defaultBlockState()
-                                    .setValue(StairsBlock.FACING, worldIn.getBlockState(targetPos).getValue(StairsBlock.FACING))
-                                    .setValue(StairsBlock.HALF, worldIn.getBlockState(targetPos).getValue(StairsBlock.HALF))
-                                    .setValue(StairsBlock.SHAPE, worldIn.getBlockState(targetPos).getValue(StairsBlock.SHAPE))
-                                    .setValue(StairsBlock.WATERLOGGED, worldIn.getBlockState(targetPos).getValue(StairsBlock.WATERLOGGED)));
+                            worldIn.setBlockState(targetPos, transformedState(biome, targetBlock).getDefaultState()
+                                    .with(StairsBlock.FACING, worldIn.getBlockState(targetPos).get(StairsBlock.FACING))
+                                    .with(StairsBlock.HALF, worldIn.getBlockState(targetPos).get(StairsBlock.HALF))
+                                    .with(StairsBlock.SHAPE, worldIn.getBlockState(targetPos).get(StairsBlock.SHAPE))
+                                    .with(StairsBlock.WATERLOGGED, worldIn.getBlockState(targetPos).get(StairsBlock.WATERLOGGED)));
                             return;
                         }
                         if (targetBlock instanceof SlabBlock)
                         {
-                            worldIn.setBlockAndUpdate(targetPos, transformedState(biome, targetBlock).defaultBlockState()
-                                    .setValue(SlabBlock.TYPE, worldIn.getBlockState(targetPos).getValue(SlabBlock.TYPE))
-                                    .setValue(SlabBlock.WATERLOGGED, worldIn.getBlockState(targetPos).getValue(SlabBlock.WATERLOGGED)));
+                            worldIn.setBlockState(targetPos, transformedState(biome, targetBlock).getDefaultState()
+                                    .with(SlabBlock.TYPE, worldIn.getBlockState(targetPos).get(SlabBlock.TYPE))
+                                    .with(SlabBlock.WATERLOGGED, worldIn.getBlockState(targetPos).get(SlabBlock.WATERLOGGED)));
                             return;
                         }
 
-                        worldIn.setBlockAndUpdate(targetPos, transformedState(biome, targetBlock).defaultBlockState());
+                        worldIn.setBlockState(targetPos, transformedState(biome, targetBlock).getDefaultState());
                     }
                 }
             }
@@ -118,13 +118,13 @@ public class TerraBlockSand extends FallingBlock
 
     private void checkFallable(World worldIn, BlockPos pos)
     {
-        if (worldIn.isEmptyBlock(pos.below()) || isFree(worldIn.getBlockState(pos.below())) && pos.getY() >= 0)
+        if (worldIn.isAirBlock(pos.down()) || canFallThrough(worldIn.getBlockState(pos.down())) && pos.getY() >= 0)
         {
-            if (!worldIn.isClientSide)
+            if (!worldIn.isRemote)
             {
                 FallingBlockEntity fallingblockentity = new FallingBlockEntity(worldIn, (double) pos.getX() + 0.5D, (double) pos.getY(), (double) pos.getZ() + 0.5D, worldIn.getBlockState(pos));
-                this.falling(fallingblockentity);
-                worldIn.addFreshEntity(fallingblockentity);
+                this.onStartFalling(fallingblockentity);
+                worldIn.addEntity(fallingblockentity);
             }
         }
     }

@@ -1,0 +1,8 @@
+{
+    "replace": false,
+    "values": [
+        "terra_reforged:consumeable_mana_star",
+        "terra_reforged:consumeable_mana_cake",
+        "terra_reforged:consumeable_mana_plum"
+    ]
+}

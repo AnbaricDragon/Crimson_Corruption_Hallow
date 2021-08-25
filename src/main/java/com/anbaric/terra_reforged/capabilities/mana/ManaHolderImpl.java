@@ -59,7 +59,7 @@ public class ManaHolderImpl implements IPlayerMana
     @Override
     public void updateTracking()
     {
-        if (player.level.isClientSide)
+        if (player.world.isRemote)
         {
             return;
         }
@@ -68,7 +68,7 @@ public class ManaHolderImpl implements IPlayerMana
 
     public ManaUpdatePacket createUpdatePacket()
     {
-        return new ManaUpdatePacket(player.getId(), this);
+        return new ManaUpdatePacket(player.getEntityId(), this);
     }
 
     @Override

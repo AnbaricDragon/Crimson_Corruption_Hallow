@@ -29,10 +29,10 @@ public class ColorHandler
     {
         BlockColors blockColors = event.getBlockColors();
 
-        blockColors.register((blockstate, world, pos, tintIndex) -> world != null && pos != null ? BiomeColors.getAverageFoliageColor(world, pos) : FoliageColors.getDefaultColor(), TerraBlockRegistry.WALL_OAK_LEAF.get(), TerraBlockRegistry.WALL_JUNGLE_LEAF.get(), TerraBlockRegistry.WALL_ACACIA_LEAF.get(), TerraBlockRegistry.WALL_DARKOAK_LEAF.get());
-        blockColors.register((blockstate, world, pos, tintIndex) -> FoliageColors.getEvergreenColor(), TerraBlockRegistry.WALL_SPRUCE_LEAF.get());
-        blockColors.register((blockstate, world, pos, tintIndex) -> FoliageColors.getBirchColor(), TerraBlockRegistry.WALL_BIRCH_LEAF.get());
-        blockColors.register((blockstate, world, pos, tintIndex) -> world != null && pos != null ? BiomeColors.getAverageGrassColor(world, pos) : GrassColors.get(0.5D, 1.0D), TerraBlockRegistry.GRASS_JUNGLE.get());    }
+        blockColors.register((blockstate, world, pos, tintIndex) -> world != null && pos != null ? BiomeColors.getFoliageColor(world, pos) : FoliageColors.getDefault(), TerraBlockRegistry.WALL_OAK_LEAF.get(), TerraBlockRegistry.WALL_JUNGLE_LEAF.get(), TerraBlockRegistry.WALL_ACACIA_LEAF.get(), TerraBlockRegistry.WALL_DARKOAK_LEAF.get());
+        blockColors.register((blockstate, world, pos, tintIndex) -> FoliageColors.getSpruce(), TerraBlockRegistry.WALL_SPRUCE_LEAF.get());
+        blockColors.register((blockstate, world, pos, tintIndex) -> FoliageColors.getBirch(), TerraBlockRegistry.WALL_BIRCH_LEAF.get());
+        blockColors.register((blockstate, world, pos, tintIndex) -> world != null && pos != null ? BiomeColors.getGrassColor(world, pos) : GrassColors.get(0.5D, 1.0D), TerraBlockRegistry.GRASS_JUNGLE.get());    }
 
 
     /**
@@ -46,7 +46,7 @@ public class ColorHandler
 
         // Use the Block's colour handler for an ItemBlock
         final IItemColor color = (stack, tintIndex) -> {
-            final BlockState state = ((BlockItem) stack.getItem()).getBlock().defaultBlockState();
+            final BlockState state = ((BlockItem) stack.getItem()).getBlock().getDefaultState();
             return blockColors.getColor(state, null, null, tintIndex);
         };
 

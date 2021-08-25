@@ -23,9 +23,9 @@ public class TerraFeatureTreeMahoganyLarge extends Feature<NoFeatureConfig>
     }
 
     @Override
-    public boolean place(ISeedReader world, ChunkGenerator generator, Random rand, BlockPos pos, NoFeatureConfig config)
+    public boolean generate(ISeedReader world, ChunkGenerator generator, Random rand, BlockPos pos, NoFeatureConfig config)
     {
-        if (world.getBlockState(pos.below()).getBlock().is(TerraTagRegistry.MAHOGANY_PLANTERS))
+        if (world.getBlockState(pos.down()).getBlock().isIn(TerraTagRegistry.MAHOGANY_PLANTERS))
         {
             generateTree(world, pos, rand);
             return true;
@@ -33,8 +33,8 @@ public class TerraFeatureTreeMahoganyLarge extends Feature<NoFeatureConfig>
         return false;
     }
 
-    public static final BlockState LOG_MAHOGANY = TerraBlockRegistry.LOG_MAHOGANY.get().defaultBlockState();
-    public static final BlockState LEAF_MAHOGANY = TerraBlockRegistry.LEAF_MAHOGANY.get().defaultBlockState();
+    public static final BlockState LOG_MAHOGANY = TerraBlockRegistry.LOG_MAHOGANY.get().getDefaultState();
+    public static final BlockState LEAF_MAHOGANY = TerraBlockRegistry.LEAF_MAHOGANY.get().getDefaultState();
 
     static final char[][][] trunkSeed =
     //0
@@ -159,7 +159,7 @@ public class TerraFeatureTreeMahoganyLarge extends Feature<NoFeatureConfig>
 
     public static boolean generateTree(IWorld world, BlockPos posD, Random rand)
     {
-        BlockPos pos = posD.offset(1, 0, 1);
+        BlockPos pos = posD.add(1, 0, 1);
         //Randomness Generator
         int variTrunk = (rand.nextInt(13) * 2) + 10;
         int maxHeight = variTrunk + 3;
@@ -181,7 +181,7 @@ public class TerraFeatureTreeMahoganyLarge extends Feature<NoFeatureConfig>
         BlockPos canopyPos = new BlockPos(0, 0, 0);
 
         //Checking if Tree can fit
-        if (baseY + maxHeight < world.getMaxBuildHeight())
+        if (baseY + maxHeight < world.getHeight())
         {
             for (int y = baseY; y < (baseY + maxHeight); y++)
             {
@@ -202,7 +202,7 @@ public class TerraFeatureTreeMahoganyLarge extends Feature<NoFeatureConfig>
                         {
                             isClear = false;
                         }
-                        if (checkerPos.getY() >= world.getMaxBuildHeight())
+                        if (checkerPos.getY() >= world.getHeight())
                         {
                             isClear = false;
                         }
@@ -232,7 +232,7 @@ public class TerraFeatureTreeMahoganyLarge extends Feature<NoFeatureConfig>
                         {
                             isClear = false;
                         }
-                        if (checkerPos.getY() >= world.getMaxBuildHeight())
+                        if (checkerPos.getY() >= world.getHeight())
                         {
                             isClear = false;
                         }
@@ -267,15 +267,15 @@ public class TerraFeatureTreeMahoganyLarge extends Feature<NoFeatureConfig>
                             {
                                 if (indexChar == 'Y' || indexChar == 'C')
                                 {
-                                    world.setBlock(placerPos, LOG_MAHOGANY, 3);
+                                    world.setBlockState(placerPos, LOG_MAHOGANY, 3);
                                 }
                                 else if (indexChar == 'X')
                                 {
-                                    world.setBlock(placerPos, LOG_MAHOGANY.setValue(RotatedPillarBlock.AXIS, Direction.Axis.X), 3);
+                                    world.setBlockState(placerPos, LOG_MAHOGANY.with(RotatedPillarBlock.AXIS, Direction.Axis.X), 3);
                                 }
                                 else if (indexChar == 'Z')
                                 {
-                                    world.setBlock(placerPos, LOG_MAHOGANY.setValue(RotatedPillarBlock.AXIS, Direction.Axis.Z), 3);
+                                    world.setBlockState(placerPos, LOG_MAHOGANY.with(RotatedPillarBlock.AXIS, Direction.Axis.Z), 3);
                                 }
                             }
                             index3++;
@@ -305,29 +305,29 @@ public class TerraFeatureTreeMahoganyLarge extends Feature<NoFeatureConfig>
                             {
                                 if (indexChar == 'Y' || indexChar == 'C')
                                 {
-                                    world.setBlock(placerPos, LOG_MAHOGANY, 3);
+                                    world.setBlockState(placerPos, LOG_MAHOGANY, 3);
                                 }
                                 else if (indexChar == 'X')
                                 {
-                                    world.setBlock(placerPos, LOG_MAHOGANY.setValue(RotatedPillarBlock.AXIS, Direction.Axis.X), 3);
+                                    world.setBlockState(placerPos, LOG_MAHOGANY.with(RotatedPillarBlock.AXIS, Direction.Axis.X), 3);
                                 }
                                 else if (indexChar == 'Z')
                                 {
-                                    world.setBlock(placerPos, LOG_MAHOGANY.setValue(RotatedPillarBlock.AXIS, Direction.Axis.Z), 3);
+                                    world.setBlockState(placerPos, LOG_MAHOGANY.with(RotatedPillarBlock.AXIS, Direction.Axis.Z), 3);
                                 }
                                 if (indexChar == 'S')
                                 {
-                                    world.setBlock(placerPos, LEAF_MAHOGANY, 3);
+                                    world.setBlockState(placerPos, LEAF_MAHOGANY, 3);
                                 }
                                 else if (indexChar == 's')
                                 {
-                                    world.setBlock(placerPos, LEAF_MAHOGANY, 3);
+                                    world.setBlockState(placerPos, LEAF_MAHOGANY, 3);
 
                                     for (int i = 1; i <= droop; i++)
                                     {
-                                        if (world.getBlockState(placerPos.offset(0, -i, 0)).getBlock() == Blocks.AIR)
+                                        if (world.getBlockState(placerPos.add(0, -i, 0)).getBlock() == Blocks.AIR)
                                         {
-                                            world.setBlock(placerPos.offset(0, -i, 0), LEAF_MAHOGANY, 3);
+                                            world.setBlockState(placerPos.add(0, -i, 0), LEAF_MAHOGANY, 3);
                                         }
                                     }
                                 }

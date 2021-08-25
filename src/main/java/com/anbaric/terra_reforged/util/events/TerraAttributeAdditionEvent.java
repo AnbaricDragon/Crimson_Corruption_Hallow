@@ -10,7 +10,11 @@ public class TerraAttributeAdditionEvent
     @SubscribeEvent
     public static void onAttachAttributesPlayer(EntityAttributeModificationEvent event)
     {
-        System.out.println("Reached EntityAttributeModificationEvent");
         event.add(EntityType.PLAYER, TerraAttributeRegistry.MANA_MAX.get());
+        event.add(EntityType.PLAYER, TerraAttributeRegistry.MANA_DISCOUNT.get());
+
+        event.add(EntityType.PLAYER, TerraAttributeRegistry.RANGED_DAMAGE.get());
+        event.add(EntityType.PLAYER, TerraAttributeRegistry.MAGIC_DAMAGE.get());
+        event.add(EntityType.PLAYER, TerraAttributeRegistry.MINION_DAMAGE.get());
     }
 }

@@ -32,7 +32,7 @@ public class TerraItemAccessory extends Item implements ICurio
 {
     public TerraItemAccessory()
     {
-        super(new Item.Properties().tab(TerraItemGroups.TERRA_TOOLS_TAB).stacksTo(1));
+        super(new Item.Properties().group(TerraItemGroups.TERRA_TOOLS_TAB).maxStackSize(1));
     }
 
     @Override
@@ -51,7 +51,7 @@ public class TerraItemAccessory extends Item implements ICurio
             @Override
             public SoundInfo getEquipSound(SlotContext slotContext)
             {
-                return new SoundInfo(SoundEvents.ARMOR_EQUIP_GENERIC, 1.0f, 1.0f);
+                return new SoundInfo(SoundEvents.ITEM_ARMOR_EQUIP_GENERIC, 1.0f, 1.0f);
             }
 
             @Override

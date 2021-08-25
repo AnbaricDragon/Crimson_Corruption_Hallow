@@ -23,14 +23,14 @@ public class TerraSBSand extends SurfaceBuilder<SurfaceBuilderConfig>
     public TerraSBSand(SpreadingHandler.EnumBiomeType biomeType)
     {
         super(SurfaceBuilderConfig.CODEC);
-        this.STONE = SpreadingHandler.EnumBiomeBlockType.STONE.getBiomeBlock(biomeType).defaultBlockState();
-        this.SAND = SpreadingHandler.EnumBiomeBlockType.SAND.getBiomeBlock(biomeType).defaultBlockState();
-        this.SANDSTONE = SpreadingHandler.EnumBiomeBlockType.SANDSTONE.getBiomeBlock(biomeType).defaultBlockState();
-        this.HARD_SAND = SpreadingHandler.EnumBiomeBlockType.HARDSAND.getBiomeBlock(biomeType).defaultBlockState();
+        this.STONE = SpreadingHandler.EnumBiomeBlockType.STONE.getBiomeBlock(biomeType).getDefaultState();
+        this.SAND = SpreadingHandler.EnumBiomeBlockType.SAND.getBiomeBlock(biomeType).getDefaultState();
+        this.SANDSTONE = SpreadingHandler.EnumBiomeBlockType.SANDSTONE.getBiomeBlock(biomeType).getDefaultState();
+        this.HARD_SAND = SpreadingHandler.EnumBiomeBlockType.HARDSAND.getBiomeBlock(biomeType).getDefaultState();
     }
 
     @Override
-    public void apply(Random random, IChunk chunkIn, Biome biomeIn, int x, int z, int startHeight, double noise, BlockState defaultBlock, BlockState defaultFluid, int seaLevel, long seed, SurfaceBuilderConfig config)
+    public void buildSurface(Random random, IChunk chunkIn, Biome biomeIn, int x, int z, int startHeight, double noise, BlockState defaultBlock, BlockState defaultFluid, int seaLevel, long seed, SurfaceBuilderConfig config)
     {
         int              chunkPosX  = x & 15;
         int              chunkPosZ  = z & 15;
@@ -40,7 +40,7 @@ public class TerraSBSand extends SurfaceBuilder<SurfaceBuilderConfig>
 
         for (int iter = startHeight; iter > 0; --iter)
         {
-            targetPos.set(chunkPosX, iter, chunkPosZ);
+            targetPos.setPos(chunkPosX, iter, chunkPosZ);
             BlockState targetState = chunkIn.getBlockState(targetPos);
 
             if (targetState.getBlock() == defaultBlock.getBlock())

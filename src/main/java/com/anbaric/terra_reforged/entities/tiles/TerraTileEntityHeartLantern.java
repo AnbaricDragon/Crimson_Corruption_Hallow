@@ -27,9 +27,9 @@ public class TerraTileEntityHeartLantern extends TileEntity implements ITickable
     @Override
     public void tick()
     {
-        boolean powered = !this.level.isClientSide && level.getBestNeighborSignal(worldPosition) > 0;
+        boolean powered = !this.world.isRemote && world.getRedstonePowerFromNeighbors(pos) > 0;
 
-        if (powered && this.level.getGameTime() % 100 == 0)
+        if (powered && this.world.getGameTime() % 100 == 0)
         {
             this.addEffectsToPlayers();
         }
@@ -37,15 +37,15 @@ public class TerraTileEntityHeartLantern extends TileEntity implements ITickable
 
     private void addEffectsToPlayers()
     {
-        if (!this.level.isClientSide)
+        if (!this.world.isRemote)
         {
             double             range     = 16.0D;
-            AxisAlignedBB      rangeAABB = new AxisAlignedBB(this.worldPosition).inflate(range);
-            List<PlayerEntity> list      = this.level.getEntitiesOfClass(PlayerEntity.class, rangeAABB);
+            AxisAlignedBB      rangeAABB = new AxisAlignedBB(this.pos).grow(range);
+            List<PlayerEntity> list      = this.world.getEntitiesWithinAABB(PlayerEntity.class, rangeAABB);
 
             for (PlayerEntity playerentity : list)
             {
-                playerentity.addEffect(new EffectInstance(Effects.REGENERATION, 200, 0, true, false));
+                playerentity.addPotionEffect(new EffectInstance(Effects.REGENERATION, 200, 0, true, false));
             }
         }
     }

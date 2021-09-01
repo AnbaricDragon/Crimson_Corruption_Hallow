@@ -2,7 +2,6 @@ package com.anbaric.terra_reforged.items;
 
 import com.anbaric.terra_reforged.util.Reference;
 import com.anbaric.terra_reforged.util.handlers.CurioHandler;
-import com.anbaric.terra_reforged.util.init.TerraAttributeRegistry;
 import com.google.common.collect.LinkedHashMultimap;
 import com.google.common.collect.Multimap;
 import net.minecraft.client.resources.I18n;
@@ -10,10 +9,9 @@ import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.ai.attributes.Attribute;
 import net.minecraft.entity.ai.attributes.AttributeModifier;
-import net.minecraft.entity.player.PlayerEntity;
+import net.minecraft.entity.ai.attributes.Attributes;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.CompoundNBT;
-import net.minecraft.potion.Effects;
 import net.minecraft.util.SoundEvents;
 import net.minecraft.util.text.ITextComponent;
 import net.minecraft.util.text.StringTextComponent;
@@ -26,12 +24,9 @@ import javax.annotation.Nonnull;
 import java.util.List;
 import java.util.UUID;
 
-import top.theillusivec4.curios.api.type.capability.ICurio.DropRule;
-import top.theillusivec4.curios.api.type.capability.ICurio.SoundInfo;
-
-public class TerraItemBandHealthRegeneration extends TerraItemAccessory
+public class TerraItemTitanGlove extends TerraItemAccessory
 {
-    public TerraItemBandHealthRegeneration()
+    public TerraItemTitanGlove()
     {
         super();
     }
@@ -42,36 +37,43 @@ public class TerraItemBandHealthRegeneration extends TerraItemAccessory
         super.addInformation(stack, worldIn, tooltip, flagIn);
         tooltip.add(new StringTextComponent(""));
         tooltip.add(new StringTextComponent("\u00A76" + I18n.format("curios.modifiers.charm") + "\u00A76"));
-        tooltip.add(new StringTextComponent("\u00A79" + "Gives Health Regen"));
+        tooltip.add(new StringTextComponent("\u00A79" + "+100% Knockback"));
+
     }
 
+    @Override
     public ICapabilityProvider initCapabilities(ItemStack stack, CompoundNBT unused)
     {
         return CurioHandler.createProvider(new ICurio()
         {
             @Override
-            public void curioTick(String identifier, int index, LivingEntity livingEntity)
+            public boolean showAttributesTooltip(String identifier)
             {
-                PlayerEntity player = livingEntity instanceof PlayerEntity? (PlayerEntity) livingEntity : null;
-                if (player == null) { return; }
-                if (player.ticksExisted % 200 == 0 && player.getHealth() < player.getMaxHealth())
-                {
-                    player.heal(1);
-                }
+                return false;
+            }
+
+            public Multimap<Attribute, AttributeModifier> getAttributeModifiers(SlotContext slotContext, UUID uuid)
+            {
+                Multimap<Attribute, AttributeModifier> atts = LinkedHashMultimap.create();
+                atts.put(Attributes.ATTACK_KNOCKBACK, new AttributeModifier(uuid, Reference.MODID + ":titanGloveBonus", 2.0, AttributeModifier.Operation.MULTIPLY_TOTAL));
+                return atts;
             }
 
             @Nonnull
+            @Override
             public DropRule getDropRule(LivingEntity livingEntity)
             {
                 return DropRule.DEFAULT;
             }
 
             @Nonnull
+            @Override
             public SoundInfo getEquipSound(SlotContext slotContext)
             {
-                return new SoundInfo(SoundEvents.ITEM_ARMOR_EQUIP_GENERIC, 1.0F, 1.0F);
+                return new SoundInfo(SoundEvents.ITEM_ARMOR_EQUIP_GENERIC, 1.0f, 1.0f);
             }
 
+            @Override
             public boolean canEquipFromUse(SlotContext slot)
             {
                 return true;

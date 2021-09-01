@@ -60,6 +60,6 @@ public class TerraTagRegistry
     public static final ITag.INamedTag<Item> LAVA_WALKERS = ItemTags.makeWrapperTag("terra_reforged:lava_walkers");
     public static final ITag.INamedTag<Item> WALL_CRAWLERS = ItemTags.makeWrapperTag("terra_reforged:wall_crawlers");
     public static final ITag.INamedTag<Item> MANA_BRINGERS = ItemTags.makeWrapperTag("terra_reforged:mana_bringers");
-    public static final ITag.INamedTag<Item> MANA_CONSUMEABLE = ItemTags.makeWrapperTag("terra_reforged:mana_consumeable");
     public static final ITag.INamedTag<Item> ITEM_BRINGERS = ItemTags.makeWrapperTag("terra_reforged:item_bringers");
+    public static final ITag.INamedTag<Item> POTION_REDUCERS = ItemTags.makeWrapperTag("terra_reforged:potion_reducers");
 }

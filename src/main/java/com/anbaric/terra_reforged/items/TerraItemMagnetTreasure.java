@@ -74,7 +74,7 @@ public class TerraItemMagnetTreasure extends TerraItemAccessory
                 }
                 PlayerEntity player = (PlayerEntity) livingEntity;
 
-                int cooldown = getCooldown(stack);
+                int cooldown = NBTHandler.getCooldown(stack);
                 if (cooldown <= 0)
                 {
                     double x = livingEntity.getPosX();
@@ -107,7 +107,7 @@ public class TerraItemMagnetTreasure extends TerraItemAccessory
                 }
                 else
                 {
-                    setCooldown(stack, cooldown - 1);
+                    NBTHandler.setCooldown(stack, cooldown - 1);
                 }
             }
 
@@ -136,15 +136,5 @@ public class TerraItemMagnetTreasure extends TerraItemAccessory
     private boolean canPullItem(ItemEntity item)
     {
          return !item.cannotPickup();
-    }
-
-    public static int getCooldown(ItemStack stack)
-    {
-        return NBTHandler.getInt(stack, "cooldown", 0);
-    }
-
-    public static void setCooldown(ItemStack stack, int cooldown)
-    {
-        NBTHandler.setInt(stack, "cooldown", cooldown);
     }
 }

@@ -121,7 +121,7 @@ public class TerraItemMoltenCharm extends TerraItemAccessory
         PlayerEntity player = event.getEntityLiving() instanceof PlayerEntity ? (PlayerEntity) event.getEntityLiving() : null;
         if (player == null) { return; }
 
-        ItemStack lavaCharm = CurioHandler.getBauble(player, this);
+        ItemStack lavaCharm = CurioHandler.getBaubleStack(player, this);
         if (!lavaCharm.isEmpty())
         {
             CompoundNBT compound = lavaCharm.getOrCreateTag();

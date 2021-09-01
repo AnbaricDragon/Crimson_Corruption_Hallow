@@ -16,4 +16,5 @@ public class TerraAttributeRegistry
     public static final RegistryObject<Attribute> MAGIC_DAMAGE = ATTRIBUTES.register("magic_damage", () -> new RangedAttribute("attribute.name.terra_reforged.magic_damage", 0.0D, 0.0D, 2048.0D).setShouldWatch(true));
     public static final RegistryObject<Attribute> RANGED_DAMAGE = ATTRIBUTES.register("ranged_damage", () -> new RangedAttribute("attribute.name.terra_reforged.ranged_damage", 2.0D, 0.0D, 2048.0D).setShouldWatch(true));
     public static final RegistryObject<Attribute> MINION_DAMAGE = ATTRIBUTES.register("minion_damage", () -> new RangedAttribute("attribute.name.terra_reforged.minion_damage", 0.0D, 0.0D, 2048.0D).setShouldWatch(true));
+    public static final RegistryObject<Attribute> CRIT_CHANCE = ATTRIBUTES.register("crit_chance", () -> new RangedAttribute("attribute.name.terra_reforged.crit_chance", 0.0D, 0.0D, 1.0D).setShouldWatch(true));
 }

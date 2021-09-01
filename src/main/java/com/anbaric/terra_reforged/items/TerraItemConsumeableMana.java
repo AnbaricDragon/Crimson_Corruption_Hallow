@@ -2,6 +2,7 @@ package com.anbaric.terra_reforged.items;
 
 import com.anbaric.terra_reforged.capabilities.mana.TerraCapabilityPlayerMana;
 import com.anbaric.terra_reforged.util.TerraItemGroups;
+import com.anbaric.terra_reforged.util.init.TerraAttributeRegistry;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
@@ -35,8 +36,9 @@ public class TerraItemConsumeableMana extends Item
                 ItemStack stack = event.getItem().getItem();
                 if (!stack.isEmpty() && stack.getItem() instanceof TerraItemConsumeableMana)
                 {
-                    int newMana = cap.getCurrentMana() + (20 * stack.getCount());
-                    cap.setCurrentMana(newMana);
+                    int mana = cap.getCurrentMana();
+                    int maxMana = (int) player.getAttribute(TerraAttributeRegistry.MANA_MAX.get()).getValue();
+                    cap.setCurrentMana(Math.min(mana + (stack.getCount() * 20), maxMana));
                     stack.shrink(stack.getCount());
                 }
             });

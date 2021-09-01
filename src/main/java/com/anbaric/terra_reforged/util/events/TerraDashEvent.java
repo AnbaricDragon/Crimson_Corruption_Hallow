@@ -52,11 +52,7 @@ public class TerraDashEvent
 
             if (player != null)
             {
-                ItemStack tabiStack = ItemStack.EMPTY;
-                if (!CurioHandler.getBauble(player, TerraItemRegistry.NINJA_TABI.get()).isEmpty())
-                {
-                    tabiStack = CurioHandler.getFromBaubles(player, TerraItemRegistry.NINJA_TABI.get(), TerraItemRegistry.GEAR_NINJA.get());
-                }
+                ItemStack tabiStack = CurioHandler.getFromBaubles(player, TerraItemRegistry.NINJA_TABI.get(), TerraItemRegistry.GEAR_NINJA.get());
                 int tabiCooldown = !tabiStack.isEmpty() ? tabiStack.getTag().getInt("tabiCooldown") : 50;
 
                 hasFirstClick = dashTimer == 0;

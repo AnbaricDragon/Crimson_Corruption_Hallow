@@ -59,7 +59,6 @@ public class TerraManaTickEvent
             {
                 manaCount += (int) (((maxMana/7) + (hasManaRegenBand ? 26 : 1) + (hasManaRegenBand ? maxMana / 2 : isMoving ? 0 : maxMana / 2)) * (hasManaRegenBuff ? 1 : (currentMana / maxMana * 0.8) + 0.2) * 1.15);
             }
-            System.out.println("Manacount is " + manaCount);
             tickSlower++;
         }
     }

@@ -155,7 +155,7 @@ public class TerraItemBootsTerraspark extends TerraItemAccessory
         PlayerEntity player = event.getEntityLiving() instanceof PlayerEntity ? (PlayerEntity) event.getEntityLiving() : null;
         if (player == null) { return; }
 
-        ItemStack lavaBoots = CurioHandler.getBauble(player, this);
+        ItemStack lavaBoots = CurioHandler.getBaubleStack(player, this);
         if (!lavaBoots.isEmpty())
         {
             DamageSource source = event.getSource();

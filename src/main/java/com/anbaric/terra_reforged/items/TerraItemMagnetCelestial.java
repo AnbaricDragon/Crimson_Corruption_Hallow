@@ -75,7 +75,7 @@ public class TerraItemMagnetCelestial extends TerraItemAccessory
                 }
                 PlayerEntity player = (PlayerEntity) livingEntity;
 
-                int cooldown = getCooldown(stack);
+                int cooldown = NBTHandler.getCooldown(stack);
                 if (cooldown <= 0)
                 {
                     double x = livingEntity.getPosX();
@@ -108,7 +108,7 @@ public class TerraItemMagnetCelestial extends TerraItemAccessory
                 }
                 else
                 {
-                    setCooldown(stack, cooldown - 1);
+                    NBTHandler.setCooldown(stack, cooldown - 1);
                 }
             }
 
@@ -136,16 +136,6 @@ public class TerraItemMagnetCelestial extends TerraItemAccessory
 
     private boolean canPullItem(ItemEntity item)
     {
-         return (!item.cannotPickup()) && item.getItem().getItem().isIn(TerraTagRegistry.MANA_CONSUMEABLE);
-    }
-
-    public static int getCooldown(ItemStack stack)
-    {
-        return NBTHandler.getInt(stack, "cooldown", 0);
-    }
-
-    public static void setCooldown(ItemStack stack, int cooldown)
-    {
-        NBTHandler.setInt(stack, "cooldown", cooldown);
+         return !item.cannotPickup() && item.getItem().getItem() instanceof TerraItemConsumeableMana;
     }
 }

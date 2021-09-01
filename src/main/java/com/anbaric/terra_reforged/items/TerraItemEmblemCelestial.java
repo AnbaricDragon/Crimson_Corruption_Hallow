@@ -153,6 +153,6 @@ public class TerraItemEmblemCelestial extends TerraItemAccessory
 
     private boolean canPullItem(ItemEntity item)
     {
-        return (!item.cannotPickup()) && item.getItem().getItem().isIn(TerraTagRegistry.MANA_CONSUMEABLE);
+        return !item.cannotPickup() && item.getItem().getItem() instanceof TerraItemConsumeableMana;
     }
 }

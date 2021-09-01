@@ -4,11 +4,7 @@
     "verbose": true,
     "compatibilityLevel": "JAVA_8",
     "refmap": "terra_reforged.refmap.json",
-    "mixins": [
-        "TerraAbstractBlockMixin",
-        "TerraLivingEntityMixin",
-        "TerraItemEntityMixin"
-    ],
+    "mixins": [ "TerraAbstractBlockMixin", "TerraEnchantmentHelperMixin", "TerraLivingEntityMixin" ],
     "client": [
     ],
     "injectors": {

@@ -2,6 +2,7 @@ package com.anbaric.terra_reforged.effects;
 
 import com.anbaric.terra_reforged.capabilities.mana.TerraCapabilityPlayerMana;
 import com.anbaric.terra_reforged.util.init.TerraAttributeRegistry;
+import net.minecraft.entity.AreaEffectCloudEntity;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.player.PlayerEntity;
@@ -18,6 +19,19 @@ public class TerraEffectManaBurst extends InstantEffect
     }
 
     @Override
+    public void performEffect(LivingEntity entity, int amplifier)
+    {
+        PlayerEntity player = entity instanceof PlayerEntity ? (PlayerEntity) entity : null;
+        if (player == null) { return; }
+        entity.getCapability(TerraCapabilityPlayerMana.PLAYER_MANA_CAPABILITY).ifPresent(cap ->
+        {
+            int mana = cap.getCurrentMana();
+            int maxMana = (int) player.getAttribute(TerraAttributeRegistry.MANA_MAX.get()).getValue();
+            cap.setCurrentMana(Math.min((amplifier == 0 ? 50 : amplifier * 100) + mana, maxMana));
+        });
+    }
+
+    @Override
     public void affectEntity(@Nullable Entity source, @Nullable Entity indirectSource, LivingEntity livingEntity, int amplifier, double health)
     {
         PlayerEntity player = livingEntity instanceof PlayerEntity ? (PlayerEntity) livingEntity : null;
@@ -27,23 +41,10 @@ public class TerraEffectManaBurst extends InstantEffect
         {
             int mana = cap.getCurrentMana();
             int maxMana = (int) player.getAttribute(TerraAttributeRegistry.MANA_MAX.get()).getValue();
-            int claimedMana = 0;
-            switch (amplifier)
+            int claimedMana = amplifier == 0 ? 50 : amplifier * 100;
+            if (source instanceof AreaEffectCloudEntity)
             {
-                case 0:
-                    claimedMana = 50;
-
-                case 1:
-                    claimedMana = 100;
-
-                case 2:
-                    claimedMana = 200;
-
-                case 3:
-                    claimedMana = 300;
-
-                default:
-                    claimedMana = 0;
+                claimedMana /= 50;
             }
             cap.setCurrentMana(Math.min(mana + claimedMana, maxMana));
         });

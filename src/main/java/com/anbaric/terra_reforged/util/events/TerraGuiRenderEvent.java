@@ -49,7 +49,7 @@ import net.minecraftforge.eventbus.api.SubscribeEvent;
             {
                 mc.getRenderManager().textureManager.bindTexture(ICON_GUI);
                 IngameGui ingameGui = mc.ingameGUI;
-                int manaPoisoned = player.getActivePotionEffects().contains(TerraEffectRegistry.SILENCED.get()) ? 22 : 0;
+                int manaPoisoned = player.isPotionActive(TerraEffectRegistry.SILENCED.get()) ? 11 : 0;
                 int width  = mc.getMainWindow().getScaledWidth();
                 int height = mc.getMainWindow().getScaledHeight();
                 int right = 8;
@@ -59,7 +59,7 @@ import net.minecraftforge.eventbus.api.SubscribeEvent;
                 int underLay = 11 * (int) Math.floor(mana / 100);
                 for (int crystal = 0; crystal < Math.min(storage, 10); crystal ++)
                 {
-                    ingameGui.blit(event.getMatrixStack(), width / 2 + right, top, underLay, 0, 10, 10);
+                    ingameGui.blit(event.getMatrixStack(), width / 2 + right, top, underLay, manaPoisoned, 10, 10);
                     right += 8;
                 }
                 right = 8;
@@ -70,11 +70,11 @@ import net.minecraftforge.eventbus.api.SubscribeEvent;
                     int crystalMana = crystal * 10;
                     if (layerMana > (crystalMana) + 10)
                     {
-                        ingameGui.blit(event.getMatrixStack(), width / 2 + right, top, underLay + 11, 0, 10, 10);
+                        ingameGui.blit(event.getMatrixStack(), width / 2 + right, top, underLay + 11, manaPoisoned, 10, 10);
                     }
                     else if (layerMana > crystalMana)
                     {
-                        ingameGui.blit(event.getMatrixStack(), width / 2 + right, top, underLay + 11, 0, layerMana - crystalMana, 10);
+                        ingameGui.blit(event.getMatrixStack(), width / 2 + right, top, underLay + 11, manaPoisoned, layerMana - crystalMana, 10);
                     }
                     right += 8;
                 }
@@ -101,7 +101,7 @@ import net.minecraftforge.eventbus.api.SubscribeEvent;
                         int count = (int) Math.floor(charge / 14F);
 
                         int right = 80;
-                        int top   = height - (ForgeIngameGui.right_height + 3);
+                        int top   = height - (ForgeIngameGui.right_height + 6);
 
                         RenderSystem.enableBlend();
                         for (int i = 0; i < count + 1; i++)

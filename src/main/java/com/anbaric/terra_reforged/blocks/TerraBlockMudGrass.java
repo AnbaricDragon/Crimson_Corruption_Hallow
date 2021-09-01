@@ -135,7 +135,6 @@ public class TerraBlockMudGrass extends Block implements IGrowable
         super.animateTick(stateIn, worldIn, pos, rand);
         if (rand.nextInt(5) == 0 && this == TerraBlockRegistry.GRASS_MUSHROOM.get())
         {
-            //TODO
             worldIn.addParticle(TerraParticleRegistry.MUSHROOM_SPORE_GLOWING.get(), (double) pos.getX() + (double) rand.nextFloat(), (double) pos.getY() + 1.1D, (double) pos.getZ() + (double) rand.nextFloat(), 0.0D, 0.0D, 0.0D);
         }
     }

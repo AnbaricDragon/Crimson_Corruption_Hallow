@@ -2,94 +2,101 @@ package com.anbaric.terra_reforged.blocks;
 
 import com.anbaric.terra_reforged.TerraReforged;
 import com.anbaric.terra_reforged.util.init.TerraBlockRegistry;
-import com.anbaric.terra_reforged.util.init.TerraTagRegistry;
-import net.minecraft.block.*;
-import net.minecraft.item.BlockItemUseContext;
-import net.minecraft.util.Direction;
-import net.minecraft.util.math.BlockPos;
-import net.minecraft.world.IBlockReader;
-import net.minecraft.world.IWorld;
-import net.minecraft.world.World;
-import net.minecraft.world.server.ServerWorld;
+import net.minecraft.core.BlockPos;
+import net.minecraft.core.Direction;
+import net.minecraft.server.level.ServerLevel;
+import net.minecraft.tags.BlockTags;
+import net.minecraft.tags.FluidTags;
+import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.level.BlockGetter;
+import net.minecraft.world.level.Level;
+import net.minecraft.world.level.LevelReader;
+import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.Blocks;
+import net.minecraft.world.level.block.SnowLayerBlock;
+import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.level.lighting.LayerLightEngine;
+import net.minecraft.world.level.material.FluidState;
 import net.minecraftforge.common.IPlantable;
-import net.minecraftforge.server.permission.context.IContext;
 
 import java.util.Random;
 
-import net.minecraft.block.AbstractBlock.Properties;
-
 public class TerraBlockMoss extends Block
 {
-    public Block moss;
+    private Block moss;
 
-    public TerraBlockMoss(Properties properties)
+    public TerraBlockMoss(Properties properties, Block moss)
     {
         super(properties);
         this.moss = moss;
     }
 
     @Override
-    public boolean canSustainPlant(BlockState state, IBlockReader world, BlockPos pos, Direction facing, IPlantable plantable)
+    public boolean onDestroyedByPlayer(BlockState state, Level world, BlockPos pos, Player player, boolean willHarvest, FluidState fluid)
     {
-        Block plant = plantable.getPlant(world, pos).getBlock();
-
-        return plant.isIn(TerraTagRegistry.MOSS) || plant == getMoss();
-    }
-
-    public boolean canSpread(World worldIn, BlockPos pos)
-    {
-        return worldIn.getBlockState(pos.up()).isAir(worldIn, pos) || worldIn.getBlockState(pos.up()).getBlock() instanceof BushBlock;
-    }
-
-    public Block getMoss()
-    {
-        if (this == TerraBlockRegistry.STONE_MOSS_RED.get()) { return TerraBlockRegistry.PLANT_MOSS_RED.get();}
-        else if (this == TerraBlockRegistry.STONE_MOSS_YELLOW.get()) { return TerraBlockRegistry.PLANT_MOSS_YELLOW.get();}
-        else if (this == TerraBlockRegistry.STONE_MOSS_GREEN.get()) { return TerraBlockRegistry.PLANT_MOSS_GREEN.get();}
-        else if (this == TerraBlockRegistry.STONE_MOSS_BLUE.get()) { return TerraBlockRegistry.PLANT_MOSS_BLUE.get();}
-        else if (this == TerraBlockRegistry.STONE_MOSS_PURPLE.get()) { return TerraBlockRegistry.PLANT_MOSS_PURPLE.get();}
-        else return TerraBlockRegistry.PLANT_MOSS_FIRE.get();
+        if (world.getBlockState(pos.above()).getBlock() == moss)
+        {
+            world.setBlockAndUpdate(pos, Blocks.AIR.defaultBlockState());
+        }
+        world.setBlockAndUpdate(pos, Blocks.STONE.defaultBlockState());
+        return false;
     }
 
     @Override
-    public void tick(BlockState state, ServerWorld worldIn, BlockPos pos, Random random)
+    public boolean canSustainPlant(BlockState state, BlockGetter world, BlockPos pos, Direction facing, IPlantable plantable)
     {
-        if (!worldIn.isRemote)
+        return plantable.getPlantType(world, pos) == TerraReforged.MOSS;
+    }
+
+    private boolean canBeMoss(BlockState state, LevelReader world, BlockPos pos)
+    {
+        BlockPos   blockpos   = pos.above();
+        BlockState blockstate = world.getBlockState(blockpos);
+        if (blockstate.getBlock() == moss || blockstate.getBlock() == Blocks.AIR)
         {
-            if (!worldIn.isAreaLoaded(pos, 3))
+            return true;
+        }
+        else return !(blockstate.getFluidState().getAmount() > 0);
+    }
+
+    private boolean canPropagate(BlockState state, LevelReader world, BlockPos pos)
+    {
+        BlockPos blockpos = pos.above();
+        return canBeMoss(state, world, pos) && !world.getFluidState(blockpos).is(FluidTags.WATER);
+    }
+
+    @Override
+    public void randomTick(BlockState state, ServerLevel world, BlockPos pos, Random random)
+    {
+        if (!canBeMoss(state, world, pos))
+        {
+            if (!world.isAreaLoaded(pos, 1))
             {
                 return; // Forge: prevent loading unloaded chunks when checking neighbor's light and spreading
             }
-            if (!canSpread(worldIn, pos))
+            world.setBlockAndUpdate(pos, Blocks.STONE.defaultBlockState());
+        }
+        else
+        {
+            if (!world.isAreaLoaded(pos, 3))
             {
-                worldIn.setBlockState(pos, Blocks.STONE.getDefaultState());
+                return; // Forge: prevent loading unloaded chunks when checking neighbor's light and spreading
             }
-            if (worldIn.getBlockState(pos.up()).isAir(worldIn, pos.up()))
-            {
-                worldIn.setBlockState(pos.up(), getMoss().getDefaultState());
-            }
+
+            BlockState blockstate = this.defaultBlockState();
+
             for (int i = 0; i < 4; ++i)
             {
-                BlockPos targetPos = pos.add(random.nextInt(3) - 1, random.nextInt(3) - 1, random.nextInt(3) - 1);
-                Block targetBlock = worldIn.getBlockState(targetPos).getBlock();
-
-                if (canSpread(worldIn, targetPos) && targetBlock == Blocks.STONE || targetBlock == Blocks.DIORITE || targetBlock == Blocks.GRANITE || targetBlock == Blocks.ANDESITE)
+                BlockPos blockpos = pos.offset(random.nextInt(3) - 1, random.nextInt(3) - 1, random.nextInt(3) - 1);
+                if (world.getBlockState(blockpos).is(BlockTags.STONE_ORE_REPLACEABLES) && canPropagate(blockstate, world, blockpos))
                 {
-                    worldIn.setBlockState(targetPos, this.getDefaultState());
+                    world.setBlockAndUpdate(blockpos, this.defaultBlockState());
                 }
+            }
+            if (random.nextFloat() < 0.1 && world.getBlockState(pos.above()).is(Blocks.AIR))
+            {
+                world.setBlockAndUpdate(pos.above(), moss.defaultBlockState());
             }
         }
     }
-
-    @Override
-    public void onPlayerDestroy(IWorld worldIn, BlockPos pos, BlockState state)
-    {
-        if (worldIn.getBlockState(pos.up()).getBlock() == this.moss)
-        {
-            worldIn.setBlockState(pos, Blocks.AIR.getDefaultState(), 3);
-        }
-        worldIn.setBlockState(pos, Blocks.STONE.getDefaultState(), 0);
-    }
 }
-
-

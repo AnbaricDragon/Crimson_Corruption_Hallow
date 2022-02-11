@@ -1,6 +1,6 @@
 package com.anbaric.terra_reforged.util;
 
-import net.minecraft.util.ResourceLocation;
+import net.minecraft.resources.ResourceLocation;
 
 public class Reference
 {

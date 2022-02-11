@@ -1,22 +1,17 @@
 package com.anbaric.terra_reforged.blocks;
 
-import com.anbaric.terra_reforged.util.handlers.CurioHandler;
-import com.anbaric.terra_reforged.util.init.TerraBlockRegistry;
-import com.anbaric.terra_reforged.util.init.TerraItemRegistry;
-import net.minecraft.block.Block;
-import net.minecraft.block.BlockState;
-import net.minecraft.block.Blocks;
-import net.minecraft.entity.Entity;
-import net.minecraft.entity.player.PlayerEntity;
-import net.minecraft.util.*;
-import net.minecraft.util.math.BlockPos;
-import net.minecraft.util.math.MathHelper;
-import net.minecraft.util.math.vector.Vector3d;
-import net.minecraft.world.World;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-import net.minecraft.block.AbstractBlock.Properties;
+import com.anbaric.terra_reforged.util.init.*;
+import net.minecraft.core.BlockPos;
+import net.minecraft.core.Direction;
+import net.minecraft.sounds.SoundEvents;
+import net.minecraft.sounds.SoundSource;
+import net.minecraft.world.entity.Entity;
+import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.level.Level;
+import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.Blocks;
+import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.phys.Vec3;
 
 public class TerraBlockThinIce extends Block
 {
@@ -25,77 +20,78 @@ public class TerraBlockThinIce extends Block
         super(properties);
     }
 
-    public void destroyNotIce(World worldIn, BlockPos pos)
+    public void destroyNotIce(Level world, BlockPos pos)
     {
         int i;
-        for (i = 0; worldIn.getBlockState(pos.down(i)).getBlock() == TerraBlockRegistry.ICE_THIN.get(); i++)
+        for (i = 0; world.getBlockState(pos.below(i)).getBlock() == TerraBlockRegistry.ICE_THIN.get(); i++)
         {
-            worldIn.playSound(null, pos.down(i), SoundEvents.BLOCK_GLASS_BREAK, SoundCategory.BLOCKS, 1.0F, 1.0F);
-            worldIn.setBlockState(pos.down(i), Blocks.AIR.getDefaultState());
+            world.playSound(null, pos.below(i), SoundEvents.GLASS_BREAK, SoundSource.BLOCKS, 1.0F, 1.0F);
+            world.setBlockAndUpdate(pos.below(i), Blocks.AIR.defaultBlockState());
         }
     }
 
-    public void onFallenUpon(World worldIn, BlockPos pos, Entity entityIn, float fallDistance)
+    @Override
+    public void fallOn(Level world, BlockState state, BlockPos pos, Entity entity, float fallDistance)
     {
-        Vector3d entityPos = entityIn.getPositionVec();
+        Vec3 entityPos = entity.position();
 
-        double x = entityPos.x;
-        double z = entityPos.z;
-        double xi = MathHelper.floor(entityPos.x);
-        double zi = MathHelper.floor(entityPos.z);
-        double dotX = MathHelper.abs((float) (x - xi));
-        double dotZ = MathHelper.abs((float) (z - zi));
+        double x    = entityPos.x;
+        double z    = entityPos.z;
+        double xi   = Math.floor(entityPos.x);
+        double zi   = Math.floor(entityPos.z);
+        double dotX = Math.abs((float) (x - xi));
+        double dotZ = Math.abs((float) (z - zi));
 
-        if (entityIn instanceof PlayerEntity)
+        if (entity instanceof Player)
         {
-            if (CurioHandler.hasBauble((PlayerEntity) entityIn, TerraItemRegistry.BOOTS_FROSTSPARK.get(), TerraItemRegistry.BOOTS_ICE.get()))
-            {
-                return;
-            }
+            //TODO CURIOS
+            //            if (CurioHandler.hasBauble((PlayerEntity) entityIn, TerraItemRegistry.BOOTS_FROSTSPARK.get(), TerraItemRegistry.BOOTS_ICE.get()))
+            //            {
+            //                return;
+            //            }
             if (fallDistance >= 0.25)
             {
-                destroyNotIce(worldIn, pos);
+                destroyNotIce(world, pos);
 
                 if (dotZ <= 0.300)
                 {
-                    destroyNotIce(worldIn, pos.north());
+                    destroyNotIce(world, pos.north());
                     if (dotX <= 0.300)
                     {
-                        destroyNotIce(worldIn, pos.add( -1, 0, -1));
+                        destroyNotIce(world, pos.offset(-1, 0, -1));
                     }
                 }
                 if (dotX >= 0.700)
                 {
-                    destroyNotIce(worldIn, pos.east());
+                    destroyNotIce(world, pos.east());
                     if (dotZ <= 0.300)
                     {
-                        destroyNotIce(worldIn, pos.add( 1, 0, -1));
+                        destroyNotIce(world, pos.offset(1, 0, -1));
                     }
                 }
                 if (dotZ >= 0.700)
                 {
-                    destroyNotIce(worldIn, pos.south());
+                    destroyNotIce(world, pos.south());
                     if (dotX >= 0.700)
                     {
-                        destroyNotIce(worldIn, pos.add( 1, 0, 1));
+                        destroyNotIce(world, pos.offset(1, 0, 1));
                     }
                 }
                 if (dotX <= 0.300)
                 {
-                    destroyNotIce(worldIn, pos.west());
+                    destroyNotIce(world, pos.west());
                     if (dotZ >= 0.700)
                     {
-                        destroyNotIce(worldIn, pos.add( -1, 0, 1));
+                        destroyNotIce(world, pos.offset(-1, 0, 1));
                     }
                 }
             }
         }
-        super.onFallenUpon(worldIn, pos, entityIn, fallDistance);
+        super.fallOn(world, state, pos, entity, fallDistance);
     }
 
-    @OnlyIn(Dist.CLIENT)
-    public boolean isSideInvisible(BlockState state, BlockState adjacentBlockState, Direction side)
+    public boolean skipRendering(BlockState selfState, BlockState otherState, Direction facing)
     {
-        return adjacentBlockState.getBlock() == this ? true : super.isSideInvisible(state, adjacentBlockState, side);
+        return otherState.is(this) || super.skipRendering(selfState, otherState, facing);
     }
 }

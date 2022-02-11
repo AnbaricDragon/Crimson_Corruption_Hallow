@@ -2,20 +2,18 @@ package com.anbaric.terra_reforged.util.init;
 
 //import com.anbaric.terra_reforged.blocks.*;
 //import com.anbaric.terra_reforged.blocks.potionplants.TerraBlockPotionPlant;
-import com.anbaric.terra_reforged.blocks.*;
+
 import com.anbaric.terra_reforged.blocks.potionplants.TerraBlockPotionPlant;
 import com.anbaric.terra_reforged.util.Reference;
 import com.anbaric.terra_reforged.util.TerraItemGroups;
-import net.minecraft.block.DoublePlantBlock;
-import net.minecraft.block.LeavesBlock;
-import net.minecraft.block.LilyPadBlock;
-import net.minecraft.item.BlockItem;
-import net.minecraft.item.Item;
+import net.minecraft.world.item.BlockItem;
+import net.minecraft.world.item.Item;
+import net.minecraft.world.level.block.*;
 import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
-import net.minecraftforge.fml.RegistryObject;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.registries.IForgeRegistry;
+import net.minecraftforge.registries.RegistryObject;
 
 @Mod.EventBusSubscriber(modid = Reference.MODID, bus = Mod.EventBusSubscriber.Bus.MOD)
 public class TerraItemBlockRegistry
@@ -32,17 +30,12 @@ public class TerraItemBlockRegistry
                 !(block instanceof TerraBlockCactus) &&
                 !(block instanceof TerraBlockThornBush) &&
                 !(block instanceof TerraBlockPotionPlant) &&
-                !(block instanceof LilyPadBlock) &&
+                !(block instanceof WaterlilyBlock) &&
                 !(block instanceof TerraBlockTorch) &&
                 !(block instanceof TerraBlockTorchWall) &&
                 !(block instanceof TerraBlockTorchWaterproof) &&
                 !(block instanceof TerraBlockTorchWallWaterproof) &&
-                block != TerraBlockRegistry.PLANT_MOSS_RED.get() &&
-                block != TerraBlockRegistry.PLANT_MOSS_FIRE.get() &&
-                block != TerraBlockRegistry.PLANT_MOSS_YELLOW.get() &&
-                block != TerraBlockRegistry.PLANT_MOSS_GREEN.get() &&
-                block != TerraBlockRegistry.PLANT_MOSS_BLUE.get() &&
-                block != TerraBlockRegistry.PLANT_MOSS_PURPLE.get() &&
+                block != TerraBlockRegistry.PLANT_MOSS_RED.get() && block != TerraBlockRegistry.PLANT_MOSS_FIRE.get() && block != TerraBlockRegistry.PLANT_MOSS_YELLOW.get() && block != TerraBlockRegistry.PLANT_MOSS_GREEN.get() && block != TerraBlockRegistry.PLANT_MOSS_BLUE.get() && block != TerraBlockRegistry.PLANT_MOSS_PURPLE.get() &&
                 block != TerraBlockRegistry.PLANT_LIFEFRUIT.get() &&
                 block != TerraBlockRegistry.ORE_COPPER_CORRUPT.get() && block != TerraBlockRegistry.ORE_COPPER_CRIMSON.get() && block != TerraBlockRegistry.ORE_COPPER_HALLOWED.get() && block != TerraBlockRegistry.ORE_COPPER_JUNGLE.get() &&
                 block != TerraBlockRegistry.ORE_TIN_CORRUPT.get() && block != TerraBlockRegistry.ORE_TIN_CRIMSON.get() && block != TerraBlockRegistry.ORE_TIN_HALLOWED.get() && block != TerraBlockRegistry.ORE_TIN_JUNGLE.get() &&
@@ -76,9 +69,9 @@ public class TerraItemBlockRegistry
             final Item.Properties properties = new Item.Properties().group(
                     block instanceof LeavesBlock ||
                     block instanceof DoublePlantBlock ||
-                    block instanceof TerraBlockWall ||
+                    block instanceof WallBlock ||
                     block instanceof TerraBlockHangingPlant ||
-                    block instanceof TerraBlockSnowLayer
+                    block instanceof SnowLayerBlock
                     ? TerraItemGroups.TERRA_DECORATIONS_TAB :
 
                     block instanceof TerraBlockDoubleLantern

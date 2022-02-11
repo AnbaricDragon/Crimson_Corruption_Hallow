@@ -1,154 +1,185 @@
 package com.anbaric.terra_reforged.blocks;
 
-import com.anbaric.terra_reforged.TerraReforged;
-import com.anbaric.terra_reforged.util.init.TerraBlockRegistry;
-import com.anbaric.terra_reforged.util.init.TerraParticleRegistry;
-import net.minecraft.block.*;
-import net.minecraft.client.particle.Particle;
-import net.minecraft.particles.ParticleTypes;
+import com.anbaric.terra_reforged.util.init.*;
+import net.minecraft.core.BlockPos;
+import net.minecraft.core.Direction;
+import net.minecraft.core.particles.ParticleTypes;
+import net.minecraft.data.worldgen.placement.VegetationPlacements;
+import net.minecraft.server.level.ServerLevel;
 import net.minecraft.tags.FluidTags;
-import net.minecraft.util.Direction;
-import net.minecraft.util.math.BlockPos;
-import net.minecraft.world.IBlockReader;
-import net.minecraft.world.IWorldReader;
-import net.minecraft.world.World;
-import net.minecraft.world.gen.feature.ConfiguredFeature;
-import net.minecraft.world.gen.feature.DecoratedFeatureConfig;
-import net.minecraft.world.gen.feature.FlowersFeature;
-import net.minecraft.world.lighting.LightEngine;
-import net.minecraft.world.server.ServerWorld;
+import net.minecraft.world.level.BlockGetter;
+import net.minecraft.world.level.Level;
+import net.minecraft.world.level.LevelReader;
+import net.minecraft.world.level.block.Blocks;
+import net.minecraft.world.level.block.BonemealableBlock;
+import net.minecraft.world.level.block.SnowLayerBlock;
+import net.minecraft.world.level.block.SnowyDirtBlock;
+import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.level.levelgen.feature.ConfiguredFeature;
+import net.minecraft.world.level.levelgen.feature.configurations.RandomPatchConfiguration;
+import net.minecraft.world.level.levelgen.placement.PlacedFeature;
+import net.minecraft.world.level.lighting.LayerLightEngine;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
-import net.minecraftforge.common.IPlantable;
-import net.minecraftforge.common.PlantType;
-import org.apache.commons.lang3.tuple.Triple;
 
 import java.util.Iterator;
 import java.util.List;
 import java.util.Random;
 
-import net.minecraft.block.AbstractBlock.Properties;
-
-public class TerraBlockMudGrass extends Block implements IGrowable
+public class TerraBlockMudGrass extends SnowyDirtBlock implements BonemealableBlock
 {
     public TerraBlockMudGrass(Properties properties)
     {
         super(properties);
     }
 
-    @Override
-    public boolean canSustainPlant(BlockState state, IBlockReader world, BlockPos pos, Direction facing, IPlantable plantable)
+    private static boolean canBeGrass(BlockState state, LevelReader world, BlockPos pos)
     {
-        PlantType type = plantable.getPlantType(world, pos);
-        return this == TerraBlockRegistry.GRASS_MUSHROOM.get() ? type == TerraReforged.MUSHROOM || type == PlantType.PLAINS : type == PlantType.PLAINS;
-    }
-
-    private static boolean canSpread(BlockState state, IWorldReader world, BlockPos pos)
-    {
-        BlockPos   topPos   = pos.up();
-        BlockState topState = world.getBlockState(topPos);
-        if (topState.getBlock() == Blocks.SNOW && topState.get(SnowBlock.LAYERS) == 1)
+        BlockPos   blockpos   = pos.above();
+        BlockState blockstate = world.getBlockState(blockpos);
+        if (blockstate.getBlock() instanceof SnowLayerBlock && blockstate.getValue(SnowLayerBlock.LAYERS) == 1)
         {
             return true;
         }
+        else if (blockstate.getFluidState().getAmount() == 8)
+        {
+            return false;
+        }
         else
         {
-            int i = LightEngine.func_215613_a(world, state, pos, topState, topPos, Direction.UP, topState.getOpacity(world, topPos));
+            int i = LayerLightEngine.getLightBlockInto(world, state, pos, blockstate, blockpos, Direction.UP, blockstate.getLightBlock(world, blockpos));
             return i < world.getMaxLightLevel();
         }
     }
 
-    private static boolean noWater(BlockState state, IWorldReader world, BlockPos pos)
+    private static boolean canPropagate(BlockState state, LevelReader world, BlockPos pos)
     {
-        BlockPos blockpos = pos.up();
-        return canSpread(state, world, pos) && !world.getFluidState(blockpos).isTagged(FluidTags.WATER);
+        BlockPos blockpos = pos.above();
+        return canBeGrass(state, world, pos) && !world.getFluidState(blockpos).is(FluidTags.WATER);
     }
 
-    private static boolean noLava(BlockState state, IWorldReader world, BlockPos pos)
-    {
-        BlockPos blockpos = pos.up();
-        return canSpread(state, world, pos) && !world.getFluidState(blockpos).isTagged(FluidTags.LAVA);
-    }
-
-    @Override
-    public void tick(BlockState state, ServerWorld worldIn, BlockPos pos, Random random)
+    public void randomTick(BlockState state, ServerLevel world, BlockPos pos, Random random)
     {
         int maxShrooms = 10;
 
-        if (!worldIn.isRemote)
+        if (!canBeGrass(state, world, pos))
         {
-            if (!worldIn.isAreaLoaded(pos, 3))
+            if (!world.isAreaLoaded(pos, 1))
             {
                 return; // Forge: prevent loading unloaded chunks when checking neighbor's light and spreading
             }
-            if (!canSpread(state, worldIn, pos))
+            world.setBlockAndUpdate(pos, TerraBlockRegistry.SOIL_MUD.get().defaultBlockState());
+        }
+        else
+        {
+            if (!world.isAreaLoaded(pos, 3))
             {
-                worldIn.setBlockState(pos, TerraBlockRegistry.SOIL_MUD.get().getDefaultState());
+                return; // Forge: prevent loading unloaded chunks when checking neighbor's light and spreading
             }
-            else
+            if (world.getMaxLocalRawBrightness(pos.above()) >= 9)
             {
-                if (worldIn.getLight(pos.up()) >= 9)
-                {
-                    for (int i = 0; i < 4; ++i)
-                    {
-                        BlockPos   targetPos   = pos.add(random.nextInt(3) - 1, random.nextInt(3) - 1, random.nextInt(3) - 1);
-                        BlockState targetState = worldIn.getBlockState(targetPos);
-                        Block      targetBlock = worldIn.getBlockState(targetPos).getBlock();
+                BlockState blockstate = this.defaultBlockState();
 
-                        if (targetBlock == TerraBlockRegistry.SOIL_MUD.get())
-                        {
-                            if (noWater(targetState, worldIn, targetPos) && noLava(targetState, worldIn, targetPos) && canSpread(targetState, worldIn, targetPos) && !worldIn.getBlockState(targetPos.up()).isOpaqueCube(worldIn, targetPos))
-                            {
-                                worldIn.setBlockState(targetPos, this.getDefaultState());
-                            }
-                        }
+                for (int i = 0; i < 4; ++i)
+                {
+                    BlockPos blockpos = pos.offset(random.nextInt(3) - 1, random.nextInt(5) - 3, random.nextInt(3) - 1);
+                    if (world.getBlockState(blockpos).is(TerraBlockRegistry.SOIL_MUD.get()) && canPropagate(blockstate, world, blockpos))
+                    {
+                        world.setBlockAndUpdate(blockpos, blockstate.setValue(SNOWY, world.getBlockState(blockpos.above()).getBlock() instanceof SnowLayerBlock));
                     }
                 }
             }
-            if (random.nextInt(250) == 0 && this == TerraBlockRegistry.GRASS_MUSHROOM.get() && worldIn.getBlockState(pos.up()).isAir(worldIn, pos))
-            {
-                Iterator cubicRange = BlockPos.getAllInBoxMutable(pos.add(-8, -1, -8), pos.add(8, 1, 8)).iterator();
-
-                while (cubicRange.hasNext())
-                {
-                    BlockPos blockpos = (BlockPos) cubicRange.next();
-                    if (worldIn.getBlockState(blockpos).getBlock() == TerraBlockRegistry.PLANT_MUSHROOM_GLOWING.get())
-                    {
-                        --maxShrooms;
-                        if (maxShrooms <= 0)
-                        {
-                            return;
-                        }
-                    }
-                }
-                if (maxShrooms > 0)
-                {
-                    worldIn.setBlockState(pos.up(), TerraBlockRegistry.PLANT_MUSHROOM_GLOWING.get().getDefaultState());
-                }
-            }
+//            if (this == TerraBlockRegistry.GRASS_MUSHROOM.get() && random.nextFloat() < 0.075 && world.getBlockState(pos.above()).is(Blocks.AIR))
+//            {
+//                for (BlockPos blockPos : BlockPos.betweenClosed(pos.offset(-8, -1, -8), pos.offset(8, 1, 8)))
+//                {
+//                    if (world.getBlockState(blockPos).getBlock() == TerraBlockRegistry.PLANT_MUSHROOM_GLOWING.get())
+//                    {
+//                        --maxShrooms;
+//                        if (maxShrooms <= 0)
+//                        {
+//                            return;
+//                        }
+//                    }
+//                }
+//                if (maxShrooms > 0)
+//                {
+//                    world.setBlockAndUpdate(pos.above(), TerraBlockRegistry.PLANT_MUSHROOM_GLOWING.get().getDefaultState());
+//                }
+//            }
         }
     }
 
     @OnlyIn(Dist.CLIENT)
-    public void animateTick(BlockState stateIn, World worldIn, BlockPos pos, Random rand)
+    @Override
+    public void animateTick(BlockState state, Level world, BlockPos pos, Random random)
     {
-        super.animateTick(stateIn, worldIn, pos, rand);
-        if (rand.nextInt(5) == 0 && this == TerraBlockRegistry.GRASS_MUSHROOM.get())
+        super.animateTick(state, world, pos, random);
+        if (random.nextFloat() < 0.2 && this == TerraBlockRegistry.GRASS_MUSHROOM.get())
         {
-            worldIn.addParticle(TerraParticleRegistry.MUSHROOM_SPORE_GLOWING.get(), (double) pos.getX() + (double) rand.nextFloat(), (double) pos.getY() + 1.1D, (double) pos.getZ() + (double) rand.nextFloat(), 0.0D, 0.0D, 0.0D);
+            world.addParticle(ParticleTypes.MYCELIUM, (double) pos.getX() + random.nextDouble(), (double) pos.getY() + 1.1D, (double) pos.getZ() + random.nextDouble(), 0.0D, 0.0D, 0.0D);
         }
     }
 
-    public boolean canGrow(IBlockReader worldIn, BlockPos pos, BlockState state, boolean isClient)
+    @Override
+    public boolean isValidBonemealTarget(BlockGetter p_50897_, BlockPos p_50898_, BlockState p_50899_, boolean p_50900_)
     {
-        return worldIn.getBlockState(pos.up()).isAir();
-    }
-
-    public boolean canUseBonemeal(World worldIn, Random rand, BlockPos pos, BlockState state)
-    {
-        return false;
+        return p_50897_.getBlockState(p_50898_.above()).isAir();
     }
 
     @Override
-    public void grow(ServerWorld worldIn, Random rand, BlockPos pos, BlockState state) { }
+    public boolean isBonemealSuccess(Level p_50901_, Random p_50902_, BlockPos p_50903_, BlockState p_50904_)
+    {
+        return true;
+    }
+
+    @Override
+    public void performBonemeal(ServerLevel world, Random random, BlockPos pos, BlockState state)
+    {
+        BlockPos   blockpos   = pos.above();
+        BlockState blockstate = Blocks.GRASS.defaultBlockState();
+
+        label46:
+        for (int i = 0; i < 128; ++i)
+        {
+            BlockPos blockpos1 = blockpos;
+
+            for (int j = 0; j < i / 16; ++j)
+            {
+                blockpos1 = blockpos1.offset(random.nextInt(3) - 1, (random.nextInt(3) - 1) * random.nextInt(3) / 2, random.nextInt(3) - 1);
+                if (!world.getBlockState(blockpos1.below()).is(this) || world.getBlockState(blockpos1).isCollisionShapeFullBlock(world, blockpos1))
+                {
+                    continue label46;
+                }
+            }
+
+            BlockState blockstate1 = world.getBlockState(blockpos1);
+            if (blockstate1.is(blockstate.getBlock()) && random.nextInt(10) == 0)
+            {
+                ((BonemealableBlock) blockstate.getBlock()).performBonemeal(world, random, blockpos1, blockstate1);
+            }
+
+            if (blockstate1.isAir())
+            {
+                PlacedFeature placedfeature;
+                if (random.nextInt(8) == 0)
+                {
+                    List<ConfiguredFeature<?, ?>> list = world.getBiome(blockpos1).getGenerationSettings().getFlowerFeatures();
+                    if (list.isEmpty())
+                    {
+                        continue;
+                    }
+
+                    placedfeature = ((RandomPatchConfiguration) list.get(0).config()).feature().get();
+                }
+                else
+                {
+                    placedfeature = VegetationPlacements.GRASS_BONEMEAL;
+                }
+
+                placedfeature.place(world, world.getChunkSource().getGenerator(), random, blockpos1);
+            }
+        }
+
+    }
 }

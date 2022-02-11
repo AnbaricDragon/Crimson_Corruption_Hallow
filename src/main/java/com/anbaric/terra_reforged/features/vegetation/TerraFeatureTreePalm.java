@@ -1,40 +1,36 @@
 package com.anbaric.terra_reforged.features.vegetation;
 
 import com.anbaric.terra_reforged.util.init.TerraBlockRegistry;
-import com.anbaric.terra_reforged.util.init.TerraTagRegistry;
-import net.minecraft.block.BlockState;
-import net.minecraft.block.Blocks;
-import net.minecraft.block.RotatedPillarBlock;
-import net.minecraft.util.Direction;
-import net.minecraft.util.math.BlockPos;
-import net.minecraft.world.ISeedReader;
-import net.minecraft.world.IWorld;
-import net.minecraft.world.gen.ChunkGenerator;
-import net.minecraft.world.gen.feature.Feature;
-import net.minecraft.world.gen.feature.NoFeatureConfig;
+import net.minecraft.core.BlockPos;
+import net.minecraft.core.Direction;
+import net.minecraft.world.level.WorldGenLevel;
+import net.minecraft.world.level.block.Blocks;
+import net.minecraft.world.level.block.RotatedPillarBlock;
+import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.level.levelgen.feature.Feature;
+import net.minecraft.world.level.levelgen.feature.FeaturePlaceContext;
+import net.minecraft.world.level.levelgen.feature.configurations.NoneFeatureConfiguration;
 
 import java.util.Random;
 
-public class TerraFeatureTreePalm extends Feature<NoFeatureConfig>
+public class TerraFeatureTreePalm extends Feature<NoneFeatureConfiguration>
 {
     public TerraFeatureTreePalm()
     {
-        super(NoFeatureConfig.CODEC);
+        super(NoneFeatureConfiguration.CODEC);
     }
 
-    @Override
-    public boolean generate(ISeedReader world, ChunkGenerator generator, Random rand, BlockPos pos, NoFeatureConfig config)
+    public boolean place(FeaturePlaceContext<NoneFeatureConfiguration> context)
     {
-        if (world.getBlockState(pos.down()).getBlock().isIn(TerraTagRegistry.PALM_PLANTERS))
-        {
-            generateTree(world, pos, rand);
-            return true;
-        }
-        return false;
+        WorldGenLevel worldgenlevel = context.level();
+        BlockPos      pos           = context.origin();
+        Random        random        = context.random();
+
+        return generateTree(worldgenlevel, pos, random);
     }
 
-    public static final BlockState LOG_PALM = TerraBlockRegistry.LOG_PALM.get().getDefaultState();
-    public static final BlockState LEAF_PALM = TerraBlockRegistry.LEAF_PALM.get().getDefaultState();
+    public static final BlockState LOG_PALM = TerraBlockRegistry.LOG_PALM.get().defaultBlockState();
+    public static final BlockState LEAF_PALM = TerraBlockRegistry.LEAF_PALM.get().defaultBlockState();
 
     public static final char[][][] PALM_ARRAY =
     {{{'O', 'O', 'O', 'O', 'O', 'O', 'O'},
@@ -169,14 +165,14 @@ public class TerraFeatureTreePalm extends Feature<NoFeatureConfig>
         }
     }
 
-    public static boolean checkSpace(IWorld world, BlockPos pos, int trunkHeight, char[][][] template)
+    public static boolean checkSpace(WorldGenLevel world, BlockPos pos, int trunkHeight, char[][][] template)
     {
         int     arrayX     = 0, arrayY = 0, arrayZ = 0;
         int     radius     = 3;
         int     treeHeight = template.length;
         boolean canGrow    = true;
 
-        BlockPos.Mutable target = new BlockPos.Mutable();
+        BlockPos.MutableBlockPos target = new BlockPos.MutableBlockPos();
 
         for (int y = pos.getY(); y < pos.getY() + treeHeight; y++)
         {
@@ -184,18 +180,18 @@ public class TerraFeatureTreePalm extends Feature<NoFeatureConfig>
             {
                 for (int z = pos.getZ() - radius; z <= pos.getZ() + radius; z++)
                 {
-                    target.setPos(x, y, z);
+                    target.set(x, y, z);
                     char targetChar = template[arrayY][arrayX][arrayZ];
                     if (targetChar == 'W' || targetChar == 'H' || targetChar == 'V')
                     {
-                        if (!world.getBlockState(target).canBeReplacedByLogs(world, pos))
+                        if (!world.getBlockState(target).isAir())
                         {
                             canGrow = false;
                         }
                     }
                     else if (targetChar == 'L')
                     {
-                        if (!world.getBlockState(target).canBeReplacedByLeaves(world, target))
+                        if (!world.getBlockState(target).isAir())
                         {
                             canGrow = false;
                         }
@@ -211,7 +207,7 @@ public class TerraFeatureTreePalm extends Feature<NoFeatureConfig>
         return canGrow;
     }
 
-    public static void generateTree(IWorld world, BlockPos pos, Random rand)
+    public static boolean generateTree(WorldGenLevel world, BlockPos pos, Random rand)
     {
         int        arrayX      = 0, arrayY = 0, arrayZ = 0;
         int        trunkHeight = rand.nextInt(4) + 1;
@@ -221,30 +217,30 @@ public class TerraFeatureTreePalm extends Feature<NoFeatureConfig>
 
         if (hasSpace)
         {
-            world.setBlockState(pos, Blocks.AIR.getDefaultState(), 3);
+            world.setBlock(pos, Blocks.AIR.defaultBlockState(), 3);
 
-            BlockPos.Mutable target = new BlockPos.Mutable();
+            BlockPos.MutableBlockPos target = new BlockPos.MutableBlockPos();
             for (int y = pos.getY(); y < pos.getY() + treeHeight; y++)
             {
                 for (int x = pos.getX() - 3; x <= pos.getX() + 3; x++)
                 {
                     for (int z = pos.getZ() - 3; z <= pos.getZ() + 3; z++)
                     {
-                        target.setPos(x, y, z);
+                        target.set(x, y, z);
                         char inputChar = template[arrayY][arrayX][arrayZ];
                         switch (inputChar)
                         {
                             case 'L':
-                                world.setBlockState(target, LEAF_PALM, 3);
+                                world.setBlock(target, LEAF_PALM, 3);
                                 break;
                             case 'W':
-                                world.setBlockState(target, LOG_PALM, 3);
+                                world.setBlock(target, LOG_PALM, 3);
                                 break;
                             case 'V':
-                                world.setBlockState(target, LOG_PALM.with(RotatedPillarBlock.AXIS, Direction.Axis.X), 3);
+                                world.setBlock(target, LOG_PALM.setValue(RotatedPillarBlock.AXIS, Direction.Axis.X), 3);
                                 break;
                             case 'H':
-                                world.setBlockState(target, LOG_PALM.with(RotatedPillarBlock.AXIS, Direction.Axis.Z), 3);
+                                world.setBlock(target, LOG_PALM.setValue(RotatedPillarBlock.AXIS, Direction.Axis.Z), 3);
                                 break;
                         }
                         arrayZ++;
@@ -255,6 +251,8 @@ public class TerraFeatureTreePalm extends Feature<NoFeatureConfig>
                 arrayY++;
                 arrayX = 0;
             }
+            return true;
         }
+        return false;
     }
 }

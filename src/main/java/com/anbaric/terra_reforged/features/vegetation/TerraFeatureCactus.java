@@ -8,17 +8,20 @@ import net.minecraft.world.ISeedReader;
 import net.minecraft.world.gen.ChunkGenerator;
 import net.minecraft.world.gen.feature.Feature;
 import net.minecraft.world.gen.feature.NoFeatureConfig;
+import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.levelgen.feature.Feature;
+import net.minecraft.world.level.levelgen.feature.configurations.NoneFeatureConfiguration;
 import net.minecraftforge.common.Tags;
 
 import java.util.Random;
 
-public class TerraFeatureCactus extends Feature<NoFeatureConfig>
+public class TerraFeatureCactus extends Feature<NoneFeatureConfiguration>
 {
     private Block cactus;
 
     public TerraFeatureCactus(Block block)
     {
-        super(NoFeatureConfig.CODEC);
+        super(NoneFeatureConfiguration.CODEC);
         this.cactus = block;
     }
 

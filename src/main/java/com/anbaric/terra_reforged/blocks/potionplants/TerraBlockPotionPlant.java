@@ -1,161 +1,59 @@
 package com.anbaric.terra_reforged.blocks.potionplants;
 
-import com.anbaric.terra_reforged.util.init.TerraBiomeRegistry;
-import com.anbaric.terra_reforged.util.init.TerraBlockRegistry;
 import com.anbaric.terra_reforged.util.init.TerraTagRegistry;
-import net.minecraft.block.*;
-import net.minecraft.entity.Entity;
-import net.minecraft.entity.monster.RavagerEntity;
-import net.minecraft.state.IntegerProperty;
-import net.minecraft.state.StateContainer;
-import net.minecraft.state.properties.BlockStateProperties;
-import net.minecraft.tags.ITag;
+import net.minecraft.core.BlockPos;
 import net.minecraft.tags.Tag;
-import net.minecraft.util.Direction;
-import net.minecraft.util.math.BlockPos;
-import net.minecraft.util.math.shapes.ISelectionContext;
-import net.minecraft.util.math.shapes.VoxelShape;
-import net.minecraft.world.DimensionType;
-import net.minecraft.world.IBlockReader;
-import net.minecraft.world.IWorldReader;
-import net.minecraft.world.World;
-import net.minecraft.world.biome.Biome;
-import net.minecraft.world.server.ServerWorld;
+import net.minecraft.world.entity.Entity;
+import net.minecraft.world.entity.monster.Ravager;
+import net.minecraft.world.level.BlockGetter;
+import net.minecraft.world.level.Level;
+import net.minecraft.world.level.LevelReader;
+import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.BushBlock;
+import net.minecraft.world.level.block.state.BlockBehaviour;
+import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.level.block.state.StateDefinition;
+import net.minecraft.world.level.block.state.properties.BlockStateProperties;
+import net.minecraft.world.level.block.state.properties.IntegerProperty;
+import net.minecraft.world.phys.shapes.CollisionContext;
+import net.minecraft.world.phys.shapes.VoxelShape;
 
-import java.util.Random;
-
-public class TerraBlockPotionPlant extends BushBlock implements IGrowable
+public class TerraBlockPotionPlant extends BushBlock
 {
-    public static final IntegerProperty AGE = BlockStateProperties.AGE_0_2;
-    public static VoxelShape[] SHAPE_BY_AGE = new VoxelShape[]{Block.makeCuboidShape(6.0D, 0.0D, 6.0D, 10.0D, 6.0D, 10.0D), Block.makeCuboidShape(5.0D, 0.0D, 5.0D, 11.0D, 8.0D, 11.0D), Block.makeCuboidShape(4.0D, 0.0D, 4.0D, 12.0D, 10.0D, 12.0D)};
+    public static final IntegerProperty AGE = BlockStateProperties.AGE_2;
+    public static VoxelShape[] SHAPE_BY_AGE = new VoxelShape[]{Block.box(6.0D, 0.0D, 6.0D, 10.0D, 6.0D, 10.0D), Block.box(5.0D, 0.0D, 5.0D, 11.0D, 8.0D, 11.0D), Block.box(4.0D, 0.0D, 4.0D, 12.0D, 10.0D, 12.0D)};
 
-    public ITag<Block> tag;
+    public Tag.Named<Block> tag;
 
-    protected TerraBlockPotionPlant(AbstractBlock.Properties builder, ITag<Block> tag)
+    protected TerraBlockPotionPlant(BlockBehaviour.Properties builder, Tag.Named<Block> tag)
     {
         super(builder);
         this.tag = tag;
-        this.setDefaultState(this.stateContainer.getBaseState().with(this.getAgeProperty(), Integer.valueOf(0)));
-    }
-
-    public VoxelShape getShape(BlockState state, IBlockReader worldIn, BlockPos pos, ISelectionContext context)
-    {
-        return SHAPE_BY_AGE[state.get(this.getAgeProperty())];
-    }
-
-    public IntegerProperty getAgeProperty()
-    {
-        return AGE;
-    }
-
-    public int getMaxAge()
-    {
-        return 2;
-    }
-
-    protected int getAge(BlockState state)
-    {
-        return state.get(this.getAgeProperty());
-    }
-
-    public BlockState withAge(int age)
-    {
-        return this.getDefaultState().with(this.getAgeProperty(), age);
-    }
-
-    public boolean isMaxAge(BlockState state)
-    {
-        return state.get(this.getAgeProperty()) >= this.getMaxAge();
-    }
-
-    public void grow(World worldIn, BlockPos pos, BlockState state)
-    {
-        int i = this.getAge(state);
-        int j = this.getMaxAge();
-        if (i > j)
-        {
-            i = j;
-        }
-
-        worldIn.setBlockState(pos, this.withAge(i), 2);
+        this.registerDefaultState(this.stateDefinition.any().setValue(AGE, 0));
     }
 
     @Override
-    protected boolean isValidGround(BlockState state, IBlockReader worldIn, BlockPos pos)
+    public VoxelShape getShape(BlockState state, BlockGetter world, BlockPos pos, CollisionContext context)
     {
-        return state.getBlock().isIn(tag);
+        return SHAPE_BY_AGE[state.getValue(AGE)];
     }
 
-    public boolean isInPlanter(BlockState state, IBlockReader worldIn, BlockPos pos)
+    public boolean isInPlanter(BlockState state, LevelReader worldIn, BlockPos pos)
     {
-        return worldIn.getBlockState(pos.down()).getBlock().isIn(TerraTagRegistry.GENERAL_PLANTERS);
+        return worldIn.getBlockState(pos.below()).is(TerraTagRegistry.GENERAL_PLANTERS);
     }
 
-    public boolean isValidPosition(BlockState state, IWorldReader worldIn, BlockPos pos)
+    public void entityInside(BlockState state, Level world, BlockPos pos, Entity entity)
     {
-        Biome biome = worldIn.getBiome(pos);
-        if (isInPlanter(state, worldIn, pos))
+        if (entity instanceof Ravager && net.minecraftforge.event.ForgeEventFactory.getMobGriefingEvent(world, entity))
         {
-            return true;
+            world.destroyBlock(pos, true, entity);
         }
 
-        if (this == TerraBlockRegistry.PLANT_BLINKROOT.get())
-        {
-            return worldIn.getBlockState(pos.down()).isSolid();
-        }
-        else if (this == TerraBlockRegistry.PLANT_DAYBLOOM.get())
-        {
-            return this.isValidGround(worldIn.getBlockState(pos.down()), worldIn, pos) && !biome.getRegistryName().toString().contains("corrupt") && !biome.getRegistryName().toString().contains("crimson");
-        }
-        else if (this == TerraBlockRegistry.PLANT_DEATHWEED.get())
-        {
-            return this.isValidGround(worldIn.getBlockState(pos.down()), worldIn, pos) && (biome.getRegistryName().toString().contains("corrupt") || biome.getRegistryName().toString().contains("crimson"));
-        }
-        else if (this == TerraBlockRegistry.PLANT_FIREBLOSSOM.get() || this == TerraBlockRegistry.PLANT_MOONGLOW.get())
-        {
-            return this.isValidGround(worldIn.getBlockState(pos.down()), worldIn, pos);
-        }
-        else if (this == TerraBlockRegistry.PLANT_SHIVERTHORN.get())
-        {
-            return pos.getY() > 55 && this.isValidGround(worldIn.getBlockState(pos.down()), worldIn, pos);
-        }
-        else
-        {
-            return this == TerraBlockRegistry.PLANT_WATERLEAF.get() && pos.getY() > 55 && this.isValidGround(worldIn.getBlockState(pos.down()), worldIn, pos);
-        }
+        super.entityInside(state, world, pos, entity);
     }
 
-    public void onEntityCollision(BlockState state, World worldIn, BlockPos pos, Entity entityIn)
-    {
-        if (entityIn instanceof RavagerEntity && net.minecraftforge.event.ForgeEventFactory.getMobGriefingEvent(worldIn, entityIn))
-        {
-            worldIn.destroyBlock(pos, true);
-        }
-
-        super.onEntityCollision(state, worldIn, pos, entityIn);
-    }
-
-    /**
-     * Whether this IGrowable can grow
-     */
-    public boolean canGrow(IBlockReader worldIn, BlockPos pos, BlockState state, boolean isClient)
-    {
-        return !this.isMaxAge(state);
-    }
-
-    public boolean canUseBonemeal(World worldIn, Random rand, BlockPos pos, BlockState state)
-    {
-        return false;
-    }
-
-    @Override
-    public void grow(ServerWorld worldIn, Random rand, BlockPos pos, BlockState state)
-    {
-        this.grow(worldIn, pos, state);
-    }
-
-    protected void fillStateContainer(StateContainer.Builder<Block, BlockState> builder)
-    {
-        builder.add(AGE);
+    protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> state) {
+        state.add(AGE);
     }
 }

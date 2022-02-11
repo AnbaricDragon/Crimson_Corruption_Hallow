@@ -5,6 +5,7 @@ import com.anbaric.terra_reforged.util.init.TerraTagRegistry;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
 import net.minecraft.block.RotatedPillarBlock;
+import net.minecraft.core.BlockPos;
 import net.minecraft.util.Direction;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.ISeedReader;
@@ -12,29 +13,33 @@ import net.minecraft.world.IWorld;
 import net.minecraft.world.gen.ChunkGenerator;
 import net.minecraft.world.gen.feature.Feature;
 import net.minecraft.world.gen.feature.NoFeatureConfig;
+import net.minecraft.world.item.context.BlockPlaceContext;
+import net.minecraft.world.level.Level;
+import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.level.levelgen.feature.Feature;
+import net.minecraft.world.level.levelgen.feature.FeaturePlaceContext;
+import net.minecraft.world.level.levelgen.feature.configurations.NoneFeatureConfiguration;
 
 import java.util.Random;
 
-public class TerraFeatureTreeMahogany extends Feature<NoFeatureConfig>
+public class TerraFeatureTreeMahogany extends Feature<NoneFeatureConfiguration>
 {
     public TerraFeatureTreeMahogany()
     {
-        super(NoFeatureConfig.CODEC);
+        super(NoneFeatureConfiguration.CODEC);
     }
 
     @Override
-    public boolean generate(ISeedReader world, ChunkGenerator generator, Random rand, BlockPos pos, NoFeatureConfig config)
+    public boolean place(FeaturePlaceContext<NoneFeatureConfiguration> featureContext)
     {
-        if (world.getBlockState(pos.down()).getBlock().isIn(TerraTagRegistry.MAHOGANY_PLANTERS))
-        {
-            generateTree(world, pos, rand);
-            return true;
-        }
+        Level    world = featureContext.level().getLevel();
+        BlockPos pos   = featureContext.origin();
+        Random random = featureContext.random();
         return false;
     }
 
-    public static final BlockState LOG_MAHOGANY = TerraBlockRegistry.LOG_MAHOGANY.get().getDefaultState();
-    public static final BlockState LEAF_MAHOGANY = TerraBlockRegistry.LEAF_MAHOGANY.get().getDefaultState();
+    public static final BlockState LOG_MAHOGANY = TerraBlockRegistry.LOG_MAHOGANY.get().defaultBlockState();
+    public static final BlockState LEAF_MAHOGANY = TerraBlockRegistry.LEAF_MAHOGANY.get().defaultBlockState();
 
     public static final char[][][] MAHOGANY_ARRAY =
     {{{'O', 'j', 'k', 'j', 'k', 'j', 'O'},
@@ -101,18 +106,18 @@ public class TerraFeatureTreeMahogany extends Feature<NoFeatureConfig>
         return outputArray;
     }
 
-    public static boolean checkSpace(IWorld world, BlockPos pos, int trunkHeight, char[][][] template)
+    public static boolean checkSpace(Level world, BlockPos pos, int trunkHeight, char[][][] template)
     {
         int     arrayX     = 0, arrayY = 0, arrayZ = 0;
-        int     radius     = 2;
+        int     radius     = 3;
         int     treeHeight = template.length;
         boolean canGrow    = true;
 
-        BlockPos.Mutable target = new BlockPos.Mutable();
+        BlockPos.MutableBlockPos target = new BlockPos.MutableBlockPos();
 
         for (int i = 0; i <= trunkHeight; i++)
         {
-            if (!world.getBlockState(pos.up(i)).canBeReplacedByLogs(world, pos))
+            if (!world.getBlockState(pos.above(i)).canBeReplacedByLogs(world, pos))
             {
                 canGrow = false;
             }
@@ -127,7 +132,7 @@ public class TerraFeatureTreeMahogany extends Feature<NoFeatureConfig>
                     char targetChar = template[arrayY][arrayX][arrayZ];
                     if (targetChar == 'W' || targetChar == 'h' || targetChar == 'v')
                     {
-                        if (!world.getBlockState(target).canBeReplacedByLogs(world, target))
+                        if (!world.getBlockState(target).canBeReplaced(BlockPlaceContext.at(world, target)))
                         {
                             canGrow = false;
                         }

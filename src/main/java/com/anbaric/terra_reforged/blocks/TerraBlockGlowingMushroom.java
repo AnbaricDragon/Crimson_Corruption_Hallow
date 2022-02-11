@@ -1,115 +1,74 @@
 package com.anbaric.terra_reforged.blocks;
 
-import com.anbaric.terra_reforged.TerraReforged;
-//import com.anbaric.terra_reforged.features.vegetation.TerraGlowingMushroom;
-import com.anbaric.terra_reforged.features.vegetation.TerraFeatureMushroomGlowing;
 import com.anbaric.terra_reforged.util.init.TerraBlockRegistry;
-import net.minecraft.block.*;
-import net.minecraft.state.IntegerProperty;
-import net.minecraft.state.StateContainer;
-import net.minecraft.state.properties.BlockStateProperties;
-import net.minecraft.util.Direction;
-import net.minecraft.util.math.BlockPos;
-import net.minecraft.util.math.shapes.ISelectionContext;
-import net.minecraft.util.math.shapes.VoxelShape;
-import net.minecraft.world.IBlockReader;
-import net.minecraft.world.IWorldReader;
-import net.minecraft.world.World;
-import net.minecraft.world.server.ServerWorld;
-import net.minecraftforge.common.IPlantable;
-import net.minecraftforge.common.PlantType;
+import net.minecraft.core.BlockPos;
+import net.minecraft.server.level.ServerLevel;
+import net.minecraft.world.level.BlockGetter;
+import net.minecraft.world.level.LevelReader;
+import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.BushBlock;
+import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.level.block.state.properties.BlockStateProperties;
+import net.minecraft.world.level.block.state.properties.IntegerProperty;
+import net.minecraft.world.phys.shapes.CollisionContext;
+import net.minecraft.world.phys.shapes.VoxelShape;
 
 import java.util.Random;
 
-import net.minecraft.block.AbstractBlock.Properties;
-
-public class TerraBlockGlowingMushroom extends BushBlock implements IGrowable, IPlantable
+public class TerraBlockGlowingMushroom extends BushBlock
 {
-    public static final IntegerProperty STAGE = BlockStateProperties.STAGE_0_1;
-    protected static final VoxelShape MUSHROOM_SHAPE = Block.makeCuboidShape(5.0D, 0.0D, 5.0D, 11.0D, 6.0D, 11.0D);
 
+    public static final IntegerProperty STAGE = BlockStateProperties.AGE_1;
+    protected static final VoxelShape MUSHROOM_SHAPE = Block.box(5.0D, 0.0D, 5.0D, 11.0D, 6.0D, 11.0D);
 
     public TerraBlockGlowingMushroom(Properties properties)
     {
         super(properties);
-        this.setDefaultState(this.stateContainer.getBaseState().with(STAGE, 0));
+        this.registerDefaultState(this.stateDefinition.any().setValue(STAGE, 0));
     }
 
     @Override
-    public VoxelShape getShape(BlockState state, IBlockReader worldIn, BlockPos pos, ISelectionContext context)
+    public VoxelShape getShape(BlockState state, BlockGetter world, BlockPos pos, CollisionContext context)
     {
         return MUSHROOM_SHAPE;
     }
 
-    protected boolean isValidGround(BlockState state)
+    @Override
+    public boolean canSurvive(BlockState state, LevelReader world, BlockPos pos)
     {
-        Block target = state.getBlock();
-        return target == TerraBlockRegistry.GRASS_MUSHROOM.get();
+        return (isValidPosition(state, world, pos) || super.canSurvive(state, world, pos);
     }
 
-    @Override
-    public boolean isValidPosition(BlockState state, IWorldReader worldIn, BlockPos pos)
+    public boolean isValidPosition(BlockState state, LevelReader world, BlockPos pos)
     {
-        BlockPos blockpos = pos.down();
-        if (state.getBlock() == this) //Forge: This function is called during world gen and placement, before this block is set, so if we are not 'here' then assume it's the pre-check.
-        {
-            return worldIn.getBlockState(blockpos).canSustainPlant(worldIn, pos, Direction.UP, this);
-        }
-        return isValidGround(worldIn.getBlockState(blockpos));
+        return world.getBlockState(pos.below()).is(TerraBlockRegistry.GRASS_MUSHROOM.get());
     }
 
-    @Override
-    public void tick(BlockState state, ServerWorld worldIn, BlockPos pos, Random rand)
+    public void randomTick(BlockState state, ServerLevel world, BlockPos pos, Random random)
     {
-        super.tick(state, worldIn, pos, rand);
-        if (!worldIn.isAreaLoaded(pos, 1))
+        if (world.getMaxLocalRawBrightness(pos.above()) >= 9 && random.nextInt(7) == 0)
         {
-            return; // Forge: prevent loading unloaded chunks when checking neighbor's light
-        }
-        if (rand.nextInt(7) == 0)
-        {
-            this.grow(worldIn, rand, pos, state);
+            if (!world.isAreaLoaded(pos, 1))
+            {
+                return; // Forge: prevent loading unloaded chunks when checking neighbor's light
+            }
+            this.advanceShroom(world, pos, state, random);
         }
     }
 
-    @Override
-    public void grow(ServerWorld worldIn, Random rand, BlockPos pos, BlockState state)
+    public void advanceShroom(ServerLevel world, BlockPos pos, BlockState state, Random random)
     {
-        if (state.get(STAGE) == 0)
+        if (state.getValue(STAGE) == 0)
         {
-            worldIn.setBlockState(pos, state.with(STAGE, 1), 4);
+            world.setBlock(pos, state.cycle(STAGE), 4);
         }
         else
         {
-            if (!net.minecraftforge.event.ForgeEventFactory.saplingGrowTree(worldIn, rand, pos))
+            if (!net.minecraftforge.event.ForgeEventFactory.saplingGrowTree(world, random, pos))
             {
                 return;
             }
-            TerraFeatureMushroomGlowing.generateMushroom(worldIn, pos, rand);
+            this.treeGrower.growTree(world, world.getChunkSource().getGenerator(), pos, state, random);
         }
-    }
-
-    @Override
-    public PlantType getPlantType(IBlockReader world, BlockPos pos)
-    {
-        return TerraReforged.MUSHROOM;
-    }
-
-    @Override
-    public boolean canGrow(IBlockReader worldIn, BlockPos pos, BlockState state, boolean isClient)
-    {
-        return true;
-    }
-
-    @Override
-    public boolean canUseBonemeal(World worldIn, Random rand, BlockPos pos, BlockState state)
-    {
-        return (double) worldIn.rand.nextFloat() < 0.45D;
-    }
-
-    @Override
-    protected void fillStateContainer(StateContainer.Builder<Block, BlockState> builder)
-    {
-        builder.add(STAGE);
     }
 }

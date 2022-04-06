@@ -3,6 +3,7 @@
     "values": [
         "minecraft:dirt",
         "minecraft:grass_block",
-        "terra_reforged:grass_hallowed"
+        "terra_reforged:grass_hallowed",
+				"#terra_reforged:general_planters"
     ]
 }

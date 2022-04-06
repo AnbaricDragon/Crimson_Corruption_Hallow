@@ -1,9 +1,0 @@
-{
-  "replace": false,
-  "values": [
-    "terra_reforged:ore_adamantite",
-    "terra_reforged:ore_adamantite_corrupt",
-    "terra_reforged:ore_adamantite_crimson",
-    "terra_reforged:ore_adamantite_hallowed"
-  ]
-}

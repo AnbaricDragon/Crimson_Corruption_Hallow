@@ -1,6 +1,7 @@
 {
     "replace": false,
     "values": [
-        "terra_reforged:soil_ash"
+        "terra_reforged:soil_ash",
+				"#terra_reforged:general_planters"
     ]
 }

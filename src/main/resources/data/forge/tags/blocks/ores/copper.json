@@ -1,9 +1,0 @@
-{
-  "replace": false,
-  "values": [
-    "terra_reforged:ore_copper",
-    "terra_reforged:ore_copper_corrupt",
-    "terra_reforged:ore_copper_crimson",
-    "terra_reforged:ore_copper_hallowed"
-  ]
-}

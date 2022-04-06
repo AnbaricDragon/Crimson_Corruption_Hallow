@@ -1,39 +1,17 @@
 package com.anbaric.terra_reforged.blocks.potionplants;
 
+import com.anbaric.terra_reforged.util.init.TerraTagRegistry;
 import net.minecraft.core.BlockPos;
 import net.minecraft.server.level.ServerLevel;
-import net.minecraft.tags.Tag;
-import net.minecraft.world.level.BlockGetter;
-import net.minecraft.world.level.LevelReader;
-import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.BlockState;
-import net.minecraftforge.common.PlantType;
 
 import java.util.Random;
 
 public class TerraBlockFireblossom extends TerraBlockPotionPlant
 {
-    public TerraBlockFireblossom(BlockBehaviour.Properties builder, Tag.Named<Block> tag)
+    public TerraBlockFireblossom(Properties properties)
     {
-        super(builder, tag);
-    }
-
-    @Override
-    public PlantType getPlantType(BlockGetter world, BlockPos pos)
-    {
-        return PlantType.NETHER;
-    }
-
-    @Override
-    public boolean canSurvive(BlockState state, LevelReader world, BlockPos pos)
-    {
-        return (isValidPosition(state, world, pos) || isInPlanter(state, world, pos)) || super.canSurvive(state, world, pos);
-    }
-
-    public boolean isValidPosition(BlockState state, LevelReader world, BlockPos pos)
-    {
-        return world.getBlockState(pos.below()).is(tag);
+        super(properties, TerraTagRegistry.FIREBLOSSOM_PLANTERS);
     }
 
     @Override
@@ -43,17 +21,17 @@ public class TerraBlockFireblossom extends TerraBlockPotionPlant
         {
             if (!world.isAreaLoaded(pos, 3))
             {
-                return;
+                return; // Forge: prevent loading unloaded chunks when checking neighbor's light and spreading
             }
-            if (state.getValue(AGE) == 0)
+            if (state.getValue(AGE) == 0 && random.nextFloat() < 0.05F)
             {
-                world.setBlockAndUpdate(pos, state.cycle(AGE));
+                world.setBlock(pos, state.setValue(AGE, 1), 1);
             }
             else
             {
-                Long timeOfDay = world.getGameTime() % 24000;
-                if (timeOfDay >= 11615 && timeOfDay <= 13800 && !world.isRaining() && state.getValue(AGE) == 1) { world.setBlockAndUpdate(pos, state.setValue(AGE, 2)); }
-                if (timeOfDay <= 11615 && timeOfDay >= 13800 && state.getValue(AGE) == 2) { world.setBlockAndUpdate(pos, state.setValue(AGE, 1)); }
+                if (world.getGameTime() >= 11615 && world.getGameTime() <= 13800 && !world.isRaining() && state.getValue(AGE) == 1) {world.setBlock(pos, this.defaultBlockState().setValue(AGE, 2), 3);}
+                //TODO Make this check if it's in hell and stop it from reverting State
+                if (world.getGameTime() <= 11615 || world.getGameTime() >= 13800 && state.getValue(AGE) == 2) {world.setBlock(pos, this.defaultBlockState().setValue(AGE, 1), 3);}
             }
         }
     }

@@ -4,6 +4,7 @@
         "minecraft:dirt",
         "minecraft:grass_block",
         "terra_reforged:grass_corrupt",
-        "terra_reforged:grass_crimson"
+        "terra_reforged:grass_crimson",
+		"#terra_reforged:general_planters"
     ]
 }

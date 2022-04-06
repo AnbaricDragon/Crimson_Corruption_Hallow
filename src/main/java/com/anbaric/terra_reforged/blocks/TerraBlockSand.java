@@ -6,9 +6,10 @@ import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.level.BlockGetter;
-import net.minecraft.world.level.LightLayer;
-import net.minecraft.world.level.block.*;
-import net.minecraft.world.level.block.state.BlockBehaviour;
+import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.FallingBlock;
+import net.minecraft.world.level.block.SlabBlock;
+import net.minecraft.world.level.block.StairBlock;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraftforge.common.IPlantable;
 import net.minecraftforge.common.PlantType;
@@ -16,16 +17,22 @@ import net.minecraftforge.common.PlantType;
 import javax.annotation.Nullable;
 import java.util.Random;
 
-public class TerraBlockIce extends HalfTransparentBlock
+public class TerraBlockSand extends FallingBlock
 {
     private SpreadingHandler.EnumBiomeType biome;
     private PlantType plantType;
+    private final int dustColor;
 
-    public TerraBlockIce(BlockBehaviour.Properties properties, SpreadingHandler.EnumBiomeType biomeType, @Nullable PlantType plantType)
+    public TerraBlockSand(int dustColor, Properties properties, SpreadingHandler.EnumBiomeType biomeType, @Nullable PlantType plantType)
     {
         super(properties);
+        this.dustColor = dustColor;
         this.biome = biomeType;
         this.plantType = plantType;
+    }
+
+    public int getDustColor(BlockState p_55970_, BlockGetter p_55971_, BlockPos p_55972_) {
+        return this.dustColor;
     }
 
     @Override
@@ -35,7 +42,6 @@ public class TerraBlockIce extends HalfTransparentBlock
         return targetPlant == this.plantType;
     }
 
-    @Override
     public void randomTick(BlockState state, ServerLevel world, BlockPos pos, Random random)
     {
         if (!world.isAreaLoaded(pos, 3))

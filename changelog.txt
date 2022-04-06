@@ -1,6 +1,102 @@
 1.18.x Changelog
+40.0
+====
+ - 40.0.34 Remove cut copper from copper storage blocks tag. Closes #8403 (#8539)
+ - 40.0.33 Fix brewing stand input placement not auto-splitting stackable potions. (#8534)
+ - 40.0.32 Fix lost validation of registry data on singleplayer world load (#8533)
+           Fix some leftover 1.18.2 TODOs
+ - 40.0.31 1.18 Allow mod menus to have their own recipebook (#8028)
+ - 40.0.30 [1.18.x] Add 3 new ingredient types, and make existing ingredients compatible with datagen (#8517)
+ - 40.0.29 [1.18.x] Add the projectile search event. (#8322)
+           Co-authored-by: noeppi_noeppi <noeppinoeppi@gmail.com>
+ - 40.0.28 Allow confirm-and-save of the Experimental Settings warning. (#7275)
+ - 40.0.27 Add hook for powdered-snow shoes (#8514)
+ - 40.0.26 Add some helper Access Transformers (#8490)
+ - 40.0.25 Fix incorrect method used in getStream (#8532)
+           The original correct method is getPath, but the patch uses getLocation.
+           The former is the actual resource path to the sound OGG file, while the
+           latter is the sound's location.
+           Fixes #8531
+ - 40.0.24 [1.18] Make it easier to register custom skull blocks models (#8351)
+ - 40.0.23 Rework fog events (#8492)
+ - 40.0.22 Update Forge Auto Renaming Tool to the latest version (#8515)
+ - 40.0.21 Add patches to enable MobEffects with IDs > 255 (#8380)
+ - 40.0.20 Allow sound instances to play custom audio streams (#8295)
+ - 40.0.19 Fix NPE caused by canceling onServerChatEvent (#8516)
+ - 40.0.18 [1.18.2] Fix tags for custom forge registries. (#8495)
+           Tag-enabled registries must now be registered to vanilla's root registry. See RegistryBuilder#hasTags.
+           Modded tag-enabled registries have to use the format `data/<namespace>/tags/<registrynamespace>/<registryname>/<tag>.json`
+           This format is to prevent conflicts for registries with the same path but different namespaces
+           EX: Registry name `examplemod:shoe`, tag name `blue_shoes` would be `data/<namespace>/tags/examplemod/shoe/blue_shoes.json`
+           RegistryEvent.NewRegistry has been moved and renamed to NewRegistryEvent.
+           RegistryBuilder#create has been made private. See NewRegistryEvent#create
+           Created new ITagManager system for looking up Forge tags. See IForgeRegistry#tags.
+           Add lookup methods for Holders from forge registries. See IForgeRegistry#getHolder.
+ - 40.0.17 Lower custom item entity replacement from highest to high so mods can cancel it during a specific tick (#8417)
+ - 40.0.16 Fix MC-176559 related to the Mending enchantment (#7606)
+ - 40.0.15 [1.18.x] Allow blocks to hide faces on a neighboring block (#8300)
+           * Allow blocks to hide faces on a neighboring block
+           * Allow blocks to opt-out of external face hiding
+ - 40.0.14 [1.18.x] Fix FMLOnly in forgedev and userdev (#8512)
+ - 40.0.13 Clear local variable table on RuntimeEnumExtender transformation (#8502)
+ - 40.0.12 Pass server resources to reload listener event (#8493)
+ - 40.0.11 Use UTF-8 charset for Java compilation (#8486)
+ - 40.0.10 Use wither as griefing entity when it indirectly hurts an entity (#8431)
+ - 40.0.9  Provide access to the haveTime supplier in WorldTickEvent and ServerTickEvent (#8470)
+ - 40.0.8  Fix durability bar not respecting an item's custom max damage (#8482)
+ - 40.0.7  Add event for controlling potion indicators size (#8483)
+           This event allows forcing the rendering of the potion indicators in the
+           inventory screen to either compact mode (icons only) or classic mode
+           (full width with potion effect name).
+ - 40.0.6  Introduce system mods to mod loading (#8238)
+           Core game mods are mods which are required to exist in the environment
+           during mod loading. These may be specially provided mods (for example,
+           the `minecraft` mod), or mods which are vital to the framework which
+           FML is connected to (for example, Forge and the `forge` mod).
+           These core game mods are used as the only existing mods in the mod list
+           if mod sorting or dependency verification fails. This allows later
+           steps in the which use resources from these mod files to work correctly
+           (up to when the error screen is shown and the game exits).
+ - 40.0.5  Add missing module exports arg to server arguments list (#8500)
+ - 40.0.4  Fixed swim speed attribute (#8499)
+ - 40.0.3  Fix incorrect movement distance calculation (#8497)
+ - 40.0.2  Add support to Forge registry wrappers for new Holder system. Closes #8491
+           Fix TagBasedToolTypesTest not generating needed data correctly.
+ - 40.0.1  Fix JNA not working at runtime and causing issues with natives.
+ - 40.0.0  Update to 1.18.2
+           Co-authored-by: sciwhiz12 <arnoldnunag12@gmail.com>
+           Co-authored-by: Marc Hermans <marc.hermans@ldtteam.com>
+           Co-authored-by: LexManos <LexManos@gmail.com>
+           Co-authored-by: Curle <curle@gemwire.uk>
+
+39.1
+====
+ - 39.1.2 1.18.x Omnibus (#8239)
+ - 39.1.1 Bump modlauncher and securejarhandler version (#8489)
+ - 39.1.0 Update license headers to compact SPDX format.
+          License has not changed, this is just more compact and doesn't include years.
+          Bump version for RB.
+
 39.0
 ====
+ - 39.0.91 Remove - from allowed characters in mod ids.
+           The Java Module System does not allow them in module ids.
+           Closes #8488
+ - 39.0.90 Fix static initializer crash when loading BakedRenderable.
+ - 39.0.89 Fix regressions for onAddedTo/RemovedFromWorld and related events (#8434)
+ - 39.0.88 [1.18] Integrate the gametest framework with Forge (#8225)
+ - 39.0.87 Re-add missing Shulker patch for EntityTeleportEvent (#8481)
+ - 39.0.86 Fix entity type in conversion event to Drowned (#8479)
+ - 39.0.85 Add VanillaGameEvent to allow for globally listening to vanilla's GameEvents (#8472)
+ - 39.0.84 Provide damage source context to Item#onDestroyed(ItemEntity) (#8473)
+ - 39.0.83 Add missing shear and elytra game events (#8471)
+ - 39.0.82 Fix comment for permission handler config setting  (#8466)
+ - 39.0.81 Apply nullable annotations to LootingLevelEvent (#8422)
+ - 39.0.80 Fix Mob Spawner logic with CustomSpawnRules. Closes #8398
+ - 39.0.79 Fix LivingDropsEvent not having all drops for foxes (#8387)
+ - 39.0.78 Add missing Locale parameter to String.format calls, Fixes getArmorResource functionality on some locaales. (#8463)
+ - 39.0.77 Allow items to hide parts of their tooltips by default (#8358)
+ - 39.0.76 Prevent 1.x Branches being treated as Pull Requests. (#8443)
  - 39.0.75 Fix RegistryObject not working if created after registry events (#8383)
  - 39.0.74 Add support for tagging StructureFeatures (#8408)
  - 39.0.73 Re-added the patch for LivingExperienceDropEvent and enable it for dragons (#8388)

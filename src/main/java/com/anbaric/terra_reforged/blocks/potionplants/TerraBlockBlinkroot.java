@@ -1,40 +1,25 @@
 package com.anbaric.terra_reforged.blocks.potionplants;
 
+import com.anbaric.terra_reforged.util.init.TerraTagRegistry;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.server.level.ServerLevel;
-import net.minecraft.tags.Tag;
 import net.minecraft.world.level.BlockGetter;
-import net.minecraft.world.level.LevelReader;
-import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.BlockState;
-import net.minecraftforge.common.PlantType;
 
 import java.util.Random;
 
 public class TerraBlockBlinkroot extends TerraBlockPotionPlant
 {
-    public TerraBlockBlinkroot(BlockBehaviour.Properties builder, Tag.Named<Block> tag)
+    public TerraBlockBlinkroot(Properties properties)
     {
-        super(builder, tag);
+        super(properties, TerraTagRegistry.GENERAL_PLANTERS);
     }
 
     @Override
-    public PlantType getPlantType(BlockGetter world, BlockPos pos)
+    protected boolean mayPlaceOn(BlockState state, BlockGetter world, BlockPos pos)
     {
-        return PlantType.CAVE;
-    }
-
-    @Override
-    public boolean canSurvive(BlockState state, LevelReader world, BlockPos pos)
-    {
-        return (isValidPosition(state, world, pos) || isInPlanter(state, world, pos)) || super.canSurvive(state, world, pos);
-    }
-
-    public boolean isValidPosition(BlockState state, LevelReader world, BlockPos pos)
-    {
-        return world.getBlockState(pos.below()).isSolidRender(world, pos);
+        return state.isFaceSturdy(world, pos, Direction.UP);
     }
 
     @Override
@@ -44,22 +29,21 @@ public class TerraBlockBlinkroot extends TerraBlockPotionPlant
         {
             if (!world.isAreaLoaded(pos, 3))
             {
-                return;
+                return; // Forge: prevent loading unloaded chunks when checking neighbor's light and spreading
             }
-            if (state.getValue(AGE) == 0)
+            if (state.getValue(AGE) == 0 && random.nextFloat() < 0.05F)
             {
-                world.setBlockAndUpdate(pos, state.cycle(AGE));
+                world.setBlock(pos, state.setValue(AGE, 1), 1);
             }
             else
             {
-                boolean isTime = Math.floor(world.getGameTime() / 2000) % 2 == 0;
-                if (state.getValue(AGE) == 1 && isTime)
+                if (Math.floor(world.getGameTime() / 2000) % 2 == 0 && state.getValue(AGE) == 1)
                 {
-                    world.setBlockAndUpdate(pos, state.setValue(AGE, 2));
+                    world.setBlock(pos, this.defaultBlockState().setValue(AGE, 2), 1);
                 }
-                if (state.getValue(AGE) == 2 && !isTime)
+                if (Math.floor(world.getGameTime() / 2000) % 2 != 0 && state.getValue(AGE) == 2)
                 {
-                    world.setBlockAndUpdate(pos, state.setValue(AGE, 1));
+                    world.setBlock(pos, this.defaultBlockState().setValue(AGE, 1), 1);
                 }
             }
         }

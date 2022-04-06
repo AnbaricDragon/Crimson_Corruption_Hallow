@@ -1,9 +1,0 @@
-{
-  "replace": false,
-  "values": [
-    "terra_reforged:log_shade",
-		"terra_reforged:log_shade_solid",
-		"terra_reforged:log_shade_stripped",
-		"terra_reforged:log_shade_solid_stripped"
-  ]
-}

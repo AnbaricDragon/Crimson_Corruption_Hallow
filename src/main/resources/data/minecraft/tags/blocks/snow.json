@@ -1,0 +1,11 @@
+{
+	"replace": false,
+	"values": [
+		"terra_reforged:snow_corrupt",
+		"terra_reforged:snow_crimson",
+		"terra_reforged:snow_hallowed",
+		"terra_reforged:snow_corrupt_layer",
+		"terra_reforged:snow_crimson_layer",
+		"terra_reforged:snow_hallowed_layer"
+	]
+}

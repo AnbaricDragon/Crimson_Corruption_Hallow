@@ -1,0 +1,21 @@
+{
+  "replace": false,
+  "values": [
+    "minecraft:dirt",
+    "terra_reforged:grass_crimson",
+    "terra_reforged:snow_crimson",
+    "terra_reforged:sandstone_crim",
+    "terra_reforged:sandstone_crim_chiseled",
+    "terra_reforged:sandstone_crim_smooth",
+    "terra_reforged:sandstone_crim_cut",
+    "terra_reforged:stone_crim",
+    "terra_reforged:cobblestone_crim",
+    "terra_reforged:cobblestone_crim_mossy",
+    "terra_reforged:stonebrick_crim",
+    "terra_reforged:stonebrick_crim_cracked",
+    "terra_reforged:stonebrick_crim_chiseled",
+    "terra_reforged:stonebrick_crim_mossy",
+    "terra_reforged:ice_red",
+    "terra_reforged:ice_hard_red"
+  ]
+}

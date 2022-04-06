@@ -1,11 +1,9 @@
 package com.anbaric.terra_reforged.blocks;
 
-import com.anbaric.terra_reforged.TerraReforged;
 import com.anbaric.terra_reforged.util.init.TerraBlockRegistry;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.server.level.ServerLevel;
-import net.minecraft.tags.BlockTags;
 import net.minecraft.tags.FluidTags;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.BlockGetter;
@@ -13,7 +11,6 @@ import net.minecraft.world.level.Level;
 import net.minecraft.world.level.LevelReader;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
-import net.minecraft.world.level.block.SnowLayerBlock;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.lighting.LayerLightEngine;
 import net.minecraft.world.level.material.FluidState;
@@ -23,56 +20,55 @@ import java.util.Random;
 
 public class TerraBlockMoss extends Block
 {
-    private Block moss;
-
-    public TerraBlockMoss(Properties properties, Block moss)
+    public TerraBlockMoss(Properties properties)
     {
         super(properties);
-        this.moss = moss;
-    }
-
-    @Override
-    public boolean onDestroyedByPlayer(BlockState state, Level world, BlockPos pos, Player player, boolean willHarvest, FluidState fluid)
-    {
-        if (world.getBlockState(pos.above()).getBlock() == moss)
-        {
-            world.setBlockAndUpdate(pos, Blocks.AIR.defaultBlockState());
-        }
-        world.setBlockAndUpdate(pos, Blocks.STONE.defaultBlockState());
-        return false;
     }
 
     @Override
     public boolean canSustainPlant(BlockState state, BlockGetter world, BlockPos pos, Direction facing, IPlantable plantable)
     {
-        return plantable.getPlantType(world, pos) == TerraReforged.MOSS;
+        return plantable.getPlant(world, pos).getBlock() == getMoss();
     }
 
-    private boolean canBeMoss(BlockState state, LevelReader world, BlockPos pos)
+    public Block getMoss()
+    {
+        if (this == TerraBlockRegistry.STONE_MOSS_RED.get()) { return TerraBlockRegistry.PLANT_MOSS_RED.get();}
+        else if (this == TerraBlockRegistry.STONE_MOSS_YELLOW.get()) { return TerraBlockRegistry.PLANT_MOSS_YELLOW.get();}
+        else if (this == TerraBlockRegistry.STONE_MOSS_GREEN.get()) { return TerraBlockRegistry.PLANT_MOSS_GREEN.get();}
+        else if (this == TerraBlockRegistry.STONE_MOSS_BLUE.get()) { return TerraBlockRegistry.PLANT_MOSS_BLUE.get();}
+        else if (this == TerraBlockRegistry.STONE_MOSS_PURPLE.get()) { return TerraBlockRegistry.PLANT_MOSS_PURPLE.get();}
+        else return TerraBlockRegistry.PLANT_MOSS_FIRE.get();
+    }
+
+    private static boolean canBeMoss(BlockState state, LevelReader world, BlockPos pos)
     {
         BlockPos   blockpos   = pos.above();
         BlockState blockstate = world.getBlockState(blockpos);
-        if (blockstate.getBlock() == moss || blockstate.getBlock() == Blocks.AIR)
+        if (blockstate.getFluidState().getAmount() == 8)
         {
-            return true;
+            return false;
         }
-        else return !(blockstate.getFluidState().getAmount() > 0);
+        else
+        {
+            int i = LayerLightEngine.getLightBlockInto(world, state, pos, blockstate, blockpos, Direction.UP, blockstate.getLightBlock(world, blockpos));
+            return i < world.getMaxLightLevel();
+        }
     }
 
-    private boolean canPropagate(BlockState state, LevelReader world, BlockPos pos)
+    private static boolean canPropagate(BlockState state, LevelReader world, BlockPos pos)
     {
         BlockPos blockpos = pos.above();
         return canBeMoss(state, world, pos) && !world.getFluidState(blockpos).is(FluidTags.WATER);
     }
 
-    @Override
     public void randomTick(BlockState state, ServerLevel world, BlockPos pos, Random random)
     {
         if (!canBeMoss(state, world, pos))
         {
             if (!world.isAreaLoaded(pos, 1))
             {
-                return; // Forge: prevent loading unloaded chunks when checking neighbor's light and spreading
+                return;
             }
             world.setBlockAndUpdate(pos, Blocks.STONE.defaultBlockState());
         }
@@ -80,23 +76,37 @@ public class TerraBlockMoss extends Block
         {
             if (!world.isAreaLoaded(pos, 3))
             {
-                return; // Forge: prevent loading unloaded chunks when checking neighbor's light and spreading
+                return;
             }
-
-            BlockState blockstate = this.defaultBlockState();
-
-            for (int i = 0; i < 4; ++i)
+            if (world.getBlockState(pos.above()).isAir())
             {
-                BlockPos blockpos = pos.offset(random.nextInt(3) - 1, random.nextInt(3) - 1, random.nextInt(3) - 1);
-                if (world.getBlockState(blockpos).is(BlockTags.STONE_ORE_REPLACEABLES) && canPropagate(blockstate, world, blockpos))
+                world.setBlock(pos.above(), getMoss().defaultBlockState(), 3);
+            }
+            if (world.getMaxLocalRawBrightness(pos.above()) >= 9)
+            {
+                BlockState blockstate = this.defaultBlockState();
+
+                for (int i = 0; i < 4; ++i)
                 {
-                    world.setBlockAndUpdate(blockpos, this.defaultBlockState());
+                    BlockPos targetPos = pos.offset(random.nextInt(3) - 1, random.nextInt(3) - 1, random.nextInt(3) - 1);
+                    Block targetBlock = world.getBlockState(targetPos).getBlock();
+                    if ((targetBlock == Blocks.STONE || targetBlock == Blocks.DIORITE || targetBlock == Blocks.GRANITE || targetBlock == Blocks.ANDESITE || targetBlock == Blocks.TUFF || targetBlock == Blocks.CALCITE) && canPropagate(blockstate, world, targetPos))
+                    {
+                        world.setBlockAndUpdate(targetPos, blockstate);
+                    }
                 }
             }
-            if (random.nextFloat() < 0.1 && world.getBlockState(pos.above()).is(Blocks.AIR))
-            {
-                world.setBlockAndUpdate(pos.above(), moss.defaultBlockState());
-            }
         }
+    }
+
+    @Override
+    public boolean onDestroyedByPlayer(BlockState state, Level world, BlockPos pos, Player player, boolean willHarvest, FluidState fluid)
+    {
+        if (world.getBlockState(pos.above()).getBlock() instanceof TerraBlockMoss)
+        {
+            world.setBlockAndUpdate(pos.above(), Blocks.AIR.defaultBlockState());
+        }
+        world.setBlockAndUpdate(pos, Blocks.STONE.defaultBlockState());
+        return false;
     }
 }

@@ -1,0 +1,21 @@
+{
+  "replace": false,
+  "values": [
+    "minecraft:dirt",
+    "terra_reforged:grass_corrupt",
+    "terra_reforged:snow_corrupt",
+    "terra_reforged:sandstone_ebon",
+    "terra_reforged:sandstone_ebon_chiseled",
+    "terra_reforged:sandstone_ebon_smooth",
+    "terra_reforged:sandstone_ebon_cut",
+    "terra_reforged:stone_ebon",
+    "terra_reforged:cobblestone_ebon",
+    "terra_reforged:cobblestone_ebon_mossy",
+    "terra_reforged:stonebrick_ebon",
+    "terra_reforged:stonebrick_ebon_cracked",
+    "terra_reforged:stonebrick_ebon_chiseled",
+    "terra_reforged:stonebrick_ebon_mossy",
+    "terra_reforged:ice_purple",
+    "terra_reforged:ice_hard_purple"
+  ]
+}

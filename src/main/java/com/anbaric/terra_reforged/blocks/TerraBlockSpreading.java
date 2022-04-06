@@ -1,27 +1,28 @@
 package com.anbaric.terra_reforged.blocks;
 
 import com.anbaric.terra_reforged.TerraReforged;
-import com.anbaric.terra_reforged.util.handlers.SpreadingHandler;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.level.BlockGetter;
-import net.minecraft.world.level.LightLayer;
-import net.minecraft.world.level.block.*;
-import net.minecraft.world.level.block.state.BlockBehaviour;
+import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.SlabBlock;
+import net.minecraft.world.level.block.StairBlock;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraftforge.common.IPlantable;
 import net.minecraftforge.common.PlantType;
+import com.anbaric.terra_reforged.util.handlers.SpreadingHandler.EnumBiomeBlockType;
+import com.anbaric.terra_reforged.util.handlers.SpreadingHandler.EnumBiomeType;
 
 import javax.annotation.Nullable;
 import java.util.Random;
 
-public class TerraBlockIce extends HalfTransparentBlock
+public class TerraBlockSpreading extends Block
 {
-    private SpreadingHandler.EnumBiomeType biome;
+    private EnumBiomeType biome;
     private PlantType plantType;
 
-    public TerraBlockIce(BlockBehaviour.Properties properties, SpreadingHandler.EnumBiomeType biomeType, @Nullable PlantType plantType)
+    public TerraBlockSpreading(Properties properties, EnumBiomeType biomeType, @Nullable PlantType plantType)
     {
         super(properties);
         this.biome = biomeType;
@@ -35,7 +36,6 @@ public class TerraBlockIce extends HalfTransparentBlock
         return targetPlant == this.plantType;
     }
 
-    @Override
     public void randomTick(BlockState state, ServerLevel world, BlockPos pos, Random random)
     {
         if (!world.isAreaLoaded(pos, 3))
@@ -46,8 +46,8 @@ public class TerraBlockIce extends HalfTransparentBlock
         {
             for (int i = 0; i < 4; ++i)
             {
-                BlockPos targetPos   = pos.offset(random.nextInt(3) - 1, random.nextInt(3) - 1, random.nextInt(3) - 1);
-                Block    targetBlock = world.getBlockState(targetPos).getBlock();
+                BlockPos targetPos = pos.offset(random.nextInt(3) - 1, random.nextInt(3) - 1, random.nextInt(3) - 1);
+                Block targetBlock = world.getBlockState(targetPos).getBlock();
 
                 if (checkTransformable(targetBlock))
                 {
@@ -76,10 +76,10 @@ public class TerraBlockIce extends HalfTransparentBlock
         }
     }
 
-    public Block transformedState(SpreadingHandler.EnumBiomeType type, Block target)
+    public Block transformedState(EnumBiomeType type, Block target)
     {
         Block result = target;
-        for (SpreadingHandler.EnumBiomeBlockType block : SpreadingHandler.EnumBiomeBlockType.values())
+        for (EnumBiomeBlockType block : EnumBiomeBlockType.values())
         {
             if (block.pure == target)
             {
@@ -92,7 +92,7 @@ public class TerraBlockIce extends HalfTransparentBlock
     public boolean checkTransformable(Block target)
     {
         boolean check = false;
-        for (SpreadingHandler.EnumBiomeBlockType block : SpreadingHandler.EnumBiomeBlockType.values())
+        for (EnumBiomeBlockType block : EnumBiomeBlockType.values())
         {
             if (block.pure == target)
             {

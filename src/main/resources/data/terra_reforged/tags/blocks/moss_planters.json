@@ -1,11 +1,11 @@
 {
   "replace": false,
   "values": [
-	  "terra_reforged:stone_moss_red",
-	  "terra_reforged:stone_moss_yellow",
-	  "terra_reforged:stone_moss_green",
-	  "terra_reforged:stone_moss_blue",
-	  "terra_reforged:stone_moss_purple",
-	  "terra_reforged:stone_moss_fire"
+    "terra_reforged:stone_moss_red",
+    "terra_reforged:stone_moss_fire",
+    "terra_reforged:stone_moss_yellow",
+    "terra_reforged:stone_moss_green",
+    "terra_reforged:stone_moss_blue",
+    "terra_reforged:stone_moss_purple"
   ]
 }

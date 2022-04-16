@@ -1,0 +1,13 @@
+{
+  "replace": false,
+  "values": [
+    "minecraft:sugar_cane",
+    "terra_reforged:reed_corrupt",
+    "terra_reforged:reed_crimson",
+    "terra_reforged:reed_corrupt",
+    "#terra_reforged:general_planters",
+    "#minecraft:dirt",
+    "#minecraft:sand",
+    "minecraft:red_sand"
+  ]
+}

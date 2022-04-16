@@ -1,8 +1,13 @@
 package com.anbaric.terra_reforged.blocks.potionplants;
 
+import com.anbaric.terra_reforged.util.init.TerraItemRegistry;
 import com.anbaric.terra_reforged.util.init.TerraTagRegistry;
 import net.minecraft.core.BlockPos;
 import net.minecraft.server.level.ServerLevel;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.Items;
+import net.minecraft.world.level.BlockGetter;
+import net.minecraft.world.level.ItemLike;
 import net.minecraft.world.level.block.state.BlockState;
 
 import java.util.Random;
@@ -12,6 +17,14 @@ public class TerraBlockWaterleaf extends TerraBlockPotionPlant
     public TerraBlockWaterleaf(Properties properties)
     {
         super(properties, TerraTagRegistry.WATERLEAF_PLANTERS);
+    }
+
+    protected ItemLike getBaseSeedId() {
+        return TerraItemRegistry.SEED_WATERLEAF.get();
+    }
+
+    public ItemStack getCloneItemStack(BlockGetter p_52254_, BlockPos p_52255_, BlockState p_52256_) {
+        return new ItemStack(this.getBaseSeedId());
     }
 
     @Override

@@ -4,14 +4,15 @@
     },
     "elements": [
         {   "from": [ 5, 0, 0 ],
-            "to": [ 11, 14, 5 ],
+            "to": [ 11, 14, 8 ],
             "faces": {
-                "down":  { "texture": "#wall" },
+                "down":  { "texture": "#wall", "cullface": "down" },
                 "up":    { "texture": "#wall" },
                 "north": { "texture": "#wall", "cullface": "north" },
                 "west":  { "texture": "#wall" },
                 "east":  { "texture": "#wall" }
-            }
+            },
+            "__comment": "wall"
         }
     ]
 }

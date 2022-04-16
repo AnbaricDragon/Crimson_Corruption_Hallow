@@ -10,6 +10,7 @@ import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.level.BlockAndTintGetter;
 import net.minecraft.world.level.FoliageColor;
 import net.minecraft.world.level.GrassColor;
+import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
@@ -44,6 +45,15 @@ public class ColorHandler
 
             return world != null && pos != null ? BiomeColors.getAverageGrassColor(world, pos) : GrassColor.get(0.5D, 1.0D);
         },  TerraBlockRegistry.GRASS_JUNGLE.get());
+        blockColors.register((blockstate, world, pos, tintIndex) -> {
+            return FoliageColor.getEvergreenColor();
+        }, TerraBlockRegistry.WALL_SPRUCE_LEAF.get());
+        blockColors.register((blockstate, world, pos, tintIndex) -> {
+            return FoliageColor.getBirchColor();
+        }, TerraBlockRegistry.WALL_BIRCH_LEAF.get());
+        blockColors.register((blockstate, world, pos, tintIndex) -> {
+            return world != null && pos != null ? BiomeColors.getAverageFoliageColor(world, pos) : FoliageColor.getDefaultColor();
+        }, TerraBlockRegistry.WALL_OAK_LEAF.get(), TerraBlockRegistry.WALL_JUNGLE_LEAF.get(), TerraBlockRegistry.WALL_ACACIA_LEAF.get(), TerraBlockRegistry.WALL_DARKOAK_LEAF.get());
     }
 
     public static int float_to_int(float value) {
@@ -59,16 +69,9 @@ public class ColorHandler
         final BlockColors blockColors = event.getBlockColors();
         final ItemColors  itemColors  = event.getItemColors();
 
-
         itemColors.register((stack, tintIndex) -> {
             BlockState blockstate = ((BlockItem)stack.getItem()).getBlock().defaultBlockState();
             return blockColors.getColor(blockstate, (BlockAndTintGetter)null, (BlockPos)null, tintIndex);
-        }, TerraBlockRegistry.GRASS_JUNGLE.get());
-//        itemColors.register(color, TerraBlockRegistry.WALL_OAK_LEAF.get());
-//        itemColors.register(color, TerraBlockRegistry.WALL_SPRUCE_LEAF.get());
-//        itemColors.register(color, TerraBlockRegistry.WALL_BIRCH_LEAF.get());
-//        itemColors.register(color, TerraBlockRegistry.WALL_JUNGLE_LEAF.get());
-//        itemColors.register(color, TerraBlockRegistry.WALL_DARKOAK_LEAF.get());
-//        itemColors.register(color, TerraBlockRegistry.WALL_ACACIA_LEAF.get());
+        }, TerraBlockRegistry.GRASS_JUNGLE.get(), TerraBlockRegistry.WALL_OAK_LEAF.get(), TerraBlockRegistry.WALL_SPRUCE_LEAF.get(), TerraBlockRegistry.WALL_BIRCH_LEAF.get(), TerraBlockRegistry.WALL_JUNGLE_LEAF.get(), TerraBlockRegistry.WALL_ACACIA_LEAF.get(), TerraBlockRegistry.WALL_DARKOAK_LEAF.get());
     }
 }

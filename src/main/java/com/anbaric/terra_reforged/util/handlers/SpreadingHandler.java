@@ -72,8 +72,8 @@ public class SpreadingHandler
         STONEBRICK(Blocks.STONE_BRICKS, TerraBlockRegistry.STONEBRICK_EBON.get(), TerraBlockRegistry.STONEBRICK_CRIM.get(), TerraBlockRegistry.STONEBRICK_PEARL.get()),
         CRACKEDSTONEBRICK(Blocks.CRACKED_STONE_BRICKS, TerraBlockRegistry.STONEBRICK_EBON_CRACKED.get(), TerraBlockRegistry.STONEBRICK_CRIM_CRACKED.get(), TerraBlockRegistry.STONEBRICK_PEARL_CRACKED.get()),
         CHISELEDSTONEBRICK(Blocks.CHISELED_STONE_BRICKS, TerraBlockRegistry.STONEBRICK_EBON_CHISELED.get(), TerraBlockRegistry.STONEBRICK_CRIM_CHISELED.get(), TerraBlockRegistry.STONEBRICK_PEARL_CHISELED.get()),
-        MOSSYSTONEBRICK(Blocks.MOSSY_STONE_BRICKS, TerraBlockRegistry.STONEBRICK_EBON_MOSSY.get(), TerraBlockRegistry.STONEBRICK_CRIM_MOSSY.get(), TerraBlockRegistry.STONEBRICK_PEARL_MOSSY.get())
-//        CACTUS(Blocks.CACTUS, TerraBlockRegistry.CACTUS_EBON.get(), TerraBlockRegistry.CACTUS_CRIM.get(), TerraBlockRegistry.CACTUS_PEARL.get()),
+        MOSSYSTONEBRICK(Blocks.MOSSY_STONE_BRICKS, TerraBlockRegistry.STONEBRICK_EBON_MOSSY.get(), TerraBlockRegistry.STONEBRICK_CRIM_MOSSY.get(), TerraBlockRegistry.STONEBRICK_PEARL_MOSSY.get()),
+        CACTUS(Blocks.CACTUS, TerraBlockRegistry.CACTUS_EBON.get(), TerraBlockRegistry.CACTUS_CRIM.get(), TerraBlockRegistry.CACTUS_PEARL.get()),
 //        ORECOPPER(TerraBlockRegistry.ORE_COPPER_PURE.get(), TerraBlockRegistry.ORE_COPPER_CORRUPT.get(), TerraBlockRegistry.ORE_COPPER_CRIMSON.get(), TerraBlockRegistry.ORE_COPPER_HALLOWED.get(), TerraBlockRegistry.ORE_COPPER_JUNGLE.get()),
 //        ORETIN(TerraBlockRegistry.ORE_TIN_PURE.get(), TerraBlockRegistry.ORE_TIN_CORRUPT.get(), TerraBlockRegistry.ORE_TIN_CRIMSON.get(), TerraBlockRegistry.ORE_TIN_HALLOWED.get(), TerraBlockRegistry.ORE_TIN_JUNGLE.get()),
 //        ORELEAD(TerraBlockRegistry.ORE_LEAD_PURE.get(), TerraBlockRegistry.ORE_LEAD_CORRUPT.get(), TerraBlockRegistry.ORE_LEAD_CRIMSON.get(), TerraBlockRegistry.ORE_LEAD_HALLOWED.get(), TerraBlockRegistry.ORE_LEAD_JUNGLE.get()),
@@ -116,7 +116,7 @@ public class SpreadingHandler
 //        SLABSANDSTONE(Blocks.SANDSTONE_SLAB, TerraBlockRegistry.SLAB_SANDSTONE_EBON.get(), TerraBlockRegistry.SLAB_SANDSTONE_CRIM.get(), TerraBlockRegistry.SLAB_SANDSTONE_PEARL.get()),
 //        SLABSANDSTONECUT(Blocks.CUT_SANDSTONE_SLAB, TerraBlockRegistry.SLAB_SANDSTONE_EBON_CUT.get(), TerraBlockRegistry.SLAB_SANDSTONE_CRIM_CUT.get(), TerraBlockRegistry.SLAB_SANDSTONE_PEARL_CUT.get()),
 //        SLABSANDSTONESMOOTH(Blocks.SMOOTH_SANDSTONE_SLAB, TerraBlockRegistry.SLAB_SANDSTONE_EBON_SMOOTH.get(), TerraBlockRegistry.SLAB_SANDSTONE_CRIM_SMOOTH.get(), TerraBlockRegistry.SLAB_SANDSTONE_PEARL_SMOOTH.get()),
-//        REEDS(Blocks.SUGAR_CANE, TerraBlockRegistry.REED_CORRUPT.get(), TerraBlockRegistry.REED_CRIMSON.get(), TerraBlockRegistry.REED_HALLOWED.get())
+        REEDS(Blocks.SUGAR_CANE, TerraBlockRegistry.REED_CORRUPT.get(), TerraBlockRegistry.REED_CRIMSON.get(), TerraBlockRegistry.REED_HALLOWED.get())
         ;
 
         public Block pure, corrupt, crimson, hallowed, jungle;

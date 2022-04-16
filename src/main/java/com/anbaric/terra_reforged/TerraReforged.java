@@ -2,8 +2,12 @@ package com.anbaric.terra_reforged;
 
 import com.anbaric.terra_reforged.util.Reference;
 import com.anbaric.terra_reforged.util.init.TerraBlockRegistry;
+import com.anbaric.terra_reforged.util.init.TerraItemRegistry;
 import com.mojang.logging.LogUtils;
 import net.minecraft.world.damagesource.DamageSource;
+import net.minecraft.world.item.CreativeModeTab;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.Items;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraftforge.common.MinecraftForge;
@@ -19,6 +23,9 @@ import net.minecraftforge.fml.event.lifecycle.InterModProcessEvent;
 import net.minecraftforge.event.server.ServerStartingEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import org.slf4j.Logger;
+import top.theillusivec4.curios.api.CuriosApi;
+import top.theillusivec4.curios.api.SlotTypeMessage;
+import top.theillusivec4.curios.api.SlotTypePreset;
 
 import java.util.stream.Collectors;
 
@@ -30,6 +37,14 @@ public class TerraReforged
     public static PlantType MUSHROOM = PlantType.get("mushroom");
     public static DamageSource THORNS = new DamageSource("thorns").bypassArmor();
     public static DamageSource MINION = new DamageSource("minion");
+
+    public static final CreativeModeTab TERRA_BLOCKS_TAB = new CreativeModeTab("terra_blocks_tab") { public ItemStack makeIcon() { return new ItemStack(TerraBlockRegistry.GRASS_JUNGLE.get()); }};
+    public static final CreativeModeTab TERRA_DECORATIONS_TAB = new CreativeModeTab("terra_decorations_tab") { public ItemStack makeIcon() { return new ItemStack(TerraBlockRegistry.LEAF_PEARL_CYAN.get()); }};
+    public static final CreativeModeTab TERRA_MATERIALS_TAB = new CreativeModeTab("terra_materials_tab") { public ItemStack makeIcon() { return new ItemStack(TerraItemRegistry.INGOT_COBALT.get()); }};
+    public static final CreativeModeTab TERRA_MECHANICS_TAB = new CreativeModeTab("terra_mechanics_tab") { public ItemStack makeIcon() { return new ItemStack(Items.REDSTONE); }};
+    public static final CreativeModeTab TERRA_MONSTERS_TAB = new CreativeModeTab("terra_monsters_tab") { public ItemStack makeIcon() { return new ItemStack(Items.FOX_SPAWN_EGG); }};
+    public static final CreativeModeTab TERRA_TOOLS_TAB = new CreativeModeTab("terra_tools_tab") { public ItemStack makeIcon() { return new ItemStack(Items.NETHERITE_PICKAXE); }};
+    public static final CreativeModeTab TERRA_WEAPONS_TAB = new CreativeModeTab("terra_weapons_tab") { public ItemStack makeIcon() { return new ItemStack(Items.NETHERITE_SWORD); }};
 
     public static final boolean debugSpreading = true;
 
@@ -51,6 +66,9 @@ public class TerraReforged
         MinecraftForge.EVENT_BUS.register(this);
 
         TerraBlockRegistry.BLOCKS.register(modEventBus);
+        TerraItemRegistry.ITEMS.register(modEventBus);
+
+        final CreativeModeTab TERRA_BLOCKS_TAB = new CreativeModeTab("terra_blocks_tab") { public ItemStack makeIcon() { return new ItemStack(TerraBlockRegistry.GRASS_JUNGLE.get()); }};
     }
 
     private void setup(final FMLCommonSetupEvent event)
@@ -62,6 +80,7 @@ public class TerraReforged
 
     private void enqueueIMC(final InterModEnqueueEvent event)
     {
+        InterModComms.sendTo(CuriosApi.MODID, SlotTypeMessage.REGISTER_TYPE, () -> SlotTypePreset.CURIO.getMessageBuilder().size(5).build());
         // Some example code to dispatch IMC to another mod
         InterModComms.sendTo("terra_reforged", "helloworld", () -> { LOGGER.info("Hello world from the MDK"); return "Hello world";});
     }

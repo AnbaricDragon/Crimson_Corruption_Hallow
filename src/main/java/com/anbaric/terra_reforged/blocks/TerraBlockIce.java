@@ -70,7 +70,7 @@ public class TerraBlockIce extends HalfTransparentBlock
                         return;
                     }
 
-                    world.setBlock(targetPos, transformedState(biome, targetBlock).defaultBlockState(), 3);
+                    world.setBlockAndUpdate(targetPos, transformedState(biome, targetBlock).defaultBlockState());
                 }
             }
         }

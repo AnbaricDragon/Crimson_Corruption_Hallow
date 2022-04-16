@@ -7,6 +7,7 @@ import net.minecraft.server.level.ServerLevel;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.monster.Ravager;
+import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.level.BlockGetter;
@@ -23,6 +24,7 @@ import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.VoxelShape;
 
 import java.util.Random;
+import java.util.function.Supplier;
 
 public class TerraBlockPotionPlant extends BushBlock
 {
@@ -93,17 +95,6 @@ public class TerraBlockPotionPlant extends BushBlock
         }
 
         super.entityInside(state, world, pos, entity);
-    }
-
-    protected ItemLike getBaseSeedId()
-    {
-        //TODO Add potion plant seeds
-        return Items.WHEAT_SEEDS;
-    }
-
-    public ItemStack getCloneItemStack(BlockGetter p_52254_, BlockPos p_52255_, BlockState p_52256_)
-    {
-        return new ItemStack(this.getBaseSeedId());
     }
 
     protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> p_52286_)

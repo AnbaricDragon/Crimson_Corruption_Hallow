@@ -1,0 +1,11 @@
+{
+  "replace": false,
+  "values": [
+    "minecraft:cactus",
+    "terra_reforged:cactus_ebon",
+    "terra_reforged:cactus_crim",
+    "terra_reforged:cactus_pearl",
+    "#terra_reforged:general_planters",
+    "#minecraft:sand"
+  ]
+}

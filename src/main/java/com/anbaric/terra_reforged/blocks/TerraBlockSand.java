@@ -20,10 +20,10 @@ import java.util.Random;
 public class TerraBlockSand extends FallingBlock
 {
     private SpreadingHandler.EnumBiomeType biome;
-    private PlantType plantType;
+    private PlantType[] plantType;
     private final int dustColor;
 
-    public TerraBlockSand(int dustColor, Properties properties, SpreadingHandler.EnumBiomeType biomeType, @Nullable PlantType plantType)
+    public TerraBlockSand(int dustColor, Properties properties, SpreadingHandler.EnumBiomeType biomeType, @Nullable PlantType... plantType)
     {
         super(properties);
         this.dustColor = dustColor;
@@ -39,7 +39,14 @@ public class TerraBlockSand extends FallingBlock
     public boolean canSustainPlant(BlockState state, BlockGetter world, BlockPos pos, Direction facing, IPlantable plantable)
     {
         PlantType targetPlant = plantable.getPlantType(world, pos);
-        return targetPlant == this.plantType;
+        for (PlantType type : this.plantType)
+        {
+            if (targetPlant == type)
+            {
+                return true;
+            }
+        }
+        return false;
     }
 
     public void randomTick(BlockState state, ServerLevel world, BlockPos pos, Random random)
@@ -76,7 +83,7 @@ public class TerraBlockSand extends FallingBlock
                         return;
                     }
 
-                    world.setBlock(targetPos, transformedState(biome, targetBlock).defaultBlockState(), 3);
+                    world.setBlockAndUpdate(targetPos, transformedState(biome, targetBlock).defaultBlockState());
                 }
             }
         }

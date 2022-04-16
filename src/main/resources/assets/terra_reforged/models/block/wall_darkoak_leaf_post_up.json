@@ -1,6 +1,0 @@
-{
-    "parent": "terra_reforged:block/wall_leaves_post_up",
-    "textures": {
-        "wall": "block/dark_oak_leaves"
-    }
-}

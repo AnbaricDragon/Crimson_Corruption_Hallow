@@ -82,7 +82,7 @@ public class TerraBlockBiomeGrass extends SpreadingSnowyDirtBlock implements Bon
     {
         BlockPos   blockpos   = pos.above();
         BlockState blockstate = world.getBlockState(blockpos);
-        if (blockstate.is(BlockTags.SNOW) && blockstate.getValue(SnowLayerBlock.LAYERS) == 1)
+        if (blockstate.getBlock() instanceof SnowLayerBlock && blockstate.getValue(SnowLayerBlock.LAYERS) == 1)
         {
             return true;
         }

@@ -70,7 +70,7 @@ public class TerraBlockSpreading extends Block
                         return;
                     }
 
-                    world.setBlock(targetPos, transformedState(biome, targetBlock).defaultBlockState(), 3);
+                    world.setBlockAndUpdate(targetPos, transformedState(biome, targetBlock).defaultBlockState());
                 }
             }
         }

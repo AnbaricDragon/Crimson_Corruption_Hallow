@@ -7,6 +7,7 @@ import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.LevelReader;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.BushBlock;
+import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.VoxelShape;
@@ -76,5 +77,9 @@ public class TerraBlockEvilMushroom extends BushBlock
     public boolean canSurvive(BlockState p_54880_, LevelReader p_54881_, BlockPos p_54882_)
     {
         return mayPlaceOn(p_54880_, p_54881_, p_54882_);
+    }
+
+    public BlockBehaviour.OffsetType getOffsetType() {
+        return BlockBehaviour.OffsetType.XZ;
     }
 }

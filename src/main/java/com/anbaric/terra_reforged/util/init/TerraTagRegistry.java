@@ -23,6 +23,8 @@ public class TerraTagRegistry
     public static final TagKey<Block> SHIVERTHORN_PLANTERS = BlockTags.create(Reference.path("shiverthorn_planters"));
     public static final TagKey<Block> WATERLEAF_PLANTERS = BlockTags.create(Reference.path("waterleaf_planters"));
     public static final TagKey<Block> GENERAL_PLANTERS = BlockTags.create(Reference.path("general_planters"));
+    public static final TagKey<Block> CACTUS_PLANTERS = BlockTags.create(Reference.path("cactus_planters"));
+    public static final TagKey<Block> REED_PLANTERS = BlockTags.create(Reference.path("reed_planters"));
 //    public static final TagKey<Block> MUSHROOM_PLANTERS = BlockTags.create(Reference.path("mushroom_planters"));
 //    public static final TagKey<Block> CORRUPT_REPLACERS = BlockTags.create(Reference.path("gen/corrupt_replacers"));
 //    public static final TagKey<Block> CRIMSON_REPLACERS = BlockTags.create(Reference.path("gen/crimson_replacers"));

@@ -81,7 +81,7 @@ public class TerraBlockIce extends HalfTransparentBlock
         Block result = target;
         for (SpreadingHandler.EnumBiomeBlockType block : SpreadingHandler.EnumBiomeBlockType.values())
         {
-            if (block.pure == target)
+            if (block.pure.contains(target))
             {
                 result = block.getBiomeBlock(type);
             }
@@ -94,7 +94,7 @@ public class TerraBlockIce extends HalfTransparentBlock
         boolean check = false;
         for (SpreadingHandler.EnumBiomeBlockType block : SpreadingHandler.EnumBiomeBlockType.values())
         {
-            if (block.pure == target)
+            if (block.pure.contains(target))
             {
                 check = true;
             }

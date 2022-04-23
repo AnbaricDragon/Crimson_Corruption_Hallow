@@ -1,7 +1,7 @@
 package com.anbaric.terra_reforged.util.init;
 
 import com.anbaric.terra_reforged.TerraReforged;
-import com.anbaric.terra_reforged.items.TerraItemAccessorySpeed;
+import com.anbaric.terra_reforged.items.*;
 import com.anbaric.terra_reforged.util.Reference;
 import net.minecraft.world.item.*;
 import net.minecraftforge.registries.DeferredRegister;
@@ -65,10 +65,10 @@ public class TerraItemRegistry
     public static final RegistryObject<Item> PLANT_WATERLEAF = ITEMS.register("plant_waterleaf", () -> new Item(new Item.Properties().tab(TerraReforged.TERRA_MATERIALS_TAB)));
 //
 //    //Misc
-//    public static final RegistryObject<Item> CONSUMEABLE_MANA_STAR = ITEMS.register("consumeable_mana_star", () -> new TerraItemConsumeableMana());
-//    public static final RegistryObject<Item> CONSUMEABLE_MANA_CAKE = ITEMS.register("consumeable_mana_cake", () -> new TerraItemConsumeableMana());
-//    public static final RegistryObject<Item> CONSUMEABLE_MANA_PLUM = ITEMS.register("consumeable_mana_plum", () -> new TerraItemConsumeableMana());
-//    public static final RegistryObject<Item> MANA_CRYSTAL = ITEMS.register("mana_crystal", () -> new TerraItemManaCrystal(new Item.Properties().tab(TerraReforged.TERRA_TOOLS_TAB)));
+    public static final RegistryObject<Item> CONSUMEABLE_MANA_STAR = ITEMS.register("consumeable_mana_star", () -> new TerraItemConsumeableMana());
+    public static final RegistryObject<Item> CONSUMEABLE_MANA_CAKE = ITEMS.register("consumeable_mana_cake", () -> new TerraItemConsumeableMana());
+    public static final RegistryObject<Item> CONSUMEABLE_MANA_PLUM = ITEMS.register("consumeable_mana_plum", () -> new TerraItemConsumeableMana());
+    public static final RegistryObject<Item> MANA_CRYSTAL = ITEMS.register("mana_crystal", () -> new TerraItemManaCrystal(new Item.Properties().tab(TerraReforged.TERRA_TOOLS_TAB)));
     public static final RegistryObject<Item> FRUIT_LIFEFRUIT = ITEMS.register("fruit_lifefruit", () -> new Item(new Item.Properties().tab(TerraReforged.TERRA_TOOLS_TAB)));
     public static final RegistryObject<Item> SEED_BLINKROOT = ITEMS.register("seed_blinkroot", () -> new ItemNameBlockItem(TerraBlockRegistry.PLANT_BLINKROOT.get(), new Item.Properties().tab(TerraReforged.TERRA_DECORATIONS_TAB)));
     public static final RegistryObject<Item> SEED_DAYBLOOM = ITEMS.register("seed_daybloom", () -> new ItemNameBlockItem(TerraBlockRegistry.PLANT_DAYBLOOM.get(), new Item.Properties().tab(TerraReforged.TERRA_DECORATIONS_TAB)));
@@ -80,69 +80,69 @@ public class TerraItemRegistry
     public static final RegistryObject<Item> LILYPAD_CORRUPT = ITEMS.register("lilypad_corrupt", () -> new WaterLilyBlockItem(TerraBlockRegistry.LILYPAD_CORRUPT.get(), new Item.Properties().tab(TerraReforged.TERRA_DECORATIONS_TAB)));
     public static final RegistryObject<Item> LILYPAD_CRIMSON = ITEMS.register("lilypad_crimson", () -> new WaterLilyBlockItem(TerraBlockRegistry.LILYPAD_CRIMSON.get(), new Item.Properties().tab(TerraReforged.TERRA_DECORATIONS_TAB)));
     public static final RegistryObject<Item> LILYPAD_HALLOWED = ITEMS.register("lilypad_hallowed", () -> new WaterLilyBlockItem(TerraBlockRegistry.LILYPAD_HALLOWED.get(), new Item.Properties().tab(TerraReforged.TERRA_DECORATIONS_TAB)));
-//
-//    //Tools
-//
-//    //Accessories
+
+    //Tools
+
+    //Accessories
     public static final RegistryObject<Item> AGLET = ITEMS.register("aglet", () -> new TerraItemAccessorySpeed(0.05F));
-//    public static final RegistryObject<Item> ANKLET_OF_WIND = ITEMS.register("anklet_wind", () -> new TerraItemAccessorySpeed(0.10F));
-//    public static final RegistryObject<Item> BALLOON_BLIZZARD = ITEMS.register("balloon_blizzard", () -> new TerraItemExtraJumpBalloon());
-//    public static final RegistryObject<Item> BALLOON_BUNDLE = ITEMS.register("balloon_bundle", () -> new TerraItemBalloonBundle());
-//    public static final RegistryObject<Item> BALLOON_CLOUD = ITEMS.register("balloon_cloud", () -> new TerraItemExtraJumpBalloon());
-//    public static final RegistryObject<Item> BALLOON_FART = ITEMS.register("balloon_fart", () -> new TerraItemExtraJumpBalloon());
-//    public static final RegistryObject<Item> BALLOON_HONEY = ITEMS.register("balloon_honey", () -> new TerraItemHoneyBalloon());
-//    public static final RegistryObject<Item> BALLOON_PUFFERFISH = ITEMS.register("balloon_pufferfish", () -> new TerraItemBalloon());
-//    public static final RegistryObject<Item> BALLOON_RED = ITEMS.register("balloon_red", () -> new TerraItemBalloon());
-//    public static final RegistryObject<Item> BALLOON_SANDSTORM = ITEMS.register("balloon_sandstorm", () -> new TerraItemExtraJumpBalloon());
-//    public static final RegistryObject<Item> BALLOON_SHARK = ITEMS.register("balloon_shark", () -> new TerraItemExtraJumpBalloon());
-//    public static final RegistryObject<Item> BAND_HEALTHREGEN = ITEMS.register("band_healthregen", () -> new TerraItemBandHealthRegeneration());
-//    public static final RegistryObject<Item> BAND_MANAREGEN = ITEMS.register("band_manaregen", () -> new TerraItemBandManaRegeneration());
-//    public static final RegistryObject<Item> BAND_STARPOWER = ITEMS.register("band_starpower", () -> new TerraItemBandStarpower());
-//    public static final RegistryObject<Item> BELT_BLACK = ITEMS.register("belt_black", () -> new TerraItemBlackBelt());
-//    public static final RegistryObject<Item> BOOTS_AMPHIBIAN = ITEMS.register("boots_amphibian", () -> new TerraItemBootsAmphibian());
-//    public static final RegistryObject<Item> BOOTS_DUNERIDER = ITEMS.register("boots_dunerider", () -> new TerraItemBootsDunerider());
-//    public static final RegistryObject<Item> BOOTS_FAIRY = ITEMS.register("boots_fairy", () -> new TerraItemBootsFairy());
-//    public static final RegistryObject<Item> BOOTS_FLOWER = ITEMS.register("boots_flower", () -> new TerraItemBootsFlower());
-//    public static final RegistryObject<Item> BOOTS_FLURRY = ITEMS.register("boots_flurry", () -> new TerraItemAccessorySpeed(0.20F));
-//    public static final RegistryObject<Item> BOOTS_FROSTSPARK = ITEMS.register("boots_frostspark", () -> new TerraItemBootsFrostspark());
-//    public static final RegistryObject<Item> BOOTS_HELLFIRE = ITEMS.register("boots_hellfire", () -> new TerraItemBootsLava());
-//    public static final RegistryObject<Item> BOOTS_HERMES = ITEMS.register("boots_hermes", () -> new TerraItemAccessorySpeed(0.20F));
-//    public static final RegistryObject<Item> BOOTS_ICE = ITEMS.register("boots_ice", () -> new TerraItemBootsIce());
-//    public static final RegistryObject<Item> BOOTS_LAVA = ITEMS.register("boots_lava", () -> new TerraItemBootsLava());
-//    public static final RegistryObject<Item> BOOTS_LIGHTNING = ITEMS.register("boots_lightning", () -> new TerraItemBootsLightning());
-//    public static final RegistryObject<Item> BOOTS_OBSIDIAN = ITEMS.register("boots_obsidian", () -> new TerraItemBootsObsidian());
-//    public static final RegistryObject<Item> BOOTS_ROCKET = ITEMS.register("boots_rocket", () -> new TerraItemBootsRocket());
-//    public static final RegistryObject<Item> BOOTS_SAILFISH = ITEMS.register("boots_sailfish", () -> new TerraItemAccessorySpeed(0.20F));
-//    public static final RegistryObject<Item> BOOTS_SPECTRE = ITEMS.register("boots_spectre", () -> new TerraItemBootsSpectre());
-//    public static final RegistryObject<Item> BOOTS_TERRASPARK = ITEMS.register("boots_terraspark", () -> new TerraItemBootsTerraspark());
-//    public static final RegistryObject<Item> BOOTS_WATER = ITEMS.register("boots_water", () -> new TerraItemBootsWater());
-//    public static final RegistryObject<Item> BOTTLE_BLIZZARD = ITEMS.register("bottle_blizzard", () -> new TerraItemBottle());
-//    public static final RegistryObject<Item> BOTTLE_CLOUD = ITEMS.register("bottle_cloud", () -> new TerraItemBottle());
-//    public static final RegistryObject<Item> BOTTLE_FART = ITEMS.register("bottle_fart", () -> new TerraItemBottle());
-//    public static final RegistryObject<Item> BOTTLE_SANDSTORM = ITEMS.register("bottle_sandstorm", () -> new TerraItemBottle());
-//    public static final RegistryObject<Item> BOTTLE_TSUNAMI = ITEMS.register("bottle_tsunami", () -> new TerraItemBottle());
-//    public static final RegistryObject<Item> CHARM_LAVA = ITEMS.register("charm_lava", () -> new TerraItemLavaCharm());
-//    public static final RegistryObject<Item> CHARM_MOLTEN = ITEMS.register("charm_molten", () -> new TerraItemMoltenCharm());
-//    public static final RegistryObject<Item> CHARM_MYTHS = ITEMS.register("charm_myths", () -> new TerraItemCharmMyths());
-//    public static final RegistryObject<Item> CLIMBING_CLAWS = ITEMS.register("climbing_claws", () -> new TerraItemClimbingGripper());
-//    public static final RegistryObject<Item> CLIMBING_GEAR = ITEMS.register("climbing_gear", () -> new TerraItemClimbingGear());
-//    public static final RegistryObject<Item> CLIMBING_SPIKES = ITEMS.register("climbing_spikes", () -> new TerraItemClimbingGripper());
-//    public static final RegistryObject<Item> CUFFS_CELESTIAL = ITEMS.register("cuffs_celestial", () -> new TerraItemCuffsCelestial());
-//    public static final RegistryObject<Item> CUFFS_MAGIC = ITEMS.register("cuffs_magic", () -> new TerraItemCuffsMana());
-//    public static final RegistryObject<Item> EMBLEM_AVENGER = ITEMS.register("emblem_avenger", () -> new TerraItemEmblemAvenger());
-//    public static final RegistryObject<Item> EMBLEM_CELESTIAL = ITEMS.register("emblem_celestial", () -> new TerraItemEmblemCelestial());
-//    public static final RegistryObject<Item> EMBLEM_RANGER = ITEMS.register("emblem_ranger", () -> new TerraItemEmblemRanger());
-//    public static final RegistryObject<Item> EMBLEM_SORCERER = ITEMS.register("emblem_sorcerer", () -> new TerraItemEmblemSorcerer());
-//    public static final RegistryObject<Item> EMBLEM_SUMMONER = ITEMS.register("emblem_summoner", () -> new TerraItemEmblemSummoner());
-//    public static final RegistryObject<Item> EMBLEM_WARRIOR = ITEMS.register("emblem_warrior", () -> new TerraItemEmblemWarrior());
-//    public static final RegistryObject<Item> FLIPPER = ITEMS.register("flipper", () -> new TerraItemFlipper());
-//    public static final RegistryObject<Item> FLOWER_ARCANE = ITEMS.register("flower_arcane", () -> new TerraItemArcaneFlower());
-//    public static final RegistryObject<Item> FLOWER_MANA = ITEMS.register("flower_mana", () -> new TerraItemManaFlower());
-//    public static final RegistryObject<Item> FLOWER_NATURE = ITEMS.register("flower_nature", () -> new TerraItemNaturesGift());
-//    public static final RegistryObject<Item> FLYING_CARPET = ITEMS.register("flying_carpet", () -> new TerraItemFlyingCarpet());
-//    public static final RegistryObject<Item> FROG_FLIPPER = ITEMS.register("frog_flipper", () -> new TerraItemFrogFlipper());
-//    public static final RegistryObject<Item> FROG_GEAR = ITEMS.register("frog_gear", () -> new TerraItemFrogGear());
-//    public static final RegistryObject<Item> FROG_WEBBING = ITEMS.register("frog_webbing", () -> new TerraItemFrogWebbing());
+    public static final RegistryObject<Item> ANKLET_OF_WIND = ITEMS.register("anklet_wind", () -> new TerraItemAccessorySpeed(0.10F));
+    public static final RegistryObject<Item> BALLOON_BLIZZARD = ITEMS.register("balloon_blizzard", () -> new TerraItemExtraJumpBalloon());
+    public static final RegistryObject<Item> BALLOON_BUNDLE = ITEMS.register("balloon_bundle", () -> new TerraItemBalloonBundle());
+    public static final RegistryObject<Item> BALLOON_CLOUD = ITEMS.register("balloon_cloud", () -> new TerraItemExtraJumpBalloon());
+    public static final RegistryObject<Item> BALLOON_FART = ITEMS.register("balloon_fart", () -> new TerraItemExtraJumpBalloon());
+    public static final RegistryObject<Item> BALLOON_HONEY = ITEMS.register("balloon_honey", () -> new TerraItemHoneyBalloon());
+    public static final RegistryObject<Item> BALLOON_PUFFERFISH = ITEMS.register("balloon_pufferfish", () -> new TerraItemBalloon());
+    public static final RegistryObject<Item> BALLOON_RED = ITEMS.register("balloon_red", () -> new TerraItemBalloon());
+    public static final RegistryObject<Item> BALLOON_SANDSTORM = ITEMS.register("balloon_sandstorm", () -> new TerraItemExtraJumpBalloon());
+    public static final RegistryObject<Item> BALLOON_SHARK = ITEMS.register("balloon_shark", () -> new TerraItemExtraJumpBalloon());
+    public static final RegistryObject<Item> BAND_HEALTHREGEN = ITEMS.register("band_healthregen", () -> new TerraItemBandHealthRegen());
+    public static final RegistryObject<Item> BAND_MANAREGEN = ITEMS.register("band_manaregen", () -> new TerraItemBandManaRegen());
+    public static final RegistryObject<Item> BAND_STARPOWER = ITEMS.register("band_starpower", () -> new TerraItemBandStarpower());
+    public static final RegistryObject<Item> BELT_BLACK = ITEMS.register("belt_black", () -> new TerraItemBlackBelt());
+    public static final RegistryObject<Item> BOOTS_AMPHIBIAN = ITEMS.register("boots_amphibian", () -> new TerraItemBootsAmphibian());
+    public static final RegistryObject<Item> BOOTS_DUNERIDER = ITEMS.register("boots_dunerider", () -> new TerraItemBootsDunerider());
+    public static final RegistryObject<Item> BOOTS_FAIRY = ITEMS.register("boots_fairy", () -> new TerraItemBootsFairy());
+    public static final RegistryObject<Item> BOOTS_FLOWER = ITEMS.register("boots_flower", () -> new TerraItemBootsFlower());
+    public static final RegistryObject<Item> BOOTS_FLURRY = ITEMS.register("boots_flurry", () -> new TerraItemBootsSpeed(0.20F));
+    public static final RegistryObject<Item> BOOTS_FROSTSPARK = ITEMS.register("boots_frostspark", () -> new TerraItemBootsFrostspark());
+    public static final RegistryObject<Item> BOOTS_HELLFIRE = ITEMS.register("boots_hellfire", () -> new TerraItemBootsLava());
+    public static final RegistryObject<Item> BOOTS_HERMES = ITEMS.register("boots_hermes", () -> new TerraItemBootsSpeed(0.20F));
+    public static final RegistryObject<Item> BOOTS_ICE = ITEMS.register("boots_ice", () -> new TerraItemBootsIce());
+    public static final RegistryObject<Item> BOOTS_LAVA = ITEMS.register("boots_lava", () -> new TerraItemBootsLava());
+    public static final RegistryObject<Item> BOOTS_LIGHTNING = ITEMS.register("boots_lightning", () -> new TerraItemBootsLightning());
+    public static final RegistryObject<Item> BOOTS_OBSIDIAN = ITEMS.register("boots_obsidian", () -> new TerraItemBootsObsidian());
+    public static final RegistryObject<Item> BOOTS_ROCKET = ITEMS.register("boots_rocket", () -> new TerraItemBootsRocket());
+    public static final RegistryObject<Item> BOOTS_SAILFISH = ITEMS.register("boots_sailfish", () -> new TerraItemBootsSpeed(0.20F));
+    public static final RegistryObject<Item> BOOTS_SPECTRE = ITEMS.register("boots_spectre", () -> new TerraItemBootsSpectre());
+    public static final RegistryObject<Item> BOOTS_TERRASPARK = ITEMS.register("boots_terraspark", () -> new TerraItemBootsTerraspark());
+    public static final RegistryObject<Item> BOOTS_WATER = ITEMS.register("boots_water", () -> new TerraItemBootsWater());
+    public static final RegistryObject<Item> BOTTLE_BLIZZARD = ITEMS.register("bottle_blizzard", () -> new TerraItemBottle());
+    public static final RegistryObject<Item> BOTTLE_CLOUD = ITEMS.register("bottle_cloud", () -> new TerraItemBottle());
+    public static final RegistryObject<Item> BOTTLE_FART = ITEMS.register("bottle_fart", () -> new TerraItemBottle());
+    public static final RegistryObject<Item> BOTTLE_SANDSTORM = ITEMS.register("bottle_sandstorm", () -> new TerraItemBottle());
+    public static final RegistryObject<Item> BOTTLE_TSUNAMI = ITEMS.register("bottle_tsunami", () -> new TerraItemBottle());
+    public static final RegistryObject<Item> CHARM_LAVA = ITEMS.register("charm_lava", () -> new TerraItemLavaCharm());
+    public static final RegistryObject<Item> CHARM_MOLTEN = ITEMS.register("charm_molten", () -> new TerraItemMoltenCharm());
+    public static final RegistryObject<Item> CHARM_MYTHS = ITEMS.register("charm_myths", () -> new TerraItemCharmMyths());
+    public static final RegistryObject<Item> CLIMBING_CLAWS = ITEMS.register("climbing_claws", () -> new TerraItemClimbingGripper());
+    public static final RegistryObject<Item> CLIMBING_GEAR = ITEMS.register("climbing_gear", () -> new TerraItemClimbingGear());
+    public static final RegistryObject<Item> CLIMBING_SPIKES = ITEMS.register("climbing_spikes", () -> new TerraItemClimbingGripper());
+    public static final RegistryObject<Item> CUFFS_CELESTIAL = ITEMS.register("cuffs_celestial", () -> new TerraItemCuffsCelestial());
+    public static final RegistryObject<Item> CUFFS_MAGIC = ITEMS.register("cuffs_magic", () -> new TerraItemCuffsMana());
+    public static final RegistryObject<Item> EMBLEM_AVENGER = ITEMS.register("emblem_avenger", () -> new TerraItemEmblemAvenger());
+    public static final RegistryObject<Item> EMBLEM_CELESTIAL = ITEMS.register("emblem_celestial", () -> new TerraItemEmblemCelestial());
+    public static final RegistryObject<Item> EMBLEM_RANGER = ITEMS.register("emblem_ranger", () -> new TerraItemEmblemRanger());
+    public static final RegistryObject<Item> EMBLEM_SORCERER = ITEMS.register("emblem_sorcerer", () -> new TerraItemEmblemSorcerer());
+    public static final RegistryObject<Item> EMBLEM_SUMMONER = ITEMS.register("emblem_summoner", () -> new TerraItemEmblemSummoner());
+    public static final RegistryObject<Item> EMBLEM_WARRIOR = ITEMS.register("emblem_warrior", () -> new TerraItemEmblemWarrior());
+    public static final RegistryObject<Item> FLIPPER = ITEMS.register("flipper", () -> new TerraItemFlipper());
+    public static final RegistryObject<Item> FLOWER_ARCANE = ITEMS.register("flower_arcane", () -> new TerraItemArcaneFlower());
+    public static final RegistryObject<Item> FLOWER_MANA = ITEMS.register("flower_mana", () -> new TerraItemManaFlower());
+    public static final RegistryObject<Item> FLOWER_NATURE = ITEMS.register("flower_nature", () -> new TerraItemNaturesGift());
+    public static final RegistryObject<Item> FLYING_CARPET = ITEMS.register("flying_carpet", () -> new TerraItemFlyingCarpet());
+    public static final RegistryObject<Item> FROG_FLIPPER = ITEMS.register("frog_flipper", () -> new TerraItemFrogFlipper());
+    public static final RegistryObject<Item> FROG_GEAR = ITEMS.register("frog_gear", () -> new TerraItemFrogGear());
+    public static final RegistryObject<Item> FROG_WEBBING = ITEMS.register("frog_webbing", () -> new TerraItemFrogWebbing());
 //    public static final RegistryObject<Item> GEAR_DIVING = ITEMS.register("gear_diving", () -> new TerraItemDivingGear());
 //    public static final RegistryObject<Item> GEAR_DIVING_ARCTIC = ITEMS.register("gear_diving_arctic", () -> new TerraItemDivingGearArctic());
 //    public static final RegistryObject<Item> GEAR_DIVING_JELLYFISH = ITEMS.register("gear_diving_jellyfish", () -> new TerraItemDivingGearJellyfish());
@@ -184,24 +184,23 @@ public class TerraItemRegistry
 //    public static final RegistryObject<Item> STONE_PHILOSOPHER = ITEMS.register("stone_philosopher", () -> new TerraItemPhilosophersStone());
 //    public static final RegistryObject<Item> STONE_SUN = ITEMS.register("stone_sun", () -> new TerraItemSunStone());
 //    public static final RegistryObject<Item> STONE_MOON = ITEMS.register("stone_moon", () -> new TerraItemMoonStone());
-//
-//    public static final RegistryObject<Item> VITAMINS = ITEMS.register("vitamins", () -> new TerraItemVitamins());
-//    public static final RegistryObject<Item> BANDAGE = ITEMS.register("bandage", () -> new TerraItemBandage());
-//    public static final RegistryObject<Item> NAZAR = ITEMS.register("nazar", () -> new TerraItemNazar());
-//    public static final RegistryObject<Item> TRIFOLD_MAP = ITEMS.register("trifold_map", () -> new TerraItemTrifoldMap());
-//    public static final RegistryObject<Item> ARMOR_POLISH = ITEMS.register("armor_polish", () -> new TerraItemArmorPolish());
-//    public static final RegistryObject<Item> BEZOAR = ITEMS.register("bezoar", () -> new TerraItemBezoar());
-//    public static final RegistryObject<Item> MEGAPHONE = ITEMS.register("megaphone", () -> new TerraItemMegaphone());
-//    public static final RegistryObject<Item> FAST_CLOCK = ITEMS.register("fast_clock", () -> new TerraItemFastClock());
-//    public static final RegistryObject<Item> BLINDFOLD = ITEMS.register("blindfold", () -> new TerraItemBlindfold());
-//    public static final RegistryObject<Item> ARMOR_BRACING = ITEMS.register("armor_bracing", () -> new TerraItemArmorBracing());
-//    public static final RegistryObject<Item> MEDICATED_BANDAGE = ITEMS.register("medicated_bandage", () -> new TerraItemMedicatedBandage());
-//    public static final RegistryObject<Item> COUNTERCURSE_MANTRA = ITEMS.register("countercurse_mantra", () -> new TerraItemCountercurseMantra());
-//    public static final RegistryObject<Item> THE_PLAN = ITEMS.register("the_plan", () -> new TerraItemPlan());
-//    public static final RegistryObject<Item> ANKH_CHARM = ITEMS.register("ankh_charm", () -> new TerraItemAnkhCharm());
-//
-//
-//    //Pickaxes
+
+    public static final RegistryObject<Item> VITAMINS = ITEMS.register("vitamins", () -> new TerraItemAccessory());
+    public static final RegistryObject<Item> BANDAGE = ITEMS.register("bandage", () -> new TerraItemAccessory());
+    public static final RegistryObject<Item> NAZAR = ITEMS.register("nazar", () -> new TerraItemAccessory());
+    public static final RegistryObject<Item> TRIFOLD_MAP = ITEMS.register("trifold_map", () -> new TerraItemAccessory());
+    public static final RegistryObject<Item> ARMOR_POLISH = ITEMS.register("armor_polish", () -> new TerraItemAccessory());
+    public static final RegistryObject<Item> BEZOAR = ITEMS.register("bezoar", () -> new TerraItemAccessory());
+    public static final RegistryObject<Item> MEGAPHONE = ITEMS.register("megaphone", () -> new TerraItemAccessory());
+    public static final RegistryObject<Item> FAST_CLOCK = ITEMS.register("fast_clock", () -> new TerraItemAccessory());
+    public static final RegistryObject<Item> BLINDFOLD = ITEMS.register("blindfold", () -> new TerraItemAccessory());
+    public static final RegistryObject<Item> ARMOR_BRACING = ITEMS.register("armor_bracing", () -> new TerraItemAccessory());
+    public static final RegistryObject<Item> MEDICATED_BANDAGE = ITEMS.register("medicated_bandage", () -> new TerraItemAccessory());
+    public static final RegistryObject<Item> COUNTERCURSE_MANTRA = ITEMS.register("countercurse_mantra", () -> new TerraItemAccessory());
+    public static final RegistryObject<Item> THE_PLAN = ITEMS.register("the_plan", () -> new TerraItemAccessory());
+    public static final RegistryObject<Item> ANKH_CHARM = ITEMS.register("ankh_charm", () -> new TerraItemAccessory());
+
+    //Pickaxes
 //    public static final RegistryObject<Item> PICKAXE_CACTUS = ITEMS.register("pickaxe_cactus", () -> new PickaxeItem(MaterialHandler.CACTUS, 1, -2.8F, new Item.Properties().tab(TerraReforged.TERRA_TOOLS_TAB)));
 //    public static final RegistryObject<Item> PICKAXE_COPPER = ITEMS.register("pickaxe_copper", () -> new PickaxeItem(MaterialHandler.COPPER, 1, -2.8F, new Item.Properties().tab(TerraReforged.TERRA_TOOLS_TAB)));
 //    public static final RegistryObject<Item> PICKAXE_TIN = ITEMS.register("pickaxe_tin", () -> new PickaxeItem(MaterialHandler.TIN, 1, -2.8F, new Item.Properties().tab(TerraReforged.TERRA_TOOLS_TAB)));

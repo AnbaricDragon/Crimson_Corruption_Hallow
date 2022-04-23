@@ -3,7 +3,10 @@
     "package": "com.anbaric.terra_reforged.util.mixins",
     "compatibilityLevel": "JAVA_17",
     "refmap": "terra_reforged.refmap.json",
-    "mixins": [
+    "mixins":
+    [
+        "TerraBlockBehaviourMixin",
+        "TerraLivingEntityMixin"
     ],
     "injectors": {
         "defaultRequire": 1

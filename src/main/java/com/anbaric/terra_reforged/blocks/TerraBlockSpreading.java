@@ -81,7 +81,7 @@ public class TerraBlockSpreading extends Block
         Block result = target;
         for (EnumBiomeBlockType block : EnumBiomeBlockType.values())
         {
-            if (block.pure == target)
+            if (block.pure.contains(target))
             {
                 result = block.getBiomeBlock(type);
             }
@@ -94,7 +94,7 @@ public class TerraBlockSpreading extends Block
         boolean check = false;
         for (EnumBiomeBlockType block : EnumBiomeBlockType.values())
         {
-            if (block.pure == target)
+            if (block.pure.contains(target))
             {
                 check = true;
             }

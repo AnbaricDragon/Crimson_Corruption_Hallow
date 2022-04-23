@@ -3,6 +3,32 @@
 
   "terra_reforged.key.grappling_hook": "Grappling Hook",
 
+  "tooltip.terra_reforged.extra_mana": "+20 Maximum Mana",
+  "tooltip.terra_reforged.ice_control": "Gives Ice Control",
+  "tooltip.terra_reforged.extra_jump_1": "+1 Extra Jump",
+  "tooltip.terra_reforged.extra_jump_3": "+3 Extra Jumps",
+  "tooltip.terra_reforged.rocket_flight": "Gives Rocket Boost",
+  "tooltip.terra_reforged.extra_speed_20": "+20% Speed",
+  "tooltip.terra_reforged.extra_speed_40": "+40% Speed",
+  "tooltip.terra_reforged.extra_speed_50": "+50% Speed",
+  "tooltip.terra_reforged.jump_height_50": "+50% Jump Height",
+  "tooltip.terra_reforged.jump_height_150": "+150% Jump Height",
+  "tooltip.terra_reforged.dodge_chance_50": "+50% Dodge Chance",
+  "tooltip.terra_reforged.entity_spawn_bee": "Spawns Bees When Hit",
+  "tooltip.terra_reforged.regen_mana_small": "Slightly Increases Mana Regen",
+  "tooltip.terra_reforged.less_fall_distance": "+3 Block Fall Safety",
+  "tooltip.terra_reforged.regen_health_small": "Slightly Increases Health Regen",
+  "tooltip.terra_reforged.block_spawn_flowers": "Spawns Flowers On Grass",
+
+  "tooltip.terra_reforged.condition_sand": " While On Sand",
+
+  "attribute.name.terra_reforged.max_mana": "Maximum Mana",
+  "attribute.name.terra_reforged.mana_discount": "Mana Discount",
+  "attribute.name.terra_reforged.magic_damage": "Magic Damage",
+  "attribute.name.terra_reforged.ranged_damage": "Ranged Damage",
+  "attribute.name.terra_reforged.minion_damage": "Minion Damage",
+  "attribute.name.terra_reforged.crit_chance": "Crit Chance",
+
   "biome.terra_reforged.mud_jungle": "Mud Jungle",
   "biome.terra_reforged.snow_pure": "Icy Tundra",
   "biome.terra_reforged.desert_pure": "Sandstone Desert",

@@ -1,0 +1,8 @@
+{
+    "replace": false,
+    "values": [
+        "terra_reforged:boots_ice",
+        "terra_reforged:boots_frostspark",
+        "terra_reforged:boots_terraspark"
+    ]
+}

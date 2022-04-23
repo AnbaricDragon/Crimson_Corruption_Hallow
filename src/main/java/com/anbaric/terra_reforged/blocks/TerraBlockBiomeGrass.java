@@ -169,7 +169,7 @@ public class TerraBlockBiomeGrass extends SpreadingSnowyDirtBlock implements Bon
         Block result = target;
         for (SpreadingHandler.EnumBiomeBlockType block : SpreadingHandler.EnumBiomeBlockType.values())
         {
-            if (block.pure == target)
+            if (block.pure.contains(target))
             {
                 result = block.getBiomeBlock(type);
             }
@@ -182,7 +182,7 @@ public class TerraBlockBiomeGrass extends SpreadingSnowyDirtBlock implements Bon
         boolean check = false;
         for (SpreadingHandler.EnumBiomeBlockType block : SpreadingHandler.EnumBiomeBlockType.values())
         {
-            if (block.pure == target)
+            if (block.pure.contains(target))
             {
                 check = true;
             }

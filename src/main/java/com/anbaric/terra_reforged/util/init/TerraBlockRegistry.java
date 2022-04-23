@@ -5,8 +5,11 @@ import com.anbaric.terra_reforged.blocks.*;
 import com.anbaric.terra_reforged.blocks.potionplants.*;
 import com.anbaric.terra_reforged.util.Reference;
 import net.minecraft.core.particles.ParticleTypes;
+import net.minecraft.util.valueproviders.UniformInt;
 import net.minecraft.world.level.block.*;
 import net.minecraft.world.level.block.state.BlockBehaviour;
+import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 import net.minecraft.world.level.material.Material;
 import net.minecraft.world.level.material.MaterialColor;
 import net.minecraftforge.common.PlantType;
@@ -14,6 +17,8 @@ import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
 import com.anbaric.terra_reforged.util.handlers.SpreadingHandler.EnumBiomeType;
+
+import java.util.function.ToIntFunction;
 
 public class TerraBlockRegistry
 {
@@ -486,132 +491,131 @@ public class TerraBlockRegistry
     public static final RegistryObject<Block> TEMPLE_BRICK_CRACKED = BLOCKS.register("temple_brick_cracked", () -> new Block(BlockBehaviour.Properties.of(Material.STONE).sound(SoundType.STONE).strength(25.0F)));
 
     //Ores
-    public static final RegistryObject<Block> ORE_COPPER_PURE = BLOCKS.register("ore_copper", () -> new TerraBlockOre(BlockBehaviour.Properties.of(Material.STONE).strength(3.0F)));
     public static final RegistryObject<Block> ORE_COPPER_CORRUPT = BLOCKS.register("ore_copper_corrupt", () -> new TerraBlockOre(BlockBehaviour.Properties.of(Material.STONE).strength(3.0F)));
     public static final RegistryObject<Block> ORE_COPPER_CRIMSON = BLOCKS.register("ore_copper_crimson", () -> new TerraBlockOre(BlockBehaviour.Properties.of(Material.STONE).strength(3.0F)));
     public static final RegistryObject<Block> ORE_COPPER_HALLOWED = BLOCKS.register("ore_copper_hallowed", () -> new TerraBlockOre(BlockBehaviour.Properties.of(Material.STONE).strength(3.0F)));
-    public static final RegistryObject<Block> ORE_COPPER_JUNGLE = BLOCKS.register("ore_copper_jungle", () -> new TerraBlockOre(BlockBehaviour.Properties.of(Material.STONE).sound(SoundType.GRAVEL).strength(3.0F)));
-//    public static final RegistryObject<Block> ORE_TIN_PURE = BLOCKS.register("ore_tin", () -> new TerraBlockOre(BlockBehaviour.Properties.of(Material.STONE).strength(3.0F)));
-//    public static final RegistryObject<Block> ORE_TIN_CORRUPT = BLOCKS.register("ore_tin_corrupt", () -> new TerraBlockOre(BlockBehaviour.Properties.of(Material.STONE).strength(3.0F)));
-//    public static final RegistryObject<Block> ORE_TIN_CRIMSON = BLOCKS.register("ore_tin_crimson", () -> new TerraBlockOre(BlockBehaviour.Properties.of(Material.STONE).strength(3.0F)));
-//    public static final RegistryObject<Block> ORE_TIN_HALLOWED = BLOCKS.register("ore_tin_hallowed", () -> new TerraBlockOre(BlockBehaviour.Properties.of(Material.STONE).strength(3.0F)));
-//    public static final RegistryObject<Block> ORE_TIN_JUNGLE = BLOCKS.register("ore_tin_jungle", () -> new TerraBlockOre(BlockBehaviour.Properties.of(Material.STONE).sound(SoundType.GRAVEL).strength(3.0F)));
-//    public static final RegistryObject<Block> ORE_LEAD_PURE = BLOCKS.register("ore_lead", () -> new TerraBlockOre(BlockBehaviour.Properties.of(Material.STONE).strength(3.0F)));
-//    public static final RegistryObject<Block> ORE_LEAD_CORRUPT = BLOCKS.register("ore_lead_corrupt", () -> new TerraBlockOre(BlockBehaviour.Properties.of(Material.STONE).strength(3.0F)));
-//    public static final RegistryObject<Block> ORE_LEAD_CRIMSON = BLOCKS.register("ore_lead_crimson", () -> new TerraBlockOre(BlockBehaviour.Properties.of(Material.STONE).strength(3.0F)));
-//    public static final RegistryObject<Block> ORE_LEAD_HALLOWED = BLOCKS.register("ore_lead_hallowed", () -> new TerraBlockOre(BlockBehaviour.Properties.of(Material.STONE).strength(3.0F)));
-//    public static final RegistryObject<Block> ORE_LEAD_JUNGLE = BLOCKS.register("ore_lead_jungle", () -> new TerraBlockOre(BlockBehaviour.Properties.of(Material.STONE).sound(SoundType.GRAVEL).strength(3.0F)));
-//    public static final RegistryObject<Block> ORE_IRON_CORRUPT = BLOCKS.register("ore_iron_corrupt", () -> new TerraBlockOre(BlockBehaviour.Properties.of(Material.STONE).strength(3.0F)));
-//    public static final RegistryObject<Block> ORE_IRON_CRIMSON = BLOCKS.register("ore_iron_crimson", () -> new TerraBlockOre(BlockBehaviour.Properties.of(Material.STONE).strength(3.0F)));
-//    public static final RegistryObject<Block> ORE_IRON_HALLOWED = BLOCKS.register("ore_iron_hallowed", () -> new TerraBlockOre(BlockBehaviour.Properties.of(Material.STONE).strength(3.0F)));
-//    public static final RegistryObject<Block> ORE_IRON_JUNGLE = BLOCKS.register("ore_iron_jungle", () -> new TerraBlockOre(BlockBehaviour.Properties.of(Material.STONE).sound(SoundType.GRAVEL).strength(3.0F)));
-//    public static final RegistryObject<Block> ORE_SILVER_PURE = BLOCKS.register("ore_silver", () -> new TerraBlockOre(BlockBehaviour.Properties.of(Material.STONE).strength(3.5F)));
-//    public static final RegistryObject<Block> ORE_SILVER_CORRUPT = BLOCKS.register("ore_silver_corrupt", () -> new TerraBlockOre(BlockBehaviour.Properties.of(Material.STONE).strength(3.5F)));
-//    public static final RegistryObject<Block> ORE_SILVER_CRIMSON = BLOCKS.register("ore_silver_crimson", () -> new TerraBlockOre(BlockBehaviour.Properties.of(Material.STONE).strength(3.5F)));
-//    public static final RegistryObject<Block> ORE_SILVER_HALLOWED = BLOCKS.register("ore_silver_hallowed", () -> new TerraBlockOre(BlockBehaviour.Properties.of(Material.STONE).strength(3.5F)));
-//    public static final RegistryObject<Block> ORE_SILVER_JUNGLE = BLOCKS.register("ore_silver_jungle", () -> new TerraBlockOre(BlockBehaviour.Properties.of(Material.STONE).sound(SoundType.GRAVEL).strength(3.5F)));
-//    public static final RegistryObject<Block> ORE_TUNGSTEN_PURE = BLOCKS.register("ore_tungsten", () -> new TerraBlockOre(BlockBehaviour.Properties.of(Material.STONE).strength(3.5F)));
-//    public static final RegistryObject<Block> ORE_TUNGSTEN_CORRUPT = BLOCKS.register("ore_tungsten_corrupt", () -> new TerraBlockOre(BlockBehaviour.Properties.of(Material.STONE).strength(3.5F)));
-//    public static final RegistryObject<Block> ORE_TUNGSTEN_CRIMSON = BLOCKS.register("ore_tungsten_crimson", () -> new TerraBlockOre(BlockBehaviour.Properties.of(Material.STONE).strength(3.5F)));
-//    public static final RegistryObject<Block> ORE_TUNGSTEN_HALLOWED = BLOCKS.register("ore_tungsten_hallowed", () -> new TerraBlockOre(BlockBehaviour.Properties.of(Material.STONE).strength(3.5F)));
-//    public static final RegistryObject<Block> ORE_TUNGSTEN_JUNGLE = BLOCKS.register("ore_tungsten_jungle", () -> new TerraBlockOre(BlockBehaviour.Properties.of(Material.STONE).sound(SoundType.GRAVEL).strength(3.5F)));
-//    public static final RegistryObject<Block> ORE_GOLD_CORRUPT = BLOCKS.register("ore_gold_corrupt", () -> new TerraBlockOre(BlockBehaviour.Properties.of(Material.STONE).strength(3.5F)));
-//    public static final RegistryObject<Block> ORE_GOLD_CRIMSON = BLOCKS.register("ore_gold_crimson", () -> new TerraBlockOre(BlockBehaviour.Properties.of(Material.STONE).strength(3.5F)));
-//    public static final RegistryObject<Block> ORE_GOLD_HALLOWED = BLOCKS.register("ore_gold_hallowed", () -> new TerraBlockOre(BlockBehaviour.Properties.of(Material.STONE).strength(3.5F)));
-//    public static final RegistryObject<Block> ORE_GOLD_JUNGLE = BLOCKS.register("ore_gold_jungle", () -> new TerraBlockOre(BlockBehaviour.Properties.of(Material.STONE).sound(SoundType.GRAVEL).strength(3.5F)));
-//    public static final RegistryObject<Block> ORE_PLATINUM_PURE = BLOCKS.register("ore_platinum", () -> new TerraBlockOre(BlockBehaviour.Properties.of(Material.STONE).strength(3.5F)));
-//    public static final RegistryObject<Block> ORE_PLATINUM_CORRUPT = BLOCKS.register("ore_platinum_corrupt", () -> new TerraBlockOre(BlockBehaviour.Properties.of(Material.STONE).strength(3.5F)));
-//    public static final RegistryObject<Block> ORE_PLATINUM_CRIMSON = BLOCKS.register("ore_platinum_crimson", () -> new TerraBlockOre(BlockBehaviour.Properties.of(Material.STONE).strength(3.5F)));
-//    public static final RegistryObject<Block> ORE_PLATINUM_HALLOWED = BLOCKS.register("ore_platinum_hallowed", () -> new TerraBlockOre(BlockBehaviour.Properties.of(Material.STONE).strength(3.5F)));
-//    public static final RegistryObject<Block> ORE_PLATINUM_JUNGLE = BLOCKS.register("ore_platinum_jungle", () -> new TerraBlockOre(BlockBehaviour.Properties.of(Material.STONE).sound(SoundType.GRAVEL).strength(3.5F)));
-//    public static final RegistryObject<Block> ORE_METEORITE = BLOCKS.register("ore_meteorite", () -> new Block(BlockBehaviour.Properties.of(Material.STONE).strength(3.5F)));
-//    public static final RegistryObject<Block> ORE_DEMONITE_PURE = BLOCKS.register("ore_demonite", () -> new TerraBlockOre(BlockBehaviour.Properties.of(Material.STONE).strength(10.0F)));
-//    public static final RegistryObject<Block> ORE_DEMONITE_CORRUPT = BLOCKS.register("ore_demonite_corrupt", () -> new TerraBlockOre(BlockBehaviour.Properties.of(Material.STONE).strength(10.0F)));
-//    public static final RegistryObject<Block> ORE_DEMONITE_CRIMSON = BLOCKS.register("ore_demonite_crimson", () -> new TerraBlockOre(BlockBehaviour.Properties.of(Material.STONE).strength(10.0F)));
-//    public static final RegistryObject<Block> ORE_DEMONITE_HALLOWED = BLOCKS.register("ore_demonite_hallowed", () -> new TerraBlockOre(BlockBehaviour.Properties.of(Material.STONE).strength(10.0F)));
-//    public static final RegistryObject<Block> ORE_DEMONITE_JUNGLE = BLOCKS.register("ore_demonite_jungle", () -> new TerraBlockOre(BlockBehaviour.Properties.of(Material.STONE).sound(SoundType.GRAVEL).strength(10.0F)));
-//    public static final RegistryObject<Block> ORE_CRIMTANE_PURE = BLOCKS.register("ore_crimtane", () -> new TerraBlockOre(BlockBehaviour.Properties.of(Material.STONE).strength(10.0F)));
-//    public static final RegistryObject<Block> ORE_CRIMTANE_CORRUPT = BLOCKS.register("ore_crimtane_corrupt", () -> new TerraBlockOre(BlockBehaviour.Properties.of(Material.STONE).strength(10.0F)));
-//    public static final RegistryObject<Block> ORE_CRIMTANE_CRIMSON = BLOCKS.register("ore_crimtane_crimson", () -> new TerraBlockOre(BlockBehaviour.Properties.of(Material.STONE).strength(10.0F)));
-//    public static final RegistryObject<Block> ORE_CRIMTANE_HALLOWED = BLOCKS.register("ore_crimtane_hallowed", () -> new TerraBlockOre(BlockBehaviour.Properties.of(Material.STONE).strength(10.0F)));
-//    public static final RegistryObject<Block> ORE_CRIMTANE_JUNGLE = BLOCKS.register("ore_crimtane_jungle", () -> new TerraBlockOre(BlockBehaviour.Properties.of(Material.STONE).sound(SoundType.GRAVEL).strength(10.0F)));
-//    public static final RegistryObject<Block> ORE_HELLSTONE = BLOCKS.register("ore_hellstone", () -> new Block(BlockBehaviour.Properties.of(Material.STONE).sound(SoundType.GRAVEL).strength(20.0F)));
-//    public static final RegistryObject<Block> ORE_COBALT_PURE = BLOCKS.register("ore_cobalt", () -> new TerraBlockOre(BlockBehaviour.Properties.of(Material.STONE).strength(20.0F)));
-//    public static final RegistryObject<Block> ORE_COBALT_CORRUPT = BLOCKS.register("ore_cobalt_corrupt", () -> new TerraBlockOre(BlockBehaviour.Properties.of(Material.STONE).strength(20.0F)));
-//    public static final RegistryObject<Block> ORE_COBALT_CRIMSON = BLOCKS.register("ore_cobalt_crimson", () -> new TerraBlockOre(BlockBehaviour.Properties.of(Material.STONE).strength(20.0F)));
-//    public static final RegistryObject<Block> ORE_COBALT_HALLOWED = BLOCKS.register("ore_cobalt_hallowed", () -> new TerraBlockOre(BlockBehaviour.Properties.of(Material.STONE).strength(20.0F)));
-//    public static final RegistryObject<Block> ORE_COBALT_JUNGLE = BLOCKS.register("ore_cobalt_jungle", () -> new TerraBlockOre(BlockBehaviour.Properties.of(Material.STONE).sound(SoundType.GRAVEL).strength(20.0F)));
-//    public static final RegistryObject<Block> ORE_PALLADIUM_PURE = BLOCKS.register("ore_palladium", () -> new TerraBlockOre(BlockBehaviour.Properties.of(Material.STONE).strength(20.0F)));
-//    public static final RegistryObject<Block> ORE_PALLADIUM_CORRUPT = BLOCKS.register("ore_palladium_corrupt", () -> new TerraBlockOre(BlockBehaviour.Properties.of(Material.STONE).strength(20.0F)));
-//    public static final RegistryObject<Block> ORE_PALLADIUM_CRIMSON = BLOCKS.register("ore_palladium_crimson", () -> new TerraBlockOre(BlockBehaviour.Properties.of(Material.STONE).strength(20.0F)));
-//    public static final RegistryObject<Block> ORE_PALLADIUM_HALLOWED = BLOCKS.register("ore_palladium_hallowed", () -> new TerraBlockOre(BlockBehaviour.Properties.of(Material.STONE).strength(20.0F)));
-//    public static final RegistryObject<Block> ORE_PALLADIUM_JUNGLE = BLOCKS.register("ore_palladium_jungle", () -> new TerraBlockOre(BlockBehaviour.Properties.of(Material.STONE).sound(SoundType.GRAVEL).strength(20.0F)));
-//    public static final RegistryObject<Block> ORE_MYTHRIL_PURE = BLOCKS.register("ore_mythril", () -> new TerraBlockOre(BlockBehaviour.Properties.of(Material.STONE).strength(20.0F)));
-//    public static final RegistryObject<Block> ORE_MYTHRIL_CORRUPT = BLOCKS.register("ore_mythril_corrupt", () -> new TerraBlockOre(BlockBehaviour.Properties.of(Material.STONE).strength(20.0F)));
-//    public static final RegistryObject<Block> ORE_MYTHRIL_CRIMSON = BLOCKS.register("ore_mythril_crimson", () -> new TerraBlockOre(BlockBehaviour.Properties.of(Material.STONE).strength(20.0F)));
-//    public static final RegistryObject<Block> ORE_MYTHRIL_HALLOWED = BLOCKS.register("ore_mythril_hallowed", () -> new TerraBlockOre(BlockBehaviour.Properties.of(Material.STONE).strength(20.0F)));
-//    public static final RegistryObject<Block> ORE_MYTHRIL_JUNGLE = BLOCKS.register("ore_mythril_jungle", () -> new TerraBlockOre(BlockBehaviour.Properties.of(Material.STONE).sound(SoundType.GRAVEL).strength(20.0F)));
-//    public static final RegistryObject<Block> ORE_ORICHALCUM_PURE = BLOCKS.register("ore_orichalcum", () -> new TerraBlockOre(BlockBehaviour.Properties.of(Material.STONE).strength(20.0F)));
-//    public static final RegistryObject<Block> ORE_ORICHALCUM_CORRUPT = BLOCKS.register("ore_orichalcum_corrupt", () -> new TerraBlockOre(BlockBehaviour.Properties.of(Material.STONE).strength(20.0F)));
-//    public static final RegistryObject<Block> ORE_ORICHALCUM_CRIMSON = BLOCKS.register("ore_orichalcum_crimson", () -> new TerraBlockOre(BlockBehaviour.Properties.of(Material.STONE).strength(20.0F)));
-//    public static final RegistryObject<Block> ORE_ORICHALCUM_HALLOWED = BLOCKS.register("ore_orichalcum_hallowed", () -> new TerraBlockOre(BlockBehaviour.Properties.of(Material.STONE).strength(20.0F)));
-//    public static final RegistryObject<Block> ORE_ORICHALCUM_JUNGLE = BLOCKS.register("ore_orichalcum_jungle", () -> new TerraBlockOre(BlockBehaviour.Properties.of(Material.STONE).sound(SoundType.GRAVEL).strength(20.0F)));
-//    public static final RegistryObject<Block> ORE_ADAMANTITE_PURE = BLOCKS.register("ore_adamantite", () -> new TerraBlockOre(BlockBehaviour.Properties.of(Material.STONE).strength(20.0F)));
-//    public static final RegistryObject<Block> ORE_ADAMANTITE_CORRUPT = BLOCKS.register("ore_adamantite_corrupt", () -> new TerraBlockOre(BlockBehaviour.Properties.of(Material.STONE).strength(20.0F)));
-//    public static final RegistryObject<Block> ORE_ADAMANTITE_CRIMSON = BLOCKS.register("ore_adamantite_crimson", () -> new TerraBlockOre(BlockBehaviour.Properties.of(Material.STONE).strength(20.0F)));
-//    public static final RegistryObject<Block> ORE_ADAMANTITE_HALLOWED = BLOCKS.register("ore_adamantite_hallowed", () -> new TerraBlockOre(BlockBehaviour.Properties.of(Material.STONE).strength(20.0F)));
-//    public static final RegistryObject<Block> ORE_ADAMANTITE_JUNGLE = BLOCKS.register("ore_adamantite_jungle", () -> new TerraBlockOre(BlockBehaviour.Properties.of(Material.STONE).sound(SoundType.GRAVEL).strength(20.0F)));
-//    public static final RegistryObject<Block> ORE_TITANIUM_PURE = BLOCKS.register("ore_titanium", () -> new TerraBlockOre(BlockBehaviour.Properties.of(Material.STONE).strength(20.0F)));
-//    public static final RegistryObject<Block> ORE_TITANIUM_CORRUPT = BLOCKS.register("ore_titanium_corrupt", () -> new TerraBlockOre(BlockBehaviour.Properties.of(Material.STONE).strength(20.0F)));
-//    public static final RegistryObject<Block> ORE_TITANIUM_CRIMSON = BLOCKS.register("ore_titanium_crimson", () -> new TerraBlockOre(BlockBehaviour.Properties.of(Material.STONE).strength(20.0F)));
-//    public static final RegistryObject<Block> ORE_TITANIUM_HALLOWED = BLOCKS.register("ore_titanium_hallowed", () -> new TerraBlockOre(BlockBehaviour.Properties.of(Material.STONE).strength(20.0F)));
-//    public static final RegistryObject<Block> ORE_TITANIUM_JUNGLE = BLOCKS.register("ore_titanium_jungle", () -> new TerraBlockOre(BlockBehaviour.Properties.of(Material.STONE).sound(SoundType.GRAVEL).strength(20.0F)));
-//    public static final RegistryObject<Block> ORE_CHLOROPHYTE = BLOCKS.register("ore_chlorophyte", () -> new TerraBlockChlorophyteOre(BlockBehaviour.Properties.of(Material.STONE).sound(SoundType.GRAVEL).strength(30.0F).randomTicks()));
-//    public static final RegistryObject<Block> ORE_COAL_CORRUPT = BLOCKS.register("ore_coal_corrupt", () -> new TerraBlockOre(BlockBehaviour.Properties.of(Material.STONE).strength(3.0F)));
-//    public static final RegistryObject<Block> ORE_COAL_CRIMSON = BLOCKS.register("ore_coal_crimson", () -> new TerraBlockOre(BlockBehaviour.Properties.of(Material.STONE).strength(3.0F)));
-//    public static final RegistryObject<Block> ORE_COAL_HALLOWED = BLOCKS.register("ore_coal_hallowed", () -> new TerraBlockOre(BlockBehaviour.Properties.of(Material.STONE).strength(3.0F)));
-//    public static final RegistryObject<Block> ORE_COAL_JUNGLE = BLOCKS.register("ore_coal_jungle", () -> new TerraBlockOre(BlockBehaviour.Properties.of(Material.STONE).sound(SoundType.GRAVEL).strength(3.0F)));
-//    public static final RegistryObject<Block> ORE_LAPIS_CORRUPT = BLOCKS.register("ore_lapis_corrupt", () -> new TerraBlockOre(BlockBehaviour.Properties.of(Material.STONE).strength(3.0F)));
-//    public static final RegistryObject<Block> ORE_LAPIS_CRIMSON = BLOCKS.register("ore_lapis_crimson", () -> new TerraBlockOre(BlockBehaviour.Properties.of(Material.STONE).strength(3.0F)));
-//    public static final RegistryObject<Block> ORE_LAPIS_HALLOWED = BLOCKS.register("ore_lapis_hallowed", () -> new TerraBlockOre(BlockBehaviour.Properties.of(Material.STONE).strength(3.0F)));
-//    public static final RegistryObject<Block> ORE_LAPIS_JUNGLE = BLOCKS.register("ore_lapis_jungle", () -> new TerraBlockOre(BlockBehaviour.Properties.of(Material.STONE).sound(SoundType.GRAVEL).strength(3.0F)));
-//    public static final RegistryObject<Block> ORE_REDSTONE_CORRUPT = BLOCKS.register("ore_redstone_corrupt", () -> new TerraBlockOre(BlockBehaviour.Properties.of(Material.STONE).strength(3.0F)));
-//    public static final RegistryObject<Block> ORE_REDSTONE_CRIMSON = BLOCKS.register("ore_redstone_crimson", () -> new TerraBlockOre(BlockBehaviour.Properties.of(Material.STONE).strength(3.0F)));
-//    public static final RegistryObject<Block> ORE_REDSTONE_HALLOWED = BLOCKS.register("ore_redstone_hallowed", () -> new TerraBlockOre(BlockBehaviour.Properties.of(Material.STONE).strength(3.0F)));
-//    public static final RegistryObject<Block> ORE_REDSTONE_JUNGLE = BLOCKS.register("ore_redstone_jungle", () -> new TerraBlockOre(BlockBehaviour.Properties.of(Material.STONE).sound(SoundType.GRAVEL).strength(3.0F)));
-//    public static final RegistryObject<Block> ORE_AMBER_PURE = BLOCKS.register("ore_amber", () -> new TerraBlockOre(BlockBehaviour.Properties.of(Material.STONE).strength(3.0F)));
-//    public static final RegistryObject<Block> ORE_AMBER_CORRUPT = BLOCKS.register("ore_amber_corrupt", () -> new TerraBlockOre(BlockBehaviour.Properties.of(Material.STONE).strength(3.0F)));
-//    public static final RegistryObject<Block> ORE_AMBER_CRIMSON = BLOCKS.register("ore_amber_crimson", () -> new TerraBlockOre(BlockBehaviour.Properties.of(Material.STONE).strength(3.0F)));
-//    public static final RegistryObject<Block> ORE_AMBER_HALLOWED = BLOCKS.register("ore_amber_hallowed", () -> new TerraBlockOre(BlockBehaviour.Properties.of(Material.STONE).strength(3.0F)));
-//    public static final RegistryObject<Block> ORE_AMBER_JUNGLE = BLOCKS.register("ore_amber_jungle", () -> new TerraBlockOre(BlockBehaviour.Properties.of(Material.STONE).sound(SoundType.GRAVEL).strength(3.0F)));
-//    public static final RegistryObject<Block> ORE_AMETHYST_PURE = BLOCKS.register("ore_amethyst", () -> new TerraBlockOre(BlockBehaviour.Properties.of(Material.STONE).strength(3.0F)));
-//    public static final RegistryObject<Block> ORE_AMETHYST_CORRUPT = BLOCKS.register("ore_amethyst_corrupt", () -> new TerraBlockOre(BlockBehaviour.Properties.of(Material.STONE).strength(3.0F)));
-//    public static final RegistryObject<Block> ORE_AMETHYST_CRIMSON = BLOCKS.register("ore_amethyst_crimson", () -> new TerraBlockOre(BlockBehaviour.Properties.of(Material.STONE).strength(3.0F)));
-//    public static final RegistryObject<Block> ORE_AMETHYST_HALLOWED = BLOCKS.register("ore_amethyst_hallowed", () -> new TerraBlockOre(BlockBehaviour.Properties.of(Material.STONE).strength(3.0F)));
-//    public static final RegistryObject<Block> ORE_AMETHYST_JUNGLE = BLOCKS.register("ore_amethyst_jungle", () -> new TerraBlockOre(BlockBehaviour.Properties.of(Material.STONE).sound(SoundType.GRAVEL).strength(3.0F)));
-//    public static final RegistryObject<Block> ORE_TOPAZ_PURE = BLOCKS.register("ore_topaz", () -> new TerraBlockOre(BlockBehaviour.Properties.of(Material.STONE).strength(3.0F)));
-//    public static final RegistryObject<Block> ORE_TOPAZ_CORRUPT = BLOCKS.register("ore_topaz_corrupt", () -> new TerraBlockOre(BlockBehaviour.Properties.of(Material.STONE).strength(3.0F)));
-//    public static final RegistryObject<Block> ORE_TOPAZ_CRIMSON = BLOCKS.register("ore_topaz_crimson", () -> new TerraBlockOre(BlockBehaviour.Properties.of(Material.STONE).strength(3.0F)));
-//    public static final RegistryObject<Block> ORE_TOPAZ_HALLOWED = BLOCKS.register("ore_topaz_hallowed", () -> new TerraBlockOre(BlockBehaviour.Properties.of(Material.STONE).strength(3.0F)));
-//    public static final RegistryObject<Block> ORE_TOPAZ_JUNGLE = BLOCKS.register("ore_topaz_jungle", () -> new TerraBlockOre(BlockBehaviour.Properties.of(Material.STONE).sound(SoundType.GRAVEL).strength(3.0F)));
-//    public static final RegistryObject<Block> ORE_SAPPHIRE_PURE = BLOCKS.register("ore_sapphire", () -> new TerraBlockOre(BlockBehaviour.Properties.of(Material.STONE).strength(3.0F)));
-//    public static final RegistryObject<Block> ORE_SAPPHIRE_CORRUPT = BLOCKS.register("ore_sapphire_corrupt", () -> new TerraBlockOre(BlockBehaviour.Properties.of(Material.STONE).strength(3.0F)));
-//    public static final RegistryObject<Block> ORE_SAPPHIRE_CRIMSON = BLOCKS.register("ore_sapphire_crimson", () -> new TerraBlockOre(BlockBehaviour.Properties.of(Material.STONE).strength(3.0F)));
-//    public static final RegistryObject<Block> ORE_SAPPHIRE_HALLOWED = BLOCKS.register("ore_sapphire_hallowed", () -> new TerraBlockOre(BlockBehaviour.Properties.of(Material.STONE).strength(3.0F)));
-//    public static final RegistryObject<Block> ORE_SAPPHIRE_JUNGLE = BLOCKS.register("ore_sapphire_jungle", () -> new TerraBlockOre(BlockBehaviour.Properties.of(Material.STONE).sound(SoundType.GRAVEL).strength(3.0F)));
-//    public static final RegistryObject<Block> ORE_RUBY_PURE = BLOCKS.register("ore_ruby", () -> new TerraBlockOre(BlockBehaviour.Properties.of(Material.STONE).strength(3.0F)));
-//    public static final RegistryObject<Block> ORE_RUBY_CORRUPT = BLOCKS.register("ore_ruby_corrupt", () -> new TerraBlockOre(BlockBehaviour.Properties.of(Material.STONE).strength(3.0F)));
-//    public static final RegistryObject<Block> ORE_RUBY_CRIMSON = BLOCKS.register("ore_ruby_crimson", () -> new TerraBlockOre(BlockBehaviour.Properties.of(Material.STONE).strength(3.0F)));
-//    public static final RegistryObject<Block> ORE_RUBY_HALLOWED = BLOCKS.register("ore_ruby_hallowed", () -> new TerraBlockOre(BlockBehaviour.Properties.of(Material.STONE).strength(3.0F)));
-//    public static final RegistryObject<Block> ORE_RUBY_JUNGLE = BLOCKS.register("ore_ruby_jungle", () -> new TerraBlockOre(BlockBehaviour.Properties.of(Material.STONE).sound(SoundType.GRAVEL).strength(3.0F)));
-//    public static final RegistryObject<Block> ORE_EMERALD_CORRUPT = BLOCKS.register("ore_emerald_corrupt", () -> new TerraBlockOre(BlockBehaviour.Properties.of(Material.STONE).strength(3.0F)));
-//    public static final RegistryObject<Block> ORE_EMERALD_CRIMSON = BLOCKS.register("ore_emerald_crimson", () -> new TerraBlockOre(BlockBehaviour.Properties.of(Material.STONE).strength(3.0F)));
-//    public static final RegistryObject<Block> ORE_EMERALD_HALLOWED = BLOCKS.register("ore_emerald_hallowed", () -> new TerraBlockOre(BlockBehaviour.Properties.of(Material.STONE).strength(3.0F)));
-//    public static final RegistryObject<Block> ORE_EMERALD_JUNGLE = BLOCKS.register("ore_emerald_jungle", () -> new TerraBlockOre(BlockBehaviour.Properties.of(Material.STONE).sound(SoundType.GRAVEL).strength(3.0F)));
-//    public static final RegistryObject<Block> ORE_DIAMOND_CORRUPT = BLOCKS.register("ore_diamond_corrupt", () -> new TerraBlockOre(BlockBehaviour.Properties.of(Material.STONE).strength(3.0F)));
-//    public static final RegistryObject<Block> ORE_DIAMOND_CRIMSON = BLOCKS.register("ore_diamond_crimson", () -> new TerraBlockOre(BlockBehaviour.Properties.of(Material.STONE).strength(3.0F)));
-//    public static final RegistryObject<Block> ORE_DIAMOND_HALLOWED = BLOCKS.register("ore_diamond_hallowed", () -> new TerraBlockOre(BlockBehaviour.Properties.of(Material.STONE).strength(3.0F)));
-//    public static final RegistryObject<Block> ORE_DIAMOND_JUNGLE = BLOCKS.register("ore_diamond_jungle", () -> new TerraBlockOre(BlockBehaviour.Properties.of(Material.STONE).sound(SoundType.GRAVEL).strength(3.0F)));
+    public static final RegistryObject<Block> ORE_COPPER_JUNGLE = BLOCKS.register("ore_copper_jungle", () -> new TerraBlockOre(BlockBehaviour.Properties.of(Material.DIRT).sound(SoundType.GRAVEL).strength(3.0F)));
+    public static final RegistryObject<Block> ORE_TIN_PURE = BLOCKS.register("ore_tin", () -> new TerraBlockOre(BlockBehaviour.Properties.of(Material.STONE).strength(3.0F)));
+    public static final RegistryObject<Block> ORE_TIN_CORRUPT = BLOCKS.register("ore_tin_corrupt", () -> new TerraBlockOre(BlockBehaviour.Properties.of(Material.STONE).strength(3.0F)));
+    public static final RegistryObject<Block> ORE_TIN_CRIMSON = BLOCKS.register("ore_tin_crimson", () -> new TerraBlockOre(BlockBehaviour.Properties.of(Material.STONE).strength(3.0F)));
+    public static final RegistryObject<Block> ORE_TIN_HALLOWED = BLOCKS.register("ore_tin_hallowed", () -> new TerraBlockOre(BlockBehaviour.Properties.of(Material.STONE).strength(3.0F)));
+    public static final RegistryObject<Block> ORE_TIN_JUNGLE = BLOCKS.register("ore_tin_jungle", () -> new TerraBlockOre(BlockBehaviour.Properties.of(Material.DIRT).sound(SoundType.GRAVEL).strength(3.0F)));
+    public static final RegistryObject<Block> ORE_LEAD_PURE = BLOCKS.register("ore_lead", () -> new TerraBlockOre(BlockBehaviour.Properties.of(Material.STONE).strength(3.0F)));
+    public static final RegistryObject<Block> ORE_LEAD_CORRUPT = BLOCKS.register("ore_lead_corrupt", () -> new TerraBlockOre(BlockBehaviour.Properties.of(Material.STONE).strength(3.0F)));
+    public static final RegistryObject<Block> ORE_LEAD_CRIMSON = BLOCKS.register("ore_lead_crimson", () -> new TerraBlockOre(BlockBehaviour.Properties.of(Material.STONE).strength(3.0F)));
+    public static final RegistryObject<Block> ORE_LEAD_HALLOWED = BLOCKS.register("ore_lead_hallowed", () -> new TerraBlockOre(BlockBehaviour.Properties.of(Material.STONE).strength(3.0F)));
+    public static final RegistryObject<Block> ORE_LEAD_JUNGLE = BLOCKS.register("ore_lead_jungle", () -> new TerraBlockOre(BlockBehaviour.Properties.of(Material.DIRT).sound(SoundType.GRAVEL).strength(3.0F)));
+    public static final RegistryObject<Block> ORE_IRON_CORRUPT = BLOCKS.register("ore_iron_corrupt", () -> new TerraBlockOre(BlockBehaviour.Properties.of(Material.STONE).strength(3.0F)));
+    public static final RegistryObject<Block> ORE_IRON_CRIMSON = BLOCKS.register("ore_iron_crimson", () -> new TerraBlockOre(BlockBehaviour.Properties.of(Material.STONE).strength(3.0F)));
+    public static final RegistryObject<Block> ORE_IRON_HALLOWED = BLOCKS.register("ore_iron_hallowed", () -> new TerraBlockOre(BlockBehaviour.Properties.of(Material.STONE).strength(3.0F)));
+    public static final RegistryObject<Block> ORE_IRON_JUNGLE = BLOCKS.register("ore_iron_jungle", () -> new TerraBlockOre(BlockBehaviour.Properties.of(Material.DIRT).sound(SoundType.GRAVEL).strength(3.0F)));
+    public static final RegistryObject<Block> ORE_SILVER_PURE = BLOCKS.register("ore_silver", () -> new TerraBlockOre(BlockBehaviour.Properties.of(Material.STONE).strength(3.5F)));
+    public static final RegistryObject<Block> ORE_SILVER_CORRUPT = BLOCKS.register("ore_silver_corrupt", () -> new TerraBlockOre(BlockBehaviour.Properties.of(Material.STONE).strength(3.5F)));
+    public static final RegistryObject<Block> ORE_SILVER_CRIMSON = BLOCKS.register("ore_silver_crimson", () -> new TerraBlockOre(BlockBehaviour.Properties.of(Material.STONE).strength(3.5F)));
+    public static final RegistryObject<Block> ORE_SILVER_HALLOWED = BLOCKS.register("ore_silver_hallowed", () -> new TerraBlockOre(BlockBehaviour.Properties.of(Material.STONE).strength(3.5F)));
+    public static final RegistryObject<Block> ORE_SILVER_JUNGLE = BLOCKS.register("ore_silver_jungle", () -> new TerraBlockOre(BlockBehaviour.Properties.of(Material.DIRT).sound(SoundType.GRAVEL).strength(3.5F)));
+    public static final RegistryObject<Block> ORE_TUNGSTEN_PURE = BLOCKS.register("ore_tungsten", () -> new TerraBlockOre(BlockBehaviour.Properties.of(Material.STONE).strength(3.5F)));
+    public static final RegistryObject<Block> ORE_TUNGSTEN_CORRUPT = BLOCKS.register("ore_tungsten_corrupt", () -> new TerraBlockOre(BlockBehaviour.Properties.of(Material.STONE).strength(3.5F)));
+    public static final RegistryObject<Block> ORE_TUNGSTEN_CRIMSON = BLOCKS.register("ore_tungsten_crimson", () -> new TerraBlockOre(BlockBehaviour.Properties.of(Material.STONE).strength(3.5F)));
+    public static final RegistryObject<Block> ORE_TUNGSTEN_HALLOWED = BLOCKS.register("ore_tungsten_hallowed", () -> new TerraBlockOre(BlockBehaviour.Properties.of(Material.STONE).strength(3.5F)));
+    public static final RegistryObject<Block> ORE_TUNGSTEN_JUNGLE = BLOCKS.register("ore_tungsten_jungle", () -> new TerraBlockOre(BlockBehaviour.Properties.of(Material.DIRT).sound(SoundType.GRAVEL).strength(3.5F)));
+    public static final RegistryObject<Block> ORE_GOLD_CORRUPT = BLOCKS.register("ore_gold_corrupt", () -> new TerraBlockOre(BlockBehaviour.Properties.of(Material.STONE).strength(3.5F)));
+    public static final RegistryObject<Block> ORE_GOLD_CRIMSON = BLOCKS.register("ore_gold_crimson", () -> new TerraBlockOre(BlockBehaviour.Properties.of(Material.STONE).strength(3.5F)));
+    public static final RegistryObject<Block> ORE_GOLD_HALLOWED = BLOCKS.register("ore_gold_hallowed", () -> new TerraBlockOre(BlockBehaviour.Properties.of(Material.STONE).strength(3.5F)));
+    public static final RegistryObject<Block> ORE_GOLD_JUNGLE = BLOCKS.register("ore_gold_jungle", () -> new TerraBlockOre(BlockBehaviour.Properties.of(Material.DIRT).sound(SoundType.GRAVEL).strength(3.5F)));
+    public static final RegistryObject<Block> ORE_PLATINUM_PURE = BLOCKS.register("ore_platinum", () -> new TerraBlockOre(BlockBehaviour.Properties.of(Material.STONE).strength(3.5F)));
+    public static final RegistryObject<Block> ORE_PLATINUM_CORRUPT = BLOCKS.register("ore_platinum_corrupt", () -> new TerraBlockOre(BlockBehaviour.Properties.of(Material.STONE).strength(3.5F)));
+    public static final RegistryObject<Block> ORE_PLATINUM_CRIMSON = BLOCKS.register("ore_platinum_crimson", () -> new TerraBlockOre(BlockBehaviour.Properties.of(Material.STONE).strength(3.5F)));
+    public static final RegistryObject<Block> ORE_PLATINUM_HALLOWED = BLOCKS.register("ore_platinum_hallowed", () -> new TerraBlockOre(BlockBehaviour.Properties.of(Material.STONE).strength(3.5F)));
+    public static final RegistryObject<Block> ORE_PLATINUM_JUNGLE = BLOCKS.register("ore_platinum_jungle", () -> new TerraBlockOre(BlockBehaviour.Properties.of(Material.DIRT).sound(SoundType.GRAVEL).strength(3.5F)));
+    public static final RegistryObject<Block> ORE_METEORITE = BLOCKS.register("ore_meteorite", () -> new TerraBlockBurningOre(BlockBehaviour.Properties.of(Material.STONE).strength(3.5F), 2.0F));
+    public static final RegistryObject<Block> ORE_DEMONITE_PURE = BLOCKS.register("ore_demonite", () -> new TerraBlockOre(BlockBehaviour.Properties.of(Material.STONE).strength(10.0F)));
+    public static final RegistryObject<Block> ORE_DEMONITE_CORRUPT = BLOCKS.register("ore_demonite_corrupt", () -> new TerraBlockOre(BlockBehaviour.Properties.of(Material.STONE).strength(10.0F)));
+    public static final RegistryObject<Block> ORE_DEMONITE_CRIMSON = BLOCKS.register("ore_demonite_crimson", () -> new TerraBlockOre(BlockBehaviour.Properties.of(Material.STONE).strength(10.0F)));
+    public static final RegistryObject<Block> ORE_DEMONITE_HALLOWED = BLOCKS.register("ore_demonite_hallowed", () -> new TerraBlockOre(BlockBehaviour.Properties.of(Material.STONE).strength(10.0F)));
+    public static final RegistryObject<Block> ORE_DEMONITE_JUNGLE = BLOCKS.register("ore_demonite_jungle", () -> new TerraBlockOre(BlockBehaviour.Properties.of(Material.DIRT).sound(SoundType.GRAVEL).strength(10.0F)));
+    public static final RegistryObject<Block> ORE_CRIMTANE_PURE = BLOCKS.register("ore_crimtane", () -> new TerraBlockOre(BlockBehaviour.Properties.of(Material.STONE).strength(10.0F)));
+    public static final RegistryObject<Block> ORE_CRIMTANE_CORRUPT = BLOCKS.register("ore_crimtane_corrupt", () -> new TerraBlockOre(BlockBehaviour.Properties.of(Material.STONE).strength(10.0F)));
+    public static final RegistryObject<Block> ORE_CRIMTANE_CRIMSON = BLOCKS.register("ore_crimtane_crimson", () -> new TerraBlockOre(BlockBehaviour.Properties.of(Material.STONE).strength(10.0F)));
+    public static final RegistryObject<Block> ORE_CRIMTANE_HALLOWED = BLOCKS.register("ore_crimtane_hallowed", () -> new TerraBlockOre(BlockBehaviour.Properties.of(Material.STONE).strength(10.0F)));
+    public static final RegistryObject<Block> ORE_CRIMTANE_JUNGLE = BLOCKS.register("ore_crimtane_jungle", () -> new TerraBlockOre(BlockBehaviour.Properties.of(Material.DIRT).sound(SoundType.GRAVEL).strength(10.0F)));
+    public static final RegistryObject<Block> ORE_HELLSTONE = BLOCKS.register("ore_hellstone", () -> new TerraBlockBurningOre(BlockBehaviour.Properties.of(Material.DIRT).sound(SoundType.GRAVEL).strength(20.0F), 4.0F));
+    public static final RegistryObject<Block> ORE_COBALT_PURE = BLOCKS.register("ore_cobalt", () -> new TerraBlockOre(BlockBehaviour.Properties.of(Material.STONE).strength(20.0F)));
+    public static final RegistryObject<Block> ORE_COBALT_CORRUPT = BLOCKS.register("ore_cobalt_corrupt", () -> new TerraBlockOre(BlockBehaviour.Properties.of(Material.STONE).strength(20.0F)));
+    public static final RegistryObject<Block> ORE_COBALT_CRIMSON = BLOCKS.register("ore_cobalt_crimson", () -> new TerraBlockOre(BlockBehaviour.Properties.of(Material.STONE).strength(20.0F)));
+    public static final RegistryObject<Block> ORE_COBALT_HALLOWED = BLOCKS.register("ore_cobalt_hallowed", () -> new TerraBlockOre(BlockBehaviour.Properties.of(Material.STONE).strength(20.0F)));
+    public static final RegistryObject<Block> ORE_COBALT_JUNGLE = BLOCKS.register("ore_cobalt_jungle", () -> new TerraBlockOre(BlockBehaviour.Properties.of(Material.DIRT).sound(SoundType.GRAVEL).strength(20.0F)));
+    public static final RegistryObject<Block> ORE_PALLADIUM_PURE = BLOCKS.register("ore_palladium", () -> new TerraBlockOre(BlockBehaviour.Properties.of(Material.STONE).strength(20.0F)));
+    public static final RegistryObject<Block> ORE_PALLADIUM_CORRUPT = BLOCKS.register("ore_palladium_corrupt", () -> new TerraBlockOre(BlockBehaviour.Properties.of(Material.STONE).strength(20.0F)));
+    public static final RegistryObject<Block> ORE_PALLADIUM_CRIMSON = BLOCKS.register("ore_palladium_crimson", () -> new TerraBlockOre(BlockBehaviour.Properties.of(Material.STONE).strength(20.0F)));
+    public static final RegistryObject<Block> ORE_PALLADIUM_HALLOWED = BLOCKS.register("ore_palladium_hallowed", () -> new TerraBlockOre(BlockBehaviour.Properties.of(Material.STONE).strength(20.0F)));
+    public static final RegistryObject<Block> ORE_PALLADIUM_JUNGLE = BLOCKS.register("ore_palladium_jungle", () -> new TerraBlockOre(BlockBehaviour.Properties.of(Material.DIRT).sound(SoundType.GRAVEL).strength(20.0F)));
+    public static final RegistryObject<Block> ORE_MYTHRIL_PURE = BLOCKS.register("ore_mythril", () -> new TerraBlockOre(BlockBehaviour.Properties.of(Material.STONE).strength(20.0F)));
+    public static final RegistryObject<Block> ORE_MYTHRIL_CORRUPT = BLOCKS.register("ore_mythril_corrupt", () -> new TerraBlockOre(BlockBehaviour.Properties.of(Material.STONE).strength(20.0F)));
+    public static final RegistryObject<Block> ORE_MYTHRIL_CRIMSON = BLOCKS.register("ore_mythril_crimson", () -> new TerraBlockOre(BlockBehaviour.Properties.of(Material.STONE).strength(20.0F)));
+    public static final RegistryObject<Block> ORE_MYTHRIL_HALLOWED = BLOCKS.register("ore_mythril_hallowed", () -> new TerraBlockOre(BlockBehaviour.Properties.of(Material.STONE).strength(20.0F)));
+    public static final RegistryObject<Block> ORE_MYTHRIL_JUNGLE = BLOCKS.register("ore_mythril_jungle", () -> new TerraBlockOre(BlockBehaviour.Properties.of(Material.DIRT).sound(SoundType.GRAVEL).strength(20.0F)));
+    public static final RegistryObject<Block> ORE_ORICHALCUM_PURE = BLOCKS.register("ore_orichalcum", () -> new TerraBlockOre(BlockBehaviour.Properties.of(Material.STONE).strength(20.0F)));
+    public static final RegistryObject<Block> ORE_ORICHALCUM_CORRUPT = BLOCKS.register("ore_orichalcum_corrupt", () -> new TerraBlockOre(BlockBehaviour.Properties.of(Material.STONE).strength(20.0F)));
+    public static final RegistryObject<Block> ORE_ORICHALCUM_CRIMSON = BLOCKS.register("ore_orichalcum_crimson", () -> new TerraBlockOre(BlockBehaviour.Properties.of(Material.STONE).strength(20.0F)));
+    public static final RegistryObject<Block> ORE_ORICHALCUM_HALLOWED = BLOCKS.register("ore_orichalcum_hallowed", () -> new TerraBlockOre(BlockBehaviour.Properties.of(Material.STONE).strength(20.0F)));
+    public static final RegistryObject<Block> ORE_ORICHALCUM_JUNGLE = BLOCKS.register("ore_orichalcum_jungle", () -> new TerraBlockOre(BlockBehaviour.Properties.of(Material.DIRT).sound(SoundType.GRAVEL).strength(20.0F)));
+    public static final RegistryObject<Block> ORE_ADAMANTITE_PURE = BLOCKS.register("ore_adamantite", () -> new TerraBlockOre(BlockBehaviour.Properties.of(Material.STONE).strength(20.0F)));
+    public static final RegistryObject<Block> ORE_ADAMANTITE_CORRUPT = BLOCKS.register("ore_adamantite_corrupt", () -> new TerraBlockOre(BlockBehaviour.Properties.of(Material.STONE).strength(20.0F)));
+    public static final RegistryObject<Block> ORE_ADAMANTITE_CRIMSON = BLOCKS.register("ore_adamantite_crimson", () -> new TerraBlockOre(BlockBehaviour.Properties.of(Material.STONE).strength(20.0F)));
+    public static final RegistryObject<Block> ORE_ADAMANTITE_HALLOWED = BLOCKS.register("ore_adamantite_hallowed", () -> new TerraBlockOre(BlockBehaviour.Properties.of(Material.STONE).strength(20.0F)));
+    public static final RegistryObject<Block> ORE_ADAMANTITE_JUNGLE = BLOCKS.register("ore_adamantite_jungle", () -> new TerraBlockOre(BlockBehaviour.Properties.of(Material.DIRT).sound(SoundType.GRAVEL).strength(20.0F)));
+    public static final RegistryObject<Block> ORE_TITANIUM_PURE = BLOCKS.register("ore_titanium", () -> new TerraBlockOre(BlockBehaviour.Properties.of(Material.STONE).strength(20.0F)));
+    public static final RegistryObject<Block> ORE_TITANIUM_CORRUPT = BLOCKS.register("ore_titanium_corrupt", () -> new TerraBlockOre(BlockBehaviour.Properties.of(Material.STONE).strength(20.0F)));
+    public static final RegistryObject<Block> ORE_TITANIUM_CRIMSON = BLOCKS.register("ore_titanium_crimson", () -> new TerraBlockOre(BlockBehaviour.Properties.of(Material.STONE).strength(20.0F)));
+    public static final RegistryObject<Block> ORE_TITANIUM_HALLOWED = BLOCKS.register("ore_titanium_hallowed", () -> new TerraBlockOre(BlockBehaviour.Properties.of(Material.STONE).strength(20.0F)));
+    public static final RegistryObject<Block> ORE_TITANIUM_JUNGLE = BLOCKS.register("ore_titanium_jungle", () -> new TerraBlockOre(BlockBehaviour.Properties.of(Material.DIRT).sound(SoundType.GRAVEL).strength(20.0F)));
+    public static final RegistryObject<Block> ORE_CHLOROPHYTE = BLOCKS.register("ore_chlorophyte", () -> new TerraBlockChlorophyteOre(BlockBehaviour.Properties.of(Material.DIRT).sound(SoundType.GRAVEL).strength(30.0F).randomTicks()));
+    public static final RegistryObject<Block> ORE_COAL_CORRUPT = BLOCKS.register("ore_coal_corrupt", () -> new TerraBlockOre(BlockBehaviour.Properties.of(Material.STONE).strength(3.0F), UniformInt.of(0, 2)));
+    public static final RegistryObject<Block> ORE_COAL_CRIMSON = BLOCKS.register("ore_coal_crimson", () -> new TerraBlockOre(BlockBehaviour.Properties.of(Material.STONE).strength(3.0F), UniformInt.of(0, 2)));
+    public static final RegistryObject<Block> ORE_COAL_HALLOWED = BLOCKS.register("ore_coal_hallowed", () -> new TerraBlockOre(BlockBehaviour.Properties.of(Material.STONE).strength(3.0F), UniformInt.of(0, 2)));
+    public static final RegistryObject<Block> ORE_COAL_JUNGLE = BLOCKS.register("ore_coal_jungle", () -> new TerraBlockOre(BlockBehaviour.Properties.of(Material.DIRT).sound(SoundType.GRAVEL).strength(3.0F), UniformInt.of(0, 2)));
+    public static final RegistryObject<Block> ORE_LAPIS_CORRUPT = BLOCKS.register("ore_lapis_corrupt", () -> new TerraBlockOre(BlockBehaviour.Properties.of(Material.STONE).strength(3.0F), UniformInt.of(2, 5)));
+    public static final RegistryObject<Block> ORE_LAPIS_CRIMSON = BLOCKS.register("ore_lapis_crimson", () -> new TerraBlockOre(BlockBehaviour.Properties.of(Material.STONE).strength(3.0F), UniformInt.of(2, 5)));
+    public static final RegistryObject<Block> ORE_LAPIS_HALLOWED = BLOCKS.register("ore_lapis_hallowed", () -> new TerraBlockOre(BlockBehaviour.Properties.of(Material.STONE).strength(3.0F), UniformInt.of(2, 5)));
+    public static final RegistryObject<Block> ORE_LAPIS_JUNGLE = BLOCKS.register("ore_lapis_jungle", () -> new TerraBlockOre(BlockBehaviour.Properties.of(Material.DIRT).sound(SoundType.GRAVEL).strength(3.0F), UniformInt.of(2, 5)));
+    public static final RegistryObject<Block> ORE_REDSTONE_CORRUPT = BLOCKS.register("ore_redstone_corrupt", () -> new RedStoneOreBlock(BlockBehaviour.Properties.of(Material.STONE).requiresCorrectToolForDrops().randomTicks().lightLevel(litBlockEmission(9)).strength(3.0F)));
+    public static final RegistryObject<Block> ORE_REDSTONE_CRIMSON = BLOCKS.register("ore_redstone_crimson", () -> new RedStoneOreBlock(BlockBehaviour.Properties.of(Material.STONE).requiresCorrectToolForDrops().randomTicks().lightLevel(litBlockEmission(9)).strength(3.0F)));
+    public static final RegistryObject<Block> ORE_REDSTONE_HALLOWED = BLOCKS.register("ore_redstone_hallowed", () -> new RedStoneOreBlock(BlockBehaviour.Properties.of(Material.STONE).requiresCorrectToolForDrops().randomTicks().lightLevel(litBlockEmission(9)).strength(3.0F)));
+    public static final RegistryObject<Block> ORE_REDSTONE_JUNGLE = BLOCKS.register("ore_redstone_jungle", () -> new RedStoneOreBlock(BlockBehaviour.Properties.of(Material.DIRT).sound(SoundType.GRAVEL).requiresCorrectToolForDrops().randomTicks().lightLevel(litBlockEmission(9)).strength(3.0F)));
+    public static final RegistryObject<Block> ORE_AMBER_PURE = BLOCKS.register("ore_amber", () -> new TerraBlockOre(BlockBehaviour.Properties.of(Material.STONE).strength(3.0F), UniformInt.of(3, 7)));
+    public static final RegistryObject<Block> ORE_AMBER_CORRUPT = BLOCKS.register("ore_amber_corrupt", () -> new TerraBlockOre(BlockBehaviour.Properties.of(Material.STONE).strength(3.0F), UniformInt.of(3, 7)));
+    public static final RegistryObject<Block> ORE_AMBER_CRIMSON = BLOCKS.register("ore_amber_crimson", () -> new TerraBlockOre(BlockBehaviour.Properties.of(Material.STONE).strength(3.0F), UniformInt.of(3, 7)));
+    public static final RegistryObject<Block> ORE_AMBER_HALLOWED = BLOCKS.register("ore_amber_hallowed", () -> new TerraBlockOre(BlockBehaviour.Properties.of(Material.STONE).strength(3.0F), UniformInt.of(3, 7)));
+    public static final RegistryObject<Block> ORE_AMBER_JUNGLE = BLOCKS.register("ore_amber_jungle", () -> new TerraBlockOre(BlockBehaviour.Properties.of(Material.DIRT).sound(SoundType.GRAVEL).strength(3.0F)));
+    public static final RegistryObject<Block> ORE_AMETHYST_PURE = BLOCKS.register("ore_amethyst", () -> new TerraBlockOre(BlockBehaviour.Properties.of(Material.STONE).strength(3.0F), UniformInt.of(3, 7)));
+    public static final RegistryObject<Block> ORE_AMETHYST_CORRUPT = BLOCKS.register("ore_amethyst_corrupt", () -> new TerraBlockOre(BlockBehaviour.Properties.of(Material.STONE).strength(3.0F), UniformInt.of(3, 7)));
+    public static final RegistryObject<Block> ORE_AMETHYST_CRIMSON = BLOCKS.register("ore_amethyst_crimson", () -> new TerraBlockOre(BlockBehaviour.Properties.of(Material.STONE).strength(3.0F), UniformInt.of(3, 7)));
+    public static final RegistryObject<Block> ORE_AMETHYST_HALLOWED = BLOCKS.register("ore_amethyst_hallowed", () -> new TerraBlockOre(BlockBehaviour.Properties.of(Material.STONE).strength(3.0F), UniformInt.of(3, 7)));
+    public static final RegistryObject<Block> ORE_AMETHYST_JUNGLE = BLOCKS.register("ore_amethyst_jungle", () -> new TerraBlockOre(BlockBehaviour.Properties.of(Material.DIRT).sound(SoundType.GRAVEL).strength(3.0F)));
+    public static final RegistryObject<Block> ORE_TOPAZ_PURE = BLOCKS.register("ore_topaz", () -> new TerraBlockOre(BlockBehaviour.Properties.of(Material.STONE).strength(3.0F), UniformInt.of(3, 7)));
+    public static final RegistryObject<Block> ORE_TOPAZ_CORRUPT = BLOCKS.register("ore_topaz_corrupt", () -> new TerraBlockOre(BlockBehaviour.Properties.of(Material.STONE).strength(3.0F), UniformInt.of(3, 7)));
+    public static final RegistryObject<Block> ORE_TOPAZ_CRIMSON = BLOCKS.register("ore_topaz_crimson", () -> new TerraBlockOre(BlockBehaviour.Properties.of(Material.STONE).strength(3.0F), UniformInt.of(3, 7)));
+    public static final RegistryObject<Block> ORE_TOPAZ_HALLOWED = BLOCKS.register("ore_topaz_hallowed", () -> new TerraBlockOre(BlockBehaviour.Properties.of(Material.STONE).strength(3.0F), UniformInt.of(3, 7)));
+    public static final RegistryObject<Block> ORE_TOPAZ_JUNGLE = BLOCKS.register("ore_topaz_jungle", () -> new TerraBlockOre(BlockBehaviour.Properties.of(Material.DIRT).sound(SoundType.GRAVEL).strength(3.0F)));
+    public static final RegistryObject<Block> ORE_SAPPHIRE_PURE = BLOCKS.register("ore_sapphire", () -> new TerraBlockOre(BlockBehaviour.Properties.of(Material.STONE).strength(3.0F), UniformInt.of(3, 7)));
+    public static final RegistryObject<Block> ORE_SAPPHIRE_CORRUPT = BLOCKS.register("ore_sapphire_corrupt", () -> new TerraBlockOre(BlockBehaviour.Properties.of(Material.STONE).strength(3.0F), UniformInt.of(3, 7)));
+    public static final RegistryObject<Block> ORE_SAPPHIRE_CRIMSON = BLOCKS.register("ore_sapphire_crimson", () -> new TerraBlockOre(BlockBehaviour.Properties.of(Material.STONE).strength(3.0F), UniformInt.of(3, 7)));
+    public static final RegistryObject<Block> ORE_SAPPHIRE_HALLOWED = BLOCKS.register("ore_sapphire_hallowed", () -> new TerraBlockOre(BlockBehaviour.Properties.of(Material.STONE).strength(3.0F), UniformInt.of(3, 7)));
+    public static final RegistryObject<Block> ORE_SAPPHIRE_JUNGLE = BLOCKS.register("ore_sapphire_jungle", () -> new TerraBlockOre(BlockBehaviour.Properties.of(Material.DIRT).sound(SoundType.GRAVEL).strength(3.0F)));
+    public static final RegistryObject<Block> ORE_RUBY_PURE = BLOCKS.register("ore_ruby", () -> new TerraBlockOre(BlockBehaviour.Properties.of(Material.STONE).strength(3.0F), UniformInt.of(3, 7)));
+    public static final RegistryObject<Block> ORE_RUBY_CORRUPT = BLOCKS.register("ore_ruby_corrupt", () -> new TerraBlockOre(BlockBehaviour.Properties.of(Material.STONE).strength(3.0F), UniformInt.of(3, 7)));
+    public static final RegistryObject<Block> ORE_RUBY_CRIMSON = BLOCKS.register("ore_ruby_crimson", () -> new TerraBlockOre(BlockBehaviour.Properties.of(Material.STONE).strength(3.0F), UniformInt.of(3, 7)));
+    public static final RegistryObject<Block> ORE_RUBY_HALLOWED = BLOCKS.register("ore_ruby_hallowed", () -> new TerraBlockOre(BlockBehaviour.Properties.of(Material.STONE).strength(3.0F), UniformInt.of(3, 7)));
+    public static final RegistryObject<Block> ORE_RUBY_JUNGLE = BLOCKS.register("ore_ruby_jungle", () -> new TerraBlockOre(BlockBehaviour.Properties.of(Material.DIRT).sound(SoundType.GRAVEL).strength(3.0F)));
+    public static final RegistryObject<Block> ORE_EMERALD_CORRUPT = BLOCKS.register("ore_emerald_corrupt", () -> new TerraBlockOre(BlockBehaviour.Properties.of(Material.STONE).strength(3.0F), UniformInt.of(3, 7)));
+    public static final RegistryObject<Block> ORE_EMERALD_CRIMSON = BLOCKS.register("ore_emerald_crimson", () -> new TerraBlockOre(BlockBehaviour.Properties.of(Material.STONE).strength(3.0F), UniformInt.of(3, 7)));
+    public static final RegistryObject<Block> ORE_EMERALD_HALLOWED = BLOCKS.register("ore_emerald_hallowed", () -> new TerraBlockOre(BlockBehaviour.Properties.of(Material.STONE).strength(3.0F), UniformInt.of(3, 7)));
+    public static final RegistryObject<Block> ORE_EMERALD_JUNGLE = BLOCKS.register("ore_emerald_jungle", () -> new TerraBlockOre(BlockBehaviour.Properties.of(Material.DIRT).sound(SoundType.GRAVEL).strength(3.0F)));
+    public static final RegistryObject<Block> ORE_DIAMOND_CORRUPT = BLOCKS.register("ore_diamond_corrupt", () -> new TerraBlockOre(BlockBehaviour.Properties.of(Material.STONE).strength(3.0F), UniformInt.of(3, 7)));
+    public static final RegistryObject<Block> ORE_DIAMOND_CRIMSON = BLOCKS.register("ore_diamond_crimson", () -> new TerraBlockOre(BlockBehaviour.Properties.of(Material.STONE).strength(3.0F), UniformInt.of(3, 7)));
+    public static final RegistryObject<Block> ORE_DIAMOND_HALLOWED = BLOCKS.register("ore_diamond_hallowed", () -> new TerraBlockOre(BlockBehaviour.Properties.of(Material.STONE).strength(3.0F), UniformInt.of(3, 7)));
+    public static final RegistryObject<Block> ORE_DIAMOND_JUNGLE = BLOCKS.register("ore_diamond_jungle", () -> new TerraBlockOre(BlockBehaviour.Properties.of(Material.DIRT).sound(SoundType.GRAVEL).strength(3.0F), UniformInt.of(3, 7)));
 
     //Misc
     //    public static final RegistryObject<Block> MISC_CLOUD = null;
@@ -644,50 +648,11 @@ public class TerraBlockRegistry
     //    public static final RegistryObject<Block> TRAP_SPIKE = null;
     //    public static final RegistryObject<Block> TRAP_SUPERSPIKE = null;
     //    public static final RegistryObject<Block> TRAP_GEYSER = null;
+
+
+    private static ToIntFunction<BlockState> litBlockEmission(int p_50760_) {
+        return (p_50763_) -> {
+            return p_50763_.getValue(BlockStateProperties.LIT) ? p_50760_ : 0;
+        };
+    }
 }
-
-/*TODO
-
-1: All blockstates moved to
-
-{
-  "multipart":
-	[
-    { "when": { "up": "true" }, "apply": { "model": "terra_reforged:block/wall_<name_here>_post" }},
-		{ "when": { "north": "low" }, "apply": { "model": "terra_reforged:block/wall_<name_here>_side", "uvlock": true }},
-    { "when": { "east": "low" }, "apply": { "model": "terra_reforged:block/wall_<name_here>_side", "y": 90, "uvlock": true }},
-    { "when": { "south": "low" }, "apply": { "model": "terra_reforged:block/wall_<name_here>_side", "y": 180, "uvlock": true }},
-    { "when": { "west": "low" }, "apply": { "model": "terra_reforged:block/wall_<name_here>_side", "y": 270, "uvlock": true }},
-    { "when": { "north": "tall" }, "apply": { "model": "terra_reforged:block/wall_<name_here>_side_up", "uvlock": true }},
-    { "when": { "east": "tall" }, "apply": { "model": "terra_reforged:block/wall_<name_here>_side_up", "y": 90, "uvlock": true }},
-    { "when": { "south": "tall" }, "apply": { "model": "terra_reforged:block/wall_<name_here>_side_up", "y": 180, "uvlock": true }},
-    { "when": { "west": "tall" }, "apply": { "model": "terra_reforged:block/wall_<name_here>_side_up", "y": 270, "uvlock": true }}
-  ]
-}
-
-2: All wall posts change parent to
-
-minecraft:block/template_wall_post
-
-3: Delete all wall pillar model files
-
-4: All wall sides change parent to
-
-minecraft:block/template_wall_side
-
-5: All wall side ups change parent to
-
-minecraft:block/template_wall_side_tall
-
-6: All wall inventories change parent to
-
-minecraft:block/wall_inventory
-
-
-
-
-
-
-
-
- */

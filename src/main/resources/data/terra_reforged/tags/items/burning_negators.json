@@ -1,0 +1,15 @@
+{
+    "replace": false,
+    "values": [
+        "terra_reforged:skull_obsidian",
+        "terra_reforged:skull_rose",
+        "terra_reforged:skull_magma",
+        "terra_reforged:skull_molten",
+        "terra_reforged:charm_molten",
+        "terra_reforged:boots_obsidian",
+        "terra_reforged:boots_hellfire",
+        "terra_reforged:boots_lava",
+        "terra_reforged:boots_terraspark",
+        "terra_reforged:horseshoe_obsidian"
+    ]
+}

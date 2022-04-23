@@ -1,10 +1,15 @@
 package com.anbaric.terra_reforged;
 
 import com.anbaric.terra_reforged.util.Reference;
+import com.anbaric.terra_reforged.util.events.*;
+import com.anbaric.terra_reforged.util.handlers.ChannelHandler;
+import com.anbaric.terra_reforged.util.init.TerraAttributeRegistry;
 import com.anbaric.terra_reforged.util.init.TerraBlockRegistry;
+import com.anbaric.terra_reforged.util.init.TerraEffectRegistry;
 import com.anbaric.terra_reforged.util.init.TerraItemRegistry;
 import com.mojang.logging.LogUtils;
 import net.minecraft.world.damagesource.DamageSource;
+import net.minecraft.world.entity.Entity;
 import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
@@ -67,12 +72,19 @@ public class TerraReforged
 
         TerraBlockRegistry.BLOCKS.register(modEventBus);
         TerraItemRegistry.ITEMS.register(modEventBus);
+        TerraEffectRegistry.EFFECTS.register(modEventBus);
+        TerraAttributeRegistry.ATTRIBUTES.register(modEventBus);
 
-        final CreativeModeTab TERRA_BLOCKS_TAB = new CreativeModeTab("terra_blocks_tab") { public ItemStack makeIcon() { return new ItemStack(TerraBlockRegistry.GRASS_JUNGLE.get()); }};
+        MinecraftForge.EVENT_BUS.register(TerraEffectNegationEvent.class);
+        MinecraftForge.EVENT_BUS.register(TerraCapabilitiesEvent.class);
+        MinecraftForge.EVENT_BUS.register(TerraMagnetItemEvent.class);
+        MinecraftForge.EVENT_BUS.register(TerraDamageEffectsEvent.class);
+        modEventBus.register(TerraAttributeAdditionEvent.class);
     }
 
     private void setup(final FMLCommonSetupEvent event)
     {
+        ChannelHandler.register();
         // some preinit code
         LOGGER.info("HELLO FROM PREINIT");
         LOGGER.info("DIRT BLOCK >> {}", Blocks.DIRT.getRegistryName());

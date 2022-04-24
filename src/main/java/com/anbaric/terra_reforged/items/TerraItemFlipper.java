@@ -3,6 +3,7 @@ package com.anbaric.terra_reforged.items;
 import com.anbaric.terra_reforged.util.Reference;
 import com.anbaric.terra_reforged.util.handlers.CurioHandler;
 import com.anbaric.terra_reforged.util.init.TerraAttributeRegistry;
+import com.anbaric.terra_reforged.util.init.TerraTagRegistry;
 import com.google.common.collect.HashMultimap;
 import com.google.common.collect.Multimap;
 import net.minecraft.ChatFormatting;
@@ -14,6 +15,7 @@ import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.entity.ai.attributes.Attribute;
 import net.minecraft.world.entity.ai.attributes.AttributeModifier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
+import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraftforge.common.ForgeMod;
 import net.minecraftforge.common.capabilities.ICapabilityProvider;
@@ -41,6 +43,13 @@ public class TerraItemFlipper extends TerraItemAccessory
             public ItemStack getStack()
             {
                 return stack;
+            }
+
+            @Override
+            public boolean canEquip(SlotContext slotContext)
+            {
+                if (!(slotContext.entity() instanceof Player)) { return false; }
+                return !CurioHandler.hasBauble((Player) slotContext.entity(), TerraTagRegistry.WATER_SPEEDERS);
             }
 
             @Override

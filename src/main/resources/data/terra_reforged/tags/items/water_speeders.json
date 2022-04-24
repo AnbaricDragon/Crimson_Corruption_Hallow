@@ -3,6 +3,9 @@
     "values": [
         "terra_reforged:flipper",
         "terra_reforged:frog_gear",
-        "terra_reforged:frog_flipper"
+        "terra_reforged:frog_flipper",
+        "terra_reforged:gear_diving",
+        "terra_reforged:gear_diving_arctic",
+        "terra_reforged:gear_diving_jellyfish"
     ]
 }

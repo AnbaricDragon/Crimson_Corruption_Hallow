@@ -59,18 +59,21 @@ public class TerraTagRegistry
 //    public static final TagKey<Item> HONEY_HIGH_JUMPERS = ItemTags.create(Reference.path("honey_high_jumpers"));
     public static final TagKey<Item> FROG_HIGH_JUMPERS = ItemTags.create(Reference.path("frog_high_jumpers"));
     public static final TagKey<Item> BEE_SPAWNERS = ItemTags.create(Reference.path("bee_spawners"));
-//    public static final TagKey<Item> STAR_SPAWNERS = ItemTags.create(Reference.path("star_spawners"));
-//    public static final TagKey<Item> PANIC_GIVERS = ItemTags.create(Reference.path("panic_givers"));
-//    public static final TagKey<Item> ARMOR_PASSERS = ItemTags.create(Reference.path("armor_passers"));
+    public static final TagKey<Item> STAR_SPAWNERS = ItemTags.create(Reference.path("star_spawners"));
+    public static final TagKey<Item> PANIC_GIVERS = ItemTags.create(Reference.path("panic_givers"));
+    public static final TagKey<Item> ARMOR_PASSERS = ItemTags.create(Reference.path("armor_passers"));
     public static final TagKey<Item> WATER_WALKERS = ItemTags.create(Reference.path("water_walkers"));
     public static final TagKey<Item> ICE_WALKERS = ItemTags.create(Reference.path("ice_walkers"));
     public static final TagKey<Item> LAVA_WALKERS = ItemTags.create(Reference.path("lava_walkers"));
     public static final TagKey<Item> LAVA_RESISTORS = ItemTags.create(Reference.path("lava_resistors"));
     public static final TagKey<Item> LAVA_PROTECTORS = ItemTags.create(Reference.path("lava_protectors"));
+    public static final TagKey<Item> FALL_PROTECTORS = ItemTags.create(Reference.path("fall_protectors"));
     public static final TagKey<Item> WALL_GRIPPERS = ItemTags.create(Reference.path("wall_grippers"));
     public static final TagKey<Item> MANA_BRINGERS = ItemTags.create(Reference.path("mana_bringers"));
+    public static final TagKey<Item> MANA_RESTORERS = ItemTags.create(Reference.path("mana_restorers"));
+    public static final TagKey<Item> DAMAGE_DODGERS = ItemTags.create(Reference.path("damage_dodgers"));
 //    public static final TagKey<Item> ITEM_BRINGERS = ItemTags.create(Reference.path("item_bringers"));
-//    public static final TagKey<Item> POTION_REDUCERS = ItemTags.create(Reference.path("potion_reducers"));
+    public static final TagKey<Item> POTION_REDUCERS = ItemTags.create(Reference.path("potion_reducers"));
     public static final TagKey<Item> BLEEDING_NEGATORS = ItemTags.create(Reference.path("bleeding_negators"));
     public static final TagKey<Item> BLINDNESS_NEGATORS = ItemTags.create(Reference.path("blindness_negators"));
     public static final TagKey<Item> BROKEN_ARMOR_NEGATORS = ItemTags.create(Reference.path("broken_armor_negators"));
@@ -83,5 +86,6 @@ public class TerraTagRegistry
     public static final TagKey<Item> WEAK_NEGATORS = ItemTags.create(Reference.path("weak_negators"));
     public static final TagKey<Item> BOOT_SPEEDERS = ItemTags.create(Reference.path("boot_speeders"));
     public static final TagKey<Item> WATER_SPEEDERS = ItemTags.create(Reference.path("water_speeders"));
+    public static final TagKey<Item> FIRE_STARTERS = ItemTags.create(Reference.path("fire_starters"));
 
 }

@@ -4,133 +4,75 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="e24a9212-9e48-47bd-84eb-1a2eb6ec5373" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/anbaric/terra_reforged/blocks/TerraBlockBurningOre.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/anbaric/terra_reforged/blocks/TerraBlockChlorophyteOre.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/anbaric/terra_reforged/capabilities/PlayerMana/PlayerMana.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/anbaric/terra_reforged/capabilities/PlayerMana/PlayerManaAttacher.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/anbaric/terra_reforged/capabilities/PlayerMana/PlayerManaImplementation.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/anbaric/terra_reforged/capabilities/PlayerMana/PlayerManaInterface.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/anbaric/terra_reforged/effects/TerraEffectBleeding.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/anbaric/terra_reforged/effects/TerraEffectBrokenArmor.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/anbaric/terra_reforged/effects/TerraEffectConfusion.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/anbaric/terra_reforged/effects/TerraEffectCursed.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/anbaric/terra_reforged/effects/TerraEffectHoney.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/anbaric/terra_reforged/effects/TerraEffectInvincibility.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/anbaric/terra_reforged/effects/TerraEffectLoomingDeath.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/anbaric/terra_reforged/effects/TerraEffectManaBurst.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/anbaric/terra_reforged/effects/TerraEffectManaRegen.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/anbaric/terra_reforged/effects/TerraEffectPotionSickness.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/anbaric/terra_reforged/effects/TerraEffectSilenced.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/anbaric/terra_reforged/effects/TerraEffectWaterWalking.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/anbaric/terra_reforged/items/TerraItemArcaneFlower.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/anbaric/terra_reforged/items/TerraItemBalloon.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/anbaric/terra_reforged/items/TerraItemBalloonBundle.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/anbaric/terra_reforged/items/TerraItemBandHealthRegen.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/anbaric/terra_reforged/items/TerraItemBandManaRegen.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/anbaric/terra_reforged/items/TerraItemBandStarpower.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/anbaric/terra_reforged/items/TerraItemBlackBelt.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/anbaric/terra_reforged/items/TerraItemBootsAmphibian.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/anbaric/terra_reforged/items/TerraItemBootsDunerider.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/anbaric/terra_reforged/items/TerraItemBootsFairy.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/anbaric/terra_reforged/items/TerraItemBootsFlower.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/anbaric/terra_reforged/items/TerraItemBootsFrostspark.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/anbaric/terra_reforged/items/TerraItemBootsIce.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/anbaric/terra_reforged/items/TerraItemBootsLava.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/anbaric/terra_reforged/items/TerraItemBootsLightning.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/anbaric/terra_reforged/items/TerraItemBootsObsidian.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/anbaric/terra_reforged/items/TerraItemBootsRocket.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/anbaric/terra_reforged/items/TerraItemBootsSpectre.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/anbaric/terra_reforged/items/TerraItemBootsSpeed.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/anbaric/terra_reforged/items/TerraItemBootsTerraspark.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/anbaric/terra_reforged/items/TerraItemBootsWater.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/anbaric/terra_reforged/items/TerraItemBottle.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/anbaric/terra_reforged/items/TerraItemCharmMyths.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/anbaric/terra_reforged/items/TerraItemClimbingGear.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/anbaric/terra_reforged/items/TerraItemClimbingGripper.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/anbaric/terra_reforged/items/TerraItemConsumeableMana.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/anbaric/terra_reforged/items/TerraItemCuffsCelestial.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/anbaric/terra_reforged/items/TerraItemCuffsMana.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/anbaric/terra_reforged/items/TerraItemEmblemAvenger.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/anbaric/terra_reforged/items/TerraItemEmblemCelestial.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/anbaric/terra_reforged/items/TerraItemEmblemRanger.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/anbaric/terra_reforged/items/TerraItemEmblemSorcerer.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/anbaric/terra_reforged/items/TerraItemEmblemSummoner.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/anbaric/terra_reforged/items/TerraItemEmblemWarrior.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/anbaric/terra_reforged/items/TerraItemExtraJumpBalloon.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/anbaric/terra_reforged/items/TerraItemFlipper.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/anbaric/terra_reforged/items/TerraItemFlyingCarpet.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/anbaric/terra_reforged/items/TerraItemFrogFlipper.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/anbaric/terra_reforged/items/TerraItemFrogGear.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/anbaric/terra_reforged/items/TerraItemFrogWebbing.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/anbaric/terra_reforged/items/TerraItemHoneyBalloon.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/anbaric/terra_reforged/items/TerraItemLavaCharm.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/anbaric/terra_reforged/items/TerraItemManaCrystal.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/anbaric/terra_reforged/items/TerraItemManaFlower.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/anbaric/terra_reforged/items/TerraItemMoltenCharm.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/anbaric/terra_reforged/items/TerraItemNaturesGift.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/anbaric/terra_reforged/util/events/TerraAttributeAdditionEvent.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/anbaric/terra_reforged/util/events/TerraCapabilitiesEvent.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/anbaric/terra_reforged/util/events/TerraDamageEffectsEvent.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/anbaric/terra_reforged/util/events/TerraEffectNegationEvent.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/anbaric/terra_reforged/util/events/TerraMagnetItemEvent.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/anbaric/terra_reforged/util/events/TerraPlayerDeathEvent.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/anbaric/terra_reforged/util/handlers/BeeHandler.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/anbaric/terra_reforged/util/handlers/ChannelHandler.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/anbaric/terra_reforged/util/handlers/CurioHandler.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/anbaric/terra_reforged/util/handlers/MathHandler.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/anbaric/terra_reforged/util/handlers/NBTHandler.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/anbaric/terra_reforged/util/handlers/V3Handler.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/anbaric/terra_reforged/util/init/TerraAttributeRegistry.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/anbaric/terra_reforged/util/init/TerraEffectRegistry.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/anbaric/terra_reforged/util/mixins/TerraBlockBehaviourMixin.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/anbaric/terra_reforged/util/mixins/TerraLivingEntityMixin.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/anbaric/terra_reforged/util/packets/ManaUpdatePacket.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/META-INF/accesstransformer.cfg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/data/terra_reforged/tags/items/bee_spawners.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/data/terra_reforged/tags/items/bleeding_negators.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/data/terra_reforged/tags/items/blindness_negators.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/data/terra_reforged/tags/items/boot_speeders.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/data/terra_reforged/tags/items/broken_armor_negators.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/data/terra_reforged/tags/items/cursed_negators.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/data/terra_reforged/tags/items/frog_fallers.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/data/terra_reforged/tags/items/frog_high_jumpers.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/data/terra_reforged/tags/items/ice_walkers.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/data/terra_reforged/tags/items/lava_protectors.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/data/terra_reforged/tags/items/lava_resistors.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/data/terra_reforged/tags/items/lava_walkers.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/data/terra_reforged/tags/items/mana_bringers.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/data/terra_reforged/tags/items/poison_negators.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/data/terra_reforged/tags/items/rocket_jumpers.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/data/terra_reforged/tags/items/silenced_negators.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/data/terra_reforged/tags/items/slow_negators.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/data/terra_reforged/tags/items/wall_grippers.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/data/terra_reforged/tags/items/water_speeders.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/data/terra_reforged/tags/items/water_walkers.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/data/terra_reforged/tags/items/weak_negators.json" afterDir="false" />
+    <list default="true" id="e24a9212-9e48-47bd-84eb-1a2eb6ec5373" name="Changes" comment="A - F Items&#10;Effects&#10;Curios">
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/anbaric/terra_reforged/items/TerraItemBeserkersGlove.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/anbaric/terra_reforged/items/TerraItemCrossNecklace.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/anbaric/terra_reforged/items/TerraItemDivingGear.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/anbaric/terra_reforged/items/TerraItemDivingGearArctic.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/anbaric/terra_reforged/items/TerraItemDivingGearJellyfish.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/anbaric/terra_reforged/items/TerraItemFireGlove.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/anbaric/terra_reforged/items/TerraItemFrogLeg.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/anbaric/terra_reforged/items/TerraItemHoneycomb.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/anbaric/terra_reforged/items/TerraItemHorseshoe.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/anbaric/terra_reforged/items/TerraItemHorseshoeBalloon.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/anbaric/terra_reforged/items/TerraItemHorseshoeBalloonAmber.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/anbaric/terra_reforged/items/TerraItemHorseshoeObsidian.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/anbaric/terra_reforged/items/TerraItemMagmaSkull.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/anbaric/terra_reforged/items/TerraItemMagmaStone.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/anbaric/terra_reforged/items/TerraItemMagnetCelestial.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/anbaric/terra_reforged/items/TerraItemMagnetFlower.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/anbaric/terra_reforged/items/TerraItemMagnetTreasure.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/anbaric/terra_reforged/items/TerraItemMechanicalGlove.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/anbaric/terra_reforged/items/TerraItemMoltenSkull.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/anbaric/terra_reforged/items/TerraItemMoonStone.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/anbaric/terra_reforged/items/TerraItemNinjaGear.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/anbaric/terra_reforged/items/TerraItemNinjaTabi.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/anbaric/terra_reforged/items/TerraItemObsidianRose.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/anbaric/terra_reforged/items/TerraItemObsidianSkull.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/anbaric/terra_reforged/items/TerraItemPanicNecklace.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/anbaric/terra_reforged/items/TerraItemPowerGlove.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/anbaric/terra_reforged/items/TerraItemPutridScent.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/anbaric/terra_reforged/items/TerraItemRoseSkull.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/anbaric/terra_reforged/items/TerraItemShackle.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/anbaric/terra_reforged/items/TerraItemSharktoothNecklace.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/anbaric/terra_reforged/items/TerraItemStarveil.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/anbaric/terra_reforged/items/TerraItemStingerNecklace.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/anbaric/terra_reforged/items/TerraItemStonePhilosopher.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/anbaric/terra_reforged/items/TerraItemSunStone.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/anbaric/terra_reforged/items/TerraItemSweetheartNecklace.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/anbaric/terra_reforged/items/TerraItemTitanGlove.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/anbaric/terra_reforged/util/mixins/TerraEnchantmentHelperMixin.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/data/terra_reforged/tags/items/armor_passers.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/data/terra_reforged/tags/items/damage_dodgers.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/data/terra_reforged/tags/items/fall_protectors.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/data/terra_reforged/tags/items/fire_starters.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/data/terra_reforged/tags/items/mana_restorers.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/data/terra_reforged/tags/items/panic_givers.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/data/terra_reforged/tags/items/potion_reducers.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/data/terra_reforged/tags/items/star_spawners.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/gradle.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/gradle.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/build.gradle" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/resources/main/assets/terra_reforged/lang/en_us.json" beforeDir="false" afterPath="$PROJECT_DIR$/build/resources/main/assets/terra_reforged/lang/en_us.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/anbaric/terra_reforged/TerraReforged.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/anbaric/terra_reforged/TerraReforged.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/anbaric/terra_reforged/blocks/TerraBlockBiomeGrass.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/anbaric/terra_reforged/blocks/TerraBlockBiomeGrass.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/anbaric/terra_reforged/blocks/TerraBlockIce.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/anbaric/terra_reforged/blocks/TerraBlockIce.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/anbaric/terra_reforged/blocks/TerraBlockOre.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/anbaric/terra_reforged/blocks/TerraBlockOre.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/anbaric/terra_reforged/blocks/TerraBlockSand.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/anbaric/terra_reforged/blocks/TerraBlockSand.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/anbaric/terra_reforged/blocks/TerraBlockSpreading.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/anbaric/terra_reforged/blocks/TerraBlockSpreading.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/anbaric/terra_reforged/items/TerraItemAccessory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/anbaric/terra_reforged/items/TerraItemAccessory.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/anbaric/terra_reforged/items/TerraItemAccessorySpeed.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/anbaric/terra_reforged/items/TerraItemAccessorySpeed.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/anbaric/terra_reforged/util/Reference.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/anbaric/terra_reforged/util/Reference.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/anbaric/terra_reforged/util/handlers/RenderHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/anbaric/terra_reforged/util/handlers/RenderHandler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/anbaric/terra_reforged/util/handlers/SpreadingHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/anbaric/terra_reforged/util/handlers/SpreadingHandler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/anbaric/terra_reforged/util/init/TerraBlockRegistry.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/anbaric/terra_reforged/util/init/TerraBlockRegistry.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/anbaric/terra_reforged/util/init/TerraItemBlockRegistry.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/anbaric/terra_reforged/util/init/TerraItemBlockRegistry.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/anbaric/terra_reforged/items/TerraItemBandHealthRegen.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/anbaric/terra_reforged/items/TerraItemBandHealthRegen.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/anbaric/terra_reforged/items/TerraItemBlackBelt.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/anbaric/terra_reforged/items/TerraItemBlackBelt.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/anbaric/terra_reforged/items/TerraItemBootsLava.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/anbaric/terra_reforged/items/TerraItemBootsLava.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/anbaric/terra_reforged/items/TerraItemCharmMyths.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/anbaric/terra_reforged/items/TerraItemCharmMyths.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/anbaric/terra_reforged/items/TerraItemCuffsCelestial.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/anbaric/terra_reforged/items/TerraItemCuffsCelestial.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/anbaric/terra_reforged/items/TerraItemCuffsMana.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/anbaric/terra_reforged/items/TerraItemCuffsMana.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/anbaric/terra_reforged/items/TerraItemEmblemCelestial.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/anbaric/terra_reforged/items/TerraItemEmblemCelestial.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/anbaric/terra_reforged/items/TerraItemFlipper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/anbaric/terra_reforged/items/TerraItemFlipper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/anbaric/terra_reforged/items/TerraItemHoneyBalloon.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/anbaric/terra_reforged/items/TerraItemHoneyBalloon.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/anbaric/terra_reforged/util/events/TerraDamageEffectsEvent.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/anbaric/terra_reforged/util/events/TerraDamageEffectsEvent.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/anbaric/terra_reforged/util/events/TerraMagnetItemEvent.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/anbaric/terra_reforged/util/events/TerraMagnetItemEvent.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/anbaric/terra_reforged/util/handlers/BeeHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/anbaric/terra_reforged/util/handlers/RevengeHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/anbaric/terra_reforged/util/handlers/CurioHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/anbaric/terra_reforged/util/handlers/CurioHandler.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/anbaric/terra_reforged/util/init/TerraItemRegistry.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/anbaric/terra_reforged/util/init/TerraItemRegistry.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/anbaric/terra_reforged/util/init/TerraTagRegistry.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/anbaric/terra_reforged/util/init/TerraTagRegistry.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/anbaric/terra_reforged/util/mixins/TerraLivingEntityMixin.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/anbaric/terra_reforged/util/mixins/TerraLivingEntityMixin.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/assets/terra_reforged/lang/en_us.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/assets/terra_reforged/lang/en_us.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/data/curios/tags/items/curio.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/data/curios/tags/items/curio.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/data/terra_reforged/tags/items/ice_walkers.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/data/terra_reforged/tags/items/ice_walkers.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/data/terra_reforged/tags/items/water_speeders.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/data/terra_reforged/tags/items/water_speeders.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/terra_reforged.mixins.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/terra_reforged.mixins.json" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -240,11 +182,11 @@
       <recent name="D:\Downloads\Coding\Repositories\Terra_Reforged\src\main\resources\data\terra_reforged\tags\blocks" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\Downloads\Coding\Repositories\Terra_Reforged\src\main\resources\data\terra_reforged\tags\items" />
       <recent name="D:\Downloads\Coding\Repositories\Terra_Reforged\src\main\java\com\anbaric\terra_reforged\util\handlers" />
       <recent name="D:\Downloads\Coding\Repositories\Terra_Reforged\src\main\java\com\anbaric\terra_reforged\effects" />
       <recent name="D:\Downloads\Coding\Repositories\Terra_Reforged\src\main\java\com\anbaric\terra_reforged\util\events" />
       <recent name="D:\Downloads\Coding\Repositories\Terra_Reforged\src\main\java\com\anbaric\terra_reforged\capabilities\PlayerMana" />
-      <recent name="D:\Downloads\Coding\Repositories\Terra_Reforged\libs" />
     </key>
     <key name="CopyClassDialog.RECENTS_KEY">
       <recent name="com.anbaric.terra_reforged.items" />

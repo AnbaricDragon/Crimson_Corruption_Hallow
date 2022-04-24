@@ -46,7 +46,7 @@ public class TerraItemBlackBelt extends TerraItemAccessory
                 List<Component> toolTip = tooltips;
                 toolTip.add(new TranslatableComponent(""));
                 toolTip.add(new TranslatableComponent("curios.modifiers.curio").withStyle(ChatFormatting.GOLD));
-                toolTip.add(new TranslatableComponent("tooltip.terra_reforged.dodge_chance_50").withStyle(ChatFormatting.BLUE));
+                toolTip.add(new TranslatableComponent("tooltip.terra_reforged.dodge_chance_10").withStyle(ChatFormatting.BLUE));
                 return toolTip;
             }
 

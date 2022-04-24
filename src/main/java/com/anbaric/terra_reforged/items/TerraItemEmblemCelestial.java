@@ -6,6 +6,7 @@ import com.anbaric.terra_reforged.util.handlers.MathHandler;
 import com.anbaric.terra_reforged.util.handlers.NBTHandler;
 import com.anbaric.terra_reforged.util.handlers.V3Handler;
 import com.anbaric.terra_reforged.util.init.TerraAttributeRegistry;
+import com.anbaric.terra_reforged.util.init.TerraTagRegistry;
 import com.google.common.collect.HashMultimap;
 import com.google.common.collect.Multimap;
 import net.minecraft.ChatFormatting;
@@ -73,7 +74,7 @@ public class TerraItemEmblemCelestial extends TerraItemAccessory
                     double y = player.getY() + 0.75;
                     double z = player.getZ();
 
-                    int              range  = 9;
+                    int range = CurioHandler.countBaubles((Player) player, TerraTagRegistry.MANA_BRINGERS) * 5;
                     List<ItemEntity> items  = player.getLevel().getEntitiesOfClass(ItemEntity.class, new AABB(x - range, y - range, z - range, x + range, y + range, z + range));
                     int              pulled = 0;
                     for (ItemEntity item : items)

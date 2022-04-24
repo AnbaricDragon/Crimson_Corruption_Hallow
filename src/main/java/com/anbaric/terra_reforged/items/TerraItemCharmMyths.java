@@ -39,7 +39,7 @@ public class TerraItemCharmMyths extends TerraItemAccessory
             public boolean canEquip(SlotContext slotContext)
             {
                 if (!(slotContext.entity() instanceof Player)) { return false; }
-                return !CurioHandler.hasBauble((Player) slotContext.entity(), TerraTagRegistry.LAVA_PROTECTORS, TerraTagRegistry.BURNING_NEGATORS);
+                return !CurioHandler.hasBauble((Player) slotContext.entity(), TerraTagRegistry.POTION_REDUCERS);
             }
 
             @Override
@@ -48,7 +48,6 @@ public class TerraItemCharmMyths extends TerraItemAccessory
                 List<Component> toolTip = tooltips;
                 toolTip.add(new TranslatableComponent(""));
                 toolTip.add(new TranslatableComponent("curios.modifiers.curio").withStyle(ChatFormatting.GOLD));
-                toolTip.add(new TranslatableComponent("tooltip.terra_reforged.regen_health_small").withStyle(ChatFormatting.BLUE));
                 toolTip.add(new TranslatableComponent("tooltip.terra_reforged.potion_cooldown").withStyle(ChatFormatting.BLUE));
                 return toolTip;
             }

@@ -13,7 +13,7 @@ import java.util.List;
 public class TerraMagnetItemEvent
 {
     @SubscribeEvent
-    private void onTossItem(ItemTossEvent event)
+    static void onTossItem(ItemTossEvent event)
     {
         Player player = event.getPlayer();
         List<ItemStack> manaMagnets = CurioHandler.getAllStacks(player, TerraTagRegistry.MANA_BRINGERS);

@@ -6,6 +6,7 @@ import com.anbaric.terra_reforged.util.handlers.MathHandler;
 import com.anbaric.terra_reforged.util.handlers.NBTHandler;
 import com.anbaric.terra_reforged.util.handlers.V3Handler;
 import com.anbaric.terra_reforged.util.init.TerraAttributeRegistry;
+import com.anbaric.terra_reforged.util.init.TerraTagRegistry;
 import com.google.common.collect.HashMultimap;
 import com.google.common.collect.Multimap;
 import net.minecraft.ChatFormatting;
@@ -56,8 +57,8 @@ public class TerraItemCuffsMana extends TerraItemAccessory
                 List<Component> toolTip = tooltips;
                 toolTip.add(new TranslatableComponent(""));
                 toolTip.add(new TranslatableComponent("curios.modifiers.curio").withStyle(ChatFormatting.GOLD));
-                toolTip.add(new TranslatableComponent("tooltip.terra_reforged.more_pickup_range").withStyle(ChatFormatting.BLUE).append(new TranslatableComponent("tooltip.terra_reforged.condition_mana").withStyle(ChatFormatting.BLUE)));
-                toolTip.add(new TranslatableComponent("tooltip.terra_reforged.regen_mana_damage").withStyle(ChatFormatting.BLUE));
+                toolTip.add(new TranslatableComponent("tooltip.terra_reforged.regen_mana_damage").withStyle(ChatFormatting.BLUE).append(new TranslatableComponent("tooltip.terra_reforged.condition_mana").withStyle(ChatFormatting.BLUE)));
+                toolTip.add(new TranslatableComponent("tooltip.terra_reforged.extra_mana").withStyle(ChatFormatting.BLUE));
                 return toolTip;
             }
 
@@ -95,10 +96,5 @@ public class TerraItemCuffsMana extends TerraItemAccessory
                 return true;
             }
         });
-    }
-
-    private boolean canPullItem(ItemEntity item)
-    {
-        return !item.hasPickUpDelay() && item.getItem().getItem() instanceof TerraItemConsumeableMana;
     }
 }

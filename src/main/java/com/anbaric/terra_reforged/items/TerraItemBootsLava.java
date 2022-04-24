@@ -55,7 +55,7 @@ public class TerraItemBootsLava extends TerraItemAccessory
                 toolTip.add(new TranslatableComponent("tooltip.terra_reforged.walking_lava").withStyle(ChatFormatting.BLUE));
                 toolTip.add(new TranslatableComponent("tooltip.terra_reforged.immunity_fire").withStyle(ChatFormatting.BLUE));
                 toolTip.add(new TranslatableComponent("tooltip.terra_reforged.immunity_burn").withStyle(ChatFormatting.BLUE));
-                toolTip.add(new TranslatableComponent("tooltip.terra_reforged.less_lava_damage").withStyle(ChatFormatting.BLUE));
+                toolTip.add(new TranslatableComponent("tooltip.terra_reforged.protection_lava").withStyle(ChatFormatting.BLUE));
                 toolTip.add(new TranslatableComponent("tooltip.terra_reforged.resistance_lava").withStyle(ChatFormatting.BLUE));
                 return toolTip;
             }

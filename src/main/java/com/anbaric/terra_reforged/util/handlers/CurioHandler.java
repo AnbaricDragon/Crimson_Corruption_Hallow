@@ -21,6 +21,7 @@ import javax.annotation.Nullable;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.atomic.AtomicBoolean;
+import java.util.concurrent.atomic.AtomicInteger;
 import java.util.concurrent.atomic.AtomicReference;
 import java.util.stream.Stream;
 
@@ -73,6 +74,19 @@ public class CurioHandler
             });
         }
         return foundItem.get();
+    }
+
+    public static int countBaubles(Player player, TagKey<Item> tag)
+    {
+        AtomicInteger result = new AtomicInteger(0);
+        ForgeRegistries.ITEMS.tags().getTag(tag).forEach(checkItem ->
+        {
+            if (hasBauble(player, checkItem))
+            {
+                result.incrementAndGet();
+            }
+        });
+        return result.get();
     }
 
     public static boolean hasAllBaubles(Player player, Item... item)
@@ -138,7 +152,7 @@ public class CurioHandler
         }).orElse(ItemStack.EMPTY);
     }
 
-    public static ItemStack getBaubleStack(Player player, TagKey<Item> tag)
+    public static ItemStack getStack(Player player, TagKey<Item> tag)
     {
         AtomicReference<ItemStack> result = new AtomicReference<>(ItemStack.EMPTY);
         ForgeRegistries.ITEMS.tags().getTag(tag).forEach(item ->

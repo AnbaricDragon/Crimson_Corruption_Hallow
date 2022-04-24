@@ -50,7 +50,7 @@ public class TerraItemBandHealthRegen extends TerraItemAccessory
             {
                 Player player = slotContext.entity() instanceof Player? (Player) slotContext.entity() : null;
                 if (player == null) { return; }
-                if (player.tickCount % 200 == 0 && player.getHealth() < player.getMaxHealth())
+                if (player.tickCount % 400 == 0 && player.getHealth() < player.getMaxHealth())
                 {
                     player.heal(1);
                 }

@@ -1,9 +1,10 @@
 {
-    "replace": false,
-    "values": [
-        "terra_reforged:leg_frog",
-        "terra_reforged:frog_flipper",
-        "terra_reforged:frog_webbing",
-        "terra_reforged:frog_gear"
-    ]
+  "replace": false,
+  "values": [
+    "terra_reforged:leg_frog",
+    "terra_reforged:boots_amphibian",
+    "terra_reforged:frog_flipper",
+    "terra_reforged:frog_webbing",
+    "terra_reforged:frog_gear"
+  ]
 }

@@ -79,6 +79,7 @@ public class TerraReforged
         MinecraftForge.EVENT_BUS.register(TerraCapabilitiesEvent.class);
         MinecraftForge.EVENT_BUS.register(TerraMagnetItemEvent.class);
         MinecraftForge.EVENT_BUS.register(TerraDamageEffectsEvent.class);
+        MinecraftForge.EVENT_BUS.register(new TerraJumpEvent());
         modEventBus.register(TerraAttributeAdditionEvent.class);
     }
 

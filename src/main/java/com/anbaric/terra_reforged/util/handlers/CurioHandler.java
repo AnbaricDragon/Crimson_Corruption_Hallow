@@ -31,7 +31,7 @@ public class CurioHandler
         return new Provider(curio);
     }
 
-    public static class Provider implements ICapabilityProvider {
+     public static class Provider implements ICapabilityProvider {
 
         final LazyOptional<ICurio> capability;
 

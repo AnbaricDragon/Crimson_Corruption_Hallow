@@ -2,10 +2,13 @@ package com.anbaric.terra_reforged.items;
 
 import com.anbaric.terra_reforged.util.Reference;
 import com.anbaric.terra_reforged.util.handlers.CurioHandler;
+import com.anbaric.terra_reforged.util.init.TerraItemRegistry;
 import com.anbaric.terra_reforged.util.init.TerraTagRegistry;
 import com.google.common.collect.HashMultimap;
 import com.google.common.collect.Multimap;
 import net.minecraft.ChatFormatting;
+import net.minecraft.core.BlockPos;
+import net.minecraft.core.Direction;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.TranslatableComponent;
@@ -15,6 +18,8 @@ import net.minecraft.world.entity.ai.attributes.Attribute;
 import net.minecraft.world.entity.ai.attributes.AttributeModifier;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.level.Level;
+import net.minecraft.world.phys.Vec3;
 import net.minecraftforge.common.ForgeMod;
 import net.minecraftforge.common.capabilities.ICapabilityProvider;
 import top.theillusivec4.curios.api.SlotContext;
@@ -59,6 +64,40 @@ public class TerraItemNinjaGear extends TerraItemAccessory
                 toolTip.add(new TranslatableComponent("tooltip.terra_reforged.wall_sticking").withStyle(ChatFormatting.BLUE));
                 toolTip.add(new TranslatableComponent("tooltip.terra_reforged.dodge_chance_50").withStyle(ChatFormatting.BLUE));
                 return toolTip;
+            }
+
+            @Override
+            public void curioTick(SlotContext slotContext)
+            {
+                Player player = slotContext.entity() instanceof Player ? (Player) slotContext.entity() : null;
+                Level  world  = player != null ? player.getLevel() : null;
+                if (world == null) { return; }
+
+                Vec3 vecPos = player.position();
+                BlockPos pos = player.getOnPos().above();
+                double x = vecPos.get(Direction.Axis.X);
+                double z = vecPos.get(Direction.Axis.Z);
+                double xi = Math.floor(x);
+                double zi = Math.floor(z);
+                double dotX = Math.abs((float) (x - xi));
+                double dotZ = Math.abs((float) (z - zi));
+                boolean shouldStick =
+                        ((world.getBlockState(pos.relative(Direction.NORTH)).isFaceSturdy(world, pos.relative(Direction.NORTH), Direction.SOUTH) || (world.getBlockState(pos.above().relative(Direction.NORTH)).isFaceSturdy(world, pos.relative(Direction.NORTH), Direction.SOUTH)) && dotZ <= 0.301) ||
+                         ((world.getBlockState(pos.relative(Direction.EAST) ).isFaceSturdy(world, pos.relative(Direction.EAST) , Direction.WEST)  || (world.getBlockState(pos.above().relative(Direction.EAST) ).isFaceSturdy(world, pos.relative(Direction.EAST) , Direction.WEST) ) && dotX >= 0.699) ||
+                          ((world.getBlockState(pos.relative(Direction.SOUTH)).isFaceSturdy(world, pos.relative(Direction.SOUTH), Direction.NORTH) || (world.getBlockState(pos.above().relative(Direction.SOUTH)).isFaceSturdy(world, pos.relative(Direction.SOUTH), Direction.NORTH)) && dotZ >= 0.699) ||
+                           ((world.getBlockState(pos.relative(Direction.WEST) ).isFaceSturdy(world, pos.relative(Direction.WEST) , Direction.EAST)  || (world.getBlockState(pos.above().relative(Direction.WEST) ).isFaceSturdy(world, pos.relative(Direction.WEST) , Direction.EAST) ) && dotX <= 0.301)))));
+
+                if (!player.isOnGround() && !player.isCreative() && shouldStick && !player.isInWater())
+                {
+                    Vec3 motion = player.getDeltaMovement();
+                    if (motion.y <= 0)
+                    {
+                        if (player.isCrouching())
+                        {
+                            player.setDeltaMovement(motion.x, 0, motion.z);
+                        }
+                    }
+                }
             }
 
             @Override

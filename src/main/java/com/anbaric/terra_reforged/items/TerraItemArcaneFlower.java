@@ -8,7 +8,6 @@ import com.anbaric.terra_reforged.util.init.TerraEffectRegistry;
 import com.google.common.collect.HashMultimap;
 import com.google.common.collect.Multimap;
 import net.minecraft.ChatFormatting;
-import net.minecraft.client.renderer.EffectInstance;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.nbt.ListTag;
 import net.minecraft.nbt.NbtUtils;
@@ -17,13 +16,11 @@ import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.TranslatableComponent;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.world.damagesource.DamageSource;
-import net.minecraft.world.effect.MobEffect;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.Mob;
 import net.minecraft.world.entity.ai.attributes.Attribute;
 import net.minecraft.world.entity.ai.attributes.AttributeModifier;
-import net.minecraft.world.entity.item.ItemEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.PotionItem;
@@ -105,7 +102,7 @@ public class TerraItemArcaneFlower extends TerraItemAccessory
                 Player player = livingEntity instanceof Player ? (Player) livingEntity : null;
                 if (player != null)
                 {
-                    player.getCapability(PlayerMana.PLAYER_MANA_CAPABILITY).ifPresent(cap -> {
+                    player.getCapability(PlayerMana.TERRA_MANA_CAPABILITY).ifPresent(cap -> {
                         int mana    = cap.getCurrentMana();
                         int maxMana = (int) player.getAttribute(TerraAttributeRegistry.MANA_MAX.get()).getValue();
                         if (mana <= maxMana / 10)

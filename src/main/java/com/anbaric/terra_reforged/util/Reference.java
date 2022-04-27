@@ -10,6 +10,7 @@ public class Reference
     {
         return new ResourceLocation(MODID, path);
     }
+
     public static void print(String print)
     {
         System.out.println(print);;

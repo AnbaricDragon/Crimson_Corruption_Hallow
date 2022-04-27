@@ -1,7 +1,6 @@
 package com.anbaric.terra_reforged.util.events;
 
 import com.anbaric.terra_reforged.capabilities.PlayerMana.PlayerMana;
-import com.anbaric.terra_reforged.capabilities.PlayerMana.PlayerManaClient;
 import com.anbaric.terra_reforged.util.handlers.CurioHandler;
 import com.anbaric.terra_reforged.util.init.TerraAttributeRegistry;
 import com.anbaric.terra_reforged.util.init.TerraEffectRegistry;
@@ -33,11 +32,12 @@ public class TerraGuiRenderEvent
         {
             ItemStack lavaProtector = CurioHandler.getStack(player, TerraTagRegistry.LAVA_PROTECTORS);
 
-//            AtomicDouble currentMana = new AtomicDouble(0);
-//            player.getCapability(PlayerMana.PLAYER_MANA_CAPABILITY).ifPresent(cap -> {
-//                currentMana.set(cap.getCurrentMana());
-//            });
-            double mana = PlayerManaClient.getCurrentMana();
+            AtomicDouble currentMana = new AtomicDouble(0);
+            player.getCapability(PlayerMana.TERRA_MANA_CAPABILITY).ifPresent(cap -> {
+                currentMana.set(cap.getCurrentMana());
+            });
+
+            double mana = currentMana.get();
             double maxMana = player.getAttribute(TerraAttributeRegistry.MANA_MAX.get()).getValue();
 
             int manaStorage = (int) Math.floor(maxMana / 10);

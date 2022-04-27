@@ -38,7 +38,7 @@ public class TerraItemManaCrystal extends Item
     {
         ItemStack     itemstack = player.getItemInHand(hand);
         AtomicBoolean itemUsed  = new AtomicBoolean(false);
-        player.getCapability(PlayerMana.PLAYER_MANA_CAPABILITY).ifPresent(cap ->
+        player.getCapability(PlayerMana.TERRA_MANA_CAPABILITY).ifPresent(cap ->
         {
             int crystalsUsed = cap.getManaCrystalsUsed();
             if (crystalsUsed < 9)
@@ -58,7 +58,7 @@ public class TerraItemManaCrystal extends Item
         }
         else
         {
-            player.getCapability(PlayerMana.PLAYER_MANA_CAPABILITY).ifPresent(cap ->
+            player.getCapability(PlayerMana.TERRA_MANA_CAPABILITY).ifPresent(cap ->
             {
                 cap.setManaCrystalsUsed(0);
                 cap.setCurrentMana(0);

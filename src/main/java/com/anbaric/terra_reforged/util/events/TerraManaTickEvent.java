@@ -37,7 +37,7 @@ public class TerraManaTickEvent
             //if Player is in Creative mod, instant refill of mana
             if (player.isCreative())
             {
-                player.getCapability(PlayerMana.PLAYER_MANA_CAPABILITY).ifPresent(cap ->
+                player.getCapability(PlayerMana.TERRA_MANA_CAPABILITY).ifPresent(cap ->
                 {
                     cap.setCurrentMana((int) maxMana);
                 });
@@ -52,7 +52,7 @@ public class TerraManaTickEvent
             }
 
 
-            player.getCapability(PlayerMana.PLAYER_MANA_CAPABILITY).ifPresent(cap ->
+            player.getCapability(PlayerMana.TERRA_MANA_CAPABILITY).ifPresent(cap ->
             {
                 currentMana = cap.getCurrentMana();
                 while (manaCount >= (hasManaRegenBuff ? 100 : 120))

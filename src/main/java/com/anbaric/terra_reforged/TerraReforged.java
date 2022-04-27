@@ -1,9 +1,9 @@
 package com.anbaric.terra_reforged;
 
+import com.anbaric.terra_reforged.capabilities.PlayerMana.PlayerMana;
 import com.anbaric.terra_reforged.util.Reference;
 import com.anbaric.terra_reforged.util.events.*;
 import com.anbaric.terra_reforged.util.handlers.ChannelHandler;
-import com.anbaric.terra_reforged.util.handlers.ManaGuiHandler;
 import com.anbaric.terra_reforged.util.init.TerraAttributeRegistry;
 import com.anbaric.terra_reforged.util.init.TerraBlockRegistry;
 import com.anbaric.terra_reforged.util.init.TerraEffectRegistry;
@@ -14,8 +14,6 @@ import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.level.block.Blocks;
-import net.minecraftforge.client.gui.ForgeIngameGui;
-import net.minecraftforge.client.gui.OverlayRegistry;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.common.PlantType;
 import net.minecraftforge.event.server.ServerStartingEvent;
@@ -23,7 +21,6 @@ import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.InterModComms;
 import net.minecraftforge.fml.common.Mod;
-import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.fml.event.lifecycle.InterModEnqueueEvent;
 import net.minecraftforge.fml.event.lifecycle.InterModProcessEvent;
@@ -84,6 +81,7 @@ public class TerraReforged
         MinecraftForge.EVENT_BUS.register(TerraGuiRenderEvent.class);
         MinecraftForge.EVENT_BUS.register(new TerraJumpEvent());
         modEventBus.register(TerraAttributeAdditionEvent.class);
+        PlayerMana.register();
     }
 
 //    private void clientSetup(final FMLClientSetupEvent event)

@@ -98,7 +98,7 @@ public class TerraDamageEffectsEvent
             Player player = (Player) target;
             if (CurioHandler.hasBauble(player, TerraTagRegistry.MANA_RESTORERS))
             {
-                player.getCapability(PlayerMana.PLAYER_MANA_CAPABILITY).ifPresent(cap -> {
+                player.getCapability(PlayerMana.TERRA_MANA_CAPABILITY).ifPresent(cap -> {
                     boolean intentionalDamage = event.getSource().getDirectEntity() instanceof LivingEntity;
                     int     manaRestored      = (int) (event.getAmount() * 10);
                     int     maxMana           = (int) player.getAttribute(TerraAttributeRegistry.MANA_MAX.get()).getValue();

@@ -29,7 +29,7 @@ public class TerraPlayerDeathEvent
                 }
             }
             AtomicInteger atomicCrystals = new AtomicInteger(newCrystals);
-            newPlayer.getCapability(PlayerMana.PLAYER_MANA_CAPABILITY).ifPresent(cap -> cap.setManaCrystalsUsed(atomicCrystals.get()));
+            newPlayer.getCapability(PlayerMana.TERRA_MANA_CAPABILITY).ifPresent(cap -> cap.setManaCrystalsUsed(atomicCrystals.get()));
         }
     }
 }

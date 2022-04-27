@@ -1,6 +1,7 @@
 package com.anbaric.terra_reforged.util.handlers;
 
 import com.anbaric.terra_reforged.capabilities.PlayerMana.PlayerMana;
+import com.anbaric.terra_reforged.capabilities.PlayerMana.PlayerManaClient;
 import com.anbaric.terra_reforged.util.init.TerraAttributeRegistry;
 import com.anbaric.terra_reforged.util.init.TerraEffectRegistry;
 import com.mojang.blaze3d.systems.RenderSystem;
@@ -35,11 +36,12 @@ public class ManaGuiHandler extends Gui implements IIngameOverlay
     public int right_height = 49;
     private RenderGameOverlayEvent eventParent;
     private static final ResourceLocation ICON_GUI = new ResourceLocation("terra_reforged:textures/gui/gui_icon.png");
-    private static final ManaGuiHandler INSTANCE = new ManaGuiHandler();
+    public static final ManaGuiHandler INSTANCE = new ManaGuiHandler(Minecraft.getInstance());
 
-    public ManaGuiHandler()
+    public ManaGuiHandler(Minecraft minecraft)
     {
-        super(Minecraft.getInstance());
+        super(minecraft);
+
         this.mc = Minecraft.getInstance();
         this.font = mc.font;
         OverlayRegistry.registerOverlayTop("Mana ", (gui, mStack, partialTicks, screenWidth, screenHeight) ->
@@ -104,13 +106,16 @@ public class ManaGuiHandler extends Gui implements IIngameOverlay
         Player player = (Player) this.minecraft.getCameraEntity();
         RenderSystem.enableBlend();
 
-        AtomicInteger atomicMana = new AtomicInteger();
-        player.getCapability(PlayerMana.PLAYER_MANA_CAPABILITY).ifPresent(cap ->
-        {
-            atomicMana.set(cap.getCurrentMana());
-        });
-        int mana = atomicMana.get();
+//        AtomicInteger atomicMana = new AtomicInteger();
+//        player.getCapability(PlayerMana.PLAYER_MANA_CAPABILITY).ifPresent(cap ->
+//        {
+//            atomicMana.set(cap.getCurrentMana());
+//        });
+//        int mana = atomicMana.get();
+//        int maxMana = (int) player.getAttributeValue(TerraAttributeRegistry.MANA_MAX.get());
+        int mana = PlayerManaClient.getCurrentMana();
         int maxMana = (int) player.getAttributeValue(TerraAttributeRegistry.MANA_MAX.get());
+
         int manaStorage = (int) Math.floor(maxMana / 10);
 
         if (mana >= 0)

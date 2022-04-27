@@ -1,49 +1,39 @@
 package com.anbaric.terra_reforged.util.packets;
 
-import com.anbaric.terra_reforged.capabilities.PlayerMana.PlayerMana;
 import com.anbaric.terra_reforged.capabilities.PlayerMana.PlayerManaClient;
-import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.FriendlyByteBuf;
-import net.minecraft.world.entity.player.Player;
 import net.minecraftforge.network.NetworkEvent;
 
 import java.util.function.Supplier;
 
 public class ManaUpdatePacket
 {
-    public final CompoundTag tag;
+    private final int currentMana;
 
-    public ManaUpdatePacket(CompoundTag tag)
+    public ManaUpdatePacket(int currentMana)
     {
-        this.tag = tag;
+        this.currentMana = currentMana;
     }
 
     public ManaUpdatePacket(FriendlyByteBuf buf)
     {
-        tag = buf.readNbt();
+        currentMana = buf.readInt();
     }
 
     public void toBytes(FriendlyByteBuf buf)
     {
-        buf.writeNbt(tag);
+        buf.writeInt(currentMana);
     }
 
     public static ManaUpdatePacket read(FriendlyByteBuf buf)
     {
-        return new ManaUpdatePacket(buf.readNbt());
+        return new ManaUpdatePacket(buf.readInt());
     }
 
     public boolean handle(Supplier<NetworkEvent.Context> supplier)
     {
         NetworkEvent.Context ctx = supplier.get();
-        ctx.enqueueWork(() -> {
-            Player player = ctx.getSender();
-            player.getCapability(PlayerMana.PLAYER_MANA_CAPABILITY).ifPresent(cap ->
-            {
-                PlayerManaClient.setCurrentMana(cap.getCurrentMana());
-                PlayerManaClient.setMaxMana(cap.getCurrentMana());
-            });
-        });
+        ctx.enqueueWork(() -> { PlayerManaClient.setCurrentMana(currentMana); });
         ctx.setPacketHandled(true);
         return true;
     }

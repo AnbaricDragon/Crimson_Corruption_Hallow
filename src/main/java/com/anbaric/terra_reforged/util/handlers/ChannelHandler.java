@@ -3,8 +3,10 @@ package com.anbaric.terra_reforged.util.handlers;
 import com.anbaric.terra_reforged.util.Reference;
 import com.anbaric.terra_reforged.util.packets.*;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.server.level.ServerPlayer;
 import net.minecraftforge.network.NetworkDirection;
 import net.minecraftforge.network.NetworkRegistry;
+import net.minecraftforge.network.PacketDistributor;
 import net.minecraftforge.network.simple.SimpleChannel;
 
 public class ChannelHandler
@@ -26,5 +28,13 @@ public class ChannelHandler
         //        INSTANCE.registerMessage(index++, TabiDashPacket.class, TabiDashPacket::toBytes, TabiDashPacket::new, TabiDashPacket::handle);
         //        INSTANCE.registerMessage(index++, ChangeBiomePacket.class, ChangeBiomePacket::encode, ChangeBiomePacket::decode, ChangeBiomePacket::handle);
         INSTANCE.messageBuilder(ManaUpdatePacket.class, index++, NetworkDirection.PLAY_TO_CLIENT).encoder(ManaUpdatePacket::toBytes).decoder(ManaUpdatePacket::read).consumer(ManaUpdatePacket::handle).add();
+    }
+
+    public static <MSG> void sendToServer(MSG message) {
+        INSTANCE.sendToServer(message);
+    }
+
+    public static <MSG> void sendToPlayer(MSG message, ServerPlayer player) {
+        INSTANCE.send(PacketDistributor.PLAYER.with(() -> player), message);
     }
 }

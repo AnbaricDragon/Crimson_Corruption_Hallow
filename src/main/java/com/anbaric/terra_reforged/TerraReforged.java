@@ -81,15 +81,15 @@ public class TerraReforged
         MinecraftForge.EVENT_BUS.register(TerraCapabilitiesEvent.class);
         MinecraftForge.EVENT_BUS.register(TerraMagnetItemEvent.class);
         MinecraftForge.EVENT_BUS.register(TerraDamageEffectsEvent.class);
-//        MinecraftForge.EVENT_BUS.register(TerraGuiRenderEvent.class);
+        MinecraftForge.EVENT_BUS.register(TerraGuiRenderEvent.class);
         MinecraftForge.EVENT_BUS.register(new TerraJumpEvent());
         modEventBus.register(TerraAttributeAdditionEvent.class);
     }
 
-    private void clientSetup(final FMLClientSetupEvent event)
-    {
-        OverlayRegistry.registerOverlayBelow(ForgeIngameGui.HOTBAR_ELEMENT, "terra_mana", new ManaGuiHandler());
-    }
+//    private void clientSetup(final FMLClientSetupEvent event)
+//    {
+//        OverlayRegistry.registerOverlayBelow(ForgeIngameGui.HOTBAR_ELEMENT, "terra_mana", ManaGuiHandler.INSTANCE);
+//    }
 
     private void commonSetup(final FMLCommonSetupEvent event)
     {

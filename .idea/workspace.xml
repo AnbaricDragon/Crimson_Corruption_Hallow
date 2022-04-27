@@ -5,17 +5,14 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="e24a9212-9e48-47bd-84eb-1a2eb6ec5373" name="Changes" comment="A - F Items&#10;Effects&#10;Curios">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/anbaric/terra_reforged/capabilities/PlayerMana/PlayerManaClient.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/anbaric/terra_reforged/util/events/TerraGuiRenderEvent.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/anbaric/terra_reforged/util/events/TerraManaTickEvent.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/anbaric/terra_reforged/util/handlers/ManaGuiHandler.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/anbaric/terra_reforged/TerraReforged.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/anbaric/terra_reforged/TerraReforged.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/anbaric/terra_reforged/capabilities/PlayerMana/PlayerManaAttacher.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/anbaric/terra_reforged/capabilities/PlayerMana/PlayerManaAttacher.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/anbaric/terra_reforged/capabilities/PlayerMana/PlayerManaClient.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/anbaric/terra_reforged/capabilities/PlayerMana/PlayerManaClient.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/anbaric/terra_reforged/capabilities/PlayerMana/PlayerManaImplementation.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/anbaric/terra_reforged/capabilities/PlayerMana/PlayerManaImplementation.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/anbaric/terra_reforged/util/handlers/ChannelHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/anbaric/terra_reforged/util/handlers/ChannelHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/anbaric/terra_reforged/util/handlers/ManaGuiHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/anbaric/terra_reforged/util/handlers/ManaGuiHandler.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/anbaric/terra_reforged/util/packets/ManaUpdatePacket.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/anbaric/terra_reforged/util/packets/ManaUpdatePacket.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/META-INF/accesstransformer.cfg" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/META-INF/accesstransformer.cfg" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

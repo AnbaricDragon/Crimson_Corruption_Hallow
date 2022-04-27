@@ -1,5 +1,6 @@
 package com.anbaric.terra_reforged.capabilities.PlayerMana;
 
+import com.anbaric.terra_reforged.util.handlers.ChannelHandler;
 import com.anbaric.terra_reforged.util.packets.ManaUpdatePacket;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.server.level.ServerPlayer;
@@ -17,7 +18,7 @@ public class PlayerManaImplementation implements PlayerManaInterface {
     @Override
     public int getCurrentMana()
     {
-        return currentMana;
+        return this.currentMana;
     }
 
     @Override
@@ -37,7 +38,6 @@ public class PlayerManaImplementation implements PlayerManaInterface {
     public void setManaCrystalsUsed(int crystalsUsed)
     {
         this.usedCrystals = crystalsUsed;
-        createUpdatePacket();
     }
 
     @Override
@@ -46,7 +46,7 @@ public class PlayerManaImplementation implements PlayerManaInterface {
         int trueCost = (int) Math.floor(cost * discount);
         if (trueCost < this.currentMana)
         {
-            this.currentMana -= trueCost;
+            setCurrentMana(currentMana -= trueCost);
             return true;
         }
         return false;
@@ -61,13 +61,13 @@ public class PlayerManaImplementation implements PlayerManaInterface {
     @Override
     public ManaUpdatePacket createUpdatePacket()
     {
-        return new ManaUpdatePacket(this.serializeNBT());
+        return new ManaUpdatePacket(getCurrentMana());
     }
 
     @Override
     public void sendPlayerUpdatePacket(ServerPlayer serverPlayer)
     {
-
+        ChannelHandler.sendToPlayer(createUpdatePacket(), serverPlayer);
     }
 
     @Override

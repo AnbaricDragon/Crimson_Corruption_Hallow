@@ -24,6 +24,7 @@ public class PlayerManaImplementation implements PlayerManaInterface {
     public void setCurrentMana(int mana)
     {
         this.currentMana = mana;
+        createUpdatePacket();
     }
 
     @Override
@@ -36,6 +37,7 @@ public class PlayerManaImplementation implements PlayerManaInterface {
     public void setManaCrystalsUsed(int crystalsUsed)
     {
         this.usedCrystals = crystalsUsed;
+        createUpdatePacket();
     }
 
     @Override

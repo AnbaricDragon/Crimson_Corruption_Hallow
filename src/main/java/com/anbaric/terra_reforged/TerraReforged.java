@@ -3,29 +3,30 @@ package com.anbaric.terra_reforged;
 import com.anbaric.terra_reforged.util.Reference;
 import com.anbaric.terra_reforged.util.events.*;
 import com.anbaric.terra_reforged.util.handlers.ChannelHandler;
+import com.anbaric.terra_reforged.util.handlers.ManaGuiHandler;
 import com.anbaric.terra_reforged.util.init.TerraAttributeRegistry;
 import com.anbaric.terra_reforged.util.init.TerraBlockRegistry;
 import com.anbaric.terra_reforged.util.init.TerraEffectRegistry;
 import com.anbaric.terra_reforged.util.init.TerraItemRegistry;
 import com.mojang.logging.LogUtils;
 import net.minecraft.world.damagesource.DamageSource;
-import net.minecraft.world.entity.Entity;
 import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
-import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
+import net.minecraftforge.client.gui.ForgeIngameGui;
+import net.minecraftforge.client.gui.OverlayRegistry;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.common.PlantType;
-import net.minecraftforge.event.RegistryEvent;
+import net.minecraftforge.event.server.ServerStartingEvent;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.InterModComms;
 import net.minecraftforge.fml.common.Mod;
+import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.fml.event.lifecycle.InterModEnqueueEvent;
 import net.minecraftforge.fml.event.lifecycle.InterModProcessEvent;
-import net.minecraftforge.event.server.ServerStartingEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import org.slf4j.Logger;
 import top.theillusivec4.curios.api.CuriosApi;
@@ -61,7 +62,7 @@ public class TerraReforged
         final IEventBus modEventBus = FMLJavaModLoadingContext.get().getModEventBus();
 
         // Register the setup method for modloading
-        FMLJavaModLoadingContext.get().getModEventBus().addListener(this::setup);
+        FMLJavaModLoadingContext.get().getModEventBus().addListener(this::commonSetup);
         // Register the enqueueIMC method for modloading
         FMLJavaModLoadingContext.get().getModEventBus().addListener(this::enqueueIMC);
         // Register the processIMC method for modloading
@@ -76,14 +77,21 @@ public class TerraReforged
         TerraAttributeRegistry.ATTRIBUTES.register(modEventBus);
 
         MinecraftForge.EVENT_BUS.register(TerraEffectNegationEvent.class);
+        MinecraftForge.EVENT_BUS.register(TerraManaTickEvent.class);
         MinecraftForge.EVENT_BUS.register(TerraCapabilitiesEvent.class);
         MinecraftForge.EVENT_BUS.register(TerraMagnetItemEvent.class);
         MinecraftForge.EVENT_BUS.register(TerraDamageEffectsEvent.class);
+//        MinecraftForge.EVENT_BUS.register(TerraGuiRenderEvent.class);
         MinecraftForge.EVENT_BUS.register(new TerraJumpEvent());
         modEventBus.register(TerraAttributeAdditionEvent.class);
     }
 
-    private void setup(final FMLCommonSetupEvent event)
+    private void clientSetup(final FMLClientSetupEvent event)
+    {
+        OverlayRegistry.registerOverlayBelow(ForgeIngameGui.HOTBAR_ELEMENT, "terra_mana", new ManaGuiHandler());
+    }
+
+    private void commonSetup(final FMLCommonSetupEvent event)
     {
         ChannelHandler.register();
         // some preinit code

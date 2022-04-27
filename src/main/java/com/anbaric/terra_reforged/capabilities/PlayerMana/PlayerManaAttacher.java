@@ -48,13 +48,6 @@ public class PlayerManaAttacher
         }
     }
 
-    public static void attach(final AttachCapabilitiesEvent<Entity> event)
-    {
-        final PlayerManaProvider provider = new PlayerManaProvider();
-
-        event.addCapability(PlayerManaProvider.IDENTIFIER, provider);
-    }
-
     private PlayerManaAttacher()
     {
     }

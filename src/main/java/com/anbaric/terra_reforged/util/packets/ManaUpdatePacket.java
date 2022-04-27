@@ -1,6 +1,7 @@
 package com.anbaric.terra_reforged.util.packets;
 
 import com.anbaric.terra_reforged.capabilities.PlayerMana.PlayerMana;
+import com.anbaric.terra_reforged.capabilities.PlayerMana.PlayerManaClient;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.world.entity.player.Player;
@@ -32,14 +33,15 @@ public class ManaUpdatePacket
         return new ManaUpdatePacket(buf.readNbt());
     }
 
-    public boolean  handle(Supplier<NetworkEvent.Context> supplier)
+    public boolean handle(Supplier<NetworkEvent.Context> supplier)
     {
         NetworkEvent.Context ctx = supplier.get();
         ctx.enqueueWork(() -> {
             Player player = ctx.getSender();
             player.getCapability(PlayerMana.PLAYER_MANA_CAPABILITY).ifPresent(cap ->
             {
-                cap.deserializeNBT(tag);
+                PlayerManaClient.setCurrentMana(cap.getCurrentMana());
+                PlayerManaClient.setMaxMana(cap.getCurrentMana());
             });
         });
         ctx.setPacketHandled(true);

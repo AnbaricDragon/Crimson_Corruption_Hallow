@@ -5,34 +5,17 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="e24a9212-9e48-47bd-84eb-1a2eb6ec5373" name="Changes" comment="A - F Items&#10;Effects&#10;Curios">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/anbaric/terra_reforged/util/events/TerraJumpEvent.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/anbaric/terra_reforged/util/packets/BlizzardJumpPacket.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/anbaric/terra_reforged/util/packets/CarpetJumpPacket.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/anbaric/terra_reforged/util/packets/CloudJumpPacket.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/anbaric/terra_reforged/util/packets/FartJumpPacket.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/anbaric/terra_reforged/util/packets/RocketJumpPacket.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/anbaric/terra_reforged/util/packets/SandstormJumpPacket.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/anbaric/terra_reforged/util/packets/TsunamiJumpPacket.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/anbaric/terra_reforged/util/packets/WallJumpPacket.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/data/terra_reforged/tags/items/blizzard_high_jumpers.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/data/terra_reforged/tags/items/blizzard_jumpers.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/data/terra_reforged/tags/items/cloud_high_jumpers.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/data/terra_reforged/tags/items/cloud_jumpers.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/data/terra_reforged/tags/items/fart_high_jumpers.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/data/terra_reforged/tags/items/fart_jumpers.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/data/terra_reforged/tags/items/honey_high_jumpers.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/data/terra_reforged/tags/items/sandstorm_high_jumpers.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/data/terra_reforged/tags/items/sandstorm_jumpers.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/data/terra_reforged/tags/items/tsunami_high_jumpers.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/data/terra_reforged/tags/items/tsunami_jumpers.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/anbaric/terra_reforged/capabilities/PlayerMana/PlayerManaClient.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/anbaric/terra_reforged/util/events/TerraGuiRenderEvent.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/anbaric/terra_reforged/util/events/TerraManaTickEvent.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/anbaric/terra_reforged/util/handlers/ManaGuiHandler.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/anbaric/terra_reforged/TerraReforged.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/anbaric/terra_reforged/TerraReforged.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/anbaric/terra_reforged/items/TerraItemNinjaGear.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/anbaric/terra_reforged/items/TerraItemNinjaGear.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/anbaric/terra_reforged/util/handlers/ChannelHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/anbaric/terra_reforged/util/handlers/ChannelHandler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/anbaric/terra_reforged/util/handlers/CurioHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/anbaric/terra_reforged/util/handlers/CurioHandler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/anbaric/terra_reforged/util/init/TerraTagRegistry.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/anbaric/terra_reforged/util/init/TerraTagRegistry.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/data/terra_reforged/tags/items/frog_high_jumpers.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/data/terra_reforged/tags/items/frog_high_jumpers.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/anbaric/terra_reforged/capabilities/PlayerMana/PlayerManaAttacher.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/anbaric/terra_reforged/capabilities/PlayerMana/PlayerManaAttacher.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/anbaric/terra_reforged/capabilities/PlayerMana/PlayerManaImplementation.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/anbaric/terra_reforged/capabilities/PlayerMana/PlayerManaImplementation.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/anbaric/terra_reforged/util/packets/ManaUpdatePacket.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/anbaric/terra_reforged/util/packets/ManaUpdatePacket.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/META-INF/accesstransformer.cfg" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/META-INF/accesstransformer.cfg" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -65,6 +48,12 @@
                 <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
                 <item name="Terra_Reforged" type="f1a62948:ProjectNode" />
                 <item name="Tasks" type="e4a08cd1:TasksNode" />
+              </path>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="Terra_Reforged" type="f1a62948:ProjectNode" />
+                <item name="Tasks" type="e4a08cd1:TasksNode" />
+                <item name="forgegradle runs" type="c8890929:TasksNode$1" />
               </path>
             </expand>
             <select />
@@ -222,8 +211,8 @@
     <recent_temporary>
       <list>
         <item itemvalue="Gradle.Terra_Reforged [runClient]" />
-        <item itemvalue="Gradle.Terra_Reforged [hideOfficialWarningUntilChanged]" />
         <item itemvalue="Gradle.Terra_Reforged [genIntellijRuns]" />
+        <item itemvalue="Gradle.Terra_Reforged [hideOfficialWarningUntilChanged]" />
       </list>
     </recent_temporary>
   </component>

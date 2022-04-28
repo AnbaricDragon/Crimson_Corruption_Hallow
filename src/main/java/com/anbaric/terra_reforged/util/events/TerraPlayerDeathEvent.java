@@ -1,6 +1,6 @@
 package com.anbaric.terra_reforged.util.events;
 
-import com.anbaric.terra_reforged.capabilities.PlayerMana.PlayerMana;
+import com.anbaric.terra_reforged.capabilities.player_mana.TerraMana;
 import com.anbaric.terra_reforged.items.TerraItemManaCrystal;
 import com.anbaric.terra_reforged.util.init.TerraAttributeRegistry;
 import net.minecraft.world.entity.ai.attributes.AttributeModifier;
@@ -29,7 +29,7 @@ public class TerraPlayerDeathEvent
                 }
             }
             AtomicInteger atomicCrystals = new AtomicInteger(newCrystals);
-            newPlayer.getCapability(PlayerMana.TERRA_MANA_CAPABILITY).ifPresent(cap -> cap.setManaCrystalsUsed(atomicCrystals.get()));
+            newPlayer.getCapability(TerraMana.TERRA_MANA_CAPABILITY).ifPresent(cap -> cap.setManaCrystalsUsed(atomicCrystals.get()));
         }
     }
 }

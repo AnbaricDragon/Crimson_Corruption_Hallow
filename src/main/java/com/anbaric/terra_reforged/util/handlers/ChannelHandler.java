@@ -1,7 +1,9 @@
 package com.anbaric.terra_reforged.util.handlers;
 
+import com.anbaric.terra_reforged.capabilities.player_mana.TerraMana;
 import com.anbaric.terra_reforged.util.Reference;
 import com.anbaric.terra_reforged.util.packets.*;
+import dev._100media.capabilitysyncer.network.SimpleEntityCapabilityStatusPacket;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraftforge.network.NetworkRegistry;
@@ -24,8 +26,9 @@ public class ChannelHandler
         INSTANCE.registerMessage(index++, WallJumpPacket.class, WallJumpPacket::toBytes, WallJumpPacket::new, WallJumpPacket::handle);
         INSTANCE.registerMessage(index++, RocketJumpPacket.class, RocketJumpPacket::toBytes, RocketJumpPacket::new, RocketJumpPacket::handle);
         INSTANCE.registerMessage(index++, CarpetJumpPacket.class, CarpetJumpPacket::toBytes, CarpetJumpPacket::new, CarpetJumpPacket::handle);
-        //        INSTANCE.registerMessage(index++, TabiDashPacket.class, TabiDashPacket::toBytes, TabiDashPacket::new, TabiDashPacket::handle);
-        //        INSTANCE.registerMessage(index++, ChangeBiomePacket.class, ChangeBiomePacket::encode, ChangeBiomePacket::decode, ChangeBiomePacket::handle);
+        SimpleEntityCapabilityStatusPacket.register(TerraMana.TERRA_MANA_CAPABILITY_RL, TerraMana::getTerraManaCapabilityUnwrap, ChannelHandler.INSTANCE, index++);
+//        INSTANCE.registerMessage(index++, TabiDashPacket.class, TabiDashPacket::toBytes, TabiDashPacket::new, TabiDashPacket::handle);
+//        INSTANCE.registerMessage(index++, ChangeBiomePacket.class, ChangeBiomePacket::encode, ChangeBiomePacket::decode, ChangeBiomePacket::handle);
     }
 
     public static <MSG> void sendToServer(MSG message) {

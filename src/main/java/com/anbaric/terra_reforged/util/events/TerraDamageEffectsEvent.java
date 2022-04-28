@@ -1,6 +1,6 @@
 package com.anbaric.terra_reforged.util.events;
 
-import com.anbaric.terra_reforged.capabilities.PlayerMana.PlayerMana;
+import com.anbaric.terra_reforged.capabilities.player_mana.TerraMana;
 import com.anbaric.terra_reforged.util.handlers.RevengeHandler;
 import com.anbaric.terra_reforged.util.handlers.CurioHandler;
 import com.anbaric.terra_reforged.util.init.TerraAttributeRegistry;
@@ -98,7 +98,7 @@ public class TerraDamageEffectsEvent
             Player player = (Player) target;
             if (CurioHandler.hasBauble(player, TerraTagRegistry.MANA_RESTORERS))
             {
-                player.getCapability(PlayerMana.TERRA_MANA_CAPABILITY).ifPresent(cap -> {
+                player.getCapability(TerraMana.TERRA_MANA_CAPABILITY).ifPresent(cap -> {
                     boolean intentionalDamage = event.getSource().getDirectEntity() instanceof LivingEntity;
                     int     manaRestored      = (int) (event.getAmount() * 10);
                     int     maxMana           = (int) player.getAttribute(TerraAttributeRegistry.MANA_MAX.get()).getValue();

@@ -1,6 +1,7 @@
 package com.anbaric.terra_reforged.items;
 
-import com.anbaric.terra_reforged.capabilities.PlayerMana.PlayerMana;
+import com.anbaric.terra_reforged.capabilities.player_mana.TerraMana;
+import com.anbaric.terra_reforged.util.Reference;
 import com.anbaric.terra_reforged.util.init.TerraAttributeRegistry;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResultHolder;
@@ -38,8 +39,9 @@ public class TerraItemManaCrystal extends Item
     {
         ItemStack     itemstack = player.getItemInHand(hand);
         AtomicBoolean itemUsed  = new AtomicBoolean(false);
-        player.getCapability(PlayerMana.TERRA_MANA_CAPABILITY).ifPresent(cap ->
+        player.getCapability(TerraMana.TERRA_MANA_CAPABILITY).ifPresent(cap ->
         {
+            Reference.print("Capability exists");
             int crystalsUsed = cap.getManaCrystalsUsed();
             if (crystalsUsed < 9)
             {
@@ -58,7 +60,7 @@ public class TerraItemManaCrystal extends Item
         }
         else
         {
-            player.getCapability(PlayerMana.TERRA_MANA_CAPABILITY).ifPresent(cap ->
+            player.getCapability(TerraMana.TERRA_MANA_CAPABILITY).ifPresent(cap ->
             {
                 cap.setManaCrystalsUsed(0);
                 cap.setCurrentMana(0);

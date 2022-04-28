@@ -1,7 +1,7 @@
 package com.anbaric.terra_reforged.items;
 
 import com.anbaric.terra_reforged.TerraReforged;
-import com.anbaric.terra_reforged.capabilities.PlayerMana.PlayerMana;
+import com.anbaric.terra_reforged.capabilities.player_mana.TerraMana;
 import com.anbaric.terra_reforged.util.init.TerraAttributeRegistry;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.player.Player;
@@ -22,7 +22,7 @@ public class TerraItemConsumeableMana extends Item
     @Override
     public InteractionResult onItemUseFirst(ItemStack stack, UseOnContext context)
     {
-        context.getPlayer().getCapability(PlayerMana.TERRA_MANA_CAPABILITY).ifPresent(cap -> {
+        context.getPlayer().getCapability(TerraMana.TERRA_MANA_CAPABILITY).ifPresent(cap -> {
             System.out.println("REACHED CAPABILITY");
             cap.setCurrentMana(0);
         });
@@ -34,7 +34,7 @@ public class TerraItemConsumeableMana extends Item
         if (event.getEntityLiving() instanceof Player)
         {
             Player player = (Player) event.getEntityLiving();
-            player.getCapability(PlayerMana.TERRA_MANA_CAPABILITY).ifPresent(cap -> {
+            player.getCapability(TerraMana.TERRA_MANA_CAPABILITY).ifPresent(cap -> {
                 ItemStack stack = event.getItem().getItem();
                 if (!stack.isEmpty() && stack.getItem() instanceof TerraItemConsumeableMana)
                 {

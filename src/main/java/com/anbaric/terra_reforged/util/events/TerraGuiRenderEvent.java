@@ -1,6 +1,7 @@
 package com.anbaric.terra_reforged.util.events;
 
-import com.anbaric.terra_reforged.capabilities.PlayerMana.PlayerMana;
+import com.anbaric.terra_reforged.capabilities.player_mana.TerraMana;
+import com.anbaric.terra_reforged.util.Reference;
 import com.anbaric.terra_reforged.util.handlers.CurioHandler;
 import com.anbaric.terra_reforged.util.init.TerraAttributeRegistry;
 import com.anbaric.terra_reforged.util.init.TerraEffectRegistry;
@@ -33,7 +34,9 @@ public class TerraGuiRenderEvent
             ItemStack lavaProtector = CurioHandler.getStack(player, TerraTagRegistry.LAVA_PROTECTORS);
 
             AtomicDouble currentMana = new AtomicDouble(0);
-            player.getCapability(PlayerMana.TERRA_MANA_CAPABILITY).ifPresent(cap -> {
+            player.getCapability(TerraMana.TERRA_MANA_CAPABILITY).ifPresent(cap ->
+            {
+                Reference.print("Capability found from EVENT");
                 currentMana.set(cap.getCurrentMana());
             });
 

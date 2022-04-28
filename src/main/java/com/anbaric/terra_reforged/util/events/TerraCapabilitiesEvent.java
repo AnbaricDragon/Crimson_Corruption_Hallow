@@ -1,6 +1,6 @@
 package com.anbaric.terra_reforged.util.events;
 
-import com.anbaric.terra_reforged.capabilities.PlayerMana.PlayerMana;
+import com.anbaric.terra_reforged.capabilities.player_mana.TerraMana;
 import net.minecraftforge.common.capabilities.RegisterCapabilitiesEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 
@@ -9,7 +9,7 @@ public class TerraCapabilitiesEvent
     @SubscribeEvent
     public static void onRegisterCapabilities(RegisterCapabilitiesEvent event)
     {
-        event.register(PlayerMana.class);
+        event.register(TerraMana.class);
     }
 
     //    @SubscribeEvent

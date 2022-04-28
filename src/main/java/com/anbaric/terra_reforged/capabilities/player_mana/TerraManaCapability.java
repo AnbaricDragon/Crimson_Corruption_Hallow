@@ -1,4 +1,4 @@
-package com.anbaric.terra_reforged.capabilities.PlayerMana;
+package com.anbaric.terra_reforged.capabilities.player_mana;
 
 import com.anbaric.terra_reforged.util.handlers.ChannelHandler;
 import dev._100media.capabilitysyncer.core.PlayerCapability;
@@ -11,7 +11,7 @@ import net.minecraftforge.network.simple.SimpleChannel;
 
 public class TerraManaCapability extends PlayerCapability
 {
-    private int currentMana = 0;
+    private int currentMana = 50;
     private int manaCrystalsUsed = 0;
 
     protected TerraManaCapability(Player player)
@@ -69,13 +69,13 @@ public class TerraManaCapability extends PlayerCapability
     public void deserializeNBT(CompoundTag nbt, boolean readingFromDisk)
     {
         if (nbt.contains("currentMana", Tag.TAG_INT)) { this.currentMana = nbt.getInt("ExampleInt"); }
-        else { this.currentMana = 0; }
+        else { this.currentMana = 50; }
     }
 
     @Override
     public EntityCapabilityStatusPacket createUpdatePacket()
     {
-        return new SimpleEntityCapabilityStatusPacket(this.player.getId(), PlayerMana.TERRA_MANA_CAPABILITY_RL, this);
+        return new SimpleEntityCapabilityStatusPacket(this.player.getId(), TerraMana.TERRA_MANA_CAPABILITY_RL, this);
     }
 
     @Override

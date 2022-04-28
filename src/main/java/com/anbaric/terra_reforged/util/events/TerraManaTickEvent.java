@@ -1,6 +1,6 @@
 package com.anbaric.terra_reforged.util.events;
 
-import com.anbaric.terra_reforged.capabilities.PlayerMana.PlayerMana;
+import com.anbaric.terra_reforged.capabilities.player_mana.TerraMana;
 import com.anbaric.terra_reforged.util.handlers.CurioHandler;
 import com.anbaric.terra_reforged.util.init.TerraAttributeRegistry;
 import com.anbaric.terra_reforged.util.init.TerraEffectRegistry;
@@ -23,11 +23,7 @@ public class TerraManaTickEvent
         if (event.phase == TickEvent.Phase.START && !event.player.getLevel().isClientSide())
         {
             Player player = event.player;
-
-            if (player.isSpectator())
-            {
-                return;
-            }
+            if (player.isSpectator()) { return; }
 
             double maxMana = player.getAttributeValue(TerraAttributeRegistry.MANA_MAX.get());
             boolean hasManaRegenBuff = player.hasEffect(TerraEffectRegistry.MANA_REGEN.get());
@@ -35,26 +31,13 @@ public class TerraManaTickEvent
             boolean isMoving = player.position() != playerPos;
 
             //if Player is in Creative mod, instant refill of mana
-            if (player.isCreative())
-            {
-                player.getCapability(PlayerMana.TERRA_MANA_CAPABILITY).ifPresent(cap ->
-                {
-                    cap.setCurrentMana((int) maxMana);
-                });
-                return;
-            }
+            if (player.isCreative()) { player.getCapability(TerraMana.TERRA_MANA_CAPABILITY).ifPresent(cap -> { cap.setCurrentMana((int) maxMana); }); return; }
 
             //Tick 5 times slower to check the Player's position. If it's changed over the five ticks then the player is moving
-            if (tickSlower == 5)
-            {
-                tickSlower = 0;
-                playerPos = player.position();
-            }
+            if (tickSlower == 5) { tickSlower = 0; playerPos = player.position(); }
 
-
-            player.getCapability(PlayerMana.TERRA_MANA_CAPABILITY).ifPresent(cap ->
+            player.getCapability(TerraMana.TERRA_MANA_CAPABILITY).ifPresent(cap ->
             {
-                currentMana = cap.getCurrentMana();
                 while (manaCount >= (hasManaRegenBuff ? 100 : 120))
                 {
                     manaCount -= hasManaRegenBuff ? 100 : 120;

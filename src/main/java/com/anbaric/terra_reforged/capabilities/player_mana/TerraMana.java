@@ -1,4 +1,4 @@
-package com.anbaric.terra_reforged.capabilities.PlayerMana;
+package com.anbaric.terra_reforged.capabilities.player_mana;
 
 import com.anbaric.terra_reforged.util.Reference;
 import dev._100media.capabilitysyncer.core.CapabilityAttacher;
@@ -12,7 +12,7 @@ import net.minecraftforge.event.AttachCapabilitiesEvent;
 
 import javax.annotation.Nullable;
 
-public class PlayerMana extends CapabilityAttacher
+public class TerraMana extends CapabilityAttacher
 {
     private static final Class<TerraManaCapability> CAPABILITY_CLASS = TerraManaCapability.class;
     public static final Capability<TerraManaCapability> TERRA_MANA_CAPABILITY = getCapability(new CapabilityToken<>() {});
@@ -33,6 +33,6 @@ public class PlayerMana extends CapabilityAttacher
 
     public static void register() {
         CapabilityAttacher.registerCapability(CAPABILITY_CLASS);
-        CapabilityAttacher.registerPlayerAttacher(PlayerMana::attach, PlayerMana::getTerraManaCapability, true);
+        CapabilityAttacher.registerPlayerAttacher(TerraMana::attach, TerraMana::getTerraManaCapability, true);
     }
 }

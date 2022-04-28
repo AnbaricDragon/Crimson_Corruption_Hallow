@@ -1,6 +1,6 @@
 package com.anbaric.terra_reforged.items;
 
-import com.anbaric.terra_reforged.capabilities.PlayerMana.PlayerMana;
+import com.anbaric.terra_reforged.capabilities.player_mana.TerraMana;
 import com.anbaric.terra_reforged.util.handlers.CurioHandler;
 import com.anbaric.terra_reforged.util.handlers.MathHandler;
 import com.anbaric.terra_reforged.util.handlers.NBTHandler;
@@ -69,7 +69,7 @@ public class TerraItemMagnetFlower extends TerraItemAccessory
                 Player player = livingEntity instanceof Player ? (Player) livingEntity : null;
                 if (player != null)
                 {
-                    player.getCapability(PlayerMana.TERRA_MANA_CAPABILITY).ifPresent(cap -> {
+                    player.getCapability(TerraMana.TERRA_MANA_CAPABILITY).ifPresent(cap -> {
                         int mana    = cap.getCurrentMana();
                         int maxMana = (int) player.getAttribute(TerraAttributeRegistry.MANA_MAX.get()).getValue();
                         if (mana <= maxMana / 10)

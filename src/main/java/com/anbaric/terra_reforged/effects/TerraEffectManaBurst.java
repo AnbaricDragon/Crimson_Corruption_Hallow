@@ -1,6 +1,6 @@
 package com.anbaric.terra_reforged.effects;
 
-import com.anbaric.terra_reforged.capabilities.PlayerMana.PlayerMana;
+import com.anbaric.terra_reforged.capabilities.player_mana.TerraMana;
 import com.anbaric.terra_reforged.util.init.TerraAttributeRegistry;
 import net.minecraft.world.effect.InstantenousMobEffect;
 import net.minecraft.world.effect.MobEffectCategory;
@@ -23,7 +23,7 @@ public class TerraEffectManaBurst extends InstantenousMobEffect
     {
         Player player = entity instanceof Player ? (Player) entity : null;
         if (player == null) { return; }
-        player.getCapability(PlayerMana.TERRA_MANA_CAPABILITY).ifPresent(cap ->
+        player.getCapability(TerraMana.TERRA_MANA_CAPABILITY).ifPresent(cap ->
         {
             int mana = cap.getCurrentMana();
             int maxMana = (int) player.getAttribute(TerraAttributeRegistry.MANA_MAX.get()).getValue();
@@ -37,7 +37,7 @@ public class TerraEffectManaBurst extends InstantenousMobEffect
         Player player = livingEntity instanceof Player ? (Player) livingEntity : null;
         if (player == null) { return; }
 
-        player.getCapability(PlayerMana.TERRA_MANA_CAPABILITY).ifPresent(cap ->
+        player.getCapability(TerraMana.TERRA_MANA_CAPABILITY).ifPresent(cap ->
         {
             int mana = cap.getCurrentMana();
             int maxMana = (int) player.getAttribute(TerraAttributeRegistry.MANA_MAX.get()).getValue();

@@ -31,31 +31,32 @@ public class TerraManaTickEvent
             boolean isMoving = player.position() != playerPos;
 
             //if Player is in Creative mod, instant refill of mana
-            if (player.isCreative()) { player.getCapability(TerraMana.TERRA_MANA_CAPABILITY).ifPresent(cap -> { cap.setCurrentMana((int) maxMana); }); return; }
+            if (player.isCreative()) { player.getCapability(TerraMana.TERRA_MANA_CAPABILITY).ifPresent(cap -> { cap.setCurrentMana((int) maxMana, true); }); return; }
 
             //Tick 5 times slower to check the Player's position. If it's changed over the five ticks then the player is moving
             if (tickSlower == 5) { tickSlower = 0; playerPos = player.position(); }
 
             player.getCapability(TerraMana.TERRA_MANA_CAPABILITY).ifPresent(cap ->
             {
+                currentMana = cap.getCurrentMana();
                 while (manaCount >= (hasManaRegenBuff ? 100 : 120))
                 {
                     manaCount -= hasManaRegenBuff ? 100 : 120;
                     if (currentMana < maxMana)
                     {
-                        cap.setCurrentMana(currentMana + 1);
+                        cap.setCurrentMana(currentMana + 1, true);
                     }
                 }
                 if (currentMana > maxMana)
                 {
-                    cap.setCurrentMana((int) maxMana);
+                    cap.setCurrentMana((int) maxMana, true);
                 }
             });
             //Underlying equation...
             //(((maxMana/7) + hasMRB + isMoving) * hasManaRegenBuff * 1.15)
             if (manaCount < 1000)
             {
-                manaCount += (int) (((maxMana/7) + (hasManaRegenBand ? 26 : 1) + (hasManaRegenBand ? maxMana / 2 : isMoving ? 0 : maxMana / 2)) * (hasManaRegenBuff ? 1 : (currentMana / maxMana * 0.8) + 0.2) * 1.15);
+                manaCount += (int) (((maxMana/7) + (hasManaRegenBand ? 26 : 1) + (hasManaRegenBand ? maxMana / 2 : isMoving ? 0 : maxMana / 2)) * (hasManaRegenBuff ? 1 : (currentMana / maxMana * 0.4) + 0.8) * 1.15);
             }
             tickSlower++;
         }

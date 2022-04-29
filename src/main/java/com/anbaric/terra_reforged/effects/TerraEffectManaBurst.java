@@ -27,7 +27,7 @@ public class TerraEffectManaBurst extends InstantenousMobEffect
         {
             int mana = cap.getCurrentMana();
             int maxMana = (int) player.getAttribute(TerraAttributeRegistry.MANA_MAX.get()).getValue();
-            cap.setCurrentMana(Math.min((amplifier == 0 ? 50 : amplifier * 100) + mana, maxMana));
+            cap.setCurrentMana(Math.min((amplifier == 0 ? 50 : amplifier * 100) + mana, maxMana), true);
         });
     }
 
@@ -46,7 +46,7 @@ public class TerraEffectManaBurst extends InstantenousMobEffect
             {
                 claimedMana /= 2;
             }
-            cap.setCurrentMana(Math.min(mana + claimedMana, maxMana));
+            cap.setCurrentMana(Math.min(mana + claimedMana, maxMana), true);
         });
     }
 }

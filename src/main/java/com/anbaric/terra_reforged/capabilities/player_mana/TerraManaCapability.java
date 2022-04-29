@@ -11,6 +11,9 @@ import net.minecraftforge.network.simple.SimpleChannel;
 
 public class TerraManaCapability extends PlayerCapability
 {
+    private static String CURRENT_MANA_TAG = "current_mana";
+    private static String CURRENT_CRYSTAL_TAG = "mana_crystals_used";
+
     private int currentMana = 50;
     private int manaCrystalsUsed = 0;
 
@@ -36,11 +39,6 @@ public class TerraManaCapability extends PlayerCapability
         }
     }
 
-    public void setCurrentMana(int currentMana)
-    {
-        setCurrentMana(currentMana, true);
-    }
-
     public void setManaCrystalsUsed(int manaCrystalsUsed)
     {
         this.manaCrystalsUsed = manaCrystalsUsed;
@@ -51,7 +49,7 @@ public class TerraManaCapability extends PlayerCapability
         int trueCost = (int) Math.floor(cost * discount);
         if (trueCost < this.currentMana)
         {
-            setCurrentMana(currentMana -= trueCost, true);
+            this.currentMana -= trueCost;
             return true;
         }
         return false;
@@ -61,15 +59,30 @@ public class TerraManaCapability extends PlayerCapability
     public CompoundTag serializeNBT(boolean savingToDisk)
     {
         CompoundTag nbt = new CompoundTag();
-        nbt.putInt("currentMana", this.currentMana);
+        nbt.putInt(CURRENT_MANA_TAG, this.currentMana);
+        nbt.putInt(CURRENT_CRYSTAL_TAG, this.manaCrystalsUsed);
         return nbt;
     }
 
     @Override
     public void deserializeNBT(CompoundTag nbt, boolean readingFromDisk)
     {
-        if (nbt.contains("currentMana", Tag.TAG_INT)) { this.currentMana = nbt.getInt("ExampleInt"); }
-        else { this.currentMana = 50; }
+        if (nbt.contains(CURRENT_MANA_TAG, Tag.TAG_INT))
+        {
+            this.currentMana = nbt.getInt(CURRENT_MANA_TAG);
+        }
+        else
+        {
+            this.currentMana = 0;
+        }
+        if (nbt.contains(CURRENT_CRYSTAL_TAG, Tag.TAG_INT))
+        {
+            this.manaCrystalsUsed = nbt.getInt(CURRENT_CRYSTAL_TAG);
+        }
+        else
+        {
+            this.manaCrystalsUsed = 0;
+        }
     }
 
     @Override

@@ -107,11 +107,11 @@ public class TerraDamageEffectsEvent
                     {
                         if (currentMana + manaRestored <= maxMana)
                         {
-                            cap.setCurrentMana(currentMana + manaRestored);
+                            cap.setCurrentMana(currentMana + manaRestored, true);
                         }
                         else
                         {
-                            cap.setCurrentMana(maxMana);
+                            cap.setCurrentMana(maxMana, true);
                         }
                     }
                 });

@@ -24,7 +24,7 @@ public class TerraItemConsumeableMana extends Item
     {
         context.getPlayer().getCapability(TerraMana.TERRA_MANA_CAPABILITY).ifPresent(cap -> {
             System.out.println("REACHED CAPABILITY");
-            cap.setCurrentMana(0);
+            cap.setCurrentMana(0, true);
         });
         return InteractionResult.SUCCESS;
     }
@@ -41,7 +41,7 @@ public class TerraItemConsumeableMana extends Item
                     int mana    = cap.getCurrentMana();
                     System.out.println("Player's mana is " + mana + " before using item");
                     int maxMana = (int) player.getAttribute(TerraAttributeRegistry.MANA_MAX.get()).getValue();
-                    cap.setCurrentMana(Math.min(mana + (stack.getCount() * 20), maxMana));
+                    cap.setCurrentMana(Math.min(mana + (stack.getCount() * 20), maxMana), true);
                     System.out.println("Player's mana is " + cap.getCurrentMana() + " after using item");
                     stack.shrink(stack.getCount());
                 }

@@ -31,7 +31,7 @@ public class TerraItemManaCrystal extends Item
         new AttributeModifier(UUID.fromString("02e885f5-df17-452e-ae40-416eba758b70"), "manaCrystal6", 20.0D, AttributeModifier.Operation.ADDITION),
         new AttributeModifier(UUID.fromString("02ba1f7c-8cc4-42f3-b144-c42c4f175656"), "manaCrystal7", 20.0D, AttributeModifier.Operation.ADDITION),
         new AttributeModifier(UUID.fromString("5dabcd9f-2257-4cc4-b88e-655b20139bdf"), "manaCrystal8", 20.0D, AttributeModifier.Operation.ADDITION),
-        new AttributeModifier(UUID.fromString("6e7f68a3-ee9a-4b5d-adc2-decc5e72d583"), "manaCrystal9", 20.0D, AttributeModifier.Operation.ADDITION)
+        new AttributeModifier(UUID.fromString("6e7f68a3-ee9a-4b5d-adc2-decc5e72d583"), "manaCrystal9", 220.0D, AttributeModifier.Operation.ADDITION)
     };
 
     @Override
@@ -63,7 +63,7 @@ public class TerraItemManaCrystal extends Item
             player.getCapability(TerraMana.TERRA_MANA_CAPABILITY).ifPresent(cap ->
             {
                 cap.setManaCrystalsUsed(0);
-                cap.setCurrentMana(0);
+                cap.setCurrentMana(0, true);
                 for (AttributeModifier modifier : CRYSTAL_UUIDS)
                 {
                     player.getAttribute(TerraAttributeRegistry.MANA_MAX.get()).removeModifier(modifier);

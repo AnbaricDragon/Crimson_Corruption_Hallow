@@ -15,6 +15,7 @@ import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.material.Material;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.EntityCollisionContext;
+import net.minecraft.world.phys.shapes.Shapes;
 import net.minecraft.world.phys.shapes.VoxelShape;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
@@ -32,8 +33,13 @@ public class TerraBlockBehaviourMixin
     {
         if (waterWalk((BlockBehaviour.BlockStateBase) (Object) this, world, pos, context))
         {
-            callback.setReturnValue(fullLiquidShape);
+            callback.setReturnValue(getLiquidShape(world, pos));
         }
+    }
+
+    private static VoxelShape getLiquidShape(BlockGetter world, BlockPos pos)
+    {
+        return Shapes.box(0.0D, 0.0D, 0.0D, 1.0D, world.getFluidState(pos).getHeight(world, pos), 1.0D);
     }
 
     private static boolean waterWalk(BlockBehaviour.BlockStateBase state, BlockGetter world, BlockPos pos, CollisionContext context)

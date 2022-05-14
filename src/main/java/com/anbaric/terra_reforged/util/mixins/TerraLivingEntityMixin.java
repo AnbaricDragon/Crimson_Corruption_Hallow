@@ -48,13 +48,14 @@ public abstract class TerraLivingEntityMixin
     private int extraAir(Entity entity)
     {
         Player player = entity instanceof Player ? (Player) entity : null;
+        int air = 0;
         if (player != null)
         {
-//            if (player.getItemBySlot(EquipmentSlot.HEAD).getItem() == TerraItemRegistry.HELMET_DIVING.get()) { return 1; }
-            if (CurioHandler.hasBauble(player, TerraItemRegistry.GEAR_DIVING.get())) { return 2; }
-            if (CurioHandler.hasBauble(player, TerraItemRegistry.GEAR_DIVING_JELLYFISH.get())) { return 2; }
-            if (CurioHandler.hasBauble(player, TerraItemRegistry.GEAR_DIVING_ARCTIC.get())) { return 3; }
+            if (CurioHandler.hasBauble(player, TerraItemRegistry.GEAR_DIVING.get())) { air = 2; }
+            if (CurioHandler.hasBauble(player, TerraItemRegistry.GEAR_DIVING_JELLYFISH.get())) { air = 2; }
+            if (CurioHandler.hasBauble(player, TerraItemRegistry.GEAR_DIVING_ARCTIC.get())) { air = 4; }
+            if (player.getItemBySlot(EquipmentSlot.HEAD).getItem() == TerraItemRegistry.HELMET_DIVING.get()) { air += 1; }
         }
-        return 0;
+        return air;
     }
 }

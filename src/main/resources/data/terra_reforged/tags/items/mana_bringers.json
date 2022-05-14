@@ -2,6 +2,8 @@
     "replace": false,
     "values": [
         "terra_reforged:cuffs_celestial",
-        "terra_reforged:emblem_celestial"
+        "terra_reforged:emblem_celestial",
+        "terra_reforged:magnet_flower",
+        "terra_reforged:magnet_celestial"
     ]
 }

@@ -1,6 +1,7 @@
 {
     "replace": false,
     "values": [
+        "minecraft:spyglass",
         "terra_reforged:aglet",
         "terra_reforged:anklet_wind",
         "terra_reforged:balloon_blizzard",

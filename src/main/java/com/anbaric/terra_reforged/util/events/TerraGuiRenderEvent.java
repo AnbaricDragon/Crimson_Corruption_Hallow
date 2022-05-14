@@ -36,7 +36,6 @@ public class TerraGuiRenderEvent
             AtomicDouble currentMana = new AtomicDouble(0);
             player.getCapability(TerraMana.TERRA_MANA_CAPABILITY).ifPresent(cap ->
             {
-                Reference.print("Capability found from EVENT");
                 currentMana.set(cap.getCurrentMana());
             });
 

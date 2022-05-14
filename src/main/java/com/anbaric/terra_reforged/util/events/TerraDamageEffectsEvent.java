@@ -1,13 +1,16 @@
 package com.anbaric.terra_reforged.util.events;
 
 import com.anbaric.terra_reforged.capabilities.player_mana.TerraMana;
+import com.anbaric.terra_reforged.items.accessories.TerraItemInfo;
 import com.anbaric.terra_reforged.util.handlers.RevengeHandler;
 import com.anbaric.terra_reforged.util.handlers.CurioHandler;
 import com.anbaric.terra_reforged.util.init.TerraAttributeRegistry;
 import com.anbaric.terra_reforged.util.init.TerraEffectRegistry;
 import com.anbaric.terra_reforged.util.init.TerraTagRegistry;
+import net.minecraft.client.player.LocalPlayer;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.server.level.ServerLevel;
+import net.minecraft.stats.Stats;
 import net.minecraft.world.damagesource.CombatRules;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.damagesource.EntityDamageSource;
@@ -15,6 +18,7 @@ import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.ai.attributes.Attributes;
+import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraftforge.event.entity.living.LivingAttackEvent;
@@ -61,10 +65,25 @@ public class TerraDamageEffectsEvent
         }
         if (isAttackerAPlayer)
         {
-            Player player = (Player) attacker;
+            Player    player = (Player) attacker;
+            Inventory inventory = player.getInventory();
             if (CurioHandler.hasBauble(player, TerraTagRegistry.FIRE_STARTERS) && !target.fireImmune())
             {
                 target.setSecondsOnFire(target.getRandom().nextInt(3) + 1);
+            }
+            if (inventory.contains(TerraTagRegistry.TALLY_TELLERS) && player.level.isClientSide())
+            {
+                LocalPlayer localPlayer = (LocalPlayer) player;
+                for (int slot = 0; slot < inventory.getContainerSize(); slot++)
+                {
+                    ItemStack slotStack = inventory.getItem(slot);
+                    if (slotStack.is(TerraTagRegistry.TALLY_TELLERS))
+                    {
+                        CompoundTag compound = slotStack.getOrCreateTag();
+                        compound.putString(TerraItemInfo.Functions.TALLY_COUNTER.getTag() + "_name", target.getType().getRegistryName().toString());
+                        compound.putInt(TerraItemInfo.Functions.TALLY_COUNTER.getTag() + "_number", localPlayer.getStats().getValue(Stats.ENTITY_KILLED.get(target.getType())));
+                    }
+                }
             }
         }
     }

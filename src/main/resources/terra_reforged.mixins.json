@@ -4,9 +4,8 @@
     "compatibilityLevel": "JAVA_17",
     "refmap": "terra_reforged.refmap.json",
     "mixins": [
-        "TerraBlockBehaviourMixin",
-        "TerraEnchantmentHelperMixin",
-        "TerraLivingEntityMixin" ],
+        "TerraBlockBehaviourMixin", "TerraEnchantmentHelperMixin", "TerraLivingEntityMixin", "TerraPlayerMixin"
+    ],
     "injectors": {
         "defaultRequire": 1
     },

@@ -1,0 +1,22 @@
+{
+  "replace": false,
+  "values": [
+    "minecraft:clock",
+    "minecraft:compass",
+    "terra_reforged:depth_meter",
+    "terra_reforged:radar",
+    "terra_reforged:tally_counter",
+    "terra_reforged:lifeform_analyzer",
+    "terra_reforged:dps_meter",
+    "terra_reforged:stopwatch",
+    "terra_reforged:metal_detector",
+    "terra_reforged:fishermans_guide",
+    "terra_reforged:weather_radio",
+    "terra_reforged:sextant",
+    "terra_reforged:gps",
+    "terra_reforged:rek",
+    "terra_reforged:goblin_tech",
+    "terra_reforged:fish_finder",
+    "terra_reforged:pda"
+  ]
+}

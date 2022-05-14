@@ -34,7 +34,7 @@ public class TerraTagRegistry
 //    public static final TagKey<Block> HALLOWED_REPLACERS = BlockTags.create(Reference.path("gen/hallowed_replacers"));
 //    public static final TagKey<Block> JUNGLE_REPLACERS = BlockTags.create(Reference.path("gen/jungle_replacers"));
 //    public static final TagKey<Block> GENERAL_REPLACERS = BlockTags.create(Reference.path("gen/general_replacers"));
-//
+
     public static final TagKey<Item> INGOT_COPPER = ItemTags.create(new ResourceLocation("forge:ingots/copper"));
     public static final TagKey<Item> INGOT_TIN = ItemTags.create(new ResourceLocation("forge:ingots/tin"));
     public static final TagKey<Item> INGOT_LEAD = ItemTags.create(new ResourceLocation("forge:ingots/lead"));
@@ -58,6 +58,7 @@ public class TerraTagRegistry
     public static final TagKey<Item> FART_HIGH_JUMPERS = ItemTags.create(Reference.path("fart_high_jumpers"));
     public static final TagKey<Item> HONEY_HIGH_JUMPERS = ItemTags.create(Reference.path("honey_high_jumpers"));
     public static final TagKey<Item> FROG_HIGH_JUMPERS = ItemTags.create(Reference.path("frog_high_jumpers"));
+    public static final TagKey<Item> TABI_DASHERS = ItemTags.create(Reference.path("tabi_dashers"));
     public static final TagKey<Item> BEE_SPAWNERS = ItemTags.create(Reference.path("bee_spawners"));
     public static final TagKey<Item> STAR_SPAWNERS = ItemTags.create(Reference.path("star_spawners"));
     public static final TagKey<Item> PANIC_GIVERS = ItemTags.create(Reference.path("panic_givers"));
@@ -72,7 +73,7 @@ public class TerraTagRegistry
     public static final TagKey<Item> MANA_BRINGERS = ItemTags.create(Reference.path("mana_bringers"));
     public static final TagKey<Item> MANA_RESTORERS = ItemTags.create(Reference.path("mana_restorers"));
     public static final TagKey<Item> DAMAGE_DODGERS = ItemTags.create(Reference.path("damage_dodgers"));
-//    public static final TagKey<Item> ITEM_BRINGERS = ItemTags.create(Reference.path("item_bringers"));
+    public static final TagKey<Item> ITEM_BRINGERS = ItemTags.create(Reference.path("item_bringers"));
     public static final TagKey<Item> POTION_REDUCERS = ItemTags.create(Reference.path("potion_reducers"));
     public static final TagKey<Item> BLEEDING_NEGATORS = ItemTags.create(Reference.path("bleeding_negators"));
     public static final TagKey<Item> BLINDNESS_NEGATORS = ItemTags.create(Reference.path("blindness_negators"));
@@ -87,5 +88,20 @@ public class TerraTagRegistry
     public static final TagKey<Item> BOOT_SPEEDERS = ItemTags.create(Reference.path("boot_speeders"));
     public static final TagKey<Item> WATER_SPEEDERS = ItemTags.create(Reference.path("water_speeders"));
     public static final TagKey<Item> FIRE_STARTERS = ItemTags.create(Reference.path("fire_starters"));
+    public static final TagKey<Item> GUN_SNIPERS = ItemTags.create(Reference.path("gun_snipers"));
+    public static final TagKey<Item> GUN_SCOPERS = ItemTags.create(Reference.path("gun_scopers"));
+//    public static final TagKey<Item> DEPTH_TELLERS = ItemTags.create(Reference.path("depth_tellers"));
+    public static final TagKey<Item> WATCH_TELLERS = ItemTags.create(Reference.path("watch_tellers"));
+    public static final TagKey<Item> COMPASS_TELLERS = ItemTags.create(Reference.path("compass_tellers"));
+//    public static final TagKey<Item> RADAR_TELLERS = ItemTags.create(Reference.path("radar_tellers"));
+    public static final TagKey<Item> TALLY_TELLERS = ItemTags.create(Reference.path("tally_tellers"));
+//    public static final TagKey<Item> ANALYZER_TELLERS = ItemTags.create(Reference.path("analyzer_tellers"));
+//    public static final TagKey<Item> DPS_TELLERS = ItemTags.create(Reference.path("dps_tellers"));
+//    public static final TagKey<Item> TIMER_TELLERS = ItemTags.create(Reference.path("timer_tellers"));
+//    public static final TagKey<Item> METAL_TELLERS = ItemTags.create(Reference.path("metal_tellers"));
+//    public static final TagKey<Item> FISH_TELLERS = ItemTags.create(Reference.path("fish_tellers"));
+//    public static final TagKey<Item> RADIO_TELLERS = ItemTags.create(Reference.path("radio_tellers"));
+//    public static final TagKey<Item> MOON_TELLERS = ItemTags.create(Reference.path("moon_tellers"));
+    public static final TagKey<Item> INFO_TELLERS = ItemTags.create(Reference.path("info_tellers"));
 
 }

@@ -1,7 +1,9 @@
 {
   "replace": false,
   "values": [
-    "terra_reforged:necklace_cross",
+    "terra_reforged:cloak_star",
+    "terra_reforged:cloak_bee",
+    "terra_reforged:cloak_mana",
     "terra_reforged:necklace_starveil"
   ]
 }

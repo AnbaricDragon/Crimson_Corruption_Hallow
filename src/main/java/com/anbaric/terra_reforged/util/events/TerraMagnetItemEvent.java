@@ -16,7 +16,7 @@ public class TerraMagnetItemEvent
     static void onTossItem(ItemTossEvent event)
     {
         Player player = event.getPlayer();
-        List<ItemStack> manaMagnets = CurioHandler.getAllStacks(player, TerraTagRegistry.MANA_BRINGERS);
+        List<ItemStack> manaMagnets = CurioHandler.getAllStacks(player, TerraTagRegistry.MANA_BRINGERS, TerraTagRegistry.ITEM_BRINGERS);
 
         if (!manaMagnets.isEmpty())
         {

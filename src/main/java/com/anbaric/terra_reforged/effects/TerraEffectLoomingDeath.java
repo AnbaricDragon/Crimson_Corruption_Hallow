@@ -1,5 +1,6 @@
 package com.anbaric.terra_reforged.effects;
 
+import com.anbaric.terra_reforged.util.Reference;
 import com.anbaric.terra_reforged.util.init.TerraEffectRegistry;
 import net.minecraft.world.effect.MobEffect;
 import net.minecraft.world.effect.MobEffectCategory;
@@ -33,7 +34,7 @@ public class TerraEffectLoomingDeath extends MobEffect
         if (entity instanceof Bee)
         {
             Bee bee = (Bee) entity;
-            if (bee.hasStung())
+            if (bee.hasStung() || chances == 0)
             {
                 bee.remove(Entity.RemovalReason.UNLOADED_TO_CHUNK);
             }
@@ -46,7 +47,7 @@ public class TerraEffectLoomingDeath extends MobEffect
         else if (entity instanceof Player)
         {
             Player player = (Player) entity;
-            if (!player.getUUID().equals(UUID.fromString("f648da61-7d7c-449b-9fd7-05fa8eac0b0f")))
+            if (!Reference.isAnbaric(player))
             {
                 player.addEffect(new MobEffectInstance(MobEffects.WITHER, 999999, 1, false, true));
             }

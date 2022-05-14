@@ -1,11 +1,14 @@
 package com.anbaric.terra_reforged.util.events;
 
 import com.anbaric.terra_reforged.capabilities.player_mana.TerraMana;
+import com.anbaric.terra_reforged.items.accessories.TerraItemInfo;
 import com.anbaric.terra_reforged.util.handlers.CurioHandler;
 import com.anbaric.terra_reforged.util.init.TerraAttributeRegistry;
 import com.anbaric.terra_reforged.util.init.TerraEffectRegistry;
 import com.anbaric.terra_reforged.util.init.TerraItemRegistry;
 import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.Items;
 import net.minecraft.world.phys.Vec3;
 import net.minecraftforge.event.TickEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
@@ -59,6 +62,18 @@ public class TerraManaTickEvent
                 manaCount += (int) (((maxMana/7) + (hasManaRegenBand ? 26 : 1) + (hasManaRegenBand ? maxMana / 2 : isMoving ? 0 : maxMana / 2)) * (hasManaRegenBuff ? 1 : (currentMana / maxMana * 0.4) + 0.8) * 1.15);
             }
             tickSlower++;
+        }
+
+        ItemStack offHand = event.player.getOffhandItem();
+        if (offHand.getItem() == Items.CLOCK && offHand.getOrCreateTag().isEmpty())
+        {
+            offHand.getOrCreateTag().putInt("function_index", 1 << TerraItemInfo.Functions.CLOCK.ordinal());
+            offHand.getOrCreateTag().putInt("active_index", TerraItemInfo.Functions.CLOCK.ordinal());
+        }
+        if (offHand.getItem() == Items.COMPASS && offHand.getOrCreateTag().isEmpty())
+        {
+            offHand.getOrCreateTag().putInt("function_index", 1 << TerraItemInfo.Functions.COMPASS.ordinal());
+            offHand.getOrCreateTag().putInt("active_index", TerraItemInfo.Functions.COMPASS.ordinal());
         }
     }
 }

@@ -1,8 +1,14 @@
 package com.anbaric.terra_reforged.util.init;
 
 import com.anbaric.terra_reforged.TerraReforged;
-import com.anbaric.terra_reforged.items.*;
+import com.anbaric.terra_reforged.items.TerraItemConsumeableMana;
+import com.anbaric.terra_reforged.items.TerraItemManaCrystal;
+import com.anbaric.terra_reforged.items.accessories.*;
+import com.anbaric.terra_reforged.items.accessories.TerraItemInfo.Functions;
+import com.anbaric.terra_reforged.items.armor.TerraItemHelmetDiving;
 import com.anbaric.terra_reforged.util.Reference;
+import com.anbaric.terra_reforged.util.handlers.MaterialHandler;
+import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.item.*;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
@@ -127,6 +133,9 @@ public class TerraItemRegistry
     public static final RegistryObject<Item> CLIMBING_CLAWS = ITEMS.register("climbing_claws", () -> new TerraItemClimbingGripper());
     public static final RegistryObject<Item> CLIMBING_GEAR = ITEMS.register("climbing_gear", () -> new TerraItemClimbingGear());
     public static final RegistryObject<Item> CLIMBING_SPIKES = ITEMS.register("climbing_spikes", () -> new TerraItemClimbingGripper());
+    public static final RegistryObject<Item> CLOAK_BEE = ITEMS.register("cloak_bee", () -> new TerraItemStarCloak());
+    public static final RegistryObject<Item> CLOAK_MANA = ITEMS.register("cloak_mana", () -> new TerraItemManaCloak());
+    public static final RegistryObject<Item> CLOAK_STAR = ITEMS.register("cloak_star", () -> new TerraItemStarCloak());
     public static final RegistryObject<Item> CUFFS_CELESTIAL = ITEMS.register("cuffs_celestial", () -> new TerraItemCuffsCelestial());
     public static final RegistryObject<Item> CUFFS_MAGIC = ITEMS.register("cuffs_magic", () -> new TerraItemCuffsMana());
     public static final RegistryObject<Item> EMBLEM_AVENGER = ITEMS.register("emblem_avenger", () -> new TerraItemEmblemAvenger());
@@ -135,6 +144,7 @@ public class TerraItemRegistry
     public static final RegistryObject<Item> EMBLEM_SORCERER = ITEMS.register("emblem_sorcerer", () -> new TerraItemEmblemSorcerer());
     public static final RegistryObject<Item> EMBLEM_SUMMONER = ITEMS.register("emblem_summoner", () -> new TerraItemEmblemSummoner());
     public static final RegistryObject<Item> EMBLEM_WARRIOR = ITEMS.register("emblem_warrior", () -> new TerraItemEmblemWarrior());
+    public static final RegistryObject<Item> FERAL_CLAWS = ITEMS.register("feral_claws", () -> new TerraItemFeralClaws());
     public static final RegistryObject<Item> FLIPPER = ITEMS.register("flipper", () -> new TerraItemFlipper());
     public static final RegistryObject<Item> FLOWER_ARCANE = ITEMS.register("flower_arcane", () -> new TerraItemArcaneFlower());
     public static final RegistryObject<Item> FLOWER_MANA = ITEMS.register("flower_mana", () -> new TerraItemManaFlower());
@@ -185,20 +195,37 @@ public class TerraItemRegistry
     public static final RegistryObject<Item> STONE_SUN = ITEMS.register("stone_sun", () -> new TerraItemSunStone());
     public static final RegistryObject<Item> STONE_MOON = ITEMS.register("stone_moon", () -> new TerraItemMoonStone());
 
-    public static final RegistryObject<Item> VITAMINS = ITEMS.register("vitamins", () -> new TerraItemAccessory());
-    public static final RegistryObject<Item> BANDAGE = ITEMS.register("bandage", () -> new TerraItemAccessory());
-    public static final RegistryObject<Item> NAZAR = ITEMS.register("nazar", () -> new TerraItemAccessory());
-    public static final RegistryObject<Item> TRIFOLD_MAP = ITEMS.register("trifold_map", () -> new TerraItemAccessory());
-    public static final RegistryObject<Item> ARMOR_POLISH = ITEMS.register("armor_polish", () -> new TerraItemAccessory());
-    public static final RegistryObject<Item> BEZOAR = ITEMS.register("bezoar", () -> new TerraItemAccessory());
-    public static final RegistryObject<Item> MEGAPHONE = ITEMS.register("megaphone", () -> new TerraItemAccessory());
-    public static final RegistryObject<Item> FAST_CLOCK = ITEMS.register("fast_clock", () -> new TerraItemAccessory());
-    public static final RegistryObject<Item> BLINDFOLD = ITEMS.register("blindfold", () -> new TerraItemAccessory());
-    public static final RegistryObject<Item> ARMOR_BRACING = ITEMS.register("armor_bracing", () -> new TerraItemAccessory());
-    public static final RegistryObject<Item> MEDICATED_BANDAGE = ITEMS.register("medicated_bandage", () -> new TerraItemAccessory());
-    public static final RegistryObject<Item> COUNTERCURSE_MANTRA = ITEMS.register("countercurse_mantra", () -> new TerraItemAccessory());
-    public static final RegistryObject<Item> THE_PLAN = ITEMS.register("the_plan", () -> new TerraItemAccessory());
-    public static final RegistryObject<Item> ANKH_CHARM = ITEMS.register("ankh_charm", () -> new TerraItemAccessory());
+    public static final RegistryObject<Item> DEPTH_METER = ITEMS.register("depth_meter", () -> new TerraItemInfo(Functions.DEPTH_METER));
+    public static final RegistryObject<Item> RADAR = ITEMS.register("radar", () -> new TerraItemInfo(Functions.RADAR));
+    public static final RegistryObject<Item> TALLY_COUNTER = ITEMS.register("tally_counter", () -> new TerraItemInfo(Functions.TALLY_COUNTER));
+    public static final RegistryObject<Item> LIFEFORM_ANALYZER = ITEMS.register("lifeform_analyzer", () -> new TerraItemInfo(Functions.MOB_FINDER));
+    public static final RegistryObject<Item> DPS_METER = ITEMS.register("dps_meter", () -> new TerraItemInfo(Functions.DPS_METER));
+    public static final RegistryObject<Item> STOPWATCH = ITEMS.register("stopwatch", () -> new TerraItemInfo(Functions.SPEED_METER));
+    public static final RegistryObject<Item> METAL_DETECTOR = ITEMS.register("metal_detector", () -> new TerraItemInfo(Functions.METAL_FINDER));
+    public static final RegistryObject<Item> FISHERMANS_GUIDE = ITEMS.register("fishermans_guide", () -> new TerraItemInfo(Functions.FISH_FINDER));
+    public static final RegistryObject<Item> WEATHER_RADIO = ITEMS.register("weather_radio", () -> new TerraItemInfo(Functions.WEATHER));
+    public static final RegistryObject<Item> SEXTANT = ITEMS.register("sextant", () -> new TerraItemInfo(Functions.MOON_FINDER));
+    public static final RegistryObject<Item> GPS = ITEMS.register("gps", () -> new TerraItemInfo(Functions.DEPTH_METER, Functions.CLOCK, Functions.COMPASS));
+    public static final RegistryObject<Item> REK = ITEMS.register("rek", () -> new TerraItemInfo(Functions.RADAR, Functions.TALLY_COUNTER, Functions.MOB_FINDER));
+    public static final RegistryObject<Item> GOBLIN_TECH = ITEMS.register("goblin_tech", () -> new TerraItemInfo(Functions.DPS_METER, Functions.SPEED_METER, Functions.METAL_FINDER));
+    public static final RegistryObject<Item> FISH_FINDER = ITEMS.register("fish_finder", () -> new TerraItemInfo(Functions.FISH_FINDER, Functions.WEATHER, Functions.MOON_FINDER));
+    public static final RegistryObject<Item> PDA = ITEMS.register("pda", () -> new TerraItemInfo(Functions.DEPTH_METER, Functions.CLOCK, Functions.COMPASS, Functions.RADAR, Functions.TALLY_COUNTER, Functions.MOB_FINDER, Functions.DPS_METER, Functions.SPEED_METER, Functions.METAL_FINDER, Functions.FISH_FINDER, Functions.WEATHER, Functions.MOON_FINDER));
+//    public static final RegistryObject<Item> CELL_PHONE = ITEMS.register("cell_phone", () -> new TerraItemCellPhone());
+
+    public static final RegistryObject<Item> BANDAGE = ITEMS.register("bandage", () -> new TerraItemEffectNegator(0));
+    public static final RegistryObject<Item> BLINDFOLD = ITEMS.register("blindfold", () -> new TerraItemEffectNegator(1));
+    public static final RegistryObject<Item> ARMOR_POLISH = ITEMS.register("armor_polish", () -> new TerraItemEffectNegator(2));
+    public static final RegistryObject<Item> TRIFOLD_MAP = ITEMS.register("trifold_map", () -> new TerraItemEffectNegator(3));
+    public static final RegistryObject<Item> NAZAR = ITEMS.register("nazar", () -> new TerraItemEffectNegator(4));
+    public static final RegistryObject<Item> BEZOAR = ITEMS.register("bezoar", () -> new TerraItemEffectNegator(5));
+    public static final RegistryObject<Item> MEGAPHONE = ITEMS.register("megaphone", () -> new TerraItemEffectNegator(6));
+    public static final RegistryObject<Item> FAST_CLOCK = ITEMS.register("fast_clock", () -> new TerraItemEffectNegator(7));
+    public static final RegistryObject<Item> VITAMINS = ITEMS.register("vitamins", () -> new TerraItemEffectNegator(8));
+    public static final RegistryObject<Item> MEDICATED_BANDAGE = ITEMS.register("medicated_bandage", () -> new TerraItemEffectNegator(0, 5));
+    public static final RegistryObject<Item> ARMOR_BRACING = ITEMS.register("armor_bracing", () -> new TerraItemEffectNegator(2, 8));
+    public static final RegistryObject<Item> THE_PLAN = ITEMS.register("the_plan", () -> new TerraItemEffectNegator(3, 7));
+    public static final RegistryObject<Item> COUNTERCURSE_MANTRA = ITEMS.register("countercurse_mantra", () -> new TerraItemEffectNegator(4, 6));
+    public static final RegistryObject<Item> ANKH_CHARM = ITEMS.register("ankh_charm", () -> new TerraItemEffectNegator(0, 1, 2, 3, 4, 5, 6, 7, 8));
 
     //Pickaxes
 //    public static final RegistryObject<Item> PICKAXE_CACTUS = ITEMS.register("pickaxe_cactus", () -> new PickaxeItem(MaterialHandler.CACTUS, 1, -2.8F, new Item.Properties().tab(TerraReforged.TERRA_TOOLS_TAB)));
@@ -231,17 +258,17 @@ public class TerraItemRegistry
 //    public static final RegistryObject<Item> PICKAXE_NEBULA = ITEMS.register("pickaxe_nebula", () -> new PickaxeItem(MaterialHandler.LUMINITE, 1, -2.0F, new Item.Properties().tab(TerraReforged.TERRA_TOOLS_TAB)));
 //    public static final RegistryObject<Item> PICKAXE_SOLAR = ITEMS.register("pickaxe_solar", () -> new PickaxeItem(MaterialHandler.LUMINITE, 1, -2.0F, new Item.Properties().tab(TerraReforged.TERRA_TOOLS_TAB)));
 //    public static final RegistryObject<Item> PICKAXE_STARDUST = ITEMS.register("pickaxe_stardust", () -> new PickaxeItem(MaterialHandler.LUMINITE, 1, -2.0F, new Item.Properties().tab(TerraReforged.TERRA_TOOLS_TAB)));
-//
-//    //Axes
-//
-//
-//
-//    //Weapons
-//
+
+    //Axes
+
+
+
+    //Weapons
+
 //    //Swords
 //    public static final RegistryObject<Item> SWORD_COPPER = ITEMS.register("sword_copper", () -> new SwordItem(MaterialHandler.COPPER,  3, -2.4F, new Item.Properties().tab(TerraReforged.TERRA_WEAPONS_TAB)));
 //    public static final RegistryObject<Item> SWORD_TERRA = ITEMS.register("sword_terra", () -> new TerraProjectileSword(MaterialHandler.TERRA,  30, -2.4F, new Item.Properties().tab(TerraReforged.TERRA_WEAPONS_TAB)));
-//
-//    //Armor
-//    public static final RegistryObject<Item> HELMET_DIVING = ITEMS.register("helmet_diving", () -> new TerraItemDivingHelmet(ArmorMaterial.CHAIN, EquipmentSlotType.HEAD, new Item.Properties().tab(TerraReforged.TERRA_TOOLS_TAB).maxStackSize(1)));
+
+    //Armor
+    public static final RegistryObject<Item> HELMET_DIVING = ITEMS.register("helmet_diving", () -> new TerraItemHelmetDiving(MaterialHandler.Armor.DIVING, EquipmentSlot.HEAD, new Item.Properties().tab(TerraReforged.TERRA_TOOLS_TAB).stacksTo(1)));
 }

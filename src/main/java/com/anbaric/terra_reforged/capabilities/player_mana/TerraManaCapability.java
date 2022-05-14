@@ -14,7 +14,7 @@ public class TerraManaCapability extends PlayerCapability
     private static String CURRENT_MANA_TAG = "current_mana";
     private static String CURRENT_CRYSTAL_TAG = "mana_crystals_used";
 
-    private int currentMana = 50;
+    private int currentMana = 0;
     private int manaCrystalsUsed = 0;
 
     protected TerraManaCapability(Player player)

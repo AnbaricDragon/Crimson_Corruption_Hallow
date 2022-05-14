@@ -31,7 +31,14 @@ public class CurioHandler
         return new Provider(curio);
     }
 
-     public static class Provider implements ICapabilityProvider {
+    public static int countTags(Item item)
+    {
+        AtomicInteger tagCount = new AtomicInteger(0);
+        ForgeRegistries.ITEMS.tags().getReverseTag(item).map(IReverseTag::getTagKeys).orElseGet(Stream::of).forEach(itemTagKey -> tagCount.set(tagCount.get() + 1));
+        return tagCount.get();
+    }
+
+    public static class Provider implements ICapabilityProvider {
 
         final LazyOptional<ICurio> capability;
 
@@ -102,19 +109,21 @@ public class CurioHandler
         return result;
     }
 
-    public static List<ItemStack> getAllStacks(Player player, TagKey<Item> tag)
+    public static List<ItemStack> getAllStacks(Player player, TagKey<Item>... tagList)
     {
         List<ItemStack> equippedList = new ArrayList<>();
-        ForgeRegistries.ITEMS.tags().getTag(tag).forEach(checkItem ->
+        for (TagKey<Item> tag : tagList)
         {
-            if (hasBauble(player, checkItem))
+            ForgeRegistries.ITEMS.tags().getTag(tag).forEach(checkItem ->
             {
-                equippedList.add(getStack(player, checkItem));
-            }
-        });
+                if (hasBauble(player, checkItem))
+                {
+                    equippedList.add(getStack(player, checkItem));
+                }
+            });
+        }
         return equippedList;
     }
-
 
     public static boolean hasRedundancy(Player player, Item item)
     {

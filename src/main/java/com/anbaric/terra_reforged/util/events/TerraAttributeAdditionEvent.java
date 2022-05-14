@@ -19,6 +19,7 @@ public class TerraAttributeAdditionEvent
         event.add(EntityType.PLAYER, TerraAttributeRegistry.RANGED_DAMAGE.get());
         event.add(EntityType.PLAYER, TerraAttributeRegistry.MAGIC_DAMAGE.get());
         event.add(EntityType.PLAYER, TerraAttributeRegistry.MINION_DAMAGE.get());
+        event.add(EntityType.PLAYER, TerraAttributeRegistry.MINION_MAX.get());
         event.add(EntityType.PLAYER, TerraAttributeRegistry.CRIT_CHANCE.get());
     }
 }

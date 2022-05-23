@@ -7,12 +7,14 @@ import net.minecraft.tags.ItemTags;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.Block;
+import net.minecraftforge.common.Tags;
 
 public class TerraTagRegistry
 {
     public static final TagKey<Block> MOSS_PLANTERS = BlockTags.create(Reference.path("moss_planters"));
     public static final TagKey<Block> CORRUPT_PLANTERS = BlockTags.create(Reference.path("corrupt_planters"));
     public static final TagKey<Block> CRIMSON_PLANTERS = BlockTags.create(Reference.path("crimson_planters"));
+    public static final TagKey<Block> DYE_GROWERS = BlockTags.create(Reference.path("dye_growers"));
 //    public static final TagKey<Block> BOREAL_PLANTERS = BlockTags.create(Reference.path("boreal_planters"));
 //    public static final TagKey<Block> PALM_PLANTERS = BlockTags.create(Reference.path("palm_planters"));
 //    public static final TagKey<Block> MAHOGANY_PLANTERS = BlockTags.create(Reference.path("mahogany_planters"));
@@ -28,6 +30,24 @@ public class TerraTagRegistry
     public static final TagKey<Block> GENERAL_PLANTERS = BlockTags.create(Reference.path("general_planters"));
     public static final TagKey<Block> CACTUS_PLANTERS = BlockTags.create(Reference.path("cactus_planters"));
     public static final TagKey<Block> REED_PLANTERS = BlockTags.create(Reference.path("reed_planters"));
+
+    public static final TagKey<Block> ORE_TIN = BlockTags.create(Reference.forgePath("ores/tin"));
+    public static final TagKey<Block> ORE_LEAD = BlockTags.create(Reference.forgePath("ores/lead"));
+    public static final TagKey<Block> ORE_SILVER = BlockTags.create(Reference.forgePath("ores/silver"));
+    public static final TagKey<Block> ORE_TUNGSTEN = BlockTags.create(Reference.forgePath("ores/tungsten"));
+    public static final TagKey<Block> ORE_PLATINUM = BlockTags.create(Reference.forgePath("ores/platinum"));
+    public static final TagKey<Block> ORE_DEMONITE = BlockTags.create(Reference.path("ores/demonite"));
+    public static final TagKey<Block> ORE_CRIMTANE = BlockTags.create(Reference.path("ores/crimtane"));
+    public static final TagKey<Block> ORE_COBALT = BlockTags.create(Reference.forgePath("ores/cobalt"));
+    public static final TagKey<Block> ORE_PALLADIUM = BlockTags.create(Reference.path("ores/palladium"));
+    public static final TagKey<Block> ORE_MYTHRIL = BlockTags.create(Reference.forgePath("ores/mythril"));
+    public static final TagKey<Block> ORE_ORICHALCUM = BlockTags.create(Reference.path("ores/orichalcum"));
+    public static final TagKey<Block> ORE_ADAMANTITE = BlockTags.create(Reference.path("ores/adamantite"));
+    public static final TagKey<Block> ORE_TITANIUM = BlockTags.create(Reference.forgePath("ores/titanium"));
+    public static final TagKey<Block> CRYSTAL_TOPAZ = BlockTags.create(Reference.path("topaz_crystal"));
+    public static final TagKey<Block> CRYSTAL_AMETHYST = BlockTags.create(Reference.path("amethyst_crystal"));
+    public static final TagKey<Block> ORE_SAPPHIRE = BlockTags.create(Reference.forgePath("ores/sapphire"));
+    public static final TagKey<Block> ORE_RUBY = BlockTags.create(Reference.forgePath("ores/runy"));
 //    public static final TagKey<Block> MUSHROOM_PLANTERS = BlockTags.create(Reference.path("mushroom_planters"));
 //    public static final TagKey<Block> CORRUPT_REPLACERS = BlockTags.create(Reference.path("gen/corrupt_replacers"));
 //    public static final TagKey<Block> CRIMSON_REPLACERS = BlockTags.create(Reference.path("gen/crimson_replacers"));
@@ -35,7 +55,6 @@ public class TerraTagRegistry
 //    public static final TagKey<Block> JUNGLE_REPLACERS = BlockTags.create(Reference.path("gen/jungle_replacers"));
 //    public static final TagKey<Block> GENERAL_REPLACERS = BlockTags.create(Reference.path("gen/general_replacers"));
 
-    public static final TagKey<Item> INGOT_COPPER = ItemTags.create(new ResourceLocation("forge:ingots/copper"));
     public static final TagKey<Item> INGOT_TIN = ItemTags.create(new ResourceLocation("forge:ingots/tin"));
     public static final TagKey<Item> INGOT_LEAD = ItemTags.create(new ResourceLocation("forge:ingots/lead"));
     public static final TagKey<Item> INGOT_TUNGSTEN = ItemTags.create(new ResourceLocation("forge:ingots/tungsten"));
@@ -90,14 +109,10 @@ public class TerraTagRegistry
     public static final TagKey<Item> FIRE_STARTERS = ItemTags.create(Reference.path("fire_starters"));
     public static final TagKey<Item> GUN_SNIPERS = ItemTags.create(Reference.path("gun_snipers"));
     public static final TagKey<Item> GUN_SCOPERS = ItemTags.create(Reference.path("gun_scopers"));
-//    public static final TagKey<Item> DEPTH_TELLERS = ItemTags.create(Reference.path("depth_tellers"));
-    public static final TagKey<Item> WATCH_TELLERS = ItemTags.create(Reference.path("watch_tellers"));
-    public static final TagKey<Item> COMPASS_TELLERS = ItemTags.create(Reference.path("compass_tellers"));
-//    public static final TagKey<Item> RADAR_TELLERS = ItemTags.create(Reference.path("radar_tellers"));
     public static final TagKey<Item> TALLY_TELLERS = ItemTags.create(Reference.path("tally_tellers"));
 //    public static final TagKey<Item> ANALYZER_TELLERS = ItemTags.create(Reference.path("analyzer_tellers"));
-//    public static final TagKey<Item> DPS_TELLERS = ItemTags.create(Reference.path("dps_tellers"));
-//    public static final TagKey<Item> TIMER_TELLERS = ItemTags.create(Reference.path("timer_tellers"));
+    public static final TagKey<Item> DPS_TELLERS = ItemTags.create(Reference.path("dps_tellers"));
+    public static final TagKey<Item> SPEED_TELLERS = ItemTags.create(Reference.path("speed_tellers"));
 //    public static final TagKey<Item> METAL_TELLERS = ItemTags.create(Reference.path("metal_tellers"));
 //    public static final TagKey<Item> FISH_TELLERS = ItemTags.create(Reference.path("fish_tellers"));
 //    public static final TagKey<Item> RADIO_TELLERS = ItemTags.create(Reference.path("radio_tellers"));

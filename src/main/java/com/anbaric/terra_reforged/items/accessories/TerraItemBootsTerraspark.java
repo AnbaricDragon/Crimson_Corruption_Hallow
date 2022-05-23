@@ -71,6 +71,31 @@ public class TerraItemBootsTerraspark extends TerraItemAccessory
             }
 
             @Override
+            public void curioTick(SlotContext slotContext)
+            {
+                Player player = slotContext.entity() instanceof Player ? (Player) slotContext.entity() : null;
+                if (!(player == null))
+                {
+                    CompoundTag compound = stack.getOrCreateTag();
+                    boolean isWet = player.isInWater();
+
+                    int chargeCooldown = compound.getInt("chargeCooldown");
+                    if (chargeCooldown > 0)
+                    {
+                        compound.putInt("chargeCooldown", isWet ? 0 : --chargeCooldown);
+                    }
+                    else
+                    {
+                        int charge = compound.getInt("charge");
+                        if (charge < 140)
+                        {
+                            compound.putInt("charge", isWet ? 140 : charge + 2);
+                        }
+                    }
+                }
+            }
+
+            @Override
             public List<Component> getAttributesTooltip(List<Component> tooltips)
             {
                 return new ArrayList<>();

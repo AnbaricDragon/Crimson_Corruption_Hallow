@@ -1,0 +1,10 @@
+{
+  "replace": false,
+  "values": [
+    "terra_reforged:ore_platinum",
+    "terra_reforged:ore_platinum_corrupt",
+    "terra_reforged:ore_platinum_crimson",
+    "terra_reforged:ore_platinum_hallowed",
+    "terra_reforged:ore_platinum_jungle"
+  ]
+}

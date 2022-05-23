@@ -1,0 +1,10 @@
+{
+  "replace": false,
+  "values": [
+    "terra_reforged:ore_tin",
+    "terra_reforged:ore_tin_corrupt",
+    "terra_reforged:ore_tin_crimson",
+    "terra_reforged:ore_tin_hallowed",
+    "terra_reforged:ore_tin_jungle"
+  ]
+}

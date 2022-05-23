@@ -39,6 +39,8 @@ public class TerraReforged
     public static DamageSource THORNS = new DamageSource("thorns").bypassArmor();
     public static DamageSource MINION = new DamageSource("minion");
 
+    //TODO JUNGLE VARIANTS FOR ORES IN TAGS
+
     public static final CreativeModeTab TERRA_BLOCKS_TAB = new CreativeModeTab("terra_blocks_tab") { public ItemStack makeIcon() { return new ItemStack(TerraBlockRegistry.GRASS_JUNGLE.get()); }};
     public static final CreativeModeTab TERRA_DECORATIONS_TAB = new CreativeModeTab("terra_decorations_tab") { public ItemStack makeIcon() { return new ItemStack(TerraBlockRegistry.LEAF_PEARL_CYAN.get()); }};
     public static final CreativeModeTab TERRA_MATERIALS_TAB = new CreativeModeTab("terra_materials_tab") { public ItemStack makeIcon() { return new ItemStack(TerraItemRegistry.INGOT_COBALT.get()); }};
@@ -64,21 +66,22 @@ public class TerraReforged
         // Register ourselves for server and other game events we are interested in
         MinecraftForge.EVENT_BUS.register(this);
 
+        TerraParticleRegistry.PARTICLES.register(modEventBus);
         TerraBlockRegistry.BLOCKS.register(modEventBus);
         TerraItemRegistry.ITEMS.register(modEventBus);
         TerraEffectRegistry.EFFECTS.register(modEventBus);
         TerraAttributeRegistry.ATTRIBUTES.register(modEventBus);
 
         MinecraftForge.EVENT_BUS.register(TerraEffectNegationEvent.class);
-        MinecraftForge.EVENT_BUS.register(TerraManaTickEvent.class);
+        MinecraftForge.EVENT_BUS.register(TerraPlayerTickEvent.class);
         MinecraftForge.EVENT_BUS.register(TerraCapabilitiesEvent.class);
         MinecraftForge.EVENT_BUS.register(TerraMagnetItemEvent.class);
         MinecraftForge.EVENT_BUS.register(TerraDamageEffectsEvent.class);
         MinecraftForge.EVENT_BUS.register(TerraTooltipEvent.class);
-//        MinecraftForge.EVENT_BUS.register(TerraGuiRenderEvent.class);
         MinecraftForge.EVENT_BUS.register(new TerraJumpEvent());
         MinecraftForge.EVENT_BUS.register(new TerraDashEvent());
         modEventBus.register(TerraAttributeAdditionEvent.class);
+        modEventBus.register(TerraParticleRegisterEvent.class);
         TerraMana.register();
     }
 

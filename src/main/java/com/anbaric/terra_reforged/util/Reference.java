@@ -14,6 +14,11 @@ public class Reference
         return new ResourceLocation(MODID, path);
     }
 
+    public static ResourceLocation forgePath(String path)
+    {
+        return new ResourceLocation("forge", path);
+    }
+
     public static void print(String print)
     {
         System.out.println(print);;

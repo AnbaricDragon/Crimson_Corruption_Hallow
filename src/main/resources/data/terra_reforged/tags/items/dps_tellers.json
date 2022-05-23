@@ -1,8 +1,8 @@
 {
   "replace": false,
   "values": [
-    "terra_reforged:tally_counter",
-    "terra_reforged:rek",
+    "terra_reforged:dps_meter",
+    "terra_reforged:goblin_tech",
     "terra_reforged:pda",
     "terra_reforged:cell_phone"
   ]

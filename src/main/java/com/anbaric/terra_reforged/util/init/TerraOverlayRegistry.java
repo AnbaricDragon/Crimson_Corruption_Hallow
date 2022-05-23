@@ -1,14 +1,14 @@
 package com.anbaric.terra_reforged.util.init;
 
 import com.anbaric.terra_reforged.capabilities.player_mana.TerraMana;
-import com.anbaric.terra_reforged.items.accessories.TerraItemInfo;
+import com.anbaric.terra_reforged.items.TerraItemInfo;
 import com.anbaric.terra_reforged.util.Reference;
 import com.anbaric.terra_reforged.util.handlers.CurioHandler;
+import com.anbaric.terra_reforged.util.handlers.InfoFunctionHandler;
 import com.google.common.util.concurrent.AtomicDouble;
 import com.mojang.blaze3d.platform.Window;
 import com.mojang.blaze3d.systems.RenderSystem;
 import net.minecraft.ChatFormatting;
-import net.minecraft.Util;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.Font;
 import net.minecraft.client.player.LocalPlayer;
@@ -17,25 +17,23 @@ import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.TextComponent;
 import net.minecraft.network.chat.TranslatableComponent;
 import net.minecraft.resources.ResourceLocation;
-import net.minecraft.stats.Stats;
 import net.minecraft.tags.FluidTags;
-import net.minecraft.world.entity.EntityType;
-import net.minecraft.world.entity.ai.attributes.AttributeModifier;
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.SpawnEggItem;
 import net.minecraft.world.level.Level;
 import net.minecraftforge.client.gui.ForgeIngameGui;
 import net.minecraftforge.client.gui.IIngameOverlay;
 import net.minecraftforge.client.gui.OverlayRegistry;
 
-import java.util.LinkedList;
-import java.util.Optional;
-import java.util.UUID;
-import java.util.concurrent.atomic.AtomicInteger;
-
 public class TerraOverlayRegistry
 {
     private static final ResourceLocation ICON_GUI = new ResourceLocation("terra_reforged:textures/gui/gui_icon.png");
+
+    public static final Component[] WEATHER_COMPONENTS =
+    {
+        new TranslatableComponent("overlay.terra_reforged.info_weather_clear"),
+        new TranslatableComponent("overlay.terra_reforged.info_weather_rain"),
+        new TranslatableComponent("overlay.terra_reforged.info_weather_storm")
+    };
 
     public static final Component[] MOON_PHASE_COMPONENTS =
     {
@@ -110,7 +108,8 @@ public class TerraOverlayRegistry
         }
     });
 
-    public static final IIngameOverlay LAVA_PROTECTION_ELEMENT = OverlayRegistry.registerOverlayTop("Lava Protection Level", (gui, poseStack, partialTick, screenWidth, screenHeight) -> {
+    public static final IIngameOverlay LAVA_PROTECTION_ELEMENT = OverlayRegistry.registerOverlayTop("Lava Protection Level", (gui, poseStack, partialTick, screenWidth, screenHeight) ->
+    {
         if (!gui.minecraft.options.hideGui && gui.shouldDrawSurvivalElements())
         {
             gui.setupOverlayRenderState(true, false);
@@ -158,7 +157,8 @@ public class TerraOverlayRegistry
         }
     });
 
-    public static final IIngameOverlay SHIELD_DASH_ELEMENT = OverlayRegistry.registerOverlayTop("Shield Dash Level", (gui, poseStack, partialTick, screenWidth, screenHeight) -> {
+    public static final IIngameOverlay SHIELD_DASH_ELEMENT = OverlayRegistry.registerOverlayTop("Shield Dash Level", (gui, poseStack, partialTick, screenWidth, screenHeight) ->
+    {
         if (!gui.minecraft.options.hideGui)
         {
             gui.setupOverlayRenderState(true, false);
@@ -316,7 +316,7 @@ public class TerraOverlayRegistry
                     int dataLeft = (((screenWidth >> 1) + screenWidth / 4) - screenWidth / 35) + ((boxWidth * 11) >>> 1) + 6;
                     top = window.getGuiScaledHeight() - (gui.getFont().lineHeight * 4);
                     Font font = gui.getFont();
-                    if (functionIndex >> TerraItemInfo.Functions.DEPTH_METER.ordinal() != 0 && activeIndex == TerraItemInfo.Functions.DEPTH_METER.ordinal())
+                    if (functionIndex >> InfoFunctionHandler.Functions.DEPTH_METER.ordinal() != 0 && activeIndex == InfoFunctionHandler.Functions.DEPTH_METER.ordinal())
                     {
                         int depth = (int) player.position().y;
 
@@ -338,7 +338,7 @@ public class TerraOverlayRegistry
                         );
                         gui.getFont().draw(poseStack, toDisplay, dataLeft - (font.width(toDisplay) / 2), top, 0xFFFFFF);
                     }
-                    else if (functionIndex >> TerraItemInfo.Functions.CLOCK.ordinal() != 0 && activeIndex == TerraItemInfo.Functions.CLOCK.ordinal())
+                    else if (functionIndex >> InfoFunctionHandler.Functions.CLOCK.ordinal() != 0 && activeIndex == InfoFunctionHandler.Functions.CLOCK.ordinal())
                     {
                         int time = (int) ((player.level.getDayTime() % 24000) + 6000) % 24000;
                         int hours = time / 1000;
@@ -355,7 +355,7 @@ public class TerraOverlayRegistry
                         //Component toDisplay =  new TranslatableComponent("overlay.terra_reforged.info_depth_surface", new TextComponent(Integer.toString(depth)));
                         gui.getFont().draw(poseStack, toDisplay, dataLeft - (font.width(toDisplay) / 2), top, 0xFFFFFF);
                     }
-                    else if (functionIndex >> TerraItemInfo.Functions.COMPASS.ordinal() != 0 && activeIndex == TerraItemInfo.Functions.COMPASS.ordinal())
+                    else if (functionIndex >> InfoFunctionHandler.Functions.COMPASS.ordinal() != 0 && activeIndex == InfoFunctionHandler.Functions.COMPASS.ordinal())
                     {
                         int xCoord = (int) player.position().x;
                         int zCoord = (int) player.position().z;
@@ -366,54 +366,64 @@ public class TerraOverlayRegistry
                             new TextComponent(Integer.toString(zCoord)));
                         gui.getFont().draw(poseStack, toDisplay, dataLeft - (font.width(toDisplay) / 2), top, 0xFFFFFF);
                     }
-                    else if (functionIndex >> TerraItemInfo.Functions.RADAR.ordinal() != 0 && activeIndex == TerraItemInfo.Functions.RADAR.ordinal())
+                    else if (functionIndex >> InfoFunctionHandler.Functions.RADAR.ordinal() != 0 && activeIndex == InfoFunctionHandler.Functions.RADAR.ordinal())
                     {
-                        int mobCount = compound.getInt(TerraItemInfo.Functions.RADAR.getTag());
+                        int mobCount = compound.getInt(InfoFunctionHandler.Functions.RADAR.getTag());
                         Component toDisplay = new TranslatableComponent("overlay.terra_reforged.info_radar", new TextComponent(Integer.toString(mobCount)));
                         gui.getFont().draw(poseStack, toDisplay, dataLeft - (font.width(toDisplay) / 2), top, 0xFFFFFF);
                     }
-                    else if (functionIndex >> TerraItemInfo.Functions.TALLY_COUNTER.ordinal() != 0 && activeIndex == TerraItemInfo.Functions.TALLY_COUNTER.ordinal())
+                    else if (functionIndex >> InfoFunctionHandler.Functions.TALLY_COUNTER.ordinal() != 0 && activeIndex == InfoFunctionHandler.Functions.TALLY_COUNTER.ordinal())
                     {
-                        String tallyMob = compound.getString(TerraItemInfo.Functions.TALLY_COUNTER.getTag() + "_name");
-                        int tallyCount = compound.getInt(TerraItemInfo.Functions.TALLY_COUNTER.getTag() + "_number");
+                        String tallyMob = compound.getString(InfoFunctionHandler.Functions.TALLY_COUNTER.getTag() + "_name");
+                        int tallyCount = compound.getInt(InfoFunctionHandler.Functions.TALLY_COUNTER.getTag() + "_number");
                         String translationName = tallyMob.replace(':', '.');
                         Component toDisplay = new TranslatableComponent("overlay.terra_reforged.info_tally", new TranslatableComponent("entity." + translationName), new TextComponent(Integer.toString(tallyCount)));
                         gui.getFont().draw(poseStack, toDisplay, dataLeft - (font.width(toDisplay) / 2), top, 0xFFFFFF);
                     }
-                    else if (functionIndex >> TerraItemInfo.Functions.MOB_FINDER.ordinal() != 0 && activeIndex == TerraItemInfo.Functions.MOB_FINDER.ordinal())
+                    else if (functionIndex >> InfoFunctionHandler.Functions.MOB_FINDER.ordinal() != 0 && activeIndex == InfoFunctionHandler.Functions.MOB_FINDER.ordinal())
                     {
                         //TODO Add rarity levels for monsters
                         Component toDisplay = new TextComponent("Function Not Found").withStyle(ChatFormatting.DARK_RED);
                         gui.getFont().draw(poseStack, toDisplay, dataLeft - (font.width(toDisplay) / 2), top, 0xFFFFFF);
                     }
-                    else if (functionIndex >> TerraItemInfo.Functions.DPS_METER.ordinal() != 0 && activeIndex == TerraItemInfo.Functions.DPS_METER.ordinal())
+                    else if (functionIndex >> InfoFunctionHandler.Functions.DPS_METER.ordinal() != 0 && activeIndex == InfoFunctionHandler.Functions.DPS_METER.ordinal())
+                    {
+                        int length = compound.getIntArray(InfoFunctionHandler.Functions.DPS_METER.getTag() + "_damage").length;
+                        float damage = 0;
+                        for (int i = 0; i < length; i++)
+                        {
+                            damage += compound.getIntArray(InfoFunctionHandler.Functions.DPS_METER.getTag() + "_damage")[i];
+                        }
+                        damage /= 5;
+                        float roundedDamage = (Math.round(damage * 10)) / 10;
+                        Component toDisplay = new TranslatableComponent("overlay.terra_reforged.info_dps", new TextComponent(Float.toString(roundedDamage)));
+                        gui.getFont().draw(poseStack, toDisplay, dataLeft - (font.width(toDisplay) / 2), top, 0xFFFFFF);
+                    }
+                    else if (functionIndex >> InfoFunctionHandler.Functions.SPEED_METER.ordinal() != 0 && activeIndex == InfoFunctionHandler.Functions.SPEED_METER.ordinal())
+                    {
+                        double distance = compound.getDouble(InfoFunctionHandler.Functions.SPEED_METER.getTag() + "_distance");
+                        double formattedDistance = (Math.round(distance * 10)) / 10;
+                        Component toDisplay = new TranslatableComponent("overlay.terra_reforged.info_speed", new TextComponent(String.valueOf(formattedDistance)));
+                        gui.getFont().draw(poseStack, toDisplay, dataLeft - (font.width(toDisplay) / 2), top, 0xFFFFFF);
+                    }
+                    else if (functionIndex >> InfoFunctionHandler.Functions.METAL_FINDER.ordinal() != 0 && activeIndex == InfoFunctionHandler.Functions.METAL_FINDER.ordinal())
+                    {
+                        Component toDisplay = new TranslatableComponent(compound.getString(InfoFunctionHandler.Functions.METAL_FINDER.getTag()));
+                        gui.getFont().draw(poseStack, toDisplay, dataLeft - (font.width(toDisplay) / 2), top, 0xFFFFFF);
+                    }
+                    else if (functionIndex >> InfoFunctionHandler.Functions.FISH_FINDER.ordinal() != 0 && activeIndex == InfoFunctionHandler.Functions.FISH_FINDER.ordinal())
                     {
                         Component toDisplay = new TextComponent("Function Not Found").withStyle(ChatFormatting.DARK_RED);
                         gui.getFont().draw(poseStack, toDisplay, dataLeft - (font.width(toDisplay) / 2), top, 0xFFFFFF);
                     }
-                    else if (functionIndex >> TerraItemInfo.Functions.SPEED_METER.ordinal() != 0 && activeIndex == TerraItemInfo.Functions.SPEED_METER.ordinal())
+                    else if (functionIndex >> InfoFunctionHandler.Functions.WEATHER.ordinal() != 0 && activeIndex == InfoFunctionHandler.Functions.WEATHER.ordinal())
                     {
-                        Component toDisplay = new TextComponent("Function Not Found").withStyle(ChatFormatting.DARK_RED);
-                        gui.getFont().draw(poseStack, toDisplay, dataLeft - (font.width(toDisplay) / 2), top, 0xFFFFFF);
+                        int weather = 0;
+                        if (player.level.isRaining()) weather = 1;
+                        if (player.level.isThundering()) weather = 2;
+                        gui.getFont().draw(poseStack, WEATHER_COMPONENTS[weather], dataLeft - (font.width(WEATHER_COMPONENTS[weather]) / 2), top, 0xFFFFFF);
                     }
-                    else if (functionIndex >> TerraItemInfo.Functions.METAL_FINDER.ordinal() != 0 && activeIndex == TerraItemInfo.Functions.METAL_FINDER.ordinal())
-                    {
-                        //TODO Add rarity levels for ores
-                        Component toDisplay = new TextComponent("Function Not Found").withStyle(ChatFormatting.DARK_RED);
-                        gui.getFont().draw(poseStack, toDisplay, dataLeft - (font.width(toDisplay) / 2), top, 0xFFFFFF);
-                    }
-                    else if (functionIndex >> TerraItemInfo.Functions.FISH_FINDER.ordinal() != 0 && activeIndex == TerraItemInfo.Functions.FISH_FINDER.ordinal())
-                    {
-                        Component toDisplay = new TextComponent("Function Not Found").withStyle(ChatFormatting.DARK_RED);
-                        gui.getFont().draw(poseStack, toDisplay, dataLeft - (font.width(toDisplay) / 2), top, 0xFFFFFF);
-                    }
-                    else if (functionIndex >> TerraItemInfo.Functions.WEATHER.ordinal() != 0 && activeIndex == TerraItemInfo.Functions.WEATHER.ordinal())
-                    {
-                        //TODO Add rarity levels for monsters
-                        Component toDisplay = new TextComponent("Function Not Found").withStyle(ChatFormatting.DARK_RED);
-                        gui.getFont().draw(poseStack, toDisplay, dataLeft - (font.width(toDisplay) / 2), top, 0xFFFFFF);
-                    }
-                    else if (functionIndex >> TerraItemInfo.Functions.MOON_FINDER.ordinal() != 0 && activeIndex == TerraItemInfo.Functions.MOON_FINDER.ordinal())
+                    else if (functionIndex >> InfoFunctionHandler.Functions.MOON_FINDER.ordinal() != 0 && activeIndex == InfoFunctionHandler.Functions.MOON_FINDER.ordinal())
                     {
                         int moonPhase = player.level.getMoonPhase();
                         gui.getFont().draw(poseStack, MOON_PHASE_COMPONENTS[moonPhase], dataLeft - (font.width(MOON_PHASE_COMPONENTS[moonPhase]) / 2), top, 0xFFFFFF);

@@ -1,7 +1,9 @@
 package com.anbaric.terra_reforged.util.events;
 
 import com.anbaric.terra_reforged.capabilities.player_mana.TerraMana;
-import com.anbaric.terra_reforged.items.accessories.TerraItemInfo;
+import com.anbaric.terra_reforged.items.TerraItemInfo;
+import com.anbaric.terra_reforged.util.Reference;
+import com.anbaric.terra_reforged.util.handlers.InfoFunctionHandler;
 import com.anbaric.terra_reforged.util.handlers.RevengeHandler;
 import com.anbaric.terra_reforged.util.handlers.CurioHandler;
 import com.anbaric.terra_reforged.util.init.TerraAttributeRegistry;
@@ -10,6 +12,7 @@ import com.anbaric.terra_reforged.util.init.TerraTagRegistry;
 import net.minecraft.client.player.LocalPlayer;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.server.level.ServerLevel;
+import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.stats.Stats;
 import net.minecraft.world.damagesource.CombatRules;
 import net.minecraft.world.damagesource.DamageSource;
@@ -26,6 +29,10 @@ import net.minecraftforge.event.entity.living.LivingDamageEvent;
 import net.minecraftforge.event.entity.living.LivingFallEvent;
 import net.minecraftforge.event.entity.living.LivingHurtEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
+
+import java.util.Arrays;
+import java.util.LinkedList;
+import java.util.List;
 
 public class TerraDamageEffectsEvent
 {
@@ -65,23 +72,24 @@ public class TerraDamageEffectsEvent
         }
         if (isAttackerAPlayer)
         {
-            Player    player = (Player) attacker;
+            Player player = (Player) attacker;
             Inventory inventory = player.getInventory();
+            int lethalDamage = event.getAmount() >= target.getHealth() ? 1 : 0;
             if (CurioHandler.hasBauble(player, TerraTagRegistry.FIRE_STARTERS) && !target.fireImmune())
             {
                 target.setSecondsOnFire(target.getRandom().nextInt(3) + 1);
             }
-            if (inventory.contains(TerraTagRegistry.TALLY_TELLERS) && player.level.isClientSide())
+            if (inventory.contains(TerraTagRegistry.TALLY_TELLERS) && !player.getLevel().isClientSide())
             {
-                LocalPlayer localPlayer = (LocalPlayer) player;
+                ServerPlayer serverPlayer = (ServerPlayer) player;
                 for (int slot = 0; slot < inventory.getContainerSize(); slot++)
                 {
                     ItemStack slotStack = inventory.getItem(slot);
+                    CompoundTag compound = slotStack.getOrCreateTag();
                     if (slotStack.is(TerraTagRegistry.TALLY_TELLERS))
                     {
-                        CompoundTag compound = slotStack.getOrCreateTag();
-                        compound.putString(TerraItemInfo.Functions.TALLY_COUNTER.getTag() + "_name", target.getType().getRegistryName().toString());
-                        compound.putInt(TerraItemInfo.Functions.TALLY_COUNTER.getTag() + "_number", localPlayer.getStats().getValue(Stats.ENTITY_KILLED.get(target.getType())));
+                        compound.putString(InfoFunctionHandler.Functions.TALLY_COUNTER.getTag() + "_name", target.getType().getRegistryName().toString());
+                        compound.putInt(InfoFunctionHandler.Functions.TALLY_COUNTER.getTag() + "_number", serverPlayer.getStats().getValue(Stats.ENTITY_KILLED.get(target.getType())) + lethalDamage);
                     }
                 }
             }
@@ -175,10 +183,35 @@ public class TerraDamageEffectsEvent
         {
             Player player = (Player) attacker;
             LivingEntity victim = target;
+            Inventory inventory = player.getInventory();
 
             if (CurioHandler.hasBauble(player, TerraTagRegistry.ARMOR_PASSERS))
             {
                 event.setAmount(CombatRules.getDamageAfterAbsorb(event.getAmount(), (float) Math.max(victim.getArmorValue() - CurioHandler.countBaubles(player, TerraTagRegistry.ARMOR_PASSERS) * 3, 0), (float) victim.getAttribute(Attributes.ARMOR_TOUGHNESS).getValue()));
+            }
+            if (player.getOffhandItem().is(TerraTagRegistry.DPS_TELLERS))
+            {
+                ItemStack slotStack = player.getOffhandItem();
+                CompoundTag compound = slotStack.getOrCreateTag();
+                if (slotStack.is(TerraTagRegistry.DPS_TELLERS))
+                {
+                    int arrayLength = compound.getLongArray(InfoFunctionHandler.Functions.DPS_METER.getTag() + "_time").length;
+                    long[] timeArray = new long[arrayLength + 1];
+                    int[] damageArray = new int[arrayLength + 1];
+                    for (int i = 0; i < arrayLength; i++)
+                    {
+                        timeArray[i] = compound.getLongArray(InfoFunctionHandler.Functions.DPS_METER.getTag() + "_time")[i];
+                        damageArray[i] = compound.getIntArray(InfoFunctionHandler.Functions.DPS_METER.getTag() + "_damage")[i];
+                    }
+                    timeArray[arrayLength] = player.level.getGameTime();
+                    damageArray[arrayLength] = (int) event.getAmount();
+
+                    Reference.print("Time list = " + timeArray);
+                    Reference.print("Damage list = " + damageArray);
+
+                    compound.putLongArray(InfoFunctionHandler.Functions.DPS_METER.getTag() + "_time", timeArray);
+                    compound.putIntArray(InfoFunctionHandler.Functions.DPS_METER.getTag() + "_damage", damageArray);
+                }
             }
         }
     }

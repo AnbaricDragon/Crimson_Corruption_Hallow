@@ -1,0 +1,10 @@
+{
+  "replace": false,
+  "values": [
+    "terra_reforged:ore_cobalt",
+    "terra_reforged:ore_cobalt_corrupt",
+    "terra_reforged:ore_cobalt_crimson",
+    "terra_reforged:ore_cobalt_hallowed",
+    "terra_reforged:ore_cobalt_jungle"
+  ]
+}

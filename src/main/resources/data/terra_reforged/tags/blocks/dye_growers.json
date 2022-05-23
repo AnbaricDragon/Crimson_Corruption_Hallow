@@ -1,0 +1,9 @@
+{
+  "replace": false,
+  "values": [
+    "terra_reforged:plant_dye_purple",
+    "terra_reforged:plant_dye_orange",
+    "terra_reforged:plant_dye_cyan",
+    "#terra_reforged:plant_dye_red"
+  ]
+}

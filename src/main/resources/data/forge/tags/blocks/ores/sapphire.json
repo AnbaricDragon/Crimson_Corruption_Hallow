@@ -1,0 +1,10 @@
+{
+  "replace": false,
+  "values": [
+    "terra_reforged:ore_sapphire",
+    "terra_reforged:ore_sapphire_corrupt",
+    "terra_reforged:ore_sapphire_crimson",
+    "terra_reforged:ore_sapphire_hallowed",
+    "terra_reforged:ore_sapphire_jungle"
+  ]
+}

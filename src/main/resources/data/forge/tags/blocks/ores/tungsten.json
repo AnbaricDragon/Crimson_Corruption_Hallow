@@ -1,0 +1,10 @@
+{
+  "replace": false,
+  "values": [
+    "terra_reforged:ore_tungsten",
+    "terra_reforged:ore_tungsten_corrupt",
+    "terra_reforged:ore_tungsten_crimson",
+    "terra_reforged:ore_tungsten_hallowed",
+    "terra_reforged:ore_tungsten_jungle"
+  ]
+}

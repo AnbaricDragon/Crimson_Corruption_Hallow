@@ -9,7 +9,7 @@ import net.minecraftforge.eventbus.api.SubscribeEvent;
 public class TerraAttributeAdditionEvent
 {
     @SubscribeEvent
-    public static void onAttachAttributesPlayer(EntityAttributeModificationEvent event)
+    static void onAttachAttributesPlayer(EntityAttributeModificationEvent event)
     {
         event.add(EntityType.PLAYER, Attributes.ATTACK_KNOCKBACK);
 

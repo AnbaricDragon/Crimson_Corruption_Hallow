@@ -1,15 +1,17 @@
 package com.anbaric.terra_reforged.util.init;
 
 import com.anbaric.terra_reforged.TerraReforged;
-import com.anbaric.terra_reforged.items.TerraItemConsumeableMana;
-import com.anbaric.terra_reforged.items.TerraItemManaCrystal;
+import com.anbaric.terra_reforged.items.*;
 import com.anbaric.terra_reforged.items.accessories.*;
-import com.anbaric.terra_reforged.items.accessories.TerraItemInfo.Functions;
 import com.anbaric.terra_reforged.items.armor.TerraItemHelmetDiving;
 import com.anbaric.terra_reforged.util.Reference;
-import com.anbaric.terra_reforged.util.handlers.MaterialHandler;
+import com.anbaric.terra_reforged.util.handlers.*;
+import com.anbaric.terra_reforged.util.handlers.InfoFunctionHandler.Functions;
 import net.minecraft.world.entity.EquipmentSlot;
-import net.minecraft.world.item.*;
+import net.minecraft.world.item.Item;
+import net.minecraft.world.item.ItemNameBlockItem;
+import net.minecraft.world.item.StandingAndWallBlockItem;
+import net.minecraft.world.item.WaterLilyBlockItem;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
@@ -210,7 +212,7 @@ public class TerraItemRegistry
     public static final RegistryObject<Item> GOBLIN_TECH = ITEMS.register("goblin_tech", () -> new TerraItemInfo(Functions.DPS_METER, Functions.SPEED_METER, Functions.METAL_FINDER));
     public static final RegistryObject<Item> FISH_FINDER = ITEMS.register("fish_finder", () -> new TerraItemInfo(Functions.FISH_FINDER, Functions.WEATHER, Functions.MOON_FINDER));
     public static final RegistryObject<Item> PDA = ITEMS.register("pda", () -> new TerraItemInfo(Functions.DEPTH_METER, Functions.CLOCK, Functions.COMPASS, Functions.RADAR, Functions.TALLY_COUNTER, Functions.MOB_FINDER, Functions.DPS_METER, Functions.SPEED_METER, Functions.METAL_FINDER, Functions.FISH_FINDER, Functions.WEATHER, Functions.MOON_FINDER));
-//    public static final RegistryObject<Item> CELL_PHONE = ITEMS.register("cell_phone", () -> new TerraItemCellPhone());
+    public static final RegistryObject<Item> CELL_PHONE = ITEMS.register("cell_phone", () -> new TerraItemCellPhone(Functions.DEPTH_METER, Functions.CLOCK, Functions.COMPASS, Functions.RADAR, Functions.TALLY_COUNTER, Functions.MOB_FINDER, Functions.DPS_METER, Functions.SPEED_METER, Functions.METAL_FINDER, Functions.FISH_FINDER, Functions.WEATHER, Functions.MOON_FINDER));
 
     public static final RegistryObject<Item> BANDAGE = ITEMS.register("bandage", () -> new TerraItemEffectNegator(0));
     public static final RegistryObject<Item> BLINDFOLD = ITEMS.register("blindfold", () -> new TerraItemEffectNegator(1));

@@ -1,12 +1,11 @@
 package com.anbaric.terra_reforged.util.handlers;
 
 import com.anbaric.terra_reforged.items.models.TerraWingModel;
-import com.anbaric.terra_reforged.items.renders.FledglingWingLayer;
+import com.anbaric.terra_reforged.items.renders.NormalWingLayer;
 import com.anbaric.terra_reforged.util.Reference;
 import com.anbaric.terra_reforged.util.init.TerraBlockRegistry;
 import com.anbaric.terra_reforged.util.init.TerraItemRegistry;
 import net.minecraft.client.Minecraft;
-import net.minecraft.client.model.ElytraModel;
 import net.minecraft.client.model.geom.ModelLayerLocation;
 import net.minecraft.client.model.geom.ModelPart;
 import net.minecraft.client.model.geom.builders.LayerDefinition;
@@ -291,9 +290,8 @@ public class RenderHandler
         ItemBlockRenderTypes.setRenderLayer(TerraBlockRegistry.ORE_DIAMOND_CRIMSON.get(), cutoutMipped);
         ItemBlockRenderTypes.setRenderLayer(TerraBlockRegistry.ORE_DIAMOND_HALLOWED.get(), cutoutMipped);
         ItemBlockRenderTypes.setRenderLayer(TerraBlockRegistry.ORE_DIAMOND_JUNGLE.get(), cutoutMipped);
-
         //Items
-        CuriosRendererRegistry.register(TerraItemRegistry.WINGS_BASIC.get(), () -> new FledglingWingLayer("fledgeling_wings", TerraWingModel.createFledgelingWings()));
+        CuriosRendererRegistry.register(TerraItemRegistry.WINGS_BASIC.get(), () -> new NormalWingLayer("fledgeling_wings", TerraWingModel.createFledgelingWings()));
     }
 
     @SubscribeEvent

@@ -18,12 +18,14 @@ import java.util.function.Function;
 
 public class TerraWingModel extends HumanoidModel<LivingEntity>
 {
-    public final ModelPart rightWing = body.getChild("right_wing");
-    public final ModelPart leftWing = body.getChild("left_wing");
+    public final ModelPart rightWing;
+    public final ModelPart leftWing;
 
     public TerraWingModel(ModelPart part, Function<ResourceLocation, RenderType> renderType, float xOffset, float zOffset, float rotation)
     {
         super(part, renderType);
+        this.leftWing = part.getChild("left_wing");
+        this.rightWing = part.getChild("right_wing");
     }
 
     protected Iterable<ModelPart> headParts()
@@ -64,14 +66,14 @@ public class TerraWingModel extends HumanoidModel<LivingEntity>
                 }
 
                 this.leftWing.y = f2;
-                if (entity instanceof AbstractClientPlayer) {
-                    AbstractClientPlayer abstractclientplayer = (AbstractClientPlayer)entity;
-                    abstractclientplayer.elytraRotX += (f - abstractclientplayer.elytraRotX) * 0.1F;
-                    abstractclientplayer.elytraRotY += (f3 - abstractclientplayer.elytraRotY) * 0.1F;
-                    abstractclientplayer.elytraRotZ += (f1 - abstractclientplayer.elytraRotZ) * 0.1F;
-                    this.leftWing.xRot = abstractclientplayer.elytraRotX;
-                    this.leftWing.yRot = abstractclientplayer.elytraRotY;
-                    this.leftWing.zRot = abstractclientplayer.elytraRotZ;
+                if (entity instanceof AbstractClientPlayer clientPlayer) {
+
+                    clientPlayer.elytraRotX += (f - clientPlayer.elytraRotX) * 0.1F;
+                    clientPlayer.elytraRotY += (f3 - clientPlayer.elytraRotY) * 0.1F;
+                    clientPlayer.elytraRotZ += (f1 - clientPlayer.elytraRotZ) * 0.1F;
+                    this.leftWing.xRot = clientPlayer.elytraRotX;
+                    this.leftWing.yRot = clientPlayer.elytraRotY;
+                    this.leftWing.zRot = clientPlayer.elytraRotZ;
                 } else {
                     this.leftWing.xRot = f;
                     this.leftWing.zRot = f1;
@@ -89,8 +91,7 @@ public class TerraWingModel extends HumanoidModel<LivingEntity>
     public static MeshDefinition createWing()
     {
         CubeDeformation cubedeformation = new CubeDeformation(1.0F);
-        MeshDefinition mesh = new MeshDefinition();
-
+        MeshDefinition mesh = HumanoidModel.createMesh(new CubeDeformation(0.0F), 0.0F);
         mesh.getRoot().addOrReplaceChild("left_wing", CubeListBuilder.create().texOffs(22, 0).addBox(-10.0F, 0.0F, 0.0F, 10.0F, 20.0F, 2.0F, cubedeformation), PartPose.offsetAndRotation(5.0F, 0.0F, 0.0F, 0.2617994F, 0.0F, -0.2617994F));
         mesh.getRoot().addOrReplaceChild("right_wing", CubeListBuilder.create().texOffs(22, 0).mirror().addBox(0.0F, 0.0F, 0.0F, 10.0F, 20.0F, 2.0F, cubedeformation), PartPose.offsetAndRotation(-5.0F, 0.0F, 0.0F, 0.2617994F, 0.0F, 0.2617994F));
         return mesh;

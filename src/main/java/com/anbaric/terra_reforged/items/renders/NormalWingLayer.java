@@ -4,7 +4,6 @@ import com.anbaric.terra_reforged.items.models.TerraWingModel;
 import com.anbaric.terra_reforged.util.Reference;
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.blaze3d.vertex.VertexConsumer;
-import net.minecraft.client.model.ElytraModel;
 import net.minecraft.client.model.EntityModel;
 import net.minecraft.client.model.HumanoidModel;
 import net.minecraft.client.renderer.MultiBufferSource;
@@ -18,17 +17,17 @@ import net.minecraft.world.item.ItemStack;
 import top.theillusivec4.curios.api.SlotContext;
 import top.theillusivec4.curios.api.client.ICurioRenderer;
 
-public class FledglingWingLayer implements ICurioRenderer
+public class NormalWingLayer implements ICurioRenderer
 {
     private final ResourceLocation texture;
     private final TerraWingModel model;
 
-    public FledglingWingLayer(String texturePath, TerraWingModel model)
+    public NormalWingLayer(String texturePath, TerraWingModel model)
     {
         this(new ResourceLocation(Reference.MODID, String.format("textures/entity/wings/%s.png", texturePath)), model);
     }
 
-    public FledglingWingLayer(ResourceLocation texture, TerraWingModel model)
+    public NormalWingLayer(ResourceLocation texture, TerraWingModel model)
     {
         this.texture = texture;
         this.model = model;

@@ -1,13 +1,26 @@
 package com.anbaric.terra_reforged.util.handlers;
 
+import com.anbaric.terra_reforged.items.models.TerraWingModel;
+import com.anbaric.terra_reforged.items.renders.FledglingWingLayer;
 import com.anbaric.terra_reforged.util.Reference;
 import com.anbaric.terra_reforged.util.init.TerraBlockRegistry;
+import com.anbaric.terra_reforged.util.init.TerraItemRegistry;
+import net.minecraft.client.Minecraft;
+import net.minecraft.client.model.ElytraModel;
+import net.minecraft.client.model.geom.ModelLayerLocation;
+import net.minecraft.client.model.geom.ModelPart;
+import net.minecraft.client.model.geom.builders.LayerDefinition;
+import net.minecraft.client.model.geom.builders.MeshDefinition;
 import net.minecraft.client.renderer.ItemBlockRenderTypes;
 import net.minecraft.client.renderer.RenderType;
 import net.minecraftforge.api.distmarker.Dist;
+import net.minecraftforge.client.event.EntityRenderersEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
+import top.theillusivec4.curios.api.client.CuriosRendererRegistry;
+
+import java.util.function.Supplier;
 
 @Mod.EventBusSubscriber
 (value = {Dist.CLIENT}, modid = Reference.MODID, bus = Mod.EventBusSubscriber.Bus.MOD)
@@ -278,5 +291,26 @@ public class RenderHandler
         ItemBlockRenderTypes.setRenderLayer(TerraBlockRegistry.ORE_DIAMOND_CRIMSON.get(), cutoutMipped);
         ItemBlockRenderTypes.setRenderLayer(TerraBlockRegistry.ORE_DIAMOND_HALLOWED.get(), cutoutMipped);
         ItemBlockRenderTypes.setRenderLayer(TerraBlockRegistry.ORE_DIAMOND_JUNGLE.get(), cutoutMipped);
+
+        //Items
+        CuriosRendererRegistry.register(TerraItemRegistry.WINGS_BASIC.get(), () -> new FledglingWingLayer("fledgeling_wings", TerraWingModel.createFledgelingWings()));
+    }
+
+    @SubscribeEvent
+    public static void registerLayer(EntityRenderersEvent.RegisterLayerDefinitions event)
+    {
+        register(event, LayerHandler.FLEDGELING_WINGS, layer(TerraWingModel.createWing(), 64, 32));
+    }
+
+    public static ModelPart bakeLayer(ModelLayerLocation layerLocation) {
+        return Minecraft.getInstance().getEntityModels().bakeLayer(layerLocation);
+    }
+
+    private static void register(EntityRenderersEvent.RegisterLayerDefinitions event, ModelLayerLocation layerLocation, Supplier<LayerDefinition> layer) {
+        event.registerLayerDefinition(layerLocation, layer);
+    }
+
+    private static Supplier<LayerDefinition> layer(MeshDefinition mesh, int textureWidth, int textureHeight) {
+        return () -> LayerDefinition.create(mesh, textureWidth, textureHeight);
     }
 }

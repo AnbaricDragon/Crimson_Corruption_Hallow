@@ -1,0 +1,7 @@
+{
+    "parent": "block/cube_column",
+    "textures": {
+        "end": "terra_reforged:blocks/dungeon_green_pillar_top",
+				"side": "terra_reforged:blocks/dungeon_green_pillar_side"
+    }
+}

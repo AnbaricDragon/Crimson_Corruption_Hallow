@@ -1,7 +1,16 @@
 {
-    "variants": {
-        "axis=y": { "model": "terra_reforged:block/dungeon_green_pillar" },
-        "axis=z": { "model": "terra_reforged:block/dungeon_green_pillar", "x": 90 },
-        "axis=x": { "model": "terra_reforged:block/dungeon_green_pillar", "x": 90, "y": 90 }
+  "variants": {
+    "axis=x": {
+      "model": "terra_reforged:block/dungeon_green_pillar",
+      "x": 90,
+      "y": 90
+    },
+    "axis=y": {
+      "model": "terra_reforged:block/dungeon_green_pillar"
+    },
+    "axis=z": {
+      "model": "terra_reforged:block/dungeon_green_pillar",
+      "x": 90
     }
+  }
 }

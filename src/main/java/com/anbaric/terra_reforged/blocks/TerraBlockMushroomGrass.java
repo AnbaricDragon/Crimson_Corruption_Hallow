@@ -1,10 +1,13 @@
 package com.anbaric.terra_reforged.blocks;
 
 import com.anbaric.terra_reforged.util.init.TerraBlockRegistry;
+import com.anbaric.terra_reforged.util.init.TerraParticleRegistry;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
+import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.tags.FluidTags;
+import net.minecraft.world.level.Level;
 import net.minecraft.world.level.LevelReader;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.state.BlockState;
@@ -70,5 +73,13 @@ public class TerraBlockMushroomGrass extends Block
                 }
             }
         }
+    }
+
+    public void animateTick(BlockState p_54900_, Level p_54901_, BlockPos p_54902_, Random p_54903_) {
+        super.animateTick(p_54900_, p_54901_, p_54902_, p_54903_);
+        if (p_54903_.nextInt(10) == 0) {
+            p_54901_.addParticle(TerraParticleRegistry.MUSHROOM_SPORE_GLOWING.get(), (double)p_54902_.getX() + p_54903_.nextDouble(), (double)p_54902_.getY() + 1.1D, (double)p_54902_.getZ() + p_54903_.nextDouble(), 0.0D, 0.0D, 0.0D);
+        }
+
     }
 }

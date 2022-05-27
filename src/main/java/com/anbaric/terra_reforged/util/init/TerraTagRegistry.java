@@ -110,13 +110,10 @@ public class TerraTagRegistry
     public static final TagKey<Item> GUN_SNIPERS = ItemTags.create(Reference.path("gun_snipers"));
     public static final TagKey<Item> GUN_SCOPERS = ItemTags.create(Reference.path("gun_scopers"));
     public static final TagKey<Item> TALLY_TELLERS = ItemTags.create(Reference.path("tally_tellers"));
-//    public static final TagKey<Item> ANALYZER_TELLERS = ItemTags.create(Reference.path("analyzer_tellers"));
     public static final TagKey<Item> DPS_TELLERS = ItemTags.create(Reference.path("dps_tellers"));
     public static final TagKey<Item> SPEED_TELLERS = ItemTags.create(Reference.path("speed_tellers"));
-//    public static final TagKey<Item> METAL_TELLERS = ItemTags.create(Reference.path("metal_tellers"));
-//    public static final TagKey<Item> FISH_TELLERS = ItemTags.create(Reference.path("fish_tellers"));
-//    public static final TagKey<Item> RADIO_TELLERS = ItemTags.create(Reference.path("radio_tellers"));
-//    public static final TagKey<Item> MOON_TELLERS = ItemTags.create(Reference.path("moon_tellers"));
     public static final TagKey<Item> INFO_TELLERS = ItemTags.create(Reference.path("info_tellers"));
+    public static final TagKey<Item> FLIGHT_GIVERS = ItemTags.create(Reference.path("flight_givers"));
+
 
 }

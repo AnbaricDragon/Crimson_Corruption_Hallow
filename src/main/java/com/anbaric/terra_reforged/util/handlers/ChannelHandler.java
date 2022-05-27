@@ -25,6 +25,8 @@ public class ChannelHandler
         INSTANCE.registerMessage(index++, RocketJumpPacket.class, RocketJumpPacket::toBytes, RocketJumpPacket::new, RocketJumpPacket::handle);
         INSTANCE.registerMessage(index++, CarpetJumpPacket.class, CarpetJumpPacket::toBytes, CarpetJumpPacket::new, CarpetJumpPacket::handle);
         INSTANCE.registerMessage(index++, TabiDashPacket.class, TabiDashPacket::toBytes, TabiDashPacket::new, TabiDashPacket::handle);
+        INSTANCE.registerMessage(index++, WingBoostPacket.class, WingBoostPacket::toBytes, WingBoostPacket::new, WingBoostPacket::handle);
+        INSTANCE.registerMessage(index++, BiomeUpdatePacket.class, BiomeUpdatePacket::toBytes, BiomeUpdatePacket::decode, BiomeUpdatePacket::handle);
         SimpleEntityCapabilityStatusPacket.register(TerraMana.TERRA_MANA_CAPABILITY_RL, TerraMana::getTerraManaCapabilityUnwrap, ChannelHandler.INSTANCE, index++);
 //        INSTANCE.registerMessage(index++, ChangeBiomePacket.class, ChangeBiomePacket::encode, ChangeBiomePacket::decode, ChangeBiomePacket::handle);
     }

@@ -12,11 +12,12 @@ import net.minecraft.world.level.Level;
 import net.minecraft.world.level.LevelAccessor;
 import net.minecraft.world.level.LevelReader;
 import net.minecraft.world.level.block.*;
+import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.StateDefinition;
-import net.minecraft.world.level.block.state.properties.BlockStateProperties;
-import net.minecraft.world.level.block.state.properties.BooleanProperty;
 import net.minecraft.world.level.block.state.properties.DirectionProperty;
+import net.minecraft.world.level.material.FluidState;
+import net.minecraft.world.level.material.Fluids;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.VoxelShape;
 
@@ -25,16 +26,16 @@ import java.util.Map;
 import java.util.Random;
 import java.util.function.Supplier;
 
-public class TerraBlockTorchWall extends TerraBlockTorch
+public class TerraBlockTorchWallWaterproof extends TerraBlockTorchWaterproof
 {
     public static final DirectionProperty FACING = HorizontalDirectionalBlock.FACING;
     protected static final float AABB_OFFSET = 2.5F;
     private static final Map<Direction, VoxelShape> AABBS = Maps.newEnumMap(ImmutableMap.of(Direction.NORTH, Block.box(5.5D, 3.0D, 11.0D, 10.5D, 13.0D, 16.0D), Direction.SOUTH, Block.box(5.5D, 3.0D, 0.0D, 10.5D, 13.0D, 5.0D), Direction.WEST, Block.box(11.0D, 3.0D, 5.5D, 16.0D, 13.0D, 10.5D), Direction.EAST, Block.box(0.0D, 3.0D, 5.5D, 5.0D, 13.0D, 10.5D)));
 
-    public TerraBlockTorchWall(Properties properties, Supplier<ParticleOptions> particle)
+    public TerraBlockTorchWallWaterproof(BlockBehaviour.Properties p_58123_, Supplier<ParticleOptions> particle)
     {
-        super(properties, particle);
-        this.registerDefaultState(this.stateDefinition.any().setValue(FACING, Direction.NORTH));
+        super(p_58123_, particle);
+        this.registerDefaultState(this.stateDefinition.any().setValue(FACING, Direction.NORTH).setValue(WATERLOGGED, Boolean.FALSE));
     }
 
     public String getDescriptionId()
@@ -66,6 +67,7 @@ public class TerraBlockTorchWall extends TerraBlockTorch
         BlockState  blockstate  = this.defaultBlockState();
         LevelReader levelreader = p_58126_.getLevel();
         BlockPos    blockpos    = p_58126_.getClickedPos();
+        FluidState  fluidstate  = levelreader.getFluidState(blockpos);
         Direction[] adirection  = p_58126_.getNearestLookingDirections();
 
         for (Direction direction : adirection)
@@ -76,7 +78,7 @@ public class TerraBlockTorchWall extends TerraBlockTorch
                 blockstate = blockstate.setValue(FACING, direction1);
                 if (blockstate.canSurvive(levelreader, blockpos))
                 {
-                    return blockstate;
+                    return blockstate.setValue(WATERLOGGED, fluidstate.getType() == Fluids.WATER);
                 }
             }
         }
@@ -86,21 +88,27 @@ public class TerraBlockTorchWall extends TerraBlockTorch
 
     public BlockState updateShape(BlockState p_58143_, Direction p_58144_, BlockState p_58145_, LevelAccessor p_58146_, BlockPos p_58147_, BlockPos p_58148_)
     {
+        if (p_58143_.getValue(WATERLOGGED))
+        {
+            p_58146_.scheduleTick(p_58147_, Fluids.WATER, Fluids.WATER.getTickDelay(p_58146_));
+        }
         return p_58144_.getOpposite() == p_58143_.getValue(FACING) && !p_58143_.canSurvive(p_58146_, p_58147_) ? Blocks.AIR.defaultBlockState() : p_58143_;
     }
 
-    @Override
     public void animateTick(BlockState p_58128_, Level p_58129_, BlockPos p_58130_, Random p_58131_)
     {
-        Direction direction  = p_58128_.getValue(FACING);
-        double    d0         = (double) p_58130_.getX() + 0.5D;
-        double    d1         = (double) p_58130_.getY() + 0.7D;
-        double    d2         = (double) p_58130_.getZ() + 0.5D;
-        double    d3         = 0.22D;
-        double    d4         = 0.27D;
-        Direction direction1 = direction.getOpposite();
-        p_58129_.addParticle(ParticleTypes.SMOKE, d0 + 0.27D * (double) direction1.getStepX(), d1 + 0.22D, d2 + 0.27D * (double) direction1.getStepZ(), 0.0D, 0.0D, 0.0D);
-        p_58129_.addParticle(getParticle(), d0 + 0.27D * (double) direction1.getStepX(), d1 + 0.22D, d2 + 0.27D * (double) direction1.getStepZ(), 0.0D, 0.0D, 0.0D);
+        if (!p_58128_.getValue(WATERLOGGED))
+        {
+            Direction direction  = p_58128_.getValue(FACING);
+            double    d0         = (double) p_58130_.getX() + 0.5D;
+            double    d1         = (double) p_58130_.getY() + 0.7D;
+            double    d2         = (double) p_58130_.getZ() + 0.5D;
+            double    d3         = 0.22D;
+            double    d4         = 0.27D;
+            Direction direction1 = direction.getOpposite();
+            p_58129_.addParticle(ParticleTypes.SMOKE, d0 + 0.27D * (double) direction1.getStepX(), d1 + 0.22D, d2 + 0.27D * (double) direction1.getStepZ(), 0.0D, 0.0D, 0.0D);
+            p_58129_.addParticle(getParticle(), d0 + 0.27D * (double) direction1.getStepX(), d1 + 0.22D, d2 + 0.27D * (double) direction1.getStepZ(), 0.0D, 0.0D, 0.0D);
+        }
     }
 
     public BlockState rotate(BlockState p_58140_, Rotation p_58141_)
@@ -115,6 +123,6 @@ public class TerraBlockTorchWall extends TerraBlockTorch
 
     protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> p_58150_)
     {
-        p_58150_.add(FACING);
+        p_58150_.add(FACING, WATERLOGGED);
     }
 }

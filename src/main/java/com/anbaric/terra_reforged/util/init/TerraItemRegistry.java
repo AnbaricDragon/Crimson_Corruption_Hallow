@@ -196,6 +196,12 @@ public class TerraItemRegistry
     public static final RegistryObject<Item> STONE_PHILOSOPHER = ITEMS.register("stone_philosopher", () -> new TerraItemStonePhilosopher());
     public static final RegistryObject<Item> STONE_SUN = ITEMS.register("stone_sun", () -> new TerraItemSunStone());
     public static final RegistryObject<Item> STONE_MOON = ITEMS.register("stone_moon", () -> new TerraItemMoonStone());
+    public static final RegistryObject<Item> NECKLACE_PYGMY = ITEMS.register("necklace_pygmy", () -> new TerraItemPygmyNecklace());
+    public static final RegistryObject<Item> SCROLL_PAPYRUS = ITEMS.register("scroll_papyrus", () -> new TerraItemPapyrusScroll());
+    public static final RegistryObject<Item> SCROLL_NECROMANTIC = ITEMS.register("scroll_necromantic", () -> new TerraItemNecromanticScroll());
+    public static final RegistryObject<Item> HERCULES_BEETLE = ITEMS.register("hercules_beetle", () -> new TerraItemHerculesBeetle());
+
+    public static final RegistryObject<Item> WINGS_BASIC = ITEMS.register("wings_basic", () -> new TerraItemWings(500));
 
     public static final RegistryObject<Item> DEPTH_METER = ITEMS.register("depth_meter", () -> new TerraItemInfo(Functions.DEPTH_METER));
     public static final RegistryObject<Item> RADAR = ITEMS.register("radar", () -> new TerraItemInfo(Functions.RADAR));

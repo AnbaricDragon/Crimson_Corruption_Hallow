@@ -201,8 +201,8 @@ public class TerraItemRegistry
     public static final RegistryObject<Item> SCROLL_NECROMANTIC = ITEMS.register("scroll_necromantic", () -> new TerraItemNecromanticScroll());
     public static final RegistryObject<Item> HERCULES_BEETLE = ITEMS.register("hercules_beetle", () -> new TerraItemHerculesBeetle());
 
-    public static final RegistryObject<Item> WINGS_FLEDGELING = ITEMS.register("wings_fledgeling", () -> new TerraItemWings(500));
-    public static final RegistryObject<Item> WINGS_ANGEL = ITEMS.register("wings_angel", () -> new TerraItemWings(450));
+    public static final RegistryObject<Item> WINGS_FLEDGELING = ITEMS.register("wings_fledgeling", () -> new TerraItemWingsFledgeling(500));
+    public static final RegistryObject<Item> WINGS_ANGEL = ITEMS.register("wings_angel", () -> new TerraItemWingsFledgeling(450));
 
     public static final RegistryObject<Item> DEPTH_METER = ITEMS.register("depth_meter", () -> new TerraItemInfo(Functions.DEPTH_METER));
     public static final RegistryObject<Item> RADAR = ITEMS.register("radar", () -> new TerraItemInfo(Functions.RADAR));

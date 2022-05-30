@@ -303,8 +303,8 @@ public class RenderHandler
     public static void registerLayer(EntityRenderersEvent.RegisterLayerDefinitions event)
     {
         register(event, LayerHandler.FLEDGELING_WINGS, layer(TerraWingModel.createWingModel(), 64, 32));
-        register(event, LayerHandler.ANGEL_WINGS_EXTENDED, layer(TerraStagedWingModel.createExtendedWingModel(), 64, 64));
-        register(event, LayerHandler.ANGEL_WINGS_RESTING, layer(TerraStagedWingModel.createRestingWingModel(), 64, 64));
+        register(event, LayerHandler.ANGEL_WINGS_EXTENDED, TerraStagedWingModel::createExtendedWingLayer);
+        register(event, LayerHandler.ANGEL_WINGS_RESTING, TerraStagedWingModel::createRestingWingLayer);
     }
 
     public static ModelPart bakeLayer(ModelLayerLocation layerLocation) {

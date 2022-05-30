@@ -51,7 +51,7 @@ public class TerraStagedWingRenderer implements ICurioRenderer
         TerraStagedWingModel model = getModel(slotContext.entity().isFallFlying());
         model.setupAnim(slotContext.entity(), limbSwing, limbSwingAmount, ageInTicks, netHeadYaw, headPitch);
         model.prepareMobModel(slotContext.entity(), limbSwing, limbSwingAmount, partialTicks);
-        ICurioRenderer.followBodyRotations(slotContext.entity(), model);
+        renderLayerParent.getModel().copyPropertiesTo(model);
         render(model, poseStack, multiBufferSource, light, stack.hasFoil());
     }
 

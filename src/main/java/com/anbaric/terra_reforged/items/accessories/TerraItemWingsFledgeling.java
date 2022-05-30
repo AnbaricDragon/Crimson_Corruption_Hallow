@@ -7,8 +7,6 @@ import com.anbaric.terra_reforged.util.init.TerraTagRegistry;
 import com.google.common.collect.HashMultimap;
 import com.google.common.collect.Multimap;
 import net.minecraft.ChatFormatting;
-import net.minecraft.client.renderer.entity.ItemRenderer;
-import net.minecraft.client.renderer.texture.OverlayTexture;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.TranslatableComponent;
@@ -20,7 +18,6 @@ import net.minecraft.world.entity.ai.attributes.AttributeModifier;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraftforge.common.capabilities.ICapabilityProvider;
-import org.checkerframework.checker.units.qual.C;
 import top.theillusivec4.caelus.api.CaelusApi;
 import top.theillusivec4.curios.api.SlotContext;
 import top.theillusivec4.curios.api.type.capability.ICurio;
@@ -30,10 +27,10 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
-public class TerraItemWings extends TerraItemAccessory implements ITerraWingItem
+public class TerraItemWingsFledgeling extends TerraItemAccessory implements ITerraWingItem
 {
     private final int cooldown;
-    public TerraItemWings(int boostCooldown)
+    public TerraItemWingsFledgeling(int boostCooldown)
     {
         super();
         this.cooldown = boostCooldown;

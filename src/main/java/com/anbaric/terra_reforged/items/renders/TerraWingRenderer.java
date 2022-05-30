@@ -46,7 +46,7 @@ public class TerraWingRenderer implements ICurioRenderer
     public <T extends LivingEntity, M extends EntityModel<T>> void render(ItemStack stack, SlotContext slotContext, PoseStack poseStack, RenderLayerParent<T, M> renderLayerParent, MultiBufferSource multiBufferSource, int light, float limbSwing, float limbSwingAmount, float partialTicks, float ageInTicks, float netHeadYaw, float headPitch)
     {
         TerraWingModel model = getModel();
-        poseStack.translate(0, -0.075D, 0);
+        poseStack.translate(0, -0.1D, 0);
         poseStack.scale(1.1F, 1.1F, 1.1F);
         model.setupAnim(slotContext.entity(), limbSwing, limbSwingAmount, ageInTicks, netHeadYaw, headPitch);
         model.prepareMobModel(slotContext.entity(), limbSwing, limbSwingAmount, partialTicks);

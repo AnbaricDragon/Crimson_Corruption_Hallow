@@ -6,7 +6,8 @@ import net.minecraft.client.model.geom.ModelLayerLocation;
 public class LayerHandler
 {
     public static final ModelLayerLocation FLEDGELING_WINGS = new ModelLayerLocation(Reference.path("fledgeling_wings"), "fledgeling_wings");
-    public static final ModelLayerLocation ANGEL_WINGS = new ModelLayerLocation(Reference.path("angel_wings"), "angel_wings");
+    public static final ModelLayerLocation ANGEL_WINGS_EXTENDED = new ModelLayerLocation(Reference.path("angel_wings_extended"), "angel_wings_extended");
+    public static final ModelLayerLocation ANGEL_WINGS_RESTING = new ModelLayerLocation(Reference.path("angel_wings_resting"), "angel_wings_resting");
     public static final ModelLayerLocation DEMON_WINGS = new ModelLayerLocation(Reference.path("demon_wings"), "demon_wings");
     public static final ModelLayerLocation LEAF_WINGS = new ModelLayerLocation(Reference.path("leaf_wings"), "leaf_wings");
     public static final ModelLayerLocation FAIRY_WINGS = new ModelLayerLocation(Reference.path("fairy_wings"), "fairy_wings");

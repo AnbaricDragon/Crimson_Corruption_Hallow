@@ -1,5 +1,6 @@
 package com.anbaric.terra_reforged.util.handlers;
 
+import com.anbaric.terra_reforged.util.Reference;
 import com.anbaric.terra_reforged.util.init.TerraBlockRegistry;
 import com.anbaric.terra_reforged.util.init.TerraItemRegistry;
 import net.minecraft.sounds.SoundEvent;
@@ -99,7 +100,7 @@ public class MaterialHandler
         MYSTIC("mystic", 3, new int[]{1, 1, 1, 1}, 10, SoundEvents.ARMOR_EQUIP_IRON, 0.0F, 0.0F, () -> Ingredient.of(Items.AIR)),
         BUCKET("bucket", 3, new int[]{1, 0, 0, 0}, 10, SoundEvents.ARMOR_EQUIP_IRON, 0.0F, 0.0F, () -> Ingredient.of(Items.AIR)),
         GOGGLES("goggles", 3, new int[]{1, 1, 1, 1}, 10, SoundEvents.ARMOR_EQUIP_IRON, 0.0F, 0.0F, () -> Ingredient.of(Items.AIR)),
-        DIVING("diving", 3, new int[]{1, 1, 1, 1}, 10, SoundEvents.ARMOR_EQUIP_IRON, 0.0F, 0.0F, () -> Ingredient.of(Items.AIR)),
+        DIVING(Reference.path("diving").toString(), 3, new int[]{1, 1, 1, 1}, 10, SoundEvents.ARMOR_EQUIP_IRON, 0.0F, 0.0F, () -> Ingredient.of(Items.AIR)),
         NIGHT("night", 3, new int[]{1, 1, 1, 1}, 10, SoundEvents.ARMOR_EQUIP_IRON, 0.0F, 0.0F, () -> Ingredient.of(Items.AIR)),
         VIKING("viking", 3, new int[]{1, 1, 1, 1}, 10, SoundEvents.ARMOR_EQUIP_IRON, 0.0F, 0.0F, () -> Ingredient.of(Items.AIR)),
         ULTRABRIGHT("ultrabright", 3, new int[]{1, 1, 1, 1}, 10, SoundEvents.ARMOR_EQUIP_IRON, 0.0F, 0.0F, () -> Ingredient.of(Items.AIR)),

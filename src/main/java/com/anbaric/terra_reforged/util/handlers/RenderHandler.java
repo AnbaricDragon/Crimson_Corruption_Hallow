@@ -1,6 +1,8 @@
 package com.anbaric.terra_reforged.util.handlers;
 
+import com.anbaric.terra_reforged.items.models.TerraStagedWingModel;
 import com.anbaric.terra_reforged.items.models.TerraWingModel;
+import com.anbaric.terra_reforged.items.renders.TerraStagedWingRenderer;
 import com.anbaric.terra_reforged.items.renders.TerraWingRenderer;
 import com.anbaric.terra_reforged.util.Reference;
 import com.anbaric.terra_reforged.util.init.TerraBlockRegistry;
@@ -294,12 +296,15 @@ public class RenderHandler
 
         //Items
         CuriosRendererRegistry.register(TerraItemRegistry.WINGS_FLEDGELING.get(), () -> new TerraWingRenderer("fledgeling_wings", TerraWingModel.createFledgelingWing()));
+        CuriosRendererRegistry.register(TerraItemRegistry.WINGS_ANGEL.get(), () -> new TerraStagedWingRenderer("angel_wings", TerraStagedWingModel.createExtendedAngelWings(), TerraStagedWingModel.createRestingAngelWings()));
     }
 
     @SubscribeEvent
     public static void registerLayer(EntityRenderersEvent.RegisterLayerDefinitions event)
     {
         register(event, LayerHandler.FLEDGELING_WINGS, layer(TerraWingModel.createWingModel(), 64, 32));
+        register(event, LayerHandler.ANGEL_WINGS_EXTENDED, layer(TerraStagedWingModel.createExtendedWingModel(), 64, 64));
+        register(event, LayerHandler.ANGEL_WINGS_RESTING, layer(TerraStagedWingModel.createRestingWingModel(), 64, 64));
     }
 
     public static ModelPart bakeLayer(ModelLayerLocation layerLocation) {

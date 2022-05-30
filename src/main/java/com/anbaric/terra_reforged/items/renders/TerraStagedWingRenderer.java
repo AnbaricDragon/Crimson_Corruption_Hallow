@@ -1,5 +1,6 @@
 package com.anbaric.terra_reforged.items.renders;
 
+import com.anbaric.terra_reforged.items.models.TerraStagedWingModel;
 import com.anbaric.terra_reforged.items.models.TerraWingModel;
 import com.anbaric.terra_reforged.util.Reference;
 import com.mojang.blaze3d.vertex.PoseStack;
@@ -16,20 +17,22 @@ import net.minecraft.world.item.ItemStack;
 import top.theillusivec4.curios.api.SlotContext;
 import top.theillusivec4.curios.api.client.ICurioRenderer;
 
-public class TerraWingRenderer implements ICurioRenderer
+public class TerraStagedWingRenderer implements ICurioRenderer
 {
     private final ResourceLocation texture;
-    private final TerraWingModel model;
+    private final TerraStagedWingModel extendedModel;
+    private final TerraStagedWingModel restingModel;
 
-    public TerraWingRenderer(String texturePath, TerraWingModel model)
+    public TerraStagedWingRenderer(String texturePath, TerraStagedWingModel extendedModel, TerraStagedWingModel restingModel)
     {
-        this(Reference.path(String.format("textures/entity/wings/%s.png", texturePath)), model);
+        this(Reference.path(String.format("textures/entity/wings/%s.png", texturePath)), extendedModel, restingModel);
     }
 
-    public TerraWingRenderer(ResourceLocation texture, TerraWingModel model)
+    public TerraStagedWingRenderer(ResourceLocation texture, TerraStagedWingModel extendedModel, TerraStagedWingModel restingModel)
     {
         this.texture = texture;
-        this.model = model;
+        this.extendedModel = extendedModel;
+        this.restingModel = restingModel;
     }
 
     protected ResourceLocation getTexture()
@@ -37,24 +40,22 @@ public class TerraWingRenderer implements ICurioRenderer
         return texture;
     }
 
-    protected TerraWingModel getModel()
+    protected TerraStagedWingModel getModel(boolean isFlying)
     {
-        return model;
+        return isFlying ? extendedModel : restingModel;
     }
 
     @Override
     public <T extends LivingEntity, M extends EntityModel<T>> void render(ItemStack stack, SlotContext slotContext, PoseStack poseStack, RenderLayerParent<T, M> renderLayerParent, MultiBufferSource multiBufferSource, int light, float limbSwing, float limbSwingAmount, float partialTicks, float ageInTicks, float netHeadYaw, float headPitch)
     {
-        TerraWingModel model = getModel();
-        poseStack.translate(0, -0.075D, 0);
-        poseStack.scale(1.1F, 1.1F, 1.1F);
+        TerraStagedWingModel model = getModel(slotContext.entity().isFallFlying());
         model.setupAnim(slotContext.entity(), limbSwing, limbSwingAmount, ageInTicks, netHeadYaw, headPitch);
         model.prepareMobModel(slotContext.entity(), limbSwing, limbSwingAmount, partialTicks);
         ICurioRenderer.followBodyRotations(slotContext.entity(), model);
-        render(poseStack, multiBufferSource, light, stack.hasFoil());
+        render(model, poseStack, multiBufferSource, light, stack.hasFoil());
     }
 
-    protected void render(PoseStack matrixStack, MultiBufferSource buffer, int light, boolean hasFoil)
+    protected void render(TerraStagedWingModel model, PoseStack matrixStack, MultiBufferSource buffer, int light, boolean hasFoil)
     {
         RenderType     renderType    = model.renderType(getTexture());
         VertexConsumer vertexBuilder = ItemRenderer.getFoilBuffer(buffer, renderType, false, hasFoil);

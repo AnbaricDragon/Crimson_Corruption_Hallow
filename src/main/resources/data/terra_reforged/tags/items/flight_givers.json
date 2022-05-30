@@ -1,6 +1,7 @@
 {
   "replace": false,
   "values": [
-    "terra_reforged:wings_fledgeling"
+    "terra_reforged:wings_fledgeling",
+    "terra_reforged:wings_angel"
   ]
 }

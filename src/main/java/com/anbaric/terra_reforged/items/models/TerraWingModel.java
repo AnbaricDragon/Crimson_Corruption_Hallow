@@ -27,11 +27,6 @@ public class TerraWingModel extends HumanoidModel<LivingEntity>
         super(part, renderType);
     }
 
-    public TerraWingModel(ModelPart part)
-    {
-        this(part, RenderType::entityCutoutNoCull);
-    }
-
     @Override
     protected Iterable<ModelPart> headParts()
     {
@@ -46,74 +41,7 @@ public class TerraWingModel extends HumanoidModel<LivingEntity>
 
     public static TerraWingModel createFledgelingWing()
     {
-        return new TerraWingModel(RenderHandler.bakeLayer(LayerHandler.FLEDGELING_WINGS), RenderType::entityTranslucent)
-        {
-            private final ModelPart rightWing = body.getChild("right_wing");
-            private final ModelPart leftWing = body.getChild("left_wing");
-
-            @Override
-            public void setupAnim(LivingEntity pEntity, float pLimbSwing, float pLimbSwingAmount, float pAgeInTicks, float pNetHeadYaw, float pHeadPitch) {
-                float f = 0.2617994F;
-                float f1 = -0.2617994F;
-                float f2 = 0;
-                float f3 = 0;
-                if (pEntity.isFallFlying()) {
-                    float f4   = 1;
-                    Vec3  vec3 = pEntity.getDeltaMovement();
-                    if (vec3.y < 0.0D) {
-                        Vec3 vec31 = vec3.normalize();
-                        f4 = 1 - (float)Math.pow(-vec31.y, 1.5D);
-                    }
-
-                    f = f4 * 0.34906584F + (1 - f4) * f;
-                    f1 = f4 * (-(float)Math.PI / 2F) + (1 - f4) * f1;
-                } else if (pEntity.isCrouching()) {
-                    f = 0.6981317F;
-                    f1 = (-(float)Math.PI / 4F);
-                    f2 = 3;
-                    f3 = 0.08726646F;
-                }
-
-                this.leftWing.y = f2;
-                if (pEntity instanceof AbstractClientPlayer) {
-                    AbstractClientPlayer abstractclientplayer = (AbstractClientPlayer)pEntity;
-                    abstractclientplayer.elytraRotX += (f - abstractclientplayer.elytraRotX) * 0.1F;
-                    abstractclientplayer.elytraRotY += (f3 - abstractclientplayer.elytraRotY) * 0.1F;
-                    abstractclientplayer.elytraRotZ += (f1 - abstractclientplayer.elytraRotZ) * 0.1F;
-                    this.leftWing.xRot = abstractclientplayer.elytraRotX;
-                    this.leftWing.yRot = abstractclientplayer.elytraRotY;
-                    this.leftWing.zRot = abstractclientplayer.elytraRotZ;
-                } else {
-                    this.leftWing.xRot = f;
-                    this.leftWing.zRot = f1;
-                    this.leftWing.yRot = f3;
-                }
-
-                this.rightWing.yRot = -this.leftWing.yRot;
-                this.rightWing.y = this.leftWing.y;
-                this.rightWing.xRot = this.leftWing.xRot;
-                this.rightWing.zRot = -this.leftWing.zRot;
-            }
-        };
-    }
-
-    public static HumanoidModel<LivingEntity> createFledgelingWingModelAlt()
-    {
-        ModelPart part = RenderHandler.bakeLayer(LayerHandler.FLEDGELING_WINGS);
-        return new HumanoidModel<>(part, RenderType::entityCutoutNoCull)
-        {
-            @Override
-            protected Iterable<ModelPart> headParts()
-            {
-                return ImmutableList.of();
-            }
-
-            @Override
-            protected Iterable<ModelPart> bodyParts()
-            {
-                return ImmutableList.of(body);
-            }
-        };
+        return new TerraWingModel(RenderHandler.bakeLayer(LayerHandler.FLEDGELING_WINGS), RenderType::entityTranslucent);
     }
 
     private static MeshDefinition createWing(CubeListBuilder rightWing, CubeListBuilder leftWing)

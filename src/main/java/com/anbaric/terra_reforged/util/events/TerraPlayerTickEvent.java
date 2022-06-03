@@ -133,5 +133,9 @@ public class TerraPlayerTickEvent
                 compound.putIntArray(InfoFunctionHandler.Functions.DPS_METER.getTag() + "_damage", newDamages);
             }
         }
+        if (CurioHandler.hasBauble(event.player, TerraItemRegistry.WINGS_FLEDGELING.get()) && event.player.isFallFlying() && event.player.getDeltaMovement().y > 0)
+        {
+            event.player.setDeltaMovement(event.player.getDeltaMovement().multiply(0.98D, 0.98D, 0.98D));
+        }
     }
 }

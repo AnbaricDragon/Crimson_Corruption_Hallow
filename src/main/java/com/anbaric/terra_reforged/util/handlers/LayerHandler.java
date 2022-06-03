@@ -8,7 +8,8 @@ public class LayerHandler
     public static final ModelLayerLocation FLEDGELING_WINGS = new ModelLayerLocation(Reference.path("fledgeling_wings"), "fledgeling_wings");
     public static final ModelLayerLocation ANGEL_WINGS_EXTENDED = new ModelLayerLocation(Reference.path("angel_wings_extended"), "angel_wings_extended");
     public static final ModelLayerLocation ANGEL_WINGS_RESTING = new ModelLayerLocation(Reference.path("angel_wings_resting"), "angel_wings_resting");
-    public static final ModelLayerLocation DEMON_WINGS = new ModelLayerLocation(Reference.path("demon_wings"), "demon_wings");
+    public static final ModelLayerLocation DEMON_WINGS_EXTENDED = new ModelLayerLocation(Reference.path("demon_wings_extended"), "demon_wings_extended");
+    public static final ModelLayerLocation DEMON_WINGS_RESTING = new ModelLayerLocation(Reference.path("demon_wings_resting"), "demon_wings_resting");
     public static final ModelLayerLocation LEAF_WINGS = new ModelLayerLocation(Reference.path("leaf_wings"), "leaf_wings");
     public static final ModelLayerLocation FAIRY_WINGS = new ModelLayerLocation(Reference.path("fairy_wings"), "fairy_wings");
     public static final ModelLayerLocation FIN_WINGS = new ModelLayerLocation(Reference.path("fin_wings"), "fin_wings");
@@ -34,4 +35,6 @@ public class LayerHandler
     public static final ModelLayerLocation VORTEX_WINGS = new ModelLayerLocation(Reference.path("vortex_wings"), "vortex_wings");
     public static final ModelLayerLocation SOLAR_WINGS = new ModelLayerLocation(Reference.path("solar_wings"), "solar_wings");
     public static final ModelLayerLocation STARDUST_WINGS = new ModelLayerLocation(Reference.path("stardust_wings"), "stardust_wings");
+
+    public static final ModelLayerLocation FLYING_CARPET = new ModelLayerLocation(Reference.path("flying_carpet"), "flying_carpet");
 }

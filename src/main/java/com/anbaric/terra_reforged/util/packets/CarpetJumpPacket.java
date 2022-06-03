@@ -1,10 +1,7 @@
 package com.anbaric.terra_reforged.util.packets;
 
-import com.anbaric.terra_reforged.util.events.TerraJumpEvent;
-import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.server.level.ServerPlayer;
-import net.minecraft.sounds.SoundEvents;
 import net.minecraftforge.network.NetworkEvent;
 
 import java.util.function.Supplier;
@@ -38,8 +35,7 @@ public class CarpetJumpPacket
         ServerPlayer player = context.get().getSender();
         if (player != null)
         {
-            context.get().enqueueWork(() ->
-            {
+            context.get().enqueueWork(() -> {
                 if (setGravity)
                 {
                     player.setDeltaMovement(player.getDeltaMovement().x * 1.03, 0, player.getDeltaMovement().z * 1.03);

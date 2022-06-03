@@ -1,7 +1,9 @@
 package com.anbaric.terra_reforged.util.handlers;
 
+import com.anbaric.terra_reforged.items.models.TerraFlyingCarpetModel;
 import com.anbaric.terra_reforged.items.models.TerraStagedWingModel;
 import com.anbaric.terra_reforged.items.models.TerraWingModel;
+import com.anbaric.terra_reforged.items.renders.TerraFlyingCarpetRenderer;
 import com.anbaric.terra_reforged.items.renders.TerraStagedWingRenderer;
 import com.anbaric.terra_reforged.items.renders.TerraWingRenderer;
 import com.anbaric.terra_reforged.util.Reference;
@@ -295,16 +297,21 @@ public class RenderHandler
         ItemBlockRenderTypes.setRenderLayer(TerraBlockRegistry.ORE_DIAMOND_JUNGLE.get(), cutoutMipped);
 
         //Items
+        CuriosRendererRegistry.register(TerraItemRegistry.FLYING_CARPET.get(), () -> new TerraFlyingCarpetRenderer("flying_carpet", TerraFlyingCarpetModel.createFlyingCarpet()));
         CuriosRendererRegistry.register(TerraItemRegistry.WINGS_FLEDGELING.get(), () -> new TerraWingRenderer("fledgeling_wings", TerraWingModel.createFledgelingWing()));
         CuriosRendererRegistry.register(TerraItemRegistry.WINGS_ANGEL.get(), () -> new TerraStagedWingRenderer("angel_wings", TerraStagedWingModel.createExtendedAngelWings(), TerraStagedWingModel.createRestingAngelWings()));
+        //CuriosRendererRegistry.register(TerraItemRegistry.WINGS_DEMON.get(), () -> new TerraStagedWingRenderer("demon_wings", TerraStagedWingModel.createExtendedDemonWings(), TerraStagedWingModel.createRestingDemonWings()));
     }
 
     @SubscribeEvent
     public static void registerLayer(EntityRenderersEvent.RegisterLayerDefinitions event)
     {
+        register(event, LayerHandler.FLYING_CARPET, TerraFlyingCarpetModel::createCarpetLayer);
         register(event, LayerHandler.FLEDGELING_WINGS, layer(TerraWingModel.createWingModel(), 64, 32));
         register(event, LayerHandler.ANGEL_WINGS_EXTENDED, TerraStagedWingModel::createExtendedWingLayer);
         register(event, LayerHandler.ANGEL_WINGS_RESTING, TerraStagedWingModel::createRestingWingLayer);
+        register(event, LayerHandler.DEMON_WINGS_EXTENDED, TerraStagedWingModel::createExtendedWingLayer);
+        register(event, LayerHandler.DEMON_WINGS_RESTING, TerraStagedWingModel::createRestingWingLayer);
     }
 
     public static ModelPart bakeLayer(ModelLayerLocation layerLocation) {

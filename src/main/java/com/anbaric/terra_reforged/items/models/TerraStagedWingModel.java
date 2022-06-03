@@ -47,6 +47,16 @@ public class TerraStagedWingModel<T extends LivingEntity> extends AgeableListMod
         return new TerraStagedWingModel<>(Minecraft.getInstance().getEntityModels().bakeLayer(LayerHandler.ANGEL_WINGS_RESTING));
     }
 
+    public static TerraStagedWingModel createExtendedDemonWings()
+    {
+        return new TerraStagedWingModel<>(Minecraft.getInstance().getEntityModels().bakeLayer(LayerHandler.DEMON_WINGS_EXTENDED));
+    }
+
+    public static TerraStagedWingModel createRestingDemonWings()
+    {
+        return new TerraStagedWingModel<>(Minecraft.getInstance().getEntityModels().bakeLayer(LayerHandler.DEMON_WINGS_RESTING));
+    }
+
     @Override
     @Nonnull
     protected Iterable<ModelPart> headParts()
@@ -116,18 +126,20 @@ public class TerraStagedWingModel<T extends LivingEntity> extends AgeableListMod
         float f1 = -0.2618F;
         float f2 = 0;
         float f3 = 0;
-        //        if (pEntity.isFallFlying()) {
-        //            float f4   = 1;
-        //            Vec3  vec3 = pEntity.getDeltaMovement();
-        //            if (vec3.y < 0.0D) {
-        //                Vec3 vec31 = vec3.normalize();
-        //                f4 = 1 - (float)Math.pow(-vec31.y, 1.5D);
-        //            }
-        //
-        //            f = f4 * 0.35F + (1 - f4) * f;
-        //            f1 = f4 * (-(float)Math.PI / 2F) + (1 - f4) * f1;
-        //        }
-        //        else
+        if (pEntity.isFallFlying())
+        {
+            float f4   = 1;
+            Vec3  vec3 = pEntity.getDeltaMovement();
+            if (vec3.y < 0.0D)
+            {
+                Vec3 vec31 = vec3.normalize();
+                f4 = 1 - (float) Math.pow(-vec31.y, 1.5D);
+            }
+
+            f = f4 * 0.35F + (1 - f4) * f;
+            f1 = (f4 * ((float) Math.PI / 2F) + (f4) * f1) - 1.65F;
+        }
+        else
         if (pEntity.isCrouching())
         {
             f = 0.7F;

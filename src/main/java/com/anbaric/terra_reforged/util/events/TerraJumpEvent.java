@@ -46,6 +46,8 @@ public class TerraJumpEvent
     private boolean hasTsunamiJump;
     @OnlyIn(Dist.CLIENT)
     private boolean hasFartJump;
+    @OnlyIn(Dist.CLIENT)
+    private boolean hasWing;
 
     @SubscribeEvent
     @OnlyIn(Dist.CLIENT)
@@ -79,6 +81,7 @@ public class TerraJumpEvent
                     hasSandstormJump = CurioHandler.hasBauble(player, TerraTagRegistry.SANDSTORM_JUMPERS);
                     hasBlizzardJump = CurioHandler.hasBauble(player, TerraTagRegistry.BLIZZARD_JUMPERS);
                     hasCloudJump = CurioHandler.hasBauble(player, TerraTagRegistry.CLOUD_JUMPERS);
+                    hasWing = CurioHandler.hasBauble(player, TerraTagRegistry.FLIGHT_GIVERS);
                 }
 
                 jumpState = player.input.jumping;
@@ -149,6 +152,17 @@ public class TerraJumpEvent
                         player.setNoGravity(true);
                         player.fallDistance = 0;
                         carpetState--;
+                        if (carpetState == 0) { lastJumpState = jumpState; player.setNoGravity(false); }
+                        return;
+                    }
+                    else if (hasWing && !player.isOnGround())
+                    {
+
+                        player.setDeltaMovement(player.getDeltaMovement().get(Direction.Axis.X) * 1.03, 0, player.getDeltaMovement().get(Direction.Axis.Z) * 1.03);
+                        player.setNoGravity(true);
+                        player.fallDistance = 0;
+                        carpetState--;
+                        ChannelHandler.INSTANCE.sendToServer(new CarpetJumpPacket(true));
                         if (carpetState == 0) { lastJumpState = jumpState; player.setNoGravity(false); }
                         return;
                     }
